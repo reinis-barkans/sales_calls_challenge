@@ -1,0 +1,271 @@
+CALL ID: CALL-009
+DATE: 2026-08-04
+VENDOR: OrbitFlow
+PROSPECT: Inkwell Learning
+INDUSTRY: Education technology
+COMPANY SIZE: 520 employees
+STAGE: Solution evaluation
+DURATION: 31 minutes
+PARTICIPANTS:
+- Maya Chen, Account Executive, OrbitFlow
+- Jon Bell, Solutions Engineer, OrbitFlow
+- Olivia Grant, SVP Customer Experience, Inkwell Learning
+- Darren Wu, Director of Business Intelligence, Inkwell Learning
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Maya Chen: Hi Olivia, hi Darren. Olivia, I know you've got a hard stop at half past so I'll keep us moving.
+[00:08] Olivia Grant: Thank you. I do, unfortunately.
+[00:11] Darren Wu: I can stay on after if it's useful.
+[00:14] Maya Chen: That'd be helpful, actually. Where I'd like to start is the use case, because we've had two rounds of email on it and I want to make sure we're solving the same problem.
+[00:26] Olivia Grant: Yes. So — support volume spikes around school-term launches. Enormously. And the problem isn't the volume itself, we can staff for volume. The problem is that we struggle to distinguish isolated tickets from account-level implementation risk until the escalation reaches an executive.
+[00:49] Maya Chen: So by the time you know, it's already senior.
+[00:53] Olivia Grant: By the time I know, a school district's chief of staff has emailed our CEO. That's the current detection mechanism and it is not a good one.
+[01:05] Maya Chen: How often?
+[01:07] Olivia Grant: Four or five times a term. Which sounds small until you remember each one is a renewal at risk.
+[01:16] Darren Wu: Can I complicate this before we go further?
+[01:20] Olivia Grant: Go ahead, he's going to anyway.
+[01:23] Darren Wu: [laughs] I am. So — the proposal, as I understand it, is to combine Zendesk ticket patterns, Salesforce account status, and Snowflake product usage to flag accounts needing proactive intervention, and create structured follow-up tasks.
+[01:41] Maya Chen: That's how I've written it down, yes.
+[01:44] Darren Wu: Right. And my concern is not whether that's technically possible. It obviously is. My concern is data quality. If Salesforce fields are stale, an elegant workflow will still make bad decisions. Beautifully, consistently, at scale.
+[02:04] Maya Chen: That's a fair challenge and I'd rather have it now.
+[02:09] Darren Wu: There's a specific version of it, actually, and I want to challenge something Olivia said in the last session.
+[02:16] Olivia Grant: Here we go.
+[02:18] Darren Wu: Olivia talks about account-health scores as though they're reliable. Leadership uses them, they're on the QBR deck, they're in the board pack. But fewer than half our CSMs update the underlying fields consistently. So I would not treat those scores as ground truth, and if we build a workflow that keys off them we've automated a guess.
+[02:44] Olivia Grant: [pause] That's — I don't entirely disagree.
+[02:49] Darren Wu: You've disagreed before.
+[02:52] Olivia Grant: I've disagreed with the framing. I think the scores are directionally useful and you think they're noise.
+[03:00] Darren Wu: I think they're noise with a trend in them, which is not the same as useful.
+[03:07] Maya Chen: Can I ask a question that might be helpful here?
+[03:11] Olivia Grant: Please.
+[03:13] Maya Chen: Of the three data sources — Zendesk tickets, Salesforce status, Snowflake usage — which one do you both actually trust?
+[03:23] Darren Wu: [immediately] Snowflake.
+[03:25] Olivia Grant: [crosstalk] Snowflake, yes.
+[03:27] Darren Wu: Because it's machine-generated. Nobody has to remember to update it.
+[03:33] Maya Chen: And Zendesk?
+[03:35] Darren Wu: Reasonably good. Ticket volume and category are reliable. The sentiment tagging is not, because it's manual.
+[03:45] Maya Chen: And Salesforce.
+[03:47] Darren Wu: Salesforce is reliable for the commercial facts — contract dates, ARR, owner. It is unreliable for anything a human has to remember to type.
+[04:00] Maya Chen: That's actually a very clean answer and I think it's the design.
+[04:06] Olivia Grant: Say more.
+[04:08] Maya Chen: Weight the signals by how they're produced. Machine-generated usage data and structured ticket data carry the flag. Human-maintained fields are context you show to the person, not inputs the logic depends on.
+[04:26] Darren Wu: [pause] That's — yes. That's the right architecture.
+[04:32] Olivia Grant: Would that actually have caught the escalations we've had?
+[04:37] Darren Wu: That's the question, isn't it.
+[04:40] Maya Chen: Can you test it? You've got history.
+[04:44] Olivia Grant: How would we test it?
+[04:47] Jon Bell: Take the escalations that reached you and run them backwards. For each one, look at what the usage data and ticket data looked like three weeks earlier. If the signal was there, you've got a case. If it wasn't, you've saved yourself a project.
+[05:05] Darren Wu: We could do that with SQL. We don't need a workflow platform to do that.
+[05:11] Jon Bell: You absolutely don't, and you should do it before you buy anything from us.
+[05:17] Darren Wu: [pause] Alright. That's not the answer I expected.
+[05:22] Jon Bell: If the signal isn't in the data, we can't manufacture it. And I'd rather you found that out with a query than with a pilot.
+[05:32] Olivia Grant: Darren, could you do that?
+[05:35] Darren Wu: I could do that in a day. Maybe two.
+[05:39] Olivia Grant: Then why haven't we?
+[05:41] Darren Wu: Because nobody's asked me to, and because I've been arguing about the health scores instead.
+[05:48] Olivia Grant: [laughs] Fair.
+[05:51] Maya Chen: I'd suggest making it the first thing, honestly. It's the cheapest way to find out whether this project should exist.
+[05:59] Olivia Grant: I'm slightly surprised you're saying that.
+[06:03] Maya Chen: If it turns out the signal isn't there, you'd discover it in month three of a pilot and I'd have burned your goodwill and my quarter. I'd rather know in week one.
+[06:16] Olivia Grant: Alright. Darren, do it.
+[06:19] Darren Wu: I'll do it.
+[06:21] Maya Chen: Can I ask what you'd look for? Because the answer isn't binary.
+[06:26] Darren Wu: Meaning?
+[06:28] Maya Chen: Meaning it's rarely "the signal was there" or "it wasn't." It's usually "it was there for six of the twelve, and for four of those it was there so early it'd have been indistinguishable from noise."
+[06:43] Darren Wu: That's a good point. So I'd want the lead time as well as the presence.
+[06:50] Jon Bell: And the false positive rate. How many accounts looked the same and turned out fine.
+[06:57] Darren Wu: [pause] Yes. That's the harder half.
+[07:02] Olivia Grant: Why harder?
+[07:04] Darren Wu: Because to measure false positives I need to know which accounts were fine, and "fine" isn't recorded anywhere. Absence of escalation isn't the same as fine.
+[07:17] Olivia Grant: No, it isn't.
+[07:20] Jon Bell: For what it's worth, that's a problem you'd have with any approach, including buying Gainsight properly. It's not an OrbitFlow problem.
+[07:31] Olivia Grant: Speaking of which. You should know what we've got.
+[07:35] Maya Chen: Go on.
+[07:37] Olivia Grant: Customer success uses a limited Gainsight deployment. Limited meaning we bought it, we implemented about forty percent of it, and then the person who owned it left.
+[07:51] Darren Wu: And my team has built a set of Looker alerts. Which work, but they're alerts. They tell you something and then nothing happens.
+[08:02] Maya Chen: So neither gives you the cross-system workflow.
+[08:07] Darren Wu: Neither gives us the workflow. Gainsight has the customer success concepts but we haven't implemented them. Looker has the data but no ability to make anything happen. And nothing joins Zendesk to Snowflake to Salesforce in a way that produces an action.
+[08:28] Maya Chen: Is expanding Gainsight the real alternative?
+[08:32] Olivia Grant: It's the alternative someone will propose, yes.
+[08:36] Darren Wu: It's the alternative I'd propose if the cost comparison favoured it.
+[08:42] Maya Chen: Then let's do that comparison honestly rather than pretending it isn't the competition.
+[08:49] Olivia Grant: I'd want that. A cost model comparing this with expanding Gainsight. Including the implementation effort on both sides, because the forty-percent thing wasn't a licensing failure, it was an implementation failure.
+[09:06] Maya Chen: That's a genuinely useful distinction and I'll build the comparison that way.
+[09:12] Darren Wu: You'll build a comparison that includes your competitor fairly?
+[09:17] Maya Chen: I'll build one that includes them accurately. Whether it's fair is for you to judge, and you should check my numbers.
+[09:26] Darren Wu: [laughs] Alright.
+[09:29] Jon Bell: Shall I show something? Because there's a shape here I want to check with Darren.
+[09:35] Olivia Grant: Go on.
+[09:37] Jon Bell: Sharing. [pause] So this is a workflow that's roughly the pattern we're describing. It's scheduled rather than event-driven — it runs daily, queries the warehouse, joins against the CRM, and evaluates a set of conditions.
+[09:56] Darren Wu: Where does the query live?
+[10:00] Jon Bell: In the workflow, in this case. But you can also point at a view you own in Snowflake, which for you is probably better.
+[10:10] Darren Wu: Much better. I don't want business logic living in two places.
+[10:16] Jon Bell: Then the pattern is: you own the definition of "at risk" as a view in Snowflake, we consume it and act on it. The intelligence is yours, the orchestration is ours.
+[10:30] Darren Wu: [pause] That's the first time a vendor has said that to me.
+[10:35] Jon Bell: It's the only version that survives contact with a BI team.
+[10:40] Darren Wu: It really is.
+[10:43] Olivia Grant: What does "act on it" mean concretely?
+[10:47] Jon Bell: In this flow — create a structured follow-up task with the account, the signal that triggered it, and links back to the underlying tickets and usage. Assign it to the account's CSM, or to a queue if the owner field is stale. Escalate if nothing happens in N days.
+[11:09] Olivia Grant: The escalation. That's the bit I want.
+[11:13] Jon Bell: And it's the bit that's usually missing. An alert with no escalation path is a notification, and notifications get ignored.
+[11:23] Olivia Grant: They do. I've got a Slack channel full of them.
+[11:28] Darren Wu: That's my channel and I take that personally.
+[11:32] Olivia Grant: [laughs] It's not personal, it's just full.
+[11:36] Jon Bell: Can the escalation go to a team rather than a named person? Because "assign to CSM" breaks the moment someone changes role.
+[11:47] Olivia Grant: That happens constantly.
+[11:50] Jon Bell: Then route to a group, resolve dynamically from a field, or use an on-call style fallback. And run history persists so you can see the inputs, which steps ran, and where it stopped.
+[12:04] Darren Wu: What happens when the workflow makes a bad call? Flags something that's fine.
+[12:11] Jon Bell: That's a good question and the honest answer is you need a feedback path or the thing degrades. If a CSM dismisses a flag, that dismissal should be recorded, and you should look at dismissal rates as a health metric for the workflow itself.
+[12:29] Darren Wu: Does the platform do that or do we build it?
+[12:33] Jon Bell: You build it. It's a field on the task and a report. I'm not going to tell you there's a built-in model-monitoring feature, because there isn't.
+[12:44] Darren Wu: Thank you.
+[12:46] Olivia Grant: Why does everyone thank them for saying no?
+[12:50] Darren Wu: Because it's rare.
+[12:52] Maya Chen: [laughs] We get that a lot.
+[12:56] Olivia Grant: What about the second thing? The weekly narrative summary.
+[13:01] Maya Chen: That's the AI use case. As I've got it written: produce a weekly narrative summary of emerging customer themes, with links back to supporting tickets and account records.
+[13:14] Olivia Grant: Yes. Because I currently get a spreadsheet and I don't read it.
+[13:20] Darren Wu: I make that spreadsheet.
+[13:22] Olivia Grant: I know. I'm sorry.
+[13:25] Darren Wu: It's fine, I don't read it either.
+[13:28] Maya Chen: [laughs] Well, that's clarifying.
+[13:32] Jon Bell: The links back are the important part and I'm glad you specified them. The way we'd build it is that the source references are stored alongside the generated output, so whoever reads the summary can click through to the tickets that produced each claim.
+[13:51] Olivia Grant: Because otherwise it's just a plausible paragraph.
+[13:56] Jon Bell: Otherwise it's a plausible paragraph, yes. And plausible paragraphs are exactly what these models are best at, which is the problem.
+[14:06] Darren Wu: Can it say "I don't know"? If there isn't a theme this week, will it invent one?
+[14:13] Jon Bell: It will if you let it. You can design against that — require a minimum number of supporting tickets before a theme is reported, and route thin cases to review rather than publishing them. What I wouldn't do is rely on the model's own confidence score as a guarantee. The better control is evidence plus workflow policy.
+[14:38] Darren Wu: Meaning the workflow refuses, not the model.
+[14:42] Jon Bell: Meaning the workflow refuses. Yes.
+[14:46] Darren Wu: That's a meaningful distinction and most people blur it.
+[14:51] Olivia Grant: Can we see the prompt?
+[14:53] Jon Bell: Yes. AI steps are explicit, inspectable workflow steps — you can see the prompt, the model, the configuration. Administrators can restrict which models are allowed, and Enterprise customers can disable AI features entirely. We log the model configuration used on each run, and we don't use customer workflow content to train a shared OrbitFlow model.
+[15:19] Olivia Grant: That last one matters for us.
+[15:22] Maya Chen: I'd assumed it would. Which brings us to security, and I'd like to hear your list.
+[15:29] Olivia Grant: Darren, you've got it.
+[15:32] Darren Wu: SSO, audit logs, retention controls, and a clear boundary around student-level data. That last one is the important one.
+[15:43] Maya Chen: Tell me what "clear boundary" means in practice.
+[15:47] Darren Wu: FERPA. We handle data about students in US school districts. Student-level records are subject to specific protections and our position is that they should never leave our warehouse.
+[16:03] Jon Bell: So the workflow operates on account-level aggregates only.
+[16:09] Darren Wu: Correct. Usage counts, engagement rates, ticket volumes at the account level. Never a student record, never a student identifier.
+[16:20] Jon Bell: That's very cleanly specifiable, and it's the sort of constraint that's much easier to enforce if you define it in the Snowflake view rather than in our workflow.
+[16:33] Darren Wu: [pause] Because then it's impossible rather than forbidden.
+[16:38] Jon Bell: Because then it's impossible rather than forbidden. If the view we consume contains no student-level columns, no workflow can leak them regardless of who builds it.
+[16:51] Darren Wu: That's the design. That's exactly the design.
+[16:56] Olivia Grant: Is that a FERPA answer or an engineering answer?
+[17:01] Darren Wu: It's an engineering answer that makes the FERPA answer easy. Our counsel would much rather hear "the data never leaves" than "the vendor has controls."
+[17:14] Maya Chen: I'd note that we should still complete your security review properly. Making the data question moot doesn't remove the vendor assessment.
+[17:24] Darren Wu: No, but it makes it a normal one rather than a special one.
+[17:29] Jon Bell: On the rest of your list — SOC 2 Type II baseline, SAML SSO and SCIM on Enterprise, encryption in transit and at rest, audit logs covering administrative and workflow events, retention configurable within supported ranges. Run events and metrics through APIs and webhooks, audit export on Enterprise.
+[17:53] Darren Wu: That's sufficient for us. We're not a bank.
+[17:57] Olivia Grant: We are occasionally treated like one by district procurement.
+[18:02] Darren Wu: True. Some districts have their own questionnaire.
+[18:07] Maya Chen: Would we need to complete those?
+[18:10] Darren Wu: Possibly, for the larger ones. Not for a pilot.
+[18:15] Maya Chen: Good to know it's coming, though.
+[18:18] Olivia Grant: I've got about ten minutes. Can we do money?
+[18:23] Maya Chen: Yes. Growth is eighteen hundred a month up to thirty users on an annual agreement. Enterprise is custom priced and adds the advanced governance, the security capabilities, and higher usage.
+[18:38] Olivia Grant: I think the price is reasonable if it lets us consolidate several manual programmes.
+[18:45] Maya Chen: Which programmes?
+[18:47] Olivia Grant: The spreadsheet Darren makes. The at-risk review meeting, which is ninety minutes a week of expensive people reading a list. And a chunk of what we're notionally paying Gainsight for.
+[19:03] Darren Wu: Olivia, we're not going to switch off Gainsight.
+[19:07] Olivia Grant: I know we're not going to switch it off. I'm saying the spend is questionable.
+[19:13] Darren Wu: The spend is very questionable. But that's a separate fight.
+[19:19] Olivia Grant: It's a related fight.
+[19:22] Darren Wu: [pause] It's a related fight.
+[19:25] Maya Chen: I'd rather not be in the middle of it, but I'd note that a cost model comparing us with expanding Gainsight will inevitably surface it.
+[19:36] Darren Wu: Which is why I want the model to be honest. If the answer is "expand Gainsight, it's cheaper", I want to be able to say that.
+[19:46] Maya Chen: Then say it. I'd rather lose that way.
+[19:50] Olivia Grant: What counts as a user?
+[19:53] Maya Chen: Builders and full workspace users are the licensed ones. Approval-only or notification-only can be structured differently by package. For you the shape matters — how many people build versus how many receive a task?
+[20:10] Olivia Grant: Building? Darren's team, so three or four. Receiving tasks — every CSM, so about sixty.
+[20:19] Darren Wu: Sixty-two.
+[20:21] Olivia Grant: Sixty-two.
+[20:23] Maya Chen: Then that split goes in the proposal explicitly with the assumptions next to it. I won't quote a figure today because without that split any figure I give would mislead you in one direction or the other.
+[20:38] Olivia Grant: Please do make it explicit. I don't want to find out in month four that all sixty-two need full seats.
+[20:46] Maya Chen: It'll be itemised — assumed builders, task recipients, expected run volume, and any one-time services separately.
+[20:56] Olivia Grant: Thank you.
+[20:58] Maya Chen: How would you make the ROI case?
+[21:02] Olivia Grant: Renewal retention. If we intervene three weeks earlier on four accounts a term, and one of them renews that wouldn't have, that pays for it several times over.
+[21:16] Darren Wu: That's the argument, and it's a good one, but it relies on the counterfactual. We'd need to be able to say the intervention caused the renewal, and we can't.
+[21:29] Olivia Grant: Nobody can ever say that.
+[21:32] Darren Wu: Which is why finance is sceptical of customer success business cases generally.
+[21:38] Maya Chen: Is there a leading indicator you could commit to instead? Something measurable that isn't the renewal itself.
+[21:47] Olivia Grant: Such as?
+[21:49] Maya Chen: Time from first signal to first intervention. That's measurable, it's attributable, and it's the thing the system actually changes. Whether earlier intervention improves renewal is a separate hypothesis, and honestly it's one you already believe or you wouldn't have a customer success team.
+[22:11] Darren Wu: [pause] That's a better framing than the one we've been using.
+[22:16] Olivia Grant: It is. Write that down.
+[22:19] Darren Wu: I'm writing it down.
+[22:22] Maya Chen: And I'd add — Inkwell wants to measure whether the system identifies at-risk accounts earlier than the current process. That's the actual success criterion and it's testable against history.
+[22:37] Olivia Grant: Which brings us back to Darren's backward-looking analysis.
+[22:42] Darren Wu: Everything brings us back to that.
+[22:45] Maya Chen: It's the load-bearing question.
+[22:48] Olivia Grant: Decision process, quickly, because I need to go. I sponsor it. Darren validates the data architecture — and given the last twenty minutes, that's not a formality. IT security and finance approve. And customer success leadership will judge usability, which is a soft gate but a real one.
+[23:11] Maya Chen: Who can say no?
+[23:13] Olivia Grant: Darren can effectively say no. Security can say no. Finance can say not yet, which is the same thing in practice.
+[23:24] Darren Wu: I wouldn't say no out of principle. I'd say no if the data doesn't support it.
+[23:31] Olivia Grant: I know. That's why you're on the call.
+[23:35] Maya Chen: Timing?
+[23:37] Olivia Grant: We want a pilot before the November renewal planning cycle, with a decision by late September. That's driven by the calendar rather than by us — if we miss November, the next natural point is March.
+[23:54] Maya Chen: So late September is a real date.
+[23:58] Olivia Grant: It's a real date. And term starts in early September, which means everyone in customer success is unavailable for the first two weeks.
+[24:09] Darren Wu: Which means August is the month.
+[24:12] Olivia Grant: August is the month, and it's the fourth today.
+[24:17] Maya Chen: Then let's not spend two weeks arranging things. What's the fastest useful next step?
+[24:24] Olivia Grant: Darren's analysis, obviously.
+[24:27] Darren Wu: I can have that by the end of next week.
+[24:31] Maya Chen: And if the signal is there?
+[24:34] Olivia Grant: Then I want to pilot it. And I'll tell you exactly how — we give you twenty historical escalations and we test whether the system would have surfaced them earlier than our current process. Not a demo on clean data. Those twenty, with the data as it actually was.
+[24:56] Jon Bell: That's the best-specified pilot anyone's proposed to me this year.
+[25:02] Olivia Grant: Is that flattery?
+[25:04] Jon Bell: No, it's relief. Most pilots are "build something and we'll see how we feel."
+[25:11] Olivia Grant: We don't have time to see how we feel.
+[25:15] Maya Chen: Twenty escalations. Can you get the data as it was at the time, or only as it is now?
+[25:23] Darren Wu: [pause] That's a very good question.
+[25:27] Maya Chen: It's the one that breaks backtests.
+[25:30] Darren Wu: Snowflake, yes — we have history, I can reconstruct point-in-time. Zendesk, mostly. Salesforce, no. Salesforce fields get overwritten, there's no history on most of them.
+[25:47] Jon Bell: Which is convenient, in a way, because you've already said the Salesforce human-maintained fields shouldn't carry the flag.
+[25:56] Darren Wu: [laughs] That's true. The data limitation and the design decision agree with each other.
+[26:04] Olivia Grant: That's the most encouraging thing I've heard today.
+[26:08] Darren Wu: It's coincidence.
+[26:10] Olivia Grant: I'll take it.
+[26:13] Olivia Grant: Right, I have to go. Maya, what do you owe us?
+[26:18] Maya Chen: The security pack — SOC 2, subprocessor list, DPA, architecture diagram, retention documentation. The cost model comparing us with expanding Gainsight, including implementation effort on both sides. And a written recap separating what you confirmed today from what you estimated.
+[26:41] Olivia Grant: What did we estimate?
+[26:43] Maya Chen: Four or five escalations a term. Fewer than half of CSMs updating fields consistently. Ninety minutes a week on the review meeting. Sixty-two CSMs was firm, the rest were approximate.
+[26:59] Darren Wu: The "fewer than half" is an impression, not a measurement.
+[27:04] Maya Chen: Then it goes in the estimates column, and it's probably worth measuring since it affects the design.
+[27:12] Darren Wu: It's worth measuring regardless.
+[27:15] Olivia Grant: Add it to your list.
+[27:18] Darren Wu: My list is getting long.
+[27:20] Olivia Grant: [laughs] Thanks both. Genuinely useful. Darren, stay on if you've got questions.
+[27:28] Maya Chen: Thanks Olivia.
+[27:30] Olivia Grant: Bye.
+[27:33] Darren Wu: Right. Two things I didn't want to raise in front of her.
+[27:38] Jon Bell: Go on.
+[27:40] Darren Wu: First — if we do this, the workflow logic has to be in version control somehow. Or at least reviewable. I'm not having business-critical logic that only exists in a web UI.
+[27:55] Jon Bell: Version history and change metadata are there, so you can see what changed and when. Definitions can be exported through the API. Whether that satisfies you as version control depends on what you mean — it's not a git integration.
+[28:12] Darren Wu: It's not git.
+[28:14] Jon Bell: It's not git. I'm not going to pretend it is.
+[28:18] Darren Wu: Can I diff two versions?
+[28:21] Jon Bell: You can see change metadata and version history in the product. A true side-by-side diff of two workflow definitions — I'd want to confirm what the export gives you rather than promise a diff experience.
+[28:36] Darren Wu: Add it to the written list.
+[28:39] Jon Bell: Adding it.
+[28:41] Darren Wu: Second thing. What happens when I leave?
+[28:45] Jon Bell: [pause] Are you leaving?
+[28:48] Darren Wu: No. But the last person who owned Gainsight left and that's why we implemented forty percent of it. I want to know that if I get hit by a bus, someone else can pick this up.
+[29:03] Jon Bell: That's the right question and it's mostly not a product answer. The product parts are: workflows built as small readable subflows rather than one enormous canvas, version history so someone can see what changed, and run history so someone can see what actually happens. The rest is your operating model — naming conventions, a rule that someone other than the builder can understand each production flow, documentation as a deliverable rather than a hope.
+[29:36] Darren Wu: So the answer is "it depends on us."
+[29:40] Jon Bell: Largely, yes. What I'd say is that this platform makes it possible. It doesn't make it happen.
+[29:48] Darren Wu: That's the honest answer.
+[29:51] Jon Bell: If I told you the tool solves organisational memory I'd be lying to you.
+[29:57] Darren Wu: People have.
+[29:59] Jon Bell: I'm sure.
+[30:02] Darren Wu: Alright. I'll do the backward analysis and I'll be honest about what it shows. If the signal's not there I'll say so and we'll stop.
+[30:13] Maya Chen: That's all I'd want.
+[30:16] Darren Wu: And if it is there, I'll be more enthusiastic than I've been today.
+[30:22] Maya Chen: You've been fine. Sceptical isn't unfriendly.
+[30:26] Darren Wu: [laughs] My last three managers would disagree.
+[30:31] Maya Chen: Thanks Darren. Good luck with the query.
+[30:35] Darren Wu: Thanks. Bye.
+[30:37] Jon Bell: Bye.

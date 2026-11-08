@@ -1,0 +1,228 @@
+CALL ID: CALL-012
+DATE: 2026-09-08
+VENDOR: OrbitFlow
+CUSTOMER: Pinewood Insurance
+INDUSTRY: Insurance
+COMPANY SIZE: 1,400 employees
+STAGE: Renewal / at risk
+DURATION: 23 minutes
+PARTICIPANTS:
+- Ruth Adeyemi, Customer Success Manager, OrbitFlow
+- Leo Grant, Account Executive, OrbitFlow
+- Graham Attwood, Director of Operations, Pinewood Insurance
+- Nadia Rahman, IT Service Owner, Pinewood Insurance
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Ruth Adeyemi: Morning Graham, morning Nadia. Thanks for making the time — I know this one's been rescheduled twice.
+[00:08] Graham Attwood: Three times, I think. That's on us.
+[00:12] Ruth Adeyemi: I wasn't counting.
+[00:14] Graham Attwood: You were, but that's fine.
+[00:17] Ruth Adeyemi: [laughs] Slightly. Look, I want to be direct about why I asked for this. Your renewal's on the twenty-ninth of November. Usage has dropped about forty percent since March. And I've had two conversations with Nadia that suggested you're not happy. I'd rather have the awkward conversation now than a surprise in November.
+[00:41] Graham Attwood: That's fair.
+[00:43] Nadia Rahman: It's also accurate.
+[00:46] Ruth Adeyemi: Then tell me. Start wherever you want.
+[00:50] Graham Attwood: The honest answer is that I inherited this. Ravi bought it, Ravi implemented it, Ravi left in February, and I picked it up in March with about forty minutes of handover.
+[01:05] Ruth Adeyemi: Forty minutes.
+[01:07] Graham Attwood: Forty minutes and a Confluence page that was last edited in November.
+[01:13] Nadia Rahman: The Confluence page is quite good, in fairness.
+[01:17] Graham Attwood: The Confluence page is the only reason anything still works.
+[01:22] Ruth Adeyemi: That's a failure on our side too. When your named champion leaves, we should be re-onboarding whoever picks it up, and nobody did that.
+[01:33] Graham Attwood: No, nobody did.
+[01:35] Ruth Adeyemi: I took over your account in May. It should have been the first thing I did and it wasn't.
+[01:42] Graham Attwood: [pause] I appreciate you saying that rather than telling me about a training portal.
+[01:49] Ruth Adeyemi: There is a training portal.
+[01:51] Graham Attwood: I know there is. I've never opened it.
+[01:54] Ruth Adeyemi: Nobody opens it.
+[01:56] Nadia Rahman: [laughs]
+[01:58] Ruth Adeyemi: Let me put the numbers up and you tell me what they mean from where you sit. You've got fourteen workflows in production. Six of them haven't run successfully in the last ninety days.
+[02:12] Nadia Rahman: Which six?
+[02:14] Ruth Adeyemi: I'll send the list, but broadly — three are the claims triage set, two are broker onboarding, and one is something called "TEMP - do not use" which has been running on a schedule since January.
+[02:29] Nadia Rahman: [pause] It's been running since January?
+[02:33] Ruth Adeyemi: It's been failing since January. Every four hours.
+[02:38] Nadia Rahman: Nobody told us.
+[02:40] Ruth Adeyemi: You'd have got the failure alerts. They're going to Ravi's address, which still exists as a shared mailbox that nobody reads.
+[02:50] Graham Attwood: Oh, for goodness' sake.
+[02:53] Nadia Rahman: That's — yeah. That's on us.
+[02:56] Ruth Adeyemi: It's on both of us. You should have redirected the alerts. We should have noticed a workflow failing two thousand times and rung someone.
+[03:07] Graham Attwood: Do you not monitor that?
+[03:10] Ruth Adeyemi: Not proactively at your account tier, no. And I'd rather tell you that plainly than imply we're watching when we aren't.
+[03:20] Graham Attwood: [pause] Right.
+[03:22] Nadia Rahman: Is that something you do at a higher tier?
+[03:26] Ruth Adeyemi: There's more proactive review on the largest accounts. It's not a product feature you can buy, it's how our team allocates time, and I don't want to dress that up as something it isn't.
+[03:40] Graham Attwood: I'd rather know.
+[03:42] Ruth Adeyemi: The three claims triage ones concern me more than the temp one. Those were the reason you bought.
+[03:50] Graham Attwood: They were the reason Ravi bought.
+[03:53] Ruth Adeyemi: Are they still the reason?
+[03:56] Graham Attwood: [pause] I don't know. That's the honest answer. The claims director changed in April and the new one has a different view about where triage should happen.
+[04:09] Nadia Rahman: She wants it in Guidewire.
+[04:12] Ruth Adeyemi: Ah.
+[04:14] Graham Attwood: She wants it in Guidewire, and she has a point, because that's where the claims handlers already are.
+[04:22] Ruth Adeyemi: That's a legitimate architectural position and I'm not going to argue against it. Can Guidewire do the cross-system part? The bit that pulls from the broker portal and the document store?
+[04:36] Nadia Rahman: Not natively. That's what we'd have to build.
+[04:41] Ruth Adeyemi: With what?
+[04:43] Nadia Rahman: Power Automate, probably. Or Guidewire's own integration layer, which our vendor tells us is capable and our developers tell me is painful.
+[04:55] Ruth Adeyemi: Which do you believe?
+[04:58] Nadia Rahman: [laughs] The developers. Always the developers.
+[05:03] Graham Attwood: So the situation is that half of what we bought this for might move somewhere else, and the other half — broker onboarding — is stalled for a completely different reason.
+[05:16] Ruth Adeyemi: Which is?
+[05:18] Graham Attwood: Nobody's building anything. We've got four builder licences. One person uses it. She's brilliant, she's called Ellie, and she's been on maternity leave since June.
+[05:32] Ruth Adeyemi: So you have a bus factor of one and the bus arrived.
+[05:37] Graham Attwood: The bus arrived, yes.
+[05:40] Nadia Rahman: We tried to get two people up to speed in July. It didn't take.
+[05:46] Ruth Adeyemi: Why not?
+[05:48] Nadia Rahman: They're busy. And the learning curve for the first workflow is steeper than the marketing suggests.
+[05:56] Ruth Adeyemi: How steep?
+[05:58] Nadia Rahman: One of them spent two days on it and produced something that didn't work, and then went back to their actual job. Which I entirely understand.
+[06:10] Ruth Adeyemi: Did they ask for help?
+[06:12] Nadia Rahman: No.
+[06:14] Ruth Adeyemi: Would they have known who to ask?
+[06:17] Nadia Rahman: [pause] Probably not.
+[06:20] Ruth Adeyemi: That's the bit I can actually fix.
+[06:23] Graham Attwood: Can you?
+[06:25] Ruth Adeyemi: Some of it. Enablement sessions, office hours, a named contact. What I can't fix is that your people are busy and this isn't their day job. If the only person who ever built anything was Ellie, then when Ellie's not here you have a very expensive product that nobody operates.
+[06:47] Graham Attwood: That's precisely the position I'm in.
+[06:51] Leo Grant: Can I come in?
+[06:53] Graham Attwood: Please.
+[06:55] Leo Grant: I've been listening and I want to say something that probably isn't in my interest. You're on Enterprise. Looking at what you're actually using, I'm not sure you should be.
+[07:08] Graham Attwood: Go on.
+[07:10] Leo Grant: Enterprise gives you SAML SSO and SCIM, EU data residency, audit export, advanced workspace governance, the ability to disable AI features, priority support. Nadia, how many of those are you using?
+[07:27] Nadia Rahman: SSO, obviously. Audit export — no. Residency — we're UK only and we're on the EU region, so, technically yes, but it's not a requirement anyone's written down.
+[07:41] Leo Grant: Advanced workspace governance?
+[07:44] Nadia Rahman: We have one workspace.
+[07:46] Leo Grant: Right.
+[07:48] Graham Attwood: What's the alternative?
+[07:50] Leo Grant: Growth. Eighteen hundred a month, up to thirty users, annual. You'd lose SCIM, audit export, EU residency as a contractual commitment, some of the governance controls, and priority support drops to standard.
+[08:07] Nadia Rahman: We'd lose SSO?
+[08:09] Leo Grant: SAML SSO is Enterprise. So yes, that's the one that would actually hurt.
+[08:16] Nadia Rahman: That's a problem. Our security standard requires SSO for anything holding claims data.
+[08:24] Leo Grant: Then Growth isn't viable and I've just talked myself out of my own suggestion.
+[08:30] Graham Attwood: [laughs] That was quick.
+[08:33] Leo Grant: It's better to find out now. But it does mean the question is different — it's not "which tier", it's "is Enterprise worth it for what you're getting", and right now the honest answer is probably not, because you're getting very little.
+[08:50] Graham Attwood: So what do you suggest?
+[08:53] Leo Grant: Two options and I'll be straight about both. Option one, you don't renew. We part on good terms, you export your workflow definitions and run data, and if the Guidewire route works out you were right.
+[09:09] Graham Attwood: You're offering me that?
+[09:11] Leo Grant: I'd rather offer it than have you sign a renewal you resent and churn next year with a bad taste.
+[09:19] Nadia Rahman: What's option two?
+[09:21] Leo Grant: Option two is a shorter renewal with a genuine re-implementation attached. Six months rather than twelve, with a defined enablement programme, and we agree measurable criteria at the start. If it works, you renew properly in May. If it doesn't, you leave in May and you've spent six months' fees finding out rather than twelve.
+[09:47] Graham Attwood: Would you discount six months?
+[09:50] Leo Grant: Six months at the annual rate pro-rata, not at a short-term premium. So no uplift, no penalty for the shorter term. That's the concession.
+[10:02] Graham Attwood: And what would the enablement look like? Because "we'll do some training" is not going to convince my finance director.
+[10:11] Ruth Adeyemi: Let me answer that, because it's mine. It'd be four things. First, re-onboarding for you and Nadia specifically — not the training portal, a working session on what you actually own. Second, three builders trained properly, and I mean sitting with them while they build a real workflow, not a demo one.
+[10:35] Nadia Rahman: Which three?
+[10:37] Ruth Adeyemi: You'd pick. But I'd want commitment from their managers that they get the time, in writing, because otherwise it's July again.
+[10:47] Graham Attwood: That's a reasonable ask.
+[10:50] Ruth Adeyemi: Third, we fix the estate. Delete the temp workflow, redirect the alerts away from Ravi's mailbox, review the six that are failing and decide for each one whether to fix it or kill it. I'd guess three should be killed.
+[11:08] Nadia Rahman: Probably four.
+[11:10] Ruth Adeyemi: Probably four. And fourth — we settle the Guidewire question rather than leaving it hanging, because if claims triage is moving, then the case for this product rests entirely on broker onboarding and you should know that before you renew anything.
+[11:29] Graham Attwood: How would we settle it?
+[11:32] Ruth Adeyemi: Get the claims director in a room with Nadia and have the cross-system conversation. Not with me in the room — this isn't a vendor question.
+[11:44] Graham Attwood: [pause] That's the right answer and I've been avoiding it.
+[11:50] Nadia Rahman: We've both been avoiding it.
+[11:53] Graham Attwood: Because she'll win.
+[11:55] Nadia Rahman: She might win.
+[11:57] Graham Attwood: She'll win on claims and she should. The question is whether she wins on everything.
+[12:04] Ruth Adeyemi: Then that's the meeting to have. And whichever way it goes, you'd know what you're buying.
+[12:11] Graham Attwood: Can I ask something blunt?
+[12:14] Leo Grant: Go on.
+[12:16] Graham Attwood: If we do option two and it doesn't work, do you actually let us leave in May, or does it become a negotiation?
+[12:25] Leo Grant: It's a six-month term. It ends. There's no auto-renew clause on a term like that and I'd put that in writing.
+[12:34] Graham Attwood: Because our current contract does auto-renew.
+[12:38] Leo Grant: Your current contract auto-renews with sixty days' notice, which means your notice deadline is the thirtieth of September.
+[12:47] Graham Attwood: [pause] Three weeks.
+[12:50] Leo Grant: Three weeks.
+[12:52] Nadia Rahman: Did you know that, Graham?
+[12:54] Graham Attwood: I did not know that.
+[12:57] Leo Grant: Which is why I've said it now rather than on the first of October. I'm not going to auto-renew you into a twelve-month contract you didn't intend to sign.
+[13:08] Graham Attwood: Some vendors would.
+[13:10] Leo Grant: Some vendors do. It's a terrible way to run a business.
+[13:15] Graham Attwood: [pause] Right. So I need to serve notice by the thirtieth regardless, to keep my options open.
+[13:24] Leo Grant: I'd suggest you do exactly that. Serve notice, which stops the auto-renew, and then we negotiate the six-month option separately without a clock on it. That's the cleanest thing for you.
+[13:39] Nadia Rahman: You're telling us to serve notice on our own contract.
+[13:44] Leo Grant: I'm telling you to preserve your optionality. If you serve notice and then decide to do the six months, that's a new agreement and everyone knows what they're signing.
+[13:56] Graham Attwood: Ruth, is he allowed to say this?
+[13:59] Ruth Adeyemi: [laughs] He's said worse.
+[14:02] Leo Grant: I'd rather have a customer in May than a lawsuit in March.
+[14:07] Graham Attwood: Nobody's suing anybody.
+[14:09] Leo Grant: No, but you'd be annoyed, and annoyed customers tell other people.
+[14:15] Graham Attwood: That's more honest than I expected.
+[14:18] Nadia Rahman: Can I raise the support thing? Since we're being honest.
+[14:23] Ruth Adeyemi: Please.
+[14:25] Nadia Rahman: We've raised eleven tickets this year. Four of them we closed ourselves because we'd worked it out before anyone came back.
+[14:35] Ruth Adeyemi: What was the response time?
+[14:38] Nadia Rahman: Within SLA, technically. But "within SLA" was a message asking us to confirm details we'd already provided in the ticket.
+[14:48] Ruth Adeyemi: That's a real complaint and I've heard it before.
+[14:52] Nadia Rahman: It's not catastrophic. It's just — it's the kind of thing that means I don't raise tickets any more, and then you look at the data and conclude we're happy.
+[15:04] Ruth Adeyemi: [pause] That's a very good point and it's slightly chilling.
+[15:09] Nadia Rahman: Low ticket volume can mean two things.
+[15:13] Ruth Adeyemi: Low ticket volume can mean two things, yes. I'll be more careful with that metric.
+[15:19] Graham Attwood: What would you actually change?
+[15:22] Ruth Adeyemi: For the six months, I'd want a fortnightly fifteen-minute call with Nadia. Not a QBR. Fifteen minutes, what's broken, what's annoying, what's stuck. Most of what she's described would have surfaced in the first one.
+[15:39] Nadia Rahman: I'd do that. Fifteen minutes I can do.
+[15:43] Graham Attwood: An hour a month I can't argue with.
+[15:46] Ruth Adeyemi: Half an hour a month.
+[15:48] Graham Attwood: Even better.
+[15:51] Leo Grant: Can I put some numbers on option two so you've got something concrete?
+[15:56] Graham Attwood: Please.
+[15:58] Leo Grant: Six months at your current annual rate pro-rata. Four builder seats, unchanged — I'd keep four rather than cut to three, because the whole point is getting more people building. Run tier unchanged, you're nowhere near it. Enablement included, not charged as professional services.
+[16:19] Graham Attwood: Included?
+[16:21] Leo Grant: Included. If I charge you for enablement to fix an adoption problem we partly caused, you'd be right to tell me to go away.
+[16:31] Graham Attwood: What's that worth, roughly?
+[16:34] Ruth Adeyemi: Three properly trained builders is about four days of someone's time. I'd have to check what we'd normally charge.
+[16:43] Leo Grant: We'd normally charge for it. I'd rather not.
+[16:47] Graham Attwood: And the criteria? You said measurable criteria.
+[16:51] Leo Grant: You'd write them, not me. But if I were you I'd want something like — three people other than Ellie have each built and shipped a production workflow. The failing six are resolved or deleted. The Guidewire question is settled and documented. And broker onboarding cycle time has moved, or you know why it hasn't.
+[17:16] Nadia Rahman: Those are all measurable.
+[17:19] Graham Attwood: The Guidewire one isn't a metric.
+[17:22] Leo Grant: No, it's a decision. But it's binary and it's got a date, which is close enough.
+[17:29] Graham Attwood: What happens if we hit three of four?
+[17:33] Leo Grant: Then you decide. I'm not going to pre-commit to a rule about it. If three of four have landed and the fourth is in progress, you'll know whether it's working.
+[17:45] Graham Attwood: Hm.
+[17:47] Ruth Adeyemi: Can I add something? The one I'd weight most heavily is the first one. Three people other than Ellie shipping something real. If that happens, everything else is solvable. If it doesn't happen, nothing else matters and you should leave.
+[18:05] Graham Attwood: That's a clear statement.
+[18:08] Ruth Adeyemi: It's the actual test. All the other stuff is symptoms.
+[18:13] Nadia Rahman: Ellie's back in November, incidentally.
+[18:17] Ruth Adeyemi: That's helpful and it's also a trap.
+[18:20] Nadia Rahman: Because she'll just do it all again.
+[18:23] Ruth Adeyemi: Because she'll do it all again and you'll be back here in a year with a bus factor of one. I'd almost rather do the enablement before she's back.
+[18:34] Graham Attwood: [pause] That's a good point.
+[18:37] Nadia Rahman: October, then.
+[18:39] Ruth Adeyemi: October would be ideal.
+[18:42] Graham Attwood: Let me tell you where I am. I'm not going to pretend I'm enthusiastic. If you'd asked me two weeks ago I'd have said we're not renewing.
+[18:53] Leo Grant: What's changed?
+[18:55] Graham Attwood: You've told me things that aren't in your interest, twice, which makes me trust the rest of it more. And the honest position — that we're paying for Enterprise and getting very little — matches what I'd concluded myself, which is reassuring.
+[19:14] Leo Grant: I'd still say there's a real chance you shouldn't renew.
+[19:19] Graham Attwood: I know. That's rather the point.
+[19:22] Nadia Rahman: My concern is different. I don't think the product is the problem. I think we implemented it badly, one person owned it, and then she left and then the other one went on leave. That's an us problem.
+[19:37] Ruth Adeyemi: It's partly an us problem. A product that only one person in an organisation can use is a product with an onboarding failure, and that's ours.
+[19:49] Nadia Rahman: That's generous.
+[19:51] Ruth Adeyemi: It's not generous, it's true. If we needed Ellie to be exceptional, that's a design problem.
+[19:59] Graham Attwood: Right. Next steps. What do I need to do by the thirtieth?
+[20:05] Leo Grant: Serve notice. It's an email to your account contact, and I'll send you the exact wording and address so it's unambiguous. That stops the auto-renew and costs you nothing.
+[20:19] Graham Attwood: And then?
+[20:21] Leo Grant: Then we have three weeks in October to agree the six-month terms, or you let it lapse on the twenty-ninth of November. Either is a legitimate outcome.
+[20:33] Graham Attwood: Send me the six-month proposal too, so I can put both in front of finance at the same time.
+[20:40] Leo Grant: I'll send both by Thursday. The proposal, and a one-page comparison of renew-six-months versus lapse, with what you'd lose in each case.
+[20:52] Graham Attwood: You'll write the case for lapsing?
+[20:55] Leo Grant: I'll write it accurately. You can decide whether it's compelling.
+[21:00] Graham Attwood: [laughs] Alright.
+[21:03] Ruth Adeyemi: From me — the list of the six failing workflows today, the alert redirection instructions today, and I'll draft what the enablement programme would look like with specific dates rather than a description.
+[21:19] Nadia Rahman: Can you send the export instructions as well?
+[21:23] Ruth Adeyemi: For your definitions and run data? Yes.
+[21:27] Nadia Rahman: Regardless of what we decide.
+[21:30] Ruth Adeyemi: Regardless of what you decide. You should have that anyway and it shouldn't be a leaving-related request.
+[21:38] Graham Attwood: And I'll get the meeting with the claims director. I'll do it next week.
+[21:44] Ruth Adeyemi: That's the one that matters most.
+[21:47] Graham Attwood: I know. I've known for four months.
+[21:51] Nadia Rahman: Five.
+[21:52] Graham Attwood: [crosstalk] Five. Thank you, Nadia.
+[21:55] Nadia Rahman: [laughs] Sorry.
+[21:58] Ruth Adeyemi: One last thing and then I'll let you go. If you do lapse — and I mean this — tell us why properly. Not a form. An actual conversation. Because the Ravi thing and the alerts going to a dead mailbox and nobody noticing a workflow failing for eight months, those are things we should fix for everyone, not just for you.
+[22:23] Graham Attwood: I'd do that.
+[22:25] Nadia Rahman: I'd enjoy that, honestly.
+[22:28] Ruth Adeyemi: [laughs] I'm sure you would.
+[22:31] Graham Attwood: Right. Thank you both. That was more useful than I expected and I say that having dreaded it.
+[22:39] Leo Grant: Thanks Graham. Thursday for the papers.
+[22:43] Nadia Rahman: Bye.
+[22:45] Ruth Adeyemi: Bye both.

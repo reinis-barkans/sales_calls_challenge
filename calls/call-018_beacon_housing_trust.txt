@@ -1,0 +1,104 @@
+CALL ID: CALL-018
+DATE: 2026-09-25
+VENDOR: OrbitFlow
+PROSPECT: Beacon Housing Trust
+INDUSTRY: Social housing
+COMPANY SIZE: 1,900 employees
+STAGE: Cold call
+DURATION: 10 minutes
+PARTICIPANTS:
+- Maya Chen, Account Executive, OrbitFlow
+- Ade Balogun, Head of Business Change, Beacon Housing Trust
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Ade Balogun: Ade Balogun.
+[00:02] Maya Chen: Ade, hi — my name's Maya Chen, I'm from a company called OrbitFlow. This is a cold call, so I'll give you the thirty-second version and you can tell me to go away.
+[00:14] Ade Balogun: [laughs] That's refreshing. Go on.
+[00:18] Maya Chen: We do workflow automation, but the specific problem we're usually brought in for is cross-team processes where the work is technically visible in a system somewhere but nobody actually owns moving it along. So things sit, and you find out late.
+[00:36] Ade Balogun: [pause] That's most of my job, actually.
+[00:40] Maya Chen: Is it? Tell me more.
+[00:43] Ade Balogun: Well — I'm head of business change at a housing association. Everything I do is cross-team processes that nobody owns.
+[00:53] Maya Chen: Give me one.
+[00:55] Ade Balogun: Voids. Empty property turnaround.
+[00:59] Maya Chen: I don't know that world. Walk me through it?
+[01:03] Ade Balogun: A tenant moves out. We need to inspect the property, decide what work's needed, get the work done, do a compliance check — gas, electrical, fire — and then re-let it. Every day that property is empty costs us rent we don't collect.
+[01:22] Maya Chen: What's your average?
+[01:24] Ade Balogun: Twenty-six days. The sector benchmark for good is around eighteen.
+[01:31] Maya Chen: And what's the twenty-six made of?
+[01:34] Ade Balogun: [pause] That's exactly the question I can't answer, and it's the reason this call is going better than you expected.
+[01:43] Maya Chen: I'll take it.
+[01:45] Ade Balogun: We know the total. We know some of the stages. But when I ask why a specific property took forty-one days, the answer takes someone two hours of digging and usually ends with "it was waiting for the electrical certificate."
+[02:02] Maya Chen: And you can't tell whether that's one property or a pattern.
+[02:07] Ade Balogun: We cannot tell whether it's one property or a pattern. I've been asking for that for two years.
+[02:14] Maya Chen: What have you tried?
+[02:16] Ade Balogun: A dashboard. Which tells me the average is twenty-six days. Which I already knew.
+[02:23] Maya Chen: [laughs] That's the most common answer I get.
+[02:27] Ade Balogun: Is it?
+[02:29] Maya Chen: Almost universally. People buy visibility and discover they had visibility, they just didn't have coordination.
+[02:38] Ade Balogun: That's a good way of putting it. Can I write that down?
+[02:42] Maya Chen: It's not mine, a customer said it to me in July.
+[02:47] Ade Balogun: [laughs] Well, tell them thank you.
+[02:50] Maya Chen: Can I ask what systems are involved? Roughly, I don't need detail.
+[02:56] Ade Balogun: Our housing management system, which is the big one. A repairs system that's separate. A compliance system that's separate again. And then a great deal of email and, God help us, some spreadsheets.
+[03:12] Maya Chen: And do those three systems talk?
+[03:15] Ade Balogun: The housing management system and the repairs system have an integration that works about eighty percent of the time. Compliance is entirely manual.
+[03:26] Maya Chen: So the compliance certificate that held up your forty-one-day property —
+[03:32] Ade Balogun: Was somebody emailing a contractor and waiting.
+[03:36] Maya Chen: Right.
+[03:38] Ade Balogun: You can see why I said the call was going well.
+[03:42] Maya Chen: I can. Let me be straightforward about a few things though, because I'd rather do that now.
+[03:49] Ade Balogun: Please.
+[03:51] Maya Chen: First — I don't know your housing management system. There's a reasonable chance we don't have a native connector for it, and we'd be working through an API or building something. That's not a dealbreaker but it's real work and it costs money.
+[04:08] Ade Balogun: I'd assumed that. Nobody has connectors for our sector.
+[04:13] Maya Chen: Second — you're a housing association, which means procurement.
+[04:19] Ade Balogun: [laughs] It means procurement, yes.
+[04:22] Maya Chen: Are you on a framework?
+[04:24] Ade Balogun: We'd typically buy through one, yes. Anything over a threshold has to go through a compliant route.
+[04:32] Maya Chen: What's the threshold?
+[04:34] Ade Balogun: For services, it varies. Practically, anything meaningful goes through a framework or a tender, and a tender is nine months of my life.
+[04:46] Maya Chen: Then that's something we should establish early rather than in month four. I'd want to know which frameworks you use and whether we're on any of them, and if we're not, whether there's a compliant route at all.
+[05:01] Ade Balogun: You're raising the procurement problem yourself.
+[05:05] Maya Chen: I'd rather find out in week one that we can't be bought than in month six.
+[05:11] Ade Balogun: That's — yes. Most vendors discover procurement in month six and are then very surprised about it.
+[05:20] Maya Chen: I've been surprised about it.
+[05:23] Ade Balogun: Everyone has.
+[05:25] Maya Chen: Third thing, and this is the one I'd want you to hear. If your compliance process is genuinely manual and email-based, automating it will make it faster. But if the actual constraint is that you don't have enough electrical contractors, then a faster process just makes people wait more efficiently.
+[05:47] Ade Balogun: [pause] That's a very good point and it's one I've made internally.
+[05:53] Maya Chen: What's the answer?
+[05:55] Ade Balogun: I think it's both. I think there's a genuine contractor capacity issue and I also think we lose days to nobody chasing. But I couldn't tell you the split, which is —
+[06:09] Maya Chen: Which is the same problem.
+[06:11] Ade Balogun: Which is exactly the same problem, yes. I can't tell you the split because I don't have the data, and I don't have the data because nothing's instrumented.
+[06:22] Maya Chen: Then can I suggest something that isn't a sale?
+[06:26] Ade Balogun: Go on.
+[06:28] Maya Chen: The first phase of something like this shouldn't be automating the voids process. It should be instrumenting it. Just recording state transitions — property became void, inspection booked, inspection done, works raised, works complete, compliance requested, certificate received, re-let. Timestamps only. No automation, no changing anyone's job.
+[06:55] Ade Balogun: And then look at the data.
+[06:58] Maya Chen: Run it for eight weeks and look at where the time actually goes. Then automate the two stages that turn out to matter, rather than the eight stages people complain about.
+[07:11] Ade Balogun: That would be considerably cheaper.
+[07:14] Maya Chen: It's considerably cheaper and it's much easier to get through a procurement process, and if it turns out the answer is "you need more electricians", you've spent very little to find that out.
+[07:28] Ade Balogun: You'd be arguing yourself down to a smaller deal.
+[07:32] Maya Chen: I'd be arguing myself into a deal that survives. The ones that go wrong are the ones where we automate the wrong thing at scale.
+[07:42] Ade Balogun: [pause] Alright. What do you want from me?
+[07:47] Maya Chen: Half an hour, in the next couple of weeks, with you and whoever owns the housing management system technically. I'd want to understand the systems and I'd want to ask about procurement properly. No demo.
+[08:03] Ade Balogun: No demo?
+[08:05] Maya Chen: If we get to a demo and it turns out we can't be procured or can't reach your housing system, I've wasted an hour of your life and mine.
+[08:15] Ade Balogun: That's sensible. Our technical person is Priya Menon — she's our applications manager.
+[08:23] Maya Chen: Would she come?
+[08:25] Ade Balogun: If I ask her. She's sceptical of vendors, which I'd say is a feature.
+[08:32] Maya Chen: It's very much a feature. Ask her to bring the awkward questions.
+[08:38] Ade Balogun: She won't need encouragement.
+[08:41] Maya Chen: [laughs] Good. Anything I should send beforehand?
+[08:46] Ade Balogun: Two things. What you'd need from our housing management system technically — Priya will want to know that before the call, not during it. And anything you've got on other housing associations or public sector bodies.
+[09:02] Maya Chen: I'll be honest — I don't have a housing association reference. We have public sector customers but not in your sector.
+[09:12] Ade Balogun: [pause] That's a problem for procurement rather than for me.
+[09:17] Maya Chen: I'd assumed so. I'd rather say it now.
+[09:21] Ade Balogun: Say it to Priya as well. She'll ask.
+[09:25] Maya Chen: I will. What about frameworks — can you tell me which ones you use so I can check whether we're on them?
+[09:33] Ade Balogun: I'll send you a list. There are three we use routinely.
+[09:38] Maya Chen: Then I'll check before we meet, and if we're not on any of them I'll tell you and we can decide whether it's worth continuing.
+[09:47] Ade Balogun: You keep offering to end this.
+[09:50] Maya Chen: I'd rather have five real conversations than twenty polite ones.
+[09:55] Ade Balogun: [laughs] Alright. Send me the technical requirements, I'll send you the frameworks, and I'll get Priya. Week of the sixth?
+[10:05] Maya Chen: Week of the sixth. Thank you, Ade. That was a much better cold call than I expected.
+[10:12] Ade Balogun: It was a much better cold call than I expected too. Bye.

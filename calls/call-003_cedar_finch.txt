@@ -1,0 +1,168 @@
+CALL ID: CALL-003
+DATE: 2026-06-11
+VENDOR: OrbitFlow
+PROSPECT: Cedar & Finch
+INDUSTRY: E-commerce
+COMPANY SIZE: 180 employees
+STAGE: Discovery / demo
+DURATION: 17 minutes
+PARTICIPANTS:
+- Leo Grant, Account Executive, OrbitFlow
+- Sophie Reed, Director of E-commerce Operations, Cedar & Finch
+- Marcus Lee, Customer Support Manager, Cedar & Finch
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Leo Grant: Hi both. Sophie, Marcus — thanks for making time.
+[00:04] Sophie Reed: Hi. Marcus is on his phone, he's between things.
+[00:09] Marcus Lee: Yeah, sorry, I'm walking. I'll be at a desk in five.
+[00:14] Leo Grant: No problem. So normally I'd spend twenty minutes on discovery before showing anything, but —
+[00:21] Sophie Reed: Can we not?
+[00:22] Leo Grant: [laughs] Go on.
+[00:25] Sophie Reed: We've done three of these in a fortnight. I can recite our own pain points. Can we just see it and I'll interrupt when something matters?
+[00:35] Leo Grant: Deal. I'll ask about four questions along the way rather than up front. Fair?
+[00:41] Sophie Reed: Fair.
+[00:43] Leo Grant: One thing before I share — I'm on my own today. Nina, our solutions engineer, is with another customer. So if you ask me something properly technical I'm going to say "I'll come back to you" rather than make it up.
+[00:58] Sophie Reed: I'd prefer that, honestly.
+[01:02] Leo Grant: Right. Sharing. [pause] Can you see it?
+[01:07] Sophie Reed: Yep.
+[01:09] Leo Grant: So this is the workflow builder. Triggers and actions on the left, the flow in the middle, and whatever step you've clicked gets its config on the right.
+[01:20] Leo Grant: I've pre-built something that I think is roughly your world. High-value order comes in, there's a fulfilment exception on it, we open a ticket, we ping a channel, we update a tracker.
+[01:34] Sophie Reed: That's — yeah, that's almost exactly it. Detect high-value orders with fulfilment exceptions, Zendesk ticket, right Slack channel, and update our Airtable exception tracker.
+[01:48] Leo Grant: Then let me just run it. [pause] So it's triggered off the order event, it checks the value threshold, it checks the exception flag, and then it branches.
+[02:01] Sophie Reed: Stop there. What happens if the order data's incomplete?
+[02:07] Leo Grant: Good. So — this branch here. If the required fields aren't populated it doesn't just carry on, it drops into an exception queue.
+[02:17] Sophie Reed: Owned by who?
+[02:19] Leo Grant: A team, not a person. You can route to a group, or resolve a person dynamically off a field, or use an on-call style fallback.
+[02:29] Sophie Reed: Okay. That's relevant, because — Marcus, are you back?
+[02:34] Marcus Lee: I'm here, I'm sitting down.
+[02:37] Sophie Reed: Tell him the number.
+[02:39] Marcus Lee: Right, so. We've got more than sixty Zapier automations. Six-zero. And several of them are owned by people who don't work here any more.
+[02:50] Leo Grant: How do you find out when one breaks?
+[02:53] Marcus Lee: When a customer complains.
+[02:56] Leo Grant: [pause] Right.
+[02:59] Marcus Lee: That's not a joke, that's genuinely the detection mechanism.
+[03:04] Sophie Reed: It's the honest answer.
+[03:07] Leo Grant: It's a very common answer. It's just usually not said out loud in the first ten minutes.
+[03:14] Marcus Lee: Well, we're not going to fix it by pretending.
+[03:18] Leo Grant: No. Okay, so let me show you the bit that speaks to that. [pause] This is run history. Filter by workflow, status, time. Open any run and you see every step, the inputs, the outputs, timings, retries.
+[03:36] Sophie Reed: Can I set an alert on a failure rate rather than an individual failure? Because sixty automations, if I get an email per failure I'll just filter them into a folder and never look at it.
+[03:50] Leo Grant: Yes — you can alert when error rates cross a threshold. And that's the right instinct, everyone who alerts per-failure ends up ignoring all of them.
+[04:01] Sophie Reed: Learned that one the hard way.
+[04:05] Marcus Lee: Can I correct something Sophie said in the email, actually?
+[04:09] Sophie Reed: Go on.
+[04:11] Marcus Lee: I think I may have overstated the Zendesk angle earlier. Support feels like the loudest problem because failures surface there — that's where the customer shouts. But honestly, probably only about a quarter of the automations actually touch Zendesk.
+[04:31] Leo Grant: That's a really useful correction. What do the other three quarters touch?
+[04:37] Marcus Lee: Shopify mostly. Klaviyo. Some Airtable stuff.
+[04:42] Sophie Reed: Let me give you the full list. Shopify, Zendesk, Klaviyo, Slack, Airtable, and Zapier holding it all together with string.
+[04:53] Leo Grant: And of those, which one is the one that has to work perfectly?
+[04:58] Sophie Reed: Shopify. A native Shopify trigger is — that's important. If that's a polling hack I'm not interested.
+[05:07] Leo Grant: Understood. I'm going to be careful here — I believe the Shopify integration is native and event-driven, but I'm not going to swear to the exact trigger coverage without checking. That's a Nina question and I'll get you a written answer.
+[05:24] Sophie Reed: Fine.
+[05:26] Leo Grant: What about volume? Roughly.
+[05:29] Sophie Reed: Off peak, about eight thousand orders a week. Peak is — Marcus?
+[05:35] Marcus Lee: Peak is silly. Three, four times that in the run-up to Christmas.
+[05:41] Leo Grant: And you're UK and EU?
+[05:43] Sophie Reed: UK and EU, yes. Which is a security question, so let me do that bit now while I remember.
+[05:51] Leo Grant: Go for it.
+[05:53] Sophie Reed: We need a standard DPA. SSO would be nice rather than mandatory — we're a hundred and eighty people, I'm not going to pretend we've got a zero-trust programme. And because we sell into the UK and EU I want to understand where customer data actually gets processed.
+[06:14] Leo Grant: That last one I can answer partly. EU data residency is available on Enterprise. On Growth, I'd need to confirm the default processing region for you in writing rather than guess.
+[06:28] Sophie Reed: Enterprise. That's the expensive one.
+[06:31] Leo Grant: That's the expensive one, yes.
+[06:34] Sophie Reed: Then let's do money now, because I don't want to spend twenty minutes falling in love with this.
+[06:41] Leo Grant: Sensible. Growth starts at eighteen hundred a month, up to thirty users, on an annual agreement.
+[06:49] Sophie Reed: [pause] Right.
+[06:52] Leo Grant: Say it.
+[06:54] Sophie Reed: Eighteen hundred a month is hard for a team our size. I had something closer to eight hundred, maybe a thousand, in my head.
+[07:04] Leo Grant: That's a real gap. I'm not going to pretend it isn't.
+[07:09] Sophie Reed: I could potentially do an annual prepay if that materially changes the number. Does it?
+[07:16] Leo Grant: It can. I'd be lying if I said it halves it. It's a meaningful discount, not a transformation.
+[07:24] Sophie Reed: Mm.
+[07:26] Marcus Lee: What's the Zapier bill at the moment, Soph?
+[07:30] Sophie Reed: Ours? About two hundred and something. But that's not the comparison and you know it, because the two hundred doesn't include the four hours a week you spend chasing broken ones.
+[07:43] Marcus Lee: It's more than four.
+[07:45] Sophie Reed: [crosstalk] I know it's more than four. I'm being generous to my own argument.
+[07:50] Leo Grant: That is actually the argument, though. Can I ask — if you priced Marcus's time and the customer complaints, what does the current setup cost you?
+[08:01] Marcus Lee: I genuinely don't know. Nobody's ever asked me to count it.
+[08:07] Sophie Reed: And that's the problem with building the business case. I can't put "vibes" in a spreadsheet for the finance director.
+[08:15] Leo Grant: No. But you could count it for four weeks before you decide anything. That's free and it'd make the conversation much easier either way.
+[08:26] Sophie Reed: That's — yeah. That's a fair suggestion.
+[08:31] Marcus Lee: I can log it. It'll be depressing but I can log it.
+[08:36] Leo Grant: Let me show you two more things and then I'll stop. [pause] This is the templates and reusable components bit. Rather than sixty separate automations, you'd typically build a handful of subflows — order lookup, notification, ticket creation — and assemble from those.
+[08:57] Sophie Reed: So when something changes I change it in one place.
+[09:02] Leo Grant: In one place, yes. And that's genuinely the thing I'd point at for your sixty-Zap problem. It's not that we do things Zapier can't. It's that sixty independent Zaps is sixty things to maintain and this is more like eight.
+[09:20] Sophie Reed: Okay. That is the most compelling thing you've said.
+[09:25] Leo Grant: I'll take it.
+[09:27] Sophie Reed: What about visibility of who owns what? Because the dead-employee problem is real.
+[09:34] Leo Grant: Version history and change metadata on every workflow. So you can see what changed and when. And you'd typically define who can publish to production versus who can build in a dev workspace.
+[09:49] Marcus Lee: We don't have a dev workspace. We don't have a dev anything.
+[09:54] Leo Grant: [laughs] You'd get one. That's not extra cost, it's just how it's structured.
+[10:00] Sophie Reed: Do you do the AI stuff? Everyone does the AI stuff now.
+[10:05] Leo Grant: We do, but I'd underplay it for you. It's optional steps inside a workflow — classification, summarisation, extracting fields out of text, drafting something a human then approves. It's not an autonomous agent thing.
+[10:22] Sophie Reed: Is there something there for us or are you being polite?
+[10:27] Leo Grant: There might be one. You mentioned wanting a weekly digest of recurring support reasons pushed to the e-commerce and product teams?
+[10:37] Marcus Lee: That was me. I want that. I've wanted that for two years.
+[10:42] Leo Grant: That's a reasonable fit — summarise the week's tickets by theme, with links back to the underlying tickets so someone can check it.
+[10:52] Marcus Lee: With links. Because I don't trust a summary I can't verify.
+[10:57] Leo Grant: You shouldn't. And that's how we'd build it — the source references stored next to the generated output.
+[11:05] Sophie Reed: Does that cost extra?
+[11:07] Leo Grant: Usage is scoped on workflow runs and premium connectors. I'd want to model that for your volumes rather than say "no" and surprise you later.
+[11:19] Sophie Reed: Everyone says that and then there's a surprise later.
+[11:23] Leo Grant: Then let me put the assumptions in writing and you can hold me to them.
+[11:29] Sophie Reed: Okay.
+[11:32] Leo Grant: Can I ask about decision-making? If you did want to do this, what's the path?
+[11:38] Sophie Reed: I can choose tools under fifteen thousand a year on my own. Above that it goes to the COO and the finance director.
+[11:47] Leo Grant: And eighteen hundred a month is —
+[11:50] Sophie Reed: Twenty-one, six. So it goes upstairs. Which is a different conversation and a slower one.
+[11:58] Leo Grant: Understood. That's useful to know now rather than in six weeks.
+[12:04] Sophie Reed: I'm telling you because I'd rather not waste either of our time.
+[12:09] Leo Grant: Appreciated. Timing?
+[12:12] Sophie Reed: I'd like to clean up the automations before the holiday peak. Ideally something in place by early October, because after that nobody's changing anything until January.
+[12:25] Marcus Lee: Nobody touches anything in November. Company rule.
+[12:29] Leo Grant: Sensible rule. So realistically a decision in — August?
+[12:35] Sophie Reed: August, if we do it.
+[12:38] Leo Grant: Right. Let me ask the uncomfortable one. What's the alternative? Not "do nothing" — the real alternative.
+[12:47] Sophie Reed: Honestly? Zapier and Make. I like Zapier for the simple stuff, it does what it says. And I've tested Make for the more complicated branching, which it handles better than I expected.
+[13:03] Leo Grant: And the concern with those?
+[13:06] Sophie Reed: Maintenance and visibility. The same two things. Make would give me the branching but I'd still have the ownership problem.
+[13:16] Marcus Lee: And nobody here knows Make except Sophie.
+[13:20] Sophie Reed: Which is its own ownership problem.
+[13:24] Leo Grant: So the honest framing is: we'd have to beat Zapier plus better documentation and ownership discipline. Not beat doing nothing.
+[13:35] Sophie Reed: That's exactly right. And to be blunt — budget is the biggest risk here. We could decide we're simply over-buying, and keep Zapier while improving documentation and ownership. That's a real outcome and it might be the right one.
+[13:53] Leo Grant: It might be. I'd rather you concluded that in July than in month five.
+[14:00] Sophie Reed: You keep saying things that don't sound like sales.
+[14:04] Leo Grant: I've been doing this a while. The deals that go wrong are the ones where someone talked themselves past a genuine objection.
+[14:13] Sophie Reed: Mm.
+[14:16] Marcus Lee: Sorry — Soph, you've frozen.
+[14:19] Sophie Reed: [inaudible]
+[14:21] Marcus Lee: You're breaking up. Leo, can you hear her?
+[14:25] Leo Grant: Not really.
+[14:27] Sophie Reed: — sorry. Sorry. Back. My office wifi is genuinely worse than my house wifi and I don't understand why.
+[14:36] Leo Grant: [laughs] Mine too. Where'd we lose you?
+[14:40] Sophie Reed: You were being honest about objections, which I appreciated, and then I vanished, which was poor timing.
+[14:48] Leo Grant: So — where does that leave you? Genuinely.
+[14:53] Sophie Reed: I like the monitoring. I like the reusable templates. That's the bit that speaks to our actual problem. I'm just not yet convinced the value closes the gap between this and the tools we already pay for.
+[15:10] Leo Grant: That's a completely fair position.
+[15:13] Sophie Reed: I'm not saying no.
+[15:16] Leo Grant: I know. And I'd rather have a considered maybe than an enthusiastic yes that dies in procurement.
+[15:24] Sophie Reed: What would you want from us?
+[15:27] Leo Grant: Two things, and both are cheap. One — Marcus logs the time spent on broken automations for four weeks. Not for me, for you. Two — send me your three worst automations, the ones that break most, and I'll come back with what they'd look like rebuilt here, plus an honest note on which bits are actually better and which are just different.
+[15:53] Sophie Reed: You'll tell me which bits aren't better?
+[15:56] Leo Grant: If I don't, you'll find out in month two and then I've lost you anyway.
+[16:02] Sophie Reed: Alright. Marcus, can you do the logging thing?
+[16:06] Marcus Lee: I can do the logging thing.
+[16:09] Sophie Reed: Then yes. Send me that.
+[16:12] Leo Grant: I'll also get you written answers on the Shopify trigger coverage and the default processing region. Those are the two I dodged.
+[16:22] Sophie Reed: You did dodge them.
+[16:24] Leo Grant: Deliberately.
+[16:26] Sophie Reed: Better than the alternative.
+[16:29] Leo Grant: Anything else before we drop?
+[16:32] Marcus Lee: Actually, yeah, one. If we did buy this, do we have to migrate all sixty at once?
+[16:39] Leo Grant: God, no. Please don't. The pattern that works is picking the three that break most, moving those, running both for a bit, then deciding. Big-bang migrations of sixty automations is how these projects die.
+[16:56] Marcus Lee: Okay. That's reassuring.
+[17:00] Sophie Reed: Right. I've got another one at half past. Thanks, Leo.
+[17:05] Leo Grant: Thanks both. And Marcus — sorry about the logging homework.
+[17:11] Marcus Lee: [laughs] It's fine. It'll be useful either way.
+[17:16] Sophie Reed: That's the spirit. Bye.
+[17:19] Leo Grant: Bye.

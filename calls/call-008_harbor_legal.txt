@@ -1,0 +1,329 @@
+CALL ID: CALL-008
+DATE: 2026-07-23
+VENDOR: OrbitFlow
+PROSPECT: Harbor Legal
+INDUSTRY: Legal services
+COMPANY SIZE: 780 employees
+STAGE: Discovery / security review
+DURATION: 39 minutes
+PARTICIPANTS:
+- Leo Grant, Account Executive, OrbitFlow
+- Nina Patel, Solutions Engineer, OrbitFlow
+- Eleanor Brooks, Chief Transformation Officer, Harbor Legal
+- Samir Khan, Information Security Manager, Harbor Legal
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Leo Grant: Good morning. Eleanor, Samir — thanks for the time.
+[00:05] Eleanor Brooks: Morning.
+[00:07] Samir Khan: Morning. Apologies in advance, I'm at home and there are builders next door, so if you hear drilling that's them and not me.
+[00:16] Leo Grant: [laughs] Understood. Right — I sent an agenda. Eleanor, does it match what you want?
+[00:24] Eleanor Brooks: Roughly. I'd move one thing. You've got security at the end and I'd like it woven through, because Samir will raise it on every point anyway and it's less disruptive if we accept that up front.
+[00:39] Samir Khan: That's an accurate characterisation of my behaviour.
+[00:43] Eleanor Brooks: It's meant kindly.
+[00:45] Samir Khan: I took it kindly.
+[00:48] Leo Grant: Then let's do that. Nina, expect to be interrupted.
+[00:53] Nina Patel: I'd expect that anyway in this sector.
+[00:57] Eleanor Brooks: Have you done legal before?
+[01:00] Nina Patel: Two firms, one of them a similar size to you. So I know roughly where the landmines are, but every firm is its own thing.
+[01:10] Eleanor Brooks: That's true and it's usually said by people who don't believe it.
+[01:16] Leo Grant: Shall we start with what's actually broken?
+[01:20] Eleanor Brooks: Yes. So the honest description is that matter-opening and client-intake involve a great many manual checks, email approvals, and duplicated data entry. The same client details get typed into three systems by three different people.
+[01:39] Leo Grant: How many steps in a matter opening, roughly?
+[01:44] Eleanor Brooks: It depends on the practice group, which is part of the problem. Somewhere between fourteen and thirty.
+[01:52] Leo Grant: And how long?
+[01:54] Eleanor Brooks: Two days if everything goes well. It rarely goes well. The record is eleven days and I'd rather not discuss it.
+[02:03] Leo Grant: [laughs] Understood.
+[02:06] Eleanor Brooks: But — and this is the crucial caveat — the firm is cautious about automating anything that could affect confidentiality or conflicts checks. Very cautious. And correctly so.
+[02:22] Samir Khan: Conflicts is not negotiable.
+[02:25] Eleanor Brooks: Conflicts is not negotiable. If a workflow makes a conflicts decision, we're finished.
+[02:32] Leo Grant: Let me play back what I think the phase one should be, then, and you tell me if it's too timid.
+[02:39] Eleanor Brooks: Go on.
+[02:41] Leo Grant: Orchestrate the administrative steps around new matter opening — the data entry, the chasing, the notifications, the status — while leaving formal conflict approval exactly where it is, in the existing system of record. We don't touch the decision. We touch everything around it.
+[03:03] Eleanor Brooks: [pause] That's not too timid. That's the right scope.
+[03:09] Samir Khan: I'd want that written into the design as a constraint, not just as an intention.
+[03:16] Nina Patel: Meaning what, specifically? Because I want to build the right thing.
+[03:22] Samir Khan: Meaning the workflow has no write path to the conflicts system, at all, at the permission level. Not "we chose not to build that step." The credential it uses cannot perform that operation.
+[03:38] Nina Patel: That's a least-privilege credential design and it's completely reasonable. Connections and credentials are centrally managed and referenced by workflows — a builder uses a connection, they don't see or control the secret. So if the connection is scoped read-only to conflicts, no workflow using it can write.
+[03:59] Samir Khan: Can I audit that? Can I see which connections a workflow uses?
+[04:05] Nina Patel: Yes. And I'd suggest you review connection scopes as a standing control rather than reviewing workflows, because there'll be far fewer connections than workflows.
+[04:18] Samir Khan: [pause] That's a better control than the one I was going to ask for.
+[04:24] Nina Patel: It's the one that scales.
+[04:27] Samir Khan: Noted. Carry on.
+[04:30] Leo Grant: Eleanor, what does the failure look like today? Where does a matter opening get stuck?
+[04:37] Eleanor Brooks: Email. Almost always email. Someone needs a partner to approve something, they email the partner, the partner is in court or in a meeting or on a plane, and the email joins four hundred others.
+[04:54] Leo Grant: And then?
+[04:56] Eleanor Brooks: And then someone chases. Usually a very capable business services person who is spending their day being a human reminder system.
+[05:07] Samir Khan: Which is also a security issue, incidentally, because the chasing tends to involve forwarding things.
+[05:15] Eleanor Brooks: That's fair, actually. I hadn't framed it that way.
+[05:20] Leo Grant: Do you have data on it? Time to open, number of chases, that sort of thing?
+[05:26] Eleanor Brooks: Some outcome data. Time to open, yes. Operational detail, no. We can tell you a matter took nine days. We can't tell you which step consumed seven of them, or whether the same step consumes seven days for every matter in that practice group.
+[05:46] Leo Grant: That last question again.
+[05:49] Eleanor Brooks: Is it a common one?
+[05:51] Leo Grant: It's universal. Every single one of these conversations, in every industry.
+[05:57] Eleanor Brooks: How reassuring.
+[06:00] Samir Khan: Can I ask something about the run data before we go further?
+[06:05] Nina Patel: Go ahead.
+[06:07] Samir Khan: If the workflow is handling matter data, that data ends up in your run history. Correct?
+[06:15] Nina Patel: Whatever the workflow passes between steps is visible in the run record, yes. That's the honest answer and it's the thing you should be worried about.
+[06:26] Samir Khan: Thank you for not saying "it's encrypted."
+[06:30] Nina Patel: It is encrypted, in transit and at rest. That's not the point you're making.
+[06:36] Samir Khan: It is not the point I'm making.
+[06:39] Nina Patel: The point you're making is who can read it and whether it should be there at all.
+[06:45] Samir Khan: Yes.
+[06:47] Nina Patel: So — two answers. Permissions can separate workflow administration from business viewing, and there's role-based access and workspace separation. Secret values are never displayed in run logs. But field-level masking of specific business payloads is a design conversation, not a switch. I'm not going to tell you there's a checkbox.
+[07:12] Samir Khan: Everyone tells me there's a checkbox.
+[07:15] Nina Patel: There isn't one. What there is, is design — pass references rather than payloads where you can, pull the sensitive field only at the point of use, and restrict who can see run detail.
+[07:31] Samir Khan: The "pass references rather than payloads" principle is the one I care about. Can you actually build that way?
+[07:40] Nina Patel: You can, and for a firm like yours I'd insist on it. It's more work up front. It's much less painful in your annual review.
+[07:51] Samir Khan: [pause] Alright. That's a serious answer.
+[07:56] Eleanor Brooks: Samir, is that a yes?
+[07:59] Samir Khan: It's a "not a no", which from me is unusual at minute eight.
+[08:05] Eleanor Brooks: [laughs] It really is.
+[08:08] Leo Grant: Let me get the constraint on the table properly, because I know it's coming. Matter-level information barriers.
+[08:17] Samir Khan: Yes. This is the big one. We have matters where the team acting for one side must not be able to see anything relating to the other. That's an ethical wall and it's enforced at the system level in iManage and in our matter-management tooling.
+[08:37] Nina Patel: So the question is whether a workflow platform can respect a barrier that's defined somewhere else.
+[08:45] Samir Khan: That is exactly the question and nobody has answered it well.
+[08:50] Nina Patel: Then let me not answer it well either, but honestly. Out of the box, we have role-based access and workspace separation. We do not have a native concept of a matter-level ethical wall that reads your barrier definitions from iManage and enforces them dynamically. That does not exist.
+[09:12] Samir Khan: Thank you.
+[09:14] Nina Patel: What you can do is design around it — workspace separation aligned to barriers, credentials scoped so a workflow physically cannot read across, and run visibility restricted accordingly. But that's design and it's your design as much as ours, and it has to be maintained as barriers change.
+[09:37] Samir Khan: Which they do. Weekly.
+[09:40] Nina Patel: Then that maintenance burden is a real cost and it should be in the business case, not discovered later.
+[09:48] Eleanor Brooks: Samir, how bad is that?
+[09:51] Samir Khan: [pause] It's not fatal. It's significant. It means every barrier change has a workflow implication, and today it doesn't.
+[10:02] Eleanor Brooks: Could we scope phase one to matters with no barriers?
+[10:07] Samir Khan: We could. Most matter openings don't have barriers at the point of opening.
+[10:14] Nina Patel: That's the scoping I'd suggest, and I'd document it as a deferred problem rather than a solved one.
+[10:22] Samir Khan: Deferred and written down. Yes.
+[10:26] Leo Grant: I'm noting that as an explicit limitation in whatever we send you.
+[10:31] Samir Khan: Good. Right, the rest of my list, so you have it. UK residency. Strict retention. Encryption. SSO and SCIM. Matter-aware access controls, which we've just discussed. Audit logs. An AI opt-out. Subprocessor disclosure. And confirmation that our content is not used to train shared models.
+[10:56] Nina Patel: Taking those in order. SOC 2 Type II is the baseline. SAML SSO and SCIM on Enterprise. Encryption in transit and at rest. Audit logs covering administrative and workflow events. Retention configurable within supported ranges. Subprocessor list published with change notification. And we do not use customer workflow content to train a shared OrbitFlow model.
+[11:24] Samir Khan: UK residency?
+[11:26] Nina Patel: EU data residency is available on Enterprise. UK specifically I need to confirm in writing. I'm not going to say yes on a call.
+[11:37] Samir Khan: EU is not UK.
+[11:40] Nina Patel: EU is not UK, correct.
+[11:43] Samir Khan: For some of our clients that distinction matters a great deal.
+[11:48] Eleanor Brooks: It matters for the public sector work particularly.
+[11:52] Nina Patel: Then it's a genuine open question and it may be a gate. I'll get you a definitive answer within the week.
+[12:01] Samir Khan: If the answer is no, tell me it's no. Don't tell me it's on the roadmap.
+[12:07] Leo Grant: If it's on the roadmap we'll say "it's on the roadmap and here's what that means and doesn't mean." I won't dress a roadmap item as a capability.
+[12:19] Samir Khan: [pause] Alright.
+[12:22] Samir Khan: Audit export. Into my SIEM, or into your console only?
+[12:28] Nina Patel: Run events and metrics through APIs and webhooks, and audit export on Enterprise. Several customers forward events into their own tooling continuously.
+[12:41] Samir Khan: That's what I need. Your console is not an audit trail as far as I'm concerned.
+[12:47] Nina Patel: Agreed, and I'd send you the payload schema so your SIEM team can look at it before you commit to anything.
+[12:56] Samir Khan: Yes. Send that.
+[12:59] Samir Khan: Retention. What's the minimum I can set?
+[13:03] Nina Patel: Configurable within supported ranges, and I'd rather give you the actual numbers in the pack than a range on a call.
+[13:12] Samir Khan: Fine. But be aware — we have a retention policy that says certain operational records are deleted at ninety days, and if your floor is above that, we have a problem.
+[13:26] Nina Patel: That's a very specific and very useful thing to tell me. I'll check it against the floor explicitly.
+[13:34] Samir Khan: Most people don't ask what the floor is. They assume longer is better.
+[13:40] Nina Patel: Longer is better right up until it's a liability.
+[13:45] Samir Khan: [laughs] Yes.
+[13:48] Eleanor Brooks: Can we do AI? Because I know Samir has a position and I'd like it on the table.
+[13:55] Samir Khan: My position is straightforward. I'd like to know whether we can disable AI features entirely for the first phase.
+[14:04] Nina Patel: Yes. Enterprise customers can disable AI features. Administrators can also restrict which models are allowed if you want a middle position rather than off.
+[14:16] Samir Khan: Off. For phase one, off.
+[14:20] Eleanor Brooks: Samir —
+[14:21] Samir Khan: [crosstalk] I know.
+[14:23] Eleanor Brooks: — the second use case I sent them was an AI one.
+[14:27] Samir Khan: I know it was. I'm not saying never. I'm saying not in phase one, while we're also trying to prove a new platform, integrate iManage, and get practice groups to change how they open matters. One new risk at a time.
+[14:45] Eleanor Brooks: [pause] That's actually reasonable.
+[14:49] Samir Khan: I am occasionally reasonable.
+[14:52] Leo Grant: Can I ask about the second use case anyway, so we understand where it goes?
+[14:58] Eleanor Brooks: Yes. It's summarising operational status for partners — where their matters are, what's stuck, what needs them — without exposing privileged document contents to an LLM.
+[15:13] Nina Patel: So the summary is over process metadata, not document content.
+[15:19] Eleanor Brooks: Correct. Nobody is proposing to feed a privileged document to a model.
+[15:25] Samir Khan: Somebody would, eventually, if we didn't prevent it.
+[15:29] Eleanor Brooks: Somebody would, yes.
+[15:32] Nina Patel: That distinction is actually the whole design. If the AI step only ever receives status fields, dates, and task names, the privilege question mostly evaporates. The risk is scope creep — somebody adds the matter description to the prompt because it makes the summary nicer.
+[15:53] Samir Khan: That is precisely the risk.
+[15:56] Nina Patel: And I'll be honest — the control for that today is review and design standards, not a platform guarantee. AI steps are explicit and inspectable, so you can see exactly what's being passed. But nothing stops a builder with the right permissions from passing more.
+[16:16] Samir Khan: Then that's an argument for restricting who can build AI steps at all.
+[16:22] Nina Patel: That would be my recommendation for you specifically.
+[16:26] Samir Khan: Can that be restricted separately from building workflows generally?
+[16:32] Nina Patel: I believe so, but that's a permissions-granularity question and I want to confirm it rather than guess.
+[16:40] Samir Khan: Add it to the written list.
+[16:43] Nina Patel: It's on the list.
+[16:46] Eleanor Brooks: How long is the written list now?
+[16:49] Nina Patel: Four items. UK residency, retention floor, AI-step permission granularity, and the audit payload schema.
+[16:58] Eleanor Brooks: That's fewer than I expected.
+[17:01] Samir Khan: It's early.
+[17:03] Eleanor Brooks: [laughs] It is early.
+[17:06] Leo Grant: Let's do the stack, because I suspect it's the other hard bit.
+[17:11] Eleanor Brooks: Microsoft 365, Teams, SharePoint. iManage. Intapp. Azure. And several internal matter-management tools that were built here over about fifteen years.
+[17:26] Nina Patel: How many internal tools?
+[17:29] Eleanor Brooks: Three that matter. One of which is a Access database that we do not talk about.
+[17:36] Samir Khan: We talk about it constantly. You just don't enjoy it.
+[17:41] Eleanor Brooks: I do not enjoy it.
+[17:44] Nina Patel: [laughs] Does it have an API?
+[17:47] Eleanor Brooks: It does not have an API.
+[17:50] Nina Patel: Then it's out of scope for phase one and we should say so now.
+[17:55] Eleanor Brooks: Agreed.
+[17:57] Nina Patel: On the rest — Microsoft 365, Teams and SharePoint are well-trodden. Azure is fine. iManage and Intapp are the interesting ones, and I want to be direct: native legal-system connectors are limited. In our catalogue, specifically, limited.
+[18:19] Samir Khan: Meaning you don't have them.
+[18:22] Nina Patel: Meaning we'd be working through their APIs rather than a maintained native connector. Which is entirely doable — both have APIs, and we have a generic REST action and webhooks — but it's integration work rather than configuration, and somebody has to maintain it when their API changes.
+[18:44] Eleanor Brooks: How much work?
+[18:46] Nina Patel: I can't give you a number without knowing the specific operations. If you send me the list of reads and writes phase one actually needs — not "iManage integration", the actual operations — I'll come back with an honest difficulty rating per operation.
+[19:05] Eleanor Brooks: We can produce that.
+[19:08] Nina Patel: Then that's the single most useful thing you could send me.
+[19:13] Samir Khan: Eleanor, this is the thing I flagged in the steering meeting.
+[19:18] Eleanor Brooks: I know. Say it anyway, they should hear it.
+[19:23] Samir Khan: My concern — and I'd say it's the biggest risk to this whole thing — is that our security constraints plus the lack of native legal-system connectors make the integration effort disproportionate. We end up spending a great deal to automate something that saves a business services person four hours a week.
+[19:47] Leo Grant: That's a completely legitimate concern and I'd rather test it than argue with it.
+[19:54] Samir Khan: How would you test it?
+[19:57] Leo Grant: With Nina's operation-by-operation difficulty assessment, plus an honest services estimate, against Eleanor's number for what matter-opening delay actually costs. If the effort exceeds the value, you shouldn't do it, and I'd rather you concluded that in September than next March.
+[20:19] Eleanor Brooks: Do we have a number for what it costs?
+[20:23] Samir Khan: You'd know better than me.
+[20:26] Eleanor Brooks: [pause] Not a good one. We have time-to-open. We don't have a cost attached to it.
+[20:34] Leo Grant: Is there a client-facing cost? Delayed matter opening — does that ever affect a client relationship?
+[20:42] Eleanor Brooks: [pause] Yes. Occasionally quite badly.
+[20:47] Leo Grant: Then that's the number, and it's not a four-hours-a-week number.
+[20:52] Eleanor Brooks: No, it isn't. That's a good reframe.
+[20:57] Samir Khan: It's also harder to evidence.
+[21:00] Eleanor Brooks: Everything worth measuring is harder to evidence.
+[21:04] Leo Grant: Can I ask about the incumbent? You've got Power Automate.
+[21:09] Eleanor Brooks: We do. It's used for low-risk administrative tasks — document routing, some notifications. It works for that.
+[21:19] Nina Patel: And what's missing?
+[21:21] Eleanor Brooks: Monitoring, mostly. And reusable components. The transformation team wants better monitoring and reusable components, which is a very dull sentence that describes about sixty percent of our frustration.
+[21:37] Samir Khan: There's also internal development. We build things. That's the other alternative and it's the one that appeals to certain people.
+[21:47] Leo Grant: Who are those people?
+[21:49] Samir Khan: [laughs] I'm not going to name them.
+[21:53] Eleanor Brooks: The internal development option is real. We have a small team, they're good, and the argument is always "we understand our own systems better than a vendor does."
+[22:06] Nina Patel: Which is true.
+[22:08] Eleanor Brooks: Which is true, and the counter-argument is that they then own it forever and they're already at capacity.
+[22:16] Leo Grant: Same argument everywhere. It's usually decided by whoever has the loudest voice rather than by a cost comparison.
+[22:25] Eleanor Brooks: That is a depressingly accurate description of our governance.
+[22:31] Leo Grant: [laughs] Ours too, in fairness.
+[22:35] Eleanor Brooks: Can I correct something I said, actually? Before we go further.
+[22:40] Leo Grant: Please.
+[22:42] Eleanor Brooks: I know I said partners do not want another interface. I've said that to you and I've said it internally, repeatedly. That's still broadly true. But I've been thinking about it, and a dedicated approval dashboard might actually reduce email if it's simple enough. So I wouldn't treat "no new interface" as an absolute requirement.
+[23:08] Samir Khan: That's a change.
+[23:10] Eleanor Brooks: It's a softening. The absolute version was making us design worse things.
+[23:17] Samir Khan: I don't disagree, I'm just noting it.
+[23:21] Eleanor Brooks: Note away.
+[23:23] Nina Patel: Can I ask a design question off the back of that? If a partner had one place to go that showed only the things waiting on them, with a button — would that be used, or would they still want it in email?
+[23:39] Eleanor Brooks: [pause] Some would use it. The ones who currently complain loudest about email would use it. The ones who don't complain wouldn't, and they're the ones who cause the delays.
+[23:53] Nina Patel: Then the design is probably both — the notification arrives where they already are, and the dashboard exists for the people who want it.
+[24:04] Eleanor Brooks: Yes. That's right.
+[24:07] Nina Patel: And approval forms can collect structured input, so it isn't just yes or no. A partner could add a condition or amend a value and that feeds subsequent steps.
+[24:20] Eleanor Brooks: That matters. Approval here is rarely binary.
+[24:25] Samir Khan: And it's logged? Who approved, when, what they changed?
+[24:30] Nina Patel: All of it. The run record holds every step, inputs, outputs, timing, retries, and any human approval with the identity and timestamp.
+[24:42] Samir Khan: That is genuinely better than what we have.
+[24:46] Eleanor Brooks: What we have is an email.
+[24:49] Samir Khan: What we have is an email that someone forwarded.
+[24:53] Leo Grant: Let me do commercials briefly, because I want to leave time for next steps.
+[24:59] Eleanor Brooks: Go on.
+[25:01] Leo Grant: Growth is eighteen hundred a month up to thirty users on an annual agreement. You're not a Growth shape — everything Samir's asked for sits in Enterprise, which is custom priced.
+[25:15] Eleanor Brooks: The enterprise range itself doesn't worry me. We buy expensive software.
+[25:22] Leo Grant: What does worry you?
+[25:24] Eleanor Brooks: Scope. We need to prove value on low-risk operational workflows first. I would not make a business case that assumes use around privileged client content, because that case would be rejected and it would poison the whole thing.
+[25:43] Samir Khan: I'd reject it.
+[25:45] Eleanor Brooks: Samir would reject it, and he'd be right to.
+[25:49] Leo Grant: Then the proposal should be scoped to the low-risk operational tier explicitly, with the privileged-content question marked as out of scope rather than as a future upsell. Is that fair?
+[26:04] Eleanor Brooks: That's exactly fair. And frankly if you'd tried to upsell it today I'd have been less interested.
+[26:12] Leo Grant: Noted.
+[26:15] Samir Khan: What's a user? We'd have very few builders and a very large number of partners who approve something occasionally.
+[26:24] Leo Grant: Builders and full workspace users are the licensed ones. Approval-only or notification-only populations can be structured differently depending on package. I'm not giving you a number today because without the split it'd be misleading.
+[26:41] Eleanor Brooks: Please put the split in writing when you do. If it turns out every partner needs a seat, this is a very short conversation.
+[26:51] Leo Grant: Understood, and I'd want to know that before you take anything internally rather than after.
+[26:58] Eleanor Brooks: Good.
+[27:01] Leo Grant: What about professional services? Given what Nina said about iManage and Intapp, there'll be an implementation number and I'd rather quote it honestly than have it appear after a discovery phase.
+[27:16] Eleanor Brooks: Thank you. Yes. That's the thing that goes wrong.
+[27:21] Samir Khan: Every time.
+[27:23] Leo Grant: Then it'll be a separate line with its assumptions written next to it, and where we don't know, it'll say so rather than showing a placeholder that looks like a quote.
+[27:36] Eleanor Brooks: If you do that you'll be unusual.
+[27:39] Leo Grant: I'm told that a lot.
+[27:42] Eleanor Brooks: [laughs]
+[27:45] Samir Khan: Sorry — one moment. [pause] Sorry, that's a delivery. I'll be — [inaudible]
+[27:53] Eleanor Brooks: He'll be a minute. Can I ask you something while he's gone?
+[27:58] Leo Grant: Of course.
+[28:00] Eleanor Brooks: How often does security kill these things? Honestly.
+[28:05] Leo Grant: Honestly? In your sector, maybe a third of the time. But almost never at this stage. It kills things in month four, when something that was answered vaguely in month one turns out to be a no.
+[28:22] Eleanor Brooks: Which is why I wanted him on the call.
+[28:26] Leo Grant: And it's why I'd rather he asked hard questions now. Samir hasn't asked me anything unreasonable.
+[28:34] Eleanor Brooks: He's very good. He's also exhausting.
+[28:38] Leo Grant: Most good ones are.
+[28:41] Samir Khan: — sorry, back. What did I miss?
+[28:45] Eleanor Brooks: Leo was saying you're exhausting.
+[28:48] Samir Khan: [laughs] That's fair.
+[28:51] Leo Grant: That is a slight paraphrase.
+[28:54] Samir Khan: It's fine. I've heard worse and it's usually accurate.
+[28:59] Leo Grant: Decision process — who's actually involved?
+[29:04] Eleanor Brooks: Transformation sponsors, which is me. Security and risk have veto power, which is Samir and his director. Practice-group leaders must agree to any process change, and that's the slow one. Procurement handles the contract.
+[29:23] Leo Grant: How slow are the practice groups?
+[29:26] Eleanor Brooks: They're not slow to say no. They're slow to say yes.
+[29:31] Samir Khan: That's a very good description.
+[29:34] Eleanor Brooks: Realistically, if we scoped this to matter opening in two practice groups rather than all of them, that's a much easier conversation.
+[29:45] Leo Grant: Would you do that?
+[29:47] Eleanor Brooks: I think we'd have to. A firm-wide process change on top of a new platform is two changes and we'd fail at both.
+[29:57] Nina Patel: That's also better technically. Two practice groups gives you a real test with real variation and a manageable blast radius.
+[30:08] Eleanor Brooks: Which two, though. That's a political question rather than a technical one.
+[30:14] Samir Khan: Pick the ones with no information barriers.
+[30:18] Eleanor Brooks: [pause] That's a good filter, actually.
+[30:22] Leo Grant: Timing?
+[30:24] Eleanor Brooks: Possible proof of concept in Q4. Broader rollout would be next year. I want to be realistic — nothing significant happens here in December, and January is taken up with the annual planning cycle.
+[30:41] Leo Grant: So a Q4 PoC and a decision in Q1.
+[30:46] Eleanor Brooks: That's the honest shape.
+[30:49] Leo Grant: That's fine and I'd rather have it than an optimistic date.
+[30:54] Samir Khan: Before we finish — can I do three quick technical ones?
+[31:00] Nina Patel: Go.
+[31:02] Samir Khan: Can workflows call our internal APIs without us exposing them publicly?
+[31:08] Nina Patel: If they're publicly reachable with authentication, outbound calls are straightforward. For genuinely private networks it depends on your environment and may require an agent or a controlled gateway. Given you're largely Azure, I'd want to look at what's already behind API Management before assuming anything.
+[31:31] Samir Khan: Most of it is. Some of it isn't.
+[31:34] Nina Patel: Then "some of it isn't" is the design question.
+[31:39] Samir Khan: Second — can secrets be rotated without editing every workflow?
+[31:45] Nina Patel: Yes. Rotation happens at the connection layer. Workflows reference the connection, not the credential.
+[31:53] Samir Khan: Good. Third — if we terminate, what happens to our data?
+[31:59] Nina Patel: Workflow definitions and run data can be exported through supported APIs. What happens to the copy you leave behind is contractual and I'd want that answered by someone who can commit to it, not by me.
+[32:15] Samir Khan: Add it to the written list.
+[32:18] Nina Patel: Five items now.
+[32:21] Samir Khan: There'll be more.
+[32:23] Nina Patel: I'd be disappointed if there weren't.
+[32:27] Eleanor Brooks: One from me on portability. I don't want to recreate our matter-opening process inside a proprietary workflow language and then be unable to leave.
+[32:39] Nina Patel: That's a reasonable concern and here's the honest answer. Definitions and run data export through APIs, but this is a product with its own execution model. I would not claim you can export a workflow and run it unchanged somewhere else. You can't.
+[32:59] Eleanor Brooks: That's fine. What I actually care about is access to our data and having the logic documented well enough that we're not trapped by institutional knowledge.
+[33:11] Nina Patel: Then make documentation a pilot deliverable rather than a hope. And we can avoid unnecessary platform-specific tricks so the logic stays readable.
+[33:23] Eleanor Brooks: Yes. Write that into the criteria.
+[33:27] Leo Grant: Let me set out next steps and you tell me what's missing. We send the security pack — SOC 2, subprocessor list, DPA, architecture diagram, retention documentation, pen test summary. Plus written answers on UK residency, the retention floor, AI-step permission granularity, the audit payload schema, and termination data handling.
+[33:56] Samir Khan: That's all five.
+[33:58] Leo Grant: From you, the list of specific iManage and Intapp operations phase one needs, so Nina can give you honest difficulty ratings rather than a vague estimate. And a view on which two practice groups.
+[34:15] Eleanor Brooks: I can do both. The practice groups will take longer than the operations list.
+[34:22] Leo Grant: And then Nina comes back with the integration assessment and a services estimate, and we can have the "is this proportionate" conversation with actual numbers.
+[34:34] Samir Khan: That's the conversation I want.
+[34:37] Eleanor Brooks: Agreed.
+[34:39] Leo Grant: Where would you say you are, honestly?
+[34:43] Eleanor Brooks: The governance side interests me. Genuinely. The run history, the approval logging, the connection scoping Samir liked — that's better than what we have and it addresses things we've been complaining about for years.
+[35:01] Leo Grant: And the reservation?
+[35:03] Eleanor Brooks: The reservation is Samir's. Integration effort versus value.
+[35:09] Samir Khan: And I'm much more sceptical about generative AI than Eleanor is. Which is why I want to know whether we can disable AI features entirely for the first phase — and you've said we can, and I'll want that confirmed in the pack rather than remembered from a call.
+[35:29] Nina Patel: It'll be in the pack.
+[35:32] Eleanor Brooks: But that's a phase-one position, Samir, not a permanent one.
+[35:37] Samir Khan: It's a phase-one position. I've said that twice now.
+[35:42] Eleanor Brooks: I'm saying it for the recording.
+[35:45] Samir Khan: [laughs] Fine.
+[35:48] Leo Grant: Last thing from me — when I write this up I'll separate what you confirmed from what you estimated. Some of today's numbers were approximate. Fourteen to thirty steps, two days to open, three internal tools that matter. I don't want approximations hardening into requirements.
+[36:10] Eleanor Brooks: The fourteen to thirty is from a process map that's about two years old.
+[36:16] Leo Grant: Then it goes in the estimates column with a note that it needs refreshing.
+[36:22] Eleanor Brooks: It does need refreshing. That's another thing worth doing regardless.
+[36:28] Samir Khan: That's three.
+[36:30] Eleanor Brooks: Three what?
+[36:32] Samir Khan: Three things we've identified today that we should do whether or not we buy anything.
+[36:38] Eleanor Brooks: [pause] That's true, actually. What were the other two?
+[36:44] Samir Khan: Reviewing connection scopes as a standing control — which we should do for everything, not just this. And getting a number on the client-relationship cost of delayed matter opening.
+[36:58] Eleanor Brooks: Both good.
+[37:01] Leo Grant: I'll take that as a compliment even though it isn't a purchase.
+[37:06] Eleanor Brooks: [laughs] Take it however you like.
+[37:10] Leo Grant: Summarising, then. Scope is administrative orchestration around matter opening, with conflicts decisions untouched and enforced at the credential layer. Information barriers are a real unsolved constraint, so phase one avoids barriered matters and we document that as deferred. AI is off for phase one. The decisive question is whether integration effort into iManage and Intapp is proportionate to the value, and we answer that with an operations list and honest difficulty ratings. Two practice groups, not the firm. Q4 PoC, Q1 decision.
+[37:56] Eleanor Brooks: That's accurate.
+[37:59] Samir Khan: That's more accurate than most of our internal summaries.
+[38:04] Leo Grant: I'll send it in writing today.
+[38:07] Eleanor Brooks: Thank you both. That was more useful than I expected, and I say that having been quite sceptical about this meeting.
+[38:17] Nina Patel: Thank you. And Samir — send me the awkward operations first, not the easy ones.
+[38:24] Samir Khan: [laughs] They're all awkward.
+[38:27] Nina Patel: Then send them in order of awkwardness.
+[38:31] Samir Khan: I can do that. Goodbye.
+[38:34] Eleanor Brooks: Bye.
+[38:36] Leo Grant: Bye both.

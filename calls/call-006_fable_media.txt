@@ -1,0 +1,168 @@
+CALL ID: CALL-006
+DATE: 2026-07-09
+VENDOR: OrbitFlow
+PROSPECT: Fable Media
+INDUSTRY: Marketing agency
+COMPANY SIZE: 120 employees
+STAGE: Discovery
+DURATION: 16 minutes
+PARTICIPANTS:
+- Alastair McCrae, Account Executive, OrbitFlow
+- Imogen Price, COO, Fable Media
+- Ben Foster, Head of Client Services, Fable Media
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Alastair McCrae: Hi hi hi. Imogen? Ben? Can you hear me? Great. Brilliant. So — really excited about this one, genuinely, because agencies are honestly our sweet spot at the moment.
+[00:14] Imogen Price: Right.
+[00:16] Alastair McCrae: We're working with — I probably shouldn't name them — but two of the big network agencies and a really cool independent in Manchester. So this is very much our world.
+[00:28] Imogen Price: Okay. Do you want us to explain what we're —
+[00:31] Alastair McCrae: Yeah, so let me just give you a bit of context on OrbitFlow first and then we can dig in. So we're a workflow automation platform, right, but the way I'd describe it is we're the layer that sits above all your tools and actually makes them talk to each other, but with, like, proper governance and visibility on top.
+[00:52] Imogen Price: Mm.
+[00:54] Alastair McCrae: And the thing that makes us different — this is the bit I always say — is we're not just an integration tool. Anyone can move data from A to B. We're about the process. Ownership, exceptions, approvals, all of that.
+[01:10] Ben Foster: Sure.
+[01:12] Alastair McCrae: So. Tell me about Fable. What's the pain?
+[01:17] Imogen Price: Well — the honest answer is new-client onboarding. It differs by team, account managers forget internal handoffs, and reporting data gets manually copied between HubSpot and spreadsheets, which is —
+[01:33] Alastair McCrae: Yep. Yep. Classic. So that's exactly what we —
+[01:36] Imogen Price: [crosstalk] — which is where most of the errors come from, actually, if you let me finish.
+[01:41] Alastair McCrae: Sorry, sorry. Go on.
+[01:44] Imogen Price: The copying is the bit that annoys me most because it's not even hard work, it's just someone spending two hours a week being a very expensive photocopier.
+[01:55] Alastair McCrae: Right. And how many people are doing that?
+[01:59] Imogen Price: Three or four, on and off.
+[02:02] Alastair McCrae: So there's your ROI right there. Three or four people, two hours a week, that's — what, eight hours? Times fifty-two. That's a full month of someone's time.
+[02:14] Imogen Price: It's not quite that simple because they're doing other things at the same time.
+[02:19] Alastair McCrae: Sure, sure, but directionally.
+[02:22] Ben Foster: Can I push back on something Imogen said, actually?
+[02:26] Imogen Price: Please.
+[02:28] Ben Foster: I should push back slightly on the idea that onboarding is one company-wide process. We have common milestones, yes. But each client-services pod is intentionally allowed to customise parts of it. That's not an accident, it's how we work.
+[02:47] Imogen Price: That's fair.
+[02:49] Ben Foster: So if the pitch is "we'll standardise your onboarding", that's going to meet resistance from me.
+[02:56] Alastair McCrae: No, no, totally, and that's the beauty of it — you can build it however you want. It's completely flexible.
+[03:04] Ben Foster: [pause] Okay.
+[03:07] Alastair McCrae: So what's the stack?
+[03:10] Imogen Price: HubSpot, Slack, Google Workspace, Asana, Google Sheets. That's basically it. We're not complicated.
+[03:19] Alastair McCrae: All of those are native connectors, no problem at all.
+[03:23] Imogen Price: And we've got Zapier already.
+[03:26] Alastair McCrae: Ah, right. Okay. So — I mean, look, Zapier's fine for what it is.
+[03:33] Imogen Price: We've got about twenty active Zaps. They work, mostly. I see it as useful but too fragile for multi-step onboarding — the minute there's a branch or something needs a person to do something, it falls over.
+[03:50] Alastair McCrae: Exactly. That's exactly it. Zapier's a toy, basically, once you get past —
+[03:56] Imogen Price: I wouldn't say it's a toy, it does about eighty percent of what we need.
+[04:01] Alastair McCrae: No, fair. Fair. I just mean at scale.
+[04:06] Ben Foster: We're a hundred and twenty people. This is our scale.
+[04:10] Alastair McCrae: [laughs] True. True. Okay so — shall I show you a bit of the product?
+[04:17] Imogen Price: Go on.
+[04:19] Alastair McCrae: So I'm not the technical one, normally I'd have a solutions engineer with me, but I can do the basics. [pause] Sharing. Can you see that?
+[04:31] Imogen Price: Yes.
+[04:33] Alastair McCrae: So this is a workflow. Triggers down the left, you drag things in, you connect them up. Really intuitive.
+[04:42] Imogen Price: Can you build the one we'd actually want? Deal closes in HubSpot, we create the right Asana project from a template, assign the owners, spin up a Slack channel, chase whatever client information's missing, and alert me when a launch date slips.
+[05:01] Alastair McCrae: Yeah, all of that's doable.
+[05:04] Imogen Price: Can you show me?
+[05:06] Alastair McCrae: I mean — I've got a demo environment that's set up for a different use case, so it wouldn't be exactly that. But conceptually it's the same thing. You'd have your trigger here, then your branches, then your actions.
+[05:22] Imogen Price: Right.
+[05:24] Ben Foster: The alerting when a date slips — how does it know?
+[05:29] Alastair McCrae: So you'd set up a condition. If date greater than whatever, then notify.
+[05:36] Ben Foster: But the date's in Asana and it changes. Does it check continuously, or —
+[05:42] Alastair McCrae: It'd be event driven, so when the record changes it fires.
+[05:47] Ben Foster: And if nobody changes the record but the date just passes?
+[05:52] Alastair McCrae: [pause] You'd have a — you could have a scheduled one as well.
+[05:58] Ben Foster: So two workflows.
+[06:00] Alastair McCrae: Possibly. I'd want to check with an SE, honestly. But it's definitely doable.
+[06:07] Ben Foster: Okay.
+[06:09] Imogen Price: What about the second thing I mentioned in the email — a weekly summary of accounts with overdue onboarding tasks?
+[06:17] Alastair McCrae: Oh, that's easy. That's the AI stuff. So we've got AI steps you can drop in, it'll summarise anything you want, it's very impressive actually.
+[06:29] Imogen Price: Who sees it?
+[06:31] Alastair McCrae: Whoever you want. Slack, email, wherever.
+[06:35] Imogen Price: And is it accurate?
+[06:38] Alastair McCrae: It's — yeah, it's very good. The models these days are —
+[06:43] Imogen Price: That's not really what I asked. If it tells me four accounts are overdue and actually it's six, that's worse than nothing.
+[06:52] Alastair McCrae: No, totally. And you can always check the underlying data.
+[06:57] Imogen Price: Mm.
+[07:00] Ben Foster: Can I ask a boring one? Security. Nothing exotic, we're an agency. We'd want Google login or SAML, normal GDPR terms, and — this one matters — written reassurance that our client documents aren't used to train models. Some of our clients are quite sensitive about that.
+[07:23] Alastair McCrae: Yeah, so SSO's included on all our plans, that's standard. And we're fully GDPR compliant, so that's all covered.
+[07:33] Ben Foster: Included on all plans?
+[07:35] Alastair McCrae: Yeah, all plans.
+[07:37] Ben Foster: Okay. And the training thing?
+[07:40] Alastair McCrae: We don't train on customer data. That's in the terms.
+[07:45] Ben Foster: Can we see that in writing?
+[07:48] Alastair McCrae: Course. I'll send the DPA over.
+[07:52] Imogen Price: Let's talk about money, because that's going to decide this.
+[07:57] Alastair McCrae: Sure. So our Growth package is eighteen hundred a month, up to thirty users, on an annual agreement.
+[08:06] Imogen Price: [pause] That's above what I had in mind.
+[08:11] Alastair McCrae: It's really good value when you think about what you're replacing though.
+[08:16] Imogen Price: Is there any way to start with ten users? Or bill monthly while we prove the process before committing for a year?
+[08:25] Alastair McCrae: Yeah, monthly's usually fine, we can sort something out.
+[08:30] Imogen Price: Usually fine?
+[08:32] Alastair McCrae: I'd have to run it past my manager but I can't see it being a problem.
+[08:38] Imogen Price: And ten users rather than thirty?
+[08:41] Alastair McCrae: The thirty is the package, so the price is the price. But you'd have room to grow, which is good.
+[08:49] Imogen Price: So I'd be paying for twenty seats I don't need.
+[08:53] Alastair McCrae: You'd be paying for the platform, really, the seats are just —
+[08:58] Imogen Price: Right. Okay.
+[09:01] Ben Foster: Imogen, that's twenty-one and a half thousand a year.
+[09:05] Imogen Price: I know. That's the problem. I can sign software contracts up to twenty thousand. Above that the founder approves it.
+[09:15] Alastair McCrae: Is that a hard limit or —
+[09:18] Imogen Price: It's a hard limit. And more to the point, if I have to take it to him, he'll ask what we get for twenty-one thousand that we don't get from Zapier for two thousand, and I need a better answer than "it's more robust."
+[09:35] Alastair McCrae: Well, you get the governance, you get the visibility, the audit trail —
+[09:41] Imogen Price: We're an agency, Alastair. Nobody's auditing our onboarding process.
+[09:47] Alastair McCrae: [laughs] Fair point. Fair point.
+[09:51] Imogen Price: I'm not being difficult. I'm telling you what the conversation upstairs looks like.
+[09:57] Alastair McCrae: No, totally. Can I tell you a quick story actually? Because this reminds me of a deal I did last year.
+[10:05] Imogen Price: Go on.
+[10:07] Alastair McCrae: So — similar sized business, not an agency, but similar. And the guy there had exactly the same objection, exactly the same. "Why would I pay ten times what I'm paying now." And I said to him, mate, what's a lost client worth?
+[10:26] Imogen Price: Mm.
+[10:28] Alastair McCrae: And he went quiet. And then he signed. Two-year deal.
+[10:33] Imogen Price: [pause] Right.
+[10:36] Ben Foster: What happened with the onboarding problem though?
+[10:40] Alastair McCrae: Sorry?
+[10:41] Ben Foster: The company. Did the thing work? Did it fix their problem?
+[10:46] Alastair McCrae: Oh — yeah, I mean, I moved off that account so I'm not across the detail. But they renewed, I think.
+[10:55] Imogen Price: You think.
+[10:57] Alastair McCrae: I'd have to check.
+[11:00] Ben Foster: Because that's actually the question. Not whether they signed.
+[11:05] Alastair McCrae: No, absolutely, and I can get you a reference. We've got loads of happy customers.
+[11:12] Imogen Price: A reference in an agency would be useful, if you've got one.
+[11:17] Alastair McCrae: I'll dig one out.
+[11:20] Imogen Price: One other thing you should know. We don't have a dedicated IT team. At all. An operations manager would administer this.
+[11:30] Alastair McCrae: That's fine, it's completely no-code.
+[11:34] Imogen Price: Is it?
+[11:36] Alastair McCrae: For what you'd be doing, yeah.
+[11:39] Ben Foster: Earlier you said you'd have to check with an SE about the date thing.
+[11:44] Alastair McCrae: That's — that's a slightly different question, that's about how you architect it rather than whether you need code.
+[11:52] Ben Foster: Okay.
+[11:54] Imogen Price: What's the timeline if we did want to do this?
+[11:58] Alastair McCrae: We could have you up and running in a couple of weeks.
+[12:02] Imogen Price: We've got a new client-services process launching in September. I'd want something running before that, otherwise we'll build the new process around the old tooling and then we're stuck for another year.
+[12:17] Alastair McCrae: September's no problem at all.
+[12:20] Ben Foster: Including the pod customisation thing?
+[12:24] Alastair McCrae: Yeah, that's just configuration.
+[12:27] Ben Foster: [pause] Okay.
+[12:30] Imogen Price: Right. Let me be straight with you about where I am.
+[12:35] Alastair McCrae: Please.
+[12:37] Imogen Price: Price and complexity are the two risks. And honestly, we may well decide that Zapier plus better process discipline is good enough for a company that doesn't have an IT team. That's a real possibility and I'd be doing my job badly if I didn't consider it.
+[12:57] Alastair McCrae: I mean, you could, but you'd be back here in eighteen months.
+[13:02] Imogen Price: Maybe. Or maybe we'd have spent eighteen months not paying twenty-one thousand pounds.
+[13:09] Alastair McCrae: [laughs] Fair.
+[13:12] Imogen Price: So — I'm interested. I'm not dismissing it. But I'm not ready to run a sandbox myself, I don't have the time and neither does Ben.
+[13:23] Alastair McCrae: I could set it up for you, it takes five minutes.
+[13:27] Imogen Price: It's not the setup, it's the evaluating. What would actually be most useful is a recorded demo I can share with the founder and our ops manager. Something that shows our use case specifically, that I can send in an email.
+[13:44] Alastair McCrae: Yeah, I can do a Loom.
+[13:47] Imogen Price: Not a generic one. Ours. Deal closes in HubSpot, Asana project, Slack channel, chase the missing info, flag the slipped date.
+[13:58] Alastair McCrae: Yep. Absolutely.
+[14:01] Imogen Price: How long?
+[14:03] Alastair McCrae: End of the week?
+[14:05] Imogen Price: That'd be good.
+[14:08] Ben Foster: And the reference. And the written thing about model training.
+[14:13] Alastair McCrae: Yep, all of it. I'll get it over.
+[14:17] Imogen Price: And can you confirm the monthly billing thing properly rather than "probably"? Because if that's not actually available I'd rather know now.
+[14:27] Alastair McCrae: I'll check with my manager and come back.
+[14:31] Imogen Price: Thank you.
+[14:34] Alastair McCrae: Anything else I can —
+[14:36] Ben Foster: The SSO thing. You said all plans. Can you just double check that? Because two other vendors we've spoken to had it as an enterprise-only feature and I'd be surprised if you were different.
+[14:50] Alastair McCrae: [pause] I'm fairly sure it's all plans. But yeah, I'll confirm.
+[14:56] Ben Foster: Please.
+[14:58] Imogen Price: Right, I've got another one at half past. Thanks Alastair.
+[15:03] Alastair McCrae: Brilliant, thanks both, this has been really great. I'll get all that over and — yeah, really looking forward to working with you.
+[15:12] Imogen Price: [pause] Well. Let's see.
+[15:16] Alastair McCrae: [laughs] Course. Course. Speak soon.
+[15:20] Ben Foster: Bye.

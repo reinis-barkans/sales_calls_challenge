@@ -1,0 +1,220 @@
+CALL ID: CALL-014
+DATE: 2026-09-18
+VENDOR: OrbitFlow
+CUSTOMER: Verity Payments
+INDUSTRY: Payments
+COMPANY SIZE: 800 employees
+STAGE: Churn post-mortem
+DURATION: 21 minutes
+PARTICIPANTS:
+- Maya Chen, Account Executive, OrbitFlow
+- Ruth Adeyemi, Customer Success Manager, OrbitFlow
+- Kwame Boateng, Head of Operations, Verity Payments
+- Sarah Lindqvist, Engineering Manager, Verity Payments
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Maya Chen: Kwame, Sarah — thank you for doing this. You didn't have to.
+[00:05] Kwame Boateng: We nearly didn't, if I'm honest.
+[00:08] Maya Chen: I know. And I want to set expectations: this isn't a save attempt. You've signed with Workato, the decision's made, and I'm not going to spend twenty minutes trying to reopen it.
+[00:22] Kwame Boateng: [pause] Good. That was my concern.
+[00:26] Maya Chen: What I want is to understand what went wrong properly, because two years is a long time to get something wrong and I'd like to not do it again.
+[00:37] Sarah Lindqvist: We'll be honest then.
+[00:39] Maya Chen: Please be.
+[00:41] Ruth Adeyemi: I'd add — I took over this account in January, so about eight months ago. Some of what went wrong predates me and some of it doesn't, and I'd rather you told me which is which.
+[00:55] Kwame Boateng: Alright. Where do you want to start?
+[00:59] Maya Chen: With the decision. When did you actually decide?
+[01:04] Kwame Boateng: Properly? June.
+[01:07] Maya Chen: June.
+[01:09] Kwame Boateng: Though I'd say the decision became inevitable in about February and it took us until June to admit it.
+[01:17] Ruth Adeyemi: February.
+[01:19] Kwame Boateng: February.
+[01:21] Ruth Adeyemi: That's a month after I took the account.
+[01:24] Kwame Boateng: It's not about you. I want to be clear about that.
+[01:29] Ruth Adeyemi: I'd still like to know what happened in February.
+[01:33] Sarah Lindqvist: February was when we tried to build the settlement reconciliation workflow and couldn't.
+[01:40] Maya Chen: Couldn't, or found it hard?
+[01:43] Sarah Lindqvist: Couldn't, in the sense that the effort exceeded the value by a factor I couldn't justify to my team.
+[01:51] Maya Chen: Tell me about it specifically.
+[01:54] Sarah Lindqvist: Our settlement provider is a mid-sized European processor. You don't have a connector for them. Nobody does, to be fair — Workato doesn't either.
+[02:06] Maya Chen: So what was the difference?
+[02:09] Sarah Lindqvist: The difference is that we ended up writing a custom integration either way, and once you've accepted you're writing custom integrations, you start asking what the platform is actually giving you.
+[02:24] Maya Chen: And what was the answer?
+[02:26] Sarah Lindqvist: Orchestration and run history, which are genuinely good. But not enough on their own for what we were paying.
+[02:35] Kwame Boateng: And this is where I'd push back on Sarah slightly.
+[02:39] Sarah Lindqvist: Go on.
+[02:41] Kwame Boateng: The connector gap was real. But it wasn't why we left. It was the thing we pointed at.
+[02:49] Maya Chen: What was the real reason?
+[02:52] Kwame Boateng: Nobody in operations ever built anything.
+[02:56] Ruth Adeyemi: [pause] Say more.
+[02:59] Kwame Boateng: The entire pitch — and this is the pitch I bought, so I'm implicating myself — was that my team would own their own workflows. That we'd stop queuing behind engineering. Two years in, every single production workflow was built by Sarah's team.
+[03:19] Sarah Lindqvist: Every one.
+[03:21] Kwame Boateng: [crosstalk] So we paid a premium for a business-user platform and used it as an engineering tool. And as an engineering tool it's fine but it's not worth the premium.
+[03:34] Maya Chen: Why didn't your team build?
+[03:37] Kwame Boateng: [pause] A few reasons and none of them are flattering.
+[03:42] Maya Chen: I'd rather have unflattering.
+[03:45] Kwame Boateng: The first workflow anyone builds is hard. Not conceptually hard — fiddly. You have to understand connections, you have to understand how data moves between steps, you have to understand what happens when something's null. My operations people are good at operations. They're not good at that, and expecting them to become good at it in their spare time was naive.
+[04:11] Ruth Adeyemi: Did you have enablement?
+[04:13] Kwame Boateng: We had a two-day onboarding at the start. Eight people attended. Six of them never touched it again.
+[04:22] Ruth Adeyemi: And after that?
+[04:24] Kwame Boateng: Nothing, until you arrived in January and offered some sessions.
+[04:29] Ruth Adeyemi: Which you declined.
+[04:31] Kwame Boateng: Which I declined, because by January I'd already half-concluded it wasn't going to work and I didn't want to spend my team's time on it.
+[04:41] Ruth Adeyemi: [pause] That's useful and it's painful.
+[04:46] Kwame Boateng: You asked.
+[04:48] Ruth Adeyemi: I did ask. What would have changed it? If I'd arrived in month three rather than month twenty?
+[04:56] Kwame Boateng: Honestly, I think if someone had sat with two of my people for a week in the first quarter and got them to ship something real, we'd still be a customer.
+[05:08] Sarah Lindqvist: I agree with that.
+[05:10] Kwame Boateng: Not a training course. Sitting with them. Building the actual thing they needed.
+[05:17] Maya Chen: We do offer that.
+[05:19] Kwame Boateng: Do you? Nobody ever offered it to me.
+[05:23] Maya Chen: [pause] It's a paid professional services engagement.
+[05:28] Kwame Boateng: Ah.
+[05:30] Maya Chen: Which is possibly the problem. If the thing that makes the product succeed is a paid add-on, and the customer doesn't know they need it until it's too late —
+[05:41] Kwame Boateng: Then you've designed a product that fails by default for people like me.
+[05:47] Maya Chen: That's a harsher way of putting it than I would have, but I can't argue with it.
+[05:53] Sarah Lindqvist: Can I add the engineering perspective? Because it's different.
+[05:58] Maya Chen: Please.
+[06:00] Sarah Lindqvist: My team quite liked it. The run history is genuinely better than what we'd have built. The exception queues are good. When something failed at three in the morning, we could see why, and that's not nothing.
+[06:16] Ruth Adeyemi: So why did you support leaving?
+[06:19] Sarah Lindqvist: Because we were maintaining custom integrations to a platform whose main selling point was that we wouldn't have to maintain custom integrations. And because the licence cost was being justified by a benefit — business-user autonomy — that wasn't materialising.
+[06:39] Kwame Boateng: Say the other thing.
+[06:41] Sarah Lindqvist: [pause] And because two of my engineers wanted to build it in-house and I spent eighteen months arguing against them, and eventually I ran out of arguments.
+[06:53] Maya Chen: What was your last argument?
+[06:56] Sarah Lindqvist: Maintenance. It's always maintenance. And it's a good argument right up until the platform also requires maintenance, at which point you're comparing two maintenance burdens and one of them costs a hundred thousand a year.
+[07:13] Maya Chen: Is that what you're paying Workato?
+[07:16] Kwame Boateng: Less. Not dramatically less.
+[07:19] Maya Chen: So it isn't a price decision.
+[07:22] Kwame Boateng: It's partly a price decision, because at the margin we could justify one and not the other. But no, it's not primarily price.
+[07:33] Maya Chen: Then what tipped it to Workato specifically?
+[07:37] Sarah Lindqvist: Two things. Their connector for our core banking platform is genuinely better than yours. That one's just true.
+[07:47] Maya Chen: It is true. We know.
+[07:49] Sarah Lindqvist: And their engineering-facing story is stronger. Recipes as code, better CI story, our engineers had opinions about it and the opinions were positive.
+[08:02] Ruth Adeyemi: So you've bought an engineering tool.
+[08:05] Sarah Lindqvist: [pause] Yes. That's fair. We've bought an engineering tool and stopped pretending.
+[08:12] Kwame Boateng: Which is the honest conclusion. My team is never going to build workflows. That was my ambition and it was wrong, and rather than keep paying for the ambition I've accepted the reality.
+[08:26] Maya Chen: Can I ask — do you think that ambition was wrong in principle, or wrong for Verity?
+[08:33] Kwame Boateng: [pause] For Verity. I've seen it work elsewhere. I was at a retailer before this where the operations team genuinely did build their own things.
+[08:45] Maya Chen: What was different?
+[08:47] Kwame Boateng: There was a person whose job it was. Not a champion, not an enthusiast — a role, with a title, whose entire job was building and maintaining automations for the business. Half a headcount, maybe.
+[09:04] Sarah Lindqvist: We never had that.
+[09:06] Kwame Boateng: We never had that and I never asked for it, because I thought the product removed the need for it.
+[09:14] Maya Chen: That's — I want to write that down properly, because I think it's the most important thing you've said.
+[09:21] Kwame Boateng: Which part?
+[09:23] Maya Chen: That the product doesn't remove the need for the role. It changes what the role has to be good at.
+[09:31] Kwame Boateng: Yes. That's exactly it.
+[09:34] Ruth Adeyemi: We do say that, in fairness. It's in the operating model guidance.
+[09:40] Kwame Boateng: Is it? I've never seen the operating model guidance.
+[09:44] Ruth Adeyemi: [pause] Then we don't say it, do we.
+[09:48] Kwame Boateng: [laughs] Not effectively.
+[09:51] Maya Chen: Let me ask about the sales process, since I ran it. What did I get wrong?
+[09:58] Kwame Boateng: You want honesty on this too?
+[10:01] Maya Chen: Especially on this.
+[10:03] Kwame Boateng: You sold to my enthusiasm rather than to my capability. I was excited, I said my team would own it, and nobody in your organisation asked "who specifically, and what else is on their plate?"
+[10:19] Maya Chen: That's a fair criticism.
+[10:22] Kwame Boateng: It's not that you lied. You just believed me, and you shouldn't have, because I didn't know what I was agreeing to.
+[10:31] Maya Chen: I've started asking that question, for what it's worth. Not because of you — I don't want to claim that. But it's in my discovery now. "Name the person who'll build the second workflow."
+[10:45] Kwame Boateng: That's a good question. I wouldn't have had an answer.
+[10:50] Maya Chen: That's the point of it.
+[10:52] Sarah Lindqvist: Can I raise the support thing? Since we're doing grievances.
+[10:57] Ruth Adeyemi: Go ahead.
+[11:00] Sarah Lindqvist: The support was inconsistent. Some tickets came back in an hour with someone who clearly understood the product. Others came back in a day with a link to documentation I'd already read and cited in the ticket.
+[11:16] Ruth Adeyemi: That's a known problem and it's a triage problem rather than a capability problem.
+[11:23] Sarah Lindqvist: I assumed as much. It's not why we left. But it contributed to a general feeling that we were a small account.
+[11:33] Ruth Adeyemi: Were you treated as a small account?
+[11:36] Sarah Lindqvist: [pause] Probably accurately, yes.
+[11:40] Ruth Adeyemi: That's the answer, isn't it. You were an eighty-thousand-pound account in a book of accounts where that's below median.
+[11:50] Kwame Boateng: I'd worked that out.
+[11:52] Ruth Adeyemi: Most customers do.
+[11:55] Maya Chen: Is there anything we could have done in the last six months? Genuinely, not rhetorically.
+[12:02] Kwame Boateng: [pause] Probably not. By March we'd started the Workato evaluation and once that starts it has its own momentum. People invest in it, they want to be right.
+[12:16] Sarah Lindqvist: There was a moment in April.
+[12:19] Kwame Boateng: Was there?
+[12:21] Sarah Lindqvist: When the Workato PoC hit the same connector problem we'd hit with you. For about two weeks it looked like we'd have the same issue either way.
+[12:33] Maya Chen: What happened?
+[12:35] Sarah Lindqvist: They put a solutions architect on it for three days and built us a working custom connector as part of the evaluation. Not billed.
+[12:46] Ruth Adeyemi: [pause] Ah.
+[12:49] Sarah Lindqvist: That's when it was over, if you want the specific moment.
+[12:54] Maya Chen: Did anyone from our side know about the connector problem in April?
+[12:59] Sarah Lindqvist: I mentioned it on a call. Not as an emergency. As a thing I was dealing with.
+[13:06] Ruth Adeyemi: I remember that call.
+[13:08] Sarah Lindqvist: You said you'd look into whether there was a template.
+[13:12] Ruth Adeyemi: And I did, and there wasn't, and I emailed you saying there wasn't.
+[13:18] Sarah Lindqvist: You did. That was an accurate and completely useless answer.
+[13:23] Ruth Adeyemi: [pause] Yes. It was.
+[13:26] Sarah Lindqvist: I'm not attacking you. You answered the question I asked. It's just that the right response wasn't answering the question.
+[13:36] Maya Chen: The right response was three days of an SE.
+[13:40] Sarah Lindqvist: The right response was three days of an SE, yes.
+[13:44] Maya Chen: Would we have done that?
+[13:46] Ruth Adeyemi: For an eighty-thousand-pound account at renewal risk? [pause] I'd have had to argue for it. I might have lost.
+[13:56] Maya Chen: That's a thing I'm going to raise internally.
+[13:59] Kwame Boateng: For what it's worth, I don't think you should have kept us. I think we were the wrong customer for the product, or the product was sold to us for the wrong reason.
+[14:11] Maya Chen: Which of those?
+[14:13] Kwame Boateng: [pause] Both, slightly.
+[14:16] Maya Chen: Alright. Let me ask about the practical side. What do you need from us for the exit?
+[14:23] Sarah Lindqvist: Workflow definitions and run history exported. I've already pulled the definitions through the API and they came out fine.
+[14:32] Ruth Adeyemi: Run history?
+[14:34] Sarah Lindqvist: That's the one I want to check. We need eighteen months of run records for audit purposes. Not for Workato — for our own compliance.
+[14:45] Ruth Adeyemi: Through the run events API. I'll send the pagination details because eighteen months is a lot of records and people usually hit a limit and assume it's broken.
+[14:57] Sarah Lindqvist: That would be useful.
+[15:00] Ruth Adeyemi: How long do you need access after the contract ends?
+[15:04] Kwame Boateng: When does it end?
+[15:06] Maya Chen: Thirty-first of October.
+[15:08] Sarah Lindqvist: I'd want until the end of November to be safe. The export will take longer than anyone thinks.
+[15:15] Maya Chen: I can do read-only access through November at no charge. I'd rather you had a clean exit than a scramble.
+[15:24] Kwame Boateng: You'd do that?
+[15:26] Maya Chen: Yes, and I'd do it for two reasons. One, it's the right thing. Two, you'll be at another company in three years.
+[15:36] Kwame Boateng: [laughs] That's very honest.
+[15:39] Maya Chen: It's both true things at once.
+[15:42] Kwame Boateng: I appreciate it either way.
+[15:45] Ruth Adeyemi: And data deletion afterwards? You'll want that documented.
+[15:50] Sarah Lindqvist: Yes. Our compliance team will ask for a deletion certificate.
+[15:56] Ruth Adeyemi: I'll get that arranged and I'll tell you the timeline for it rather than saying "shortly after termination."
+[16:04] Sarah Lindqvist: Thank you.
+[16:06] Maya Chen: Anything else practical?
+[16:09] Kwame Boateng: There are two workflows still running that we haven't migrated. They'll be done by mid-October.
+[16:16] Ruth Adeyemi: What are they?
+[16:18] Kwame Boateng: Merchant onboarding notifications and a daily reconciliation report.
+[16:24] Ruth Adeyemi: Neither of which will break anything if they stop.
+[16:28] Kwame Boateng: The reconciliation one would be noticed. Not catastrophically.
+[16:33] Ruth Adeyemi: I'll flag them so nobody deactivates anything early.
+[16:38] Maya Chen: Can I ask one more question and then I'll let you go?
+[16:42] Kwame Boateng: Go on.
+[16:44] Maya Chen: If you were advising another operations director who was about to buy a workflow platform — any workflow platform, not ours — what would you tell them?
+[16:56] Kwame Boateng: [pause] Three things. First, name the person who'll build the fifth workflow, not the first. The first one gets built by whoever's enthusiastic. The fifth one gets built by whoever's job it is.
+[17:12] Maya Chen: That's better than my version of that question.
+[17:16] Kwame Boateng: Second — do the integration assessment before you buy, not after. We spent four months discovering that our most important integration didn't exist. That's a question you can answer in a week if you insist on it during the evaluation.
+[17:34] Sarah Lindqvist: We should have insisted.
+[17:37] Kwame Boateng: We should have insisted and we didn't, because everyone was excited.
+[17:42] Maya Chen: And the third?
+[17:44] Kwame Boateng: Third — be honest about whether you're buying a business tool or an engineering tool, because they're priced differently and they succeed differently, and if you buy one and use the other you'll be unhappy for two years.
+[18:00] Maya Chen: That's the whole thing, isn't it.
+[18:03] Kwame Boateng: That's the whole thing.
+[18:06] Sarah Lindqvist: Can I add one for the record?
+[18:09] Maya Chen: Please.
+[18:11] Sarah Lindqvist: Whatever platform you buy, get the exported definition of a real workflow during the evaluation and have an engineer read it. Not the demo. A real one, with branching. Because that tells you whether you'll be able to review changes, and it takes ten minutes, and almost nobody does it.
+[18:33] Maya Chen: Someone did that to us last month, actually.
+[18:37] Sarah Lindqvist: Did we pass?
+[18:39] Maya Chen: [laughs] I think so. It's ongoing.
+[18:43] Sarah Lindqvist: Good.
+[18:45] Ruth Adeyemi: Can I ask what would bring you back? In three years, at another company or here.
+[18:52] Kwame Boateng: An honest answer to "who will build the fifth workflow", and a proposal that includes whatever it costs to make that person real. If someone had said to me "this is eighty thousand for the platform and twenty-five for six months of someone sitting with your team", I might have said no. But I'd have said no with my eyes open, or said yes and it would have worked.
+[19:19] Maya Chen: That's a product and pricing point, not a sales point.
+[19:24] Kwame Boateng: It's a bit of both.
+[19:26] Maya Chen: It's a bit of both. I'm going to take it to our product team, and I'll tell you honestly that I don't know whether anything will change.
+[19:36] Kwame Boateng: That's fine. I've been on the other side of that.
+[19:41] Maya Chen: Right. What you'll get from us — the run events API pagination details, read-only access through November, the deletion certificate with an actual timeline, and a note flagging the two live workflows so nothing gets switched off early.
+[19:59] Sarah Lindqvist: That covers it.
+[20:01] Maya Chen: And genuinely, thank you. Most people don't take this call.
+[20:07] Kwame Boateng: Most people don't ask properly. You asked properly.
+[20:12] Maya Chen: I'd like to send you what I write up, if that's alright. So you can tell me if I've misrepresented anything.
+[20:20] Kwame Boateng: Send it. I'll read it.
+[20:23] Sarah Lindqvist: I'll read it more carefully than he will.
+[20:26] Kwame Boateng: [laughs] That's true. Thanks both.
+[20:30] Ruth Adeyemi: Thank you. And I'm sorry about February.
+[20:34] Kwame Boateng: You weren't there in February.
+[20:37] Ruth Adeyemi: I was there in April.
+[20:39] Kwame Boateng: [pause] Yes. Alright. Thank you, Ruth.
+[20:44] Maya Chen: Bye both.
+[20:46] Sarah Lindqvist: Bye.

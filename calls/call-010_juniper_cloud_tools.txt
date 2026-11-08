@@ -1,0 +1,311 @@
+CALL ID: CALL-010
+DATE: 2026-08-12
+VENDOR: OrbitFlow
+PROSPECT: Juniper Cloud Tools
+INDUSTRY: Developer infrastructure SaaS
+COMPANY SIZE: 350 employees
+STAGE: Technical evaluation
+DURATION: 32 minutes
+PARTICIPANTS:
+- Leo Grant, Account Executive, OrbitFlow
+- Nina Patel, Solutions Engineer, OrbitFlow
+- Marcus Chen, VP Business Operations, Juniper Cloud Tools
+- Ava Sinclair, Staff Software Engineer, Juniper Cloud Tools
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Leo Grant: Hi both. Marcus, Ava. Shall I do the usual agenda thing or —
+[00:05] Ava Sinclair: Can I just ask questions?
+[00:07] Leo Grant: [laughs] Yes. Yes, please do.
+[00:11] Marcus Chen: She's had the docs open since Tuesday.
+[00:14] Ava Sinclair: I've read the API reference. It's better than I expected.
+[00:19] Nina Patel: That's the nicest thing anyone's said to me this month.
+[00:23] Ava Sinclair: It's not a compliment yet. First question. Are workflow definitions a first-class exportable artefact, or is export a JSON blob that only your importer understands?
+[00:36] Nina Patel: Definitions export through the API. It's a structured representation, not an opaque blob. But I want to be precise — it's our schema. It's readable, it's diffable in the sense that text is diffable, but it is not a portable format that another engine could execute.
+[00:57] Ava Sinclair: Fine. I don't need portability. I need reviewability.
+[01:02] Nina Patel: Then say more about what reviewable means to you, because people mean different things.
+[01:08] Ava Sinclair: It means I can put it in a repo, I can see a diff on a pull request, and I can tell from the diff whether the change is safe.
+[01:18] Nina Patel: The first two, yes, with your own tooling around the export. The third one depends on how readable our representation is for the specific change, and I'd want you to look at real examples before you believe me.
+[01:34] Ava Sinclair: Can you send me three?
+[01:36] Nina Patel: Three what?
+[01:38] Ava Sinclair: Three exported definitions. One trivial, one with branching, one with a custom step. I want to look at the diffs myself.
+[01:48] Nina Patel: Yes. I'll send those today.
+[01:51] Ava Sinclair: Good.
+[01:53] Marcus Chen: This is going faster than the last vendor call.
+[01:56] Leo Grant: The last vendor call presumably had slides.
+[02:00] Marcus Chen: The last vendor call had forty slides.
+[02:03] Ava Sinclair: I left after eleven.
+[02:06] Leo Grant: [laughs] Understood. No slides.
+[02:10] Ava Sinclair: Second question. Can definitions be created and updated through the API, or is the UI the only way to author?
+[02:19] Nina Patel: API and UI both.
+[02:22] Ava Sinclair: So I could, in principle, keep the repo as the source of truth and push?
+[02:28] Nina Patel: In principle. In practice I'd want to talk you out of it for the first six months.
+[02:35] Ava Sinclair: Why?
+[02:37] Nina Patel: Because the value here for you is that business operations can change a rule without you. If the source of truth is a repo and every change is a PR, you've rebuilt the thing you're trying to escape.
+[02:52] Ava Sinclair: [pause] Hm.
+[02:55] Marcus Chen: She's right, Ava.
+[02:57] Ava Sinclair: She might be right. I'm thinking about it.
+[03:01] Nina Patel: The pattern I'd suggest is a split. Business logic — thresholds, routing, which channel, which template — authored in the UI by whoever owns the process. Custom components and connector code — the things that touch credentials and external systems — authored by you and version controlled.
+[03:23] Ava Sinclair: That's roughly what I was going to propose anyway.
+[03:27] Marcus Chen: It's not what I was going to propose.
+[03:30] Ava Sinclair: I know. Can I put a boundary around something you said in the planning meeting?
+[03:36] Marcus Chen: Here we go.
+[03:38] Ava Sinclair: You said business operations should own workflows end to end. I'm fine with them owning business logic. I'm not fine with production connector code and secrets sitting outside engineering review. Those two things are different and I think you've been eliding them.
+[03:57] Marcus Chen: [pause] That's fair. I have been eliding them.
+[04:02] Ava Sinclair: I'm not trying to keep control for the sake of it.
+[04:06] Marcus Chen: No, I know. And honestly if the split is "you own the plumbing, we own the rules", that's what I wanted anyway, I just described it badly.
+[04:17] Leo Grant: Can I write that down as a requirement rather than a conversation? Because it changes what a successful evaluation looks like.
+[04:26] Ava Sinclair: Write it down.
+[04:28] Leo Grant: Business logic authored by business operations without engineering involvement. Connector code and credential handling under engineering review. Both auditable.
+[04:40] Ava Sinclair: Yes.
+[04:42] Marcus Chen: Yes.
+[04:44] Nina Patel: Then that's the second use case you sent, essentially — engineers build reusable custom connectors while secrets and production credentials stay centrally governed.
+[04:56] Marcus Chen: That's exactly it.
+[04:58] Nina Patel: Good, because that's a well-supported pattern rather than something we'd be inventing. Connections and credentials are centrally managed and referenced by workflows. A builder uses a connection; they never see the secret. Rotation happens at the connection layer, so you don't edit every workflow when a credential changes.
+[05:20] Ava Sinclair: Who can create a connection?
+[05:23] Nina Patel: That's a permission. You'd scope it to engineering.
+[05:27] Ava Sinclair: And who can see which connection a workflow uses?
+[05:31] Nina Patel: Anyone with visibility on the workflow can see the connection is referenced. They can't see the credential.
+[05:39] Ava Sinclair: Are secrets in run logs?
+[05:42] Nina Patel: Secret values are never displayed in run logs. Whatever the workflow passes between steps as data is visible, though — so if someone deliberately puts a token into a variable, that's on them.
+[05:56] Ava Sinclair: It's always on them.
+[05:58] Nina Patel: It's always on them, yes.
+[06:01] Ava Sinclair: Okay. Volume. This is the one I actually care about.
+[06:06] Nina Patel: Go.
+[06:08] Ava Sinclair: We process millions of product events per day. Segment fans out to a few places, we've got Postgres, we've got internal services. Only a tiny fraction of those events should trigger a business workflow. What I do not want is to pay you per event.
+[06:27] Nina Patel: Then don't send us every event.
+[06:30] Ava Sinclair: [pause] Go on.
+[06:33] Nina Patel: The architecture I'd suggest is that filtering happens on your side, in the layer you already own. You decide what constitutes a business-relevant event — trial converted, seat limit hit, usage dropped below a threshold — and you emit those to us. Millions of raw events stay in AWS where they're cheap. Thousands of business events come to us where they're orchestrated.
+[06:59] Ava Sinclair: So you're telling me to keep the event pipeline.
+[07:03] Nina Patel: I'm telling you to keep the event pipeline. It's good at what it does and we're not better at it.
+[07:10] Marcus Chen: Is that not a smaller sale for you?
+[07:13] Leo Grant: It's a sale that survives year two. If we priced ourselves into your event firehose, the first person to look at the invoice would kill it.
+[07:24] Marcus Chen: That's — yes. That's what happened with our observability vendor.
+[07:30] Ava Sinclair: Twice.
+[07:32] Marcus Chen: Twice, yes.
+[07:34] Ava Sinclair: Okay, that's a better answer than I expected. Let me push on it though. What's the actual pricing unit?
+[07:42] Leo Grant: Usage is scoped on workflow runs and premium connector needs. Growth is eighteen hundred a month up to thirty users, annual. You're an Enterprise conversation given the security list.
+[07:56] Marcus Chen: The base price seems plausible.
+[07:59] Leo Grant: But.
+[08:01] Marcus Chen: But my question is whether usage limits make high-volume event processing uneconomic compared with keeping the event-handling layer in AWS. Which, based on what Nina just said, might be a question that answers itself.
+[08:17] Nina Patel: Partly. It depends what counts as a run.
+[08:21] Ava Sinclair: Right. That's the question. If I emit a business event and it triggers a workflow that fans out to five subflows, is that one run or six?
+[08:32] Nina Patel: [pause] That's a good question and I want to give you an accurate answer rather than a convenient one. I believe subflow invocations are counted, but I'm not going to state the exact billing semantics from memory. I'll get you the definitive answer in writing.
+[08:52] Ava Sinclair: Please. Because if it's six, the composition pattern you're recommending is also the expensive pattern, and that's a conflict I'd want surfaced before we commit.
+[09:05] Nina Patel: That's a very sharp observation and I'm going to quote you on it internally.
+[09:11] Ava Sinclair: [laughs] Feel free.
+[09:14] Leo Grant: I'll add that to the written list. And Ava, if the answer is "yes, six", I'd rather tell you and have you design around it than have you discover it.
+[09:26] Ava Sinclair: Noted.
+[09:28] Marcus Chen: Can we talk about what we're actually trying to fix? Because Ava's been driving and I want the business problem on the record.
+[09:37] Leo Grant: Please.
+[09:39] Marcus Chen: Our operations workflows have grown as a mixture of scripts, Lambda functions, cron jobs, and manual Slack steps. Some of it is elegant. Most of it isn't. And the thing that actually costs us is that business teams depend on engineers to change even small rules.
+[09:59] Leo Grant: Give me an example.
+[10:01] Marcus Chen: Last month I wanted to change the threshold at which we flag an account for a check-in. From fourteen days of inactivity to ten. That's a number. It's one number.
+[10:15] Ava Sinclair: It was a two-line change.
+[10:17] Marcus Chen: It was a two-line change that took eleven days to ship, because it had to go into a sprint.
+[10:24] Ava Sinclair: In fairness it took eleven days because it wasn't important.
+[10:29] Marcus Chen: It wasn't important to you.
+[10:31] Ava Sinclair: [pause] That's fair.
+[10:34] Marcus Chen: And that's the whole problem. It's not that engineering is slow. It's that the queue is correctly prioritised and my things are correctly at the bottom of it, and that will always be true, forever.
+[10:49] Nina Patel: That's the clearest articulation of that problem I've heard.
+[10:54] Marcus Chen: I've had a lot of practice.
+[10:57] Leo Grant: Do you have a number on it? How much of the backlog is business rule changes?
+[11:03] Ava Sinclair: I could pull that from Linear.
+[11:06] Marcus Chen: Would you?
+[11:08] Ava Sinclair: Yeah. It'd be interesting for me too, honestly. My guess is it's not as much as Marcus thinks.
+[11:16] Marcus Chen: My guess is it's more.
+[11:18] Ava Sinclair: Then let's find out rather than argue.
+[11:21] Leo Grant: That's a good thing to have either way.
+[11:24] Ava Sinclair: It's a good thing to have if I'm going to argue against buying this, which I might.
+[11:31] Leo Grant: I'd assumed you might.
+[11:33] Ava Sinclair: I'll be direct. I think most of what you do could be built internally. We have the skills. The question is whether we should.
+[11:44] Nina Patel: What would you build it with?
+[11:47] Ava Sinclair: Step Functions, probably. Or we've looked at Retool Workflows, which is honestly quite close to what you do.
+[11:56] Nina Patel: Retool Workflows is a reasonable comparison and I'm not going to pretend it isn't.
+[12:02] Ava Sinclair: Thank you.
+[12:04] Nina Patel: Can I ask what stopped you building it already? Because you've clearly thought about it.
+[12:11] Ava Sinclair: [pause] Time.
+[12:14] Marcus Chen: And that's my argument.
+[12:16] Ava Sinclair: Say it then.
+[12:18] Marcus Chen: My argument is that maintenance and observability are the real costs and Ava consistently underestimates them. Building it is a sprint. Owning it is forever. And the person who owns it will be Ava, and Ava already owns four other things.
+[12:37] Ava Sinclair: Five.
+[12:38] Marcus Chen: Five. Which proves my point.
+[12:41] Ava Sinclair: It doesn't prove your point, it illustrates it.
+[12:45] Marcus Chen: [laughs] Fine.
+[12:47] Leo Grant: For what it's worth, that's the correct argument and it's also the hardest one to win internally, because building is visible and maintaining isn't.
+[12:58] Ava Sinclair: I'm aware of the asymmetry. I'm not naive about it. But I've also seen teams buy a platform to avoid maintenance and then spend a year maintaining the integration to the platform.
+[13:13] Nina Patel: That happens.
+[13:15] Ava Sinclair: It happens a lot.
+[13:17] Nina Patel: Then the thing to test in your evaluation is exactly that. Not "can we build a workflow" — obviously we can, and so can you. Test how much of your time it consumes over four weeks, and extrapolate.
+[13:33] Ava Sinclair: That's what I intend to test.
+[13:36] Nina Patel: Good.
+[13:38] Marcus Chen: Should we do the use case?
+[13:40] Leo Grant: Yes. As I've got it — react to customer lifecycle events, combine product and CRM signals, create or update operational tasks, and expose the logic clearly enough that business operations can own it.
+[13:56] Marcus Chen: That's right. And the last clause is the one that matters. If we end up with something only Ava understands, we've spent money to move the problem.
+[14:08] Ava Sinclair: Which is my other concern, actually. If the workflow gets complicated enough to be useful, does it stay comprehensible to Marcus?
+[14:19] Nina Patel: Honestly? Not automatically. A sixty-step canvas is as unreadable here as anywhere. What we push is composition — small reusable subflows, so the top-level flow reads like a sentence and the complexity is inside named components.
+[14:39] Ava Sinclair: So the same thing that makes code readable.
+[14:43] Nina Patel: Exactly the same thing. And it fails the same way if nobody enforces it.
+[14:50] Ava Sinclair: Do you enforce it?
+[14:52] Nina Patel: No. We recommend it. There's no linter.
+[14:57] Ava Sinclair: There should be a linter.
+[15:00] Nina Patel: There should be a linter. I've said this internally.
+[15:04] Ava Sinclair: [laughs] Add my vote.
+[15:07] Nina Patel: Adding your vote.
+[15:10] Marcus Chen: What's the stack question you need answered?
+[15:13] Nina Patel: Just confirm what I've got. Salesforce, Segment, PostgreSQL, Slack, Linear, internal services, AWS.
+[15:23] Marcus Chen: That's it.
+[15:25] Nina Patel: And Ava, you said in the email that developer-quality APIs and version control matter more than a huge connector catalogue.
+[15:34] Ava Sinclair: Correct. I don't care how many logos are on your integrations page. I care about webhooks, REST, and whether the Postgres connector does anything stupid.
+[15:46] Nina Patel: Define stupid.
+[15:48] Ava Sinclair: Holds connections open. Doesn't respect statement timeouts. Runs unbounded queries against production.
+[15:57] Nina Patel: Those are the right things to worry about and I'd want you to test them rather than take my word. I'd suggest pointing it at a read replica for the evaluation regardless.
+[16:09] Ava Sinclair: I was going to do that anyway.
+[16:12] Nina Patel: I know. I said it for Marcus.
+[16:15] Marcus Chen: I appreciate being managed.
+[16:18] Leo Grant: [laughs]
+[16:20] Ava Sinclair: Rate limits. What are yours, and are they documented?
+[16:25] Nina Patel: They're documented. There are platform limits and retry controls, and you can design throttling patterns. If you have a strict downstream quota, tell me the number and we should load-test against it rather than assume.
+[16:41] Ava Sinclair: Salesforce API limits are the constraint. We've hit them before.
+[16:47] Nina Patel: Then that's a real number and I want it. What's your daily allocation?
+[16:53] Ava Sinclair: I'd have to check. It's not generous.
+[16:57] Nina Patel: Get me the number and I'll tell you honestly whether the design fits inside it. If it doesn't, the answer might be batching or caching rather than more API calls.
+[17:10] Ava Sinclair: Or not using Salesforce as a live lookup.
+[17:14] Nina Patel: Or that.
+[17:16] Ava Sinclair: That's what I'd do.
+[17:18] Nina Patel: Then that's what we'd design.
+[17:21] Marcus Chen: Security list, Ava.
+[17:23] Ava Sinclair: Right. SSO and SCIM. Secrets management, which we've covered. Audit logs. Least-privilege credentials. Regional controls. Clear API limits, also covered. And the ability to export workflow definitions, also covered.
+[17:41] Nina Patel: SOC 2 Type II is the baseline. SAML SSO and SCIM on Enterprise. Encryption in transit and at rest. Audit logs covering administrative and workflow events. Retention configurable within supported ranges. Run events and metrics through APIs and webhooks, and audit export on Enterprise.
+[18:04] Ava Sinclair: Regional controls — what does that mean concretely?
+[18:09] Nina Patel: EU data residency is available on Enterprise. If you mean something more granular than that, tell me what and I'll answer specifically.
+[18:19] Ava Sinclair: We have EU customers and a data residency commitment in some contracts. So EU residency is probably the requirement.
+[18:29] Marcus Chen: It's in two contracts. Both enterprise accounts.
+[18:33] Ava Sinclair: Two that we know about.
+[18:35] Marcus Chen: [laughs] Two that we know about.
+[18:38] Leo Grant: That's worth checking before an evaluation rather than after.
+[18:43] Marcus Chen: I'll check.
+[18:45] Ava Sinclair: Least-privilege credentials. If I give you a Salesforce connection, can I scope it to specific objects?
+[18:53] Nina Patel: That's scoped on the Salesforce side by the permissions of the user or integration account you connect with. We use what you give us. We don't have a separate layer that further restricts it.
+[19:08] Ava Sinclair: So the control is upstream.
+[19:11] Nina Patel: The control is upstream, and I'd argue that's correct — one place to reason about permissions rather than two that can disagree.
+[19:21] Ava Sinclair: I agree with that, actually.
+[19:24] Marcus Chen: Note the time. She agreed with something.
+[19:27] Ava Sinclair: I've agreed with several things.
+[19:30] Marcus Chen: You've agreed with three things.
+[19:32] Ava Sinclair: Three is several.
+[19:35] Leo Grant: Can I show you one thing, Ava, since you've been reading docs rather than looking at the product?
+[19:41] Ava Sinclair: Go on.
+[19:43] Nina Patel: Sharing. [pause] This is a run record. Every step, inputs, outputs, timing, retries, any human approval.
+[19:54] Ava Sinclair: Can I get this over the API?
+[19:57] Nina Patel: Yes. That's the run events API. That's what you'd forward into your own observability.
+[20:04] Ava Sinclair: What's the latency on it?
+[20:07] Nina Patel: Near real-time via webhook. I don't want to quote you a millisecond figure.
+[20:13] Ava Sinclair: Fine. Can I replay a run?
+[20:17] Nina Patel: You can trigger a workflow manually with a given input, permissions allowing, which is useful for exception recovery and migration. A true replay of a historical run with its original captured state — that's not the same thing and I don't want to conflate them.
+[20:36] Ava Sinclair: They're very much not the same thing.
+[20:39] Nina Patel: No. So: manual re-trigger yes, deterministic replay no.
+[20:45] Ava Sinclair: Okay. That's a limitation but it's not a blocker.
+[20:50] Marcus Chen: What would be a blocker?
+[20:52] Ava Sinclair: [pause] If the exported definitions turn out to be unreadable. If subflows are billed individually and the economics invert. And if the Postgres connector does something stupid.
+[21:07] Leo Grant: Those are three testable things and two of them I can answer in writing this week.
+[21:14] Ava Sinclair: Then answer them in writing this week.
+[21:17] Leo Grant: I will.
+[21:19] Marcus Chen: Can we talk about what happens if this works? Because I want to be clear about who does what.
+[21:26] Leo Grant: Go on.
+[21:28] Marcus Chen: I own the budget. Ava and platform engineering have to be comfortable with the architecture. Security and finance sign off. That's the process.
+[21:39] Leo Grant: Who can stop it?
+[21:41] Marcus Chen: Ava can stop it.
+[21:43] Ava Sinclair: [crosstalk] I can stop it.
+[21:45] Marcus Chen: Not formally.
+[21:47] Ava Sinclair: Formally I can't. Practically, if platform engineering says the architecture is wrong, you're not going to overrule us.
+[21:56] Marcus Chen: No, I'm not.
+[21:58] Leo Grant: Then Ava's the buyer, effectively, and you're the budget.
+[22:03] Marcus Chen: [pause] Yes. That's an uncomfortable but accurate description.
+[22:09] Ava Sinclair: I'd say I'm the veto, not the buyer. Marcus genuinely wants this and I'm genuinely open to it. I just want it to be right.
+[22:19] Leo Grant: That's a healthier dynamic than most.
+[22:22] Marcus Chen: We fight in front of vendors, which apparently isn't normal.
+[22:26] Leo Grant: It's not normal and it's much more useful.
+[22:30] Nina Patel: It's also faster. Usually I find out about the internal disagreement in week six.
+[22:37] Marcus Chen: We haven't got six weeks.
+[22:39] Leo Grant: Say more about that.
+[22:41] Marcus Chen: We want a four-week evaluation starting immediately, with a go/no-go decision in September.
+[22:49] Leo Grant: Starting immediately meaning?
+[22:51] Ava Sinclair: Meaning Monday. I've blocked time.
+[22:55] Leo Grant: Then let's not spend two weeks arranging it. What do you need from us to start Monday?
+[23:02] Ava Sinclair: Sandbox access. The three exported definitions. The subflow billing answer. And documentation on the Postgres connector's behaviour — connection handling, timeouts, whatever's there.
+[23:18] Nina Patel: You'll have all four by Friday.
+[23:21] Ava Sinclair: Friday's fine.
+[23:23] Leo Grant: And from you — the Linear analysis on what fraction of the backlog is business rule changes, the Salesforce API allocation, and whether those two EU contracts have residency commitments.
+[23:38] Marcus Chen: I'll do the contracts.
+[23:40] Ava Sinclair: I'll do the other two.
+[23:43] Leo Grant: What does success look like at the end of four weeks? Genuinely, because I'd rather we agreed it now than argue about it in September.
+[23:53] Ava Sinclair: One real workflow in production or near-production, built by Marcus's team, not by me.
+[24:01] Marcus Chen: [pause] By my team?
+[24:04] Ava Sinclair: By your team. That's the whole thesis. If I build it, we've proved nothing except that I can build things, which we already knew.
+[24:15] Marcus Chen: That's — yes. That's the right test and I hadn't thought of it.
+[24:21] Nina Patel: That's the best evaluation criterion I've heard in a while, for what it's worth. Most people have the engineer build it and then wonder why adoption fails.
+[24:33] Ava Sinclair: I'll be available for the plumbing. Connections, the custom step if we need one. But the logic has to be theirs.
+[24:42] Marcus Chen: Who on my side?
+[24:44] Ava Sinclair: Priya? Or Tom.
+[24:46] Marcus Chen: Tom. Priya's out for two weeks.
+[24:49] Ava Sinclair: Tom then.
+[24:51] Leo Grant: Can I add a second criterion? Time consumed. Ava, log the hours you spend on it over the four weeks — including the plumbing, including answering Tom's questions. Because your maintenance argument is the actual decision and right now both of you are guessing at it.
+[25:12] Ava Sinclair: [pause] That's a good idea and I'm annoyed I didn't think of it.
+[25:18] Marcus Chen: I'm delighted by it.
+[25:20] Ava Sinclair: You would be.
+[25:22] Marcus Chen: If it turns out to be four hours a week forever, that's an answer. If it's four hours total, that's a different answer.
+[25:31] Ava Sinclair: It won't be four hours total.
+[25:34] Marcus Chen: Then log it.
+[25:36] Ava Sinclair: I'll log it.
+[25:39] Leo Grant: Third criterion, and this one's mine. At the end of four weeks, can someone who wasn't involved read the workflow and understand it? Pick a person, sit them in front of it, see what happens.
+[25:54] Ava Sinclair: That's the comprehensibility test.
+[25:57] Leo Grant: That's the comprehensibility test, and it's the one that predicts whether you're still using this in two years.
+[26:04] Marcus Chen: Who'd we use?
+[26:06] Ava Sinclair: Someone from support. They're closest to the domain and furthest from the build.
+[26:12] Marcus Chen: Good.
+[26:14] Leo Grant: So — three criteria. Built by business operations, not engineering. Engineering time logged and extrapolated. And a comprehensibility test by an uninvolved person.
+[26:28] Ava Sinclair: I'd add a fourth. The exported definition of whatever we build gets reviewed by me as though it were a pull request. If I can't tell what it does from the export, that's a fail.
+[26:42] Leo Grant: Four criteria. I'll write them up and send them back so we're agreed rather than remembering differently.
+[26:50] Marcus Chen: Please.
+[26:52] Leo Grant: Anything on commercials before we finish?
+[26:56] Marcus Chen: Only that I'd like the pricing model in writing before the evaluation ends, not after. If the economics don't work I'd rather know in week three.
+[27:07] Leo Grant: You'll have it in week two. I'll need volume estimates from you — expected business events per day, expected workflow runs, and how those scale.
+[27:19] Ava Sinclair: I can give you an order of magnitude. It'll be a guess.
+[27:24] Leo Grant: A labelled guess is fine. What I won't do is put an unlabelled guess in a proposal and let it look like a commitment.
+[27:33] Marcus Chen: What counts as a user, incidentally?
+[27:36] Leo Grant: Builders and full workspace users are the licensed ones. Approval-only or notification-only populations can be structured differently by package. For you it's probably a small number either way.
+[27:50] Marcus Chen: Ten builders, maybe. Thirty people who'd see a task.
+[27:55] Leo Grant: Then that's a straightforward shape and I'll model it explicitly.
+[28:00] Ava Sinclair: One more technical thing before we go.
+[28:03] Nina Patel: Go.
+[28:05] Ava Sinclair: Idempotency. If a workflow retries a step that writes to Salesforce, do I get two records?
+[28:13] Nina Patel: If the downstream system isn't idempotent and the write succeeded but the response was lost, then yes, potentially. Each run keeps state and retries are visible in the run record, so you can see that it happened. But we can't make a non-idempotent API idempotent.
+[28:33] Ava Sinclair: Nobody can. I just wanted to see if you'd claim it.
+[28:38] Nina Patel: [laughs] Was that a test?
+[28:41] Ava Sinclair: That was a test. You passed.
+[28:44] Nina Patel: How many tests have there been?
+[28:47] Ava Sinclair: Four.
+[28:48] Nina Patel: And?
+[28:50] Ava Sinclair: You've passed four. The API reference passed one before the call started.
+[28:56] Marcus Chen: This is the nicest she's been to a vendor.
+[29:00] Ava Sinclair: It's a low bar.
+[29:02] Leo Grant: We'll take it. Let me summarise so we're aligned. The problem is that business rule changes sit at the bottom of a correctly prioritised engineering queue and always will. The design principle is a split — business logic owned by operations in the UI, connector code and secrets owned by engineering and version controlled. Event filtering stays in AWS; only business-relevant events reach us. The evaluation runs four weeks from Monday against four criteria, and the honest alternative is building it internally, probably on Step Functions or Retool Workflows.
+[29:47] Ava Sinclair: That's accurate.
+[29:49] Marcus Chen: That's accurate. And I want to say — I want to proceed with the four-week evaluation. Ava's right to be sceptical. If we can't answer the engineering questions, we shouldn't buy it.
+[30:04] Ava Sinclair: I appreciate you saying that.
+[30:06] Marcus Chen: I mean it. I don't want to win this argument and then discover you were right.
+[30:12] Leo Grant: That's a better position than most sponsors take.
+[30:16] Marcus Chen: I've been on the wrong end of it. At my last company I pushed through a tool over engineering's objection and it was a disaster for eighteen months.
+[30:27] Ava Sinclair: You've never told me that.
+[30:29] Marcus Chen: I don't tell people that.
+[30:31] Ava Sinclair: [pause] Huh.
+[30:34] Leo Grant: For what it's worth, that's why I'd rather Ava tested us hard now. We lose deals that way. We lose fewer customers.
+[30:44] Marcus Chen: Right. Friday for your four things, Monday we start.
+[30:49] Nina Patel: Friday. And Ava — the three definitions will be in your inbox this afternoon, not Friday.
+[30:57] Ava Sinclair: Good. I'll read them tonight.
+[31:00] Nina Patel: Of course you will.
+[31:02] Ava Sinclair: [laughs] Bye.
+[31:04] Marcus Chen: Thanks both.
+[31:06] Leo Grant: Thanks. Speak Monday.

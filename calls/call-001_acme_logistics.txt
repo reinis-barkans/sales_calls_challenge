@@ -1,0 +1,193 @@
+CALL ID: CALL-001
+DATE: 2026-06-03
+VENDOR: OrbitFlow
+PROSPECT: Acme Logistics
+INDUSTRY: Logistics
+COMPANY SIZE: 650 employees
+STAGE: Discovery / first demo
+DURATION: 30 minutes
+PARTICIPANTS:
+- Maya Chen, Account Executive, OrbitFlow
+- Jon Bell, Solutions Engineer, OrbitFlow
+- Rachel Morgan, VP Revenue Operations, Acme Logistics
+- Tom Alvarez, Director of Customer Success, Acme Logistics
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Maya Chen: Morning. Can you hear me okay? I think my headset decided today was the day.
+[00:06] Rachel Morgan: You're fine. Bit quiet but fine.
+[00:11] Maya Chen: Great. So, um, Tom's dialling in a few minutes late, he's got something running over. Shall we start and catch him up?
+[00:19] Rachel Morgan: Yeah, let's not waste the hour.
+[00:23] Maya Chen: Okay. So before we get into it — I actually spent three years at a freight forwarder before I moved into software. Middle office, mostly. So when your team said "we run onboarding out of a spreadsheet" I did have a bit of a flashback.
+[00:41] Rachel Morgan: [laughs] Which spreadsheet?
+[00:44] Maya Chen: Ours was called MASTER_FINAL_v7. There was no v6. Nobody ever found out what happened to v6.
+[00:52] Rachel Morgan: That's — honestly that's not far off. Ours has tabs colour-coded by whoever last panicked.
+[01:01] Maya Chen: Right. Okay, so my plan for today, roughly — I want to spend the first chunk just understanding how you actually handle this, and then Jon can show the parts of the product that map onto that. Not the full tour. I'd rather skip the bits that aren't relevant.
+[01:18] Rachel Morgan: Please. I've sat through the full tour from three vendors this quarter.
+[01:24] Maya Chen: Understood. So — where does it hurt?
+[01:29] Rachel Morgan: The short version is we've got too much operational work living between systems. And I want to be clear up front, we're not looking for another dashboard. We've got dashboards. We need something that actually moves work along and makes it visible who owns what.
+[01:47] Maya Chen: Can you give me a concrete one?
+[01:51] Rachel Morgan: Sure. Handoffs between sales, onboarding and customer success. All of that is managed through spreadsheets and Slack reminders. So renewal risks and implementation blockers get noticed late. Not never — late.
+[02:09] Maya Chen: How late is late?
+[02:12] Rachel Morgan: Depends. Sometimes a week. Sometimes we find out at the QBR, which is — yeah.
+[02:20] Maya Chen: And is it that the steps are manual, or —
+[02:23] Rachel Morgan: No, and this is the thing people get wrong. It's not that every step is manual. We have automation in places. The problem is the gaps between the automated pieces. Something runs, then nothing happens for four days, then a human notices.
+[02:41] Maya Chen: That's the pattern we see most, actually. Connecting systems is one problem. Operating the process that sits on top of the connections is a different problem, and the second one is usually where the pain is.
+[02:56] Rachel Morgan: Yeah.
+[02:58] Maya Chen: Do you have numbers on it, or is it anecdotal?
+[03:03] Rachel Morgan: Mix. We've got outcome metrics. The operational telemetry is weak. We can usually tell you something was late after the fact. We're much worse at answering why it was late, or which dependency failed, or whether the same thing happened fifteen times last month.
+[03:24] Maya Chen: That last one is the one that costs you.
+[03:27] Rachel Morgan: That's the one that costs us, yes.
+[03:32] Tom Alvarez: — sorry, sorry, I'm here. Sorry. Was on with a customer.
+[03:37] Maya Chen: No problem at all. We were just on current state.
+[03:41] Tom Alvarez: Right. Well, my angle is slightly different from Rachel's. I want to make sure we don't buy a tool that looks great in a demo and then becomes another thing my team has to babysit. We've already got automation nobody quite owns.
+[03:57] Maya Chen: Say more on that.
+[04:00] Tom Alvarez: When things work, nobody notices. When something sticks, the escalation path depends entirely on who happens to see it. And people compensate — they build their own reminders, their own little spreadsheets, someone wrote a script once. And then that person leaves.
+[04:20] Rachel Morgan: We have at least two scripts running that I could not tell you the author of.
+[04:26] Tom Alvarez: Three.
+[04:27] Rachel Morgan: Three. Great. [crosstalk]
+[04:31] Maya Chen: Okay. Look, I'm going to jump ahead slightly because I'd rather you hear this early than at minute fifty-five —
+[04:38] Rachel Morgan: Actually, can I do that? Because I have the same instinct. What does this cost? Roughly. I don't need a quote, I need to know whether we're in the same postcode.
+[04:50] Maya Chen: Fair. Growth starts at eighteen hundred a month, that's up to thirty users, annual agreement. Enterprise is custom — that's where the governance and security capabilities sit, plus higher usage.
+[05:06] Rachel Morgan: Hm.
+[05:08] Maya Chen: That's a "hm".
+[05:11] Rachel Morgan: It's more than I expected. And I know why — I'd mentally benchmarked this against Zapier, which is not a fair comparison, but that's the number that was in my head.
+[05:24] Maya Chen: It's a very common anchor. It's also the wrong one, but I'd rather earn that than assert it.
+[05:31] Rachel Morgan: I can probably still justify it if we replace enough manual work, and maybe some of what we're paying Gainsight for. But I'd need a clearer ROI story than "it saves time."
+[05:45] Maya Chen: Understood. Let's come back to that properly later — I don't want to give you a number before I know your user model, because that's exactly where proposals become misleading.
+[05:57] Tom Alvarez: Can I correct something, actually — sorry, on the process thing. Earlier we described onboarding as standardised. That's what the deck says. In practice EMEA and North America use different milestone definitions. So a single workflow diagram on a slide is a bit misleading.
+[06:19] Maya Chen: That's really useful.
+[06:21] Tom Alvarez: The process people describe and the process people run are not always the same thing.
+[06:28] Rachel Morgan: They're never the same thing.
+[06:31] Maya Chen: [laughs] Okay. Let me play the stack back to make sure I've got it. Salesforce, Slack, Snowflake, Gainsight, Google Sheets.
+[06:42] Rachel Morgan: That's the core, yeah.
+[06:45] Maya Chen: Which one's the system of record for the process?
+[06:49] Rachel Morgan: Depends on the object. Customer and commercial data, that's clear. Tasks and tickets, that's somewhere else. And then a lot of the actual context is in chat, which is — that's the problem, isn't it. That's why a workflow layer is even interesting to us.
+[07:09] Tom Alvarez: We also have Workato. I don't want you to think we've got nothing.
+[07:14] Maya Chen: Tell me how it's used.
+[07:17] Tom Alvarez: The data team uses it for a handful of back-office integrations. It works. But RevOps finds it too technical, and Rachel doesn't want every workflow change to become an IT ticket.
+[07:31] Rachel Morgan: I really don't.
+[07:33] Tom Alvarez: So I don't want to frame this as "we have no automation." The question is whether a different layer gives us better maintainability and operational control.
+[07:45] Maya Chen: That's a much better framing than most people give us, honestly. And to be clear, we're not trying to replace every integration platform. Plenty of our customers keep an iPaaS or internal services for deep systems integration and use us for the business-owned workflows — the ones with human decisions, exceptions, cross-functional handoffs.
+[08:09] Rachel Morgan: That's closer to how we'd think about it. I'd be nervous if the proposal was migrate everything.
+[08:17] Maya Chen: It won't be.
+[08:19] Rachel Morgan: I'm more interested in a bounded set of workflows where the current approach is visibly failing.
+[08:26] Maya Chen: Okay, so let me try one. If we picked a single workflow for phase one — opportunity closes in Salesforce, create the onboarding plan, assign tasks based on product mix, notify the right Slack channel, escalate stalled milestones up to CS leadership. Is that the right shape?
+[08:47] Rachel Morgan: That's the right shape. One caveat though, and it's a big one. The happy path is not the hard part. Anyone can demo the happy path.
+[08:58] Maya Chen: Go on.
+[09:00] Rachel Morgan: I want to see what happens when data's missing. When an API times out. When an approver does nothing for two days. When the account changes state halfway through the workflow.
+[09:14] Jon Bell: That's — sorry, Maya, can I —
+[09:16] Maya Chen: Yeah, go.
+[09:18] Jon Bell: That's exactly the right level to test at, and it's the bit I'd want you to push on. Workflows are event-driven but each run holds state. So you can branch on data, pause for approvals, retry external actions, set timeout rules, and push an exception into a queue rather than just failing quietly.
+[09:40] Tom Alvarez: Can the queue be owned by a team? Not a named person. People change roles constantly here and individual ownership is genuinely one of the reasons our current stuff breaks.
+[09:53] Jon Bell: Yes. Route to a group, resolve a person dynamically from a field, or use an on-call style fallback. And the run history persists, so an admin can see the inputs, which steps ran, where it stopped.
+[10:08] Tom Alvarez: Okay. That's better than what we've got.
+[10:12] Rachel Morgan: There's a second use case I'd flag, not for phase one — identifying renewal risk by combining CRM fields, support activity and product usage signals out of Snowflake. I don't need it now. I do want to know the architecture doesn't rule it out.
+[10:31] Jon Bell: It doesn't. Different shape of workflow — that's more scheduled and query-driven than event-driven — but same platform.
+[10:41] Maya Chen: Jon, do you want to show them rather than describe it?
+[10:45] Jon Bell: Yeah. Let me share. [pause] Bear with me, it's — sorry, Teams is asking me for permission again.
+[10:56] Rachel Morgan: Take your time.
+[11:04] Jon Bell: There we go. Can you see the builder?
+[11:07] Tom Alvarez: We can see your inbox.
+[11:09] Jon Bell: Ah. Yep. Sorry. [pause] Now?
+[11:16] Rachel Morgan: Yes.
+[11:18] Jon Bell: Right. So left-hand side is triggers and actions, middle is the flow, right-hand panel is the config for whatever step you've selected. A workflow can start from a SaaS event, a schedule, a webhook, a database query, or another workflow.
+[11:36] Jon Bell: I'll start this one from a record-change event, check a few required fields, enrich from a second system, then branch. And the thing I'd draw your attention to is that we push people towards small reusable components. You really don't want a single two-hundred-step workflow. You want subflows — account lookup, approval, notification, incident creation.
+[12:02] Tom Alvarez: How technical is this actually? Because every vendor says no-code right up until you hit the one thing the connector doesn't do.
+[12:12] Jon Bell: Yeah, that's fair criticism and I'm not going to pretend. Simple mapping and branching is visual. Transformations use expressions. On Enterprise you can package reusable JavaScript steps if you need to. There's a generic REST action and webhooks. We don't claim every workflow is no-code. What we aim for is that the workflow stays understandable even if an engineer supplied one custom component.
+[12:41] Rachel Morgan: That's a better answer than pretending my team will never touch code. I care about reducing dependency, not eliminating engineers.
+[12:52] Tom Alvarez: Schema changes though. We've had integrations die because someone renamed a field or added a picklist value, and the automation just — didn't say anything.
+[13:04] Jon Bell: We cache metadata but refresh it, and mapping errors surface on the run. For high-impact flows I'd genuinely recommend explicit validation at the start rather than assuming every source field is populated. And you can alert when error rates cross a threshold.
+[13:23] Rachel Morgan: I'd want that in the evaluation. A demo with clean data proves nothing to me.
+[13:30] Jon Bell: Agreed. Give us dirty data.
+[13:34] Maya Chen: On integrations — you'd said Salesforce is mandatory, Slack and Snowflake matter for phase one, Gainsight would be useful but isn't essential. Which one's the deal-breaker?
+[13:48] Rachel Morgan: The system of record. If that connector's unreliable, none of the rest matters. After that it's the collaboration and data systems, because that's where context goes missing.
+[14:02] Jon Bell: For your stack it's a mix of native connectors and API-based options. What I'd want to do in a pilot is validate each required operation rather than just point at a logo on our integrations page.
+[14:17] Rachel Morgan: Good.
+[14:19] Jon Bell: One thing I noted from your pre-call form — you've got roughly a hundred and forty customer-facing users but you'd only expect twenty-five to actually build or administer workflows?
+[14:31] Rachel Morgan: That's about right. Maybe thirty at a stretch.
+[14:36] Jon Bell: Okay, that matters for the commercial model. Maya will come back to it.
+[14:41] Tom Alvarez: [dog barking] Sorry — sorry, one second. [pause] Sorry, that's me, ignore that.
+[14:52] Maya Chen: Not a problem. Ours is worse, honestly, I have a cat who sits on the keyboard during forecast calls.
+[15:01] Tom Alvarez: [laughs] Right, sorry, carry on.
+[15:05] Maya Chen: You'd mentioned AI in your notes. I'll be brief on it because I don't think it's the centre of gravity here. We treat it as optional steps inside a workflow rather than making the whole product autonomous. Classification, summarisation, extracting fields from text, drafting something for a human to approve.
+[15:27] Rachel Morgan: Good. I'm wary of the word agent, mostly because it usually means nobody can explain why something happened.
+[15:36] Maya Chen: That's a reasonable prior.
+[15:39] Rachel Morgan: Where would you use a model versus just rules?
+[15:43] Jon Bell: Rules for anything already structured and safety-critical. Model where the input is genuinely unstructured or the task is semantic. Summarising a long ticket thread, fine. Deciding whether to issue a refund above a threshold — that should stay deterministic and permissioned.
+[16:03] Tom Alvarez: Can we see the prompt and the model config? And can we switch AI off entirely for a workspace?
+[16:11] Jon Bell: Yes to both. AI steps are explicit, inspectable steps. Admins can restrict which models are allowed. Enterprise customers can disable AI features outright. We log the model configuration used for a run. And we don't use customer workflow content to train a shared OrbitFlow model.
+[16:33] Rachel Morgan: That last one needs to be in writing. Not in a demo.
+[16:38] Maya Chen: Noted, and agreed — that belongs in the contract, not on a call.
+[16:44] Tom Alvarez: Can the thing refuse to answer if the source material is thin? The failure mode I dislike is a very confident summary built on one incomplete note.
+[16:56] Jon Bell: You can design for that. Require a minimum set of fields or sources before the AI step runs, ask the model to return structured confidence, route low-confidence cases to review. I wouldn't sell you model confidence as a mathematical guarantee though. The better control is usually evidence plus workflow policy.
+[17:19] Rachel Morgan: For anything customer-facing or exec-facing I'd want a link back to the underlying records. People need to be able to challenge the output.
+[17:30] Maya Chen: That's how we think about it in production too — not just "did the model answer", but did it use the right records, were the key facts preserved, did the uncertain cases get escalated.
+[17:45] Jon Bell: Let me show you run history, actually, because it's related. [pause] So — filter by workflow, status, time, or a business field. Open a run, you get every step, inputs, outputs, timing, retries, any human approval.
+[18:04] Tom Alvarez: Who can see the payload? We'll have workflows where an admin should know a step failed without necessarily seeing all the customer data in it.
+[18:15] Jon Bell: Permissions can separate workflow administration from business viewing. I'd flag that exact field-level masking requirements should be part of security design rather than something I promise now. We do support role-based access, workspace separation, and secrets aren't displayed in run logs.
+[18:36] Rachel Morgan: Can we get metrics out into our own monitoring? I don't want operationally critical automation only visible inside a vendor console.
+[18:47] Jon Bell: Run events and metrics through APIs and webhooks, and audit export on Enterprise. Several customers forward failures into their incident tooling. Happy to show actual payloads in a technical session.
+[18:59] Tom Alvarez: That matters to me a lot more than a nice dashboard.
+[19:04] Rachel Morgan: Version history — if someone changes a condition on a Friday afternoon and it breaks, can we see exactly what changed?
+[19:13] Jon Bell: Version history and change metadata, yes. Rollback and promotion patterns vary a bit by workflow and package. For your evaluation I'd actually suggest we include a change-management scenario rather than just building the thing once.
+[19:30] Tom Alvarez: Yes. That's closer to real life.
+[19:35] Maya Chen: Let's do security, and I suspect this one's quick for you.
+[19:40] Tom Alvarez: It is, relatively. We need the usual vendor review, SSO, audit logs. We don't have a special data-residency requirement for this project.
+[19:52] Maya Chen: That is a shorter list than most.
+[19:55] Tom Alvarez: We're not healthcare. But we will ask for screenshots or documentation, not just yes/no answers on a questionnaire.
+[20:05] Jon Bell: That's fine. Baseline is SOC 2 Type II. SAML SSO and SCIM on Enterprise. Encryption in transit and at rest. Audit logs cover administrative and workflow events. Retention configurable within supported ranges. EU residency available on Enterprise if you ever need it.
+[20:27] Tom Alvarez: Can you send the SOC 2 report, subprocessor list, DPA, architecture diagram, retention documentation?
+[20:35] Maya Chen: Yes, all of that under the normal process, and we can complete your questionnaire. One ask from me — if anything on your list is an absolute gate, flag it now. I'd rather not spend six weeks on a pilot that can't pass review.
+[20:52] Rachel Morgan: The gating issue isn't security for us.
+[20:56] Maya Chen: Go on.
+[20:58] Rachel Morgan: The real commercial question is whether we expand the Workato contract we already have instead of adding another vendor. That's the conversation I'll have to win internally. I'd rather you knew that upfront than designed around an assumption.
+[21:16] Maya Chen: I appreciate that, genuinely. We'll write it up as a pilot exit criterion. If we can't satisfy it, that should be an explicit result, not something that surfaces in procurement at the end.
+[21:31] Rachel Morgan: That's a good answer.
+[21:34] Jon Bell: One thing I'd add — what happens to data sent to an LLM provider is a question you'll get from your security team, and the honest answer is it depends on configuration and provider. We use enterprise API arrangements where available, we document subprocessors. If your policy is strict, AI can be disabled, or we scope the pilot to deterministic steps while security reviews model usage separately.
+[22:03] Tom Alvarez: That separation would help. AI's interesting but it's not worth blocking the automation case over.
+[22:11] Maya Chen: Right — pricing properly. What counts as a user, since you asked.
+[22:17] Tom Alvarez: Yes, because we may have a small number of builders and a lot of people who only approve something or receive a notification.
+[22:26] Maya Chen: Builders and full workspace users are the licensed users. Approval-only or notification-only can be structured differently depending on the package. I'm deliberately not giving you an exact number today because without the user model any number I give you is misleading.
+[22:46] Rachel Morgan: Please make that explicit in the proposal. I do not want to find out in month four that every occasional approver needs a full seat.
+[22:56] Maya Chen: It'll be itemised — assumed builder count, viewer and approver population, expected workflow volume, and any one-time services separately.
+[23:07] Rachel Morgan: Thank you.
+[23:10] Maya Chen: On ROI — is this headcount avoidance, cycle time, error reduction, engineering maintenance?
+[23:18] Rachel Morgan: I would not sell this internally as headcount reduction. It wouldn't survive contact with my CFO and it's also not true. The stronger case is consistency and speed. We've got expensive people doing coordination work because the systems don't carry enough process context.
+[23:38] Tom Alvarez: And there's an engineering cost nobody sees. A script takes two days to write and then quietly eats a few hours every month forever. That never makes it into the original estimate.
+[23:52] Maya Chen: For a pilot we can baseline one or two things before we automate — elapsed time, number of manual touches, exception rate, engineer hours spent maintaining the current process.
+[24:06] Rachel Morgan: I'd add adoption. A technically correct workflow that everyone routes around is a failed implementation.
+[24:15] Tom Alvarez: And edge cases, not average time. The pain is always in the weird ten percent.
+[24:22] Maya Chen: Who owns it day to day if this works?
+[24:26] Rachel Morgan: I own the project. IT security and the VP of Customer Success sign off. Finance gets involved above twenty-five thousand a year, so — yes, finance gets involved. Operationally I'd expect a small central group owning standards, business teams contributing requirements.
+[24:47] Tom Alvarez: With naming conventions. And change control on the important ones. And a rule that somebody other than the creator can understand each production flow.
+[24:58] Jon Bell: That's more or less our recommended model. Start with a few centrally owned templates, define who can publish to production, separate dev from prod.
+[25:10] Maya Chen: Timing — you'd said choose a vendor before end of July, first workflows live in September?
+[25:18] Rachel Morgan: That's the intent. It'll slip. It always slips. But that's the plan.
+[25:24] Maya Chen: What has to be true to move from evaluation to decision?
+[25:29] Rachel Morgan: One representative workflow working with real enough data. Security gates understood. A commercial model without hidden scaling surprises. And the people who'll operate it have to believe they can own it — that last one is not a small thing.
+[25:48] Tom Alvarez: And the honest comparison is Workato, or just improving what we already have. Not doing nothing.
+[25:57] Maya Chen: Agreed. We can define the pilot against the status quo and the alternative. And a perfectly valid outcome is "don't buy OrbitFlow" if the existing approach meets the criteria more cheaply.
+[26:11] Rachel Morgan: You're allowed to say that?
+[26:13] Maya Chen: I'd rather say it now than in month nine.
+[26:17] Rachel Morgan: Fair enough. Look — my read is I'm interested enough to test it. If you can give us a sandbox I can supply three real workflows and we'll see whether the exception handling is as good as it looked today.
+[26:33] Maya Chen: That's exactly what I'd want. So — we send the security pack and a short architecture summary, you send the representative workflow and sample data, and we jointly write three to five pilot success criteria. Then we decide on the sandbox.
+[26:52] Tom Alvarez: Quick ones before we drop, if there's time?
+[26:56] Maya Chen: Go.
+[26:58] Tom Alvarez: Can workflows call our internal APIs without us exposing them publicly?
+[27:03] Jon Bell: If they're publicly reachable, outbound calls are trivial. For private networks it depends on your environment and may need an agent or a controlled gateway. I'd want to validate that rather than assume.
+[27:18] Tom Alvarez: Can secrets be rotated without editing every workflow?
+[27:22] Jon Bell: Yes. Connections and credentials are centrally managed and referenced. Rotation happens at the connection layer.
+[27:31] Rachel Morgan: Can a human modify data before approving? Sometimes approval isn't just yes or no.
+[27:38] Jon Bell: Approval forms can collect structured inputs and those values feed subsequent steps. For heavily customised forms some customers use their own front end and call us through the API.
+[27:52] Tom Alvarez: Last one. Can we trigger a workflow manually for a one-off exception?
+[27:58] Jon Bell: Yes, permissions allowing. It's useful during migration and for exception recovery.
+[28:05] Maya Chen: Let me summarise what I heard, and correct me. You don't need automation for its own sake. The opportunity is making a small number of cross-system processes observable, easier to change, and less dependent on specific individuals. The pilot has to prove integration reliability, exception handling, governance, and that there's a credible operating model on your side.
+[28:31] Rachel Morgan: Yes. And keep the first workflow narrow. I'd rather have one thing we trust than six demos.
+[28:39] Tom Alvarez: Can you also write down the assumptions you made today? Some of what we told you was approximate and I don't want it hardening into requirements by accident.
+[28:51] Maya Chen: Will do. Written recap with open questions separated from confirmed requirements.
+[28:58] Rachel Morgan: Great. Send it over and we'll come back with sample inputs. Thanks both.
+[29:04] Jon Bell: Thanks.
+[29:06] Maya Chen: Thanks. And Tom — good luck with the dog.
+[29:10] Tom Alvarez: [laughs] Cheers.

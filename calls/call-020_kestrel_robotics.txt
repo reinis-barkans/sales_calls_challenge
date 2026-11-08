@@ -1,0 +1,97 @@
+CALL ID: CALL-020
+DATE: 2026-09-30
+VENDOR: OrbitFlow
+PROSPECT: Kestrel Robotics
+INDUSTRY: Industrial robotics
+COMPANY SIZE: 150 employees
+STAGE: Cold call
+DURATION: 8 minutes
+PARTICIPANTS:
+- Leo Grant, Account Executive, OrbitFlow
+- Rafael Santos, COO, Kestrel Robotics
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Rafael Santos: Rafael.
+[00:02] Leo Grant: Rafael, hi. Leo Grant, OrbitFlow. Cold call — I'll be quick and you can hang up.
+[00:09] Rafael Santos: [pause] OrbitFlow. That's funny.
+[00:13] Leo Grant: Is it?
+[00:15] Rafael Santos: We're three weeks into evaluating Tray.io. Your name came up on a list and got crossed off.
+[00:23] Leo Grant: Crossed off by whom?
+[00:25] Rafael Santos: Me. About a month ago.
+[00:28] Leo Grant: Can I ask why? Genuinely — I'm not going to argue, I just want to know.
+[00:34] Rafael Santos: Your website. It's very enterprise. Governance, compliance, workspace separation. We're a hundred and fifty people building robots. I looked at it and thought, that's not for us.
+[00:49] Leo Grant: [pause] That's a fair read of our website.
+[00:53] Rafael Santos: You're agreeing?
+[00:55] Leo Grant: Our marketing is aimed at companies with a governance function. You don't have one, so it isn't aimed at you.
+[01:04] Rafael Santos: So why are you calling?
+[01:06] Leo Grant: Because our marketing being aimed at somebody else doesn't mean the product is wrong for you. But I'd want to establish that in about four minutes rather than argue with your conclusion.
+[01:19] Rafael Santos: Go on then. Four minutes.
+[01:22] Leo Grant: What are you trying to do with Tray?
+[01:25] Rafael Santos: Order-to-deployment. A customer orders a robot cell, and then there's engineering config, procurement of the long-lead parts, build scheduling, factory acceptance testing, shipping, and site commissioning. Seven stages, five systems, and about four months elapsed.
+[01:47] Leo Grant: And what goes wrong?
+[01:49] Rafael Santos: Nothing goes wrong exactly. Things just take longer than they should because stage four doesn't know stage three finished until someone mentions it in a meeting.
+[02:01] Leo Grant: How much of the four months is waiting?
+[02:04] Rafael Santos: [pause] I don't know. That's part of why we're doing this.
+[02:10] Leo Grant: Okay. How's the Tray evaluation going?
+[02:14] Rafael Santos: Well. Genuinely well. Their team's been good.
+[02:19] Leo Grant: Then I'd say two things. First, I'm not going to tell you Tray is bad. It isn't. We lose to them and we beat them and it usually comes down to fit rather than quality.
+[02:32] Rafael Santos: What's the second?
+[02:34] Leo Grant: Three weeks in, with a decision coming, I'd be the third horse in a two-horse race, and that's usually a waste of everyone's time.
+[02:44] Rafael Santos: You're talking yourself out of it again.
+[02:47] Leo Grant: I'm being realistic about it. Unless there's something in your evaluation that isn't going well, in which case I'd want to know what.
+[02:57] Rafael Santos: [pause] There is one thing.
+[03:00] Leo Grant: Go on.
+[03:02] Rafael Santos: Our ERP. It's a mid-market system, quite niche in manufacturing. Tray don't have a connector and we're looking at building against its API, which our one back-end developer estimates at three weeks.
+[03:19] Leo Grant: Do you believe the estimate?
+[03:21] Rafael Santos: [laughs] No.
+[03:23] Leo Grant: Nobody ever does.
+[03:25] Rafael Santos: It'll be six.
+[03:27] Leo Grant: I'd want to be honest — there's a good chance we don't have a connector either. What's the system?
+[03:34] Rafael Santos: I'd rather not say on a cold call, if that's alright.
+[03:39] Leo Grant: Completely fine. Then let me answer it generally. If it's a mid-market manufacturing ERP, we probably don't have a native connector, and you'd be building against the API with our generic REST action. Which is the same three weeks. Or six.
+[03:57] Rafael Santos: So no advantage.
+[04:00] Leo Grant: No advantage on that specific point, no. There might be one on what happens afterwards — who maintains it, whether it's reusable across the seven stages — but that's a subtler argument and I'm not going to pretend it's decisive.
+[04:17] Rafael Santos: You keep doing this.
+[04:19] Leo Grant: Doing what?
+[04:21] Rafael Santos: Conceding things.
+[04:23] Leo Grant: I'd rather concede the things that are true and be believed on the things that aren't.
+[04:29] Rafael Santos: [pause] Alright. What's the argument you would make?
+[04:35] Leo Grant: Honestly, only one, and it's small. You said your one back-end developer would build the ERP integration. What happens when he's busy and someone in operations wants to change which stage triggers a notification?
+[04:52] Rafael Santos: It waits.
+[04:54] Leo Grant: For how long?
+[04:56] Rafael Santos: [pause] Depends. Weeks.
+[04:59] Leo Grant: Then the question for your evaluation — for either vendor — is whether the people who own the process can change the process without him. That's testable in a week and most evaluations don't test it.
+[05:15] Rafael Santos: How would you test it?
+[05:17] Leo Grant: Have someone in operations, not your developer, build one real workflow. Not with the developer sitting next to them. And see what happens.
+[05:29] Rafael Santos: [pause] That's a good test.
+[05:33] Leo Grant: It's the test that predicts whether you're happy in two years. Run it against Tray — I mean that, run it against Tray, you're three weeks in and it costs you nothing.
+[05:46] Rafael Santos: And if they pass?
+[05:48] Leo Grant: Then buy Tray. You'll have made a good decision for a good reason.
+[05:54] Rafael Santos: [laughs] You are the strangest salesperson I've spoken to this year.
+[05:59] Leo Grant: I'll take that.
+[06:01] Rafael Santos: Look — I'm not going to restart the evaluation. We've got a decision date and I'm not moving it.
+[06:09] Leo Grant: I wouldn't ask you to.
+[06:11] Rafael Santos: But I'll do this. Send me something short — not a deck — on how you'd approach the seven-stage thing, and specifically on the operations-can-change-it question. If we go with Tray and it doesn't work out, I'll know who to call.
+[06:29] Leo Grant: I'd rather have that than a demo you sit through politely.
+[06:34] Leo Grant: When's the decision?
+[06:36] Rafael Santos: Mid-October. Fourteenth, I think, or thereabouts.
+[06:42] Leo Grant: Would it be worth a thirty-minute call before mid-October? Not a pitch. I'd walk through how I'd structure the seven stages and you can use the thinking whichever vendor you pick.
+[06:56] Rafael Santos: You'd do that knowing we'll probably go with Tray?
+[07:01] Leo Grant: You're a hundred and fifty people building robots. You'll be four hundred people in three years and you'll be buying something else. I'd rather be the person who was useful.
+[07:14] Rafael Santos: [pause] That's a long game.
+[07:17] Leo Grant: It's the only game in a market this small.
+[07:21] Rafael Santos: Alright. Send the note. If it's good I'll do the thirty minutes.
+[07:27] Leo Grant: Can I ask one thing before you go?
+[07:30] Rafael Santos: Go on.
+[07:32] Leo Grant: The four months. Have you got a number for what a month costs you?
+[07:37] Rafael Santos: A month of delay on a cell? Roughly, we recognise revenue on commissioning, so — a month is a month of revenue on a two hundred thousand pound order.
+[07:50] Leo Grant: And how many orders in flight?
+[07:53] Rafael Santos: Eleven at the moment.
+[07:55] Leo Grant: Then if instrumenting the seven stages tells you where two weeks are going, that's a much bigger number than either vendor's licence.
+[08:05] Rafael Santos: [pause] That's the slide I need for my board, isn't it.
+[08:10] Leo Grant: It's the slide you need regardless of who you buy from.
+[08:14] Rafael Santos: [laughs] Send the note, Leo.
+[08:17] Leo Grant: I will. Thanks Rafael.
+[08:20] Rafael Santos: Bye.

@@ -1,0 +1,229 @@
+CALL ID: CALL-002
+DATE: 2026-06-05
+VENDOR: OrbitFlow
+PROSPECT: BrightPath Health
+INDUSTRY: Digital health
+COMPANY SIZE: 1,100 employees
+STAGE: Technical discovery
+DURATION: 34 minutes
+PARTICIPANTS:
+- Maya Chen, Account Executive, OrbitFlow
+- Jon Bell, Solutions Engineer, OrbitFlow
+- Priya Shah, Head of Business Systems, BrightPath Health
+- Elliot Greene, Security Architect, BrightPath Health
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Maya Chen: Morning both. Priya, Elliot — thanks for the time.
+[00:05] Priya Shah: Morning. Quick logistics thing before we start. Elliot has a hard stop at forty past. So can we do security first and everything else after he drops?
+[00:17] Maya Chen: Absolutely, and honestly that's the right order anyway. If security's a no, the rest is theatre.
+[00:25] Elliot Greene: I appreciate you saying that. Most vendors want to do the demo first and then act surprised.
+[00:33] Maya Chen: I've been on the wrong end of that. Okay — Elliot, you drive. What's on your list?
+[00:41] Elliot Greene: Right. The list is: we need to resolve the BAA question, review your subprocessors, SSO and SCIM, understand retention, and confirm how US data is handled.
+[00:57] Maya Chen: Which of those is the gate?
+[01:01] Elliot Greene: The BAA is the gate. If you can't offer one, we cannot use OrbitFlow for any workflow that may involve protected health information. That's not me being difficult, that's — that's just where we are.
+[01:19] Maya Chen: Understood, and I want to be careful here because this is exactly the thing people fudge on sales calls. I'm not going to give you a yes on this call. What I will do is get you a written answer from our legal and compliance side within — Jon, what's realistic, a week?
+[01:41] Jon Bell: A week is realistic for a written position, yes.
+[01:46] Elliot Greene: A written position is fine. A verbal "we're working on it" is not.
+[01:52] Maya Chen: Agreed.
+[01:55] Elliot Greene: Okay. Baseline certifications?
+[01:59] Jon Bell: SOC 2 Type II is the baseline. SAML SSO and SCIM provisioning, both on Enterprise. Encryption in transit and at rest. Audit logs covering administrative and workflow events. Retention configurable within supported ranges. EU data residency available on Enterprise.
+[02:22] Elliot Greene: EU. We're a US operation with a UK subsidiary. What's the default region?
+[02:30] Jon Bell: Default depends on where the workspace is provisioned. I'd rather confirm the specifics in writing than guess at your architecture on a call.
+[02:41] Elliot Greene: Good. That's the right answer.
+[02:45] Priya Shah: Elliot's tolerance for confident guessing is quite low.
+[02:50] Elliot Greene: [crosstalk] It's zero. It's zero, Priya.
+[02:53] Maya Chen: [laughs] Noted.
+[02:57] Elliot Greene: Subprocessors. Do you publish a list, and do you notify on change?
+[03:04] Jon Bell: We publish the list and there's a notification mechanism for changes. The exact notice period is contractual, so — again, that's a document question not a call question.
+[03:18] Elliot Greene: Fine. Retention. Can I set it, and can I set it differently per workspace?
+[03:26] Jon Bell: Configurable within supported ranges. Per-workspace granularity I'd want to check against your specific requirement, because there are limits.
+[03:37] Elliot Greene: What's the floor?
+[03:40] Jon Bell: I don't want to quote you a number I'd have to walk back. I'll put it in the pack.
+[03:47] Elliot Greene: Okay.
+[03:50] Priya Shah: Can I add one? Environment separation. We'd want granular separation between sandbox and production — not just a flag, actual separation.
+[04:03] Jon Bell: Workspace separation is supported, and Enterprise has stronger governance around who can publish where. What I'd want to understand is whether you mean separate data planes or separate logical workspaces, because those are very different asks.
+[04:22] Priya Shah: Logical is probably enough. Elliot?
+[04:26] Elliot Greene: Logical is probably enough if the access controls are real and the audit trail crosses both.
+[04:34] Jon Bell: That's supportable.
+[04:37] Elliot Greene: Now the one I actually care about. What happens to data sent to an LLM provider?
+[04:45] Jon Bell: Honest answer, it depends on configuration and provider, so I don't want to over-generalise. We use enterprise API arrangements where those exist, and providers are documented as subprocessors. For customers with stricter policies there are two options — disable AI entirely, or scope the initial phase to deterministic workflow steps and let security review model usage on a separate track.
+[05:14] Elliot Greene: The second one. That separation would help a lot, actually. AI is interesting but it's not worth blocking the automation use case over.
+[05:26] Priya Shah: That's a bigger concession than you usually make.
+[05:30] Elliot Greene: I'm aware.
+[05:33] Maya Chen: Just so I capture it correctly — AI off for phase one, reviewed separately, not ruled out permanently?
+[05:42] Elliot Greene: Correct.
+[05:45] Jon Bell: I'll add — AI steps here are explicit, inspectable workflow steps. They're not ambient. Admins restrict which models are allowed, Enterprise can disable the features entirely, and we log the model configuration used on each run. We also don't use customer workflow content to train a shared OrbitFlow model.
+[06:09] Elliot Greene: That last sentence. Is it in the contract or is it on a marketing page?
+[06:15] Maya Chen: It needs to be in the contract for you to rely on it, and I'd expect you to insist on that.
+[06:22] Elliot Greene: I will insist on that.
+[06:25] Priya Shah: Write it down, Elliot.
+[06:27] Elliot Greene: It's written down.
+[06:31] Maya Chen: What else can we send? SOC 2 report, subprocessor list, DPA, architecture diagram, retention documentation — is that the pack?
+[06:42] Elliot Greene: Add pen test summary. And yes. And we'll send you our questionnaire, which is long, and I apologise in advance.
+[06:53] Maya Chen: They're all long. We'll complete it.
+[06:58] Elliot Greene: One more. Who at your end can see our run data?
+[07:04] Jon Bell: Role-based access, workspace separation, and secrets are never displayed in run logs. Internally, support access is controlled and logged. If you need field-level masking for specific payloads, that's a design conversation rather than a checkbox.
+[07:24] Elliot Greene: We will need that conversation. We have workflows where an admin should know a step failed without seeing the record contents.
+[07:35] Jon Bell: Yeah, that's a very common pattern in your sector. It's designable, I just don't want to say "yes, masking, done" when the real answer is "yes, with design".
+[07:48] Elliot Greene: Understood. Right, that's most of my list. I've got twenty-five minutes before I have to go. Priya, do you want to do current state so I can hear it?
+[08:00] Priya Shah: Yes, let's.
+[08:03] Maya Chen: Please. What's actually broken today?
+[08:08] Priya Shah: Two things, and they're linked. First, business teams request automations from a small systems group — my group — and there's a growing backlog. Second, compliance review slows down any workflow that touches patient-adjacent data, which is most of them.
+[08:29] Maya Chen: How long's the backlog?
+[08:32] Priya Shah: Currently? [pause] I'd say eleven weeks for anything non-trivial. It was six in January.
+[08:41] Maya Chen: So it's getting worse.
+[08:44] Priya Shah: It's getting worse. And what happens when the backlog gets long is people route around us. Someone builds something in Power Automate, it works, they leave, and then it's nobody's.
+[08:59] Elliot Greene: Which is my problem, eventually.
+[09:03] Priya Shah: Which becomes Elliot's problem, eventually, yes.
+[09:07] Maya Chen: Is it that the steps are manual, or —
+[09:11] Priya Shah: No, that's the thing. It's not that every step is manual, we have automation in places. The problem is the gaps between the automated pieces. Something fires, then there's a four-day hole where a human is supposed to notice, and sometimes they don't.
+[09:31] Maya Chen: Do you have telemetry on that or is it anecdotal?
+[09:36] Priya Shah: Mix. Outcome metrics exist. Operational telemetry is weak. We can usually tell you something was late after the fact. We're much worse at answering why it was late, or which dependency failed, or whether the same failure happened fifteen times last month.
+[09:57] Elliot Greene: Can I correct something, actually, before we go further.
+[10:02] Priya Shah: Go on.
+[10:04] Elliot Greene: I said earlier — and I've said it in other meetings — that patient information never goes into HubSpot. Policy says it shouldn't. In practice we do occasionally find patient names in free-text fields. Which is exactly why I'm strict about the boundary. I don't want you designing against the policy version of our data.
+[10:31] Maya Chen: That's genuinely useful and it's not a small admission.
+[10:36] Elliot Greene: It's not an admission, it's a control gap I'm managing. But yes.
+[10:42] Priya Shah: [laughs] Sorry.
+[10:45] Elliot Greene: The process people describe and the process people run are not the same thing. That's true everywhere.
+[10:53] Maya Chen: It is. Okay, let me play the stack back. HubSpot, Microsoft Teams, Azure, Databricks, Jira Service Management.
+[11:05] Priya Shah: That's it. Plus a lot of SharePoint that nobody admits to.
+[11:11] Maya Chen: Which is the system of record for the process?
+[11:15] Priya Shah: Depends on the object. Customer and commercial data has a clear home. Tasks and tickets have a different home. And then a very large amount of actual context lives in chat, which — that's precisely why a workflow layer is interesting to us.
+[11:36] Maya Chen: And you've got Power Automate today.
+[11:40] Priya Shah: We do. It's already covered by our Microsoft agreement, which matters a lot to procurement.
+[11:48] Maya Chen: So what's the problem with it?
+[11:51] Priya Shah: Complex flows are difficult to monitor. And ownership becomes unclear when the creator changes role, which happens constantly. So I want to be clear — I'm not sitting here saying we have no automation. The question is whether a different layer gives us better maintainability and operational control.
+[12:15] Maya Chen: That's the right question, and we won't try to replace everything. Plenty of customers keep an iPaaS or internal services for deep integration and use us for business-owned workflows — the ones with human decisions, exceptions, cross-functional handoffs.
+[12:35] Priya Shah: That's closer to how we'd think about it. I'd be nervous if the proposal was migrate everything off Microsoft.
+[12:44] Maya Chen: It isn't, and frankly that proposal would lose to your licensing agreement anyway.
+[12:51] Priya Shah: It would.
+[12:54] Maya Chen: Let me try a phase-one candidate on you. Route implementation requests from HubSpot into Jira, enrich them with account data, notify Teams, track exceptions — and do all of that without copying sensitive notes into three more systems.
+[13:14] Priya Shah: That last clause is the important one. Yes, that's a good candidate.
+[13:20] Elliot Greene: The "without copying" part is not a nice-to-have.
+[13:25] Jon Bell: Understood. And that's a real design constraint — you'd want to pass references rather than payloads wherever possible, and only pull the sensitive field at the point of use, if at all.
+[13:39] Elliot Greene: Yes. Exactly that.
+[13:43] Priya Shah: One caveat on the workflow, though. The happy path is not the hard part.
+[13:50] Maya Chen: Go on.
+[13:52] Priya Shah: I want to see what happens when data's missing, when an API times out, when an approver does nothing for two days, when the account changes state after the workflow's already started.
+[14:07] Jon Bell: That's the right level to test at. Workflows are event-driven but each run holds state. Branch on data, pause for approvals, retry external actions, set timeout rules, push an exception into a queue rather than failing silently.
+[14:26] Elliot Greene: Can the queue be owned by a team rather than a named individual? People change roles constantly here and individual ownership is one of the main reasons our current automations rot.
+[14:41] Jon Bell: Yes. Route to a group, resolve a person dynamically from a field, or use an on-call style fallback. Run history persists so an admin can see inputs, which steps ran, and where it stopped.
+[14:57] Elliot Greene: Good. [pause] That's — sorry, that's my calendar. I've got about ten minutes.
+[15:06] Maya Chen: Anything else you need before you go?
+[15:10] Elliot Greene: One thing. Can we export audit logs to our own SIEM, or do they live in your console?
+[15:19] Jon Bell: Run events and metrics via APIs and webhooks, and audit export on Enterprise. Several customers forward failures into their incident tooling.
+[15:31] Elliot Greene: That's what I wanted to hear. If it only lives in your console it's not an audit trail, it's a screenshot.
+[15:40] Jon Bell: [laughs] I'm going to steal that.
+[15:44] Elliot Greene: Please do. Right, last one from me. Priya mentioned a second use case earlier and I want to flag my position on it.
+[15:54] Priya Shah: Go ahead.
+[15:56] Elliot Greene: The idea is to give operations teams a governed way to build simple workflows without receiving broad access to production systems. I'm supportive of that in principle. In practice it lives or dies on whether the permission model is genuinely least-privilege or just a UI that hides things.
+[16:20] Jon Bell: That's a fair challenge and I'd want to demo the permission model specifically rather than hand-wave it.
+[16:29] Elliot Greene: Then let's do that in the next session. Right — I have to go. Priya, you've got my notes. Thanks both.
+[16:39] Maya Chen: Thanks Elliot, appreciate the directness.
+[16:43] Elliot Greene: [inaudible] — thanks.
+[16:47] Priya Shah: Okay. He's off. He's actually much friendlier than that.
+[16:53] Maya Chen: He was completely reasonable. I'd rather have that than someone who says yes to everything and then blocks it in week nine.
+[17:03] Priya Shah: Mm. That has happened.
+[17:07] Jon Bell: Can I tell a slightly relevant story?
+[17:10] Priya Shah: Sure.
+[17:12] Jon Bell: Before this I was on-call for a data platform at a company I won't name. And we had an integration that had been running fine for eleven months, and then one Tuesday at three in the morning it started silently dropping about four percent of records. Not failing — dropping.
+[17:34] Priya Shah: Oh no.
+[17:36] Jon Bell: Took us nine days to find. And the reason it took nine days is the exact thing you described — we could see that something was wrong downstream, we could not see which step, when, or how often. That's genuinely why I care about run history more than I care about the connector catalogue.
+[17:58] Priya Shah: Nine days.
+[18:00] Jon Bell: Nine days. I still think about it.
+[18:04] Priya Shah: We had something similar with a HubSpot sync. Not nine days. Four. But similar.
+[18:12] Maya Chen: Shall we do the build, Jon?
+[18:15] Jon Bell: Yeah. Sharing now. [pause] Priya, can you see the builder?
+[18:22] Priya Shah: Yes.
+[18:24] Jon Bell: So — triggers and actions on the left, the flow in the middle, config for the selected step on the right. A workflow can start from a SaaS event, a schedule, a webhook, a database query, or another workflow.
+[18:41] Jon Bell: I'll start this one from a record-change event, validate a few required fields, enrich from a second system, then branch. And the thing I want to emphasise, particularly for you given the backlog problem — we push people hard towards small reusable components. If your systems group builds ten good subflows, account lookup, approval, notification, incident creation, then the marginal cost of the eleventh business request drops a lot.
+[19:14] Priya Shah: That's — okay, that's actually the interesting bit for me. That's the backlog answer, potentially.
+[19:23] Jon Bell: It's the one that compounds, yes.
+[19:27] Priya Shah: How technical is it really? Because every vendor says no-code until you hit the one thing the connector doesn't do.
+[19:37] Jon Bell: Fair, and I won't pretend. Mapping and branching are visual. Transformations use expressions. On Enterprise you can package reusable JavaScript steps. There's a generic REST action and webhooks. We don't claim every workflow is no-code. The goal is that the workflow stays understandable even when an engineer supplied one custom component.
+[20:04] Priya Shah: That's a better answer than pretending my team will never touch code. I want to reduce dependency, not eliminate engineers.
+[20:14] Jon Bell: Right, and in your case I'd argue the goal is to move your systems group up the stack — they build the components, the business assembles them.
+[20:26] Priya Shah: That's the model I've been trying to sell internally for two years.
+[20:32] Maya Chen: Then let's make that explicit in the pilot criteria rather than leaving it implied.
+[20:38] Priya Shah: Yes. Please.
+[20:41] Jon Bell: Let me show run history since it came up. [pause] Filter by workflow, status, time, business field. Open a run and you get every step, inputs, outputs, timing, retries, any human approval.
+[20:59] Priya Shah: Can I see a failed one?
+[21:02] Jon Bell: Yeah. [pause] So this one timed out on the third step, retried twice, then routed to the exception queue. And you can see the payload it was carrying at the point of failure — which, for you, is precisely the thing you'd want masked.
+[21:22] Priya Shah: Yes. Elliot would have opinions about that screen.
+[21:27] Jon Bell: Elliot should have opinions about that screen.
+[21:31] Priya Shah: What about schema changes? We've had integrations break because someone renamed a field and nothing said anything.
+[21:40] Jon Bell: We cache metadata but refresh it, and mapping errors surface on the run. For high-impact flows I'd recommend explicit validation at the start rather than assuming every source field is populated. You can also alert when error rates cross a threshold.
+[22:00] Priya Shah: I'd want that in the evaluation. A demo with clean data proves nothing.
+[22:07] Jon Bell: Then give us messy data. Genuinely.
+[22:11] Maya Chen: Integrations — you'd said HubSpot, Teams, Jira and Azure AD are the important ones, and Databricks would be via API initially?
+[22:23] Priya Shah: That's right. Databricks is not phase one. I put it on the list so you'd tell me if it was impossible.
+[22:32] Jon Bell: It's not impossible. It's API work.
+[22:36] Maya Chen: Which one's the deal-breaker if it doesn't work well?
+[22:41] Priya Shah: The system of record. If that connector's unreliable none of the rest matters. After that, the collaboration and data systems, because that's where context goes missing.
+[22:55] Jon Bell: For your stack it's a mix of native connectors and API-based options. In a pilot I'd want to validate each required operation rather than pointing at a logo on our integrations page.
+[23:10] Priya Shah: Good, because I have been burned by the logo page.
+[23:15] Maya Chen: Everyone has. [pause] Sorry, is that — is that an alarm at your end?
+[23:22] Priya Shah: It's a fire alarm test. It's Friday. They do it every Friday at half eleven and every Friday I forget.
+[23:31] Maya Chen: Do you need to —
+[23:33] Priya Shah: No, no, it's a test, it stops in about — [pause] there. Gone. Sorry.
+[23:41] Maya Chen: No problem.
+[23:44] Priya Shah: Where were we.
+[23:46] Maya Chen: Commercials, if you're happy to.
+[23:50] Priya Shah: Go on then.
+[23:53] Maya Chen: Growth starts at eighteen hundred a month for up to thirty users on an annual agreement. Enterprise is custom-priced — that's where advanced governance, the security capabilities, and higher usage sit. Given your list, you're an Enterprise conversation, not a Growth one.
+[24:15] Priya Shah: Honestly? I'm not ready to react to that.
+[24:19] Maya Chen: That's fine.
+[24:22] Priya Shah: I don't mean that as a negotiating position. Procurement will not have a serious pricing conversation until security tells us whether the BAA requirement can be met. If the answer's no, the price is irrelevant.
+[24:38] Maya Chen: That's completely logical and I'm not going to push. What I'd ask is that when we do get to it, you let me build the model around your actual user population rather than a headline number.
+[24:53] Priya Shah: What counts as a user? Because we'd have a small number of builders and a lot of people who only approve something or get a notification.
+[25:04] Maya Chen: Builders and full workspace users are the licensed ones. Approval-only or notification-only can be structured differently depending on package. I'm deliberately not quoting you a figure today because without the user model any figure I give is misleading.
+[25:23] Priya Shah: Please make that explicit in the proposal when it comes. I don't want to discover in month four that every occasional approver needs a full seat.
+[25:35] Maya Chen: It'll be itemised. Assumed builders, viewer and approver population, expected workflow volume, one-time services separately.
+[25:46] Priya Shah: Thank you.
+[25:49] Maya Chen: How would you make the ROI case internally? Headcount, cycle time, errors, engineering maintenance?
+[25:58] Priya Shah: Not headcount. I wouldn't sell it that way and it also isn't true. The stronger case is consistency and speed. We've got expensive people doing coordination work because the systems don't carry enough process context. And there's the backlog cost, which is harder to quantify but it's real — eleven weeks of waiting has a number attached to it somewhere.
+[26:26] Maya Chen: For a pilot we can baseline one or two things before automating. Elapsed time, manual touches, exception rate, or systems-group hours spent on requests.
+[26:40] Priya Shah: The last one. That's the one my director cares about.
+[26:45] Maya Chen: Then that's the baseline.
+[26:48] Priya Shah: I'd also measure adoption. A technically correct workflow that everyone routes around is a failed implementation. That's literally what happened with our last internal tool.
+[27:02] Maya Chen: Who owns this day to day if it goes ahead?
+[27:07] Priya Shah: I'm the sponsor — business systems. Security can veto, as you've seen. Privacy counsel reviews the DPA and the BAA. Procurement handles final terms.
+[27:22] Maya Chen: Four gates.
+[27:24] Priya Shah: Four gates. Welcome to healthcare.
+[27:28] Maya Chen: And operationally?
+[27:31] Priya Shah: A small central group owning standards, business teams contributing requirements. With naming conventions, change control on the important ones, and a rule that someone other than the creator can understand each production flow.
+[27:48] Jon Bell: That matches what we recommend. A few centrally owned templates, defined publishing rights, dev separated from prod.
+[27:58] Priya Shah: Do you have version history? If someone changes a condition on a Friday and it breaks, can we see what changed?
+[28:07] Jon Bell: Version history and change metadata, yes. Rollback and promotion patterns vary by workflow and package. For your evaluation I'd suggest we include a change-management scenario rather than just building it once.
+[28:23] Priya Shah: Yes. That's closer to a real deployment.
+[28:28] Maya Chen: Timing. What are we working towards?
+[28:32] Priya Shah: No production launch before Q4. That's firm. But we could run a non-sensitive proof of concept in August — synthetic data, or clearly non-PHI.
+[28:47] Maya Chen: What has to be true to move from evaluation to a decision?
+[28:53] Priya Shah: One representative workflow working with real enough data. The security gates understood, and by understood I mean answered. A commercial model without hidden scaling surprises. And the people who'd operate it believing they can own it.
+[29:12] Maya Chen: And the honest alternative?
+[29:15] Priya Shah: Power Automate. Or just improving what we already have. Those are the real competitors, not another workflow vendor.
+[29:26] Maya Chen: Then let's define the pilot against the status quo and against Power Automate. And I'll say the same thing I said to Elliot — a valid outcome is "don't buy OrbitFlow" if the existing approach meets the criteria more cheaply.
+[29:44] Priya Shah: I'll hold you to that.
+[29:47] Maya Chen: Please do.
+[29:50] Priya Shah: So — where does that leave us. My read is I would still consider a limited pilot with synthetic or clearly non-PHI data. But I want to be explicit about something: a successful pilot would not automatically mean we can deploy broadly. Those are two different decisions and they have different approvers.
+[30:15] Maya Chen: That's understood and I'd rather you said it now.
+[30:20] Priya Shah: Good.
+[30:23] Maya Chen: Concrete next steps then. We send the security pack — SOC 2, subprocessors, DPA, architecture diagram, retention docs, pen test summary. Separately, and this is the one that matters, a written position on the BAA within a week. You send us the representative workflow and some sample data, ideally messy. And we jointly write three to five pilot success criteria.
+[30:53] Priya Shah: And a session on the permission model for Elliot.
+[30:58] Maya Chen: And a session on the permission model for Elliot. Jon, can you own that?
+[31:04] Jon Bell: Yeah. I'd want an hour and I'd want Elliot to bring his worst-case scenario rather than me showing him a clean one.
+[31:14] Priya Shah: He will have one ready. He always has one ready.
+[31:19] Maya Chen: Let me summarise. You don't need automation for its own sake. The opportunity is a systems group that builds components rather than fulfilling tickets, and a small number of cross-system processes that are observable and less dependent on individuals. The blocker is regulatory, not technical, and until it's answered nothing else moves.
+[31:47] Priya Shah: That's an accurate summary.
+[31:51] Maya Chen: One more thing — can you write down the assumptions we made today? Some of what you told me was approximate and I don't want it hardening into a requirement by accident.
+[32:04] Priya Shah: You want me to do that?
+[32:07] Maya Chen: No, sorry — I'll do that. I'll send a recap with open questions separated from confirmed requirements.
+[32:16] Priya Shah: Ah. Yes. That would be useful, actually, because half of what I said about the backlog was from memory.
+[32:25] Maya Chen: Then it goes in the open questions column.
+[32:29] Priya Shah: Great. Thanks both. And apologies again for the alarm.
+[32:35] Jon Bell: Genuinely the least disruptive thing that's happened to me this week.
+[32:41] Priya Shah: [laughs] Bye.
+[32:44] Maya Chen: Thanks Priya.

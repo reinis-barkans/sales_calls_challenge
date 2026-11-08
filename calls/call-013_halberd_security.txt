@@ -1,0 +1,193 @@
+CALL ID: CALL-013
+DATE: 2026-09-15
+VENDOR: OrbitFlow
+CUSTOMER: Halberd Security
+INDUSTRY: Cybersecurity services
+COMPANY SIZE: 600 employees
+STAGE: Renewal / expansion
+DURATION: 18 minutes
+PARTICIPANTS:
+- Ruth Adeyemi, Customer Success Manager, OrbitFlow
+- Nina Patel, Solutions Engineer, OrbitFlow
+- Tobias Lund, VP Service Delivery, Halberd Security
+- Grace Okonkwo, Chief Information Security Officer, Halberd Security
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Ruth Adeyemi: Morning. Tobias, Grace. I'll be quick because I know you both hate long calls.
+[00:07] Grace Okonkwo: I hate long calls.
+[00:09] Tobias Lund: She really does.
+[00:11] Ruth Adeyemi: Three things. Renewal, which is straightforward. The AI question, which is the reason Nina's here. And one governance item.
+[00:21] Grace Okonkwo: Do the renewal in one sentence.
+[00:24] Ruth Adeyemi: You're renewing in November, usage is healthy, six builders all active, error rate under one percent, and the only change is a seven percent standard uplift.
+[00:36] Grace Okonkwo: That's fine.
+[00:38] Tobias Lund: Grace, we should probably —
+[00:40] Grace Okonkwo: It's fine, Tobias. Seven percent on a number that size is not worth an hour of my life.
+[00:47] Tobias Lund: [laughs] Alright.
+[00:49] Ruth Adeyemi: That's the fastest renewal conversation I've had this year.
+[00:53] Grace Okonkwo: You'll have harder ones.
+[00:55] Ruth Adeyemi: I had one on Tuesday.
+[00:58] Grace Okonkwo: I'm sure. Right — AI.
+[01:01] Tobias Lund: So context for Nina. We've had AI features disabled at the workspace level since day one. That was Grace's condition of purchase.
+[01:12] Grace Okonkwo: It was a condition, yes.
+[01:14] Nina Patel: And now?
+[01:16] Grace Okonkwo: Now I want to turn it on, in one place, under conditions I define. And I want to understand exactly what I'm agreeing to before I do.
+[01:27] Nina Patel: What changed?
+[01:29] Grace Okonkwo: Two things. Our own clients started asking us to do things that need it. And I've had eighteen months to read your documentation and the model providers' terms, so I now understand the shape of the risk rather than just being frightened of it.
+[01:47] Nina Patel: That's a more considered position than most.
+[01:51] Grace Okonkwo: I'm a CISO at a security firm. If I can't reason about this properly I should find another job.
+[01:59] Tobias Lund: The use case is mine, so let me describe it.
+[02:03] Nina Patel: Go ahead.
+[02:05] Tobias Lund: We run managed detection for about ninety clients. When an incident closes, an analyst writes a summary for the client. It's the last thing they do and it's the thing they most resent, because they've just spent six hours on the incident and now they have to write four paragraphs.
+[02:26] Nina Patel: And the quality varies.
+[02:29] Tobias Lund: The quality varies enormously. Our best analysts write excellent summaries. Our newest analysts write summaries that generate three follow-up questions from the client.
+[02:41] Grace Okonkwo: Which is a cost we absorb.
+[02:44] Tobias Lund: Which is a cost we absorb and which annoys everybody.
+[02:49] Nina Patel: So the proposal is drafting the summary from the incident record.
+[02:54] Tobias Lund: Drafting. Not sending. The analyst reviews and edits and sends.
+[03:00] Grace Okonkwo: That distinction is not negotiable.
+[03:03] Nina Patel: It shouldn't be. And I'd design it so the analyst can't accidentally skip the review — the draft goes into an approval step, not into an outbound action.
+[03:15] Grace Okonkwo: Can the approval step be bypassed?
+[03:18] Nina Patel: Not by the analyst. By someone with permission to edit the workflow, yes, because they could remove the step.
+[03:26] Grace Okonkwo: Who has that permission?
+[03:29] Tobias Lund: Our six builders.
+[03:31] Grace Okonkwo: Then that's the control point, not the workflow.
+[03:35] Nina Patel: That's exactly right, and it's the answer I'd want you to arrive at. The workflow is the mechanism. The permission model is the control.
+[03:46] Grace Okonkwo: Can I restrict who can build AI steps separately from who can build workflows generally?
+[03:53] Nina Patel: [pause] That's a permissions-granularity question and I want to give you an accurate answer rather than a helpful one. I know you can restrict which models are allowed at the administrator level, and you can disable AI features per workspace. Whether "can author an AI step" is a distinct permission from "can author a workflow" — I need to confirm.
+[04:20] Grace Okonkwo: Confirm it and tell me either way.
+[04:24] Nina Patel: I will. And if the answer is no, the workaround is a separate workspace where AI is enabled and only two people can build.
+[04:34] Grace Okonkwo: That's acceptable. Possibly better, actually.
+[04:38] Tobias Lund: It's better operationally too. Keeps it contained.
+[04:43] Grace Okonkwo: Next. What leaves our tenancy?
+[04:47] Nina Patel: Whatever the AI step is given as input. So the design question is what you put in the prompt, and that's yours to decide.
+[04:57] Grace Okonkwo: What would you put in it?
+[05:00] Nina Patel: For this use case? The structured incident fields — detection time, classification, affected assets by identifier not by name, actions taken, resolution. What I wouldn't put in it is raw log content or anything from the client's environment verbatim.
+[05:20] Grace Okonkwo: Why not?
+[05:22] Nina Patel: Because you can't sanitise it reliably and you'd be making a promise to ninety clients that you can't audit.
+[05:31] Grace Okonkwo: [pause] Good.
+[05:33] Tobias Lund: Would a summary built from structured fields actually be any good?
+[05:39] Nina Patel: Honestly? Probably good enough to save your analysts fifteen minutes, and not good enough to send unedited. Which is what you asked for.
+[05:50] Tobias Lund: Fifteen minutes times about four hundred incidents a month.
+[05:55] Grace Okonkwo: That's a real number.
+[05:57] Nina Patel: I'd test it on fifty historical incidents before believing my own estimate. Generate a draft for each, have an analyst score it, and see whether the time saving is real.
+[06:11] Tobias Lund: We could do that with closed incidents.
+[06:14] Nina Patel: You could do it this month, before you change anything in production.
+[06:20] Grace Okonkwo: Which model?
+[06:22] Nina Patel: You choose, within what your administrator allows. And the model configuration used is logged per run, so you can evidence which model produced which draft.
+[06:34] Grace Okonkwo: For how long?
+[06:36] Nina Patel: Within your configured retention. What's yours set to?
+[06:41] Tobias Lund: Ninety days, I think.
+[06:43] Grace Okonkwo: One hundred and eighty for anything client-facing.
+[06:47] Nina Patel: Then I'd check which bucket run records fall into for you, because that's the sort of thing that's assumed rather than verified.
+[06:56] Grace Okonkwo: Add it to the list.
+[06:58] Nina Patel: On the list.
+[07:00] Grace Okonkwo: Training. I know the answer but I want it said on this call.
+[07:05] Nina Patel: We do not use customer workflow content to train a shared OrbitFlow model. That's in your contract, not just in the documentation.
+[07:15] Grace Okonkwo: And the model provider?
+[07:18] Nina Patel: Depends on the provider and the arrangement. We use enterprise API arrangements where those exist and the providers are documented as subprocessors. I'm not going to make a blanket statement covering every provider, because it isn't true.
+[07:35] Grace Okonkwo: Which providers are on the allowed list currently?
+[07:39] Nina Patel: I'll send the current list with the subprocessor documentation rather than reciting it and getting one wrong.
+[07:47] Grace Okonkwo: Fine. And if a provider changes their terms?
+[07:52] Nina Patel: Subprocessor change notification. The notice period is contractual and it's in your agreement.
+[07:59] Grace Okonkwo: I'll look it up.
+[08:01] Ruth Adeyemi: It's thirty days for your contract. I checked before the call because I assumed you'd ask.
+[08:08] Grace Okonkwo: [pause] Thank you. That's good account management.
+[08:13] Ruth Adeyemi: It's the only reason I get invited back.
+[08:16] Tobias Lund: [laughs]
+[08:18] Grace Okonkwo: Last one on AI. What happens when it's wrong?
+[08:23] Nina Patel: The analyst catches it, because they're reviewing. But the failure mode you should actually worry about is not the obvious error — it's the plausible one. A summary that says the incident was contained at 14:20 when it was 16:20. Nobody catches that by reading, because it reads fine.
+[08:44] Grace Okonkwo: So the control is —
+[08:46] Nina Patel: The control is not putting facts in the summary that the analyst has to verify. Times, asset counts, classifications — those should be templated from the record directly, not generated. Let the model write the prose around fixed facts.
+[09:04] Grace Okonkwo: [pause] That is a very good answer.
+[09:08] Tobias Lund: That's better than what our analysts do now, frankly. They retype the times.
+[09:14] Nina Patel: Then that's a bug in your current process and you can fix it independently of any of this.
+[09:21] Tobias Lund: Noted.
+[09:23] Grace Okonkwo: Right. I'm supportive, subject to the four written answers.
+[09:29] Nina Patel: Which are — AI-step permission granularity, retention bucket for run records, current allowed model list, and the subprocessor documentation.
+[09:41] Grace Okonkwo: Correct.
+[09:43] Ruth Adeyemi: And the fifty-incident test before anything goes live.
+[09:47] Tobias Lund: I'll set that up. Two weeks.
+[09:50] Ruth Adeyemi: Does that need a commercial conversation? AI usage sits within your run allocation but there's a consumption element.
+[09:59] Tobias Lund: How much?
+[10:01] Ruth Adeyemi: For four hundred incidents a month it's not material. I'll put a number on it so nobody's surprised, but I don't think it changes your renewal.
+[10:12] Grace Okonkwo: Put the number in anyway.
+[10:15] Ruth Adeyemi: It'll be in the renewal papers.
+[10:18] Grace Okonkwo: Good. What's your third thing?
+[10:21] Ruth Adeyemi: Governance, and it's small but it's the kind of thing that isn't small in eighteen months. You've got six builders and no defined promotion process. Anyone can publish to production.
+[10:35] Tobias Lund: That's true.
+[10:37] Grace Okonkwo: Is it? Nobody's ever raised that.
+[10:41] Tobias Lund: It's never been a problem because it's the same six people and they're all senior.
+[10:47] Ruth Adeyemi: It's never been a problem yet. But you're a security company with no change control on production automation, and I'd rather point that out than have your own auditor point it out.
+[10:59] Grace Okonkwo: [pause] That's an uncomfortable sentence.
+[11:03] Ruth Adeyemi: I said it deliberately.
+[11:05] Grace Okonkwo: Tobias, why don't we have change control on this?
+[11:09] Tobias Lund: Because we've got six people and we all talk to each other.
+[11:14] Grace Okonkwo: That's not a control, that's a culture.
+[11:17] Tobias Lund: It's a culture that's worked.
+[11:20] Grace Okonkwo: It's a culture that works until someone's on holiday and someone else is in a hurry.
+[11:26] Nina Patel: Can I suggest the lightest version? You don't need a full dev-test-prod pipeline for six people. What you need is that publishing to production requires a second person, and that there's version history so you can see what changed. The version history exists already.
+[11:45] Tobias Lund: Does it? I've never looked at it.
+[11:48] Nina Patel: Version history and change metadata on every workflow. You can see what changed and when and by whom.
+[11:56] Tobias Lund: [pause] Right. That's useful.
+[12:00] Grace Okonkwo: How have you been operating this for eighteen months without knowing that?
+[12:05] Tobias Lund: Because nothing's broken, so I've never needed to look.
+[12:10] Ruth Adeyemi: Which is fair, but it's also the reason I raise it now rather than after something breaks.
+[12:17] Grace Okonkwo: Can we require two-person publishing?
+[12:20] Nina Patel: Enterprise supports governance around who can publish where, so the mechanism is separating build permissions from publish permissions. Whether there's a formal two-person approval gate specifically — that's the same permissions question I'm already checking. I'll fold it into the same answer.
+[12:41] Grace Okonkwo: Five written answers now.
+[12:44] Nina Patel: Five.
+[12:46] Grace Okonkwo: You're very willing to say "I'll check."
+[12:50] Nina Patel: I'd rather be slow and right. Especially with you.
+[12:55] Grace Okonkwo: [laughs] Especially with me, yes.
+[12:59] Tobias Lund: Can I raise one thing that isn't on the agenda?
+[13:03] Ruth Adeyemi: Go on.
+[13:05] Tobias Lund: We've had two people ask about a mobile experience. Analysts who want to approve something from a phone at two in the morning.
+[13:15] Ruth Adeyemi: What's the honest answer, Nina?
+[13:18] Nina Patel: The web experience works on a phone in the sense that it renders. It is not a mobile product and I wouldn't sell it as one. If your analysts need to approve at two in the morning from a phone, that's going to be a poor experience.
+[13:35] Tobias Lund: Is there a workaround?
+[13:37] Nina Patel: The approval could be surfaced somewhere they already are. Teams or Slack — a notification with the context and an action, rather than a link into our UI.
+[13:49] Tobias Lund: We're in Teams.
+[13:51] Nina Patel: Then that's the pattern. It's more design work than clicking a setting, but it's the right answer and it'd work better than a mobile app would.
+[14:02] Tobias Lund: Can you scope that?
+[14:04] Nina Patel: I'll include it in what I send. Rough shape, not an estimate.
+[14:10] Grace Okonkwo: Two in the morning approvals worry me slightly.
+[14:14] Tobias Lund: Why?
+[14:16] Grace Okonkwo: Because a tired person approving something on a phone is not a control, it's a formality.
+[14:23] Tobias Lund: [pause] That's fair.
+[14:26] Grace Okonkwo: What are they approving?
+[14:28] Tobias Lund: Escalation to the client's out-of-hours contact.
+[14:33] Grace Okonkwo: Then it's low risk and it's fine. If it were anything touching client systems I'd say no.
+[14:41] Nina Patel: That's a useful distinction for the design. Some approvals belong on a phone and some don't, and you'd want that decided per workflow rather than as a platform setting.
+[14:54] Grace Okonkwo: Agreed.
+[14:56] Ruth Adeyemi: Right, I said I'd be quick and we're at fifteen minutes. Let me summarise. Renewal is agreed subject to papers — seven percent, no other changes, AI consumption estimate included. AI goes on in a contained workspace with two builders, after the fifty-incident test, subject to five written answers from Nina. And you'll introduce a publish permission separate from a build permission, once we've confirmed the mechanism.
+[15:28] Grace Okonkwo: That's accurate.
+[15:30] Tobias Lund: And the Teams approval scoping.
+[15:33] Ruth Adeyemi: And the Teams approval scoping, which is exploratory rather than committed.
+[15:39] Grace Okonkwo: When do we get the written answers?
+[15:42] Nina Patel: End of the week. If one of them takes longer I'll send four and tell you which one's outstanding rather than holding all five.
+[15:52] Grace Okonkwo: Do that. I'd rather have four.
+[15:56] Ruth Adeyemi: And the renewal papers from me by Wednesday.
+[16:00] Grace Okonkwo: Tobias will read them.
+[16:02] Tobias Lund: I will read them.
+[16:04] Grace Okonkwo: He won't read them.
+[16:06] Tobias Lund: [crosstalk] [laughs] I'll read the numbers.
+[16:09] Ruth Adeyemi: Read clause fourteen at least. It's the training one and it's the one Grace will ask you about.
+[16:16] Grace Okonkwo: I've read clause fourteen. Three times.
+[16:20] Ruth Adeyemi: I know you have.
+[16:22] Grace Okonkwo: Right. Anything else?
+[16:25] Ruth Adeyemi: One question, and it's for my benefit rather than yours. Eighteen months in — what's the thing that's worked best?
+[16:34] Tobias Lund: The client onboarding workflow. Without question. We used to take eleven days to bring a new managed detection client live and now it's four.
+[16:46] Grace Okonkwo: And it's consistent, which matters more than the number.
+[16:51] Tobias Lund: It's consistent. That's the thing. Eleven days used to sometimes be twenty.
+[16:57] Ruth Adeyemi: And the worst?
+[17:00] Grace Okonkwo: The fact that I've just found out we have no change control and version history exists that nobody's opened.
+[17:08] Ruth Adeyemi: [laughs] That's fair.
+[17:11] Grace Okonkwo: It's not a criticism of the product. It's a criticism of us, and slightly of you for not mentioning it eighteen months ago.
+[17:20] Ruth Adeyemi: It is slightly a criticism of us. I'll take it.
+[17:24] Grace Okonkwo: Good. Thank you both.
+[17:27] Tobias Lund: Thanks. Nina, send the five.
+[17:30] Nina Patel: Four, possibly. But by Friday.
+[17:33] Tobias Lund: [laughs] Bye.
+[17:35] Ruth Adeyemi: Bye both.

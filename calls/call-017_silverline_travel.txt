@@ -1,0 +1,64 @@
+CALL ID: CALL-017
+DATE: 2026-09-24
+VENDOR: OrbitFlow
+PROSPECT: Silverline Travel
+INDUSTRY: Travel and tourism
+COMPANY SIZE: 450 employees
+STAGE: Cold call
+DURATION: 5 minutes
+PARTICIPANTS:
+- Leo Grant, Account Executive, OrbitFlow
+- Chloe Barnes, Executive Assistant, Silverline Travel
+- Martine Duval, Director of Customer Operations, Silverline Travel (joined at 03:41)
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Chloe Barnes: Good afternoon, Silverline Travel.
+[00:03] Leo Grant: Afternoon. Could I speak to Martine Duval, please?
+[00:07] Chloe Barnes: Can I ask who's calling?
+[00:09] Leo Grant: Leo Grant, from OrbitFlow. And I'll save you the next question — she isn't expecting me.
+[00:16] Chloe Barnes: [pause] I appreciate the honesty. What's it regarding?
+[00:21] Leo Grant: Workflow automation. Which I know sounds like every other call you get.
+[00:27] Chloe Barnes: It sounds like the last three.
+[00:30] Leo Grant: I'd imagine. Can I ask you something instead, since you're the person who'd know?
+[00:36] Chloe Barnes: Depends what it is.
+[00:38] Leo Grant: Is Martine the right person for operational process problems, or is that somebody else? Because if I've got the wrong name I'd rather find out from you than waste her time.
+[00:50] Chloe Barnes: [pause] She's the right person. She's also very busy this week — we've got a supplier conference.
+[00:58] Leo Grant: Then I don't want to interrupt her. Would it be better if I called back next week?
+[01:05] Chloe Barnes: Honestly? Probably. Thursday or Friday.
+[01:10] Leo Grant: Thursday or Friday. Can I ask one more thing?
+[01:14] Chloe Barnes: Go on.
+[01:16] Leo Grant: When she does take a call like this, what makes her actually engage? Because I get about ninety seconds and I'd rather not waste them.
+[01:26] Chloe Barnes: [laughs] That's a new one.
+[01:29] Leo Grant: I've been doing this a while.
+[01:31] Chloe Barnes: [pause] She responds to specifics. If you say "workflow automation" she'll be polite for a minute and then get off. If you say something about our actual business she'll listen.
+[01:45] Leo Grant: That's genuinely helpful. Thank you.
+[01:48] Chloe Barnes: Hold on, actually — she's just come off her call. Do you want me to see if she's free?
+[01:56] Leo Grant: If you think it's a good moment. I'm happy to wait for Thursday if it isn't.
+[02:02] Chloe Barnes: Let me ask. [pause] Bear with me.
+[02:07] Leo Grant: Sure.
+[02:09] Chloe Barnes: [pause]
+[02:34] Chloe Barnes: — she can give you five minutes. I'm putting you through.
+[02:39] Leo Grant: Thank you, Chloe. Genuinely.
+[02:42] Chloe Barnes: Don't waste them.
+[02:44] Leo Grant: [laughs] No pressure.
+[02:47] Chloe Barnes: [pause] Connecting you now.
+[03:41] Martine Duval: Martine Duval.
+[03:43] Leo Grant: Martine, hi. Leo Grant from OrbitFlow. Chloe said five minutes so I'll be quick.
+[03:50] Martine Duval: She said three.
+[03:52] Leo Grant: [laughs] Then I'll be quicker. We work with customer operations teams where a booking or a case has to move through several systems and several people, and the failure mode is that nothing's actually broken — it's just sitting somewhere and nobody knows.
+[04:11] Martine Duval: [pause] Go on.
+[04:14] Leo Grant: In travel specifically, the version we see most is a disruption event. Flight cancels, and then there's rebooking, supplier notification, customer communication, and a refund or a credit, and those four things happen in four systems with people chasing between them.
+[04:34] Martine Duval: That is — yes. That's accurate.
+[04:38] Leo Grant: Is it a problem for you, or is it handled?
+[04:42] Martine Duval: It's handled badly. It's handled by a very good team working very hard, which is not the same as handled.
+[04:52] Leo Grant: That's the distinction I'd want to talk about, but not now, because you've got about ninety seconds left.
+[05:00] Martine Duval: You're watching the clock.
+[05:02] Leo Grant: Chloe was quite firm.
+[05:04] Martine Duval: [laughs] She is quite firm. Alright — send me something. Not a deck. Something short that describes what you'd actually look at.
+[05:15] Leo Grant: One page. And can I ask for thirty minutes in the week of the sixth? Not a demo. I'd want to understand the disruption process before I show you anything.
+[05:28] Martine Duval: Send me the page and copy Chloe. If the page is good she'll put it in the diary.
+[05:35] Leo Grant: Understood. Thank you for the five minutes.
+[05:39] Martine Duval: Three.
+[05:41] Leo Grant: [laughs] Three. Goodbye.

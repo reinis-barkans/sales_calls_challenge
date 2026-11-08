@@ -1,0 +1,229 @@
+CALL ID: CALL-007
+DATE: 2026-07-16
+VENDOR: OrbitFlow
+PROSPECT: Greenline Energy Services
+INDUSTRY: Renewable energy field services
+COMPANY SIZE: 2,300 employees
+STAGE: Discovery
+DURATION: 27 minutes
+PARTICIPANTS:
+- Maya Chen, Account Executive, OrbitFlow
+- Jon Bell, Solutions Engineer, OrbitFlow (joined at 09:12)
+- Carlos Mendes, Head of Digital Operations, Greenline Energy Services
+- Lucy Hart, Field Systems Product Manager, Greenline Energy Services
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Maya Chen: Hi both. Quick heads up — Jon, our solutions engineer, is stuck on another call and will join around ten past. So it's me for the first bit, which means if you ask me something deeply technical I'll write it down rather than guess.
+[00:16] Carlos Mendes: That's fine. Can you hear me alright? I'm at a site, the line's not brilliant.
+[00:22] Maya Chen: You're a bit windy but you're clear.
+[00:25] Carlos Mendes: [laughs] Story of my life.
+[00:28] Lucy Hart: I'm at a desk, so if Carlos drops I can carry on.
+[00:33] Maya Chen: Perfect. So — tell me what's actually happening today.
+[00:38] Carlos Mendes: Right. So the core of it is field exceptions. An installation gets blocked — equipment hasn't turned up, or somebody doesn't have the right permission, or access to the site isn't arranged. And the thing is, that exception is visible. It's in the system.
+[00:57] Maya Chen: But?
+[00:59] Carlos Mendes: But supervisors still coordinate the remediation through phone calls and spreadsheets. So we can see the problem in three different dashboards and the actual fixing of it happens over the phone.
+[01:14] Maya Chen: So it's not a visibility problem.
+[01:17] Carlos Mendes: It's absolutely not a visibility problem. We've got more visibility than we know what to do with. It's a — I don't know what you'd call it.
+[01:27] Lucy Hart: It's a coordination problem.
+[01:29] Carlos Mendes: It's a coordination problem, yeah. Nothing moves the work along.
+[01:34] Maya Chen: That's actually a distinction I wish more people made. We see two separate things — connecting systems, which you've largely done, and operating the process on top of the connections, which is where the pain usually sits.
+[01:50] Carlos Mendes: Then you've got us.
+[01:53] Maya Chen: How long does a blocked installation typically sit?
+[01:57] Carlos Mendes: Depends who's on. Some supervisors are brilliant and it's an hour. Others, it's two days.
+[02:05] Lucy Hart: That variance is the actual problem, I'd say. It's not that the average is bad. It's that we can't predict it.
+[02:14] Maya Chen: Do you have numbers?
+[02:16] Lucy Hart: Some. We have outcome metrics — installations completed, first-time-fix rate, that sort of thing. Operational telemetry is weaker. We can tell you something was late. We're much worse at telling you why, or which dependency failed, or whether the same failure happened fifteen times last month.
+[02:38] Maya Chen: That last one comes up in literally every one of these conversations.
+[02:44] Lucy Hart: I imagine it does.
+[02:47] Maya Chen: Let me try a candidate workflow and you tell me if it's the right one. An installation is blocked because equipment or permissions are missing. The system creates the appropriate remediation task, notifies regional operations, and keeps Dynamics updated as the issue changes state.
+[03:08] Carlos Mendes: [pause] That's — yeah. That's it. The last part especially.
+[03:14] Maya Chen: Why the last part?
+[03:16] Carlos Mendes: Because right now Dynamics goes stale the moment a human starts working the problem by phone. So the record says "blocked, awaiting equipment" and actually the equipment arrived yesterday and someone's already rescheduled it, but nobody's updated the system because they were busy fixing it.
+[03:38] Maya Chen: And then your reporting is wrong.
+[03:41] Carlos Mendes: Then everything downstream is wrong. Power BI's beautiful and it's lying.
+[03:47] Maya Chen: [laughs] That's a good line.
+[03:50] Carlos Mendes: It's not mine, someone said it in a steering meeting and I've been stealing it ever since.
+[03:57] Maya Chen: One caveat I'd expect you to raise — what happens when it goes wrong? Missing data, an API timing out, an approver doing nothing for two days?
+[04:08] Lucy Hart: You're asking our question for us.
+[04:11] Maya Chen: I'd rather ask it than have it asked in month three.
+[04:16] Lucy Hart: Then yes. That's exactly what we'd want to test. The happy path is not the difficult part.
+[04:23] Maya Chen: And there's a specific one for you that I want to raise, because I looked at your notes. Connectivity from some field locations is intermittent, so workflows can't assume the mobile app is always online.
+[04:38] Carlos Mendes: Correct. And this is the thing that kills most vendors.
+[04:43] Lucy Hart: We had one demo where the entire premise was real-time push notifications to engineers. Which is lovely until you're in a valley in mid-Wales.
+[04:55] Carlos Mendes: Or Scotland. Half our Scottish sites, you get one bar if you stand on the transformer housing.
+[05:03] Maya Chen: Please tell me nobody stands on the transformer housing.
+[05:07] Carlos Mendes: [laughs] I'm not answering that.
+[05:11] Maya Chen: Right, I'm writing that down as a question for Jon rather than answering it myself. My general understanding is you'd design the workflow so the sync from the mobile app is eventual rather than assumed, and the workflow tolerates delay rather than treating it as failure. But how that's actually built is his answer, not mine.
+[05:33] Lucy Hart: That's the right shape of answer at least.
+[05:37] Maya Chen: Talk me through the stack.
+[05:39] Carlos Mendes: Microsoft Dynamics 365. Power BI. Teams. Azure Functions. And a custom field-service mobile app that we built ourselves.
+[05:51] Maya Chen: The mobile app — does it expose APIs?
+[05:55] Lucy Hart: It does. That's my area. It's got a reasonable API surface, it's documented, it's not beautiful but it works.
+[06:04] Maya Chen: And which of these is the system of record?
+[06:08] Carlos Mendes: Dynamics for the work order. The mobile app for what actually happened on site. And those two disagree more often than I'd like.
+[06:19] Maya Chen: And Power BI?
+[06:21] Lucy Hart: Power BI is an output layer. It's not a system of record, it just reads.
+[06:27] Maya Chen: Understood. And I'm guessing you have Power Automate.
+[06:32] Carlos Mendes: [laughs] Of course we have Power Automate.
+[06:36] Maya Chen: Tell me honestly how it's going.
+[06:39] Carlos Mendes: We use it heavily. And we get favourable licensing on it, which matters more than I'd like it to.
+[06:47] Maya Chen: But.
+[06:49] Carlos Mendes: But complex flows are hard for operations to troubleshoot. When something breaks, it comes to my team, and my team is six people supporting two and a half thousand.
+[07:02] Lucy Hart: And there's a knowledge problem. The people who can debug it aren't the people who understand the process.
+[07:10] Carlos Mendes: So I'm exploring alternatives. That's what this is. I want to be honest that it's exploration, not a procurement process.
+[07:20] Maya Chen: I appreciate that and I'd rather know now.
+[07:24] Lucy Hart: I should clarify something Carlos said, actually. About regional ownership.
+[07:30] Carlos Mendes: Go on.
+[07:32] Lucy Hart: Carlos tends to say most regions can't maintain their own automations, and that's broadly true. But two of them already have local Power Automate specialists. So the operating model isn't completely centralised today, and if we designed as though it were, those two regions would just — carry on doing their own thing.
+[07:56] Carlos Mendes: That's fair. That's a fair correction.
+[08:00] Maya Chen: Which two regions?
+[08:02] Lucy Hart: North and — Carlos, is it South West or South Central?
+[08:07] Carlos Mendes: South West. [inaudible] — sorry, say again?
+[08:12] Lucy Hart: North and South West.
+[08:15] Maya Chen: That's actually useful. Those two could be your pilot builders rather than your resistance.
+[08:22] Lucy Hart: [pause] That's a thought.
+[08:25] Carlos Mendes: That's a better thought than I'd had, honestly.
+[08:29] Maya Chen: It's not mine originally. Most of the successful rollouts I've seen started with the people who were already building things, not the people who needed convincing.
+[08:41] Carlos Mendes: Hm. Lucy, note that down.
+[08:44] Lucy Hart: Noted.
+[08:47] Maya Chen: While we're waiting for Jon — can I ask a slightly personal question?
+[08:52] Carlos Mendes: Go on.
+[08:54] Maya Chen: Were you field originally? You talk about it like someone who's been out there.
+[09:00] Carlos Mendes: Six years. Wind, mostly. I was a technician then a supervisor and then somebody made the mistake of putting me near a computer.
+[09:10] Maya Chen: [laughs] That explains a lot.
+[09:12] Jon Bell: — hello? Sorry. Sorry, I'm here. Apologies, that ran over.
+[09:18] Maya Chen: No problem. Jon, quick catch-up. Greenline are Dynamics, Power BI, Teams, Azure Functions, and a custom field-service mobile app they built themselves which exposes APIs. Power Automate incumbent, used heavily, favourable licensing. The use case is blocked installations — create remediation task, notify regional ops, keep Dynamics current as the issue changes.
+[09:44] Jon Bell: Got it.
+[09:46] Maya Chen: And the one I flagged for you: connectivity from some field locations is intermittent, so workflows can't assume the mobile app is online.
+[09:56] Jon Bell: Right. That's a real design constraint and it's a good one to raise early. Can I ask a question back?
+[10:04] Carlos Mendes: Please.
+[10:06] Jon Bell: When a device comes back online and syncs, do you get an event, or does the record just quietly change?
+[10:14] Lucy Hart: You get an event. The app publishes on sync.
+[10:19] Jon Bell: Then you're in a much better position than most. The pattern would be that the workflow doesn't poll the device and doesn't assume presence. It reacts to the sync event when it arrives, and separately it has a timeout rule — if we haven't heard anything in N hours, that itself becomes an exception rather than a silent hang.
+[10:42] Carlos Mendes: So the not-hearing is also an event.
+[10:46] Jon Bell: The absence of a signal is a signal. Yes. And that's usually the bit people forget to build.
+[10:53] Lucy Hart: We definitely haven't built that.
+[10:56] Jon Bell: Almost nobody has, first time round.
+[11:00] Carlos Mendes: What happens to the run in the meantime? Does it just sit there?
+[11:05] Jon Bell: Each run keeps state, so yes, it can sit in a waiting state without consuming anything or falling over. You can branch on data, pause for approvals, retry external actions, set timeout rules, and send an exception into a queue rather than failing silently.
+[11:24] Carlos Mendes: Can the queue be owned by a team? Because our supervisors rotate and if it's assigned to a person, that person's on leave.
+[11:34] Jon Bell: Yes. Route to a group, resolve a person dynamically from a field, or use an on-call style fallback. And the run history persists so you can see the inputs, which steps ran, and where it stopped.
+[11:50] Carlos Mendes: On-call is interesting for us. Field ops genuinely does run a rota.
+[11:57] Jon Bell: Then that maps well. I'd want to look at how the rota is stored, because ideally we resolve from your source of truth rather than maintaining a second copy.
+[12:09] Lucy Hart: It's in Dynamics. Sort of.
+[12:12] Jon Bell: "Sort of" is doing some work in that sentence.
+[12:16] Lucy Hart: [laughs] It's in Dynamics for some regions and in a shared calendar for others.
+[12:22] Jon Bell: Right. So that's a thing to fix before or during, not after.
+[12:28] Carlos Mendes: Add it to the list.
+[12:31] Maya Chen: Jon, the big one. Dynamics.
+[12:34] Jon Bell: Yeah. So let me be straight about this because it's the thing that'll decide the evaluation. Dynamics 365 and Teams you've said are mandatory. There are integration routes to Dynamics — API-based, plus our generic REST action and webhooks. What I'm not going to tell you is that we have the deepest first-class Dynamics connector on the market, because Microsoft's own tooling will always be closer to Dynamics than we are.
+[13:04] Carlos Mendes: [pause] Right.
+[13:07] Jon Bell: I'd rather say that now than have you find it in week four.
+[13:12] Carlos Mendes: No, I — I appreciate it. But you understand that's the whole problem.
+[13:18] Jon Bell: I do.
+[13:20] Carlos Mendes: The first-class Dynamics gap is the biggest issue for us. Power Automate is already embedded here. It's licensed, it's approved, the platform team likes it. For us to work around all of that, OrbitFlow has to be materially better, not marginally better.
+[13:41] Maya Chen: That's the honest framing and I'm not going to argue with it. Can I ask what "materially better" would look like?
+[13:50] Carlos Mendes: [pause] Good question.
+[13:53] Lucy Hart: Troubleshooting. If a regional supervisor can look at a failed thing and understand what happened without raising a ticket to Carlos's team, that's material.
+[14:06] Carlos Mendes: Yeah. That. And reusability — if we build the remediation pattern once and use it in eight regions, rather than eight regions each building their own.
+[14:19] Jon Bell: Both of those are things I'd want to be tested on rather than claim. The reusability one specifically — we push people hard towards small reusable subflows rather than one big canvas, and that's the mechanism. But you should make me prove it.
+[14:38] Carlos Mendes: How would we prove it?
+[14:41] Jon Bell: Build the remediation flow for one region, then have someone from a different region adapt it for theirs, and time it. And have someone who didn't build it debug a deliberately broken run.
+[14:56] Lucy Hart: That's a good test.
+[14:59] Carlos Mendes: That's a very good test, actually.
+[15:02] Maya Chen: Can I add a slightly awkward version of it? Do the same test in Power Automate at the same time. If it's not better, you should know.
+[15:13] Carlos Mendes: You're suggesting we benchmark you against the incumbent.
+[15:18] Maya Chen: I'd rather lose in week two than lose in month eight.
+[15:23] Carlos Mendes: [laughs] Alright.
+[15:26] Lucy Hart: I'd have suggested it anyway.
+[15:29] Maya Chen: I know. I'd just rather say it first.
+[15:33] Jon Bell: One more integration question. The custom mobile app — you said it exposes APIs. Are those APIs reachable from outside your network?
+[15:44] Lucy Hart: They're behind Azure API Management. So yes, with authentication.
+[15:50] Jon Bell: Then that's straightforward. Where it gets harder is if anything sits on-premise, and from what you've described nothing does.
+[15:59] Carlos Mendes: Nothing does. We're fully Azure.
+[16:03] Jon Bell: Then the architecture is genuinely simple, which is unusual and I'll take it.
+[16:09] Maya Chen: Security. What's the list?
+[16:12] Carlos Mendes: Azure AD SSO, audit logs, preferably UK data residency, and controls that let us limit access by region.
+[16:22] Jon Bell: SAML SSO and SCIM on Enterprise, and Azure AD works with that. Audit logs cover administrative and workflow events. On residency — EU data residency is available on Enterprise. UK specifically I'd need to confirm rather than assume, and I'm not going to say yes to make the call go smoothly.
+[16:47] Carlos Mendes: You said preferably, Lucy, or was that me?
+[16:51] Lucy Hart: It was you, and it is preferably rather than mandatory. We're not regulated in that way. It's more that our procurement people prefer it.
+[17:02] Jon Bell: Then I'll get you a definitive written answer rather than a maybe.
+[17:07] Carlos Mendes: Fine.
+[17:09] Maya Chen: And the regional access controls?
+[17:12] Jon Bell: Role-based access and workspace separation are the mechanisms. If you want region A to be unable to see region B's runs, that's workspace design plus permissions. It's doable, but how you slice it matters and I'd want to design it rather than assert it.
+[17:33] Lucy Hart: That connects to the two-regions-with-specialists thing. If North and South West can build in their own space without touching everyone else's, that's actually attractive.
+[17:46] Jon Bell: That's a well-trodden pattern — central templates and standards, regional workspaces for local building, controlled promotion to production.
+[17:57] Carlos Mendes: And who controls the promotion?
+[18:00] Jon Bell: You define that. Typically a small central group owns standards and publishing rights, and the regions contribute. Enterprise supports stronger governance around who can publish where.
+[18:15] Carlos Mendes: That's more or less what I'd want.
+[18:19] Maya Chen: Shall I do commercials, or is it too early?
+[18:23] Carlos Mendes: Do it, but manage your expectations.
+[18:27] Maya Chen: Understood. Growth is eighteen hundred a month up to thirty users on an annual agreement. Enterprise is custom priced — advanced governance, the security capabilities, higher usage.
+[18:41] Carlos Mendes: The price might be defensible for central operations. What I need to understand is the licensing model.
+[18:50] Maya Chen: Go on.
+[18:52] Carlos Mendes: We've got a lot of supervisors. Hundreds. And most of them would approve or view something maybe once a week. They should not need full seats. If your model says they do, this is over before it starts.
+[19:09] Maya Chen: Builders and full workspace users are the licensed ones. Approval-only or notification-only populations can be structured differently depending on the package. I'm deliberately not giving you a number today, because without knowing your builder count versus your approver count any number I give you would be misleading in one direction or the other.
+[19:33] Carlos Mendes: How many builders would we have? Lucy?
+[19:37] Lucy Hart: Realistically? My team, so four. Plus the two regional specialists. Six.
+[19:44] Carlos Mendes: Six builders, several hundred approvers.
+[19:48] Maya Chen: Then that shape needs to be explicit in any proposal, and I'd want it in writing before you take it anywhere internally. I've seen this go wrong — someone quotes a headline number, the approver population gets discovered in month four, and then the whole thing is a credibility problem rather than a pricing problem.
+[20:11] Carlos Mendes: That's happened to us. Not with you.
+[20:15] Maya Chen: It happens a lot.
+[20:18] Lucy Hart: What about the Power Automate licensing thing? Because that's genuinely part of the comparison.
+[20:25] Maya Chen: It is, and I'm not going to pretend we can beat bundled licensing on price. If the decision is purely cost per seat, Microsoft wins and everyone knows it. The argument has to be that the operational cost — Carlos's six people fielding troubleshooting tickets — is bigger than the licence delta.
+[20:48] Carlos Mendes: That's the argument I'd have to make internally, yes.
+[20:53] Maya Chen: Can you get a number on it? Even a rough one — how much of your team's time goes on debugging flows for other people?
+[21:02] Carlos Mendes: [pause] I could measure it. Nobody's ever asked.
+[21:07] Lucy Hart: It's a lot. I'd guess a day a week across the team, maybe more.
+[21:13] Carlos Mendes: More.
+[21:15] Maya Chen: Then measure it for a month. That's free, and whichever way this goes you'll want the number.
+[21:22] Carlos Mendes: Alright.
+[21:25] Maya Chen: Decision process — who's involved?
+[21:29] Carlos Mendes: Digital operations researches options, so that's me. Enterprise architecture sets standards. And the Microsoft platform team will strongly influence the decision, which I'm saying carefully.
+[21:44] Maya Chen: Say it uncarefully.
+[21:46] Carlos Mendes: [laughs] The Microsoft platform team will not want this. Not because it's bad. Because it isn't Microsoft.
+[21:55] Maya Chen: That's useful. Is that a veto or an influence?
+[22:00] Carlos Mendes: Formally, influence. Practically — it depends how strongly they object.
+[22:07] Lucy Hart: They've killed things before.
+[22:10] Maya Chen: Then whatever we do next has to give you ammunition for that conversation specifically, rather than a general product story.
+[22:20] Carlos Mendes: Yes. That's exactly right.
+[22:23] Maya Chen: Timing?
+[22:25] Carlos Mendes: This is early exploration. Budgeting for next fiscal year starts in October, so if anything were to happen it'd be in that cycle.
+[22:36] Maya Chen: So no decision this year.
+[22:39] Carlos Mendes: Realistically, no. I want to be straight with you about that rather than let you forecast something that isn't there.
+[22:48] Maya Chen: I appreciate it, genuinely. It's better for both of us.
+[22:53] Carlos Mendes: You say that now.
+[22:56] Maya Chen: [laughs] I mean it. A slow honest deal is worth more than a fast imaginary one.
+[23:03] Carlos Mendes: Then let me tell you what I actually want, since we're being honest.
+[23:09] Maya Chen: Please.
+[23:11] Carlos Mendes: I'm curious, but this is still early. I'd rather have a roadmap and architecture conversation than a commercial proposal at this point. Show me where the Dynamics integration is going. Show me what the offline-tolerant patterns look like properly. If those two things look right, then in October I've got something to take into budgeting.
+[23:37] Maya Chen: That's a clear ask and it's a reasonable one. Jon, can you do a roadmap and architecture session?
+[23:45] Jon Bell: Yes, and I'd want to be careful about one thing — I can talk about architecture patterns in detail, and I can talk about roadmap direction, but I can't commit to roadmap dates. If I say "Dynamics improvements are coming in Q1" and they don't, I've done more harm than the gap did.
+[24:06] Carlos Mendes: Understood. Direction without dates is fine. Dates I wouldn't believe anyway.
+[24:13] Jon Bell: [laughs] Sensible.
+[24:16] Maya Chen: So — the session. What else would make it useful?
+[24:21] Lucy Hart: The reusability test we talked about. Even just walking through what it would look like rather than actually running it.
+[24:30] Jon Bell: I can do that as a worked example.
+[24:33] Carlos Mendes: And the offline patterns. Properly, not conceptually.
+[24:38] Jon Bell: Yes. I'll build something that has a sync-event trigger and a timeout branch and I'll break it on purpose so you can see what the failure looks like.
+[24:50] Carlos Mendes: That'd be the most useful thing anyone's shown me this year.
+[24:55] Maya Chen: And from us in writing — the UK residency answer, and a note on the regional workspace and permissions design.
+[25:04] Lucy Hart: Can I add one? The rota question. If you can tell us what "resolve on-call from the source of truth" needs from us, we can start fixing the shared-calendar thing regardless of whether we buy anything.
+[25:20] Jon Bell: I'll write that up. And you're right that it's worth doing either way.
+[25:26] Carlos Mendes: That's the second thing today that's worth doing either way.
+[25:31] Maya Chen: That's usually a good sign about a process, even if it's a bad sign about my quarter.
+[25:38] Carlos Mendes: [laughs]
+[25:40] Maya Chen: Let me summarise. You have visibility, not coordination. The candidate is blocked-installation remediation with Dynamics kept current through the lifecycle. The decisive gap is that Power Automate is embedded and first-class on Dynamics and we're not, so the case has to be operational cost, not licence cost. Offline tolerance is a hard constraint. Two regions already build their own and should be treated as allies rather than exceptions. And the next step is an architecture and roadmap session, not a proposal.
+[26:18] Carlos Mendes: That's a fair summary.
+[26:21] Lucy Hart: Better than my notes.
+[26:24] Maya Chen: I'll send it in writing, and I'll separate what you confirmed from what you estimated. Some of today's numbers were off the top of your heads and I don't want them turning into requirements.
+[26:38] Carlos Mendes: The day-a-week figure was Lucy guessing.
+[26:42] Lucy Hart: It was an educated guess.
+[26:45] Carlos Mendes: It was a guess.
+[26:47] Maya Chen: Then it goes in the estimates column and you'll replace it with a real one.
+[26:53] Carlos Mendes: Right, I need to get back to it. Thanks both.
+[26:58] Jon Bell: Thanks. Sorry again for being late.
+[27:02] Carlos Mendes: Not a problem. [inaudible] — bye.
+[27:06] Lucy Hart: Bye.

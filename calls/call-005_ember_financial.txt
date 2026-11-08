@@ -1,0 +1,240 @@
+CALL ID: CALL-005
+DATE: 2026-07-02
+VENDOR: OrbitFlow
+PROSPECT: Ember Financial
+INDUSTRY: Fintech
+COMPANY SIZE: 900 employees
+STAGE: Evaluation
+DURATION: 31 minutes
+PARTICIPANTS:
+- Leo Grant, Account Executive, OrbitFlow
+- Nina Patel, Solutions Engineer, OrbitFlow
+- Noah Williams, VP Operations Technology, Ember Financial
+- Hannah Cole, Senior Risk Engineer, Ember Financial
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Leo Grant: Morning Noah, morning Hannah. Nina's joining in a couple of minutes, she's coming off another call.
+[00:07] Noah Williams: No problem. Shall I set the frame?
+[00:11] Leo Grant: Please.
+[00:13] Noah Williams: So you should know we're running this as a bake-off. You and Tray.io. We've had a Tray proof of concept running for about six weeks. This isn't a discovery call for us, we know what we want. This is us testing whether you can do it.
+[00:31] Leo Grant: That's the most useful opening I've had this month. Can I ask what the Tray PoC has shown you?
+[00:39] Noah Williams: Connector breadth is genuinely good. No complaints there.
+[00:44] Hannah Cole: The engineers hate debugging it.
+[00:47] Noah Williams: Hannah's being blunt but she's not wrong. Large visual workflows are hard for our people to reason about. When something goes wrong at step forty of a sixty-step flow, the debugging experience is — it's not good.
+[01:04] Leo Grant: That's a fair criticism of the category, honestly, not just of them. Big visual workflows are hard to debug everywhere. What we'd argue is composition — small subflows rather than one enormous canvas — but I'd rather Nina show you that than me claim it.
+[01:25] Hannah Cole: We'll test it either way.
+[01:28] Leo Grant: You should.
+[01:30] Noah Williams: The other thing you should know is who has to be convinced. I'm the executive sponsor and I'm broadly positive. Hannah and platform engineering score technical fit. Then security, legal, procurement, and the COO approve. So there are a lot of ways for this to die and only one way for it to happen.
+[01:53] Leo Grant: Which of those is most likely to kill it?
+[01:57] Hannah Cole: Me.
+[01:58] Noah Williams: [laughs] Hannah.
+[02:00] Hannah Cole: I'm not joking. The main gates are model-risk and auditability. If you can't satisfy those, connector breadth will not save the project. It doesn't matter how many logos are on the integrations page.
+[02:16] Leo Grant: Then let's do those two first and I'll let Nina take most of it. Nina, are you —
+[02:23] Nina Patel: I'm here. Sorry. Sorry, I was on mute. I'm here.
+[02:28] Leo Grant: Perfect timing. Hannah's just said model risk and auditability are the gates and everything else is decoration.
+[02:36] Nina Patel: Right. Okay. Hannah, can you define what you mean by model risk in your context? Because in financial services that phrase means something specific and I don't want to answer a different question.
+[02:51] Hannah Cole: [pause] Good. Most vendors just start talking.
+[02:56] Nina Patel: I used to work in payments. I've been on your side of this call.
+[03:02] Hannah Cole: Then you'll know. We have a model risk management framework. Anything that produces an output which influences a decision has to be documented, validated, monitored, and periodically reviewed. If your product puts a language model in a decision path, that model is in scope, and getting something into scope is a nine-month process here.
+[03:28] Nina Patel: So the question isn't "is your AI good", it's "does using it drag us into model governance."
+[03:36] Hannah Cole: Exactly that.
+[03:39] Nina Patel: Then my honest answer is: it depends entirely on how you use it, and you have full control over whether you use it at all. AI steps are explicit, inspectable steps inside a workflow. They're not ambient and they're not in the execution path unless you put them there. Administrators can restrict which models are allowed. Enterprise customers can disable AI features entirely.
+[04:07] Hannah Cole: Can I have a workspace where they're disabled and another where they aren't?
+[04:13] Nina Patel: That's a workspace-level governance question and I believe yes, but I want to confirm the exact granularity rather than guess. I'll come back in writing.
+[04:25] Hannah Cole: Fine.
+[04:27] Noah Williams: Hannah, what's your actual position? Because in the internal meeting you were more open than this.
+[04:35] Hannah Cole: My position is that deterministic workflow steps are not a model risk problem and I'd support those tomorrow. Generative steps in a decision path are a nine-month problem. Generative steps that produce a summary a human reads, where the human makes the decision — that's a grey area and I'd want to argue it case by case.
+[04:58] Nina Patel: That grey area is where most of the value is, for what it's worth.
+[05:03] Hannah Cole: I know. That's why it's worth arguing about rather than banning.
+[05:09] Leo Grant: Can I note something for the record — the second use case Noah sent through was using AI to summarise incidents for operations leaders, without allowing sensitive records to train external models. Is that in the grey area or over the line?
+[05:26] Hannah Cole: Grey. A summary for a human reader is defensible. What's not defensible is if that summary silently becomes the input to something automated later.
+[05:39] Nina Patel: Then the design principle is that the AI output is a leaf node, not an intermediate value. It gets rendered to a person, it doesn't feed the next branch.
+[05:52] Hannah Cole: [pause] Yes. That's — yes, that's the right way to put it. Can you enforce that or is it a convention?
+[06:01] Nina Patel: Today it's a design convention plus review, not a hard platform constraint. I'm not going to tell you there's a switch labelled "AI outputs cannot feed decisions", because there isn't.
+[06:15] Hannah Cole: Thank you. That's useful and it's a real gap.
+[06:20] Nina Patel: It is a real gap. I'll feed it back.
+[06:24] Noah Williams: Auditability, Hannah.
+[06:27] Hannah Cole: Right. The list is: SOC 2, SSO and SCIM, exportable audit history, retention controls, encryption details, subprocessor review, EU residency for European records, and contractual language that our data is not used to train shared AI models.
+[06:49] Nina Patel: SOC 2 Type II is the baseline. SAML SSO and SCIM on Enterprise. Encryption in transit and at rest. Retention configurable within supported ranges. EU data residency available on Enterprise. Run events and metrics through APIs and webhooks, and audit export on Enterprise. And we don't use customer workflow content to train a shared OrbitFlow model.
+[07:17] Hannah Cole: The last one — contractual or marketing?
+[07:21] Leo Grant: It needs to be contractual for you to rely on it, and I'd expect legal to insist.
+[07:28] Hannah Cole: They will.
+[07:30] Hannah Cole: On exportable audit history — define exportable. Because I've had vendors mean "you can download a CSV from a UI" and that is not exportable.
+[07:43] Nina Patel: [laughs] API and webhook based, so programmatic. Several customers forward failures and audit events into their own tooling continuously rather than pulling reports. That's the pattern I'd recommend for you.
+[07:59] Hannah Cole: Into our SIEM.
+[08:01] Nina Patel: Into your SIEM, yes.
+[08:04] Hannah Cole: Then that's satisfactory, subject to seeing the actual payload schema.
+[08:10] Nina Patel: I'll send the schema.
+[08:13] Hannah Cole: Good. That's my two gates addressed at the level a call can address them.
+[08:20] Noah Williams: Then let's do the use case, because I want Nina to see how ugly it is.
+[08:26] Leo Grant: Please.
+[08:28] Noah Williams: High-value operational exceptions are currently handled through Slack channels and custom scripts. That's the whole architecture. Someone posts in a channel, someone else picks it up, a script does part of it, and there's a spreadsheet.
+[08:46] Nina Patel: And the problem is auditability.
+[08:49] Noah Williams: The problem is auditability and the problem is that four engineers hold the whole thing in their heads. If two of them left in the same quarter we'd be in genuine difficulty.
+[09:03] Hannah Cole: Three of them are on the same team.
+[09:06] Noah Williams: Three of them are on the same team, yes, which is worse.
+[09:11] Nina Patel: Do you have telemetry on how often exceptions occur and how long they take?
+[09:17] Noah Williams: Partially. We have outcome metrics. Operational telemetry is weak — we can usually tell you something was late after the fact. We're much worse at answering why, or which dependency failed, or whether the same pattern happened fifteen times last month.
+[09:37] Nina Patel: And the Slack channel is unsearchable in practice.
+[09:42] Noah Williams: It's searchable. It's not auditable. Those are different things and an auditor made that point to us fairly forcefully last year.
+[09:53] Hannah Cole: That's actually what started this project.
+[09:57] Leo Grant: Can I ask what the auditor said? If you're able to share.
+[10:02] Noah Williams: The polite version was that our exception handling process was "not evidenced."
+[10:09] Hannah Cole: The impolite version was longer.
+[10:12] Leo Grant: [laughs] I can imagine.
+[10:15] Nina Patel: Okay. So let me play back the phase-one candidate as I understood it. Detect failed or delayed partner onboarding events. Enrich them from Salesforce and Snowflake. Open a Jira incident. And maintain a complete audit trail of approvals and remediation steps.
+[10:36] Noah Williams: That's it. The last clause is why we're here.
+[10:41] Hannah Cole: The last clause is the entire project.
+[10:45] Nina Patel: Then let me show you how a run is recorded rather than how a workflow is built, because I think that's what you actually want to see.
+[10:55] Hannah Cole: Yes.
+[10:57] Nina Patel: Sharing. [pause] Can you see it?
+[11:02] Noah Williams: Yes.
+[11:04] Nina Patel: So this is run history. Filter by workflow, status, time, or a business field. I'll open a run — and you get every step, its inputs, its outputs, timing, retries, and any human approval with who approved and when.
+[11:23] Hannah Cole: Can I see one that failed and was remediated?
+[11:28] Nina Patel: [pause] This one. So it timed out on the external call, retried twice, went to the exception queue, a human picked it up, modified a value, approved, and it resumed. And all of that is one record.
+[11:46] Hannah Cole: The human modified a value.
+[11:49] Nina Patel: Yes.
+[11:51] Hannah Cole: Is the original value retained?
+[11:54] Nina Patel: [pause] You can see both here — the value at the point the step ran and the value after the approval form. So yes, but I want to be precise: that's because this approval was configured to collect a structured input. If someone had just clicked approve, there'd be nothing to compare.
+[12:16] Hannah Cole: So it depends on how the workflow was designed.
+[12:20] Nina Patel: It depends on how the workflow was designed.
+[12:24] Hannah Cole: Then design standards matter as much as the platform.
+[12:29] Nina Patel: For your use case, yes, considerably.
+[12:33] Hannah Cole: [pause] I appreciate you not overselling that.
+[12:38] Noah Williams: Hannah has been oversold to a lot.
+[12:41] Hannah Cole: I have been oversold to a great deal.
+[12:45] Leo Grant: Can I flag something? If design standards are load-bearing for your audit position, that should be a pilot deliverable, not an afterthought. As in, the pilot produces a documented standard for how audit-relevant workflows must be built, and that's a deliverable you keep whether or not you buy.
+[13:07] Noah Williams: That's a good idea.
+[13:10] Hannah Cole: That's a very good idea, actually.
+[13:13] Leo Grant: Then let's write it into the criteria.
+[13:17] Nina Patel: Let me show the composition point since it came up at the start. [pause] Rather than one large canvas, you build subflows — partner lookup, enrichment, approval, incident creation — and assemble them. So when something fails, you're debugging a twelve-step subflow, not step forty of sixty.
+[13:41] Hannah Cole: Can I unit test a subflow?
+[13:44] Nina Patel: You can run one in isolation with a given input, yes. Whether that meets your definition of a unit test is a different question, and I suspect it doesn't quite.
+[13:57] Hannah Cole: It doesn't quite. But running in isolation is most of what I want.
+[14:04] Nina Patel: Can I ask what your engineers found hardest in the Tray PoC? Specifically. Because if it's the debugging loop I want to be tested on that, and if it's something else I'd rather know.
+[14:19] Hannah Cole: It's the debugging loop and it's error handling. Retry semantics were opaque. We couldn't always tell whether something had run twice.
+[14:31] Nina Patel: Idempotency.
+[14:33] Hannah Cole: Idempotency. Yes.
+[14:36] Nina Patel: That's a genuinely hard problem and I'm not going to claim we solve it for you. Each run keeps state, retries are visible in the run record, and you can see whether a step executed. But if a downstream system isn't idempotent and you retry a write, you can absolutely create a duplicate. The mitigation is design — idempotency keys, checks before writes — and it's the same mitigation anywhere.
+[15:07] Hannah Cole: That's the answer I'd give.
+[15:10] Nina Patel: Then we agree on the problem, which is a start.
+[15:15] Noah Williams: Can I move us to the stack? Because we're at fifteen minutes and I want to cover integrations.
+[15:22] Leo Grant: Go.
+[15:24] Noah Williams: Salesforce, Snowflake, Slack, Okta, Jira, and an internal event bus. Required: all of those, plus webhooks and a generic REST connector.
+[15:37] Nina Patel: The internal event bus — what is it?
+[15:41] Noah Williams: Kafka, effectively. It's Kafka with a wrapper somebody wrote.
+[15:47] Nina Patel: Is it reachable from outside your network?
+[15:51] Noah Williams: Not currently.
+[15:53] Nina Patel: Then that's the one to design for. The others are a mix of native connectors and API options, and I'd validate each required operation in a pilot rather than pointing at logos. The event bus is a real architecture question — probably a gateway or an agent pattern, possibly you publish to a webhook endpoint from your side instead. I'd want an hour with whoever owns it.
+[16:20] Noah Williams: That can be arranged.
+[16:23] Hannah Cole: What about schema changes? We've had integrations fail because someone renamed a field and nothing surfaced.
+[16:31] Nina Patel: We cache metadata but refresh it, and mapping errors surface on the run. For high-impact flows I'd recommend explicit validation at the start rather than assuming every source field is populated. And you can alert when error rates cross a threshold.
+[16:51] Hannah Cole: I'd want that tested in the evaluation. With bad data.
+[16:56] Nina Patel: Please give us bad data. Genuinely, the pilots that go wrong are the ones run on clean data.
+[17:04] Noah Williams: We have plenty of bad data.
+[17:07] Hannah Cole: [crosstalk] We have exceptional bad data.
+[17:10] Leo Grant: [laughs]
+[17:12] Hannah Cole: One thing I want to revisit, actually, before we go further.
+[17:17] Noah Williams: Go on.
+[17:19] Hannah Cole: I said in the internal session that all approvals have to remain in Jira. I want to soften that. For low-risk approvals I could imagine keeping them in OrbitFlow, if the audit export is strong enough. I'd want risk to define the boundary rather than have a blanket rule.
+[17:41] Noah Williams: That's a change of position.
+[17:44] Hannah Cole: It's a refinement. A blanket rule is easier to enforce and worse for the business. If the audit trail is genuinely exportable and genuinely complete, the location of the approval matters less than the evidence of it.
+[18:01] Nina Patel: That's a more sophisticated position than most risk functions take.
+[18:07] Hannah Cole: Don't flatter me, I'll get suspicious.
+[18:10] Nina Patel: [laughs] Noted.
+[18:13] Leo Grant: Can I make sure I've captured it correctly, though, because it changes scope. Approvals in OrbitFlow are acceptable for low-risk cases subject to audit export quality, with risk tiering to be defined. High-risk approvals remain in Jira.
+[18:32] Hannah Cole: That's accurate. And "to be defined" means by us, not by you.
+[18:38] Leo Grant: Understood.
+[18:41] Noah Williams: Environment separation — can we have separate dev and production?
+[18:47] Nina Patel: Workspace separation is supported, and Enterprise has stronger governance around who can publish where. There's version history and change metadata on every workflow, so you can see what changed and when. Rollback and promotion patterns vary a bit by package.
+[19:07] Hannah Cole: I'd want a change-management scenario in the evaluation. Build it, change it, break it, roll it back. Not just build it.
+[19:18] Nina Patel: That's a better evaluation than most people design.
+[19:23] Hannah Cole: It's the one that finds the problems.
+[19:26] Noah Williams: Can the exception queue be owned by a team rather than a named person? Ours currently isn't and that's part of the four-engineers problem.
+[19:37] Nina Patel: Yes. Route to a group, resolve a person dynamically from a field, or use an on-call style fallback.
+[19:46] Noah Williams: On-call style. Does that integrate with PagerDuty or is it internal?
+[19:52] Nina Patel: There's an internal fallback mechanism, and separately you can call out to your incident tooling. Which one you'd want depends on whether the exception is an operational incident or a business exception, and I'd argue those should be handled differently.
+[20:11] Noah Williams: They should. We currently handle them identically, which is part of the problem.
+[20:18] Leo Grant: Shall I do commercials? Because I want to leave time for next steps.
+[20:23] Noah Williams: Go on.
+[20:25] Leo Grant: Growth is eighteen hundred a month up to thirty users on an annual agreement. You're not a Growth shape — you're Enterprise, which is custom priced and adds the advanced governance, the security capabilities, and higher usage.
+[20:42] Noah Williams: The range is roughly where I expected an enterprise workflow product to land. That's not my concern.
+[20:50] Leo Grant: What is?
+[20:52] Noah Williams: Usage overages. If the bill becomes unpredictable as volumes grow, finance will dislike it even if the base price is fine. I've been through this with two other vendors and both times the second-year invoice was the problem, not the first.
+[21:12] Leo Grant: That's the right thing to worry about and I'd rather deal with it now. Usage is scoped on workflow runs and premium connector needs. What I'd want to do is model your actual expected volumes, agree what happens above the threshold before you sign, and put the overage mechanism in the contract explicitly rather than in a rate card that changes.
+[21:38] Noah Williams: Can you cap it?
+[21:40] Leo Grant: There are mechanisms. I don't want to promise a specific structure on a call before I've modelled your volumes, because if I say "yes we can cap it" and then the cap has conditions, I've made things worse.
+[21:56] Noah Williams: Fine. Model it.
+[21:59] Leo Grant: I'll need volume estimates. Exception counts, expected run counts, and how those scale with partner growth.
+[22:08] Hannah Cole: We can produce those. They'll be estimates.
+[22:12] Leo Grant: Estimates are fine as long as we label them as estimates in the proposal.
+[22:18] Noah Williams: What counts as a user, incidentally? Because we'd have forty builders and up to three hundred people who only approve or view workflow status.
+[22:29] Leo Grant: Builders and full workspace users are the licensed users. Approval-only or notification-only populations can be structured differently depending on the package. Forty and three hundred is a very common shape and it's exactly why I won't quote you a number before I know it.
+[22:49] Noah Williams: Make that split explicit in the proposal. I don't want to find out in year two that every approver needs a full seat.
+[22:58] Leo Grant: It'll be itemised.
+[23:01] Hannah Cole: Three hundred is optimistic, by the way. It might be more.
+[23:06] Noah Williams: It's three hundred today.
+[23:09] Hannah Cole: It's three hundred today.
+[23:12] Leo Grant: Then I'll model three hundred and five hundred and you can see the shape of the curve rather than a point estimate.
+[23:20] Noah Williams: That would be genuinely useful.
+[23:24] Leo Grant: How are you making the ROI case internally?
+[23:28] Noah Williams: Not headcount. I want to be clear about that — I'm not going to sell this as a reduction, partly because it isn't true and partly because it would poison adoption before we started. The case is consistency, auditability, and reducing key-person dependency.
+[23:49] Hannah Cole: And the audit finding. Which has a cost attached that finance understands very well.
+[23:57] Leo Grant: Does it have a number?
+[24:00] Hannah Cole: It has a remediation programme, which has a budget, which is a number. Yes.
+[24:07] Leo Grant: Then that's your business case and it's a strong one.
+[24:12] Noah Williams: It is, provided we don't over-claim. If we say this solves the audit finding and it only solves eighty percent of it, we're in a worse position than if we'd said eighty.
+[24:26] Hannah Cole: We say eighty.
+[24:28] Noah Williams: We say eighty.
+[24:31] Leo Grant: For a pilot we'd want to baseline something before automating. Elapsed time, manual touches, exception rate, or engineer hours on the current process.
+[24:43] Hannah Cole: Engineer hours. That's the four-people problem quantified.
+[24:49] Noah Williams: And adoption. A technically correct workflow that everyone routes around is a failed implementation, and our engineers are perfectly capable of routing around things.
+[25:02] Hannah Cole: We have a history.
+[25:05] Nina Patel: Can I add one? Test the edge cases rather than average time. In your world the average exception is boring and the interesting ten percent is where the audit risk lives.
+[25:19] Hannah Cole: Yes. Precisely.
+[25:22] Leo Grant: Timing?
+[25:24] Noah Williams: Technical bake-off in July. Vendor decision in August. First controlled production workflows in October.
+[25:33] Leo Grant: That's tight.
+[25:35] Noah Williams: It's tight but it's real. The remediation programme has a date attached to it and that's what's driving the timeline.
+[25:45] Leo Grant: Then let me ask directly. What has to be true for you to choose us over Tray?
+[25:52] Hannah Cole: Debugging and audit trail. If your run history is genuinely better to work with, and the audit export is genuinely programmatic, that's the difference. Connector breadth is a tie.
+[26:08] Noah Williams: And I'd add — the honest comparison isn't just Tray. It's also "keep the scripts and document them better." That's cheaper and it's what someone will propose.
+[26:22] Leo Grant: Would that satisfy the auditor?
+[26:25] Hannah Cole: [pause] No.
+[26:28] Noah Williams: Hannah's pause was the answer.
+[26:31] Hannah Cole: It wouldn't satisfy the auditor. But it would be proposed, and somebody senior would find it attractive, and we'd spend two months on it.
+[26:42] Leo Grant: Then let's address it in the pilot criteria explicitly rather than pretending the only alternative is Tray. I'd rather we lose to a documented decision than lose to a two-month detour.
+[26:57] Noah Williams: Agreed.
+[27:00] Leo Grant: So where does that leave us?
+[27:03] Noah Williams: Assuming the security material lines up, I want to move. Send sandbox access and a written proposal for a six-week pilot so we can compare it against Tray properly rather than impressionistically.
+[27:20] Leo Grant: Six weeks. Starting when?
+[27:23] Noah Williams: As soon as the sandbox exists and Hannah's had the security pack for long enough to complain about it.
+[27:31] Hannah Cole: I'll need a week.
+[27:33] Leo Grant: Then let's say the pack goes out tomorrow, sandbox by end of next week, pilot starts the week after.
+[27:42] Noah Williams: That works.
+[27:44] Leo Grant: Let me list what we owe you. Security pack — SOC 2, subprocessor list, DPA, architecture diagram, retention documentation, encryption details. The audit event payload schema for Hannah. A written answer on per-workspace AI disablement granularity. Sandbox access. And a six-week pilot proposal with three to five success criteria that we write jointly, not that I write and you approve.
+[28:15] Hannah Cole: Add the note about AI outputs not being enforceable as leaf nodes. I want that written down as a known limitation, not remembered from a call.
+[28:27] Leo Grant: Yes. That goes in as a known limitation.
+[28:31] Hannah Cole: Thank you.
+[28:34] Nina Patel: And I'd like an hour with whoever owns the event bus, and I'd like bad data.
+[28:41] Noah Williams: You'll have both.
+[28:44] Leo Grant: What do you need from us on the commercial side before the pilot?
+[28:49] Noah Williams: Nothing binding. But I'd like the overage modelling done in parallel rather than after, because if the economics don't work at scale I'd rather know in week two than week six.
+[29:04] Leo Grant: Understood. I'll need those volume estimates from you.
+[29:09] Noah Williams: You'll have them Friday.
+[29:12] Leo Grant: Then let me summarise. You're running a two-horse bake-off with a real third option of doing nothing better. Your gates are model risk and auditability, and the deciding factors against Tray are debugging experience and genuinely programmatic audit export. The timeline is driven by a remediation programme with a fixed date. And a successful pilot means a documented workflow design standard as well as a working workflow.
+[29:46] Noah Williams: That's accurate.
+[29:49] Hannah Cole: One correction. It's not a two-horse bake-off, it's a two-horse bake-off where one horse has a six-week head start.
+[29:59] Leo Grant: [laughs] Understood. Thank you for being clear about it.
+[30:04] Hannah Cole: I'd rather you knew.
+[30:07] Leo Grant: I'd much rather know. Right — anything else before we drop?
+[30:13] Noah Williams: One thing, and it's not a question. When you send the proposal, please don't send me a forty-slide deck. Send me the pilot criteria, the commercials with assumptions, and the known limitations. That's it.
+[30:31] Leo Grant: Three documents, no deck.
+[30:34] Noah Williams: Three documents, no deck.
+[30:37] Leo Grant: Done. Thanks both, this was a good call.
+[30:42] Hannah Cole: It was better than the last one we had. Thanks.
+[30:47] Nina Patel: Thanks. And send the bad data, I mean it.
+[30:52] Hannah Cole: [laughs] You'll regret that.
+[30:55] Noah Williams: Bye.

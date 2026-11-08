@@ -1,0 +1,292 @@
+CALL ID: CALL-004
+DATE: 2026-06-18
+VENDOR: OrbitFlow
+PROSPECT: DeltaWorks Manufacturing
+INDUSTRY: Industrial manufacturing
+COMPANY SIZE: 4,500 employees
+STAGE: Enterprise discovery
+DURATION: 41 minutes
+PARTICIPANTS:
+- Maya Chen, Account Executive, OrbitFlow
+- Jon Bell, Solutions Engineer, OrbitFlow
+- Martin Vogel, Director of Enterprise Applications, DeltaWorks Manufacturing
+- Anika Bose, IT Governance Lead, DeltaWorks Manufacturing
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Maya Chen: Good afternoon. Martin, Anika — thank you both.
+[00:05] Martin Vogel: Good afternoon.
+[00:07] Anika Bose: Hello.
+[00:09] Maya Chen: I sent an agenda but I'd rather you told me if it's wrong.
+[00:14] Martin Vogel: It's mostly right. I would change one thing. You have a product demonstration in the middle. I don't want that today.
+[00:23] Maya Chen: Okay. Tell me why, so I understand the shape of this.
+[00:28] Martin Vogel: Because if the deployment architecture doesn't work, the product is irrelevant. We have bought software before that demonstrated beautifully and then could not reach our systems. I would rather spend the hour on architecture and governance and see the product later, if there is a later.
+[00:49] Maya Chen: That's completely reasonable and honestly it makes my job easier. Jon, you're driving most of this then.
+[00:57] Jon Bell: Happy to.
+[01:00] Anika Bose: I would also like to move governance earlier. I have to leave at fifty past and governance is my part.
+[01:08] Maya Chen: Then let's do governance and architecture first, current state woven through, and commercials at the end — and if we don't reach commercials, we don't reach commercials.
+[01:20] Martin Vogel: That is acceptable.
+[01:23] Maya Chen: Anika, start us off. What does your governance function actually need to see?
+[01:29] Anika Bose: There is a long list and I will send it formally, but the headline items are SAML, SCIM, audit logs, IP restrictions, role separation, private connectivity options, disaster recovery documentation, penetration test material, and German or EU data residency.
+[01:52] Maya Chen: That is a comprehensive list.
+[01:55] Anika Bose: It is a normal list for us. I am not trying to be difficult.
+[02:00] Maya Chen: No, I didn't take it that way. Jon, take the ones you can answer now and be explicit about the ones you can't.
+[02:09] Jon Bell: Right. SAML SSO and SCIM provisioning — both supported, both on Enterprise. Audit logs cover administrative and workflow events. Encryption in transit and at rest. Retention is configurable within supported ranges. SOC 2 Type II is our baseline. EU data residency is available on Enterprise.
+[02:35] Anika Bose: I said German or EU. Which is it?
+[02:39] Jon Bell: EU. I am not going to tell you we have a German region because we don't.
+[02:45] Anika Bose: [pause] Thank you for the direct answer. EU may be sufficient. It depends on which entity the data belongs to, and that is a question for our legal team, not for you.
+[02:59] Jon Bell: On IP restrictions and private connectivity — I want to be careful. There are controls available, and there are patterns customers use for private network access, but "private connectivity" means at least four different things depending on who says it. Can you tell me what you mean specifically?
+[03:20] Anika Bose: Martin, this is more yours.
+[03:23] Martin Vogel: We have systems that will not be exposed to the public internet. Some of them by policy, some of them by physical network design. If your platform must call them over the internet, that is not possible for those systems.
+[03:41] Jon Bell: Understood. So the pattern there is generally an agent or a controlled gateway sitting inside your network that the platform communicates with, rather than direct outbound calls to your systems. But I want to validate that against your actual environment rather than describe it in the abstract.
+[04:03] Martin Vogel: That is the answer I expected and it is the answer I wanted.
+[04:08] Anika Bose: Disaster recovery documentation and pen test material — you have these?
+[04:14] Jon Bell: Yes, both available under the normal security process, along with SOC 2, subprocessor list, DPA, and an architecture diagram.
+[04:25] Anika Bose: Good. Send all of it. We will also send our questionnaire. It is two hundred and forty questions.
+[04:34] Maya Chen: We'll complete it.
+[04:36] Anika Bose: Everyone says that.
+[04:39] Maya Chen: We will complete it. If there are questions we can't answer we'll say "no" rather than "partially".
+[04:47] Anika Bose: That would be unusual.
+[04:50] Maya Chen: [laughs] I'll try to be unusual.
+[04:54] Anika Bose: There is one more governance item and it is not a technology item.
+[05:00] Maya Chen: Go ahead.
+[05:02] Anika Bose: The works council. The Betriebsrat. If a workflow monitors employee activity in any way — for example if it measures how long an individual takes to complete an approval — that is a co-determination matter and it must go through the works council.
+[05:23] Maya Chen: How long does that take?
+[05:26] Anika Bose: It varies. Three months is optimistic. Six is realistic if the use case is contested.
+[05:34] Maya Chen: Six months.
+[05:36] Anika Bose: Six months. This is why I want it discussed now and not in October.
+[05:43] Jon Bell: Can I ask a clarifying question? Is the issue that the data exists, or that it is used for individual performance assessment?
+[05:53] Anika Bose: That is the correct question and the answer is the second one, mostly. If the system records that a step took four days, that is process data. If the system reports that Herr Müller took four days, and that report goes to his manager, that is a different thing.
+[06:14] Jon Bell: That's genuinely designable. You would aggregate at the queue or team level rather than the individual level, and you would restrict who can view run-level detail. It's a permissions and reporting design question.
+[06:31] Anika Bose: If you can show me that design, it helps my case with the works council considerably.
+[06:38] Maya Chen: Let's make that an explicit deliverable rather than a conversation. Jon, can you write a short note on team-level versus individual-level visibility?
+[06:49] Jon Bell: Yes. And I'd want to be clear in it about what the platform records versus what it exposes, because those are different.
+[07:00] Anika Bose: Yes. Exactly that distinction.
+[07:04] Martin Vogel: Can I add something here? This is the kind of thing that kills projects at DeltaWorks. Not the technology. The technology usually works. It's that we discover in month five that a use case requires a process we didn't budget six months for.
+[07:23] Maya Chen: Then let's flush those out today. Anika, is there anything else in that category?
+[07:30] Anika Bose: Regional IT will have opinions. That is not a formal gate but it is a real one. And procurement has a standard process that takes as long as it takes.
+[07:43] Maya Chen: Understood.
+[07:46] Martin Vogel: Should we do current state? Because I think it will make the architecture discussion concrete.
+[07:53] Maya Chen: Please.
+[07:55] Martin Vogel: Our cross-system business processes rely on nightly jobs and email approvals. That is the honest description. A batch runs at two in the morning, someone gets an email at eight, they approve it or they don't, and if they don't nothing happens until someone asks.
+[08:17] Maya Chen: And the failure mode?
+[08:20] Martin Vogel: Silence. The failure mode is silence. And then, because local teams are not stupid, they create unofficial scripts to work around it. Which are difficult for central IT to govern because central IT does not know they exist.
+[08:39] Anika Bose: We found one last year that had been running for four years.
+[08:44] Maya Chen: Doing what?
+[08:46] Anika Bose: Copying data between two systems. Correctly, as it happens. But nobody had reviewed it, nobody owned it, and it used a service account with more permissions than it needed.
+[09:00] Martin Vogel: The permissions part is Anika's nightmare. The "nobody owned it" part is mine.
+[09:07] Maya Chen: Do you have telemetry on how often things stall, or is this anecdotal?
+[09:13] Martin Vogel: A mixture. We have outcome metrics — order cycle time, that sort of thing. Operational telemetry is weak. We can tell you something was late. We are much worse at telling you why, or which dependency failed, or whether the same pattern occurred fifteen times last month.
+[09:36] Maya Chen: That last question seems to be universal.
+[09:40] Martin Vogel: I imagine it is.
+[09:43] Maya Chen: Talk me through the stack.
+[09:46] Martin Vogel: SAP S/4HANA. Salesforce. ServiceNow. Microsoft Teams. And several on-premise SQL Server systems, which are the ones that will cause you difficulty.
+[10:00] Jon Bell: Which of those is the system of record?
+[10:04] Martin Vogel: It depends on the object, which I know is an unsatisfying answer. Commercial and customer data has a clear home. Tasks and tickets have another. Master data is SAP and that is not negotiable. And then a great deal of actual working context lives in Teams, which is precisely the problem.
+[10:29] Maya Chen: And you have MuleSoft today.
+[10:32] Martin Vogel: We own MuleSoft, yes. And I want to be precise about this because people misunderstand it. MuleSoft is our integration backbone. It is good at that. It is not a tool that business operations should be using directly, and I would not want it to become one.
+[10:53] Jon Bell: So you're not looking to replace it.
+[10:56] Martin Vogel: No. I am looking for the layer above it. The layer where a human decision happens, or an exception has to be routed, or three departments have to hand something to each other.
+[11:10] Maya Chen: That's exactly how we'd position it, and I'd rather you said it than me. We're not trying to replace an integration platform. Some customers keep an iPaaS or internal services for deep systems integration and use us for business-owned workflows.
+[11:29] Martin Vogel: Then we agree on the shape.
+[11:32] Anika Bose: I would add a governance concern to that. If business operations own workflows, business operations must not own credentials.
+[11:43] Jon Bell: Agreed, and that's how it's structured. Connections and credentials are centrally managed and referenced by workflows. A builder uses a connection; they don't see the secret. Rotation happens at the connection layer, so you don't edit every workflow when a credential changes.
+[12:04] Anika Bose: And secrets do not appear in logs?
+[12:07] Jon Bell: Secret values are not displayed in run logs, no.
+[12:12] Anika Bose: Good.
+[12:14] Martin Vogel: Can I correct something I said, actually. Earlier — and in the pre-call form, I think — I described us as cloud-first. That is corporate policy. In practice, two German plants are still prohibited from exposing production databases directly to SaaS vendors. So "cloud-first" is the policy and it is not the reality everywhere.
+[12:41] Maya Chen: That's a significant caveat.
+[12:44] Martin Vogel: It is significant for you specifically, which is why I am saying it now.
+[12:50] Jon Bell: Are those two plants in scope for the first use case?
+[12:55] Martin Vogel: [pause] Not necessarily. That is a good question. Possibly not.
+[13:02] Jon Bell: Then I'd suggest we deliberately scope them out of phase one and treat them as a phase two architecture question. Otherwise the hardest constraint in your estate drives the design of the easiest use case.
+[13:18] Martin Vogel: That is sensible. Anika, do you object?
+[13:22] Anika Bose: No. But it must be documented as deferred, not as solved.
+[13:28] Jon Bell: Absolutely. Deferred, with the open question written down.
+[13:34] Maya Chen: Let me try a phase-one candidate and you tell me if it's wrong. A large service contract closes in Salesforce. We validate the customer and product data against SAP. We create implementation tasks in ServiceNow. And we escalate mismatches before order processing rather than after.
+[13:57] Martin Vogel: [pause] That is close. The last part is the valuable part.
+[14:04] Maya Chen: Say more.
+[14:06] Martin Vogel: Today the mismatch is discovered in order processing, which is downstream, which means someone in the plant is already planning against wrong data. If we caught it at contract close it would save — I don't have a number, but it is meaningful.
+[14:26] Maya Chen: Could you get a number? Even roughly?
+[14:30] Martin Vogel: I could ask. I would rather give you a real one later than an invented one now.
+[14:37] Maya Chen: That's fine, and it's the right instinct. We'd want to baseline it before automating anyway.
+[14:44] Martin Vogel: One caveat on the workflow. The happy path is not the difficult part.
+[14:50] Maya Chen: Everyone says that and everyone's right.
+[14:54] Martin Vogel: Then I will say it too. I want to see what happens when data is missing, when SAP does not respond, when an approver does nothing for two days, and when the account changes state after the workflow has already started. That last one is common with us because contracts get amended.
+[15:17] Jon Bell: That's the right level to test. Workflows are event-driven but each run holds state. So you can branch on data, pause for approvals, retry external actions, set timeout rules, and push an exception into a queue rather than failing silently.
+[15:36] Martin Vogel: And if the contract is amended mid-run?
+[15:40] Jon Bell: Then you'd typically design for it explicitly — either the workflow re-reads state at decision points rather than trusting what it captured at trigger time, or you have a cancellation path that a second event can invoke. Both are patterns rather than switches. I'd want to design that one with you.
+[16:03] Martin Vogel: That is an honest answer. Most vendors say "yes, it handles that."
+[16:09] Jon Bell: It handles it if you build it to. It doesn't handle it by magic.
+[16:15] Anika Bose: Can the exception queue be owned by a team rather than a named individual? Our people change roles constantly and individual ownership is one of the reasons our current automations decay.
+[16:29] Jon Bell: Yes. Route to a group, resolve a person dynamically from a field, or use an on-call style fallback. Run history persists, so an administrator can see inputs, which steps ran, and where it stopped.
+[16:45] Anika Bose: And who can see the payload in that history?
+[16:49] Jon Bell: Permissions can separate workflow administration from business viewing. Field-level masking for specific payloads is a design conversation rather than a checkbox — I don't want to say "yes, masking" and have you discover the nuance later.
+[17:08] Anika Bose: I have written "design conversation" three times now.
+[17:13] Jon Bell: [laughs] I know. I'd rather that than three promises.
+[17:18] Anika Bose: I agree, actually. It is unusual.
+[17:22] Martin Vogel: Let me ask the SAP question directly, because it is the one that decides this.
+[17:29] Jon Bell: Go ahead.
+[17:31] Martin Vogel: How do you connect to SAP S/4HANA?
+[17:35] Jon Bell: There are a few routes and which one is right depends on your landscape. There are API-based options, there's the generic REST action for anything that exposes a service, and for on-premise components the agent or gateway pattern I mentioned. What I will not do is tell you there's a one-click SAP connector that solves your estate, because your estate is not one thing.
+[18:03] Martin Vogel: It is definitely not one thing.
+[18:06] Jon Bell: What I'd want, before anyone talks about a pilot, is a list of the specific SAP operations phase one needs. Not "SAP integration" — the actual reads and writes. Then I can tell you which are straightforward, which are API work, and which are genuinely hard.
+[18:27] Martin Vogel: I can produce that list.
+[18:30] Jon Bell: That would change this conversation from architecture in the abstract to architecture with numbers in it.
+[18:38] Martin Vogel: How long would you need with the list?
+[18:41] Jon Bell: A week, and I'd want an hour with whoever owns your SAP interfaces rather than reading a spreadsheet in isolation.
+[18:51] Martin Vogel: That can be arranged.
+[18:54] Maya Chen: Can I flag something commercial that's hiding in this? If phase one requires significant SAP and on-premise work, that's professional services, and I'd rather price it honestly up front than have it appear after architecture review.
+[19:12] Martin Vogel: Thank you. That is exactly the thing I was going to raise later.
+[19:18] Maya Chen: Then let's raise it now.
+[19:21] Martin Vogel: The headline licence price is not going to surprise me. We buy enterprise software. What I care about is transparency around professional services, premium connectors, and anything we would only discover after an architecture review. That is where the surprises live.
+[19:43] Maya Chen: Then here's what I'll commit to. The proposal will separate licence, assumed builder count, viewer and approver population, expected workflow volume, and services as distinct line items, with the assumptions written next to each. And where I don't know, it'll say "to be determined after architecture review" rather than a placeholder number that looks like a quote.
+[20:11] Martin Vogel: If you do that, you will be the second vendor this year who has.
+[20:17] Maya Chen: Who was the first?
+[20:19] Martin Vogel: [laughs] I'm not going to tell you that.
+[20:23] Maya Chen: Fair enough. For the record — Growth is eighteen hundred a month up to thirty users on an annual agreement, but that's not your shape. You're an Enterprise conversation. Custom priced, advanced governance, security capabilities, higher usage.
+[20:42] Martin Vogel: Yes, obviously.
+[20:45] Anika Bose: What is a user? We may have twenty people building and several hundred who only approve something.
+[20:53] Maya Chen: Builders and full workspace users are the licensed users. Approval-only or notification-only populations can be structured differently depending on package. I'm not going to give you a number today because without the user model any number is misleading.
+[21:12] Anika Bose: Please put that in the proposal explicitly. I do not want to discover in year two that every occasional approver requires a full seat.
+[21:23] Maya Chen: It'll be explicit.
+[21:26] Martin Vogel: There is a second use case I should mention, not for phase one.
+[21:32] Maya Chen: Go on.
+[21:34] Martin Vogel: Replacing several departmental Python scripts with centrally visible automations and approvals. The four-year-old script Anika mentioned is not unique. We think there are — Anika, what was the estimate?
+[21:51] Anika Bose: We identified thirty-one. We believe there are more.
+[21:56] Maya Chen: Thirty-one that you know about.
+[21:59] Anika Bose: Thirty-one that we know about. Yes.
+[22:03] Jon Bell: That's a genuinely good second-phase use case, and I'd note it's a different kind of value than the first one. The first one is cycle time. This one is risk reduction and auditability.
+[22:19] Anika Bose: For me it is the more interesting one.
+[22:23] Martin Vogel: For finance it is the less interesting one, which is why it is phase two.
+[22:29] Anika Bose: [laughs] That is accurate.
+[22:33] Maya Chen: I'd argue you can put a number on it. Not savings — avoided incident cost. But that's a harder internal sell and I wouldn't lead with it.
+[22:45] Anika Bose: No. Lead with cycle time.
+[22:49] Maya Chen: Environment separation — you'd flagged wanting separate developer, test and production workspaces with change control.
+[22:58] Martin Vogel: That is not negotiable. We do not put anything into production that has not been through test, and we do not let the person who built something be the only person who approves it.
+[23:12] Jon Bell: Workspace separation is supported and Enterprise has stronger governance around who can publish where. There's version history and change metadata on every workflow. Rollback and promotion patterns vary a bit depending on the workflow and the package, and I'd want to walk through your specific promotion process rather than assume it maps.
+[23:37] Martin Vogel: Our promotion process is documented. I will send it.
+[23:42] Jon Bell: Then I'll map it against what the platform does and tell you where the gaps are. There will be gaps — there always are — the question is whether they're gaps you can live with.
+[23:56] Anika Bose: I would also like the change-management scenario included in any evaluation. Not just "build the workflow." Build it, change it, break it, roll it back.
+[24:10] Jon Bell: That's a better evaluation than most customers design. Yes.
+[24:16] Martin Vogel: Anika designs our evaluations.
+[24:19] Anika Bose: Somebody has to.
+[24:22] Maya Chen: Can I ask about naming and standards? You mentioned governance of local scripts. What would you want in place before business teams start building?
+[24:34] Anika Bose: Naming conventions. Change control for anything classified as important. A rule that somebody other than the creator can understand each production workflow. And a register — I want to be able to answer the question "how many automations do we have" without a discovery project.
+[24:56] Jon Bell: That matches our recommended operating model almost exactly. A few centrally owned templates, defined publishing rights, dev separated from prod, and a small central group owning standards while business teams contribute requirements.
+[25:15] Martin Vogel: Who does that in practice at your other customers? A team? A person?
+[25:22] Jon Bell: Usually a small team, two to four people, sitting in whatever function is closest to the process. Sometimes IT, more often operations. The pattern that fails is when it's one person's side project.
+[25:39] Martin Vogel: We have a lot of one-person side projects.
+[25:43] Jon Bell: I know. That's why I mention it.
+[25:47] Anika Bose: I have twelve minutes. Can we do the AI question? Because I have a position on it and I would rather state it than have it discovered.
+[25:57] Maya Chen: Please.
+[26:00] Anika Bose: My position is that I do not want generative AI in the first phase at all. Not because I object in principle. Because it adds a review process — data protection, works council, possibly legal — and I do not want that review sitting on the critical path of a project whose value comes from something else entirely.
+[26:26] Maya Chen: That's a strategically sound position and I'm not going to argue with it.
+[26:32] Anika Bose: I expected you to argue with it.
+[26:35] Maya Chen: The product is a workflow platform. AI steps are optional steps inside a workflow, not the substance of it. If you turn them off, you have a workflow platform. That's fine.
+[26:50] Jon Bell: And to be concrete — Enterprise customers can disable AI features. Administrators can restrict which models are allowed. AI steps are explicit, inspectable workflow steps rather than something ambient. We log the model configuration used on a run. And we don't use customer workflow content to train a shared OrbitFlow model.
+[27:16] Anika Bose: That last point needs to be contractual.
+[27:20] Maya Chen: It should be, and you should insist on it.
+[27:24] Anika Bose: I will.
+[27:27] Martin Vogel: Anika, before you go — is there anything on your list we have not covered?
+[27:33] Anika Bose: Two things. First, can audit data be exported to our own systems? We do not accept a vendor console as an audit trail.
+[27:45] Jon Bell: Run events and metrics through APIs and webhooks, and audit export on Enterprise. Several customers forward failures into their incident tooling.
+[27:57] Anika Bose: Then that is satisfactory. Second — data deletion. If we terminate, what happens?
+[28:06] Jon Bell: That's a contractual and configuration question and I'd rather it be answered in writing by someone who can commit to it. I'll flag it for the pack.
+[28:18] Anika Bose: Good. Then I am finished. Martin, you have my notes. Thank you both.
+[28:25] Maya Chen: Thank you, Anika. That was genuinely useful.
+[28:29] Anika Bose: [inaudible] — goodbye.
+[28:33] Martin Vogel: She is very thorough.
+[28:36] Maya Chen: She's the most organised governance lead I've spoken to this year and I mean that.
+[28:43] Martin Vogel: She will be pleased. I will not tell her.
+[28:47] Maya Chen: [laughs] Understood.
+[28:51] Martin Vogel: Can I ask you something slightly off topic?
+[28:55] Maya Chen: Of course.
+[28:57] Martin Vogel: Were you at Hannover Messe in April?
+[29:01] Maya Chen: I wasn't, no. Jon?
+[29:04] Jon Bell: No. I've been to it once, years ago, in a previous job. It is enormous.
+[29:11] Martin Vogel: It is enormous and it is exhausting. I ask because I spoke to a workflow vendor there and I cannot remember which one, and it has been irritating me for two months.
+[29:24] Jon Bell: If they had an orange stand it wasn't us.
+[29:28] Martin Vogel: [laughs] I don't remember the colour.
+[29:32] Maya Chen: Then it definitely wasn't us. Nobody forgets our stand, we spend far too much on it.
+[29:39] Martin Vogel: Well. If I remember I will tell you and you can tell me what is wrong with them.
+[29:45] Maya Chen: I'd be delighted.
+[29:48] Martin Vogel: Shall we do the remaining part? I have until the hour.
+[29:53] Maya Chen: Yes. I want to cover ROI, the decision process, and timing, and then I want to ask you a direct question about next steps.
+[30:03] Martin Vogel: Go.
+[30:05] Maya Chen: ROI. Is this headcount, cycle time, error reduction, or engineering maintenance?
+[30:12] Martin Vogel: Not headcount. I want to be very clear about that because in a manufacturing business the word automation makes people nervous for reasons that have nothing to do with software.
+[30:26] Maya Chen: Understood.
+[30:28] Martin Vogel: The case is cycle time and error reduction. Catching a data mismatch at contract close instead of in order processing. And there is a maintenance cost that nobody counts — a script takes two days to write and then consumes a few hours every month forever. That never appears in the original estimate.
+[30:52] Maya Chen: We hear that in every industry, and nobody has a number for it.
+[30:57] Martin Vogel: Because to get the number you have to admit how much time you spend on it.
+[31:03] Maya Chen: [laughs] That's the real reason, isn't it.
+[31:07] Martin Vogel: It is exactly the reason.
+[31:10] Maya Chen: For a pilot we'd want to baseline one or two measures before automating. Elapsed time, number of manual touches, exception rate, or engineer hours on the current process.
+[31:24] Martin Vogel: Elapsed time and exception rate. Those we can measure.
+[31:29] Maya Chen: And I'd add adoption. A technically correct workflow that everyone routes around is a failed implementation.
+[31:37] Martin Vogel: We have a museum of technically correct systems.
+[31:41] Maya Chen: [laughs] Most large companies do.
+[31:45] Martin Vogel: And the edge cases must be tested, not the average. The business pain is always in the unusual ten percent.
+[31:54] Maya Chen: Agreed. Decision process — who's actually involved?
+[32:00] Martin Vogel: Enterprise applications sponsors, which is me. Then the architecture board, information security, the works council for some workflow monitoring use cases, procurement, and regional IT.
+[32:16] Maya Chen: That's six.
+[32:18] Martin Vogel: That is six. Welcome to DeltaWorks.
+[32:22] Maya Chen: In what order?
+[32:24] Martin Vogel: Architecture board first, and that is the one that matters. If architecture says no, nothing else happens. Information security runs in parallel. The works council only if the use case requires it, which is why Anika wanted it discussed today. Procurement last, and slowly.
+[32:47] Maya Chen: And who can say no unilaterally?
+[32:51] Martin Vogel: Architecture board and information security. Regional IT cannot say no formally but can make implementation impossible, which amounts to the same thing.
+[33:04] Maya Chen: That's a very useful distinction and I appreciate you making it.
+[33:09] Martin Vogel: I have watched vendors ignore regional IT and I have watched what happens to them.
+[33:16] Maya Chen: Noted. Timing?
+[33:19] Martin Vogel: Formal architecture review in September. Procurement in Q4. Realistic production use early next year.
+[33:29] Maya Chen: Early next year.
+[33:31] Martin Vogel: I know that is slow for you.
+[33:34] Maya Chen: It's slow, but it's honest, and a slow honest timeline is worth more to me than a fast invented one. I've had Q3 dates that turned into the following June.
+[33:47] Martin Vogel: Ours will not turn into the following June. It may turn into March.
+[33:53] Maya Chen: [laughs] I'll take March.
+[33:56] Maya Chen: What has to be true to move from where we are to a decision?
+[34:02] Martin Vogel: The architecture has to be viable. Specifically SAP and the on-premise systems. If the answer is "possible but requires nine months of integration work", then the first use case is too heavy and we should choose a different first use case or not proceed.
+[34:23] Maya Chen: That's the crux, isn't it.
+[34:26] Martin Vogel: That is the crux. Honestly — the biggest issue is whether SAP and our on-premise systems make the implementation too heavy for the first use case. Everything else is manageable.
+[34:42] Maya Chen: And the alternative?
+[34:45] Martin Vogel: MuleSoft and custom integration services. We already own MuleSoft. If someone can demonstrate that the business-owned workflow layer can be built on top of it acceptably, that is the cheaper path even if it is the worse one.
+[35:04] Maya Chen: Is that a real possibility or a procurement position?
+[35:09] Martin Vogel: [pause] It is a real possibility. I do not think it is a good idea, because it makes every workflow change an integration project, which is the problem we are trying to solve. But it is a real possibility and someone will propose it.
+[35:29] Maya Chen: Then let's make sure the architecture note addresses it directly rather than pretending it isn't the alternative.
+[35:37] Martin Vogel: Yes. Please do that.
+[35:40] Maya Chen: Right. Direct question. What's the next step?
+[35:45] Martin Vogel: I will be honest with you. I see strategic potential here. But I do not think a sandbox is the next step.
+[35:54] Maya Chen: Tell me why, because I want to make sure I've understood.
+[35:59] Martin Vogel: Because a sandbox would show me the product works, and I already believe the product works. It would not tell me whether we can deploy it, and that is the open question. If I give a sandbox to my team they will spend three weeks building something impressive and we will be no closer to knowing whether SAP connectivity is viable.
+[36:24] Maya Chen: That's a completely coherent argument and I'd rather you made it than humoured me.
+[36:31] Martin Vogel: So — send us the architecture material first. The deployment patterns, the on-premise connectivity options, the SAP integration routes with honest difficulty ratings. Then we determine whether the deployment model is viable. If it is, we talk about a sandbox and a pilot. If it is not, we stop and neither of us has wasted a quarter.
+[36:59] Maya Chen: Agreed. Jon, what do you need from Martin to produce that?
+[37:05] Jon Bell: The list of specific SAP operations for the candidate use case. Your promotion process documentation. And an hour with whoever owns the SAP interfaces. With those I can produce something with substance rather than a marketing architecture diagram.
+[37:24] Martin Vogel: You will have all three by the end of next week.
+[37:29] Jon Bell: Then I'll come back within two weeks of receiving them.
+[37:34] Maya Chen: And I'll send the security pack in parallel — SOC 2, subprocessor list, DPA, architecture diagram, retention documentation, DR documentation, pen test material. Plus Jon's note on team-level versus individual-level visibility for the works council question.
+[37:56] Martin Vogel: Do not forget that note. Anika will ask.
+[38:01] Maya Chen: I won't forget it.
+[38:04] Martin Vogel: There is one more thing I want to say and then we should finish.
+[38:09] Maya Chen: Go ahead.
+[38:11] Martin Vogel: Some of what we told you today was approximate. The thirty-one scripts is a count from an audit that was not exhaustive. The mismatch cost I could not give you a number for. The two German plants — I said they are prohibited from exposing production databases, and I believe that is correct, but I have not read the actual policy in eighteen months.
+[38:38] Maya Chen: That's exactly the sort of thing I need to know.
+[38:42] Martin Vogel: So when you write your summary, please separate what we confirmed from what we estimated. I have seen approximations become requirements and then become the reason a project failed.
+[38:57] Maya Chen: I'll send a written recap with open questions in a separate column from confirmed requirements. And I'll list the things I heard as estimates so you can correct them.
+[39:11] Martin Vogel: Then we understand each other.
+[39:14] Maya Chen: Let me summarise. The opportunity is a business-owned workflow layer above MuleSoft, not a replacement for it. The first candidate is contract close to SAP validation to ServiceNow tasks, with early mismatch escalation. The decisive question is deployment architecture, specifically SAP and on-premise connectivity, and until that's answered nothing else matters. Governance requires the full security pack plus a works council position on individual-level visibility. And the next step is architecture material, not a sandbox.
+[39:56] Martin Vogel: That is an accurate summary. I am mildly surprised.
+[40:01] Maya Chen: [laughs] I'll take mildly surprised.
+[40:05] Martin Vogel: It is high praise from me.
+[40:08] Jon Bell: One last thing from me, if there's time.
+[40:12] Martin Vogel: Quickly.
+[40:14] Jon Bell: Rate limiting. You mentioned SAP. If there's a downstream quota or a throttling constraint on any of these systems, give me the actual number rather than "it's sensitive to load", because high-volume behaviour should be tested against a real limit.
+[40:33] Martin Vogel: There is a constraint on one of the SQL Server systems. I will find the number.
+[40:40] Jon Bell: Thank you. That's the kind of thing that surfaces in week eight otherwise.
+[40:46] Martin Vogel: Understood. Right. Thank you both. This was more useful than I expected.
+[40:53] Maya Chen: Thank you, Martin. And if you remember the vendor from Hannover, do tell me.
+[40:59] Martin Vogel: [laughs] I will. Goodbye.
+[41:03] Jon Bell: Bye.
+[41:05] Maya Chen: Bye.

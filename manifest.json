@@ -1,0 +1,602 @@
+[
+  {
+    "call_id": "CALL-001",
+    "date": "2026-06-03",
+    "prospect_company": "Acme Logistics",
+    "industry": "Logistics",
+    "company_size": "650 employees",
+    "call_type": "Prospect",
+    "stage": "Discovery / first demo",
+    "duration_minutes": 30,
+    "participants": [
+      {
+        "name": "Maya Chen",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Jon Bell",
+        "role": "Solutions Engineer",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Rachel Morgan",
+        "role": "VP Revenue Operations",
+        "company": "Acme Logistics"
+      },
+      {
+        "name": "Tom Alvarez",
+        "role": "Director of Customer Success",
+        "company": "Acme Logistics"
+      }
+    ],
+    "file": "call-001_acme_logistics.txt"
+  },
+  {
+    "call_id": "CALL-002",
+    "date": "2026-06-05",
+    "prospect_company": "BrightPath Health",
+    "industry": "Digital health",
+    "company_size": "1,100 employees",
+    "call_type": "Prospect",
+    "stage": "Technical discovery",
+    "duration_minutes": 34,
+    "participants": [
+      {
+        "name": "Maya Chen",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Jon Bell",
+        "role": "Solutions Engineer",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Priya Shah",
+        "role": "Head of Business Systems",
+        "company": "BrightPath Health"
+      },
+      {
+        "name": "Elliot Greene",
+        "role": "Security Architect",
+        "company": "BrightPath Health"
+      }
+    ],
+    "file": "call-002_brightpath_health.txt"
+  },
+  {
+    "call_id": "CALL-003",
+    "date": "2026-06-11",
+    "prospect_company": "Cedar & Finch",
+    "industry": "E-commerce",
+    "company_size": "180 employees",
+    "call_type": "Prospect",
+    "stage": "Discovery / demo",
+    "duration_minutes": 17,
+    "participants": [
+      {
+        "name": "Leo Grant",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Sophie Reed",
+        "role": "Director of E-commerce Operations",
+        "company": "Cedar & Finch"
+      },
+      {
+        "name": "Marcus Lee",
+        "role": "Customer Support Manager",
+        "company": "Cedar & Finch"
+      }
+    ],
+    "file": "call-003_cedar_finch.txt"
+  },
+  {
+    "call_id": "CALL-004",
+    "date": "2026-06-18",
+    "prospect_company": "DeltaWorks Manufacturing",
+    "industry": "Industrial manufacturing",
+    "company_size": "4,500 employees",
+    "call_type": "Prospect",
+    "stage": "Enterprise discovery",
+    "duration_minutes": 41,
+    "participants": [
+      {
+        "name": "Maya Chen",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Jon Bell",
+        "role": "Solutions Engineer",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Martin Vogel",
+        "role": "Director of Enterprise Applications",
+        "company": "DeltaWorks Manufacturing"
+      },
+      {
+        "name": "Anika Bose",
+        "role": "IT Governance Lead",
+        "company": "DeltaWorks Manufacturing"
+      }
+    ],
+    "file": "call-004_deltaworks_manufacturing.txt"
+  },
+  {
+    "call_id": "CALL-005",
+    "date": "2026-07-02",
+    "prospect_company": "Ember Financial",
+    "industry": "Fintech",
+    "company_size": "900 employees",
+    "call_type": "Prospect",
+    "stage": "Evaluation",
+    "duration_minutes": 31,
+    "participants": [
+      {
+        "name": "Leo Grant",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Nina Patel",
+        "role": "Solutions Engineer",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Noah Williams",
+        "role": "VP Operations Technology",
+        "company": "Ember Financial"
+      },
+      {
+        "name": "Hannah Cole",
+        "role": "Senior Risk Engineer",
+        "company": "Ember Financial"
+      }
+    ],
+    "file": "call-005_ember_financial.txt"
+  },
+  {
+    "call_id": "CALL-006",
+    "date": "2026-07-09",
+    "prospect_company": "Fable Media",
+    "industry": "Marketing agency",
+    "company_size": "120 employees",
+    "call_type": "Prospect",
+    "stage": "Discovery",
+    "duration_minutes": 16,
+    "participants": [
+      {
+        "name": "Alastair McCrae",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Imogen Price",
+        "role": "COO",
+        "company": "Fable Media"
+      },
+      {
+        "name": "Ben Foster",
+        "role": "Head of Client Services",
+        "company": "Fable Media"
+      }
+    ],
+    "file": "call-006_fable_media.txt"
+  },
+  {
+    "call_id": "CALL-007",
+    "date": "2026-07-16",
+    "prospect_company": "Greenline Energy Services",
+    "industry": "Renewable energy field services",
+    "company_size": "2,300 employees",
+    "call_type": "Prospect",
+    "stage": "Discovery",
+    "duration_minutes": 27,
+    "participants": [
+      {
+        "name": "Maya Chen",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Jon Bell",
+        "role": "Solutions Engineer",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Carlos Mendes",
+        "role": "Head of Digital Operations",
+        "company": "Greenline Energy Services"
+      },
+      {
+        "name": "Lucy Hart",
+        "role": "Field Systems Product Manager",
+        "company": "Greenline Energy Services"
+      }
+    ],
+    "file": "call-007_greenline_energy_services.txt"
+  },
+  {
+    "call_id": "CALL-008",
+    "date": "2026-07-23",
+    "prospect_company": "Harbor Legal",
+    "industry": "Legal services",
+    "company_size": "780 employees",
+    "call_type": "Prospect",
+    "stage": "Discovery / security review",
+    "duration_minutes": 39,
+    "participants": [
+      {
+        "name": "Leo Grant",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Nina Patel",
+        "role": "Solutions Engineer",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Eleanor Brooks",
+        "role": "Chief Transformation Officer",
+        "company": "Harbor Legal"
+      },
+      {
+        "name": "Samir Khan",
+        "role": "Information Security Manager",
+        "company": "Harbor Legal"
+      }
+    ],
+    "file": "call-008_harbor_legal.txt"
+  },
+  {
+    "call_id": "CALL-009",
+    "date": "2026-08-04",
+    "prospect_company": "Inkwell Learning",
+    "industry": "Education technology",
+    "company_size": "520 employees",
+    "call_type": "Prospect",
+    "stage": "Solution evaluation",
+    "duration_minutes": 31,
+    "participants": [
+      {
+        "name": "Maya Chen",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Jon Bell",
+        "role": "Solutions Engineer",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Olivia Grant",
+        "role": "SVP Customer Experience",
+        "company": "Inkwell Learning"
+      },
+      {
+        "name": "Darren Wu",
+        "role": "Director of Business Intelligence",
+        "company": "Inkwell Learning"
+      }
+    ],
+    "file": "call-009_inkwell_learning.txt"
+  },
+  {
+    "call_id": "CALL-010",
+    "date": "2026-08-12",
+    "prospect_company": "Juniper Cloud Tools",
+    "industry": "Developer infrastructure SaaS",
+    "company_size": "350 employees",
+    "call_type": "Prospect",
+    "stage": "Technical evaluation",
+    "duration_minutes": 32,
+    "participants": [
+      {
+        "name": "Leo Grant",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Nina Patel",
+        "role": "Solutions Engineer",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Marcus Chen",
+        "role": "VP Business Operations",
+        "company": "Juniper Cloud Tools"
+      },
+      {
+        "name": "Ava Sinclair",
+        "role": "Staff Software Engineer",
+        "company": "Juniper Cloud Tools"
+      }
+    ],
+    "file": "call-010_juniper_cloud_tools.txt"
+  },
+  {
+    "call_id": "CALL-011",
+    "date": "2026-09-02",
+    "prospect_company": "Lumen Retail Group",
+    "industry": "Grocery retail",
+    "company_size": "3,200 employees",
+    "call_type": "Existing customer",
+    "stage": "Renewal / QBR",
+    "duration_minutes": 21,
+    "participants": [
+      {
+        "name": "Ruth Adeyemi",
+        "role": "Customer Success Manager",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Maya Chen",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Fiona Bright",
+        "role": "Head of Retail Operations",
+        "company": "Lumen Retail Group"
+      },
+      {
+        "name": "Devan Shah",
+        "role": "Platform Manager",
+        "company": "Lumen Retail Group"
+      }
+    ],
+    "file": "call-011_lumen_retail_group.txt"
+  },
+  {
+    "call_id": "CALL-012",
+    "date": "2026-09-08",
+    "prospect_company": "Pinewood Insurance",
+    "industry": "Insurance",
+    "company_size": "1,400 employees",
+    "call_type": "Existing customer",
+    "stage": "Renewal / at risk",
+    "duration_minutes": 23,
+    "participants": [
+      {
+        "name": "Ruth Adeyemi",
+        "role": "Customer Success Manager",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Leo Grant",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Graham Attwood",
+        "role": "Director of Operations",
+        "company": "Pinewood Insurance"
+      },
+      {
+        "name": "Nadia Rahman",
+        "role": "IT Service Owner",
+        "company": "Pinewood Insurance"
+      }
+    ],
+    "file": "call-012_pinewood_insurance.txt"
+  },
+  {
+    "call_id": "CALL-013",
+    "date": "2026-09-15",
+    "prospect_company": "Halberd Security",
+    "industry": "Cybersecurity services",
+    "company_size": "600 employees",
+    "call_type": "Existing customer",
+    "stage": "Renewal / expansion",
+    "duration_minutes": 18,
+    "participants": [
+      {
+        "name": "Ruth Adeyemi",
+        "role": "Customer Success Manager",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Nina Patel",
+        "role": "Solutions Engineer",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Tobias Lund",
+        "role": "VP Service Delivery",
+        "company": "Halberd Security"
+      },
+      {
+        "name": "Grace Okonkwo",
+        "role": "Chief Information Security Officer",
+        "company": "Halberd Security"
+      }
+    ],
+    "file": "call-013_halberd_security.txt"
+  },
+  {
+    "call_id": "CALL-014",
+    "date": "2026-09-18",
+    "prospect_company": "Verity Payments",
+    "industry": "Payments",
+    "company_size": "800 employees",
+    "call_type": "Existing customer",
+    "stage": "Churn post-mortem",
+    "duration_minutes": 21,
+    "participants": [
+      {
+        "name": "Maya Chen",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Ruth Adeyemi",
+        "role": "Customer Success Manager",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Kwame Boateng",
+        "role": "Head of Operations",
+        "company": "Verity Payments"
+      },
+      {
+        "name": "Sarah Lindqvist",
+        "role": "Engineering Manager",
+        "company": "Verity Payments"
+      }
+    ],
+    "file": "call-014_verity_payments.txt"
+  },
+  {
+    "call_id": "CALL-015",
+    "date": "2026-09-22",
+    "prospect_company": "Oakhill Property",
+    "industry": "Property management",
+    "company_size": "240 employees",
+    "call_type": "Existing customer",
+    "stage": "Churn post-mortem",
+    "duration_minutes": 13,
+    "participants": [
+      {
+        "name": "Ruth Adeyemi",
+        "role": "Customer Success Manager",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Alastair McCrae",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Hazel Wren",
+        "role": "Operations Director",
+        "company": "Oakhill Property"
+      }
+    ],
+    "file": "call-015_oakhill_property.txt"
+  },
+  {
+    "call_id": "CALL-016",
+    "date": "2026-09-24",
+    "prospect_company": "Quarry Ridge Foods",
+    "industry": "Food manufacturing",
+    "company_size": "900 employees",
+    "call_type": "Prospect",
+    "stage": "Cold call",
+    "duration_minutes": 2,
+    "participants": [
+      {
+        "name": "Maya Chen",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Dermot Kelly",
+        "role": "Operations Director",
+        "company": "Quarry Ridge Foods"
+      }
+    ],
+    "file": "call-016_quarry_ridge_foods.txt"
+  },
+  {
+    "call_id": "CALL-017",
+    "date": "2026-09-24",
+    "prospect_company": "Silverline Travel",
+    "industry": "Travel and tourism",
+    "company_size": "450 employees",
+    "call_type": "Prospect",
+    "stage": "Cold call",
+    "duration_minutes": 5,
+    "participants": [
+      {
+        "name": "Leo Grant",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Chloe Barnes",
+        "role": "Executive Assistant",
+        "company": "Silverline Travel"
+      },
+      {
+        "name": "Martine Duval",
+        "role": "Director of Customer Operations",
+        "company": "Silverline Travel"
+      }
+    ],
+    "file": "call-017_silverline_travel.txt"
+  },
+  {
+    "call_id": "CALL-018",
+    "date": "2026-09-25",
+    "prospect_company": "Beacon Housing Trust",
+    "industry": "Social housing",
+    "company_size": "1,900 employees",
+    "call_type": "Prospect",
+    "stage": "Cold call",
+    "duration_minutes": 10,
+    "participants": [
+      {
+        "name": "Maya Chen",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Ade Balogun",
+        "role": "Head of Business Change",
+        "company": "Beacon Housing Trust"
+      }
+    ],
+    "file": "call-018_beacon_housing_trust.txt"
+  },
+  {
+    "call_id": "CALL-019",
+    "date": "2026-09-29",
+    "prospect_company": "Trafford Dental Group",
+    "industry": "Dental care",
+    "company_size": "300 employees",
+    "call_type": "Prospect",
+    "stage": "Cold call",
+    "duration_minutes": 6,
+    "participants": [
+      {
+        "name": "Alastair McCrae",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Yvonne Deeks",
+        "role": "Practice Operations Manager",
+        "company": "Trafford Dental Group"
+      }
+    ],
+    "file": "call-019_trafford_dental_group.txt"
+  },
+  {
+    "call_id": "CALL-020",
+    "date": "2026-09-30",
+    "prospect_company": "Kestrel Robotics",
+    "industry": "Industrial robotics",
+    "company_size": "150 employees",
+    "call_type": "Prospect",
+    "stage": "Cold call",
+    "duration_minutes": 8,
+    "participants": [
+      {
+        "name": "Leo Grant",
+        "role": "Account Executive",
+        "company": "OrbitFlow"
+      },
+      {
+        "name": "Rafael Santos",
+        "role": "COO",
+        "company": "Kestrel Robotics"
+      }
+    ],
+    "file": "call-020_kestrel_robotics.txt"
+  }
+]

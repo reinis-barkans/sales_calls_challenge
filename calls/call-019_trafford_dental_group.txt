@@ -1,0 +1,84 @@
+CALL ID: CALL-019
+DATE: 2026-09-29
+VENDOR: OrbitFlow
+PROSPECT: Trafford Dental Group
+INDUSTRY: Dental care
+COMPANY SIZE: 300 employees
+STAGE: Cold call
+DURATION: 6 minutes
+PARTICIPANTS:
+- Alastair McCrae, Account Executive, OrbitFlow
+- Yvonne Deeks, Practice Operations Manager, Trafford Dental Group
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Yvonne Deeks: Hello?
+[00:01] Alastair McCrae: Hi, is that Yvonne?
+[00:03] Yvonne Deeks: Yes?
+[00:04] Alastair McCrae: Yvonne, hi, it's Alastair calling from OrbitFlow, how are you today?
+[00:09] Yvonne Deeks: [pause] Fine. Sorry, who?
+[00:13] Alastair McCrae: OrbitFlow. So we're a workflow automation platform, we work with loads of multi-site healthcare groups — I won't name them but you'd know a couple — and basically what we do is we sit above all your systems and we make them actually talk to each other, with proper governance on top.
+[00:32] Yvonne Deeks: Right, I'm not really —
+[00:34] Alastair McCrae: [crosstalk] And the reason I'm calling you specifically is I had a look at Trafford Dental and you've grown quite a bit, haven't you, you're what, fourteen practices now?
+[00:44] Yvonne Deeks: Eleven.
+[00:45] Alastair McCrae: Eleven! Even better. So you'll know the pain, right — eleven sites, everyone doing things slightly differently, no visibility from the centre.
+[00:56] Yvonne Deeks: I mean, that's — sort of, but —
+[01:00] Alastair McCrae: Exactly. And that's exactly the problem we solve. So what we'd typically do is come in, look at your onboarding processes, your compliance, your referrals, and just automate the whole lot.
+[01:14] Yvonne Deeks: Sorry, can I stop you?
+[01:16] Alastair McCrae: Course, course.
+[01:18] Yvonne Deeks: You don't actually know anything about us, do you.
+[01:22] Alastair McCrae: [pause] I mean, I've done my research on the group —
+[01:27] Yvonne Deeks: You said fourteen practices. And "referrals" — do you know what a dental referral is?
+[01:34] Alastair McCrae: It's — you refer a patient to a specialist?
+[01:38] Yvonne Deeks: We're a general dental group. Most of our referrals go out, not in, and they go through the NHS e-Referral system, which I'm guessing you don't integrate with.
+[01:50] Alastair McCrae: We can integrate with anything that's got an API, so —
+[01:54] Yvonne Deeks: Does it have an API?
+[01:56] Alastair McCrae: I'd have to check.
+[01:58] Yvonne Deeks: Right.
+[02:00] Alastair McCrae: But look — the referrals thing was just an example. The main thing is the visibility across sites, and that's where we —
+[02:09] Yvonne Deeks: Alastair, what does this cost?
+[02:12] Alastair McCrae: So it depends on the setup, but our entry package starts at eighteen hundred a month.
+[02:19] Yvonne Deeks: [pause] Eighteen hundred a month.
+[02:22] Alastair McCrae: For up to thirty users, so —
+[02:25] Yvonne Deeks: We're a dental group. Our practice management software costs us less than that for the whole group.
+[02:33] Alastair McCrae: Right, but this isn't practice management software, this is —
+[02:38] Yvonne Deeks: I know what it isn't. I'm telling you what our budget looks like.
+[02:43] Alastair McCrae: No, totally. And I get that, but when you think about what you'd save —
+[02:49] Yvonne Deeks: You don't know what we'd save. You didn't know how many practices we have.
+[02:55] Alastair McCrae: [pause] That's — yeah, fair.
+[02:59] Yvonne Deeks: Look, I'm not trying to be unkind. But you've been talking for three minutes and you haven't asked me a single question about what we actually do.
+[03:09] Alastair McCrae: Okay. Right. So — what are the biggest challenges you're facing at the moment?
+[03:16] Yvonne Deeks: [pause] Recruitment. Dental nurse recruitment. That's my biggest challenge and it has been for two years.
+[03:25] Alastair McCrae: Right, and we could definitely help with the onboarding side of that, so when someone's hired you could automate the —
+[03:33] Yvonne Deeks: We hire about nine people a year.
+[03:36] Alastair McCrae: Nine.
+[03:38] Yvonne Deeks: Nine. Across eleven practices. It's not a process problem, it's that nobody wants to be a dental nurse for what we can afford to pay.
+[03:49] Alastair McCrae: [pause] Right.
+[03:52] Yvonne Deeks: So I don't think there's much for you here.
+[03:56] Alastair McCrae: Is there anyone else at the group who might — like, is there an IT person, or —
+[04:03] Yvonne Deeks: There's a chap who comes in on Tuesdays.
+[04:07] Alastair McCrae: Would he be worth speaking to?
+[04:10] Yvonne Deeks: He fixes printers.
+[04:12] Alastair McCrae: [pause] Ah.
+[04:15] Yvonne Deeks: He's very good at printers.
+[04:18] Alastair McCrae: [laughs] Right. Okay. Well — look, is it worth me sending you some information, just so you've got it?
+[04:27] Yvonne Deeks: You can send it. I'll be honest with you, I won't read it.
+[04:32] Alastair McCrae: That's — okay.
+[04:35] Yvonne Deeks: I'd rather tell you that than have you follow up four times.
+[04:40] Alastair McCrae: No, I appreciate it. Can I ask — and this is genuine — what would I have needed to say for this to have gone differently?
+[04:50] Yvonne Deeks: [pause] Honestly?
+[04:53] Alastair McCrae: Honestly.
+[04:55] Yvonne Deeks: You'd have needed to know something true about us. Not the number of practices off a website. Something like — I don't know — "most dental groups your size struggle with X" and X is actually a thing we struggle with.
+[05:12] Alastair McCrae: And if I'd said that?
+[05:14] Yvonne Deeks: Then I'd have given you five minutes instead of three, and you'd still probably have got a no because of the price. But it wouldn't have been annoying.
+[05:26] Alastair McCrae: [pause] That's fair.
+[05:29] Yvonne Deeks: The price is the real problem, by the way. Even if you'd been brilliant. Eighteen hundred a month is not a number that exists in my world.
+[05:40] Alastair McCrae: Is there a number that does?
+[05:43] Yvonne Deeks: For something like this? Two, three hundred a month, and I'd have to justify it.
+[05:50] Alastair McCrae: Right. Then we're not it.
+[05:53] Yvonne Deeks: You're not it.
+[05:56] Alastair McCrae: Okay. Well — thanks for being straight with me. Most people just hang up.
+[06:02] Yvonne Deeks: Most people don't ask what they got wrong. So — good luck.
+[06:08] Alastair McCrae: Thanks. Bye.
+[06:10] Yvonne Deeks: Bye.

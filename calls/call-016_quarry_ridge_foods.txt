@@ -1,0 +1,38 @@
+CALL ID: CALL-016
+DATE: 2026-09-24
+VENDOR: OrbitFlow
+PROSPECT: Quarry Ridge Foods
+INDUSTRY: Food manufacturing
+COMPANY SIZE: 900 employees
+STAGE: Cold call
+DURATION: 2 minutes
+PARTICIPANTS:
+- Maya Chen, Account Executive, OrbitFlow
+- Dermot Kelly, Operations Director, Quarry Ridge Foods
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Dermot Kelly: Hello?
+[00:01] Maya Chen: Hi, is that Dermot?
+[00:03] Dermot Kelly: Speaking.
+[00:04] Maya Chen: Dermot, my name's Maya Chen, I'm calling from a company called OrbitFlow. I appreciate this is out of the blue — do you have thirty seconds?
+[00:14] Dermot Kelly: [pause] Go on then.
+[00:17] Maya Chen: We work with operations teams in manufacturing where processes are spread across a few systems and the handoffs between them happen over email and spreadsheets. The specific thing we usually fix is that nobody can see where something's stuck until it's late.
+[00:35] Dermot Kelly: Right.
+[00:37] Maya Chen: Does any of that land, or am I describing somebody else's company?
+[00:42] Dermot Kelly: It lands. But we're not looking at anything.
+[00:47] Maya Chen: Is that a "not now" or a "not ever"?
+[00:51] Dermot Kelly: It's a "we finished an ERP migration in March and I've told everyone in this building that nobody is buying any new software this year."
+[01:02] Maya Chen: [laughs] That's a very clear answer.
+[01:05] Dermot Kelly: I've had to be clear about it. You're the fourth this month.
+[01:11] Maya Chen: Then I won't be the fifth. Can I ask one question and then leave you alone?
+[01:17] Dermot Kelly: One.
+[01:19] Maya Chen: When the ERP dust settles — realistically, next year — who's the person who'd own the workflow layer sitting on top of it? Is that you, or IT, or someone else?
+[01:32] Dermot Kelly: [pause] It'd be me and it'd be our IT director jointly. And I'll tell you now, we've got Power Automate through our Microsoft deal, so it'd have to be pretty compelling.
+[01:46] Maya Chen: That's useful and it's fair. Most Microsoft shops say the same thing.
+[01:52] Dermot Kelly: Well, then you know.
+[01:54] Maya Chen: Can I do this — I won't call you again this year. I'll send one email in February with something specific about Power Automate and where it does and doesn't hold up in manufacturing. If it's useful, reply. If it isn't, don't, and I'll leave it there.
+[02:12] Dermot Kelly: February's fine. One email.
+[02:15] Maya Chen: One email. Thanks Dermot, I'll let you get on.
+[02:19] Dermot Kelly: Cheers. Bye.

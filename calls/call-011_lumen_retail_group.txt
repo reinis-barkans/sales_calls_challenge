@@ -1,0 +1,214 @@
+CALL ID: CALL-011
+DATE: 2026-09-02
+VENDOR: OrbitFlow
+CUSTOMER: Lumen Retail Group
+INDUSTRY: Grocery retail
+COMPANY SIZE: 3,200 employees
+STAGE: Renewal / QBR
+DURATION: 21 minutes
+PARTICIPANTS:
+- Ruth Adeyemi, Customer Success Manager, OrbitFlow
+- Maya Chen, Account Executive, OrbitFlow
+- Fiona Bright, Head of Retail Operations, Lumen Retail Group
+- Devan Shah, Platform Manager, Lumen Retail Group
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Ruth Adeyemi: Morning both. So this is the quarterly review and it's also the renewal conversation, which I've merged because I didn't think either of you wanted two meetings.
+[00:11] Fiona Bright: Correct.
+[00:13] Devan Shah: [crosstalk] Very correct.
+[00:15] Ruth Adeyemi: Maya's here for the commercial part. She'll be quiet until then, allegedly.
+[00:21] Maya Chen: Allegedly.
+[00:23] Ruth Adeyemi: Right. Let me start with numbers and then you tell me what I've missed. You're fourteen months in. Twenty-two workflows in production, up from six at the end of the first quarter. Run volume's roughly two hundred and eighty thousand a month.
+[00:41] Devan Shah: That sounds about right.
+[00:43] Ruth Adeyemi: Error rate's sitting at one point four percent, which is down from four point one when you started. Most of that improvement came in April.
+[00:53] Devan Shah: April was when we fixed the store-data validation. That was our fault, not yours.
+[01:00] Ruth Adeyemi: I know, but it counts.
+[01:03] Fiona Bright: What I care about is the depot exceptions workflow. Can you give me that one specifically?
+[01:10] Ruth Adeyemi: Yes. Median time from exception raised to first action is now forty minutes. It was — Devan, what was it before?
+[01:20] Devan Shah: Between two and six hours, depending on who was on.
+[01:24] Fiona Bright: Six hours was optimistic.
+[01:27] Devan Shah: [laughs] Six hours was the number we admitted to.
+[01:31] Fiona Bright: That's the one that's changed how the depots work. Genuinely. I had a depot manager tell me in July that he'd stopped keeping his own spreadsheet, and that's — you don't get that often.
+[01:47] Ruth Adeyemi: That's the metric I'd actually put in front of your board, for what it's worth. Not the run counts.
+[01:54] Fiona Bright: I already have.
+[01:57] Ruth Adeyemi: Good. Now the less pleasant part of the numbers.
+[02:02] Devan Shah: Overages.
+[02:03] Ruth Adeyemi: Overages. You've exceeded your contracted run volume in four of the last six months. June was twenty-two percent over.
+[02:13] Devan Shah: We knew. We've been watching it.
+[02:16] Fiona Bright: Were we charged for those?
+[02:19] Maya Chen: You were charged for two of them. Two were waived — one in March because it was a retry storm caused by a Salesforce outage on their side, and one in May which I waived because you'd flagged it to us proactively before the invoice.
+[02:37] Fiona Bright: I didn't know that.
+[02:39] Devan Shah: I knew about March. I didn't know about May.
+[02:43] Maya Chen: May was a judgement call. I'd rather tell you now than have it look like a discovery in the renewal.
+[02:51] Fiona Bright: Appreciated. But it does mean the run tier is wrong.
+[02:56] Maya Chen: The run tier is wrong, yes. Which is most of what I want to talk about.
+[03:02] Devan Shah: Can I ask something before we get to money?
+[03:06] Ruth Adeyemi: Go on.
+[03:08] Devan Shah: The retry storm in March. Has anything changed at your end so that doesn't happen again? Because from our side we did nothing wrong and it cost us twenty thousand runs.
+[03:22] Ruth Adeyemi: Partly. There are retry controls and you can set caps per workflow, and we can look at whether yours are configured sensibly — I suspect two or three of them aren't. But if a downstream system is down for six hours and your workflows keep firing, you will burn runs.
+[03:43] Devan Shah: So the answer is configure it better.
+[03:47] Ruth Adeyemi: The answer is configure it better, and I should have done that with you in April rather than now. That's on me.
+[03:56] Devan Shah: [pause] Alright.
+[03:58] Fiona Bright: Can we book that as a session rather than an action item that dies?
+[04:04] Ruth Adeyemi: Yes. I'll put an hour in with Devan for the fortnight after next.
+[04:10] Devan Shah: Fine.
+[04:12] Ruth Adeyemi: Adoption. This is the bit I want to push on. You've got nine builders licensed and four of them haven't published anything in six months.
+[04:23] Devan Shah: Two of those have moved teams.
+[04:26] Ruth Adeyemi: Then we should take them off, not keep paying for them.
+[04:31] Fiona Bright: You're offering to reduce our seat count?
+[04:34] Ruth Adeyemi: I'm telling you what the data says. Maya may have a different view.
+[04:40] Maya Chen: I have exactly the same view. Nine licensed builders with four dormant is a renewal that gets scrutinised. I'd rather sell you seven active seats and a higher run tier than nine seats where four are indefensible.
+[04:57] Fiona Bright: That's — okay. That's a more sensible conversation than I was braced for.
+[05:04] Maya Chen: Braced for what?
+[05:06] Fiona Bright: Braced for "here's a fifteen percent uplift, sign here."
+[05:11] Maya Chen: There is an uplift. I'll come to it.
+[05:15] Fiona Bright: [laughs] Of course there is.
+[05:18] Ruth Adeyemi: Let me finish the review first, because there's an expansion question and I think it changes the shape of the commercial conversation.
+[05:27] Fiona Bright: Go on.
+[05:29] Ruth Adeyemi: You mentioned in July you were thinking about the supplier onboarding process.
+[05:35] Fiona Bright: Devan, do you want to?
+[05:37] Devan Shah: So — at the moment, bringing on a new supplier involves about nine handoffs between buying, compliance, finance and the depot systems team. It's email and a SharePoint list.
+[05:52] Ruth Adeyemi: How long?
+[05:54] Devan Shah: Target's fifteen working days. Actual is somewhere around thirty.
+[05:59] Fiona Bright: Thirty-four last quarter.
+[06:02] Devan Shah: Thirty-four. And the buying team is now blaming compliance and compliance is blaming the depot systems team, and honestly they're all a bit right.
+[06:13] Ruth Adeyemi: Is that a workflow problem or an organisational problem?
+[06:18] Devan Shah: [pause] That's a good question.
+[06:21] Fiona Bright: It's both, but I'd say the reason it's an organisational problem is that nobody can see where it's stuck. If you could see it, the arguing would stop.
+[06:33] Ruth Adeyemi: That's usually true. I'd flag one risk though — if the process itself is genuinely broken, automating it makes it a faster broken process.
+[06:45] Devan Shah: We've said that internally.
+[06:48] Fiona Bright: Compliance said it, and they said it loudly.
+[06:52] Ruth Adeyemi: Then I'd suggest the first phase is visibility only. Don't automate the handoffs. Just instrument them — track where a supplier onboarding is, who has it, how long they've had it. Run that for six weeks and look at the data.
+[07:11] Fiona Bright: And then automate.
+[07:13] Ruth Adeyemi: And then automate the bits the data says are actually the problem, rather than the bits people complain loudest about. Those are usually different.
+[07:24] Devan Shah: That's cheaper too.
+[07:26] Ruth Adeyemi: It's cheaper and it's much easier to get compliance to agree to.
+[07:31] Fiona Bright: [pause] Yes. Let's do that.
+[07:35] Devan Shah: Would that be a lot of runs?
+[07:38] Ruth Adeyemi: No. Instrumentation is light — you're recording state transitions, not orchestrating them. Maybe a few thousand a month.
+[07:48] Devan Shah: That's nothing.
+[07:50] Ruth Adeyemi: It's nothing. The expensive phase is later.
+[07:54] Maya Chen: Which is relevant to how I structure the renewal, actually.
+[07:59] Fiona Bright: Go on then. Let's do it.
+[08:02] Maya Chen: Right. Current contract is Enterprise, nine builder seats, run tier at two hundred and fifty thousand a month. It expires the eighteenth of October.
+[08:14] Fiona Bright: Six weeks.
+[08:16] Maya Chen: Six weeks, which is why I wanted this conversation now rather than in October.
+[08:22] Fiona Bright: What's the uplift?
+[08:24] Maya Chen: List uplift at renewal is seven percent. That's the standard annual adjustment and I'm not going to pretend it's negotiable in principle — it applies to everyone.
+[08:36] Fiona Bright: Seven. Not fifteen.
+[08:39] Maya Chen: Seven.
+[08:41] Fiona Bright: That's more reasonable than I expected.
+[08:44] Maya Chen: But the run tier change is a bigger number than the uplift, and I want to be upfront about that. You need three hundred and fifty thousand, not two fifty, and that's before the supplier onboarding work.
+[08:59] Devan Shah: Three fifty gives us headroom?
+[09:02] Maya Chen: Three fifty gives you about twenty percent headroom on your current trajectory. Four hundred gives you a year and the instrumentation project.
+[09:12] Devan Shah: What's the delta between three fifty and four hundred?
+[09:16] Maya Chen: I'll send exact numbers, but roughly — the step from two fifty to three fifty is the significant one. Three fifty to four hundred is a smaller increment because of how the tiers are shaped.
+[09:31] Fiona Bright: So we should take four hundred.
+[09:34] Maya Chen: I think you should take four hundred, and I'd rather say that than sell you three fifty and have this conversation again in May.
+[09:43] Fiona Bright: What's the total? Directionally.
+[09:46] Maya Chen: Directionally, with seven seats instead of nine, seven percent uplift, and the four hundred thousand tier — you're looking at roughly nine percent above what you paid this year. If we kept nine seats it'd be closer to fourteen.
+[10:04] Fiona Bright: [pause] Nine percent for forty percent more capacity and a new use case.
+[10:11] Maya Chen: That's the shape of it. And I want to be clear that the seat reduction is genuine — I'm not inflating the run tier to compensate.
+[10:21] Devan Shah: Can you show that? The two things separately?
+[10:25] Maya Chen: Yes, and I'll show last year's line items next to next year's so you can see exactly what moved.
+[10:33] Fiona Bright: Please. That's the thing that gets a renewal signed here — I have to take it to a finance director who will ask what changed and why.
+[10:44] Maya Chen: Then it'll be built for that conversation rather than for this one.
+[10:49] Fiona Bright: What about multi-year? Is there anything in it for us?
+[10:54] Maya Chen: There is. A two-year commitment lets me fix the uplift for year two, which given where inflation's gone is probably worth more than the discount itself.
+[11:06] Fiona Bright: How much discount?
+[11:08] Maya Chen: I'd need to model it properly. I'd be guessing if I said a number now and I'd rather not guess at a renewal.
+[11:16] Fiona Bright: Would you do three years?
+[11:19] Maya Chen: I'd do three. Should you? Probably not.
+[11:23] Fiona Bright: Why not?
+[11:25] Maya Chen: Because you're fourteen months into a platform that's going well, and three years is a long commitment for something you haven't yet used for the harder use case. If supplier onboarding goes badly you'd be locked into a tier you don't need. Two years is where I'd sit.
+[11:45] Devan Shah: That's an odd thing for you to say.
+[11:48] Maya Chen: It's a very normal thing for me to say to a customer I want to renew four times rather than once.
+[11:56] Fiona Bright: Alright. Model two years, and model three so I can see it, and I'll decide.
+[12:03] Maya Chen: Done.
+[12:05] Ruth Adeyemi: Can I raise the support thing while we're here?
+[12:09] Fiona Bright: Yes, please do, because Devan's been complaining.
+[12:13] Devan Shah: I have been complaining.
+[12:15] Ruth Adeyemi: Say it.
+[12:17] Devan Shah: Response times have been fine. Resolution times on anything involving the SAP connector have been terrible. We had a ticket open for nineteen days in July.
+[12:30] Ruth Adeyemi: I looked at that one before this call. It went to second line, then to engineering, then it sat.
+[12:38] Devan Shah: It sat for eleven days.
+[12:41] Ruth Adeyemi: It sat for eleven days and there's no good explanation. I've raised it internally and the honest answer I got was that it fell between two teams.
+[12:53] Devan Shah: That's what it looked like from outside.
+[12:56] Ruth Adeyemi: What I can do is name a specific engineer as the escalation contact for SAP issues on your account. What I can't do is promise you a resolution SLA on connector defects, because we don't offer one and I'm not going to invent it at a renewal.
+[13:16] Devan Shah: [pause] The named contact is more useful than a promise, honestly.
+[13:22] Fiona Bright: Is it worth putting anything in the contract?
+[13:26] Maya Chen: Your Enterprise agreement already includes priority support with response-time commitments. Resolution-time commitments are a different thing and we don't do them. If someone tells you otherwise, check the paper.
+[13:41] Fiona Bright: Noted.
+[13:43] Ruth Adeyemi: One more from my side and then I'll let you go. Governance.
+[13:48] Devan Shah: Mm.
+[13:50] Ruth Adeyemi: You've got twenty-two production workflows and your naming convention has drifted. There are four called some variant of "depot exception" and I genuinely could not tell you which is live.
+[14:04] Devan Shah: Two are live. One's a test that should have been deleted. One's the old version.
+[14:11] Ruth Adeyemi: Can you delete them?
+[14:13] Devan Shah: I can delete the test. The old version I'd want to keep for a bit.
+[14:19] Ruth Adeyemi: Then rename it. "Deprecated" in the name, and set it inactive.
+[14:25] Devan Shah: Fine.
+[14:27] Ruth Adeyemi: I'm being pedantic because this is exactly how you end up in three years with forty workflows and nobody knowing which matter. I've seen it.
+[14:38] Fiona Bright: We came from that. That was the Zapier estate.
+[14:43] Devan Shah: Sixty-odd Zaps, half of them orphaned.
+[14:47] Ruth Adeyemi: Then you know.
+[14:49] Devan Shah: We know. It's just that tidying isn't urgent until it is.
+[14:55] Ruth Adeyemi: It's never urgent. That's the problem with it.
+[15:00] Fiona Bright: Put it on the list, Devan.
+[15:03] Devan Shah: It's on the list.
+[15:05] Ruth Adeyemi: I'll check in December.
+[15:07] Devan Shah: [laughs] I'm sure you will.
+[15:11] Fiona Bright: Can I ask about something unrelated?
+[15:14] Ruth Adeyemi: Of course.
+[15:16] Fiona Bright: The AI features. We've never turned them on. Should we?
+[15:22] Ruth Adeyemi: What would you want them for?
+[15:25] Fiona Bright: I don't know. That's why I'm asking. There's pressure from above to have an AI story and I'd rather have a real one than a made-up one.
+[15:36] Ruth Adeyemi: [pause] Then my honest answer is: don't turn them on because there's pressure. Turn them on when there's a task where the input is genuinely unstructured.
+[15:48] Fiona Bright: Is there one?
+[15:50] Ruth Adeyemi: Possibly. The depot exception free-text field — Devan, how much gets typed into that?
+[15:58] Devan Shah: A lot. It's the field where people explain what actually happened.
+[16:04] Ruth Adeyemi: Then categorising those into themes so Fiona can see what's recurring across depots — that's a real use, and it's low risk because nobody's making a decision from it directly.
+[16:19] Fiona Bright: That would be genuinely useful actually.
+[16:22] Ruth Adeyemi: With one condition. The output has to link back to the underlying exceptions so someone can check it. If it says "forty percent of exceptions relate to chilled goods handling", you need to be able to click through to the forty percent.
+[16:39] Fiona Bright: Otherwise it's a made-up number.
+[16:42] Ruth Adeyemi: Otherwise it's a plausible number, which is worse.
+[16:46] Devan Shah: Does that need Enterprise? We're on Enterprise anyway.
+[16:51] Ruth Adeyemi: You're on Enterprise, so you have the controls — restricting which models are allowed, disabling it per workspace, the model configuration logged per run. You'd want to talk to your security people before switching it on, but it's a conversation rather than a project.
+[17:11] Fiona Bright: Who's our security person?
+[17:13] Devan Shah: Priyanka. She'll want the subprocessor list.
+[17:17] Ruth Adeyemi: I'll send it. And the statement that we don't use customer workflow content to train a shared model — she'll ask for that and it's in your contract already.
+[17:29] Devan Shah: Is it? I didn't know that.
+[17:32] Maya Chen: It's clause fourteen. It went in at the original signature because your legal team asked for it.
+[17:39] Devan Shah: Good for them.
+[17:41] Fiona Bright: Right. What are we agreeing today?
+[17:45] Maya Chen: Nothing binding. What you'll get from me by Friday is the renewal proposal with last year's line items next to next year's, seven seats, four hundred thousand runs, and one-year, two-year and three-year options priced separately.
+[18:03] Fiona Bright: And the seat reduction is in there.
+[18:06] Maya Chen: The seat reduction is in there and it's called out explicitly so your finance director can see it.
+[18:13] Fiona Bright: Good.
+[18:15] Ruth Adeyemi: From me — the retry configuration session with Devan, the subprocessor list for Priyanka, a short note on what the supplier onboarding instrumentation phase would look like, and the named SAP escalation contact.
+[18:32] Devan Shah: When for the escalation contact?
+[18:35] Ruth Adeyemi: This week. That one's easy.
+[18:38] Devan Shah: Alright.
+[18:40] Fiona Bright: And we owe you what?
+[18:42] Ruth Adeyemi: A decision on whether supplier onboarding instrumentation happens this side of Christmas, because it affects whether four hundred thousand is the right tier. And Devan owes me some deleted workflows.
+[18:56] Devan Shah: I'll delete the test one today.
+[18:59] Fiona Bright: On the renewal — realistically I'll come back to you the week of the fifteenth. I need to get it in front of finance and they meet fortnightly.
+[19:11] Maya Chen: That's fine and it's within the window. If it slips past the eighteenth we can bridge it, but I'd rather not because bridging always creates a mess in someone's system.
+[19:24] Fiona Bright: It won't slip.
+[19:26] Maya Chen: Can I ask a question that isn't about the renewal?
+[19:31] Fiona Bright: Go on.
+[19:33] Maya Chen: What's the thing we do that you'd miss most if it vanished tomorrow?
+[19:39] Fiona Bright: [pause] The depot exception routing. Without question. Everything else we could go back to doing the old way and survive. That one has changed the operating rhythm and going back would be genuinely painful.
+[19:56] Devan Shah: I'd say the run history, personally. But I'm not the business.
+[20:02] Maya Chen: Why the run history?
+[20:04] Devan Shah: Because when something breaks I can answer the question in four minutes instead of half a day. That's not visible to Fiona but it's most of my quality of life.
+[20:17] Maya Chen: That's useful to hear, genuinely. It's the thing we're worst at explaining in a sales conversation.
+[20:25] Devan Shah: It's not exciting.
+[20:27] Maya Chen: It's not exciting until it's three in the morning.
+[20:31] Devan Shah: [laughs] It has been three in the morning.
+[20:35] Fiona Bright: Right, I've got a store visit. Ruth, thank you, this was useful. Maya, send the numbers.
+[20:43] Maya Chen: Friday.
+[20:45] Ruth Adeyemi: Thanks both. Devan, I'll get that session in the diary.
+[20:50] Devan Shah: Cheers. Bye.
+[20:52] Fiona Bright: Bye.

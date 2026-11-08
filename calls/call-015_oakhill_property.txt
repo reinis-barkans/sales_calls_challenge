@@ -1,0 +1,153 @@
+CALL ID: CALL-015
+DATE: 2026-09-22
+VENDOR: OrbitFlow
+CUSTOMER: Oakhill Property
+INDUSTRY: Property management
+COMPANY SIZE: 240 employees
+STAGE: Churn post-mortem
+DURATION: 13 minutes
+PARTICIPANTS:
+- Ruth Adeyemi, Customer Success Manager, OrbitFlow
+- Alastair McCrae, Account Executive, OrbitFlow
+- Hazel Wren, Operations Director, Oakhill Property
+
+TRANSCRIPT
+Synthetic transcript for interview exercise. All companies, people, and events are fictional.
+
+[00:00] Ruth Adeyemi: Hazel, thanks for taking this. I know you've got a lot on.
+[00:05] Hazel Wren: It's fine. I've got twenty minutes.
+[00:08] Ruth Adeyemi: We won't need twenty. Just so you know the format — this isn't a save call. Your notice is served, you're leaving on the eleventh of November, and I'm not going to try to reverse that.
+[00:22] Hazel Wren: Good, because you wouldn't.
+[00:25] Ruth Adeyemi: I gathered. What I'd like is to understand why, properly.
+[00:31] Hazel Wren: [pause] How honest do you want me to be?
+[00:35] Ruth Adeyemi: Completely.
+[00:37] Hazel Wren: Alastair, are you alright with that?
+[00:40] Alastair McCrae: Yeah. Yeah, of course.
+[00:43] Hazel Wren: Right. We bought something we didn't need. That's the whole answer.
+[00:49] Ruth Adeyemi: Say more.
+[00:51] Hazel Wren: We're two hundred and forty people. We manage residential blocks. Our automation needs are — a tenant reports a fault, it goes to the right contractor, someone chases if it's not done in five days. That's it. That's the sophistication level.
+[01:10] Ruth Adeyemi: And you were on Growth.
+[01:12] Hazel Wren: We were on Growth, at eighteen hundred a month, for thirty users, when we had four people who ever logged in.
+[01:21] Ruth Adeyemi: Four.
+[01:23] Hazel Wren: Four. And two of those only looked at reports.
+[01:28] Ruth Adeyemi: So you were paying twenty-one and a half thousand a year for what — two builders?
+[01:34] Hazel Wren: Two builders and eleven workflows, most of which are quite simple.
+[01:40] Ruth Adeyemi: Did the workflows work?
+[01:42] Hazel Wren: They worked perfectly. That's the frustrating part. I've got no complaint about the product at all.
+[01:50] Ruth Adeyemi: Then what are you moving to?
+[01:53] Hazel Wren: Zapier. Which we had before, which we should probably never have left.
+[02:00] Ruth Adeyemi: What'll that cost?
+[02:02] Hazel Wren: About two thousand a year. Maybe two and a half with the tier we need.
+[02:08] Ruth Adeyemi: So a tenth.
+[02:10] Hazel Wren: A tenth, yes.
+[02:12] Ruth Adeyemi: Will it do everything?
+[02:14] Hazel Wren: [pause] No. We'll lose the approval steps and we'll lose the run history, which I'll genuinely miss. But nineteen thousand pounds is a member of staff for four months, and when I put it that way to my managing director, the conversation was quite short.
+[02:34] Ruth Adeyemi: That's a hard argument to counter.
+[02:37] Hazel Wren: It's an impossible argument to counter. And I'd like to say — I did think about it properly. I'm not being flippant. I sat down and listed what we'd lose.
+[02:50] Ruth Adeyemi: What was on the list?
+[02:52] Hazel Wren: The run history. The approval forms, because our contractor sign-off uses those and Zapier can't really do it. And the fact that when something breaks, I know within an hour rather than when a tenant rings up.
+[03:09] Ruth Adeyemi: Those are the three things that matter.
+[03:12] Hazel Wren: They're the three things that matter and they're worth something. They're not worth nineteen thousand pounds a year to a company our size.
+[03:22] Ruth Adeyemi: Alastair, do you want to come in?
+[03:25] Alastair McCrae: Yeah — Hazel, I mean, I'm sorry it's ended up here. Is there — I mean, is there a version where we look at the pricing? Because I could go and —
+[03:37] Hazel Wren: Alastair, no. I'm not doing that.
+[03:41] Alastair McCrae: No, I understand, I just —
+[03:44] Hazel Wren: If you can do it for eight thousand now, that tells me you could have done it for eight thousand two years ago, and then I'd be quite cross.
+[03:54] Alastair McCrae: [pause] That's fair.
+[03:57] Ruth Adeyemi: Hazel, can I ask about the original purchase?
+[04:01] Hazel Wren: You can, and Alastair may not enjoy it.
+[04:05] Alastair McCrae: It's fine. Honestly.
+[04:08] Hazel Wren: When we bought this, I was told it would scale with us. That we'd start with the fault-reporting workflow and then do compliance, and then service charges, and then contractor management. And that was true — it would have. But we never did any of it.
+[04:28] Ruth Adeyemi: Why not?
+[04:30] Hazel Wren: Because we're two hundred and forty people and everyone's already got a job. The roadmap I agreed to in the sales process assumed a version of Oakhill that spent time on process improvement, and we've never once had that time.
+[04:47] Ruth Adeyemi: Was that discussed?
+[04:49] Hazel Wren: It was discussed enthusiastically.
+[04:52] Ruth Adeyemi: [pause] By whom?
+[04:55] Hazel Wren: By both of us, to be fair. I was enthusiastic too. I'm not putting this all on Alastair.
+[05:03] Alastair McCrae: I did — I mean, I remember that conversation and you were quite keen on the compliance one.
+[05:11] Hazel Wren: I was extremely keen on the compliance one. I've been keen on the compliance one for three years. It has never once reached the top of my list.
+[05:22] Ruth Adeyemi: So the purchase was priced against a future that didn't happen.
+[05:27] Hazel Wren: Yes. That's a good way of putting it. We paid for eleven workflows' worth of value and a plan for forty.
+[05:37] Ruth Adeyemi: Is there anything we could have done?
+[05:40] Hazel Wren: [pause] Yes, actually. Two things.
+[05:44] Ruth Adeyemi: Go on.
+[05:46] Hazel Wren: Someone should have noticed after six months that we had four users on a thirty-user plan and said something. Not sold me something. Said something.
+[05:58] Ruth Adeyemi: That's a fair criticism. We look at that data.
+[06:03] Hazel Wren: Do you?
+[06:04] Ruth Adeyemi: We look at it. Whether anyone acts on it for an account your size is a different question, and the answer is usually no.
+[06:14] Hazel Wren: At least you're honest.
+[06:16] Ruth Adeyemi: What's the second thing?
+[06:19] Hazel Wren: There should be a smaller plan. Something for a company that needs five workflows and three users and doesn't need thirty seats. If you'd had something at five or six hundred a month I'd still be a customer and I'd probably have done the compliance one eventually.
+[06:39] Ruth Adeyemi: There isn't one.
+[06:41] Hazel Wren: I know there isn't. Alastair told me at the time.
+[06:45] Alastair McCrae: I did say that.
+[06:47] Hazel Wren: You did say that, in fairness. You said the entry point is Growth and that's the entry point.
+[06:54] Ruth Adeyemi: Did you consider not buying?
+[06:57] Hazel Wren: I did. And I decided the fault-reporting problem was bad enough to justify it, which it was. For about a year.
+[07:07] Ruth Adeyemi: What changed after a year?
+[07:10] Hazel Wren: Nothing changed. That's the thing. It kept working. But the pain it solved stopped being fresh, and the invoice kept arriving, and eventually somebody looks at a renewal and asks what this is for.
+[07:26] Ruth Adeyemi: The problem being solved becomes invisible.
+[07:30] Hazel Wren: The problem being solved becomes invisible. Exactly that. Nobody remembers how bad it was.
+[07:38] Ruth Adeyemi: Do you think you'll regret it?
+[07:41] Hazel Wren: [pause] Possibly. I think there'll be a moment in about four months when something breaks and nobody notices for two days and I'll think, well, that used to be handled.
+[07:55] Ruth Adeyemi: And then?
+[07:57] Hazel Wren: And then I'll deal with it, because that's a two-day problem and not a nineteen-thousand-pound problem.
+[08:04] Ruth Adeyemi: That's a rational position.
+[08:07] Hazel Wren: I've had a lot of time to think about it. I've been putting off this decision since May.
+[08:14] Ruth Adeyemi: Can I ask about the last year of service? How was it?
+[08:19] Hazel Wren: Fine. Genuinely fine. I think I've raised two tickets in two years and both were answered.
+[08:27] Ruth Adeyemi: Did anyone from us contact you?
+[08:30] Hazel Wren: You did, in — March? An email about a new feature.
+[08:36] Ruth Adeyemi: A product announcement.
+[08:38] Hazel Wren: A product announcement, yes.
+[08:41] Ruth Adeyemi: That's not contact.
+[08:43] Hazel Wren: No, it isn't.
+[08:45] Ruth Adeyemi: [pause] I'm going to be direct with you. Your account was in a segment that doesn't get an assigned CSM. I'm on this call because it's a churn, not because I've been managing you.
+[08:59] Hazel Wren: I'd worked that out. You've been very good today but you clearly hadn't heard of us before Tuesday.
+[09:07] Ruth Adeyemi: Monday, actually.
+[09:09] Hazel Wren: [laughs] Monday.
+[09:12] Ruth Adeyemi: I'm not going to pretend otherwise.
+[09:15] Hazel Wren: I don't mind. It's a commercial reality. But it does rather answer the question of why nobody noticed the four users.
+[09:25] Ruth Adeyemi: It does.
+[09:27] Alastair McCrae: Can I say something?
+[09:29] Hazel Wren: Go on.
+[09:31] Alastair McCrae: I think — looking back, I probably should have pushed harder on whether you had the capacity for the roadmap we talked about. I was excited about it and you were excited about it and neither of us asked who was actually going to do it.
+[09:49] Hazel Wren: [pause] That's a good thing to say.
+[09:53] Alastair McCrae: I've been thinking about it since Ruth sent me the notice.
+[09:58] Hazel Wren: For what it's worth, Alastair, I don't think you did anything wrong. You sold me a good product that does what it says. I just bought more of it than I needed.
+[10:10] Alastair McCrae: Thanks. I appreciate that.
+[10:13] Ruth Adeyemi: Practical things. What do you need for the exit?
+[10:18] Hazel Wren: Our workflow definitions, if only so I know how to rebuild them in Zapier.
+[10:24] Ruth Adeyemi: You can export those through the API. I'll send instructions — and honestly, for eleven simple workflows, screenshots might be more useful than the JSON.
+[10:36] Hazel Wren: Screenshots would be much more useful.
+[10:39] Ruth Adeyemi: Then I'll get someone to produce those. It's not a thing we offer, but it's eleven workflows and it'll take an hour.
+[10:48] Hazel Wren: That's kind.
+[10:50] Ruth Adeyemi: What about run history?
+[10:52] Hazel Wren: Do I need it?
+[10:54] Ruth Adeyemi: You tell me. Is there any compliance reason you'd need to show what happened to a fault report from eighteen months ago?
+[11:03] Hazel Wren: [pause] Possibly, actually. There's a Building Safety Act angle on fault response times.
+[11:11] Ruth Adeyemi: Then take the export. It's better to have it and not need it.
+[11:16] Hazel Wren: How do I get it?
+[11:18] Ruth Adeyemi: Run events API. I'll send the pagination details, because two years of records will hit a limit and you'll assume it's broken.
+[11:28] Hazel Wren: I definitely would have assumed that.
+[11:31] Ruth Adeyemi: Everyone does. And I'll arrange a deletion confirmation for afterwards with an actual date on it.
+[11:39] Hazel Wren: Thank you.
+[11:41] Ruth Adeyemi: Your contract ends the eleventh of November. Do you want read-only access past that?
+[11:47] Hazel Wren: Two weeks would help. We'll be running both in parallel through October.
+[11:53] Ruth Adeyemi: I'll give you until the end of November. No charge.
+[11:58] Hazel Wren: That's generous.
+[12:00] Ruth Adeyemi: It's not generous, it's just not petty.
+[12:03] Hazel Wren: [laughs] Some vendors are petty.
+[12:07] Ruth Adeyemi: Some vendors are very petty.
+[12:10] Ruth Adeyemi: One last question. If we did have a smaller plan — five hundred a month, five workflows, three users, no approval forms — would you buy it?
+[12:22] Hazel Wren: [pause] With the approval forms, yes. Without them, no, because that's the bit Zapier can't do and it's the only thing I'll actually miss.
+[12:34] Ruth Adeyemi: So approval forms are the feature.
+[12:37] Hazel Wren: For a company like us, the approval forms and the run history are the whole product. The rest is capability I'll never reach.
+[12:47] Ruth Adeyemi: That's genuinely useful and I'll pass it on.
+[12:51] Hazel Wren: Will anything happen?
+[12:53] Ruth Adeyemi: Probably not. But it'll be one more data point and eventually someone counts them.
+[13:00] Hazel Wren: [laughs] That's the most realistic thing anyone's said to me all week.
+[13:06] Ruth Adeyemi: Thank you, Hazel. Genuinely.
+[13:09] Hazel Wren: Thanks both. Alastair — no hard feelings.
+[13:14] Alastair McCrae: None at all. Good luck with the compliance one.
+[13:18] Hazel Wren: [laughs] It'll never happen. Bye.
