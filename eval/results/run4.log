@@ -1,0 +1,21 @@
+uv run python eval/run_eval.py
+Running pipeline on 18 questions...
+Running naive_rag on 18 questions...
+Running full_context on 18 questions...
+# Evaluation results
+
+Gold set: 18 questions (eval/questions.yaml).
+
+| Metric | pipeline | naive_rag | full_context |
+|---|---|---|---|
+| Fact score (judge) | 98% | 69% | 93% |
+| Selection recall | 100% | 71% | 100% |
+| Cited-call recall | 100% | 68% | 99% |
+| List precision | 64% | 50% | 75% |
+| False matches (must_not_cite) | 1 | 0 | 0 |
+| Citation validity | 99% | 99% | 100% |
+| Abstention accuracy | 100% | 83% | 100% |
+| Conflict recall | 100% | 50% | 100% |
+| Avg input tokens / question | 81,769 | 3,995 | 167,837 |
+| Avg latency (s, uncached) | 3 | 5 | 0 |
+| Errors | 0 | 0 | 0 |

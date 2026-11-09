@@ -51,7 +51,8 @@
    "search"
   ],
   "CALL-006": [
-   "facts"
+   "facts",
+   "search"
   ],
   "CALL-007": [
    "facts",
@@ -1441,6 +1442,7 @@
     "T030",
     "T032"
    ],
+   "speaker": "Imogen Price (customer)",
    "reason": "quote not found in cited turns"
   },
   {
@@ -1451,6 +1453,7 @@
     "T031",
     "T033"
    ],
+   "speaker": "Alastair McCrae (vendor)",
    "reason": "quote not found in cited turns"
   }
  ],
@@ -1622,8 +1625,8 @@
   "cache_read_tokens": 170201,
   "cache_write_tokens": 0,
   "output_tokens": 29789,
-  "uncached_calls": 2,
-  "latency_s": 24.23
+  "uncached_calls": 0,
+  "latency_s": 0.12
  },
  "answer": {
   "question": "Which competitors were mentioned, and in what context?",

@@ -82,7 +82,8 @@
    "search"
   ],
   "CALL-015": [
-   "facts"
+   "facts",
+   "search"
   ],
   "CALL-016": [
    "facts"
@@ -1623,6 +1624,7 @@
     "T162",
     "T163"
    ],
+   "speaker": "Priya Shah",
    "reason": "quote not found in cited turns"
   }
  ],
@@ -1776,8 +1778,8 @@
   "cache_read_tokens": 191818,
   "cache_write_tokens": 0,
   "output_tokens": 34142,
-  "uncached_calls": 2,
-  "latency_s": 31.13
+  "uncached_calls": 0,
+  "latency_s": 0.09
  },
  "answer": {
   "question": "What concerns did customers raise about pricing?",

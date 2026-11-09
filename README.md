@@ -105,26 +105,27 @@ The idea: **pick calls cheaply and deterministically, read the picked calls in f
 
 **Systems compared:** `pipeline` (this system), `naive_rag` (top 8 BM25 chunks → Sonnet), `full_context` (all 20 transcripts in a cached prompt → Sonnet).
 
-### Results (run 2; full tables in [eval/results/results.md](eval/results/results.md), run 1 in `results_run1.md`)
+### Results (run 4; full tables in [eval/results/results.md](eval/results/results.md), run 1 in `results_run1.md`)
 
 | Metric | pipeline | naive RAG | full context |
 |---|---|---|---|
-| Fact score (judge) | **98%** (run 1: 87%) | 63% | 93% |
-| Selection recall | 100% | 69% | 100% |
-| Cited-call recall | 100% | 66% | 99% |
-| Citation validity (before removal) | 99% | 100% | 100% |
+| Fact score (judge) | **98%** (run 1: 87%) | 69% | 93% |
+| Selection recall | 100% | 71% | 100% |
+| Cited-call recall | 100% | 68% | 99% |
+| Citation validity (before removal) | 99% | 99% | 100% |
 | Abstention accuracy (3 should-decline + 15 should-answer) | **100%** | 83% | **100%** |
-| Conflict recall | **100%** | 75% | **100%** |
-| Avg input tokens / question | 80K | 4K | 168K |
+| Conflict recall | **100%** | 50% | **100%** |
+| Avg input tokens / question | 82K | 4K | 168K |
 | Avg latency, uncached (run 1) | 22 s | 5 s | 9 s |
 
 **What this shows**
 
-- **Naive RAG is not good enough.** It missed both churn reasons, missed the vendor inconsistency, declined questions it should have answered (Q06, Q07, Q18) and found 0 of 7 expected calls for "which competitors". Top-k chunks can't answer questions that span the dataset.
+- **Naive RAG is not good enough.** It missed both churn reasons, missed the vendor inconsistency, declined questions it should have answered (Q07, Q08, Q18) and found 0 of 7 expected calls for "which competitors". Top-k chunks can't answer questions that span the dataset.
 - **Full context is a strong baseline at this size.** It beat the pipeline in run 1 (93% vs 87%). It is simple and fast, because one cached prompt holds all 20 calls. Its problems are scale and cost: ~168K input tokens on *every* question whatever its scope, and it stops working once the corpus outgrows the context window.
 - **The pipeline matches or beats it at about half the input tokens**, and its cost grows with the number of calls picked (a single-company question reads 1 call), not with the size of the dataset. Every claim it makes is backed by a quote verified in code, and "not covered" never involves the answering model.
 - **Run 1 → run 2:** the fix came from reading the failures, not from retrieval: one gold-label error, and a combine prompt that had become too terse. Retrieval, reading and verification were unchanged. See [eval/results/failures.md](eval/results/failures.md).
-- **Caveat:** run 2 was tuned on the same 18 questions, with no held-out set, and the baselines got no tuning, so treat 98% as optimistic. One question ≈ 6 points.
+- **Runs 3–4** fixed speaker attribution and added `friction` tags at ingest (failures.md B7–B8). The pipeline's scores didn't change. Naive RAG's did (63→69% facts, 75→50% conflicts), only because its BM25 chunks include extracted fact text: a sign of how fragile top-k retrieval is.
+- **Caveat:** the pipeline was tuned on the same 18 questions, with no held-out set, and the baselines got no tuning, so treat 98% as optimistic. One question ≈ 6 points.
 - **Citation validity is high for all three**, because current models quote well when they have the text. The verifier's value is the guarantee, plus what it removes on harder cases (it rejected a cross-speaker stitched quote during development).
 - **Metric limits** (in failures.md): `must_not_cite` flags the pipeline for citing Lumen *in order to exclude it*, and list precision is low because `expected_calls` is a minimal subset for broad list questions.
 
@@ -135,6 +136,8 @@ The idea: **pick calls cheaply and deterministically, read the picked calls in f
 - **Verbose answers on broad questions.** Combine tends to list weak secondary cases alongside the main finding. The verifier removes unsupported claims but can't judge what matters most.
 - **Judgement questions** ("most likely to purchase") are answered from cited buying signals, but the ranking is still the model's judgement.
 - **The entailment check is itself a model.** A subtle misreading can pass it. Planted traps are covered by the eval, but new kinds of misreading may not be.
+- **Quotes and speakers are checked in code; the reader's interpretation is not.** Each finding's `context` note ("sarcastic", "curt") is model interpretation. Such findings are marked `inferred` and lower confidence, but they aren't verified.
+- **Tone and behaviour need a tag assigned at ingest.** Rudeness has no keywords, so search found 2 of 20 calls. Extraction now tags `friction` facts (quote and speaker checked, mapped from words like "rude" or "tense" via `aliases.json`), and the same question reads 20 calls and cites 19. Other behaviours that aren't tagged (e.g. "who talked over the customer?") still depend on search and can miss calls.
 - **Small, self-written gold set** (18 questions, written by the system's author). The judge is an LLM and hasn't been calibrated against hand grades.
 - **Entity labels from extraction are noisy** (e.g. some non-SSO vendor claims are tagged `SSO`). This only affects which calls get picked (more calls read), not the evidence in answers.
 
@@ -147,7 +150,7 @@ The idea: **pick calls cheaply and deterministically, read the picked calls in f
 - Show the trace in the CLI (why each call was read, what was rejected) as a debugging view.
 
 **Production**
-- **Scale (10K+ calls):** picking calls already keeps per-question cost flat for specific questions. For theme questions across thousands of calls, answer from the facts table and fully read a stratified sample, saying so in the answer. Move facts and vectors to Postgres + pgvector, and run reads through a queue or the Batches API.
+- **Scale (10K+ calls) changes where the reading happens.** Here every question re-reads its picked calls in full: the most accurate option at 20 calls, since nothing is lost to extraction, but the cost repeats on every question and grows with the number of calls picked. In production, read each call once at ingest into verified facts and tags (Postgres + pgvector). Answer lists, counts and themes from those facts, re-read transcripts only to drill into a few calls, and backfill a new tag across all calls with the Batches API. The trade-off: extraction keeps only what its prompt asks for, so it should collect broadly (every vendor claim, not just ones that look important). The quote/speaker check, finding-ID citations, the "not covered" response from code and the eval carry over unchanged.
 - **New calls arriving continuously:** ingest one call at a time (parse → extract → verify → index), triggered by an event. Prompt versions are stored per step, so a schema change triggers background re-extraction.
 - **Security and privacy:** transcripts contain personal data and commercial pricing. Redact personal data before sending to the LLM, or use zero-retention processing in the EU. Apply access control (team or region) as a metadata filter *before* call picking, so evidence can't leak across permissions. Keep an audit log of questions and the calls each answer touched. Transcripts are untrusted input (prompt injection): the verifier limits the damage, because answers can only cite real turns.
 - **Models:** `llm.py` is the only module that knows the provider. A cheaper or self-hosted reader model (e.g. open weights) can be swapped in and judged by the eval on citation validity, false declines and fact score.

@@ -25,7 +25,7 @@
   "cache_write_tokens": 0,
   "output_tokens": 174,
   "uncached_calls": 0,
-  "latency_s": 0.05
+  "latency_s": 0.03
  },
  "answer": {
   "question": "Did anyone mention Gong?",
@@ -34,7 +34,7 @@
   "conflicts": [],
   "not_covered": [
    "Did anyone mention Gong?",
-   "Closest related material: CALL-004 (DeltaWorks Manufacturing) turns T163-T170, CALL-007 (Greenline Energy Services) turns T043-T050, CALL-004 (DeltaWorks Manufacturing) turns T133-T140"
+   "Closest related material: CALL-004 (DeltaWorks Manufacturing) turns T163-T170, CALL-004 (DeltaWorks Manufacturing) turns T133-T140, CALL-004 (DeltaWorks Manufacturing) turns T157-T164"
   ],
   "assumptions": [
    "Gong refers to the sales conversation intelligence product, not a generic word or a different company with a similar name."

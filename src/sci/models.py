@@ -62,7 +62,7 @@ class Chunk(BaseModel):
 
 FactType = Literal[
     "integration", "competitor", "objection", "pricing", "vendor_claim",
-    "buying_signal", "risk", "requirement", "outcome", "next_step",
+    "buying_signal", "risk", "requirement", "outcome", "next_step", "friction",
 ]
 FactContext = Literal[
     "uses", "required", "evaluating", "replaced_by", "previously_used",

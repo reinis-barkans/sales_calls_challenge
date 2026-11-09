@@ -46,35 +46,77 @@ def _fragments_in_order(fragments: list[str], hay: str) -> bool:
     return True
 
 
-def match_quote(quote: str, turn_ids: list[str], window: int = 1) -> Optional[list[Turn]]:
-    """Return the turns that contain the quote, or None if it can't be found.
+def _keep_tags(s: str) -> str:
+    """Like normalise() but keeps stage directions as words ('[pause]' -> 'pause'),
+    so a quote that copied the tag can be pinned to the turn that has it."""
+    s = s.lower().replace("’", "'").replace("—", " ").replace("–", " ").replace("'", "")
+    return " ".join(_NONWORD.sub(" ", s).split())
 
-    Searches the cited turns (+/- `window` neighbours) as one joined span.
+
+def speaker_matches(stated: str, actual: str) -> bool:
+    """Loose name match: 'Darren' / 'Darren Wu (customer)' vs 'Darren Wu'."""
+    a, b = normalise(stated), normalise(actual)
+    if not a or not b:
+        return False
+    return b in a or a in b or a.split()[0] == b.split()[0]
+
+
+def match_quote(quote: str, turn_ids: list[str], window: int = 1,
+                speaker: Optional[str] = None) -> Optional[list[Turn]]:
+    """Return the turns that contain the quote, or None if it can't be found
+    or can't be attributed unambiguously.
+
+    Searches the cited turns (+/- `window` neighbours). Every matching
+    single-speaker span is collected and ranked:
+      1. matches with stage directions kept (e.g. '[pause]') beat tag-stripped matches
+      2. spans containing a cited turn beat neighbouring turns
+      3. tighter spans beat wider ones, nearer beats farther
+    If `speaker` is given, only that speaker's spans count. If the best candidates
+    tie across different speakers, the quote is ambiguous and rejected: an
+    identical line said by two people (an echo) must not be guessed.
     """
     idx = turn_index()
     cited = [idx[t] for t in turn_ids if t in idx]
     if not cited:
         return None
-    fragments = [normalise(f) for f in _ELLIPSIS.split(quote)]
-    fragments = [f for f in fragments if f]
+    raw_frags = [f for f in (_keep_tags(x) for x in _ELLIPSIS.split(quote)) if f]
+    fragments = [f for f in (normalise(x) for x in _ELLIPSIS.split(quote)) if f]
     if not fragments:
         return None
+    cited_idx = {t.idx for t in cited}
     if sum(len(f) for f in fragments) < 8:
         # Very short quotes ("Eleven.") are only accepted as an entire cited turn.
-        whole = [t for t in cited if normalise(t.text) == " ".join(fragments)]
-        return whole[:1] or None
-    call_turns = load_turns()[cited[0].call_id]
-    lo = max(min(t.idx for t in cited) - 1 - window, 0)
-    hi = min(max(t.idx for t in cited) + window, len(call_turns))
-    span = call_turns[lo:hi]
-    # Prefer the tightest matching span: single turns first, then pairs, then the whole window.
-    # A multi-turn match must be ONE speaker (a sentence broken across their turns);
-    # a quote stitched from two speakers would make speaker attribution wrong.
-    for size in range(1, len(span) + 1):
-        for start in range(0, len(span) - size + 1):
-            sub = span[start:start + size]
-            if len({t.speaker for t in sub}) > 1:
-                continue
-            if _fragments_in_order(fragments, normalise(" ".join(t.text for t in sub))):
-                return sub
-    return None
+        cands = [[t] for t in cited if normalise(t.text) == " ".join(fragments)]
+        min_size = None
+    else:
+        call_turns = load_turns()[cited[0].call_id]
+        lo = max(min(cited_idx) - 1 - window, 0)
+        hi = min(max(cited_idx) + window, len(call_turns))
+        span = call_turns[lo:hi]
+        # A multi-turn match must be ONE speaker (a sentence broken across their turns);
+        # a quote stitched from two speakers would make speaker attribution wrong.
+        cands = []
+        for size in range(1, len(span) + 1):
+            for start in range(0, len(span) - size + 1):
+                sub = span[start:start + size]
+                if len({t.speaker for t in sub}) > 1:
+                    continue
+                if _fragments_in_order(fragments, normalise(" ".join(t.text for t in sub))):
+                    cands.append(sub)
+    if speaker:
+        cands = [c for c in cands if speaker_matches(speaker, c[0].speaker)]
+    if not cands:
+        return None
+
+    def rank(sub: list[Turn]):
+        raw = _fragments_in_order(raw_frags, _keep_tags(" ".join(t.text for t in sub)))
+        has_cited = any(t.idx in cited_idx for t in sub)
+        dist = min(abs(t.idx - c) for t in sub for c in cited_idx)
+        return (not raw, not has_cited, len(sub), dist)
+
+    cands.sort(key=rank)
+    best = rank(cands[0])
+    tied_speakers = {c[0].speaker for c in cands if rank(c) == best}
+    if len(tied_speakers) > 1:
+        return None
+    return cands[0]

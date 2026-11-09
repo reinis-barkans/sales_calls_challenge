@@ -24,6 +24,7 @@ Rules:
 - If a customer corrects or contradicts themselves (e.g. a number revised, or 'that wasn't the real reason'), capture both statements as separate facts and say so in the statement.
 - Write numbers both as spoken and as digits in `statement`, e.g. "eighteen hundred a month (£1,800/month)".
 - Use canonical entity names: Salesforce, HubSpot, Zapier, Workato, Tray.io, Power Automate, MuleSoft, Make, Retool Workflows, Gainsight, SSO, SCIM, SOC 2, data residency, pricing, etc.
+- Record interpersonal friction as type=friction, entity=friction, from ANY speaker (vendor or customer, including between colleagues): curt, dismissive, sarcastic, condescending or hostile remarks, talking over someone, visible frustration or tension. `statement` says who did what to whom and how it was received. NOT friction: apologies, joining late, hedges, worries, self-corrections, polite disagreement or tough questions asked politely. Only tag remarks a neutral listener would call sharp, mocking or unfriendly.
 - Aim for completeness over brevity: typically 20-60 facts for a long call."""
 
 
@@ -36,7 +37,7 @@ def _extract_one(call_id: str) -> tuple[CallCard, list[StoredFact], dict]:
     for i, f in enumerate(ex.facts):
         tids = [fix_turn_id(t, call_id) for t in f.turn_ids]
         tids = [t for t in tids if t in idx]
-        matched = match_quote(f.quote, tids) if tids else None
+        matched = match_quote(f.quote, tids, speaker=f.speaker) if tids else None
         if matched:
             ok += 1
             tids = [t.turn_id for t in matched]

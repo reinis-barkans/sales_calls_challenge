@@ -75,11 +75,16 @@ def structured(*, step: str, model: str, system: str, user: str, schema: type[T]
     last = None
     for attempt in range(2):
         t0 = time.time()
-        resp = _get_client().messages.parse(
-            model=model, max_tokens=budget, system=sys_block,
-            messages=[{"role": "user", "content": content}], output_format=schema,
-            output_config={"effort": EFFORT},
-        )
+        try:
+            resp = _get_client().messages.parse(
+                model=model, max_tokens=budget, system=sys_block,
+                messages=[{"role": "user", "content": content}], output_format=schema,
+                output_config={"effort": EFFORT},
+            )
+        except ValueError as e:   # pydantic ValidationError (e.g. truncated/invalid JSON): retry once with more room
+            last = f"invalid output: {str(e)[:120]}"
+            budget = MAX_NONSTREAM_TOKENS
+            continue
         u = resp.usage
         cache_read = getattr(u, "cache_read_input_tokens", 0) or 0
         cache_write = getattr(u, "cache_creation_input_tokens", 0) or 0

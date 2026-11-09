@@ -1,0 +1,62 @@
+{
+ "question": "what concerns did Mango raise about pricing?",
+ "resolution": {
+  "question_type": "lookup",
+  "companies": [
+   {
+    "mention": "Mango",
+    "resolved_to": null,
+    "confidence": "low"
+   }
+  ],
+  "call_types": [],
+  "search_terms": [
+   "pricing",
+   "price",
+   "cost",
+   "budget",
+   "discount",
+   "expensive",
+   "affordable",
+   "concern",
+   "objection"
+  ],
+  "read_instruction": "Extract every concern, objection, or question the customer raises about pricing, cost, budget, discounts, or contract value, including the exact wording and which OrbitFlow response followed.",
+  "assumptions": [
+   "'Mango' does not match any company in the catalogue, so no company filter is applied and the search covers all calls.",
+   "If 'Mango' is a company name not present in the transcripts, the answer should state that no matching call was found."
+  ]
+ },
+ "candidates": {},
+ "search_terms": [],
+ "findings": [],
+ "rejected_findings": [],
+ "usage": {
+  "llm_calls": 1,
+  "input_tokens": 2383,
+  "cache_read_tokens": 2359,
+  "cache_write_tokens": 0,
+  "output_tokens": 412,
+  "uncached_calls": 1,
+  "latency_s": 9.41
+ },
+ "answer": {
+  "question": "what concerns did Mango raise about pricing?",
+  "answer": "No calls in the dataset match Mango; nothing to answer from.",
+  "claims": [],
+  "conflicts": [],
+  "not_covered": [
+   "what concerns did Mango raise about pricing?"
+  ],
+  "assumptions": [
+   "'Mango' does not match any company in the catalogue, so no company filter is applied and the search covers all calls.",
+   "If 'Mango' is a company name not present in the transcripts, the answer should state that no matching call was found."
+  ],
+  "confidence": "none",
+  "calls_considered": [],
+  "calls_cited": [],
+  "removed_claims": [],
+  "covered": false,
+  "trace_id": null
+ }
+}

@@ -45,7 +45,8 @@
    "search"
   ],
   "CALL-005": [
-   "facts"
+   "facts",
+   "search"
   ],
   "CALL-006": [
    "facts",
@@ -99,7 +100,8 @@
    "facts"
   ],
   "CALL-019": [
-   "facts"
+   "facts",
+   "search"
   ],
   "CALL-020": [
    "facts"
@@ -3130,6 +3132,7 @@
     "T018",
     "T020"
    ],
+   "speaker": "Jon Bell (OrbitFlow Solutions Engineer)",
    "reason": "quote not found in cited turns"
   }
  ],
@@ -3280,8 +3283,8 @@
   "cache_read_tokens": 183954,
   "cache_write_tokens": 7864,
   "output_tokens": 72948,
-  "uncached_calls": 2,
-  "latency_s": 27.24
+  "uncached_calls": 0,
+  "latency_s": 0.43
  },
  "answer": {
   "question": "Has anyone from the vendor given inconsistent answers about the product?",

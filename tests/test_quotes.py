@@ -63,3 +63,33 @@ def test_short_quote_accepted_only_as_whole_turn():
     assert match_quote("Eleven.", [short.turn_id])
     long_tid = _tid("CALL-019", "Across eleven practices")
     assert match_quote("eleven", [long_tid]) is None
+
+
+# Found live (trace 7088cee07c): Olivia says "It's a related fight." (T157) and Darren
+# echoes it "[pause] It's a related fight." (T158). Tag-stripping made both identical
+# and the matcher attributed Darren's echo to Olivia.
+def test_echo_resolved_by_stage_direction():
+    m = match_quote("[pause] It's a related fight.", ["CALL-009#T157"])
+    assert m and m[0].turn_id == "CALL-009#T158" and m[0].speaker == "Darren Wu"
+
+
+def test_echo_resolved_by_stated_speaker():
+    m = match_quote("It's a related fight.", ["CALL-009#T158"], speaker="Olivia Grant")
+    assert m and m[0].turn_id == "CALL-009#T157"
+    m = match_quote("It's a related fight.", ["CALL-009#T157"], speaker="Darren")
+    assert m and m[0].turn_id == "CALL-009#T158"
+
+
+def test_echo_without_disambiguation_prefers_cited_turn():
+    m = match_quote("It's a related fight.", ["CALL-009#T158"])
+    assert m and m[0].speaker == "Darren Wu"
+
+
+def test_identical_line_two_speakers_ambiguous():
+    # Neither turn cited directly (cited a neighbour), no tag, no speaker: refuse to guess.
+    assert match_quote("It's a related fight.", ["CALL-009#T156", "CALL-009#T159"]) is None
+
+
+def test_wrong_stated_speaker_rejected():
+    tid = _tid("CALL-006", "SSO's included on all our plans")
+    assert match_quote("SSO's included on all our plans", [tid], speaker="Hannah Cole") is None

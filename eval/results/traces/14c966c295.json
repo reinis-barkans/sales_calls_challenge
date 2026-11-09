@@ -1,0 +1,79 @@
+{
+ "question": "what is the meaning of life on earth???",
+ "resolution": {
+  "question_type": "out_of_scope",
+  "companies": [],
+  "call_types": [],
+  "search_terms": [],
+  "read_instruction": "This question is not about the OrbitFlow sales call transcripts. No call-level extraction is needed.",
+  "assumptions": [
+   "The question is philosophical and does not relate to any sales call content in the catalogue."
+  ]
+ },
+ "candidates": {
+  "CALL-010": [
+   "search"
+  ],
+  "CALL-009": [
+   "search"
+  ],
+  "CALL-013": [
+   "search"
+  ],
+  "CALL-008": [
+   "search"
+  ],
+  "CALL-011": [
+   "search"
+  ],
+  "CALL-007": [
+   "search"
+  ],
+  "CALL-018": [
+   "search"
+  ],
+  "CALL-001": [
+   "search"
+  ]
+ },
+ "search_terms": [],
+ "findings": [],
+ "rejected_findings": [],
+ "usage": {
+  "llm_calls": 9,
+  "input_tokens": 93798,
+  "cache_read_tokens": 68789,
+  "cache_write_tokens": 24228,
+  "output_tokens": 246,
+  "uncached_calls": 9,
+  "latency_s": 10.13
+ },
+ "answer": {
+  "question": "what is the meaning of life on earth???",
+  "answer": "The transcripts don't cover this. I read 8 candidate call(s) and found no supporting evidence.",
+  "claims": [],
+  "conflicts": [],
+  "not_covered": [
+   "what is the meaning of life on earth???",
+   "Closest related material: CALL-010 (Juniper Cloud Tools) turns T211-T218, CALL-009 (Inkwell Learning) turns T055-T062, CALL-010 (Juniper Cloud Tools) turns T217-T224"
+  ],
+  "assumptions": [
+   "The question is philosophical and does not relate to any sales call content in the catalogue."
+  ],
+  "confidence": "none",
+  "calls_considered": [
+   "CALL-001",
+   "CALL-007",
+   "CALL-008",
+   "CALL-009",
+   "CALL-010",
+   "CALL-011",
+   "CALL-013",
+   "CALL-018"
+  ],
+  "calls_cited": [],
+  "removed_claims": [],
+  "covered": false,
+  "trace_id": null
+ }
+}

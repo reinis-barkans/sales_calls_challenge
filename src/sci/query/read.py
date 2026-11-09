@@ -25,6 +25,15 @@ Rules:
 - Be complete: include every relevant finding, typically 1-8."""
 
 
+def _found_any(quote: str, tids: list[str]) -> bool:
+    """True if the text occurs in the window at all, ignoring attribution."""
+    idx = turn_index()
+    from sci.quotes import normalise
+    frag = normalise(quote)
+    turns = [idx[t] for t in tids if t in idx]
+    return bool(frag) and any(frag in normalise(t.text) for t in turns)
+
+
 def read_call(call_id: str, question: str, hints: list[str], instruction: str = "") -> tuple[list[VerifiedEvidence], list[dict]]:
     hint = f"\nRelated terms: {', '.join(hints)}" if hints else ""
     task = (f"\nWhat to extract from THIS call (other calls are read separately and compared later; "
@@ -40,10 +49,14 @@ def read_call(call_id: str, question: str, hints: list[str], instruction: str = 
     ok, rejected = [], []
     for f in reading.findings:
         tids = [t for t in (fix_turn_id(x, call_id) for x in f.turn_ids) if t in idx]
-        matched = match_quote(f.quote, tids) if tids else None
+        matched = match_quote(f.quote, tids, speaker=f.speaker) if tids else None
         if not matched:
+            # Distinguish "not there" from "there, but said by someone else / ambiguous".
+            anywhere = match_quote(f.quote, tids) if tids else None
+            reason = ("quote not found in cited turns" if anywhere is None and not _found_any(f.quote, tids)
+                      else f"speaker mismatch or ambiguous attribution (reader said {f.speaker})")
             rejected.append({"call_id": call_id, "claim": f.claim, "quote": f.quote, "turn_ids": f.turn_ids,
-                             "reason": "quote not found in cited turns"})
+                             "speaker": f.speaker, "reason": reason})
             continue
         t = matched[0]
         ok.append(VerifiedEvidence(finding_id="", turn_id=t.turn_id, call_id=call_id, company=company,

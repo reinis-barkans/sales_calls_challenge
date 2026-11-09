@@ -1,20 +1,120 @@
 {
-  "_comment": "Canonical entity -> variants. Used to expand search terms before matching facts/BM25. Company names are resolved against manifest.json by query/resolve.py.",
-  "Salesforce": ["salesforce", "sfdc"],
-  "HubSpot": ["hubspot"],
-  "Zapier": ["zapier"],
-  "Workato": ["workato"],
-  "Tray.io": ["tray", "tray.io"],
-  "Power Automate": ["power automate", "microsoft power automate"],
-  "MuleSoft": ["mulesoft", "mule"],
-  "Make": ["make.com", "integromat"],
-  "Retool Workflows": ["retool"],
-  "Gainsight": ["gainsight"],
-  "SSO": ["sso", "saml", "single sign-on", "single sign on", "okta", "entra", "azure ad"],
-  "SCIM": ["scim", "provisioning"],
-  "SOC 2": ["soc 2", "soc2", "iso 27001", "pen test", "penetration"],
-  "data residency": ["residency", "eu data", "uk data", "data location", "hosted", "region"],
-  "pricing": ["price", "pricing", "cost", "budget", "expensive", "discount", "per seat", "seats", "licence", "license"],
-  "BAA": ["baa", "hipaa", "phi", "protected health information", "business associate"],
-  "competitor": ["competitor", "alternative", "evaluating", "zapier", "workato", "tray", "power automate", "mulesoft", "make.com", "retool", "gainsight"]
+ "_comment": "Canonical entity -> variants. Used to expand search terms before matching facts/BM25. Company names are resolved against manifest.json by query/resolve.py.",
+ "Salesforce": [
+  "salesforce",
+  "sfdc"
+ ],
+ "HubSpot": [
+  "hubspot"
+ ],
+ "Zapier": [
+  "zapier"
+ ],
+ "Workato": [
+  "workato"
+ ],
+ "Tray.io": [
+  "tray",
+  "tray.io"
+ ],
+ "Power Automate": [
+  "power automate",
+  "microsoft power automate"
+ ],
+ "MuleSoft": [
+  "mulesoft",
+  "mule"
+ ],
+ "Make": [
+  "make.com",
+  "integromat"
+ ],
+ "Retool Workflows": [
+  "retool"
+ ],
+ "Gainsight": [
+  "gainsight"
+ ],
+ "SSO": [
+  "sso",
+  "saml",
+  "single sign-on",
+  "single sign on",
+  "okta",
+  "entra",
+  "azure ad"
+ ],
+ "SCIM": [
+  "scim",
+  "provisioning"
+ ],
+ "SOC 2": [
+  "soc 2",
+  "soc2",
+  "iso 27001",
+  "pen test",
+  "penetration"
+ ],
+ "data residency": [
+  "residency",
+  "eu data",
+  "uk data",
+  "data location",
+  "hosted",
+  "region"
+ ],
+ "pricing": [
+  "price",
+  "pricing",
+  "cost",
+  "budget",
+  "expensive",
+  "discount",
+  "per seat",
+  "seats",
+  "licence",
+  "license"
+ ],
+ "BAA": [
+  "baa",
+  "hipaa",
+  "phi",
+  "protected health information",
+  "business associate"
+ ],
+ "competitor": [
+  "competitor",
+  "alternative",
+  "evaluating",
+  "zapier",
+  "workato",
+  "tray",
+  "power automate",
+  "mulesoft",
+  "make.com",
+  "retool",
+  "gainsight"
+ ],
+ "friction": [
+  "rude",
+  "rudeness",
+  "unfriendly",
+  "hostile",
+  "hostility",
+  "tense",
+  "tension",
+  "sarcastic",
+  "sarcasm",
+  "dismissive",
+  "curt",
+  "condescending",
+  "aggressive",
+  "frustrated",
+  "frustration",
+  "impolite",
+  "disrespectful",
+  "snippy",
+  "heated",
+  "argument"
+ ]
 }

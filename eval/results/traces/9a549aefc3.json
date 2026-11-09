@@ -133,24 +133,22 @@
    "quote": "We've got a decision date and I'm not moving it.",
    "context": "Rafael says Kestrel will not restart the evaluation and has a fixed decision date in mid-October, with Tray the likely choice. \u2014 Customer stating the evaluation timeline; Leo's question about a vendor-agnostic call implies Tray is likely the pick.",
    "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F9",
-   "turn_id": "CALL-020#T066",
-   "call_id": "CALL-020",
-   "company": "Kestrel Robotics",
-   "speaker": "Rafael Santos",
-   "side": "customer",
-   "role": "COO",
-   "ts": "06:56",
-   "quote": "You'd do that knowing we'll probably go with Tray?",
-   "context": "Leo's reading is that Kestrel will likely go with Tray, which is the inferred outcome of the evaluation. \u2014 Leo's question shows he believes the customer will probably pick Tray; Rafael confirms the likelihood indirectly.",
-   "stated_or_inferred": "inferred"
   }
  ],
- "rejected_findings": [],
+ "rejected_findings": [
+  {
+   "call_id": "CALL-020",
+   "claim": "Leo's reading is that Kestrel will likely go with Tray, which is the inferred outcome of the evaluation.",
+   "quote": "You'd do that knowing we'll probably go with Tray?",
+   "turn_ids": [
+    "T066"
+   ],
+   "speaker": "Leo Grant",
+   "reason": "speaker mismatch or ambiguous attribution (reader said Leo Grant)"
+  }
+ ],
  "draft": {
-  "answer": "Kestrel's COO Rafael Santos said they are three weeks into evaluating Tray.io, that it is going well, and that the one problem is the lack of a connector for their ERP [C1][C2][C3]. Kestrel has a fixed mid-October decision date and will likely pick Tray, though that outcome is inferred [C4][C5]. OrbitFlow's Leo Grant did not disparage Tray and urged Kestrel to test it [C6].",
+  "answer": "Kestrel Robotics' COO Rafael Santos said they are three weeks into evaluating Tray.io and that it is going well [C1]. His one issue is that Tray has no connector for their ERP [C2]. He said the decision date is fixed and Tray looks like the likely pick [C3]. OrbitFlow's Leo Grant declined to disparage Tray [C4] and conceded OrbitFlow likely has no ERP connector either [C5].",
   "claims": [
    {
     "text": "Rafael Santos (COO) said Kestrel is three weeks into evaluating Tray.io, and that OrbitFlow's name came up on a vendor list and was crossed off.",
@@ -159,61 +157,63 @@
     ]
    },
    {
-    "text": "Rafael said the Tray evaluation is going \"genuinely well\" and that Tray's team has been good.",
+    "text": "Rafael said the Tray evaluation is going 'genuinely well' and that Tray's team has been good.",
     "finding_ids": [
      "F2"
     ]
    },
    {
-    "text": "Rafael said the one problem is the ERP: Tray has no connector for their niche mid-market manufacturing ERP, so they would build against its API. Their one back-end developer estimates three weeks (per Rafael, really six).",
+    "text": "Rafael's one problem with Tray is that it has no connector for their niche mid-market manufacturing ERP. Kestrel would build against the ERP's API, which their one back-end developer estimates at three weeks (Rafael says really six).",
     "finding_ids": [
      "F5"
     ]
    },
    {
-    "text": "Rafael said Kestrel will not restart the evaluation and has a fixed decision date in mid-October.",
+    "text": "Rafael said Kestrel has a fixed decision date in mid-October and will not move it or restart the evaluation. Tray appears to be the likely choice, though this is implied by Leo's question rather than stated outright.",
     "finding_ids": [
      "F8"
     ]
    },
    {
-    "text": "Tray appears to be the likely choice. This is Leo's reading, inferred from his question \"You'd do that knowing we'll probably go with Tray?\", and is not an explicit statement by Rafael.",
-    "finding_ids": [
-     "F9",
-     "F8"
-    ]
-   },
-   {
-    "text": "Leo Grant (OrbitFlow AE) said Tray is not bad and that OrbitFlow both loses to and beats it, usually on fit rather than quality. He said OrbitFlow would be a third horse in a two-horse race. He conceded OrbitFlow likely has no ERP connector either, so no advantage over Tray there. He urged Kestrel to test whether operations staff can change the process without the developer, and to run that test against Tray.",
+    "text": "Leo Grant (OrbitFlow AE) said Tray is not bad, that OrbitFlow sometimes wins and sometimes loses to it, and that it usually comes down to fit. He said OrbitFlow would be a third horse in a two-horse race, a waste of everyone's time.",
     "finding_ids": [
      "F3",
-     "F4",
-     "F6",
+     "F4"
+    ]
+   },
+   {
+    "text": "Leo conceded OrbitFlow likely has no native connector for the ERP either, so it has no advantage over Tray on that point.",
+    "finding_ids": [
+     "F6"
+    ]
+   },
+   {
+    "text": "Leo suggested Kestrel test whether operations staff can change the process without the developer, and run that test against Tray. Per the finding summary, Rafael said Tray passing would be a reason to buy it.",
+    "finding_ids": [
      "F7"
     ]
    }
   ],
   "conflicts": [],
   "not_covered": [
-   "Tray.io pricing, features beyond the ERP connector gap, or other criteria Kestrel is evaluating are not covered.",
-   "Whether Kestrel ultimately chose Tray is not covered."
+   "Tray.io pricing, features beyond the ERP connector gap, and the exact decision date were not stated in the findings."
   ],
   "assumptions": [
-   "Tray.io is treated as a competing vendor Kestrel is evaluating."
+   "Tray.io is treated as a competitor evaluated by Kestrel."
   ]
  },
  "usage": {
   "llm_calls": 4,
-  "input_tokens": 12981,
+  "input_tokens": 12589,
   "cache_read_tokens": 7137,
   "cache_write_tokens": 0,
-  "output_tokens": 3188,
-  "uncached_calls": 2,
-  "latency_s": 8.57
+  "output_tokens": 3775,
+  "uncached_calls": 0,
+  "latency_s": 0.01
  },
  "answer": {
   "question": "What did Kestrel Robotics say about Tray.io?",
-  "answer": "Kestrel's COO Rafael Santos said they are three weeks into evaluating Tray.io, that it is going well, and that the one problem is the lack of a connector for their ERP [1][2][3]. Kestrel has a fixed mid-October decision date and will likely pick Tray, though that outcome is inferred [4][5]. OrbitFlow's Leo Grant did not disparage Tray and urged Kestrel to test it [6].",
+  "answer": "Kestrel Robotics' COO Rafael Santos said they are three weeks into evaluating Tray.io and that it is going well [1]. His one issue is that Tray has no connector for their ERP [2]. He said the decision date is fixed and Tray looks like the likely pick [3]. OrbitFlow's Leo Grant declined to disparage Tray [4] and conceded OrbitFlow likely has no ERP connector either [5].",
   "claims": [
    {
     "text": "Rafael Santos (COO) said Kestrel is three weeks into evaluating Tray.io, and that OrbitFlow's name came up on a vendor list and was crossed off.",
@@ -235,7 +235,7 @@
     "support": "strong"
    },
    {
-    "text": "Rafael said the Tray evaluation is going \"genuinely well\" and that Tray's team has been good.",
+    "text": "Rafael said the Tray evaluation is going 'genuinely well' and that Tray's team has been good.",
     "evidence": [
      {
       "finding_id": "F2",
@@ -254,7 +254,7 @@
     "support": "strong"
    },
    {
-    "text": "Rafael said the one problem is the ERP: Tray has no connector for their niche mid-market manufacturing ERP, so they would build against its API. Their one back-end developer estimates three weeks (per Rafael, really six).",
+    "text": "Rafael's one problem with Tray is that it has no connector for their niche mid-market manufacturing ERP. Kestrel would build against the ERP's API, which their one back-end developer estimates at three weeks (Rafael says really six).",
     "evidence": [
      {
       "finding_id": "F5",
@@ -270,10 +270,10 @@
       "stated_or_inferred": "stated"
      }
     ],
-    "support": "moderate"
+    "support": "strong"
    },
    {
-    "text": "Rafael said Kestrel will not restart the evaluation and has a fixed decision date in mid-October.",
+    "text": "Rafael said Kestrel has a fixed decision date in mid-October and will not move it or restart the evaluation. Tray appears to be the likely choice, though this is implied by Leo's question rather than stated outright.",
     "evidence": [
      {
       "finding_id": "F8",
@@ -292,39 +292,7 @@
     "support": "moderate"
    },
    {
-    "text": "Tray appears to be the likely choice. This is Leo's reading, inferred from his question \"You'd do that knowing we'll probably go with Tray?\", and is not an explicit statement by Rafael.",
-    "evidence": [
-     {
-      "finding_id": "F9",
-      "turn_id": "CALL-020#T066",
-      "call_id": "CALL-020",
-      "company": "Kestrel Robotics",
-      "speaker": "Rafael Santos",
-      "side": "customer",
-      "role": "COO",
-      "ts": "06:56",
-      "quote": "You'd do that knowing we'll probably go with Tray?",
-      "context": "Leo's reading is that Kestrel will likely go with Tray, which is the inferred outcome of the evaluation. \u2014 Leo's question shows he believes the customer will probably pick Tray; Rafael confirms the likelihood indirectly.",
-      "stated_or_inferred": "inferred"
-     },
-     {
-      "finding_id": "F8",
-      "turn_id": "CALL-020#T059",
-      "call_id": "CALL-020",
-      "company": "Kestrel Robotics",
-      "speaker": "Rafael Santos",
-      "side": "customer",
-      "role": "COO",
-      "ts": "06:01",
-      "quote": "We've got a decision date and I'm not moving it.",
-      "context": "Rafael says Kestrel will not restart the evaluation and has a fixed decision date in mid-October, with Tray the likely choice. \u2014 Customer stating the evaluation timeline; Leo's question about a vendor-agnostic call implies Tray is likely the pick.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "moderate"
-   },
-   {
-    "text": "Leo Grant (OrbitFlow AE) said Tray is not bad and that OrbitFlow both loses to and beats it, usually on fit rather than quality. He said OrbitFlow would be a third horse in a two-horse race. He conceded OrbitFlow likely has no ERP connector either, so no advantage over Tray there. He urged Kestrel to test whether operations staff can change the process without the developer, and to run that test against Tray.",
+    "text": "Leo Grant (OrbitFlow AE) said Tray is not bad, that OrbitFlow sometimes wins and sometimes loses to it, and that it usually comes down to fit. He said OrbitFlow would be a third horse in a two-horse race, a waste of everyone's time.",
     "evidence": [
      {
       "finding_id": "F3",
@@ -351,7 +319,13 @@
       "quote": "Three weeks in, with a decision coming, I'd be the third horse in a two-horse race, and that's usually a waste of everyone's time.",
       "context": "Leo says a third vendor three weeks into a two-horse race would be a waste of time for everyone. \u2014 Leo argues against joining the late-stage Tray evaluation.",
       "stated_or_inferred": "stated"
-     },
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Leo conceded OrbitFlow likely has no native connector for the ERP either, so it has no advantage over Tray on that point.",
+    "evidence": [
      {
       "finding_id": "F6",
       "turn_id": "CALL-020#T036",
@@ -364,7 +338,13 @@
       "quote": "there's a good chance we don't have a connector either.",
       "context": "Leo concedes OrbitFlow likely has no native connector for the ERP either, so there is no advantage over Tray on that point. \u2014 Leo conceding a comparison point against his own product; no advantage on the ERP connector specifically.",
       "stated_or_inferred": "stated"
-     },
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Leo suggested Kestrel test whether operations staff can change the process without the developer, and run that test against Tray. Per the finding summary, Rafael said Tray passing would be a reason to buy it.",
+    "evidence": [
      {
       "finding_id": "F7",
       "turn_id": "CALL-020#T054",
@@ -384,15 +364,14 @@
   ],
   "conflicts": [],
   "not_covered": [
-   "Tray.io pricing, features beyond the ERP connector gap, or other criteria Kestrel is evaluating are not covered.",
-   "Whether Kestrel ultimately chose Tray is not covered."
+   "Tray.io pricing, features beyond the ERP connector gap, and the exact decision date were not stated in the findings."
   ],
   "assumptions": [
    "Kestrel Robotics is a cold call (CALL-020), so call_types left empty since the question names the company directly.",
    "Tray.io is treated as a competitor or third-party tool mentioned in the call; no catalogue match is needed for it.",
-   "Tray.io is treated as a competing vendor Kestrel is evaluating."
+   "Tray.io is treated as a competitor evaluated by Kestrel."
   ],
-  "confidence": "medium",
+  "confidence": "high",
   "calls_considered": [
    "CALL-020"
   ],

@@ -28,7 +28,7 @@ EFFORT = os.getenv("SCI_EFFORT", "low")
 
 # Bump a version when its prompt changes: it invalidates the disk cache for that step.
 PROMPT_VERSIONS = {
-    "extract": "v1",
+    "extract": "v3",
     "resolve": "v2",
     "read": "v3",
     "combine": "v3",
