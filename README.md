@@ -86,6 +86,8 @@ Compared against `naive_rag` (top 8 BM25 chunks), `full_context` (all 20 transcr
 
 ### Results (run 5; full tables in `eval/results/results*.md`, failure analysis in `failures.md`)
 
+> **Note:** these numbers were produced before the summary-grounding and entailment fixes (PR #1) and haven't been re-run yet. Expect slightly shorter summaries and possibly a few points lower on the dev fact score.
+
 | | pipeline | naive RAG | full context | facts only |
 |---|---|---|---|---|
 | Fact score, dev (21, tuned on) | **97%** | 60% | 92% | 92% |
