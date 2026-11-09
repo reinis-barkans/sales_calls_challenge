@@ -1,0 +1,513 @@
+{
+ "question": "Did any prospects raise HIPAA or BAA requirements?",
+ "resolution": {
+  "question_type": "lookup",
+  "companies": [],
+  "call_types": [
+   "Prospect"
+  ],
+  "search_terms": [
+   "HIPAA",
+   "BAA",
+   "business associate agreement",
+   "PHI",
+   "protected health information",
+   "compliance",
+   "healthcare compliance"
+  ],
+  "read_instruction": "Extract every statement where the prospect or OrbitFlow staff mention HIPAA, a BAA (business associate agreement), protected health information (PHI), or related healthcare data compliance requirements, including whether OrbitFlow confirmed, denied, or hedged on meeting them.",
+  "assumptions": [
+   "Question asks about prospect calls only, so call_types is restricted to Prospect.",
+   "No specific company named, so companies is empty and the search covers all prospect calls.",
+   "BAA is interpreted as business associate agreement."
+  ]
+ },
+ "candidates": {
+  "CALL-003": [
+   "call_type:Prospect"
+  ],
+  "CALL-006": [
+   "call_type:Prospect"
+  ],
+  "CALL-001": [
+   "call_type:Prospect"
+  ],
+  "CALL-005": [
+   "call_type:Prospect",
+   "search"
+  ],
+  "CALL-009": [
+   "call_type:Prospect"
+  ],
+  "CALL-002": [
+   "call_type:Prospect",
+   "facts",
+   "search"
+  ],
+  "CALL-008": [
+   "call_type:Prospect",
+   "search"
+  ],
+  "CALL-007": [
+   "call_type:Prospect"
+  ],
+  "CALL-010": [
+   "call_type:Prospect",
+   "search"
+  ],
+  "CALL-004": [
+   "call_type:Prospect",
+   "search"
+  ]
+ },
+ "search_terms": [
+  "baa",
+  "business associate",
+  "business associate agreement",
+  "compliance",
+  "healthcare compliance",
+  "hipaa",
+  "phi",
+  "protected health information"
+ ],
+ "findings": [
+  {
+   "finding_id": "F1",
+   "turn_id": "CALL-001#T122",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Tom Alvarez",
+   "side": "customer",
+   "role": "Director of Customer Success",
+   "ts": "19:55",
+   "quote": "We're not healthcare. But we will ask for screenshots or documentation, not just yes/no answers on a questionnaire.",
+   "context": "Prospect Tom Alvarez stated Acme Logistics is not a healthcare company, so healthcare-specific compliance requirements (HIPAA/BAA/PHI) were not raised as a requirement on this call. \u2014 Healthcare compliance was only addressed by negation. HIPAA, BAA, and PHI were never mentioned by anyone. OrbitFlow did not confirm or deny any healthcare compliance. In the same turn he says Acme will ask for documentation rather than yes/no questionnaire answers, and in T120 he says there is no special data-residency requirement.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F2",
+   "turn_id": "CALL-002#T008",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Elliot Greene",
+   "side": "customer",
+   "role": "Security Architect",
+   "ts": "01:01",
+   "quote": "The BAA is the gate. If you can't offer one, we cannot use OrbitFlow for any workflow that may involve protected health information.",
+   "context": "Elliot Greene (BrightPath security architect) said the BAA is a gate: without one, OrbitFlow cannot be used for any workflow that may involve PHI. \u2014 Prospect's stated hard requirement; security-first agenda item.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F3",
+   "turn_id": "CALL-002#T009",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "01:19",
+   "quote": "I'm not going to give you a yes on this call. What I will do is get you a written answer from our legal and compliance side within",
+   "context": "Maya Chen (OrbitFlow AE) declined to give a yes on the BAA during the call and committed to a written position from legal and compliance within about a week; Jon Bell confirmed a week is realistic. \u2014 OrbitFlow hedged rather than confirmed BAA support.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F4",
+   "turn_id": "CALL-002#T011",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Elliot Greene",
+   "side": "customer",
+   "role": "Security Architect",
+   "ts": "01:46",
+   "quote": "A written position is fine. A verbal \"we're working on it\" is not.",
+   "context": "Elliot Greene required a written BAA position, not a verbal assurance. \u2014 Prospect's condition on how the BAA answer must be delivered.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F5",
+   "turn_id": "CALL-002#T162",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Priya Shah",
+   "side": "customer",
+   "role": "Head of Business Systems",
+   "ts": "24:22",
+   "quote": "Procurement will not have a serious pricing conversation until security tells us whether the BAA requirement can be met. If the answer's no, the price is irrelevant.",
+   "context": "Priya Shah (BrightPath) said procurement will not have a serious pricing conversation until security determines whether the BAA requirement can be met; a no makes price irrelevant. \u2014 BAA is the gating item for commercial discussion.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F6",
+   "turn_id": "CALL-002#T176",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Priya Shah",
+   "side": "customer",
+   "role": "Head of Business Systems",
+   "ts": "27:07",
+   "quote": "Privacy counsel reviews the DPA and the BAA. Procurement handles final terms.",
+   "context": "Priya Shah said privacy counsel reviews the DPA and the BAA as one of four approval gates. \u2014 Governance of the BAA within BrightPath's decision process.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F7",
+   "turn_id": "CALL-002#T069",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Elliot Greene",
+   "side": "customer",
+   "role": "Security Architect",
+   "ts": "10:04",
+   "quote": "Policy says it shouldn't. In practice we do occasionally find patient names in free-text fields.",
+   "context": "Elliot Greene said patient information is supposed to stay out of HubSpot per policy, but patient names occasionally appear in free-text fields in practice. \u2014 Prospect correcting an earlier statement; relevant to PHI exposure in the proposed workflow systems.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F8",
+   "turn_id": "CALL-002#T056",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Priya Shah",
+   "side": "customer",
+   "role": "Head of Business Systems",
+   "ts": "08:08",
+   "quote": "compliance review slows down any workflow that touches patient-adjacent data, which is most of them.",
+   "context": "Priya Shah said compliance review slows any workflow touching patient-adjacent data, which is most of their workflows. \u2014 Healthcare data compliance as a current-state pain point.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F9",
+   "turn_id": "CALL-002#T186",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Priya Shah",
+   "side": "customer",
+   "role": "Head of Business Systems",
+   "ts": "28:32",
+   "quote": "we could run a non-sensitive proof of concept in August \u2014 synthetic data, or clearly non-PHI.",
+   "context": "Elliot Greene said a proposed pilot should use synthetic or clearly non-PHI data, and Priya Shah agreed a pilot could run that way before Q4 production. \u2014 Pilot scope constrained by PHI/BAA status.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F10",
+   "turn_id": "CALL-002#T052",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Jon Bell",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "07:35",
+   "quote": "It's designable, I just don't want to say \"yes, masking, done\" when the real answer is \"yes, with design\".",
+   "context": "Jon Bell said field-level masking for sensitive payloads is designable rather than a standard checkbox, and Elliot said that conversation is needed. \u2014 Relevant to protecting PHI in run data; OrbitFlow did not claim it out of the box.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F11",
+   "turn_id": "CALL-002#T034",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Jon Bell",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "04:45",
+   "quote": "For customers with stricter policies there are two options \u2014 disable AI entirely, or scope the initial phase to deterministic workflow steps",
+   "context": "Jon Bell said AI steps can be disabled or model use scoped separately, and Elliot said deferring AI review to a separate track is acceptable for a stricter PHI policy. \u2014 Data handling concern with LLM providers for healthcare data.",
+   "stated_or_inferred": "stated"
+  }
+ ],
+ "rejected_findings": [
+  {
+   "call_id": "CALL-010",
+   "claim": "Prospect raised EU data residency requirement; no HIPAA, BAA, or PHI mention found in the transcript.",
+   "quote": "Regional controls. ... EU data residency is available on Enterprise.",
+   "turn_ids": [
+    "T161",
+    "T163",
+    "T165",
+    "T166"
+   ],
+   "reason": "quote not found in cited turns"
+  }
+ ],
+ "draft": {
+  "answer": "Yes, one of the two prospects with relevant findings raised them: BrightPath Health made the BAA a hard gate [C1], and OrbitFlow's AE did not confirm support but promised a written answer [C2]. Acme Logistics did not raise HIPAA/BAA [C6]. BrightPath also tied the BAA to pricing and approvals [C3], and constrained the pilot [C5].",
+  "claims": [
+   {
+    "text": "BrightPath Health's security architect Elliot Greene said the BAA is the gate: without one, they cannot use OrbitFlow for any workflow that may involve PHI. He required a written BAA position, not a verbal assurance.",
+    "finding_ids": [
+     "F2",
+     "F4"
+    ]
+   },
+   {
+    "text": "Maya Chen (OrbitFlow AE) declined to say yes to a BAA on the call and committed to a written answer from legal and compliance within about a week; Jon Bell confirmed a week is realistic.",
+    "finding_ids": [
+     "F3"
+    ]
+   },
+   {
+    "text": "Priya Shah (BrightPath) said procurement will not hold a serious pricing conversation until security determines whether the BAA requirement can be met, and that a no makes price irrelevant. She also said privacy counsel reviews the DPA and BAA as one of the approval gates.",
+    "finding_ids": [
+     "F5",
+     "F6"
+    ]
+   },
+   {
+    "text": "PHI exposure is a live concern at BrightPath: Elliot said policy keeps patient information out of HubSpot but patient names occasionally appear in free-text fields, and Priya said compliance review slows most workflows because they touch patient-adjacent data.",
+    "finding_ids": [
+     "F7",
+     "F8"
+    ]
+   },
+   {
+    "text": "Pilot scope is constrained by PHI/BAA status: a non-sensitive proof of concept in August with synthetic or non-PHI data was discussed, ahead of Q4 production. Jon Bell said field-level masking is designable, not out of the box, and that AI steps can be disabled or scoped; Elliot said deferring AI review to a separate track is acceptable.",
+    "finding_ids": [
+     "F9",
+     "F10",
+     "F11"
+    ]
+   },
+   {
+    "text": "Acme Logistics (Tom Alvarez) said they are not healthcare, so HIPAA/BAA/PHI was not raised as a requirement; no one mentioned them on that call.",
+    "finding_ids": [
+     "F1"
+    ]
+   }
+  ],
+  "conflicts": [],
+  "not_covered": [
+   "Whether OrbitFlow ultimately offers a BAA (the written answer is not in the findings).",
+   "Other prospect calls: 8 of 10 calls read had no relevant findings."
+  ],
+  "assumptions": [
+   "Prospect calls only.",
+   "BAA means business associate agreement."
+  ]
+ },
+ "usage": {
+  "llm_calls": 13,
+  "input_tokens": 133481,
+  "cache_read_tokens": 124930,
+  "cache_write_tokens": 0,
+  "output_tokens": 5635,
+  "uncached_calls": 2,
+  "latency_s": 10.11
+ },
+ "answer": {
+  "question": "Did any prospects raise HIPAA or BAA requirements?",
+  "answer": "Yes, one of the two prospects with relevant findings raised them: BrightPath Health made the BAA a hard gate [1], and OrbitFlow's AE did not confirm support but promised a written answer [2]. Acme Logistics did not raise HIPAA/BAA [6]. BrightPath also tied the BAA to pricing and approvals [3], and constrained the pilot [5].",
+  "claims": [
+   {
+    "text": "BrightPath Health's security architect Elliot Greene said the BAA is the gate: without one, they cannot use OrbitFlow for any workflow that may involve PHI. He required a written BAA position, not a verbal assurance.",
+    "evidence": [
+     {
+      "finding_id": "F2",
+      "turn_id": "CALL-002#T008",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Elliot Greene",
+      "side": "customer",
+      "role": "Security Architect",
+      "ts": "01:01",
+      "quote": "The BAA is the gate. If you can't offer one, we cannot use OrbitFlow for any workflow that may involve protected health information.",
+      "context": "Elliot Greene (BrightPath security architect) said the BAA is a gate: without one, OrbitFlow cannot be used for any workflow that may involve PHI. \u2014 Prospect's stated hard requirement; security-first agenda item.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F4",
+      "turn_id": "CALL-002#T011",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Elliot Greene",
+      "side": "customer",
+      "role": "Security Architect",
+      "ts": "01:46",
+      "quote": "A written position is fine. A verbal \"we're working on it\" is not.",
+      "context": "Elliot Greene required a written BAA position, not a verbal assurance. \u2014 Prospect's condition on how the BAA answer must be delivered.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Maya Chen (OrbitFlow AE) declined to say yes to a BAA on the call and committed to a written answer from legal and compliance within about a week; Jon Bell confirmed a week is realistic.",
+    "evidence": [
+     {
+      "finding_id": "F3",
+      "turn_id": "CALL-002#T009",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "01:19",
+      "quote": "I'm not going to give you a yes on this call. What I will do is get you a written answer from our legal and compliance side within",
+      "context": "Maya Chen (OrbitFlow AE) declined to give a yes on the BAA during the call and committed to a written position from legal and compliance within about a week; Jon Bell confirmed a week is realistic. \u2014 OrbitFlow hedged rather than confirmed BAA support.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Priya Shah (BrightPath) said procurement will not hold a serious pricing conversation until security determines whether the BAA requirement can be met, and that a no makes price irrelevant. She also said privacy counsel reviews the DPA and BAA as one of the approval gates.",
+    "evidence": [
+     {
+      "finding_id": "F5",
+      "turn_id": "CALL-002#T162",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Priya Shah",
+      "side": "customer",
+      "role": "Head of Business Systems",
+      "ts": "24:22",
+      "quote": "Procurement will not have a serious pricing conversation until security tells us whether the BAA requirement can be met. If the answer's no, the price is irrelevant.",
+      "context": "Priya Shah (BrightPath) said procurement will not have a serious pricing conversation until security determines whether the BAA requirement can be met; a no makes price irrelevant. \u2014 BAA is the gating item for commercial discussion.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F6",
+      "turn_id": "CALL-002#T176",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Priya Shah",
+      "side": "customer",
+      "role": "Head of Business Systems",
+      "ts": "27:07",
+      "quote": "Privacy counsel reviews the DPA and the BAA. Procurement handles final terms.",
+      "context": "Priya Shah said privacy counsel reviews the DPA and the BAA as one of four approval gates. \u2014 Governance of the BAA within BrightPath's decision process.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "PHI exposure is a live concern at BrightPath: Elliot said policy keeps patient information out of HubSpot but patient names occasionally appear in free-text fields, and Priya said compliance review slows most workflows because they touch patient-adjacent data.",
+    "evidence": [
+     {
+      "finding_id": "F7",
+      "turn_id": "CALL-002#T069",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Elliot Greene",
+      "side": "customer",
+      "role": "Security Architect",
+      "ts": "10:04",
+      "quote": "Policy says it shouldn't. In practice we do occasionally find patient names in free-text fields.",
+      "context": "Elliot Greene said patient information is supposed to stay out of HubSpot per policy, but patient names occasionally appear in free-text fields in practice. \u2014 Prospect correcting an earlier statement; relevant to PHI exposure in the proposed workflow systems.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F8",
+      "turn_id": "CALL-002#T056",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Priya Shah",
+      "side": "customer",
+      "role": "Head of Business Systems",
+      "ts": "08:08",
+      "quote": "compliance review slows down any workflow that touches patient-adjacent data, which is most of them.",
+      "context": "Priya Shah said compliance review slows any workflow touching patient-adjacent data, which is most of their workflows. \u2014 Healthcare data compliance as a current-state pain point.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Pilot scope is constrained by PHI/BAA status: a non-sensitive proof of concept in August with synthetic or non-PHI data was discussed, ahead of Q4 production. Jon Bell said field-level masking is designable, not out of the box, and that AI steps can be disabled or scoped; Elliot said deferring AI review to a separate track is acceptable.",
+    "evidence": [
+     {
+      "finding_id": "F9",
+      "turn_id": "CALL-002#T186",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Priya Shah",
+      "side": "customer",
+      "role": "Head of Business Systems",
+      "ts": "28:32",
+      "quote": "we could run a non-sensitive proof of concept in August \u2014 synthetic data, or clearly non-PHI.",
+      "context": "Elliot Greene said a proposed pilot should use synthetic or clearly non-PHI data, and Priya Shah agreed a pilot could run that way before Q4 production. \u2014 Pilot scope constrained by PHI/BAA status.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F10",
+      "turn_id": "CALL-002#T052",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Jon Bell",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "07:35",
+      "quote": "It's designable, I just don't want to say \"yes, masking, done\" when the real answer is \"yes, with design\".",
+      "context": "Jon Bell said field-level masking for sensitive payloads is designable rather than a standard checkbox, and Elliot said that conversation is needed. \u2014 Relevant to protecting PHI in run data; OrbitFlow did not claim it out of the box.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F11",
+      "turn_id": "CALL-002#T034",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Jon Bell",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "04:45",
+      "quote": "For customers with stricter policies there are two options \u2014 disable AI entirely, or scope the initial phase to deterministic workflow steps",
+      "context": "Jon Bell said AI steps can be disabled or model use scoped separately, and Elliot said deferring AI review to a separate track is acceptable for a stricter PHI policy. \u2014 Data handling concern with LLM providers for healthcare data.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Acme Logistics (Tom Alvarez) said they are not healthcare, so HIPAA/BAA/PHI was not raised as a requirement; no one mentioned them on that call.",
+    "evidence": [
+     {
+      "finding_id": "F1",
+      "turn_id": "CALL-001#T122",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Tom Alvarez",
+      "side": "customer",
+      "role": "Director of Customer Success",
+      "ts": "19:55",
+      "quote": "We're not healthcare. But we will ask for screenshots or documentation, not just yes/no answers on a questionnaire.",
+      "context": "Prospect Tom Alvarez stated Acme Logistics is not a healthcare company, so healthcare-specific compliance requirements (HIPAA/BAA/PHI) were not raised as a requirement on this call. \u2014 Healthcare compliance was only addressed by negation. HIPAA, BAA, and PHI were never mentioned by anyone. OrbitFlow did not confirm or deny any healthcare compliance. In the same turn he says Acme will ask for documentation rather than yes/no questionnaire answers, and in T120 he says there is no special data-residency requirement.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   }
+  ],
+  "conflicts": [],
+  "not_covered": [
+   "Whether OrbitFlow ultimately offers a BAA (the written answer is not in the findings).",
+   "Other prospect calls: 8 of 10 calls read had no relevant findings."
+  ],
+  "assumptions": [
+   "Question asks about prospect calls only, so call_types is restricted to Prospect.",
+   "No specific company named, so companies is empty and the search covers all prospect calls.",
+   "BAA is interpreted as business associate agreement.",
+   "Prospect calls only.",
+   "BAA means business associate agreement."
+  ],
+  "confidence": "medium",
+  "calls_considered": [
+   "CALL-001",
+   "CALL-002",
+   "CALL-003",
+   "CALL-004",
+   "CALL-005",
+   "CALL-006",
+   "CALL-007",
+   "CALL-008",
+   "CALL-009",
+   "CALL-010"
+  ],
+  "calls_cited": [
+   "CALL-001",
+   "CALL-002"
+  ],
+  "removed_claims": [],
+  "covered": true,
+  "trace_id": null
+ }
+}

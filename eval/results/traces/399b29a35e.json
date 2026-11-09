@@ -1,0 +1,415 @@
+{
+ "question": "What did Verity Payments say was the reason they left?",
+ "resolution": {
+  "question_type": "lookup",
+  "companies": [
+   {
+    "mention": "Verity Payments",
+    "resolved_to": "Verity Payments",
+    "confidence": "high"
+   }
+  ],
+  "call_types": [
+   "Churn post-mortem"
+  ],
+  "search_terms": [
+   "reason",
+   "left",
+   "leave",
+   "churn",
+   "cancel",
+   "cancellation",
+   "switch",
+   "switched",
+   "replace",
+   "replacement",
+   "leaving",
+   "departure",
+   "why"
+  ],
+  "read_instruction": "Extract the reasons the customer gave for leaving or churning from OrbitFlow, including any competitor they moved to, cost, missing features, support issues, or other stated causes, quoting the relevant statements.",
+  "assumptions": [
+   "The question refers to the churn post-mortem call for Verity Payments (CALL-014)."
+  ]
+ },
+ "candidates": {
+  "CALL-014": [
+   "company"
+  ]
+ },
+ "search_terms": [],
+ "findings": [
+  {
+   "finding_id": "F1",
+   "turn_id": "CALL-014#T030",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Kwame Boateng",
+   "side": "customer",
+   "role": "Head of Operations",
+   "ts": "02:41",
+   "quote": "The connector gap was real. But it wasn't why we left. It was the thing we pointed at.",
+   "context": "Customer said the connector gap was real but was not why they left; the real reason was that nobody in operations ever built anything, so the platform was used as an engineering tool and was not worth the premium. \u2014 Kwame pushes back on Sarah's framing that the connector gap was the reason; he identifies the real reason as failed business-user adoption. Stated reason vs. real reason is contrasted.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F2",
+   "turn_id": "CALL-014#T036",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Kwame Boateng",
+   "side": "customer",
+   "role": "Head of Operations",
+   "ts": "03:21",
+   "quote": "So we paid a premium for a business-user platform and used it as an engineering tool. And as an engineering tool it's fine but it's not worth the premium.",
+   "context": "Customer said they paid a premium for a business-user platform but used it as an engineering tool, which was not worth the premium. \u2014 Kwame's summary of the failed adoption; the premium is the licence cost.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F3",
+   "turn_id": "CALL-014#T064",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Sarah Lindqvist",
+   "side": "customer",
+   "role": "Engineering Manager",
+   "ts": "06:19",
+   "quote": "Because we were maintaining custom integrations to a platform whose main selling point was that we wouldn't have to maintain custom integrations.",
+   "context": "Engineering manager said they left because they were maintaining custom integrations to a platform whose selling point was avoiding that, and the licence cost was justified by business-user autonomy that wasn't materialising. \u2014 Sarah's engineering-side reasons for supporting the exit; she also says her team liked the run history and exception queues.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F4",
+   "turn_id": "CALL-014#T066",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Sarah Lindqvist",
+   "side": "customer",
+   "role": "Engineering Manager",
+   "ts": "06:41",
+   "quote": "And because two of my engineers wanted to build it in-house and I spent eighteen months arguing against them, and eventually I ran out of arguments.",
+   "context": "Engineering manager said two engineers wanted to build in-house and she eventually ran out of arguments against them; the decisive argument was maintenance cost comparison. \u2014 Build-vs-buy internal pressure; a contributing reason to leave, not the one she led with.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F5",
+   "turn_id": "CALL-014#T072",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Kwame Boateng",
+   "side": "customer",
+   "role": "Head of Operations",
+   "ts": "07:22",
+   "quote": "It's partly a price decision, because at the margin we could justify one and not the other. But no, it's not primarily price.",
+   "context": "Customer said price was not the primary reason; it was partly price at the margin. \u2014 Vendor asked whether it was a price decision; customer partly conceded.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F6",
+   "turn_id": "CALL-014#T074",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Sarah Lindqvist",
+   "side": "customer",
+   "role": "Engineering Manager",
+   "ts": "07:37",
+   "quote": "Their connector for our core banking platform is genuinely better than yours. That one's just true.",
+   "context": "Customer moved to Workato, citing a better core banking connector and a stronger engineering-facing story (recipes as code, CI). \u2014 Competitor named as destination; reasons for choosing Workato specifically.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F7",
+   "turn_id": "CALL-014#T085",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Kwame Boateng",
+   "side": "customer",
+   "role": "Head of Operations",
+   "ts": "09:06",
+   "quote": "We never had that and I never asked for it, because I thought the product removed the need for it.",
+   "context": "Customer said the team never had a dedicated operations automation role, and the product was expected to remove the need for one. \u2014 Root cause of failed adoption per customer; vendor acknowledged the product changes rather than removes the need for the role.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F8",
+   "turn_id": "CALL-014#T107",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Sarah Lindqvist",
+   "side": "customer",
+   "role": "Engineering Manager",
+   "ts": "11:23",
+   "quote": "It's not why we left. But it contributed to a general feeling that we were a small account.",
+   "context": "Support was inconsistent and contributed to a feeling of being a small account, though not the reason for leaving; the April connector request was answered with only a template check, while Workato built a custom connector for free during its PoC. \u2014 Customer explicitly says support was not why they left but contributed; Workato's free SE work was a factor in the April moment.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F9",
+   "turn_id": "CALL-014#T013",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Kwame Boateng",
+   "side": "customer",
+   "role": "Head of Operations",
+   "ts": "01:09",
+   "quote": "Though I'd say the decision became inevitable in about February and it took us until June to admit it.",
+   "context": "Customer said the decision became inevitable around February and was formally made in June; the connector gap for their European settlement provider was the initial trigger for questioning value. \u2014 Timeline of decision; the connector gap is cited as the starting point, not the final reason.",
+   "stated_or_inferred": "stated"
+  }
+ ],
+ "rejected_findings": [],
+ "draft": {
+  "answer": "Verity's Head of Operations, Kwame Boateng, said the connector gap was only what they pointed at; the real reason was failed business-user adoption, so the platform was used as an engineering tool and wasn't worth the premium [C1]. Engineering Manager Sarah Lindqvist added reasons: maintaining custom integrations and internal pressure to build in-house [C2]. Price was not primary [C3], and support was a contributing feeling but not the reason [C4]. They moved to Workato [C5].",
+  "claims": [
+   {
+    "text": "Kwame Boateng (Head of Operations) said the connector gap was real but not why they left; it was \"the thing we pointed at.\" The real reason was that nobody in operations built anything, so they paid a premium for a business-user platform and used it as an engineering tool, which was not worth the premium.",
+    "finding_ids": [
+     "F1",
+     "F2"
+    ]
+   },
+   {
+    "text": "Kwame said they never had a dedicated operations automation role because he thought the product removed the need for one, which is the root cause of the failed adoption.",
+    "finding_ids": [
+     "F7"
+    ]
+   },
+   {
+    "text": "Sarah Lindqvist (Engineering Manager) said they left because they were maintaining custom integrations on a platform whose selling point was avoiding that, and the licence cost was justified by business-user autonomy that wasn't materialising. Two of her engineers also wanted to build in-house, and after eighteen months of arguing against them she ran out of arguments.",
+    "finding_ids": [
+     "F3",
+     "F4"
+    ]
+   },
+   {
+    "text": "Kwame said it was partly a price decision at the margin, but not primarily price.",
+    "finding_ids": [
+     "F5"
+    ]
+   },
+   {
+    "text": "Sarah said inconsistent support was not why they left but contributed to feeling like a small account; the April connector request got only a template check, while Workato built a custom connector for free during its PoC.",
+    "finding_ids": [
+     "F8"
+    ]
+   },
+   {
+    "text": "Verity moved to Workato, citing a core banking connector that is genuinely better than OrbitFlow's and a stronger engineering-facing story (recipes as code, CI). Kwame said the decision became inevitable around February and was formally made in June, with the connector gap for their European settlement provider as the initial trigger for questioning value.",
+    "finding_ids": [
+     "F6",
+     "F9"
+    ]
+   }
+  ],
+  "conflicts": [
+   {
+    "topic": "Stated vs. real reason for leaving",
+    "description": "The connector gap was the reason pointed at externally, but Kwame said it was not the real reason, which was failed business-user adoption. Sarah's reasons skew toward engineering maintenance and build-vs-buy pressure, and she cited the connector as a reason for choosing Workato.",
+    "finding_ids": [
+     "F1",
+     "F2",
+     "F3",
+     "F6"
+    ]
+   }
+  ],
+  "not_covered": [],
+  "assumptions": [
+   "The question refers to the churn post-mortem call for Verity Payments (CALL-014)."
+  ]
+ },
+ "usage": {
+  "llm_calls": 4,
+  "input_tokens": 18334,
+  "cache_read_tokens": 12502,
+  "cache_write_tokens": 0,
+  "output_tokens": 3437,
+  "uncached_calls": 2,
+  "latency_s": 9.58
+ },
+ "answer": {
+  "question": "What did Verity Payments say was the reason they left?",
+  "answer": "Verity's Head of Operations, Kwame Boateng, said the connector gap was only what they pointed at; the real reason was failed business-user adoption, so the platform was used as an engineering tool and wasn't worth the premium [1]. Engineering Manager Sarah Lindqvist added reasons: maintaining custom integrations and internal pressure to build in-house [2]. Price was not primary [3], and support was a contributing feeling but not the reason [4]. They moved to Workato [5].",
+  "claims": [
+   {
+    "text": "Kwame Boateng (Head of Operations) said the connector gap was real but not why they left; it was \"the thing we pointed at.\" The real reason was that nobody in operations built anything, so they paid a premium for a business-user platform and used it as an engineering tool, which was not worth the premium.",
+    "evidence": [
+     {
+      "finding_id": "F1",
+      "turn_id": "CALL-014#T030",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Kwame Boateng",
+      "side": "customer",
+      "role": "Head of Operations",
+      "ts": "02:41",
+      "quote": "The connector gap was real. But it wasn't why we left. It was the thing we pointed at.",
+      "context": "Customer said the connector gap was real but was not why they left; the real reason was that nobody in operations ever built anything, so the platform was used as an engineering tool and was not worth the premium. \u2014 Kwame pushes back on Sarah's framing that the connector gap was the reason; he identifies the real reason as failed business-user adoption. Stated reason vs. real reason is contrasted.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F2",
+      "turn_id": "CALL-014#T036",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Kwame Boateng",
+      "side": "customer",
+      "role": "Head of Operations",
+      "ts": "03:21",
+      "quote": "So we paid a premium for a business-user platform and used it as an engineering tool. And as an engineering tool it's fine but it's not worth the premium.",
+      "context": "Customer said they paid a premium for a business-user platform but used it as an engineering tool, which was not worth the premium. \u2014 Kwame's summary of the failed adoption; the premium is the licence cost.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Kwame said they never had a dedicated operations automation role because he thought the product removed the need for one, which is the root cause of the failed adoption.",
+    "evidence": [
+     {
+      "finding_id": "F7",
+      "turn_id": "CALL-014#T085",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Kwame Boateng",
+      "side": "customer",
+      "role": "Head of Operations",
+      "ts": "09:06",
+      "quote": "We never had that and I never asked for it, because I thought the product removed the need for it.",
+      "context": "Customer said the team never had a dedicated operations automation role, and the product was expected to remove the need for one. \u2014 Root cause of failed adoption per customer; vendor acknowledged the product changes rather than removes the need for the role.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Sarah Lindqvist (Engineering Manager) said they left because they were maintaining custom integrations on a platform whose selling point was avoiding that, and the licence cost was justified by business-user autonomy that wasn't materialising. Two of her engineers also wanted to build in-house, and after eighteen months of arguing against them she ran out of arguments.",
+    "evidence": [
+     {
+      "finding_id": "F3",
+      "turn_id": "CALL-014#T064",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Sarah Lindqvist",
+      "side": "customer",
+      "role": "Engineering Manager",
+      "ts": "06:19",
+      "quote": "Because we were maintaining custom integrations to a platform whose main selling point was that we wouldn't have to maintain custom integrations.",
+      "context": "Engineering manager said they left because they were maintaining custom integrations to a platform whose selling point was avoiding that, and the licence cost was justified by business-user autonomy that wasn't materialising. \u2014 Sarah's engineering-side reasons for supporting the exit; she also says her team liked the run history and exception queues.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F4",
+      "turn_id": "CALL-014#T066",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Sarah Lindqvist",
+      "side": "customer",
+      "role": "Engineering Manager",
+      "ts": "06:41",
+      "quote": "And because two of my engineers wanted to build it in-house and I spent eighteen months arguing against them, and eventually I ran out of arguments.",
+      "context": "Engineering manager said two engineers wanted to build in-house and she eventually ran out of arguments against them; the decisive argument was maintenance cost comparison. \u2014 Build-vs-buy internal pressure; a contributing reason to leave, not the one she led with.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Kwame said it was partly a price decision at the margin, but not primarily price.",
+    "evidence": [
+     {
+      "finding_id": "F5",
+      "turn_id": "CALL-014#T072",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Kwame Boateng",
+      "side": "customer",
+      "role": "Head of Operations",
+      "ts": "07:22",
+      "quote": "It's partly a price decision, because at the margin we could justify one and not the other. But no, it's not primarily price.",
+      "context": "Customer said price was not the primary reason; it was partly price at the margin. \u2014 Vendor asked whether it was a price decision; customer partly conceded.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Sarah said inconsistent support was not why they left but contributed to feeling like a small account; the April connector request got only a template check, while Workato built a custom connector for free during its PoC.",
+    "evidence": [
+     {
+      "finding_id": "F8",
+      "turn_id": "CALL-014#T107",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Sarah Lindqvist",
+      "side": "customer",
+      "role": "Engineering Manager",
+      "ts": "11:23",
+      "quote": "It's not why we left. But it contributed to a general feeling that we were a small account.",
+      "context": "Support was inconsistent and contributed to a feeling of being a small account, though not the reason for leaving; the April connector request was answered with only a template check, while Workato built a custom connector for free during its PoC. \u2014 Customer explicitly says support was not why they left but contributed; Workato's free SE work was a factor in the April moment.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Verity moved to Workato, citing a core banking connector that is genuinely better than OrbitFlow's and a stronger engineering-facing story (recipes as code, CI). Kwame said the decision became inevitable around February and was formally made in June, with the connector gap for their European settlement provider as the initial trigger for questioning value.",
+    "evidence": [
+     {
+      "finding_id": "F6",
+      "turn_id": "CALL-014#T074",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Sarah Lindqvist",
+      "side": "customer",
+      "role": "Engineering Manager",
+      "ts": "07:37",
+      "quote": "Their connector for our core banking platform is genuinely better than yours. That one's just true.",
+      "context": "Customer moved to Workato, citing a better core banking connector and a stronger engineering-facing story (recipes as code, CI). \u2014 Competitor named as destination; reasons for choosing Workato specifically.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F9",
+      "turn_id": "CALL-014#T013",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Kwame Boateng",
+      "side": "customer",
+      "role": "Head of Operations",
+      "ts": "01:09",
+      "quote": "Though I'd say the decision became inevitable in about February and it took us until June to admit it.",
+      "context": "Customer said the decision became inevitable around February and was formally made in June; the connector gap for their European settlement provider was the initial trigger for questioning value. \u2014 Timeline of decision; the connector gap is cited as the starting point, not the final reason.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   }
+  ],
+  "conflicts": [
+   {
+    "topic": "Stated vs. real reason for leaving",
+    "description": "The connector gap was the reason pointed at externally, but Kwame said it was not the real reason, which was failed business-user adoption. Sarah's reasons skew toward engineering maintenance and build-vs-buy pressure, and she cited the connector as a reason for choosing Workato.",
+    "finding_ids": [
+     "F1",
+     "F2",
+     "F3",
+     "F6"
+    ]
+   }
+  ],
+  "not_covered": [],
+  "assumptions": [
+   "The question refers to the churn post-mortem call for Verity Payments (CALL-014)."
+  ],
+  "confidence": "medium",
+  "calls_considered": [
+   "CALL-014"
+  ],
+  "calls_cited": [
+   "CALL-014"
+  ],
+  "removed_claims": [],
+  "covered": true,
+  "trace_id": null
+ }
+}

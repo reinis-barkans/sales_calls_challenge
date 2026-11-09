@@ -1,0 +1,615 @@
+{
+ "CALL-001": {
+  "summary": "Discovery and first demo with Acme Logistics (RevOps and CS leaders). Pain is cross-system handoffs between sales, onboarding and CS tracked in spreadsheets and Slack, with late detection of risks and fragile scripts. Phase-one workflow scoped: Salesforce opportunity close to onboarding plan, Slack notify, stalled-milestone escalation. Pricing anchored high (Growth from \u00a31,800/month). Workato already owned; main internal hurdle is expanding it. Pilot pending sandbox, security pack, and user model.",
+  "tech_stack": [
+   "Salesforce",
+   "Slack",
+   "Snowflake",
+   "Gainsight",
+   "Google Sheets",
+   "Workato",
+   "Microsoft Teams"
+  ],
+  "competitors": [
+   "Workato",
+   "Zapier",
+   "Gainsight"
+  ],
+  "key_objections": [
+   "Price higher than expected versus Zapier anchor",
+   "Workato expansion is the default alternative",
+   "Demo-only evaluation risk; need failure-mode testing with dirty data",
+   "AI use needs written no-training commitment and possible disablement",
+   "Per-seat licensing for occasional approvers must be explicit"
+  ],
+  "outcome": "Interested enough to test; sandbox pending, three real workflows to be supplied, pilot success criteria to be co-written. Vendor selection targeted end of July, first workflows live September.",
+  "next_steps": [
+   "OrbitFlow sends security pack and architecture summary",
+   "Acme sends representative workflow and sample data",
+   "Jointly write three to five pilot success criteria",
+   "Decide on sandbox provisioning",
+   "OrbitFlow sends written recap separating assumptions from confirmed requirements",
+   "Itemised proposal with builder, viewer and approver counts",
+   "Written commitment that customer workflow content is not used for training"
+  ]
+ },
+ "CALL-002": {
+  "summary": "Technical discovery with BrightPath Health. Security (Elliot Greene) gates the deal: a BAA is required, and OrbitFlow will provide a written legal position within a week. Priya Shah's team faces an eleven-week automation backlog and weak operational telemetry, with Power Automate as the incumbent. AI steps are deferred out of phase one, and a pilot is possible on non-PHI data in August with no production launch before Q4.",
+  "tech_stack": [
+   "HubSpot",
+   "Microsoft Teams",
+   "Azure",
+   "Azure AD",
+   "Databricks",
+   "Jira Service Management",
+   "SharePoint",
+   "Power Automate",
+   "SSO",
+   "SCIM",
+   "SOC 2",
+   "data residency"
+  ],
+  "competitors": [
+   "Power Automate"
+  ],
+  "key_objections": [
+   "BAA requirement is a hard gate for any PHI-related workflow",
+   "Data residency default unclear for US/UK operations",
+   "LLM data handling and AI usage restrictions",
+   "Retention floor and per-workspace granularity unknown",
+   "Field-level masking of run data needed",
+   "Pricing not discussed until security answers BAA",
+   "User licensing model unclear for approvers and viewers"
+  ],
+  "outcome": "Limited pilot with synthetic or non-PHI data considered; no production launch before Q4; written BAA position and security pack pending.",
+  "next_steps": [
+   "OrbitFlow sends written BAA position within one week",
+   "OrbitFlow sends security pack: SOC 2, subprocessor list, DPA, architecture diagram, retention docs, pen test summary",
+   "BrightPath sends representative workflow and sample messy data",
+   "Jointly write three to five pilot success criteria",
+   "Jon Bell runs permission-model session for Elliot Greene (about an hour)",
+   "OrbitFlow sends recap separating open questions from confirmed requirements",
+   "Pilot proof of concept targeted for August with non-sensitive data"
+  ]
+ },
+ "CALL-003": {
+  "summary": "Discovery and demo with Cedar & Finch (Sophie Reed, Marcus Lee). They run 60+ Zapier automations, many orphaned, with failures detected only via customer complaints. Demo covered run history, failure-rate alerts, reusable subflows and version control. Growth pricing at \u00a31,800/month is far above their ~\u00a3800-1,000 expectation; Sophie can approve up to \u00a315k/year, so \u00a321,600 goes to COO and finance. Decision targeted August, before the holiday freeze. Main alternatives are keeping Zapier plus better governance, or Make. Leo owes written answers on Shopify trigger coverage and EU processing region, and Marcus will log time lost to broken automations for four weeks.",
+  "tech_stack": [
+   "Zapier",
+   "Shopify",
+   "Zendesk",
+   "Klaviyo",
+   "Slack",
+   "Airtable"
+  ],
+  "competitors": [
+   "Zapier",
+   "Make"
+  ],
+  "key_objections": [
+   "Growth price of eighteen hundred a month is too high versus their eight hundred to a thousand expectation",
+   "Budget above fifteen thousand a year requires COO and finance approval",
+   "Current Zapier spend is cheaper and may be the right outcome",
+   "Unclear value gap versus tools already paid for",
+   "Shopify trigger must be native and event-driven, not polling",
+   "EU data residency only on Enterprise tier",
+   "Ownership and maintenance problem of many automations"
+  ],
+  "outcome": "Positive but undecided. Prospect wants monitoring and reusable templates; value vs. existing spend unproven. Next step is evidence-based business case and written follow-ups.",
+  "next_steps": [
+   "Marcus logs time spent on broken automations for four weeks",
+   "Sophie sends three worst-breaking automations to Leo for a rebuild",
+   "Leo provides written answer on Shopify trigger coverage",
+   "Leo provides written answer on default EU processing region for Growth",
+   "Leo models AI and premium connector usage costs for their volumes",
+   "Decision targeted for August, before October implementation goal"
+  ]
+ },
+ "CALL-004": {
+  "summary": "DeltaWorks Manufacturing discovery call covering governance (SAML, SCIM, audit logs, EU residency, works council), current-state nightly jobs and email approvals, SAP S/4HANA/Salesforce/ServiceNow/Teams/on-prem SQL Server stack, MuleSoft as integration backbone, and phase-one candidate contract close to SAP validation to ServiceNow tasks. Deployment architecture (SAP and on-prem connectivity) is the decisive open question; next step agreed as architecture material, not a sandbox. Pricing shown as Growth tier but Enterprise is the shape; proposal to separate licence, services and user model.",
+  "tech_stack": [
+   "SAP S/4HANA",
+   "Salesforce",
+   "ServiceNow",
+   "Microsoft Teams",
+   "SQL Server",
+   "MuleSoft",
+   "Python scripts"
+  ],
+  "competitors": [
+   "MuleSoft",
+   "Custom integration services"
+  ],
+  "key_objections": [
+   "On-premise SQL Server and SAP connectivity may make phase one too heavy",
+   "Works council co-determination on individual-level monitoring could take about six months",
+   "EU data residency may not satisfy legal entity requirements; no German region",
+   "Two German plants prohibited from exposing production databases to SaaS vendors",
+   "Generative AI excluded from phase one due to added review",
+   "Licence cost transparency and professional services surprises"
+  ],
+  "outcome": "Next step agreed: DeltaWorks sends SAP operations list, promotion process docs, and an hour with SAP interface owner; OrbitFlow sends security pack and architecture note; architecture material reviewed before any sandbox or pilot. Formal architecture review September, procurement Q4, production early next year.",
+  "next_steps": [
+   "Martin Vogel to send SAP operation list for phase one by end of next week",
+   "Martin Vogel to send promotion process documentation",
+   "Martin Vogel to arrange an hour with SAP interface owner",
+   "Jon Bell to produce architecture note and return within two weeks of receiving inputs",
+   "Jon Bell to write team-level vs individual-level visibility note for works council",
+   "Maya Chen to send security pack (SOC 2, subprocessor list, DPA, architecture diagram, retention and DR docs, pen test material)",
+   "Maya Chen to send written recap with confirmed vs estimated vs open items",
+   "Anika Bose to send formal governance requirements list and questionnaire (240 questions)",
+   "Martin Vogel to find SQL Server throughput or quota constraint number",
+   "OrbitFlow to flag data deletion on termination in written pack",
+   "Architecture note to address MuleSoft plus custom integration alternative directly"
+  ]
+ },
+ "CALL-005": {
+  "summary": "Ember Financial bake-off between OrbitFlow and Tray.io for a high-value operational exception workflow currently run via Slack and scripts. Key gates are model risk (AI governance) and auditability (SOC 2, SSO/SCIM, programmatic audit export). Tray PoC criticised for debugging and retry opacity. Commercials: Growth tier discussed, Enterprise needed; overage modelling and seat split pending. Next: security pack, sandbox, six-week pilot starting after sandbox; AI-leaf-node limitation to be documented.",
+  "tech_stack": [
+   "Salesforce",
+   "Snowflake",
+   "Slack",
+   "Okta",
+   "Jira",
+   "Kafka",
+   "PagerDuty",
+   "SIEM",
+   "SOC 2",
+   "SSO",
+   "SCIM"
+  ],
+  "competitors": [
+   "Tray.io",
+   "Zapier"
+  ],
+  "key_objections": [
+   "Debugging large visual workflows is hard",
+   "AI outputs cannot be enforced as leaf nodes; governed as convention only",
+   "Audit export must be programmatic, not CSV download",
+   "Usage overages may make second-year invoice unpredictable",
+   "Keeping scripts and documenting them may be proposed as cheaper alternative",
+   "Internal event bus not reachable from outside network"
+  ],
+  "outcome": "Customer wants to move forward assuming security material aligns; six-week pilot proposal and sandbox requested.",
+  "next_steps": [
+   "Send security pack (SOC 2, subprocessor list, DPA, architecture diagram, retention docs, encryption details) tomorrow",
+   "Send audit event payload schema to Hannah Cole",
+   "Confirm per-workspace AI disablement granularity in writing",
+   "Provide sandbox access by end of next week",
+   "Deliver six-week pilot proposal with jointly written success criteria",
+   "Model overage and volumes at 300 and 500 users; customer to supply volume estimates Friday",
+   "Hour with event bus owner; bad-data testing in pilot",
+   "Document AI outputs as known limitation",
+   "Technical bake-off July, vendor decision August, production October"
+  ]
+ },
+ "CALL-006": {
+  "summary": "Discovery call with Fable Media (agency, ~120 staff). Pain: manual copying of onboarding data between HubSpot and spreadsheets, inconsistent onboarding across pods. Stack includes HubSpot, Slack, Google Workspace, Asana, Google Sheets, and ~20 Zapier Zaps they find fragile. Growth package quoted at \u00a31,800/month for up to 30 users on annual terms; prospect's signing limit is \u00a320k and they want ~10 users and monthly billing. Vendor made unverified claims on SSO on all plans, monthly billing, AI summary accuracy, and no-code pod customisation; rep promised DPA, reference and a recorded demo. Prospect is interested but Zapier plus process discipline is a live alternative.",
+  "tech_stack": [
+   "HubSpot",
+   "Slack",
+   "Google Workspace",
+   "Asana",
+   "Google Sheets",
+   "Zapier"
+  ],
+  "competitors": [
+   "Zapier"
+  ],
+  "key_objections": [
+   "Price above budget: \u00a31,800/month (\u00a321.6k/year) exceeds \u00a320k signing limit",
+   "Paying for 20 unused seats with 30-user package",
+   "Zapier is good enough for a company without an IT team",
+   "Fragility of multi-step workflows and branching",
+   "Must justify spend to founder with better answer than robustness",
+   "Audit/governance value not relevant to an agency",
+   "Client documents must not train AI models",
+   "Pod-level customisation conflicts with standardised onboarding"
+  ],
+  "outcome": "Interested but undecided; prospect will consider Zapier plus process discipline. Recorded demo requested for founder and ops manager.",
+  "next_steps": [
+   "Send recorded Loom demo of Fable's specific use case by end of week",
+   "Send reference customer in agency sector",
+   "Send DPA confirming no training on customer data",
+   "Confirm monthly billing availability with manager",
+   "Confirm SSO available on all plans",
+   "Confirm whether date-slip alerting needs scheduled plus event workflows with an SE"
+  ]
+ },
+ "CALL-007": {
+  "summary": "Greenline Energy Services explored OrbitFlow for blocked-installation remediation; the core issue is coordination, not visibility. Dynamics 365 and Teams are mandatory and Power Automate is embedded and favourably licensed, so OrbitFlow lacks a first-class Dynamics connector. Offline tolerance is a hard constraint. Customer wants an architecture and roadmap session before any proposal; no decision expected this year, with budgeting in October.",
+  "tech_stack": [
+   "Microsoft Dynamics 365",
+   "Power BI",
+   "Teams",
+   "Azure Functions",
+   "Custom field-service mobile app",
+   "Power Automate",
+   "Azure API Management",
+   "Azure AD"
+  ],
+  "competitors": [
+   "Power Automate",
+   "Microsoft"
+  ],
+  "key_objections": [
+   "First-class Dynamics connector gap versus Power Automate",
+   "Power Automate licensing is favourable and embedded",
+   "Approver seat population could make licensing expensive",
+   "Microsoft platform team likely to object because OrbitFlow is not Microsoft",
+   "UK data residency not yet confirmed"
+  ],
+  "outcome": "Exploration only; no procurement; no decision expected this year. Customer wants roadmap and architecture session before October budgeting.",
+  "next_steps": [
+   "Jon Bell to run roadmap and architecture session including offline-tolerant pattern demo with deliberate failure",
+   "Vendor to provide written UK data residency answer",
+   "Vendor to provide note on regional workspace and permissions design",
+   "Jon Bell to write up on-call rota resolution requirements from source of truth",
+   "Greenline to measure time spent debugging flows for a month",
+   "Vendor to send written summary separating confirmed facts from estimates",
+   "Propose reusability test: build in one region, adapt in another, debug broken run"
+  ]
+ },
+ "CALL-008": {
+  "summary": "Discovery and security review with Harbor Legal (law firm). Phase one scoped to administrative orchestration around matter opening in two practice groups, excluding conflicts decisions and barriered matters; AI disabled for phase one. Key open items: UK data residency (EU only confirmed), retention floor vs 90-day policy, iManage/Intapp integration effort (no native connectors), Access database has no API. Q4 PoC, Q1 decision. Enterprise tier needed; pricing custom.",
+  "tech_stack": [
+   "Microsoft 365",
+   "Teams",
+   "SharePoint",
+   "iManage",
+   "Intapp",
+   "Azure",
+   "Power Automate",
+   "Access database (internal, no API)",
+   "Azure API Management"
+  ],
+  "competitors": [
+   "Power Automate",
+   "internal development"
+  ],
+  "key_objections": [
+   "Conflicts decisions must not be automatable",
+   "Information barriers not natively supported; weekly maintenance burden",
+   "UK data residency unconfirmed",
+   "Retention floor may conflict with 90-day deletion policy",
+   "Integration effort may be disproportionate to value",
+   "Run data visibility of matter data",
+   "AI features off in phase one",
+   "Practice groups slow to agree to process change"
+  ],
+  "outcome": "Agreed to scope a Q4 proof of concept in two practice groups, with a decision in Q1; written follow-ups pending.",
+  "next_steps": [
+   "OrbitFlow sends security pack (SOC 2, subprocessor list, DPA, architecture diagram, retention docs, pen test summary)",
+   "OrbitFlow written answers on UK residency, retention floor, AI-step permission granularity, audit payload schema, termination data handling",
+   "Harbor sends list of iManage and Intapp operations phase one needs",
+   "Harbor picks two practice groups, preferably without information barriers",
+   "OrbitFlow returns integration difficulty assessment and services estimate",
+   "Harbor reviews connection scopes as standing control and quantifies client cost of delayed matter opening"
+  ]
+ },
+ "CALL-009": {
+  "summary": "Inkwell Learning evaluated OrbitFlow for detecting at-risk accounts by combining Zendesk, Salesforce and Snowflake data into a scheduled workflow with escalation, plus a weekly AI narrative summary. Darren Wu will run a backward-looking analysis on historical escalations first; Olivia Grant sponsors, with a decision targeted for late September and a pilot on twenty historical escalations. Gainsight (limited deployment) and Looker alerts are the current alternatives; cost model vs expanding Gainsight is owed. Pricing discussed: Growth at \u00a31,800/month for up to 30 users; Enterprise custom. Seat split of 3-4 builders and 62 task recipients was confirmed.",
+  "tech_stack": [
+   "Zendesk",
+   "Salesforce",
+   "Snowflake",
+   "Gainsight",
+   "Looker",
+   "Slack",
+   "OrbitFlow"
+  ],
+  "competitors": [
+   "Gainsight"
+  ],
+  "key_objections": [
+   "Salesforce and health-score data quality is unreliable",
+   "Backward analysis may show signal is not there",
+   "Gainsight expansion may be cheaper",
+   "Customer data (FERPA student-level) must not leave warehouse",
+   "Version control and diff of workflows not git-like",
+   "Renewal ROI is hard to attribute causally",
+   "Dismissal and false positive rates unmeasurable without record of fine accounts"
+  ],
+  "outcome": "Positive but conditional: Darren to run backward analysis by end of next week; pilot on twenty historical escalations if signal present; decision by late September.",
+  "next_steps": [
+   "Darren Wu runs backward-looking analysis on historical escalations (lead time and false positives) by end of next week",
+   "Maya Chen sends security pack (SOC 2, subprocessor list, DPA, architecture diagram, retention documentation)",
+   "Maya Chen builds cost model comparing OrbitFlow with expanding Gainsight incl. implementation effort",
+   "Maya Chen sends itemised proposal with builder and task-recipient assumptions",
+   "Maya Chen sends written recap separating confirmed facts from estimates",
+   "Jon Bell confirms workflow definition export and diff capability",
+   "Pilot on twenty historical escalations with point-in-time data if signal is present",
+   "Decision by late September ahead of November renewal planning"
+  ]
+ },
+ "CALL-010": {
+  "summary": "Technical evaluation with Juniper Cloud Tools. Ava Sinclair (staff engineer) pressed on exportable definitions, API authoring, secrets/connection governance, Postgres connector behaviour, Salesforce API limits, EU residency and subflow billing. Marcus Chen (VP Business Ops) wants business teams to own rules without engineering queue delays. Agreed a four-week evaluation starting Monday with four success criteria, a go/no-go in September, and follow-ups due Friday. Ava is the practical veto; Retool Workflows and Step Functions named as build alternatives.",
+  "tech_stack": [
+   "Salesforce",
+   "Segment",
+   "PostgreSQL",
+   "Slack",
+   "Linear",
+   "AWS",
+   "Step Functions",
+   "Retool Workflows"
+  ],
+  "competitors": [
+   "Retool Workflows",
+   "Step Functions"
+  ],
+  "key_objections": [
+   "Build internally instead of buying",
+   "Per-run or subflow billing could make high-volume event processing expensive",
+   "Exported definitions may not be readable enough for review",
+   "Postgres connector may hold connections, ignore timeouts, or run unbounded queries",
+   "Salesforce API limits are tight",
+   "Replay of historical runs not supported",
+   "Ownership and maintenance cost of the integration"
+  ],
+  "outcome": "Agreed to proceed with a four-week evaluation starting Monday, with go/no-go in September and four success criteria.",
+  "next_steps": [
+   "OrbitFlow to send three exported workflow definitions today",
+   "OrbitFlow to answer subflow billing semantics in writing",
+   "OrbitFlow to provide Postgres connector documentation and sandbox access by Friday",
+   "Juniper to supply Linear backlog analysis of business rule changes",
+   "Juniper to supply Salesforce API daily allocation",
+   "Juniper to confirm EU data residency commitments in two enterprise contracts",
+   "Tom from Juniper to build one workflow during evaluation",
+   "Log engineering hours spent over four weeks",
+   "Pricing model in writing by week two",
+   "Leo to send four evaluation criteria in writing"
+  ]
+ },
+ "CALL-011": {
+  "summary": "Lumen Retail Group renewal/QBR. Fourteen months in, 22 workflows, error rate down to 1.4%, depot exception time cut from 2-6 hours to 40 minutes. Run volume overages in 4 of 6 months; two overages charged, two waived. Team agreed on 7 seats (from 9) and a 400k run tier; Maya quoted ~9% uplift overall. Supplier onboarding instrumentation planned as visibility-first phase. SAP connector resolution time complaints; no resolution SLA offered. AI features discussed for depot exception free-text categorisation with traceability. Renewal expires 18 Oct; customer to respond week of 15th.",
+  "tech_stack": [
+   "Salesforce",
+   "SAP",
+   "SharePoint",
+   "Zapier",
+   "SSO",
+   "subprocessor list"
+  ],
+  "competitors": [
+   "Zapier"
+  ],
+  "key_objections": [
+   "Overages and run tier undersized",
+   "Nine seats with four dormant builders",
+   "Seven percent uplift perceived as large",
+   "SAP connector resolution times (19-day ticket, 11 days idle)",
+   "Reluctance to commit to three-year term",
+   "AI features needed without a made-up use case"
+  ],
+  "outcome": "No binding agreement. Renewal proposal promised by Friday with 7 seats, 400k runs, and 1/2/3-year options; customer to decide week of 15th.",
+  "next_steps": [
+   "Maya sends renewal proposal with line-item comparison by Friday",
+   "Ruth schedules retry configuration session with Devan within the fortnight",
+   "Ruth sends subprocessor list to Priyanka and clause fourteen statement",
+   "Ruth names SAP escalation contact this week",
+   "Decide on supplier onboarding instrumentation before Christmas",
+   "Devan deletes test depot exception workflow and renames old version as deprecated",
+   "Ruth checks in December",
+   "Fiona returns renewal decision week of 15th"
+  ]
+ },
+ "CALL-012": {
+  "summary": "Renewal call with Pinewood Insurance, an at-risk account on Enterprise. Usage down about 40%; the original champion Ravi left and handover was minimal. Six of fourteen workflows are failing, including a 'TEMP - do not use' workflow failing since January with alerts going to Ravi's dead mailbox. The claims director wants claims triage moved to Guidewire. Leo proposed either lapsing or a six-month renewal with enablement included, and flagged that the current contract auto-renews unless notice is served by 30 September. Graham will hold the claims director meeting next week; proposal and comparison to follow by Thursday.",
+  "tech_stack": [
+   "Guidewire",
+   "Power Automate",
+   "Confluence",
+   "SSO",
+   "SCIM",
+   "EU data residency",
+   "audit export"
+  ],
+  "competitors": [
+   "Guidewire"
+  ],
+  "key_objections": [
+   "Usage down about 40% since March",
+   "Handover was only forty minutes after champion left",
+   "Enterprise tier paying for little value",
+   "Support tickets answered within SLA but with repeat questions",
+   "Claims triage may move to Guidewire",
+   "Builder licences unused; only one builder (Ellie) on leave",
+   "Growth tier not viable because it lacks SSO required by security standard"
+  ],
+  "outcome": "At risk; no decision. Serve notice by 30 September to stop auto-renew; six-month renewal option under consideration with lapse as alternative.",
+  "next_steps": [
+   "Serve notice to stop auto-renew by 30 September (Graham/Nadia)",
+   "OrbitFlow to send six-month proposal and renew-vs-lapse comparison by Thursday (Leo)",
+   "OrbitFlow to send list of six failing workflows, alert redirection instructions, and dated enablement draft (Ruth)",
+   "OrbitFlow to send export instructions for workflow definitions and run data (Ruth)",
+   "Graham to hold meeting with claims director and Nadia on cross-system Guidewire question next week",
+   "Fortnightly fifteen-minute call between Ruth and Nadia if six-month option agreed"
+  ]
+ },
+ "CALL-013": {
+  "summary": "Halberd Security renewal call. Renewal agreed at 7% uplift with six active builders. Customer wants to enable AI in a contained workspace for drafting incident summaries, subject to a 50-incident test and written answers on AI permissions, retention, allowed models and subprocessors. Governance gap raised: no promotion/publish control on production workflows. Teams-based approval pattern discussed as exploratory; mobile not a product.",
+  "tech_stack": [
+   "OrbitFlow",
+   "Microsoft Teams",
+   "Slack"
+  ],
+  "competitors": [],
+  "key_objections": [
+   "AI usage risk and training on customer data",
+   "Model provider terms and subprocessor changes",
+   "Plausible-but-wrong AI summary errors",
+   "No change control or two-person publishing on production workflows",
+   "Mobile approval experience"
+  ],
+  "outcome": "Renewal agreed subject to papers at 7% uplift; AI enablement conditional on 50-incident test and written answers; Teams approval scoping exploratory.",
+  "next_steps": [
+   "Nina Patel to send written answers on AI-step permission granularity, run record retention bucket, allowed model list, and subprocessor documentation by Friday",
+   "Ruth Adeyemi to send renewal papers by Wednesday including AI consumption estimate",
+   "Tobias Lund to run 50-incident draft test over two weeks",
+   "Nina Patel to scope Teams-based approval pattern",
+   "Halberd to introduce publish permission separate from build permission"
+  ]
+ },
+ "CALL-014": {
+  "summary": "Churn post-mortem with Verity Payments after they moved to Workato. Customer says the decision was effectively made in February and finalised June; the core failure was that no operations person ever built workflows, so engineering owned everything and the premium business-user value was not realised. Connector gap for a European settlement processor and core banking connector (Workato better) contributed. Support inconsistency and small-account treatment noted; an April PoC where Workato built a connector free of charge was a turning point. Exit terms agreed: read-only access through November at no charge, run-history API pagination details, deletion certificate, and flags on two live workflows.",
+  "tech_stack": [
+   "Workato",
+   "OrbitFlow run events API",
+   "Core banking platform",
+   "European settlement processor",
+   "Merchant onboarding notifications",
+   "Daily reconciliation report"
+  ],
+  "competitors": [
+   "Workato"
+  ],
+  "key_objections": [
+   "Connector gap for settlement provider",
+   "Operations team never built workflows",
+   "Licence cost not justified by business-user autonomy",
+   "Engineering maintenance burden of custom integrations",
+   "Support response inconsistent and small-account treatment",
+   "No enablement after initial onboarding",
+   "Professional services for enablement is a paid add-on"
+  ],
+  "outcome": "Churned; Verity moved to Workato, contract ends 31 October 2026.",
+  "next_steps": [
+   "Send run events API pagination details",
+   "Provide read-only access through end of November at no charge",
+   "Arrange deletion certificate with stated timeline",
+   "Flag two live workflows so they are not deactivated early",
+   "Send write-up to customer for review",
+   "Maya to raise SE-support and product feedback internally"
+  ]
+ },
+ "CALL-015": {
+  "summary": "Oakhill Property (240 staff, residential block management) churned from OrbitFlow Growth plan (\u00a31,800/month, 30 seats, only 4 active users) effective 11 November 2026. Customer says they bought more than needed; moving to Zapier at about \u00a32,000\u2013\u00a32,500/year. Customer praised product reliability but noted lost approval forms and run history. Vendor admitted no assigned CSM for their segment and no usage-based intervention. Vendor agreed to read-only access to end of November free, workflow screenshots, and run-events API export.",
+  "tech_stack": [
+   "Zapier",
+   "OrbitFlow Growth plan",
+   "Run events API"
+  ],
+  "competitors": [
+   "Zapier"
+  ],
+  "key_objections": [
+   "Paid for 30 seats with only 4 active users",
+   "Priced against a compliance roadmap that never happened",
+   "No smaller plan available for small usage",
+   "Lost approval forms and run history not replaceable in Zapier",
+   "Lack of proactive CSM contact"
+  ],
+  "outcome": "Churned; notice served, leaving 11 November 2026",
+  "next_steps": [
+   "Vendor to send API export instructions and pagination details for run events",
+   "Vendor to produce workflow screenshots for 11 workflows",
+   "Vendor to arrange deletion confirmation with a date",
+   "Read-only access until end of November at no charge",
+   "Vendor to pass smaller-plan feedback internally"
+  ]
+ },
+ "CALL-016": {
+  "summary": "Cold call to Dermot Kelly, Operations Director at Quarry Ridge Foods. Prospect declined for now: ERP migration finished in March and a no-new-software stance for the year; fourth vendor call that month. Already has Power Automate via Microsoft deal and would need a compelling reason to switch. Rep agreed to send one email in February about Power Automate in manufacturing; prospect accepted. Workflow ownership would be joint between Dermot and IT director.",
+  "tech_stack": [
+   "ERP",
+   "Power Automate",
+   "Microsoft"
+  ],
+  "competitors": [
+   "Power Automate"
+  ],
+  "key_objections": [
+   "Recently finished ERP migration in March",
+   "Company-wide freeze on buying new software this year",
+   "Already has Power Automate through Microsoft deal"
+  ],
+  "outcome": "Not interested this year; agreed to receive one follow-up email in February 2027.",
+  "next_steps": [
+   "Send one email in February about Power Automate and where it does and doesn't hold up in manufacturing",
+   "Revisit after ERP settles, next year"
+  ]
+ },
+ "CALL-017": {
+  "summary": "Cold call from OrbitFlow AE Leo Grant to Martine Duval, Director of Customer Operations at Silverline Travel. Gatekeeper Chloe Barnes first suggested calling back, then put Leo through for about three minutes. Martine confirmed disruption handling (flight cancellation, rebooking, supplier notification, customer comms, refund/credit across four systems) is handled badly by a good team. She asked for a short one-page document, not a deck, copied to Chloe, and a possible 30-minute meeting the week of the sixth was proposed without a demo.",
+  "tech_stack": [],
+  "competitors": [],
+  "key_objections": [
+   "Unsolicited cold call; prospect not expecting the call",
+   "Limited time, roughly three minutes available",
+   "Prefers a short written page over a deck"
+  ],
+  "outcome": "Positive-neutral: prospect agreed to receive a one-page summary copied to Chloe Barnes; meeting to be decided after reading.",
+  "next_steps": [
+   "Send one-page document describing disruption process review to Martine Duval, copy Chloe Barnes",
+   "Request 30-minute discovery meeting in week of 6th, no demo",
+   "Chloe to decide on diary slot if page is good"
+  ]
+ },
+ "CALL-018": {
+  "summary": "Cold call with Ade Balogun, Head of Business Change at Beacon Housing Trust, about voids turnaround (26 days vs 18 benchmark). Ade cannot attribute delays; systems are a housing management system, separate repairs system (about 80% reliable integration), and manual compliance via email. Maya was candid about possible lack of HMS connector, procurement/framework constraints, and no housing association reference. Agreed to a discovery call with Priya Menon (applications manager) week of the sixth, no demo, and Ade to send frameworks list and technical requirements.",
+  "tech_stack": [
+   "Housing management system",
+   "Repairs system",
+   "Email",
+   "Spreadsheets",
+   "API"
+  ],
+  "competitors": [],
+  "key_objections": [
+   "Likely no native connector for housing management system",
+   "Procurement via framework or tender (nine months)",
+   "No housing association or sector reference",
+   "Delay may be contractor capacity rather than process"
+  ],
+  "outcome": "Positive; agreed to follow-up discovery meeting with Priya Menon in week of the sixth, no demo.",
+  "next_steps": [
+   "Maya to send technical requirements for housing management system to Priya before the call",
+   "Ade to send list of three frameworks used",
+   "Maya to check OrbitFlow framework coverage before meeting",
+   "Meeting with Ade and Priya Menon week of 2026-09-28 (week of the sixth)"
+  ]
+ },
+ "CALL-019": {
+  "summary": "Cold call from OrbitFlow AE Alastair McCrae to Yvonne Deeks, Practice Operations Manager at Trafford Dental Group (eleven practices). Rep opened with generic pitch and wrong practice count; Yvonne challenged relevance, cited NHS e-Referral integration question, and rejected the entry price of \u00a31,800/month. Main pain is dental nurse recruitment (about nine hires a year), not process. Prospect declined further follow-up; rep sent to an IT contact who fixes printers. Outcome: not a fit, lost.",
+  "tech_stack": [
+   "NHS e-Referral"
+  ],
+  "competitors": [],
+  "key_objections": [
+   "Price: \u00a31,800/month far above budget (budget ~\u00a3200-300/month)",
+   "No understanding of the business; generic pitch",
+   "Integration with NHS e-Referral unconfirmed (no API knowledge)",
+   "Real problem is recruitment, not process automation",
+   "Prospect will not read follow-up materials"
+  ],
+  "outcome": "Not a fit; prospect disqualified OrbitFlow",
+  "next_steps": [
+   "No further action with Yvonne Deeks",
+   "Rep to check whether OrbitFlow has an API for NHS e-Referral (unanswered)",
+   "Rep to consider IT contact at group (not pursued by prospect)"
+  ]
+ },
+ "CALL-020": {
+  "summary": "Cold call with Rafael Santos (COO, Kestrel Robotics), who is three weeks into a Tray.io evaluation for order-to-deployment across seven stages and five systems. He had crossed OrbitFlow off after the website felt too enterprise. Rep Leo Grant conceded fit issues, flagged a mid-market ERP with no Tray connector, and suggested an operations-owned test. Rafael will consider a short note and possibly a 30-minute call before a mid-October decision. Stakes: eleven orders in flight, roughly \u00a3200k each, with delay costing about a month of revenue.",
+  "tech_stack": [
+   "Tray.io",
+   "ERP (mid-market manufacturing, unnamed)"
+  ],
+  "competitors": [
+   "Tray.io"
+  ],
+  "key_objections": [
+   "Website positioned as enterprise; too heavy for a 150-person company",
+   "No ERP connector for niche mid-market manufacturing system",
+   "Decision date fixed mid-October; no appetite to restart evaluation"
+  ],
+  "outcome": "Open: Rafael agreed to receive a short written note on the seven-stage approach and the operations-ownership question; a 30-minute call is conditional on the note.",
+  "next_steps": [
+   "Leo to send short note on seven-stage approach and operations-can-change-process question",
+   "Rafael to decide whether to take a 30-minute call before mid-October decision (around 14 October)",
+   "Rafael to optionally run operations-owned workflow test against Tray.io",
+   "Leo to suggest instrumenting seven stages to quantify delay cost"
+  ]
+ }
+}

@@ -1,0 +1,363 @@
+{
+ "question": "What is Pinewood Insurance's contract notice deadline?",
+ "resolution": {
+  "question_type": "lookup",
+  "companies": [
+   {
+    "mention": "Pinewood Insurance",
+    "resolved_to": "Pinewood Insurance",
+    "confidence": "high"
+   }
+  ],
+  "call_types": [],
+  "search_terms": [
+   "contract notice deadline",
+   "notice period",
+   "notice",
+   "termination",
+   "non-renewal",
+   "cancellation",
+   "renewal date",
+   "contract end",
+   "notice deadline"
+  ],
+  "read_instruction": "Extract any statement about the contract notice deadline, notice period, termination or non-renewal notice requirements, renewal date, or contract end date, including the exact dates or durations mentioned and who stated them.",
+  "assumptions": [
+   "Pinewood Insurance is a Renewal call (CALL-012), but call_types left empty because the question does not restrict to a call type.",
+   "'Contract notice deadline' is interpreted broadly to include notice periods, termination notice, and renewal or contract end dates."
+  ]
+ },
+ "candidates": {
+  "CALL-012": [
+   "company"
+  ]
+ },
+ "search_terms": [],
+ "findings": [
+  {
+   "finding_id": "F1",
+   "turn_id": "CALL-012#T115",
+   "call_id": "CALL-012",
+   "company": "Pinewood Insurance",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "12:38",
+   "quote": "Your current contract auto-renews with sixty days' notice, which means your notice deadline is the thirtieth of September.",
+   "context": "Pinewood's current contract auto-renews with sixty days' notice, making the notice deadline the thirtieth of September. \u2014 Stated by OrbitFlow's Account Executive Leo Grant in response to Graham's question about the current contract auto-renewing. Vendor statement about the customer's own contract terms.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F2",
+   "turn_id": "CALL-012#T005",
+   "call_id": "CALL-012",
+   "company": "Pinewood Insurance",
+   "speaker": "Ruth Adeyemi",
+   "side": "vendor",
+   "role": "Customer Success Manager",
+   "ts": "00:17",
+   "quote": "Your renewal's on the twenty-ninth of November.",
+   "context": "The renewal date is the twenty-ninth of November. \u2014 Stated by OrbitFlow's Customer Success Manager Ruth Adeyemi at the opening of the call when explaining why she requested the meeting.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F3",
+   "turn_id": "CALL-012#T116",
+   "call_id": "CALL-012",
+   "company": "Pinewood Insurance",
+   "speaker": "Graham Attwood",
+   "side": "customer",
+   "role": "Director of Operations",
+   "ts": "12:47",
+   "quote": "[pause] Three weeks.",
+   "context": "Customer Graham Attwood said he did not know about the notice deadline, which was three weeks away. \u2014 Customer reaction to the vendor disclosing the notice deadline; indicates the customer was previously unaware of the auto-renew and notice terms.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F4",
+   "turn_id": "CALL-012#T119",
+   "call_id": "CALL-012",
+   "company": "Pinewood Insurance",
+   "speaker": "Graham Attwood",
+   "side": "customer",
+   "role": "Director of Operations",
+   "ts": "12:54",
+   "quote": "I did not know that.",
+   "context": "Graham Attwood stated he did not know the contract had the notice deadline. \u2014 Customer acknowledgement that he was unaware of the notice/auto-renew terms until disclosed by the vendor.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F5",
+   "turn_id": "CALL-012#T120",
+   "call_id": "CALL-012",
+   "company": "Pinewood Insurance",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "12:57",
+   "quote": "Which is why I've said it now rather than on the first of October. I'm not going to auto-renew you into a twelve-month contract you didn't intend to sign.",
+   "context": "Leo Grant said he disclosed the deadline early rather than on 1 October and would not auto-renew the customer into a twelve-month contract they did not intend to sign. \u2014 Vendor explanation of timing of the notice-deadline disclosure.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F6",
+   "turn_id": "CALL-012#T124",
+   "call_id": "CALL-012",
+   "company": "Pinewood Insurance",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "13:24",
+   "quote": "Serve notice, which stops the auto-renew, and then we negotiate the six-month option separately without a clock on it.",
+   "context": "Leo Grant advised the customer to serve notice by the thirtieth to stop the auto-renew, and offered a six-month option as a separate agreement. \u2014 Vendor recommendation on notice action; the notice deadline is restated as the thirtieth.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F7",
+   "turn_id": "CALL-012#T123",
+   "call_id": "CALL-012",
+   "company": "Pinewood Insurance",
+   "speaker": "Graham Attwood",
+   "side": "customer",
+   "role": "Director of Operations",
+   "ts": "13:15",
+   "quote": "So I need to serve notice by the thirtieth regardless, to keep my options open.",
+   "context": "Graham Attwood acknowledged he needed to serve notice by the thirtieth to keep options open. \u2014 Customer restating the notice deadline and intended action.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F8",
+   "turn_id": "CALL-012#T187",
+   "call_id": "CALL-012",
+   "company": "Pinewood Insurance",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "20:21",
+   "quote": "Then we have three weeks in October to agree the six-month terms, or you let it lapse on the twenty-ninth of November.",
+   "context": "Notice would be sent by email to the account contact, with exact wording and address supplied by the vendor, and lapse would occur on 29 November. \u2014 Vendor description of notice mechanics and the post-October timeline.",
+   "stated_or_inferred": "stated"
+  }
+ ],
+ "rejected_findings": [],
+ "draft": {
+  "answer": "Pinewood Insurance's notice deadline is the thirtieth of September, per OrbitFlow AE Leo Grant, under a 60-day auto-renew notice term [C1]. The contract renews on 29 November [C2]. Customer Graham Attwood said he was unaware of the deadline and acknowledged he needs to serve notice by the thirtieth [C3]. Grant recommended serving notice and negotiating a six-month option separately, with notice sent by email [C4].",
+  "claims": [
+   {
+    "text": "Leo Grant (OrbitFlow Account Executive) stated that Pinewood's contract auto-renews with sixty days' notice, so the notice deadline is the thirtieth of September.",
+    "finding_ids": [
+     "F1"
+    ]
+   },
+   {
+    "text": "Ruth Adeyemi (OrbitFlow Customer Success Manager) stated the renewal date is the twenty-ninth of November; Grant also referred to lapse on 29 November.",
+    "finding_ids": [
+     "F2",
+     "F8"
+    ]
+   },
+   {
+    "text": "Graham Attwood (Director of Operations) said he did not know about the notice terms, and the deadline was three weeks away at the time. He later acknowledged he needs to serve notice by the thirtieth to keep options open.",
+    "finding_ids": [
+     "F3",
+     "F4",
+     "F7"
+    ]
+   },
+   {
+    "text": "Grant disclosed the deadline early rather than on 1 October, saying he would not auto-renew the customer into a twelve-month contract they did not intend to sign. He advised serving notice by the thirtieth to stop the auto-renew and negotiating a six-month option separately. Notice would be sent by email to the account contact, with wording and address supplied by the vendor, leaving three weeks in October to agree the six-month terms.",
+    "finding_ids": [
+     "F5",
+     "F6",
+     "F8"
+    ]
+   }
+  ],
+  "conflicts": [],
+  "not_covered": [
+   "The contract clause itself or the year was not stated in the findings; the deadline comes from verbal statements on the call.",
+   "Whether notice was actually served is not shown."
+  ],
+  "assumptions": [
+   "Contract notice deadline is interpreted broadly to include notice periods, termination notice and renewal or end dates.",
+   "Pinewood Insurance is the Renewal call CALL-012."
+  ]
+ },
+ "usage": {
+  "llm_calls": 4,
+  "input_tokens": 18544,
+  "cache_read_tokens": 13205,
+  "cache_write_tokens": 0,
+  "output_tokens": 2788,
+  "uncached_calls": 2,
+  "latency_s": 8.6
+ },
+ "answer": {
+  "question": "What is Pinewood Insurance's contract notice deadline?",
+  "answer": "Pinewood Insurance's notice deadline is the thirtieth of September, per OrbitFlow AE Leo Grant, under a 60-day auto-renew notice term [1]. The contract renews on 29 November [2]. Customer Graham Attwood said he was unaware of the deadline and acknowledged he needs to serve notice by the thirtieth [3]. Grant recommended serving notice and negotiating a six-month option separately, with notice sent by email [4].",
+  "claims": [
+   {
+    "text": "Leo Grant (OrbitFlow Account Executive) stated that Pinewood's contract auto-renews with sixty days' notice, so the notice deadline is the thirtieth of September.",
+    "evidence": [
+     {
+      "finding_id": "F1",
+      "turn_id": "CALL-012#T115",
+      "call_id": "CALL-012",
+      "company": "Pinewood Insurance",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "12:38",
+      "quote": "Your current contract auto-renews with sixty days' notice, which means your notice deadline is the thirtieth of September.",
+      "context": "Pinewood's current contract auto-renews with sixty days' notice, making the notice deadline the thirtieth of September. \u2014 Stated by OrbitFlow's Account Executive Leo Grant in response to Graham's question about the current contract auto-renewing. Vendor statement about the customer's own contract terms.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Ruth Adeyemi (OrbitFlow Customer Success Manager) stated the renewal date is the twenty-ninth of November; Grant also referred to lapse on 29 November.",
+    "evidence": [
+     {
+      "finding_id": "F2",
+      "turn_id": "CALL-012#T005",
+      "call_id": "CALL-012",
+      "company": "Pinewood Insurance",
+      "speaker": "Ruth Adeyemi",
+      "side": "vendor",
+      "role": "Customer Success Manager",
+      "ts": "00:17",
+      "quote": "Your renewal's on the twenty-ninth of November.",
+      "context": "The renewal date is the twenty-ninth of November. \u2014 Stated by OrbitFlow's Customer Success Manager Ruth Adeyemi at the opening of the call when explaining why she requested the meeting.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F8",
+      "turn_id": "CALL-012#T187",
+      "call_id": "CALL-012",
+      "company": "Pinewood Insurance",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "20:21",
+      "quote": "Then we have three weeks in October to agree the six-month terms, or you let it lapse on the twenty-ninth of November.",
+      "context": "Notice would be sent by email to the account contact, with exact wording and address supplied by the vendor, and lapse would occur on 29 November. \u2014 Vendor description of notice mechanics and the post-October timeline.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Graham Attwood (Director of Operations) said he did not know about the notice terms, and the deadline was three weeks away at the time. He later acknowledged he needs to serve notice by the thirtieth to keep options open.",
+    "evidence": [
+     {
+      "finding_id": "F3",
+      "turn_id": "CALL-012#T116",
+      "call_id": "CALL-012",
+      "company": "Pinewood Insurance",
+      "speaker": "Graham Attwood",
+      "side": "customer",
+      "role": "Director of Operations",
+      "ts": "12:47",
+      "quote": "[pause] Three weeks.",
+      "context": "Customer Graham Attwood said he did not know about the notice deadline, which was three weeks away. \u2014 Customer reaction to the vendor disclosing the notice deadline; indicates the customer was previously unaware of the auto-renew and notice terms.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F4",
+      "turn_id": "CALL-012#T119",
+      "call_id": "CALL-012",
+      "company": "Pinewood Insurance",
+      "speaker": "Graham Attwood",
+      "side": "customer",
+      "role": "Director of Operations",
+      "ts": "12:54",
+      "quote": "I did not know that.",
+      "context": "Graham Attwood stated he did not know the contract had the notice deadline. \u2014 Customer acknowledgement that he was unaware of the notice/auto-renew terms until disclosed by the vendor.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F7",
+      "turn_id": "CALL-012#T123",
+      "call_id": "CALL-012",
+      "company": "Pinewood Insurance",
+      "speaker": "Graham Attwood",
+      "side": "customer",
+      "role": "Director of Operations",
+      "ts": "13:15",
+      "quote": "So I need to serve notice by the thirtieth regardless, to keep my options open.",
+      "context": "Graham Attwood acknowledged he needed to serve notice by the thirtieth to keep options open. \u2014 Customer restating the notice deadline and intended action.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Grant disclosed the deadline early rather than on 1 October, saying he would not auto-renew the customer into a twelve-month contract they did not intend to sign. He advised serving notice by the thirtieth to stop the auto-renew and negotiating a six-month option separately. Notice would be sent by email to the account contact, with wording and address supplied by the vendor, leaving three weeks in October to agree the six-month terms.",
+    "evidence": [
+     {
+      "finding_id": "F5",
+      "turn_id": "CALL-012#T120",
+      "call_id": "CALL-012",
+      "company": "Pinewood Insurance",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "12:57",
+      "quote": "Which is why I've said it now rather than on the first of October. I'm not going to auto-renew you into a twelve-month contract you didn't intend to sign.",
+      "context": "Leo Grant said he disclosed the deadline early rather than on 1 October and would not auto-renew the customer into a twelve-month contract they did not intend to sign. \u2014 Vendor explanation of timing of the notice-deadline disclosure.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F6",
+      "turn_id": "CALL-012#T124",
+      "call_id": "CALL-012",
+      "company": "Pinewood Insurance",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "13:24",
+      "quote": "Serve notice, which stops the auto-renew, and then we negotiate the six-month option separately without a clock on it.",
+      "context": "Leo Grant advised the customer to serve notice by the thirtieth to stop the auto-renew, and offered a six-month option as a separate agreement. \u2014 Vendor recommendation on notice action; the notice deadline is restated as the thirtieth.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F8",
+      "turn_id": "CALL-012#T187",
+      "call_id": "CALL-012",
+      "company": "Pinewood Insurance",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "20:21",
+      "quote": "Then we have three weeks in October to agree the six-month terms, or you let it lapse on the twenty-ninth of November.",
+      "context": "Notice would be sent by email to the account contact, with exact wording and address supplied by the vendor, and lapse would occur on 29 November. \u2014 Vendor description of notice mechanics and the post-October timeline.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   }
+  ],
+  "conflicts": [],
+  "not_covered": [
+   "The contract clause itself or the year was not stated in the findings; the deadline comes from verbal statements on the call.",
+   "Whether notice was actually served is not shown."
+  ],
+  "assumptions": [
+   "Pinewood Insurance is a Renewal call (CALL-012), but call_types left empty because the question does not restrict to a call type.",
+   "'Contract notice deadline' is interpreted broadly to include notice periods, termination notice, and renewal or contract end dates.",
+   "Contract notice deadline is interpreted broadly to include notice periods, termination notice and renewal or end dates.",
+   "Pinewood Insurance is the Renewal call CALL-012."
+  ],
+  "confidence": "medium",
+  "calls_considered": [
+   "CALL-012"
+  ],
+  "calls_cited": [
+   "CALL-012"
+  ],
+  "removed_claims": [],
+  "covered": true,
+  "trace_id": null
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "question": "Did anyone mention Gong?",
+ "resolution": {
+  "question_type": "lookup",
+  "companies": [],
+  "call_types": [],
+  "search_terms": [
+   "Gong"
+  ],
+  "read_instruction": "Extract every mention of Gong (the sales call recording and conversation intelligence tool), including who mentioned it, in what context (e.g. as a competitor, existing tool, integration, or comparison), and any related statements. If Gong is not mentioned, state that explicitly.",
+  "assumptions": [
+   "Gong refers to the sales conversation intelligence product, not a generic word or a different company with a similar name."
+  ]
+ },
+ "candidates": {},
+ "search_terms": [
+  "gong"
+ ],
+ "findings": [],
+ "rejected_findings": [],
+ "usage": {
+  "llm_calls": 1,
+  "input_tokens": 2379,
+  "cache_read_tokens": 2359,
+  "cache_write_tokens": 0,
+  "output_tokens": 174,
+  "uncached_calls": 0,
+  "latency_s": 0.05
+ },
+ "answer": {
+  "question": "Did anyone mention Gong?",
+  "answer": "The transcripts don't cover this. No call matched the question's entities or terms.",
+  "claims": [],
+  "conflicts": [],
+  "not_covered": [
+   "Did anyone mention Gong?",
+   "Closest related material: CALL-004 (DeltaWorks Manufacturing) turns T163-T170, CALL-007 (Greenline Energy Services) turns T043-T050, CALL-004 (DeltaWorks Manufacturing) turns T133-T140"
+  ],
+  "assumptions": [
+   "Gong refers to the sales conversation intelligence product, not a generic word or a different company with a similar name."
+  ],
+  "confidence": "none",
+  "calls_considered": [],
+  "calls_cited": [],
+  "removed_claims": [],
+  "covered": false,
+  "trace_id": null
+ }
+}

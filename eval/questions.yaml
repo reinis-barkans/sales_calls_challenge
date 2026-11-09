@@ -1,0 +1,181 @@
+# Gold set. Every label was checked against the transcripts (grep + reading); see `notes`.
+# Fields:
+#   expected_calls     calls a correct answer must draw on (used for selection recall and cited recall)
+#   must_not_cite      calls whose citation indicates a known false match (e.g. a keyword hit in the wrong context)
+#   key_facts          facts an LLM judge checks for (present / partial / absent / contradicted)
+#   expect_covered     false => the system should decline (transcripts don't contain the answer)
+#   expect_conflict    true  => the answer should surface a disagreement
+
+- id: Q01
+  category: lookup
+  question: "What did Acme Logistics say about their current workflow?"
+  expected_calls: [CALL-001]
+  key_facts:
+    - "Describes Acme's current (largely manual / multi-tool) workflow in their own words, citing CALL-001"
+    - "Mentions that Salesforce is part of their stack"
+  expect_covered: true
+
+- id: Q02
+  category: alias
+  question: "What did Acme Corp say about their current workflow?"
+  expected_calls: [CALL-001]
+  key_facts:
+    - "States the assumption that 'Acme Corp' refers to Acme Logistics (no exact match in the data)"
+    - "Describes Acme Logistics' current workflow, citing CALL-001"
+  expect_covered: true
+  notes: "No 'Acme Corp' in the data. Good answers either flag the mapping or decline; silently answering is the failure."
+
+- id: Q03
+  category: list
+  question: "Which customers mentioned integrations with Salesforce?"
+  expected_calls: [CALL-001, CALL-004, CALL-005, CALL-009, CALL-010]
+  must_not_cite: [CALL-011]
+  key_facts:
+    - "Acme Logistics, DeltaWorks, Ember Financial, Inkwell Learning and Juniper Cloud Tools all have Salesforce in their stack/workflow"
+    - "Does not present Lumen Retail Group (CALL-011) as a Salesforce integration (theirs was an outage/incident)"
+  expect_covered: true
+  notes: "grep salesforce: 001 004 005 009 010 011. CALL-011 is an outage. CALL-009 = Salesforce as a data source in the proposed workflow."
+
+- id: Q04
+  category: list
+  question: "Which competitors were mentioned, and in what context?"
+  expected_calls: [CALL-001, CALL-003, CALL-005, CALL-014, CALL-015, CALL-016, CALL-020]
+  key_facts:
+    - "Zapier (e.g. Oakhill went back to Zapier, CALL-015)"
+    - "Workato (Verity moved to Workato, CALL-014)"
+    - "Tray.io (Kestrel three weeks into evaluating it, CALL-020)"
+    - "Power Automate (e.g. Quarry Ridge already has it, CALL-016)"
+    - "Make (Cedar & Finch tested it, CALL-003)"
+    - "At least one of MuleSoft (CALL-004), Retool Workflows (CALL-010), Gainsight (CALL-001/009)"
+  expect_covered: true
+  notes: "zapier 001 003 006 011 015; workato 001 014; tray 005 020; power automate 002 007 008 012 016; mulesoft 004; retool 010; make 003. expected_calls is a core subset."
+
+- id: Q05
+  category: theme
+  question: "What concerns did customers raise about pricing?"
+  expected_calls: [CALL-015]
+  key_facts:
+    - "Oakhill paid eighteen hundred a month for 30 seats with only 4 active users, and wanted a smaller plan (~£500-600/month)"
+    - "Cites pricing concerns from at least three different companies"
+  expect_covered: true
+
+- id: Q06
+  category: theme
+  question: "Why did customers who left decide to leave?"
+  expected_calls: [CALL-014, CALL-015]
+  key_facts:
+    - "Verity Payments: the connector gap was the stated reason but 'wasn't why we left'; real cause was nobody owned/had capacity to build workflows; moved to Workato"
+    - "Oakhill Property: over-bought (4 active users on a 30-user plan at £1,800/month); went back to Zapier"
+  expect_covered: true
+  expect_conflict: true
+
+- id: Q07
+  category: compare
+  question: "Has anyone from the vendor given inconsistent answers about the product?"
+  expected_calls: [CALL-006, CALL-012]
+  key_facts:
+    - "Alastair McCrae (CALL-006) said SSO is included on all plans"
+    - "Leo Grant (CALL-012) said SAML SSO is Enterprise-only, contradicting Alastair"
+    - "Alastair also claimed the prospect's tools were all native connectors (CALL-006)"
+  expect_covered: true
+  expect_conflict: true
+
+- id: Q08
+  category: multi_hop
+  question: "Which cold calls produced a follow-up, and what did the successful ones have in common?"
+  expected_calls: [CALL-016, CALL-017, CALL-018, CALL-019, CALL-020]
+  key_facts:
+    - "Beacon Housing Trust (CALL-018) agreed a follow-up meeting"
+    - "Silverline Travel (CALL-017) agreed a follow-up (send the page, assistant books it)"
+    - "Trafford Dental (CALL-019) ended without a follow-up"
+    - "Successful calls showed specific knowledge of the prospect's business and/or honesty about weaknesses"
+  expect_covered: true
+  notes: "016 = one email in February; 020 = 'send the note' while evaluating Tray. Either is acceptable as a weak follow-up."
+
+- id: Q09
+  category: lookup
+  question: "What did Verity Payments say was the reason they left?"
+  expected_calls: [CALL-014]
+  key_facts:
+    - "The connector gap was real but 'wasn't why we left'"
+    - "Nobody owned building workflows / the team lacked capacity"
+    - "They moved to Workato"
+  expect_covered: true
+  expect_conflict: true
+
+- id: Q10
+  category: conflict
+  question: "How many practices does Trafford Dental Group have?"
+  expected_calls: [CALL-019]
+  key_facts:
+    - "Eleven practices (stated by Yvonne Deeks)"
+    - "The rep's figure of fourteen was wrong / corrected"
+  expect_covered: true
+  expect_conflict: true
+
+- id: Q11
+  category: lookup
+  question: "What is Pinewood Insurance's contract notice deadline?"
+  expected_calls: [CALL-012]
+  key_facts:
+    - "The thirtieth of September (sixty days' notice on an auto-renewing contract)"
+  expect_covered: true
+
+- id: Q12
+  category: lookup
+  question: "What did Kestrel Robotics say about Tray.io?"
+  expected_calls: [CALL-020]
+  key_facts:
+    - "Kestrel is three weeks into evaluating Tray.io"
+  expect_covered: true
+
+- id: Q13
+  category: near_miss
+  question: "Did any prospects raise HIPAA or BAA requirements?"
+  expected_calls: [CALL-002]
+  key_facts:
+    - "BrightPath Health said the BAA is the gate: without one they cannot use OrbitFlow for workflows involving protected health information"
+  expect_covered: true
+  notes: "The word HIPAA never appears; the BAA discussion in CALL-002 answers it."
+
+- id: Q14
+  category: theme
+  question: "What did prospects say about data residency?"
+  expected_calls: [CALL-008]
+  key_facts:
+    - "Harbor Legal raised UK data residency requirements"
+    - "Cites residency requirements from at least three companies"
+  expect_covered: true
+  notes: "residency-ish terms in 001 002 003 004 005 007 008 010 012. expected_calls is a core subset. Run 1 label error fixed: CALL-012 is a renewal, not a prospect."
+
+- id: Q15
+  category: decline
+  question: "Did anyone mention Gong?"
+  expected_calls: []
+  key_facts: []
+  expect_covered: false
+
+- id: Q16
+  category: decline
+  question: "What did Lumen Retail Group say about the mobile app?"
+  expected_calls: []
+  key_facts: []
+  expect_covered: false
+  notes: "'mobile app' only appears in CALL-007 and CALL-013."
+
+- id: Q17
+  category: decline
+  question: "What did Northwind Traders say about pricing?"
+  expected_calls: []
+  key_facts: []
+  expect_covered: false
+  notes: "Company not in the dataset; must not answer about other companies."
+
+- id: Q18
+  category: judgement
+  question: "Which prospects seem most likely to purchase, based on the conversations?"
+  expected_calls: []
+  key_facts:
+    - "Frames the answer as a judgement grounded in cited buying signals (next steps, budget, sponsor), not as certainty"
+    - "Mentions at least one blocker/risk for a named prospect (e.g. BrightPath's BAA gate)"
+  expect_covered: true

@@ -1,0 +1,546 @@
+{
+ "question": "What did Acme Corp say about their current workflow?",
+ "resolution": {
+  "question_type": "lookup",
+  "companies": [
+   {
+    "mention": "Acme Corp",
+    "resolved_to": "Acme Logistics",
+    "confidence": "medium"
+   }
+  ],
+  "call_types": [],
+  "search_terms": [
+   "Acme",
+   "current workflow",
+   "existing workflow",
+   "current process",
+   "manual process",
+   "workflow",
+   "current tools"
+  ],
+  "read_instruction": "Extract everything the prospect (Acme) says about its current workflow, including how work is done today, tools and systems in use, pain points, bottlenecks, and manual steps.",
+  "assumptions": [
+   "'Acme Corp' is taken to refer to the catalogue company Acme Logistics (CALL-001), the only Acme entry."
+  ]
+ },
+ "candidates": {
+  "CALL-001": [
+   "company"
+  ]
+ },
+ "search_terms": [],
+ "findings": [
+  {
+   "finding_id": "F1",
+   "turn_id": "CALL-001#T014",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Rachel Morgan",
+   "side": "customer",
+   "role": "VP Revenue Operations",
+   "ts": "01:51",
+   "quote": "Handoffs between sales, onboarding and customer success. All of that is managed through spreadsheets and Slack reminders.",
+   "context": "Handoffs between sales, onboarding and customer success are managed through spreadsheets and Slack reminders, so renewal risks and implementation blockers are noticed late. \u2014 Core description of current workflow and main pain point",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F2",
+   "turn_id": "CALL-001#T016",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Rachel Morgan",
+   "side": "customer",
+   "role": "VP Revenue Operations",
+   "ts": "02:12",
+   "quote": "Sometimes a week. Sometimes we find out at the QBR",
+   "context": "Late detection sometimes means a week of delay, and sometimes issues are only found at the QBR. \u2014 Rachel quantifying how late problems are noticed",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F3",
+   "turn_id": "CALL-001#T018",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Rachel Morgan",
+   "side": "customer",
+   "role": "VP Revenue Operations",
+   "ts": "02:23",
+   "quote": "It's not that every step is manual. We have automation in places. The problem is the gaps between the automated pieces. Something runs, then nothing happens for four days, then a human notices.",
+   "context": "Acme has some automation, but the main problem is the gaps between automated pieces, where work stalls until a human notices. \u2014 Rachel explicitly corrects the assumption that every step is manual",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F4",
+   "turn_id": "CALL-001#T022",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Rachel Morgan",
+   "side": "customer",
+   "role": "VP Revenue Operations",
+   "ts": "03:03",
+   "quote": "The operational telemetry is weak. We can usually tell you something was late after the fact. We're much worse at answering why it was late, or which dependency failed",
+   "context": "Operational telemetry is weak: Acme can tell after the fact that something was late but cannot easily tell why, which dependency failed, or how often it recurs. \u2014 Rachel on measurement and visibility gaps",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F5",
+   "turn_id": "CALL-001#T029",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Tom Alvarez",
+   "side": "customer",
+   "role": "Director of Customer Success",
+   "ts": "04:00",
+   "quote": "When things work, nobody notices. When something sticks, the escalation path depends entirely on who happens to see it. And people compensate \u2014 they build their own reminders, their own little spreadsheets, someone wrote a script once.",
+   "context": "Acme has automation nobody quite owns; when something breaks, escalation depends on who happens to see it, and people compensate with personal reminders, spreadsheets and scripts that leave with them. \u2014 Tom on ownership and key-person risk",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F6",
+   "turn_id": "CALL-001#T030",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Rachel Morgan",
+   "side": "customer",
+   "role": "VP Revenue Operations",
+   "ts": "04:20",
+   "quote": "We have at least two scripts running that I could not tell you the author of.",
+   "context": "At least three running scripts exist whose authors are unknown to the team. \u2014 Rachel said two; Tom corrected to three",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F7",
+   "turn_id": "CALL-001#T031",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Tom Alvarez",
+   "side": "customer",
+   "role": "Director of Customer Success",
+   "ts": "04:26",
+   "quote": "Three.",
+   "context": "The count of unowned scripts is three, not two. \u2014 Self-correction by Tom of Rachel's count",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F8",
+   "turn_id": "CALL-001#T042",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Tom Alvarez",
+   "side": "customer",
+   "role": "Director of Customer Success",
+   "ts": "05:57",
+   "quote": "Earlier we described onboarding as standardised. That's what the deck says. In practice EMEA and North America use different milestone definitions.",
+   "context": "Onboarding is described as standardised in the deck, but EMEA and North America use different milestone definitions, so a single workflow diagram is misleading. \u2014 Tom correcting earlier statement made by the team",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F9",
+   "turn_id": "CALL-001#T044",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Tom Alvarez",
+   "side": "customer",
+   "role": "Director of Customer Success",
+   "ts": "06:21",
+   "quote": "The process people describe and the process people run are not always the same thing.",
+   "context": "The documented process and the process actually run by staff differ. \u2014 Tom and Rachel agreeing on the gap between documented and actual process",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F10",
+   "turn_id": "CALL-001#T049",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Rachel Morgan",
+   "side": "customer",
+   "role": "VP Revenue Operations",
+   "ts": "06:49",
+   "quote": "Customer and commercial data, that's clear. Tasks and tickets, that's somewhere else. And then a lot of the actual context is in chat",
+   "context": "System of record varies by object: customer and commercial data is clear, tasks and tickets live elsewhere, and much of the actual context sits in chat. \u2014 Rachel on where process data lives",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F11",
+   "turn_id": "CALL-001#T052",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Tom Alvarez",
+   "side": "customer",
+   "role": "Director of Customer Success",
+   "ts": "07:17",
+   "quote": "The data team uses it for a handful of back-office integrations. It works. But RevOps finds it too technical",
+   "context": "Acme already uses Workato: the data team uses it for back-office integrations, it works, but RevOps finds it too technical and avoids IT tickets for workflow changes. \u2014 Tom describing existing automation tooling",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F12",
+   "turn_id": "CALL-001#T083",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Tom Alvarez",
+   "side": "customer",
+   "role": "Director of Customer Success",
+   "ts": "12:52",
+   "quote": "We've had integrations die because someone renamed a field or added a picklist value, and the automation just \u2014 didn't say anything.",
+   "context": "Integrations have failed silently when source schema changed (renamed field, new picklist value). \u2014 Tom describing a concrete failure mode of current automation",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F13",
+   "turn_id": "CALL-001#T066",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Tom Alvarez",
+   "side": "customer",
+   "role": "Director of Customer Success",
+   "ts": "09:40",
+   "quote": "individual ownership is genuinely one of the reasons our current stuff breaks.",
+   "context": "Individual ownership of processes is one of the reasons Acme's current automation breaks, since people change roles constantly. \u2014 Tom on person-dependence",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F14",
+   "turn_id": "CALL-001#T140",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Rachel Morgan",
+   "side": "customer",
+   "role": "VP Revenue Operations",
+   "ts": "23:18",
+   "quote": "We've got expensive people doing coordination work because the systems don't carry enough process context.",
+   "context": "Acme pays for expensive staff to do coordination work because systems don't carry enough process context; maintenance scripts quietly consume engineer hours over time. \u2014 Rachel on cost of current approach; Tom on hidden engineering cost",
+   "stated_or_inferred": "stated"
+  }
+ ],
+ "rejected_findings": [],
+ "draft": {
+  "answer": "Acme Logistics (Rachel Morgan, VP RevOps, and Tom Alvarez, Director of Customer Success) described a workflow run on spreadsheets and Slack reminders, with partial automation and gaps where work stalls [C1][C2]. Ownership is weak and relies on individuals and unowned scripts [C3]. Documented and actual processes differ, and visibility is poor [C4]. Existing tooling includes Workato, and integrations have failed silently [C5]. The cost shows up in staff time [C6].",
+  "claims": [
+   {
+    "text": "Rachel Morgan said handoffs between sales, onboarding and customer success are managed through spreadsheets and Slack reminders, so problems are noticed late: sometimes a week, sometimes only at the QBR.",
+    "finding_ids": [
+     "F1",
+     "F2"
+    ]
+   },
+   {
+    "text": "Rachel said not every step is manual; Acme has some automation, but the problem is the gaps between automated pieces, where something runs, then nothing happens for four days until a human notices.",
+    "finding_ids": [
+     "F3"
+    ]
+   },
+   {
+    "text": "Tom Alvarez said some automation is not clearly owned, escalation depends on who happens to see a problem, and people build their own reminders, spreadsheets and scripts. Rachel said at least two scripts had unknown authors, and Tom corrected the count to three. Tom said individual ownership is one reason current automation breaks, because people change roles constantly.",
+    "finding_ids": [
+     "F5",
+     "F6",
+     "F7",
+     "F13"
+    ]
+   },
+   {
+    "text": "Tom said onboarding is described as standardised in the deck, but EMEA and North America use different milestone definitions. He said the documented process and the process actually run are not always the same. Rachel said customer and commercial data has a clear system of record, but tasks and tickets live elsewhere and much context is in chat. Rachel also said operational telemetry is weak: Acme can tell something was late but not why or which dependency failed.",
+    "finding_ids": [
+     "F8",
+     "F9",
+     "F10",
+     "F4"
+    ]
+   },
+   {
+    "text": "Tom said Acme already uses Workato: the data team uses it for back-office integrations and it works, but RevOps finds it too technical. Tom also said integrations have died silently when a field was renamed or a picklist value added.",
+    "finding_ids": [
+     "F11",
+     "F12"
+    ]
+   },
+   {
+    "text": "Rachel said Acme has expensive people doing coordination work because systems don't carry enough process context.",
+    "finding_ids": [
+     "F14"
+    ]
+   }
+  ],
+  "conflicts": [
+   {
+    "topic": "Onboarding standardisation",
+    "description": "The deck describes onboarding as standardised, but Tom said in practice EMEA and North America use different milestone definitions.",
+    "finding_ids": [
+     "F8"
+    ]
+   },
+   {
+    "topic": "Number of unowned scripts",
+    "description": "Rachel said at least two scripts have unknown authors; Tom corrected it to three.",
+    "finding_ids": [
+     "F6",
+     "F7"
+    ]
+   }
+  ],
+  "not_covered": [],
+  "assumptions": [
+   "'Acme Corp' refers to Acme Logistics (CALL-001), the only Acme entry."
+  ]
+ },
+ "usage": {
+  "llm_calls": 4,
+  "input_tokens": 20793,
+  "cache_read_tokens": 13971,
+  "cache_write_tokens": 0,
+  "output_tokens": 6030,
+  "uncached_calls": 2,
+  "latency_s": 12.58
+ },
+ "answer": {
+  "question": "What did Acme Corp say about their current workflow?",
+  "answer": "Acme Logistics (Rachel Morgan, VP RevOps, and Tom Alvarez, Director of Customer Success) described a workflow run on spreadsheets and Slack reminders, with partial automation and gaps where work stalls [1][2]. Ownership is weak and relies on individuals and unowned scripts [3]. Documented and actual processes differ, and visibility is poor [4]. Existing tooling includes Workato, and integrations have failed silently [5]. The cost shows up in staff time [6].",
+  "claims": [
+   {
+    "text": "Rachel Morgan said handoffs between sales, onboarding and customer success are managed through spreadsheets and Slack reminders, so problems are noticed late: sometimes a week, sometimes only at the QBR.",
+    "evidence": [
+     {
+      "finding_id": "F1",
+      "turn_id": "CALL-001#T014",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Rachel Morgan",
+      "side": "customer",
+      "role": "VP Revenue Operations",
+      "ts": "01:51",
+      "quote": "Handoffs between sales, onboarding and customer success. All of that is managed through spreadsheets and Slack reminders.",
+      "context": "Handoffs between sales, onboarding and customer success are managed through spreadsheets and Slack reminders, so renewal risks and implementation blockers are noticed late. \u2014 Core description of current workflow and main pain point",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F2",
+      "turn_id": "CALL-001#T016",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Rachel Morgan",
+      "side": "customer",
+      "role": "VP Revenue Operations",
+      "ts": "02:12",
+      "quote": "Sometimes a week. Sometimes we find out at the QBR",
+      "context": "Late detection sometimes means a week of delay, and sometimes issues are only found at the QBR. \u2014 Rachel quantifying how late problems are noticed",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Rachel said not every step is manual; Acme has some automation, but the problem is the gaps between automated pieces, where something runs, then nothing happens for four days until a human notices.",
+    "evidence": [
+     {
+      "finding_id": "F3",
+      "turn_id": "CALL-001#T018",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Rachel Morgan",
+      "side": "customer",
+      "role": "VP Revenue Operations",
+      "ts": "02:23",
+      "quote": "It's not that every step is manual. We have automation in places. The problem is the gaps between the automated pieces. Something runs, then nothing happens for four days, then a human notices.",
+      "context": "Acme has some automation, but the main problem is the gaps between automated pieces, where work stalls until a human notices. \u2014 Rachel explicitly corrects the assumption that every step is manual",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Tom Alvarez said some automation is not clearly owned, escalation depends on who happens to see a problem, and people build their own reminders, spreadsheets and scripts. Rachel said at least two scripts had unknown authors, and Tom corrected the count to three. Tom said individual ownership is one reason current automation breaks, because people change roles constantly.",
+    "evidence": [
+     {
+      "finding_id": "F5",
+      "turn_id": "CALL-001#T029",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Tom Alvarez",
+      "side": "customer",
+      "role": "Director of Customer Success",
+      "ts": "04:00",
+      "quote": "When things work, nobody notices. When something sticks, the escalation path depends entirely on who happens to see it. And people compensate \u2014 they build their own reminders, their own little spreadsheets, someone wrote a script once.",
+      "context": "Acme has automation nobody quite owns; when something breaks, escalation depends on who happens to see it, and people compensate with personal reminders, spreadsheets and scripts that leave with them. \u2014 Tom on ownership and key-person risk",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F6",
+      "turn_id": "CALL-001#T030",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Rachel Morgan",
+      "side": "customer",
+      "role": "VP Revenue Operations",
+      "ts": "04:20",
+      "quote": "We have at least two scripts running that I could not tell you the author of.",
+      "context": "At least three running scripts exist whose authors are unknown to the team. \u2014 Rachel said two; Tom corrected to three",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F7",
+      "turn_id": "CALL-001#T031",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Tom Alvarez",
+      "side": "customer",
+      "role": "Director of Customer Success",
+      "ts": "04:26",
+      "quote": "Three.",
+      "context": "The count of unowned scripts is three, not two. \u2014 Self-correction by Tom of Rachel's count",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F13",
+      "turn_id": "CALL-001#T066",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Tom Alvarez",
+      "side": "customer",
+      "role": "Director of Customer Success",
+      "ts": "09:40",
+      "quote": "individual ownership is genuinely one of the reasons our current stuff breaks.",
+      "context": "Individual ownership of processes is one of the reasons Acme's current automation breaks, since people change roles constantly. \u2014 Tom on person-dependence",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Tom said onboarding is described as standardised in the deck, but EMEA and North America use different milestone definitions. He said the documented process and the process actually run are not always the same. Rachel said customer and commercial data has a clear system of record, but tasks and tickets live elsewhere and much context is in chat. Rachel also said operational telemetry is weak: Acme can tell something was late but not why or which dependency failed.",
+    "evidence": [
+     {
+      "finding_id": "F8",
+      "turn_id": "CALL-001#T042",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Tom Alvarez",
+      "side": "customer",
+      "role": "Director of Customer Success",
+      "ts": "05:57",
+      "quote": "Earlier we described onboarding as standardised. That's what the deck says. In practice EMEA and North America use different milestone definitions.",
+      "context": "Onboarding is described as standardised in the deck, but EMEA and North America use different milestone definitions, so a single workflow diagram is misleading. \u2014 Tom correcting earlier statement made by the team",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F9",
+      "turn_id": "CALL-001#T044",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Tom Alvarez",
+      "side": "customer",
+      "role": "Director of Customer Success",
+      "ts": "06:21",
+      "quote": "The process people describe and the process people run are not always the same thing.",
+      "context": "The documented process and the process actually run by staff differ. \u2014 Tom and Rachel agreeing on the gap between documented and actual process",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F10",
+      "turn_id": "CALL-001#T049",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Rachel Morgan",
+      "side": "customer",
+      "role": "VP Revenue Operations",
+      "ts": "06:49",
+      "quote": "Customer and commercial data, that's clear. Tasks and tickets, that's somewhere else. And then a lot of the actual context is in chat",
+      "context": "System of record varies by object: customer and commercial data is clear, tasks and tickets live elsewhere, and much of the actual context sits in chat. \u2014 Rachel on where process data lives",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F4",
+      "turn_id": "CALL-001#T022",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Rachel Morgan",
+      "side": "customer",
+      "role": "VP Revenue Operations",
+      "ts": "03:03",
+      "quote": "The operational telemetry is weak. We can usually tell you something was late after the fact. We're much worse at answering why it was late, or which dependency failed",
+      "context": "Operational telemetry is weak: Acme can tell after the fact that something was late but cannot easily tell why, which dependency failed, or how often it recurs. \u2014 Rachel on measurement and visibility gaps",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Tom said Acme already uses Workato: the data team uses it for back-office integrations and it works, but RevOps finds it too technical. Tom also said integrations have died silently when a field was renamed or a picklist value added.",
+    "evidence": [
+     {
+      "finding_id": "F11",
+      "turn_id": "CALL-001#T052",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Tom Alvarez",
+      "side": "customer",
+      "role": "Director of Customer Success",
+      "ts": "07:17",
+      "quote": "The data team uses it for a handful of back-office integrations. It works. But RevOps finds it too technical",
+      "context": "Acme already uses Workato: the data team uses it for back-office integrations, it works, but RevOps finds it too technical and avoids IT tickets for workflow changes. \u2014 Tom describing existing automation tooling",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F12",
+      "turn_id": "CALL-001#T083",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Tom Alvarez",
+      "side": "customer",
+      "role": "Director of Customer Success",
+      "ts": "12:52",
+      "quote": "We've had integrations die because someone renamed a field or added a picklist value, and the automation just \u2014 didn't say anything.",
+      "context": "Integrations have failed silently when source schema changed (renamed field, new picklist value). \u2014 Tom describing a concrete failure mode of current automation",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Rachel said Acme has expensive people doing coordination work because systems don't carry enough process context.",
+    "evidence": [
+     {
+      "finding_id": "F14",
+      "turn_id": "CALL-001#T140",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Rachel Morgan",
+      "side": "customer",
+      "role": "VP Revenue Operations",
+      "ts": "23:18",
+      "quote": "We've got expensive people doing coordination work because the systems don't carry enough process context.",
+      "context": "Acme pays for expensive staff to do coordination work because systems don't carry enough process context; maintenance scripts quietly consume engineer hours over time. \u2014 Rachel on cost of current approach; Tom on hidden engineering cost",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   }
+  ],
+  "conflicts": [
+   {
+    "topic": "Number of unowned scripts",
+    "description": "Rachel said at least two scripts have unknown authors; Tom corrected it to three.",
+    "finding_ids": [
+     "F6",
+     "F7"
+    ]
+   }
+  ],
+  "not_covered": [],
+  "assumptions": [
+   "'Acme Corp' is taken to refer to the catalogue company Acme Logistics (CALL-001), the only Acme entry.",
+   "'Acme Corp' refers to Acme Logistics (CALL-001), the only Acme entry."
+  ],
+  "confidence": "medium",
+  "calls_considered": [
+   "CALL-001"
+  ],
+  "calls_cited": [
+   "CALL-001"
+  ],
+  "removed_claims": [],
+  "covered": true,
+  "trace_id": null
+ }
+}
