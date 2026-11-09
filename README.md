@@ -116,6 +116,7 @@ Compared against `naive_rag` (top 8 BM25 chunks), `full_context` (all 20 transcr
 - **Readers see one call each.** Cross-call comparisons depend on the resolve step asking readers for the right raw material.
 - **Call picking misses topics with no matching alias, fact or embedding.** Tone works through `friction` tags (search alone found 2 of 20 rude calls), but untagged behaviours still rely on search.
 - **Interpretation isn't verified.** Quotes and speakers are; a reader's "sarcastic" or "curt" is marked `inferred` and lowers confidence. The entailment check is itself a model.
+- **Conflicts are checked less strictly than claims.** A conflict must cite two valid findings, but its wording isn't entailment-checked, and the CLI shows it with finding IDs rather than quotes. Every conflict in the eval was correct; the fix is to check conflicts like claims and show them with their quotes.
 - **Broad answers run long**, and judgement questions ("most likely to buy") are still the model's judgement.
 - **Small, self-written gold sets**; the judge hasn't been calibrated against hand grades.
 

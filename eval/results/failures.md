@@ -64,3 +64,10 @@ PR #1 grounded the summary (each sentence must cite a surviving claim), made ent
 **Run 7 (current code):** pipeline 92% dev / 89% held-out; facts_only 92% / 89%; no claims lost to missing verdicts. The earlier 97% / 83% gap was partly unchecked claims and partly noise.
 
 **Noise, measured:** same code, combine re-run (no `temperature` on current models): Q01 1.0 -> 0.5 (Salesforce dropped from the summary). The judge graded Q02's "Acme Corp" assumption, shown to it in both runs, present then absent. Run-to-run differences of 5-10 points are expected; calibrating the judge and averaging several runs would be the fix.
+
+## Code review after run 7
+
+| # | Symptom | Stage | Fix |
+|---|---|---|---|
+| B11 | A resolver output that isn't an exact catalogue name ("Acme Logistics Ltd", "acme logistics") fell through to a dataset-wide search: 15 calls about other companies picked for a single-company question | Call picking | Only `resolved_to=None` counted as unknown. Names are now matched case/whitespace-insensitively; anything still unmatched picks nothing (and gets the "no calls match" message). A name contained as whole words in exactly one company ("Acme" -> Acme Logistics) is used, with an assumption stated in the answer; a name shared by several companies ("Group") picks nothing. Also fixed: a company could map to only one call. Never triggered in the eval (all traces had exact names); replaying the stored resolution of all 34 traces gives identical picks, so results stand without a re-run. Tests `test_non_catalogue_company_name_picks_nothing`, `test_company_name_match_ignores_case_and_spacing`, `test_company_with_several_calls_reads_all`, `test_partial_name_*`. |
+| Open | Conflicts aren't entailment-checked; duplicate finding IDs count twice; the CLI shows finding IDs, not quotes; conflict recall passes on any conflict | Verifier / metric | All conflicts on expected-conflict questions checked by hand and correct. Documented in README limitations. |

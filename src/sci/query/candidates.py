@@ -19,6 +19,7 @@ from sci.models import Resolution
 class Candidates:
     calls: dict[str, set[str]] = field(default_factory=dict)   # call_id -> reasons
     terms: list[str] = field(default_factory=list)
+    assumptions: list[str] = field(default_factory=list)       # assumptions made in code (shown in the answer)
 
     def add(self, call_id: str, reason: str):
         self.calls.setdefault(call_id, set()).add(reason)
@@ -80,20 +81,57 @@ def vector_calls(question: str, allowed: set[str] | None) -> dict[str, float]:
     return best
 
 
+def _norm(name: str) -> str:
+    return " ".join(name.lower().split())
+
+
+def match_company(name: str | None) -> tuple[str | None, bool]:
+    """Resolve a name to ONE catalogue company -> (company, is_partial).
+
+    1. Exact match, ignoring case and spacing ("acme  LOGISTICS").
+    2. Otherwise, if the name appears as whole words in exactly one company name
+       ("Acme" -> "Acme Logistics"), use it and report it as partial so an
+       assumption can be stated. Several matches ("Group") or none -> no match."""
+    if not name or len(_norm(name)) < 3:
+        return None, False
+    companies = {c.company for c in load_calls().values()}
+    n = _norm(name)
+    exact = [c for c in companies if _norm(c) == n]
+    if exact:
+        return exact[0], False
+    partial = [c for c in companies if f" {n} " in f" {_norm(c)} "]
+    return (partial[0], True) if len(partial) == 1 else (None, False)
+
+
+def calls_for_company(name: str | None) -> list[str]:
+    """All call IDs for the catalogue company `name` resolves to (a company can have
+    several calls). Unknown, ambiguous or None -> []."""
+    company, _ = match_company(name)
+    return sorted(cid for cid, c in load_calls().items() if c.company == company) if company else []
+
+
+def unmatched_companies(res: Resolution) -> list[str]:
+    """Mentions that didn't resolve to any call in the catalogue."""
+    return [e.mention for e in res.companies if not calls_for_company(e.resolved_to)]
+
+
 def pick_calls(question: str, res: Resolution) -> Candidates:
     calls = load_calls()
     cand = Candidates()
 
-    companies = [e.resolved_to for e in res.companies if e.resolved_to]
-    by_company = {c.company: cid for cid, c in calls.items()}
-    company_calls = {by_company[n] for n in companies if n in by_company}
+    company_calls = {cid for e in res.companies for cid in calls_for_company(e.resolved_to)}
+    for e in res.companies:
+        company, partial = match_company(e.resolved_to)
+        if partial:
+            cand.assumptions.append(f"'{e.resolved_to}' is assumed to mean {company}, the only company in the dataset with that name.")
     if company_calls:
         # A question about named companies reads exactly those calls.
         for cid in company_calls:
             cand.add(cid, "company")
         return cand
-    if any(e.resolved_to is None for e in res.companies):
-        # Named a company we don't have: don't silently answer about others.
+    if res.companies:
+        # Named a company we don't have (or the resolver returned a name that isn't in the
+        # catalogue): don't fall through to a dataset-wide search and answer about others.
         return cand
 
     allowed = {cid for cid, c in calls.items() if c.category in res.call_types} or None

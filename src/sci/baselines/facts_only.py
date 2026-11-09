@@ -10,7 +10,7 @@ from __future__ import annotations
 from sci.ingest.extract import load_facts
 from sci.ingest.parse import load_calls, turn_index
 from sci.models import Answer, VerifiedEvidence
-from sci.query.candidates import pick_calls
+from sci.query.candidates import pick_calls, unmatched_companies
 from sci.query.combine import combine
 from sci.query.resolve import resolve
 from sci.query.verify import verify
@@ -35,11 +35,12 @@ def facts_as_findings(call_ids: list[str]) -> list[VerifiedEvidence]:
 
 def ask(question: str) -> Answer:
     res = resolve(question)
-    picked = pick_calls(question, res).ordered()
+    cand = pick_calls(question, res)
+    picked = cand.ordered()
     findings = facts_as_findings(picked)
-    assumptions = list(res.assumptions)
+    assumptions = list(res.assumptions) + cand.assumptions
     if not findings:
-        unresolved = [e.mention for e in res.companies if not e.resolved_to]
+        unresolved = unmatched_companies(res)
         msg = (f"No calls in the dataset match {', '.join(unresolved)}." if unresolved
                else "The transcripts don't cover this. No stored facts in the matching calls.")
         ans = Answer(question=question, answer=msg, claims=[], conflicts=[], not_covered=[question],

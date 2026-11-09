@@ -12,7 +12,7 @@ from sci.config import TRACES
 from sci.ingest.index import get_index
 from sci.ingest.parse import load_calls
 from sci.models import Answer
-from sci.query.candidates import pick_calls
+from sci.query.candidates import pick_calls, unmatched_companies
 from sci.query.combine import combine
 from sci.query.read import read_calls
 from sci.query.resolve import resolve
@@ -37,6 +37,7 @@ def ask(question: str, run_entailment: bool = True, write_trace: bool = True) ->
 
     cand = pick_calls(question, res)
     picked = cand.ordered()
+    assumptions += cand.assumptions
     trace["candidates"] = {cid: sorted(r) for cid, r in cand.calls.items()}
     trace["search_terms"] = cand.terms
 
@@ -44,7 +45,7 @@ def ask(question: str, run_entailment: bool = True, write_trace: bool = True) ->
     trace["findings"] = [f.model_dump() for f in findings]
     trace["rejected_findings"] = rejected
 
-    unresolved = [e.mention for e in res.companies if not e.resolved_to]
+    unresolved = unmatched_companies(res)
     if not findings:
         # Deterministic not-covered path: the answering model is never called.
         if unresolved:
