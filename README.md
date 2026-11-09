@@ -82,6 +82,8 @@ QUERY   1 resolve (Haiku): companies, call types, search terms, what each reader
 | Fact score (Sonnet judge per gold fact) | Answer quality; grounding is measured in code, not by the judge |
 | Tokens / latency | Cost and scaling trade-off |
 
+The false-match metric counts any citation of a trap call, so an answer that cites Lumen in order to exclude it, as the pipeline does on Q03 ("Lumen's only Salesforce mention… concerned an outage, not an integration"), is still counted as a false match.
+
 Compared against `naive_rag` (top 8 BM25 chunks), `full_context` (all 20 transcripts in one cached prompt) and `facts_only`, an ablation: the same pipeline, but it answers from the facts stored at ingest instead of reading the picked calls.
 
 ### Results (run 7, current code; full tables in `eval/results/results*.md`, failure analysis in `failures.md`)
@@ -103,7 +105,7 @@ Compared against `naive_rag` (top 8 BM25 chunks), `full_context` (all 20 transcr
 - **Naive RAG fails on anything spanning calls** (dev 60%, conflicts 50%). The lookup-heavy held-out set flatters it.
 - **Full context is strong at 20 calls** but costs ~168K tokens on every question and doesn't scale.
 - **The pipeline holds up on unseen questions** (dev 92%, held-out 89%), with 100% selection recall, abstention and conflict recall on both. An earlier 97% on dev was inflated: it included claims the entailment check had silently skipped (failures.md B10) and favourable run noise. The remaining misses are *partial* grades, where the summary leaves out a detail its own evidence contains: a combine-step weakness.
-- **Reading picked calls in full mostly matches answering from stored facts** (`facts_only`: same scores at ~55% of the tokens). Reading wins where nuance sits in the surrounding conversation: the real vs stated reason for churn (Q06 100% vs 50%, Q09 100% vs 83%) and the cross-call vendor inconsistency (Q07 100% vs 67%). That supports the production design below: answer from facts by default, and read in full for why, nuance or comparison questions.
+- **Reading picked calls in full mostly matches answering from stored facts** (`facts_only`: same scores at ~55% of the tokens). Reading wins where nuance sits in the surrounding conversation: the real vs stated reason for churn (Q06 75% vs 50%, Q09 100% vs 83%) and the cross-call vendor inconsistency (Q07 100% vs 67%). That supports the production design below: answer from facts by default, and read in full for why, nuance or comparison questions.
 - **Noise is large.** Current models don't accept `temperature`, so re-running combine on unchanged code moved single questions by up to 50 points (Q01). The uncalibrated judge also graded the same "Acme Corp" assumption present in one run and absent in the next (Q02). Treat differences under ~10 points as noise.
 
 ## Known limitations
