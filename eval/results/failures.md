@@ -38,3 +38,16 @@ Each failure lists the symptom, the stage that caused it (found from the trace i
 - **Run 2 was tuned on the same 18 questions it's scored on**, with no held-out set, so the pipeline's 98% is optimistic. The baselines got no tuning.
 - The gold set and the system have the same author. The LLM judge hasn't been calibrated against hand grades.
 - 18 questions is a smoke test, not a benchmark: one question is about 6 percentage points.
+
+## Run 5: example questions, held-out set, facts-only ablation
+
+Added Q19-Q21 (the instruction examples not covered before) to dev, a 10-question held-out set (`holdout.yaml`, written after the system was frozen and not tuned on), and `facts_only` (the pipeline with stored facts instead of full reads).
+
+| Q | System | Symptom | Stage | Note |
+|---|---|---|---|---|
+| H02, H03, H07, H09, H10 | pipeline | All *partial*: the summary leaves out a detail the cited evidence contains (Halberd's contained workspace; "Leo accepted it as a fair read"; Verity's two-day onboarding; Pinewood undecided between notice and 6-month renewal) | Combine | Same failure as run 1's terse answers, now on unseen questions. Selection recall, abstention and conflicts were 100%, so this isn't retrieval. **Not fixed**: fixing against held-out questions would spoil them. Next step: a completeness check that compares the summary with the claims. |
+| Q21 | pipeline / full ctx / facts | 75%: renewals vs new business misses part of one fact | Combine | Broad compare question; same across systems. |
+| Q06, Q09 | facts_only | 50% / 83% vs pipeline 100%: "wasn't why we left" nuance not framed as the real reason | Reading (ablation) | The one place full reads clearly beat stored facts: the stated-vs-real distinction lives in the surrounding conversation. |
+| H05 | facts_only | Abstention ✗: answered "no prospect mentioned Copilot" with evidence of which Microsoft products *were* mentioned | **Metric** | A correct, evidence-backed negative; the abstention metric can't tell it apart from a hallucinated answer. Better behaviour than a bare decline, arguably. |
+
+**Overfitting, measured:** pipeline 97% dev vs 83% held-out. **Ablation:** facts_only scored 92% dev and 88% held-out at ~55% of the pipeline's tokens, so per-question full reading adds little except on "why" and nuance questions.

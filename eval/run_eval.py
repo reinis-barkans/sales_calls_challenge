@@ -30,6 +30,7 @@ from judge import judge  # noqa: E402
 from sci import llm  # noqa: E402
 
 RESULTS = ROOT / "eval" / "results"
+SETS = {"dev": "questions.yaml", "holdout": "holdout.yaml"}
 
 
 def _system(name: str):
@@ -41,6 +42,9 @@ def _system(name: str):
         return ask
     if name == "full_context":
         from sci.baselines.full_context import ask
+        return ask
+    if name == "facts_only":
+        from sci.baselines.facts_only import ask
         return ask
     raise ValueError(name)
 
@@ -128,7 +132,7 @@ def summarise(rows: list[dict]) -> dict:
     }
 
 
-def write_report(all_rows: dict[str, list[dict]]):
+def write_report(all_rows: dict[str, list[dict]], gold: str = "dev"):
     RESULTS.mkdir(parents=True, exist_ok=True)
     systems = list(all_rows)
     sums = {s: summarise(r) for s, r in all_rows.items()}
@@ -138,7 +142,8 @@ def write_report(all_rows: dict[str, list[dict]]):
                ("Abstention accuracy", "abstention_acc", True), ("Conflict recall", "conflict_recall", True),
                ("Avg input tokens / question", "avg_input_tokens", False), ("Avg latency (s, uncached)", "avg_latency_s", False),
                ("Errors", "errors", False)]
-    out = ["# Evaluation results", "", f"Gold set: {len(next(iter(all_rows.values())))} questions (eval/questions.yaml).", "",
+    src = SETS[gold]
+    out = [f"# Evaluation results ({gold} set)", "", f"Gold set: {len(next(iter(all_rows.values())))} questions (eval/{src}).", "",
            "| Metric | " + " | ".join(systems) + " |", "|---|" + "---|" * len(systems)]
     for label, key, pct in metrics:
         out.append(f"| {label} | " + " | ".join(_fmt(sums[s][key], pct) for s in systems) + " |")
@@ -158,13 +163,14 @@ def write_report(all_rows: dict[str, list[dict]]):
                 cells.append(f"{_fmt(r['fact_score'])} / {_fmt(r['abstention_ok'])} / {_fmt(r['cited_recall'])}")
         cat = next(iter(by_id[qid].values())).get("category", "")
         out.append(f"| {qid} | {cat} | " + " | ".join(cells) + " |")
-    (RESULTS / "results.md").write_text("\n".join(out) + "\n")
-    (RESULTS / "results.json").write_text(json.dumps({"summary": sums, "rows": all_rows}, indent=1, default=str))
+    stem = "results" if gold == "dev" else f"results_{gold}"
+    (RESULTS / f"{stem}.md").write_text("\n".join(out) + "\n")
+    (RESULTS / f"{stem}.json").write_text(json.dumps({"summary": sums, "rows": all_rows}, indent=1, default=str))
     print("\n".join(out[:len(metrics) + 6]))
 
 
-def main(systems: list[str], only: list[str]):
-    qs = yaml.safe_load((ROOT / "eval" / "questions.yaml").read_text())
+def main(systems: list[str], only: list[str], gold: str = "dev", merge: bool = False):
+    qs = yaml.safe_load((ROOT / "eval" / SETS[gold]).read_text())
     if only:
         qs = [q for q in qs if q["id"] in only]
     all_rows = {}
@@ -176,13 +182,20 @@ def main(systems: list[str], only: list[str]):
             if "error" in r:
                 print(f"  {r['id']}: ERROR {r['error']}")
         all_rows[name] = rows
-    write_report(all_rows)
+    if merge:
+        # Add/replace these systems' columns in the existing report instead of overwriting it.
+        stem = "results" if gold == "dev" else f"results_{gold}"
+        prev = json.loads((RESULTS / f"{stem}.json").read_text())["rows"]
+        all_rows = {**{k: v for k, v in prev.items() if k not in all_rows}, **all_rows}
+    write_report(all_rows, gold)
 
 
 if __name__ == "__main__":
     import argparse
     p = argparse.ArgumentParser()
-    p.add_argument("--systems", default="pipeline,naive_rag,full_context")
+    p.add_argument("--systems", default="pipeline,naive_rag,full_context,facts_only")
     p.add_argument("--only", default="")
+    p.add_argument("--set", default="dev", choices=list(SETS), help="dev = tuned-on questions; holdout = never tuned on")
+    p.add_argument("--merge", action="store_true", help="keep other systems' rows from the existing results file")
     a = p.parse_args()
-    main(a.systems.split(","), [x for x in a.only.split(",") if x])
+    main(a.systems.split(","), [x for x in a.only.split(",") if x], a.set, a.merge)

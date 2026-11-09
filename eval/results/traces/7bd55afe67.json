@@ -1,0 +1,1255 @@
+{
+ "question": "Which calls involved a request for a security pack or SOC 2 documentation?",
+ "resolution": {
+  "question_type": "list",
+  "companies": [],
+  "call_types": [],
+  "search_terms": [
+   "security pack",
+   "SOC 2",
+   "SOC2",
+   "security documentation",
+   "security questionnaire",
+   "compliance report",
+   "penetration test",
+   "pen test",
+   "ISO 27001",
+   "security whitepaper",
+   "trust report"
+  ],
+  "read_instruction": "Extract every request by the prospect, customer, or contact for a security pack, SOC 2 report, security documentation, security questionnaire, compliance certificate, penetration test results, or similar security/compliance documents, including whether OrbitFlow agreed to send them, deferred them, or declined.",
+  "assumptions": [
+   "No specific company or call type is named, so the search covers all 20 calls.",
+   "SOC 2 is treated as a security/compliance document and synonyms such as security questionnaire and pen test are included."
+  ]
+ },
+ "candidates": {
+  "CALL-001": [
+   "facts",
+   "search",
+   "vector"
+  ],
+  "CALL-002": [
+   "facts",
+   "search",
+   "vector"
+  ],
+  "CALL-003": [
+   "facts",
+   "search"
+  ],
+  "CALL-004": [
+   "facts",
+   "search",
+   "vector"
+  ],
+  "CALL-005": [
+   "facts",
+   "search",
+   "vector"
+  ],
+  "CALL-008": [
+   "facts",
+   "search",
+   "vector"
+  ],
+  "CALL-009": [
+   "facts",
+   "search",
+   "vector"
+  ],
+  "CALL-010": [
+   "facts",
+   "search",
+   "vector"
+  ],
+  "CALL-013": [
+   "search"
+  ],
+  "CALL-015": [
+   "search"
+  ],
+  "CALL-014": [
+   "search"
+  ]
+ },
+ "search_terms": [
+  "compliance report",
+  "iso 27001",
+  "pen test",
+  "penetration",
+  "penetration test",
+  "security documentation",
+  "security pack",
+  "security questionnaire",
+  "security whitepaper",
+  "soc 2",
+  "soc2",
+  "trust report"
+ ],
+ "findings": [
+  {
+   "finding_id": "F1",
+   "turn_id": "CALL-001#T122",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Tom Alvarez",
+   "side": "customer",
+   "role": "Director of Customer Success",
+   "ts": "19:55",
+   "quote": "we will ask for screenshots or documentation, not just yes/no answers on a questionnaire.",
+   "context": "Tom Alvarez requested the SOC 2 report, subprocessor list, DPA, architecture diagram, and retention documentation from OrbitFlow. \u2014 Security documentation request made during the security discussion; prospect asked for documents rather than yes/no questionnaire answers.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F2",
+   "turn_id": "CALL-001#T124",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Tom Alvarez",
+   "side": "customer",
+   "role": "Director of Customer Success",
+   "ts": "20:27",
+   "quote": "Can you send the SOC 2 report, subprocessor list, DPA, architecture diagram, retention documentation?",
+   "context": "Tom Alvarez's specific request list: SOC 2 report, subprocessor list, DPA, architecture diagram, retention documentation. \u2014 Concrete list of security pack items requested.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F3",
+   "turn_id": "CALL-001#T125",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "20:35",
+   "quote": "Yes, all of that under the normal process, and we can complete your questionnaire.",
+   "context": "Maya Chen agreed to send the security documents under the normal process and to complete the customer's questionnaire. \u2014 OrbitFlow agreed to the request; also asked the customer to flag any absolute security gates early.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F4",
+   "turn_id": "CALL-001#T123",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Jon Bell",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "20:05",
+   "quote": "Baseline is SOC 2 Type II.",
+   "context": "Jon Bell stated OrbitFlow's security baseline: SOC 2 Type II, SAML SSO and SCIM on Enterprise, encryption, audit logs. \u2014 Vendor response describing the SOC 2 baseline in answer to the security request.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F5",
+   "turn_id": "CALL-001#T120",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Tom Alvarez",
+   "side": "customer",
+   "role": "Director of Customer Success",
+   "ts": "19:40",
+   "quote": "We need the usual vendor review, SSO, audit logs.",
+   "context": "Tom Alvarez said the customer's security requirements are the usual vendor review, SSO, and audit logs, with no special data-residency requirement. \u2014 Scope of security review before documentation request.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F6",
+   "turn_id": "CALL-001#T128",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Rachel Morgan",
+   "side": "customer",
+   "role": "VP Revenue Operations",
+   "ts": "20:58",
+   "quote": "The real commercial question is whether we expand the Workato contract we already have instead of adding another vendor.",
+   "context": "Rachel Morgan said security is not the gating issue for the deal; the real gate is whether they expand their existing Workato contract. \u2014 Security documentation was requested but the customer said it is not the blocker, which is commercial.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F7",
+   "turn_id": "CALL-001#T131",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Jon Bell",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "21:34",
+   "quote": "what happens to data sent to an LLM provider is a question you'll get from your security team, and the honest answer is it depends on configuration and provider.",
+   "context": "Jon Bell said LLM data handling depends on configuration and provider; AI can be disabled or the pilot scoped to deterministic steps while security reviews model usage. \u2014 Security follow-up on AI data handling, related to the security review pack.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F8",
+   "turn_id": "CALL-002#T046",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "06:31",
+   "quote": "What else can we send? SOC 2 report, subprocessor list, DPA, architecture diagram, retention documentation \u2014 is that the pack?",
+   "context": "Vendor (Maya) listed the security pack contents, including SOC 2 report, to be sent; customer agreed and asked for pen test summary to be added. \u2014 Security pack request during security-first portion of call; OrbitFlow agreed to send.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F9",
+   "turn_id": "CALL-002#T047",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Elliot Greene",
+   "side": "customer",
+   "role": "Security Architect",
+   "ts": "06:42",
+   "quote": "Add pen test summary. And yes. And we'll send you our questionnaire, which is long, and I apologise in advance.",
+   "context": "Customer requested a pen test summary to be added to the security pack. \u2014 Customer addition to the pack list; also notes they will send a long questionnaire.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F10",
+   "turn_id": "CALL-002#T048",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "06:53",
+   "quote": "They're all long. We'll complete it.",
+   "context": "Vendor agreed to complete the customer's security questionnaire. \u2014 Customer said they would send a questionnaire; vendor agreed.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F11",
+   "turn_id": "CALL-002#T197",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "30:23",
+   "quote": "We send the security pack \u2014 SOC 2, subprocessors, DPA, architecture diagram, retention docs, pen test summary.",
+   "context": "Vendor committed to sending the security pack (SOC 2, subprocessors, DPA, architecture diagram, retention docs, pen test summary) as a next step. \u2014 Closing next steps; security pack is sent separately from the BAA written position.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F12",
+   "turn_id": "CALL-002#T014",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Jon Bell",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "01:59",
+   "quote": "SOC 2 Type II is the baseline.",
+   "context": "Vendor stated SOC 2 Type II is the baseline certification. \u2014 Vendor's description of baseline certifications when asked by customer.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F13",
+   "turn_id": "CALL-003#T053",
+   "call_id": "CALL-003",
+   "company": "Cedar & Finch",
+   "speaker": "Sophie Reed",
+   "side": "customer",
+   "role": "Director of E-commerce Operations",
+   "ts": "05:53",
+   "quote": "We need a standard DPA.",
+   "context": "Sophie Reed requested a standard data processing agreement (DPA) from OrbitFlow as part of the security/compliance review. The request was for a DPA, not an explicit security pack or SOC 2 report. \u2014 Raised during the security questions, alongside SSO and UK/EU data processing. No security pack or SOC 2 was requested by name, and Leo did not respond to the DPA request in the call.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F14",
+   "turn_id": "CALL-003#T140",
+   "call_id": "CALL-003",
+   "company": "Cedar & Finch",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "16:12",
+   "quote": "I'll also get you written answers on the Shopify trigger coverage and the default processing region.",
+   "context": "Leo Grant committed to a written answer on the default processing region, which Sophie raised as a UK/EU data-location concern. This is a data-residency question, not a document request for a security pack or SOC 2. \u2014 Leo said EU data residency is available on Enterprise and that for Growth he would confirm the default processing region in writing rather than guess. Written follow-up was confirmed at close.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F15",
+   "turn_id": "CALL-004#T027",
+   "call_id": "CALL-004",
+   "company": "DeltaWorks Manufacturing",
+   "speaker": "Anika Bose",
+   "side": "customer",
+   "role": "IT Governance Lead",
+   "ts": "04:08",
+   "quote": "Disaster recovery documentation and pen test material \u2014 you have these?",
+   "context": "Customer requested disaster recovery documentation and penetration test material, and asked whether OrbitFlow has them. \u2014 Governance section; Anika lists security items from her list. Vendor Jon confirms availability.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F16",
+   "turn_id": "CALL-004#T028",
+   "call_id": "CALL-004",
+   "company": "DeltaWorks Manufacturing",
+   "speaker": "Jon Bell",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "04:14",
+   "quote": "Yes, both available under the normal security process, along with SOC 2, subprocessor list, DPA, and an architecture diagram.",
+   "context": "OrbitFlow says DR documentation and pen test material are available under the normal security process, along with SOC 2, subprocessor list, DPA, and architecture diagram. \u2014 Vendor response to customer's security documentation request.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F17",
+   "turn_id": "CALL-004#T029",
+   "call_id": "CALL-004",
+   "company": "DeltaWorks Manufacturing",
+   "speaker": "Anika Bose",
+   "side": "customer",
+   "role": "IT Governance Lead",
+   "ts": "04:25",
+   "quote": "Good. Send all of it. We will also send our questionnaire. It is two hundred and forty questions.",
+   "context": "Customer asked OrbitFlow to send all security documentation and said DeltaWorks will send a 240-question security questionnaire. \u2014 Customer requested the full set; vendor agreed to complete questionnaire.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F18",
+   "turn_id": "CALL-004#T032",
+   "call_id": "CALL-004",
+   "company": "DeltaWorks Manufacturing",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "04:39",
+   "quote": "We will complete it. If there are questions we can't answer we'll say \"no\" rather than \"partially\".",
+   "context": "OrbitFlow agreed to complete the security questionnaire and to answer 'no' rather than 'partially' for unanswerable items. \u2014 Customer skeptical; vendor commits.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F19",
+   "turn_id": "CALL-004#T252",
+   "call_id": "CALL-004",
+   "company": "DeltaWorks Manufacturing",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "37:34",
+   "quote": "I'll send the security pack in parallel \u2014 SOC 2, subprocessor list, DPA, architecture diagram, retention documentation, DR documentation, pen test material.",
+   "context": "Vendor committed to send a security pack in parallel with architecture material: SOC 2, subprocessor list, DPA, architecture diagram, retention and DR documentation, and pen test material. \u2014 Next-steps recap; deliverable commitment.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F20",
+   "turn_id": "CALL-004#T018",
+   "call_id": "CALL-004",
+   "company": "DeltaWorks Manufacturing",
+   "speaker": "Jon Bell",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "02:09",
+   "quote": "SOC 2 Type II is our baseline.",
+   "context": "Customer confirmed that SOC 2 Type II is OrbitFlow's stated baseline; vendor listed it as baseline certification. \u2014 Governance item answer; SOC 2 presented as baseline.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F21",
+   "turn_id": "CALL-005#T042",
+   "call_id": "CALL-005",
+   "company": "Ember Financial",
+   "speaker": "Hannah Cole",
+   "side": "customer",
+   "role": "Senior Risk Engineer",
+   "ts": "06:27",
+   "quote": "The list is: SOC 2, SSO and SCIM",
+   "context": "Hannah Cole requested a list of security and compliance items, starting with SOC 2, as part of her gating criteria. \u2014 Customer's security/auditability gate list; SOC 2 is named as one of several requested items, not a standalone request for a report.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F22",
+   "turn_id": "CALL-005#T043",
+   "call_id": "CALL-005",
+   "company": "Ember Financial",
+   "speaker": "Nina Patel",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "06:49",
+   "quote": "SOC 2 Type II is the baseline.",
+   "context": "OrbitFlow stated that SOC 2 Type II is the baseline security attestation it offers. \u2014 Vendor response to Hannah's security list; a capability claim, not a document delivery commitment.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F23",
+   "turn_id": "CALL-005#T194",
+   "call_id": "CALL-005",
+   "company": "Ember Financial",
+   "speaker": "Noah Williams",
+   "side": "customer",
+   "role": "VP Operations Technology",
+   "ts": "27:03",
+   "quote": "Assuming the security material lines up",
+   "context": "Noah Williams made moving forward conditional on the security material lining up. \u2014 Customer's go-ahead depends on the security pack being satisfactory.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F24",
+   "turn_id": "CALL-005#T196",
+   "call_id": "CALL-005",
+   "company": "Ember Financial",
+   "speaker": "Noah Williams",
+   "side": "customer",
+   "role": "VP Operations Technology",
+   "ts": "27:23",
+   "quote": "Hannah's had the security pack for long enough to complain about it.",
+   "context": "Noah Williams said Hannah should get the security pack in time to review it before the pilot starts. \u2014 Customer timing expectation for the security pack, tied to the pilot start date.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F25",
+   "turn_id": "CALL-005#T197",
+   "call_id": "CALL-005",
+   "company": "Ember Financial",
+   "speaker": "Hannah Cole",
+   "side": "customer",
+   "role": "Senior Risk Engineer",
+   "ts": "27:31",
+   "quote": "I'll need a week.",
+   "context": "Hannah Cole said she needs one week with the security pack before the pilot can start. \u2014 Customer's review window for the security pack.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F26",
+   "turn_id": "CALL-005#T198",
+   "call_id": "CALL-005",
+   "company": "Ember Financial",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "27:33",
+   "quote": "Then let's say the pack goes out tomorrow, sandbox by end of next week, pilot starts the week after.",
+   "context": "OrbitFlow agreed to send the security pack the next day, with sandbox access by end of the following week. \u2014 Vendor commitment on timing for the security pack and related deliverables.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F27",
+   "turn_id": "CALL-005#T200",
+   "call_id": "CALL-005",
+   "company": "Ember Financial",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "27:44",
+   "quote": "Security pack \u2014 SOC 2, subprocessor list, DPA, architecture diagram, retention documentation, encryption details.",
+   "context": "OrbitFlow committed to send a security pack containing SOC 2, subprocessor list, DPA, architecture diagram, retention documentation, and encryption details. \u2014 Vendor's itemised list of what it owes the customer, including the security pack contents.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F28",
+   "turn_id": "CALL-008#T273",
+   "call_id": "CALL-008",
+   "company": "Harbor Legal",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "33:27",
+   "quote": "We send the security pack \u2014 SOC 2, subprocessor list, DPA, architecture diagram, retention documentation, pen test summary.",
+   "context": "OrbitFlow agreed to send a security pack covering SOC 2, subprocessor list, DPA, architecture diagram, retention documentation and pen test summary, as a next step. \u2014 Agreed next step after the security discussion; the pack was offered in response to Harbor Legal's security review, and Leo also listed written answers on UK residency, retention floor, AI-step permissions, audit payload schema and termination data handling.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F29",
+   "turn_id": "CALL-008#T084",
+   "call_id": "CALL-008",
+   "company": "Harbor Legal",
+   "speaker": "Nina Patel",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "10:56",
+   "quote": "SOC 2 Type II is the baseline.",
+   "context": "OrbitFlow stated that SOC 2 Type II is the baseline for its security posture. \u2014 Given in response to Samir Khan's list of security and compliance requirements, which he asked to be covered; this is a vendor claim, not a document delivery.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F30",
+   "turn_id": "CALL-008#T284",
+   "call_id": "CALL-008",
+   "company": "Harbor Legal",
+   "speaker": "Samir Khan",
+   "side": "customer",
+   "role": "Information Security Manager",
+   "ts": "35:09",
+   "quote": "I'll want that confirmed in the pack rather than remembered from a call.",
+   "context": "The prospect required that the answers, including the disable-AI confirmation, be put in the written security pack rather than relied on from the call. \u2014 Samir Khan asked for confirmation in writing; Nina Patel agreed it would be in the pack.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F31",
+   "turn_id": "CALL-008#T274",
+   "call_id": "CALL-008",
+   "company": "Harbor Legal",
+   "speaker": "Samir Khan",
+   "side": "customer",
+   "role": "Information Security Manager",
+   "ts": "33:56",
+   "quote": "That's all five.",
+   "context": "The prospect accepted the written list of five follow-up items, which included the security pack contents and termination data handling. \u2014 Samir Khan confirmed the list as complete after Leo's recap; the list was the basis of the security pack and written-answer commitment.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F32",
+   "turn_id": "CALL-009#T216",
+   "call_id": "CALL-009",
+   "company": "Inkwell Learning",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "26:18",
+   "quote": "The security pack \u2014 SOC 2, subprocessor list, DPA, architecture diagram, retention documentation.",
+   "context": "OrbitFlow (Maya Chen) committed to send a security pack containing SOC 2, subprocessor list, DPA, architecture diagram, and retention documentation, as part of the follow-up owed to Inkwell. \u2014 Post-call action item owed by the vendor after Olivia Grant asked what OrbitFlow owed them; this is an explicit agreement to provide the documents.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F33",
+   "turn_id": "CALL-009#T142",
+   "call_id": "CALL-009",
+   "company": "Inkwell Learning",
+   "speaker": "Jon Bell",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "17:29",
+   "quote": "SOC 2 Type II baseline, SAML SSO and SCIM on Enterprise",
+   "context": "OrbitFlow (Jon Bell) described its SOC 2 Type II baseline as part of the security baseline it offers. \u2014 Vendor's summary of security controls in response to Darren Wu's security list; a vendor claim, not a document delivery.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F34",
+   "turn_id": "CALL-009#T143",
+   "call_id": "CALL-009",
+   "company": "Inkwell Learning",
+   "speaker": "Darren Wu",
+   "side": "customer",
+   "role": "Director of Business Intelligence",
+   "ts": "17:53",
+   "quote": "That's sufficient for us. We're not a bank.",
+   "context": "Inkwell's customer (Darren Wu) said the vendor's described security baseline, including SOC 2, is sufficient for Inkwell. \u2014 Customer's assessment that the SOC 2 baseline meets their needs; does not request the report itself.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F35",
+   "turn_id": "CALL-009#T145",
+   "call_id": "CALL-009",
+   "company": "Inkwell Learning",
+   "speaker": "Darren Wu",
+   "side": "customer",
+   "role": "Director of Business Intelligence",
+   "ts": "18:02",
+   "quote": "Some districts have their own questionnaire.",
+   "context": "Some school districts that Inkwell serves have their own security questionnaires, which Darren Wu said would likely be needed for larger districts but not for a pilot. \u2014 Customer raised district-specific questionnaires as a future requirement; Olivia Grant noted procurement treats them like a bank would.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F36",
+   "turn_id": "CALL-009#T146",
+   "call_id": "CALL-009",
+   "company": "Inkwell Learning",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "18:07",
+   "quote": "Would we need to complete those?",
+   "context": "Maya Chen asked whether OrbitFlow would need to complete district security questionnaires, and Darren Wu said possibly for larger districts but not for a pilot. \u2014 Vendor asked about completing questionnaires; customer answered it is possibly needed later, not during a pilot.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F37",
+   "turn_id": "CALL-009#T140",
+   "call_id": "CALL-009",
+   "company": "Inkwell Learning",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "17:14",
+   "quote": "we should still complete your security review properly.",
+   "context": "OrbitFlow (Maya Chen) said Inkwell should still complete its formal vendor security review even though the student-data boundary makes the data question moot. \u2014 Vendor insisted the security review remains necessary; Darren agreed it makes the review normal rather than special.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F38",
+   "turn_id": "CALL-010#T161",
+   "call_id": "CALL-010",
+   "company": "Juniper Cloud Tools",
+   "speaker": "Marcus Chen",
+   "side": "customer",
+   "role": "VP Business Operations",
+   "ts": "17:21",
+   "quote": "Security list, Ava.",
+   "context": "Marcus Chen asked for a security list review, and Ava Sinclair walked through a verbal list of security requirements. No security pack, SOC 2 report, questionnaire, or other security document was requested. \u2014 Verbal security checklist review, not a document request. Ava's list covered SSO/SCIM, secrets, audit logs, least-privilege credentials, regional controls, API limits, and export.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F39",
+   "turn_id": "CALL-010#T163",
+   "call_id": "CALL-010",
+   "company": "Juniper Cloud Tools",
+   "speaker": "Nina Patel",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "17:41",
+   "quote": "SOC 2 Type II is the baseline. SAML SSO and SCIM on Enterprise.",
+   "context": "OrbitFlow's Nina Patel stated that SOC 2 Type II is the security baseline, with SAML SSO and SCIM on Enterprise, and listed other security controls verbally. No SOC 2 report or security documentation was offered or sent in this call. \u2014 Vendor verbal claim about its compliance posture. Nothing was agreed to be sent in this call; the only document follow-ups mentioned were the exported definitions, the subflow billing answer, and Postgres connector documentation.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F40",
+   "turn_id": "CALL-013#T074",
+   "call_id": "CALL-013",
+   "company": "Halberd Security",
+   "speaker": "Nina Patel",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "07:39",
+   "quote": "I'll send the current list with the subprocessor documentation rather than reciting it and getting one wrong.",
+   "context": "OrbitFlow agreed to send the current list of allowed model providers together with its subprocessor documentation, rather than reciting the list on the call. This is a customer request for provider and subprocessor information, not a SOC 2 report, security pack, or pen test. \u2014 Grace Okonkwo asked which providers are on the allowed list as part of AI data-handling questions. Nina Patel deferred the answer to written subprocessor documentation. Nina's reply in T091 lists 'the subprocessor documentation' among the written answers owed, so this is a commitment to send. Borderline relevance: no SOC 2, security pack, or security questionnaire was requested on this call.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F41",
+   "turn_id": "CALL-014#T155",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Sarah Lindqvist",
+   "side": "customer",
+   "role": "Engineering Manager",
+   "ts": "15:50",
+   "quote": "Yes. Our compliance team will ask for a deletion certificate.",
+   "context": "Verity's compliance team will require a deletion certificate after data deletion. This is a request for a compliance certificate, not a security pack, SOC 2 report, or security questionnaire. \u2014 Raised during exit logistics. Ruth asked about documenting data deletion, and Sarah said the certificate is needed for compliance purposes. It concerns data deletion only and does not request security documentation.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F42",
+   "turn_id": "CALL-014#T156",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Ruth Adeyemi",
+   "side": "vendor",
+   "role": "Customer Success Manager",
+   "ts": "15:56",
+   "quote": "I'll get that arranged and I'll tell you the timeline for it rather than saying \"shortly after termination.\"",
+   "context": "OrbitFlow agreed to arrange a data deletion certificate and to give a specific timeline for it, rather than an open-ended 'shortly after termination.' \u2014 Ruth committed to this in response to Sarah's deletion certificate request. Maya later repeated it in the summary of commitments.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F43",
+   "turn_id": "CALL-014#T190",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "19:41",
+   "quote": "the deletion certificate with an actual timeline",
+   "context": "OrbitFlow's final list of commitments includes the deletion certificate with an actual timeline. \u2014 Maya's closing recap of what the customer will receive from OrbitFlow. No SOC 2 report, security pack, or pen test results were requested or discussed in this call.",
+   "stated_or_inferred": "stated"
+  }
+ ],
+ "rejected_findings": [],
+ "draft": {
+  "answer": "Security pack/SOC 2-type documentation was requested or committed on Acme Logistics, BrightPath Health, DeltaWorks Manufacturing, Ember Financial, Harbor Legal and Inkwell Learning [C1-C6]. Cedar & Finch, Halberd Security and Verity Payments only involved adjacent requests (DPA, subprocessor list, deletion certificate) [C7]. Juniper Cloud Tools had no document request [C8].",
+  "claims": [
+   {
+    "text": "Acme Logistics (CALL-001): Tom Alvarez asked for the SOC 2 report, subprocessor list, DPA, architecture diagram and retention documentation; Maya Chen agreed to send them under the normal process and complete the questionnaire.",
+    "finding_ids": [
+     "F1",
+     "F2",
+     "F3"
+    ]
+   },
+   {
+    "text": "BrightPath Health (CALL-002): Maya Chen listed the pack (SOC 2, subprocessors, DPA, architecture diagram, retention docs); Elliot Greene added a pen test summary and said BrightPath would send a long questionnaire, which Maya agreed to complete. Maya committed to sending the pack as a next step.",
+    "finding_ids": [
+     "F8",
+     "F9",
+     "F10",
+     "F11"
+    ]
+   },
+   {
+    "text": "DeltaWorks Manufacturing (CALL-004): Anika Bose asked for DR documentation and pen test material, then said 'Send all of it' and that DeltaWorks would send a 240-question questionnaire. Jon Bell confirmed availability and Maya Chen agreed to complete the questionnaire. Maya later committed to send the pack (SOC 2, subprocessors, DPA, architecture diagram, retention, DR, pen test material).",
+    "finding_ids": [
+     "F15",
+     "F16",
+     "F17",
+     "F18",
+     "F19"
+    ]
+   },
+   {
+    "text": "Ember Financial (CALL-005): Hannah Cole listed SOC 2 among her gating items, and Noah Williams made proceeding conditional on the security material lining up. Hannah needs a week with the pack before the pilot. Leo Grant committed to send the pack the next day (SOC 2, subprocessors, DPA, architecture diagram, retention documentation, encryption details), with sandbox by end of next week.",
+    "finding_ids": [
+     "F21",
+     "F23",
+     "F25",
+     "F26",
+     "F27"
+    ]
+   },
+   {
+    "text": "Harbor Legal (CALL-008): Leo Grant agreed to send a security pack (SOC 2, subprocessors, DPA, architecture diagram, retention documentation, pen test summary). Samir Khan wanted the disable-AI confirmation in the written pack and accepted the five-item follow-up list.",
+    "finding_ids": [
+     "F28",
+     "F30",
+     "F31"
+    ]
+   },
+   {
+    "text": "Inkwell Learning (CALL-009): Maya Chen committed to send a security pack (SOC 2, subprocessors, DPA, architecture diagram, retention documentation) and said the formal security review should still be completed. Darren Wu said the SOC 2 baseline was sufficient and that district questionnaires would likely only be needed for larger districts, not a pilot.",
+    "finding_ids": [
+     "F32",
+     "F37",
+     "F34",
+     "F35",
+     "F36"
+    ]
+   },
+   {
+    "text": "Borderline calls with no SOC 2 or security pack request: Cedar & Finch (Sophie Reed asked only for a standard DPA); Halberd Security (a provider list to be sent with subprocessor documentation); Verity Payments (a deletion certificate, which OrbitFlow agreed to arrange with a timeline).",
+    "finding_ids": [
+     "F13",
+     "F40",
+     "F41",
+     "F42",
+     "F43"
+    ]
+   },
+   {
+    "text": "Juniper Cloud Tools (CALL-010): only a verbal security checklist review occurred; no security pack, SOC 2 report or questionnaire was requested or offered.",
+    "finding_ids": [
+     "F38",
+     "F39"
+    ]
+   }
+  ],
+  "conflicts": [],
+  "not_covered": [
+   "Whether the packs were actually delivered after the calls is not shown in the findings.",
+   "Only one of two churn post-mortem calls had relevant findings; no detail on the other."
+  ],
+  "assumptions": [
+   "SOC 2, security pack, pen test and security questionnaire requests were all treated as relevant, as stated in the question."
+  ]
+ },
+ "usage": {
+  "llm_calls": 14,
+  "input_tokens": 149917,
+  "cache_read_tokens": 131610,
+  "cache_write_tokens": 0,
+  "output_tokens": 15769,
+  "uncached_calls": 14,
+  "latency_s": 35.94
+ },
+ "answer": {
+  "question": "Which calls involved a request for a security pack or SOC 2 documentation?",
+  "answer": "Security pack/SOC 2-type documentation was requested or committed on Acme Logistics, BrightPath Health, DeltaWorks Manufacturing, Ember Financial, Harbor Legal and Inkwell Learning [C1-C6]. Cedar & Finch, Halberd Security and Verity Payments only involved adjacent requests (DPA, subprocessor list, deletion certificate) [7]. Juniper Cloud Tools had no document request [8].",
+  "claims": [
+   {
+    "text": "Acme Logistics (CALL-001): Tom Alvarez asked for the SOC 2 report, subprocessor list, DPA, architecture diagram and retention documentation; Maya Chen agreed to send them under the normal process and complete the questionnaire.",
+    "evidence": [
+     {
+      "finding_id": "F1",
+      "turn_id": "CALL-001#T122",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Tom Alvarez",
+      "side": "customer",
+      "role": "Director of Customer Success",
+      "ts": "19:55",
+      "quote": "we will ask for screenshots or documentation, not just yes/no answers on a questionnaire.",
+      "context": "Tom Alvarez requested the SOC 2 report, subprocessor list, DPA, architecture diagram, and retention documentation from OrbitFlow. \u2014 Security documentation request made during the security discussion; prospect asked for documents rather than yes/no questionnaire answers.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F2",
+      "turn_id": "CALL-001#T124",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Tom Alvarez",
+      "side": "customer",
+      "role": "Director of Customer Success",
+      "ts": "20:27",
+      "quote": "Can you send the SOC 2 report, subprocessor list, DPA, architecture diagram, retention documentation?",
+      "context": "Tom Alvarez's specific request list: SOC 2 report, subprocessor list, DPA, architecture diagram, retention documentation. \u2014 Concrete list of security pack items requested.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F3",
+      "turn_id": "CALL-001#T125",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "20:35",
+      "quote": "Yes, all of that under the normal process, and we can complete your questionnaire.",
+      "context": "Maya Chen agreed to send the security documents under the normal process and to complete the customer's questionnaire. \u2014 OrbitFlow agreed to the request; also asked the customer to flag any absolute security gates early.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "BrightPath Health (CALL-002): Maya Chen listed the pack (SOC 2, subprocessors, DPA, architecture diagram, retention docs); Elliot Greene added a pen test summary and said BrightPath would send a long questionnaire, which Maya agreed to complete. Maya committed to sending the pack as a next step.",
+    "evidence": [
+     {
+      "finding_id": "F8",
+      "turn_id": "CALL-002#T046",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "06:31",
+      "quote": "What else can we send? SOC 2 report, subprocessor list, DPA, architecture diagram, retention documentation \u2014 is that the pack?",
+      "context": "Vendor (Maya) listed the security pack contents, including SOC 2 report, to be sent; customer agreed and asked for pen test summary to be added. \u2014 Security pack request during security-first portion of call; OrbitFlow agreed to send.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F9",
+      "turn_id": "CALL-002#T047",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Elliot Greene",
+      "side": "customer",
+      "role": "Security Architect",
+      "ts": "06:42",
+      "quote": "Add pen test summary. And yes. And we'll send you our questionnaire, which is long, and I apologise in advance.",
+      "context": "Customer requested a pen test summary to be added to the security pack. \u2014 Customer addition to the pack list; also notes they will send a long questionnaire.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F10",
+      "turn_id": "CALL-002#T048",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "06:53",
+      "quote": "They're all long. We'll complete it.",
+      "context": "Vendor agreed to complete the customer's security questionnaire. \u2014 Customer said they would send a questionnaire; vendor agreed.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F11",
+      "turn_id": "CALL-002#T197",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "30:23",
+      "quote": "We send the security pack \u2014 SOC 2, subprocessors, DPA, architecture diagram, retention docs, pen test summary.",
+      "context": "Vendor committed to sending the security pack (SOC 2, subprocessors, DPA, architecture diagram, retention docs, pen test summary) as a next step. \u2014 Closing next steps; security pack is sent separately from the BAA written position.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "DeltaWorks Manufacturing (CALL-004): Anika Bose asked for DR documentation and pen test material, then said 'Send all of it' and that DeltaWorks would send a 240-question questionnaire. Jon Bell confirmed availability and Maya Chen agreed to complete the questionnaire. Maya later committed to send the pack (SOC 2, subprocessors, DPA, architecture diagram, retention, DR, pen test material).",
+    "evidence": [
+     {
+      "finding_id": "F15",
+      "turn_id": "CALL-004#T027",
+      "call_id": "CALL-004",
+      "company": "DeltaWorks Manufacturing",
+      "speaker": "Anika Bose",
+      "side": "customer",
+      "role": "IT Governance Lead",
+      "ts": "04:08",
+      "quote": "Disaster recovery documentation and pen test material \u2014 you have these?",
+      "context": "Customer requested disaster recovery documentation and penetration test material, and asked whether OrbitFlow has them. \u2014 Governance section; Anika lists security items from her list. Vendor Jon confirms availability.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F16",
+      "turn_id": "CALL-004#T028",
+      "call_id": "CALL-004",
+      "company": "DeltaWorks Manufacturing",
+      "speaker": "Jon Bell",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "04:14",
+      "quote": "Yes, both available under the normal security process, along with SOC 2, subprocessor list, DPA, and an architecture diagram.",
+      "context": "OrbitFlow says DR documentation and pen test material are available under the normal security process, along with SOC 2, subprocessor list, DPA, and architecture diagram. \u2014 Vendor response to customer's security documentation request.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F17",
+      "turn_id": "CALL-004#T029",
+      "call_id": "CALL-004",
+      "company": "DeltaWorks Manufacturing",
+      "speaker": "Anika Bose",
+      "side": "customer",
+      "role": "IT Governance Lead",
+      "ts": "04:25",
+      "quote": "Good. Send all of it. We will also send our questionnaire. It is two hundred and forty questions.",
+      "context": "Customer asked OrbitFlow to send all security documentation and said DeltaWorks will send a 240-question security questionnaire. \u2014 Customer requested the full set; vendor agreed to complete questionnaire.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F18",
+      "turn_id": "CALL-004#T032",
+      "call_id": "CALL-004",
+      "company": "DeltaWorks Manufacturing",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "04:39",
+      "quote": "We will complete it. If there are questions we can't answer we'll say \"no\" rather than \"partially\".",
+      "context": "OrbitFlow agreed to complete the security questionnaire and to answer 'no' rather than 'partially' for unanswerable items. \u2014 Customer skeptical; vendor commits.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F19",
+      "turn_id": "CALL-004#T252",
+      "call_id": "CALL-004",
+      "company": "DeltaWorks Manufacturing",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "37:34",
+      "quote": "I'll send the security pack in parallel \u2014 SOC 2, subprocessor list, DPA, architecture diagram, retention documentation, DR documentation, pen test material.",
+      "context": "Vendor committed to send a security pack in parallel with architecture material: SOC 2, subprocessor list, DPA, architecture diagram, retention and DR documentation, and pen test material. \u2014 Next-steps recap; deliverable commitment.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Ember Financial (CALL-005): Hannah Cole listed SOC 2 among her gating items, and Noah Williams made proceeding conditional on the security material lining up. Hannah needs a week with the pack before the pilot. Leo Grant committed to send the pack the next day (SOC 2, subprocessors, DPA, architecture diagram, retention documentation, encryption details), with sandbox by end of next week.",
+    "evidence": [
+     {
+      "finding_id": "F21",
+      "turn_id": "CALL-005#T042",
+      "call_id": "CALL-005",
+      "company": "Ember Financial",
+      "speaker": "Hannah Cole",
+      "side": "customer",
+      "role": "Senior Risk Engineer",
+      "ts": "06:27",
+      "quote": "The list is: SOC 2, SSO and SCIM",
+      "context": "Hannah Cole requested a list of security and compliance items, starting with SOC 2, as part of her gating criteria. \u2014 Customer's security/auditability gate list; SOC 2 is named as one of several requested items, not a standalone request for a report.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F23",
+      "turn_id": "CALL-005#T194",
+      "call_id": "CALL-005",
+      "company": "Ember Financial",
+      "speaker": "Noah Williams",
+      "side": "customer",
+      "role": "VP Operations Technology",
+      "ts": "27:03",
+      "quote": "Assuming the security material lines up",
+      "context": "Noah Williams made moving forward conditional on the security material lining up. \u2014 Customer's go-ahead depends on the security pack being satisfactory.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F25",
+      "turn_id": "CALL-005#T197",
+      "call_id": "CALL-005",
+      "company": "Ember Financial",
+      "speaker": "Hannah Cole",
+      "side": "customer",
+      "role": "Senior Risk Engineer",
+      "ts": "27:31",
+      "quote": "I'll need a week.",
+      "context": "Hannah Cole said she needs one week with the security pack before the pilot can start. \u2014 Customer's review window for the security pack.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F26",
+      "turn_id": "CALL-005#T198",
+      "call_id": "CALL-005",
+      "company": "Ember Financial",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "27:33",
+      "quote": "Then let's say the pack goes out tomorrow, sandbox by end of next week, pilot starts the week after.",
+      "context": "OrbitFlow agreed to send the security pack the next day, with sandbox access by end of the following week. \u2014 Vendor commitment on timing for the security pack and related deliverables.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F27",
+      "turn_id": "CALL-005#T200",
+      "call_id": "CALL-005",
+      "company": "Ember Financial",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "27:44",
+      "quote": "Security pack \u2014 SOC 2, subprocessor list, DPA, architecture diagram, retention documentation, encryption details.",
+      "context": "OrbitFlow committed to send a security pack containing SOC 2, subprocessor list, DPA, architecture diagram, retention documentation, and encryption details. \u2014 Vendor's itemised list of what it owes the customer, including the security pack contents.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Harbor Legal (CALL-008): Leo Grant agreed to send a security pack (SOC 2, subprocessors, DPA, architecture diagram, retention documentation, pen test summary). Samir Khan wanted the disable-AI confirmation in the written pack and accepted the five-item follow-up list.",
+    "evidence": [
+     {
+      "finding_id": "F28",
+      "turn_id": "CALL-008#T273",
+      "call_id": "CALL-008",
+      "company": "Harbor Legal",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "33:27",
+      "quote": "We send the security pack \u2014 SOC 2, subprocessor list, DPA, architecture diagram, retention documentation, pen test summary.",
+      "context": "OrbitFlow agreed to send a security pack covering SOC 2, subprocessor list, DPA, architecture diagram, retention documentation and pen test summary, as a next step. \u2014 Agreed next step after the security discussion; the pack was offered in response to Harbor Legal's security review, and Leo also listed written answers on UK residency, retention floor, AI-step permissions, audit payload schema and termination data handling.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F30",
+      "turn_id": "CALL-008#T284",
+      "call_id": "CALL-008",
+      "company": "Harbor Legal",
+      "speaker": "Samir Khan",
+      "side": "customer",
+      "role": "Information Security Manager",
+      "ts": "35:09",
+      "quote": "I'll want that confirmed in the pack rather than remembered from a call.",
+      "context": "The prospect required that the answers, including the disable-AI confirmation, be put in the written security pack rather than relied on from the call. \u2014 Samir Khan asked for confirmation in writing; Nina Patel agreed it would be in the pack.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F31",
+      "turn_id": "CALL-008#T274",
+      "call_id": "CALL-008",
+      "company": "Harbor Legal",
+      "speaker": "Samir Khan",
+      "side": "customer",
+      "role": "Information Security Manager",
+      "ts": "33:56",
+      "quote": "That's all five.",
+      "context": "The prospect accepted the written list of five follow-up items, which included the security pack contents and termination data handling. \u2014 Samir Khan confirmed the list as complete after Leo's recap; the list was the basis of the security pack and written-answer commitment.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Inkwell Learning (CALL-009): Maya Chen committed to send a security pack (SOC 2, subprocessors, DPA, architecture diagram, retention documentation) and said the formal security review should still be completed. Darren Wu said the SOC 2 baseline was sufficient and that district questionnaires would likely only be needed for larger districts, not a pilot.",
+    "evidence": [
+     {
+      "finding_id": "F32",
+      "turn_id": "CALL-009#T216",
+      "call_id": "CALL-009",
+      "company": "Inkwell Learning",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "26:18",
+      "quote": "The security pack \u2014 SOC 2, subprocessor list, DPA, architecture diagram, retention documentation.",
+      "context": "OrbitFlow (Maya Chen) committed to send a security pack containing SOC 2, subprocessor list, DPA, architecture diagram, and retention documentation, as part of the follow-up owed to Inkwell. \u2014 Post-call action item owed by the vendor after Olivia Grant asked what OrbitFlow owed them; this is an explicit agreement to provide the documents.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F37",
+      "turn_id": "CALL-009#T140",
+      "call_id": "CALL-009",
+      "company": "Inkwell Learning",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "17:14",
+      "quote": "we should still complete your security review properly.",
+      "context": "OrbitFlow (Maya Chen) said Inkwell should still complete its formal vendor security review even though the student-data boundary makes the data question moot. \u2014 Vendor insisted the security review remains necessary; Darren agreed it makes the review normal rather than special.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F34",
+      "turn_id": "CALL-009#T143",
+      "call_id": "CALL-009",
+      "company": "Inkwell Learning",
+      "speaker": "Darren Wu",
+      "side": "customer",
+      "role": "Director of Business Intelligence",
+      "ts": "17:53",
+      "quote": "That's sufficient for us. We're not a bank.",
+      "context": "Inkwell's customer (Darren Wu) said the vendor's described security baseline, including SOC 2, is sufficient for Inkwell. \u2014 Customer's assessment that the SOC 2 baseline meets their needs; does not request the report itself.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F35",
+      "turn_id": "CALL-009#T145",
+      "call_id": "CALL-009",
+      "company": "Inkwell Learning",
+      "speaker": "Darren Wu",
+      "side": "customer",
+      "role": "Director of Business Intelligence",
+      "ts": "18:02",
+      "quote": "Some districts have their own questionnaire.",
+      "context": "Some school districts that Inkwell serves have their own security questionnaires, which Darren Wu said would likely be needed for larger districts but not for a pilot. \u2014 Customer raised district-specific questionnaires as a future requirement; Olivia Grant noted procurement treats them like a bank would.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F36",
+      "turn_id": "CALL-009#T146",
+      "call_id": "CALL-009",
+      "company": "Inkwell Learning",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "18:07",
+      "quote": "Would we need to complete those?",
+      "context": "Maya Chen asked whether OrbitFlow would need to complete district security questionnaires, and Darren Wu said possibly for larger districts but not for a pilot. \u2014 Vendor asked about completing questionnaires; customer answered it is possibly needed later, not during a pilot.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Borderline calls with no SOC 2 or security pack request: Cedar & Finch (Sophie Reed asked only for a standard DPA); Halberd Security (a provider list to be sent with subprocessor documentation); Verity Payments (a deletion certificate, which OrbitFlow agreed to arrange with a timeline).",
+    "evidence": [
+     {
+      "finding_id": "F13",
+      "turn_id": "CALL-003#T053",
+      "call_id": "CALL-003",
+      "company": "Cedar & Finch",
+      "speaker": "Sophie Reed",
+      "side": "customer",
+      "role": "Director of E-commerce Operations",
+      "ts": "05:53",
+      "quote": "We need a standard DPA.",
+      "context": "Sophie Reed requested a standard data processing agreement (DPA) from OrbitFlow as part of the security/compliance review. The request was for a DPA, not an explicit security pack or SOC 2 report. \u2014 Raised during the security questions, alongside SSO and UK/EU data processing. No security pack or SOC 2 was requested by name, and Leo did not respond to the DPA request in the call.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F40",
+      "turn_id": "CALL-013#T074",
+      "call_id": "CALL-013",
+      "company": "Halberd Security",
+      "speaker": "Nina Patel",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "07:39",
+      "quote": "I'll send the current list with the subprocessor documentation rather than reciting it and getting one wrong.",
+      "context": "OrbitFlow agreed to send the current list of allowed model providers together with its subprocessor documentation, rather than reciting the list on the call. This is a customer request for provider and subprocessor information, not a SOC 2 report, security pack, or pen test. \u2014 Grace Okonkwo asked which providers are on the allowed list as part of AI data-handling questions. Nina Patel deferred the answer to written subprocessor documentation. Nina's reply in T091 lists 'the subprocessor documentation' among the written answers owed, so this is a commitment to send. Borderline relevance: no SOC 2, security pack, or security questionnaire was requested on this call.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F41",
+      "turn_id": "CALL-014#T155",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Sarah Lindqvist",
+      "side": "customer",
+      "role": "Engineering Manager",
+      "ts": "15:50",
+      "quote": "Yes. Our compliance team will ask for a deletion certificate.",
+      "context": "Verity's compliance team will require a deletion certificate after data deletion. This is a request for a compliance certificate, not a security pack, SOC 2 report, or security questionnaire. \u2014 Raised during exit logistics. Ruth asked about documenting data deletion, and Sarah said the certificate is needed for compliance purposes. It concerns data deletion only and does not request security documentation.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F42",
+      "turn_id": "CALL-014#T156",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Ruth Adeyemi",
+      "side": "vendor",
+      "role": "Customer Success Manager",
+      "ts": "15:56",
+      "quote": "I'll get that arranged and I'll tell you the timeline for it rather than saying \"shortly after termination.\"",
+      "context": "OrbitFlow agreed to arrange a data deletion certificate and to give a specific timeline for it, rather than an open-ended 'shortly after termination.' \u2014 Ruth committed to this in response to Sarah's deletion certificate request. Maya later repeated it in the summary of commitments.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F43",
+      "turn_id": "CALL-014#T190",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "19:41",
+      "quote": "the deletion certificate with an actual timeline",
+      "context": "OrbitFlow's final list of commitments includes the deletion certificate with an actual timeline. \u2014 Maya's closing recap of what the customer will receive from OrbitFlow. No SOC 2 report, security pack, or pen test results were requested or discussed in this call.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Juniper Cloud Tools (CALL-010): only a verbal security checklist review occurred; no security pack, SOC 2 report or questionnaire was requested or offered.",
+    "evidence": [
+     {
+      "finding_id": "F38",
+      "turn_id": "CALL-010#T161",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Marcus Chen",
+      "side": "customer",
+      "role": "VP Business Operations",
+      "ts": "17:21",
+      "quote": "Security list, Ava.",
+      "context": "Marcus Chen asked for a security list review, and Ava Sinclair walked through a verbal list of security requirements. No security pack, SOC 2 report, questionnaire, or other security document was requested. \u2014 Verbal security checklist review, not a document request. Ava's list covered SSO/SCIM, secrets, audit logs, least-privilege credentials, regional controls, API limits, and export.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F39",
+      "turn_id": "CALL-010#T163",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Nina Patel",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "17:41",
+      "quote": "SOC 2 Type II is the baseline. SAML SSO and SCIM on Enterprise.",
+      "context": "OrbitFlow's Nina Patel stated that SOC 2 Type II is the security baseline, with SAML SSO and SCIM on Enterprise, and listed other security controls verbally. No SOC 2 report or security documentation was offered or sent in this call. \u2014 Vendor verbal claim about its compliance posture. Nothing was agreed to be sent in this call; the only document follow-ups mentioned were the exported definitions, the subflow billing answer, and Postgres connector documentation.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   }
+  ],
+  "conflicts": [],
+  "not_covered": [
+   "Whether the packs were actually delivered after the calls is not shown in the findings.",
+   "Only one of two churn post-mortem calls had relevant findings; no detail on the other."
+  ],
+  "assumptions": [
+   "No specific company or call type is named, so the search covers all 20 calls.",
+   "SOC 2 is treated as a security/compliance document and synonyms such as security questionnaire and pen test are included.",
+   "SOC 2, security pack, pen test and security questionnaire requests were all treated as relevant, as stated in the question."
+  ],
+  "confidence": "high",
+  "calls_considered": [
+   "CALL-001",
+   "CALL-002",
+   "CALL-003",
+   "CALL-004",
+   "CALL-005",
+   "CALL-008",
+   "CALL-009",
+   "CALL-010",
+   "CALL-013",
+   "CALL-014",
+   "CALL-015"
+  ],
+  "calls_cited": [
+   "CALL-001",
+   "CALL-002",
+   "CALL-003",
+   "CALL-004",
+   "CALL-005",
+   "CALL-008",
+   "CALL-009",
+   "CALL-010",
+   "CALL-013",
+   "CALL-014"
+  ],
+  "removed_claims": [],
+  "covered": true,
+  "trace_id": null
+ }
+}

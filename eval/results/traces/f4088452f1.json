@@ -527,8 +527,8 @@
   "cache_read_tokens": 126778,
   "cache_write_tokens": 0,
   "output_tokens": 14590,
-  "uncached_calls": 4,
-  "latency_s": 26.96
+  "uncached_calls": 0,
+  "latency_s": 2.18
  },
  "answer": {
   "question": "Which customers mentioned integrations with Salesforce?",

@@ -1,0 +1,18 @@
+Running facts_only on 21 questions...
+# Evaluation results (dev set)
+
+Gold set: 21 questions (eval/questions.yaml).
+
+| Metric | pipeline | naive_rag | full_context | facts_only |
+|---|---|---|---|---|
+| Fact score (judge) | 97% | 60% | 92% | 92% |
+| Selection recall | 100% | 66% | 100% | 100% |
+| Cited-call recall | 100% | 62% | 98% | 100% |
+| List precision | 64% | 50% | 75% | 64% |
+| False matches (must_not_cite) | 1 | 0 | 0 | 1 |
+| Citation validity | 99% | 99% | 100% | 100% |
+| Abstention accuracy | 100% | 76% | 100% | 100% |
+| Conflict recall | 100% | 50% | 100% | 100% |
+| Avg input tokens / question | 94,838 | 4,024 | 167,837 | 52,382 |
+| Avg latency (s, uncached) | 5 | 1 | 2 | 16 |
+| Errors | 0 | 0 | 0 | 0 |

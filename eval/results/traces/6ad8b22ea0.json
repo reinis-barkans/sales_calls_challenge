@@ -142,7 +142,7 @@
   "cache_write_tokens": 0,
   "output_tokens": 1891,
   "uncached_calls": 0,
-  "latency_s": 0.0
+  "latency_s": 0.01
  },
  "answer": {
   "question": "How many practices does Trafford Dental Group have?",

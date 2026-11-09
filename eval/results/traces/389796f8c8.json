@@ -1,0 +1,121 @@
+{
+ "question": "Did any prospect mention Microsoft Copilot?",
+ "resolution": {
+  "question_type": "lookup",
+  "companies": [],
+  "call_types": [
+   "Prospect"
+  ],
+  "search_terms": [
+   "Microsoft Copilot",
+   "Copilot",
+   "Microsoft",
+   "Copilot AI",
+   "AI assistant"
+  ],
+  "read_instruction": "Extract every mention of Microsoft Copilot (or Copilot, or Microsoft's AI assistant) by the prospect or OrbitFlow staff, including the context in which it was raised, what was said about it, and whether it was described as a competitor, integration, or existing tool in use.",
+  "assumptions": [
+   "'Prospect' is interpreted as new-business calls (call types Prospect, calls 001-010), not all customers.",
+   "Mentions of 'Copilot' without 'Microsoft' are included as likely references to Microsoft Copilot."
+  ]
+ },
+ "candidates": {
+  "CALL-004": [
+   "call_type:Prospect",
+   "facts",
+   "search"
+  ],
+  "CALL-005": [
+   "call_type:Prospect",
+   "search",
+   "vector"
+  ],
+  "CALL-010": [
+   "call_type:Prospect"
+  ],
+  "CALL-008": [
+   "call_type:Prospect",
+   "facts",
+   "search"
+  ],
+  "CALL-006": [
+   "call_type:Prospect",
+   "search",
+   "vector"
+  ],
+  "CALL-009": [
+   "call_type:Prospect",
+   "search"
+  ],
+  "CALL-007": [
+   "call_type:Prospect",
+   "facts",
+   "search",
+   "vector"
+  ],
+  "CALL-002": [
+   "call_type:Prospect",
+   "facts",
+   "search"
+  ],
+  "CALL-003": [
+   "call_type:Prospect",
+   "search",
+   "vector"
+  ],
+  "CALL-001": [
+   "call_type:Prospect",
+   "facts",
+   "search"
+  ]
+ },
+ "search_terms": [
+  "ai assistant",
+  "copilot",
+  "copilot ai",
+  "microsoft",
+  "microsoft copilot"
+ ],
+ "findings": [],
+ "rejected_findings": [],
+ "usage": {
+  "llm_calls": 11,
+  "input_tokens": 126897,
+  "cache_read_tokens": 124930,
+  "cache_write_tokens": 0,
+  "output_tokens": 1466,
+  "uncached_calls": 11,
+  "latency_s": 8.81
+ },
+ "answer": {
+  "question": "Did any prospect mention Microsoft Copilot?",
+  "answer": "The transcripts don't cover this. I read 10 candidate call(s) and found no supporting evidence.",
+  "claims": [],
+  "conflicts": [],
+  "not_covered": [
+   "Did any prospect mention Microsoft Copilot?",
+   "Closest related material: CALL-007 (Greenline Energy Services) turns T163-T170, CALL-007 (Greenline Energy Services) turns T169-T176, CALL-008 (Harbor Legal) turns T133-T140"
+  ],
+  "assumptions": [
+   "'Prospect' is interpreted as new-business calls (call types Prospect, calls 001-010), not all customers.",
+   "Mentions of 'Copilot' without 'Microsoft' are included as likely references to Microsoft Copilot."
+  ],
+  "confidence": "none",
+  "calls_considered": [
+   "CALL-001",
+   "CALL-002",
+   "CALL-003",
+   "CALL-004",
+   "CALL-005",
+   "CALL-006",
+   "CALL-007",
+   "CALL-008",
+   "CALL-009",
+   "CALL-010"
+  ],
+  "calls_cited": [],
+  "removed_claims": [],
+  "covered": false,
+  "trace_id": null
+ }
+}

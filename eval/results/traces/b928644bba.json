@@ -23,26 +23,9 @@
   ]
  },
  "candidates": {
-  "CALL-004": [
-   "call_type:Prospect",
-   "search"
-  ],
-  "CALL-009": [
-   "call_type:Prospect"
-  ],
-  "CALL-010": [
-   "call_type:Prospect",
-   "search"
-  ],
-  "CALL-007": [
-   "call_type:Prospect"
-  ],
   "CALL-008": [
    "call_type:Prospect",
    "search"
-  ],
-  "CALL-003": [
-   "call_type:Prospect"
   ],
   "CALL-006": [
    "call_type:Prospect"
@@ -50,13 +33,30 @@
   "CALL-001": [
    "call_type:Prospect"
   ],
+  "CALL-002": [
+   "call_type:Prospect",
+   "facts",
+   "search"
+  ],
+  "CALL-007": [
+   "call_type:Prospect"
+  ],
+  "CALL-010": [
+   "call_type:Prospect",
+   "search"
+  ],
+  "CALL-003": [
+   "call_type:Prospect"
+  ],
+  "CALL-009": [
+   "call_type:Prospect"
+  ],
   "CALL-005": [
    "call_type:Prospect",
    "search"
   ],
-  "CALL-002": [
+  "CALL-004": [
    "call_type:Prospect",
-   "facts",
    "search"
   ]
  },
@@ -292,7 +292,7 @@
   "cache_write_tokens": 0,
   "output_tokens": 5635,
   "uncached_calls": 0,
-  "latency_s": 0.04
+  "latency_s": 0.07
  },
  "answer": {
   "question": "Did any prospects raise HIPAA or BAA requirements?",

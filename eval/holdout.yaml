@@ -1,0 +1,105 @@
+# HELD-OUT gold set. Written and labelled from the transcripts (grep + reading) AFTER the
+# system was frozen, and never used for tuning prompts, thresholds or code.
+# Rule: if a holdout question fails, log it in failures.md, but don't fix the system against it
+# and re-score; move the question to questions.yaml (dev) first and write a new holdout question.
+# Same fields as questions.yaml.
+
+- id: H01
+  category: lookup
+  question: "What timeline did Juniper Cloud Tools agree for their evaluation?"
+  expected_calls: [CALL-010]
+  key_facts:
+    - "A four-week evaluation starting Monday"
+    - "A go/no-go decision in September"
+  expect_covered: true
+  notes: "CALL-010 T233 (Marcus Chen), T235 (Ava Sinclair: 'Meaning Monday')."
+
+- id: H02
+  category: lookup
+  question: "What was agreed at Halberd Security's renewal?"
+  expected_calls: [CALL-013]
+  key_facts:
+    - "Renewal agreed subject to papers at the standard seven percent uplift, no other changes"
+    - "AI enabled in a contained workspace only after a fifty-incident test and written answers from Nina Patel"
+    - "A publish permission separate from the build permission, once the mechanism is confirmed"
+  expect_covered: true
+  notes: "CALL-013 T164 (Ruth Adeyemi's summary)."
+
+- id: H03
+  category: alias
+  question: "What did Kestrel think of OrbitFlow's website?"
+  expected_calls: [CALL-020]
+  key_facts:
+    - "Rafael Santos said it reads as very enterprise (governance, compliance, workspace separation), not for a 150-person robotics company"
+    - "Leo Grant accepted that as a fair read"
+  expect_covered: true
+  notes: "Short name 'Kestrel' = Kestrel Robotics. CALL-020 T024-T025."
+
+- id: H04
+  category: list
+  question: "Which calls involved a request for a security pack or SOC 2 documentation?"
+  expected_calls: [CALL-001, CALL-002, CALL-004, CALL-005, CALL-008, CALL-009]
+  key_facts:
+    - "Names at least five of: Acme Logistics, BrightPath Health, DeltaWorks, Ember Financial, Harbor Legal, Inkwell Learning"
+    - "Gives the call or document context (e.g. SOC 2, subprocessor list, DPA, pen test summary)"
+  expect_covered: true
+  notes: "grep 'security pack': 001 002 004 005 008 009; 'SOC 2' also in 010 (mentioned, not requested as a pack)."
+
+- id: H05
+  category: decline
+  question: "Did any prospect mention Microsoft Copilot?"
+  expected_calls: []
+  key_facts: []
+  expect_covered: false
+  notes: "'copilot' appears in no transcript. Trap: Power Automate (also Microsoft) is in several calls and must not be presented as Copilot."
+
+- id: H06
+  category: decline
+  question: "What did Globex Industries say about onboarding?"
+  expected_calls: []
+  key_facts: []
+  expect_covered: false
+  notes: "Company not in the dataset."
+
+- id: H07
+  category: conflict
+  question: "Do Inkwell Learning's stakeholders agree on whether their account-health scores are reliable?"
+  expected_calls: [CALL-009]
+  key_facts:
+    - "Darren Wu says the scores shouldn't be treated as ground truth: fewer than half the CSMs update the underlying fields consistently"
+    - "Olivia Grant / leadership treat them as reliable (on the QBR deck and board pack), so they disagree"
+  expect_covered: true
+  expect_conflict: true
+  notes: "CALL-009 T016-T018, T035."
+
+- id: H08
+  category: multi_hop
+  question: "Which calls did Alastair McCrae take part in, and how did each go?"
+  expected_calls: [CALL-006, CALL-015, CALL-019]
+  key_facts:
+    - "Fable Media (CALL-006): interested but undecided; price above the £20k signing limit"
+    - "Oakhill Property (CALL-015): a churn post-mortem; the customer had already left"
+    - "Trafford Dental (CALL-019): cold call declined; generic pitch and wrong practice count"
+  expect_covered: true
+  notes: "Participants from manifest.json."
+
+- id: H09
+  category: theme
+  question: "What did churned customers say about support and customer success after onboarding?"
+  expected_calls: [CALL-014, CALL-015]
+  key_facts:
+    - "Verity Payments: support was inconsistent (some tickets answered quickly and expertly, others a day later with a documentation link)"
+    - "Verity Payments: after a two-day onboarding most attendees never used it again / no owner or enablement afterwards"
+    - "Oakhill Property: their account segment had no assigned CSM / no proactive contact"
+  expect_covered: true
+  notes: "CALL-014 T059, T122; CALL-015 T105."
+
+- id: H10
+  category: judgement
+  question: "Which renewal looks most at risk, and why?"
+  expected_calls: [CALL-012]
+  key_facts:
+    - "Pinewood Insurance is the most at risk (undecided between serving notice and a six-month renewal)"
+    - "Gives reasons such as claims triage possibly moving to Guidewire, low usage of what they pay for, or unhelpful support/enablement"
+    - "Contrasts with Halberd (renewal agreed) and/or Lumen (proceeding, proposal pending)"
+  expect_covered: true

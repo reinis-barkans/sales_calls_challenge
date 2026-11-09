@@ -179,3 +179,39 @@
     - "Frames the answer as a judgement grounded in cited buying signals (next steps, budget, sponsor), not as certainty"
     - "Mentions at least one blocker/risk for a named prospect (e.g. BrightPath's BAA gate)"
   expect_covered: true
+
+# --- Example questions from instructions.md not covered above (added after run 4) ---
+
+- id: Q19
+  category: theme
+  question: "What are the most common reasons prospects hesitate to buy?"
+  expected_calls: [CALL-001, CALL-002, CALL-003, CALL-006, CALL-007, CALL-008, CALL-010]
+  key_facts:
+    - "Price vs budget (e.g. Cedar & Finch: £1,800/month vs ~£800-1,000 in mind; Fable Media: above the £20k signing limit)"
+    - "Existing tools or building in-house as the alternative (e.g. Acme expanding Workato, Greenline's Power Automate, Juniper could build internally)"
+    - "Security / compliance gates (e.g. BrightPath's BAA, Harbor Legal's UK residency, security packs requested)"
+    - "Identifies themes as recurring across several prospects, with citations from at least four different prospect calls"
+  expect_covered: true
+  notes: "Prospect calls = CALL-001..010. expected_calls is a core subset."
+
+- id: Q20
+  category: theme
+  question: "What product capabilities appear to be most important to prospects?"
+  expected_calls: [CALL-001, CALL-002, CALL-005, CALL-010]
+  key_facts:
+    - "Connectors / integration coverage with their existing systems (e.g. Salesforce, SAP, Dynamics, Shopify)"
+    - "Security and access control: SSO/SCIM, least-privilege permissions, audit logs (e.g. BrightPath audit export to SIEM)"
+    - "Reliability and operability: exception handling, retries/idempotency, monitoring/observability (e.g. Acme wants metrics in their own monitoring; Ember retry semantics)"
+    - "Controls over AI features (e.g. Ember's per-workspace AI disablement, BrightPath's LLM data handling)"
+  expect_covered: true
+
+- id: Q21
+  category: compare
+  question: "What is different about how the sales team handles renewals versus new business?"
+  expected_calls: [CALL-011, CALL-012, CALL-013]
+  key_facts:
+    - "Renewals involve the Customer Success Manager Ruth Adeyemi; new business is run by Account Executives and Solutions Engineers (Maya Chen, Leo Grant, Jon Bell, Nina Patel, Alastair McCrae)"
+    - "Renewals centre on usage and value already realised, the standard seven percent uplift (Lumen, Halberd) and contract terms"
+    - "Renewals include right-sizing or concessions (e.g. Lumen seats 9 -> 7; Pinewood offered a six-month renewal with no uplift)"
+    - "New business centres on discovery, demos, pilots/evaluation criteria and security packs"
+  expect_covered: true

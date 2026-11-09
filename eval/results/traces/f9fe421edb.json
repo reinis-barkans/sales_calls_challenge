@@ -25,7 +25,7 @@
   ]
  },
  "candidates": {
-  "CALL-016": [
+  "CALL-019": [
    "call_type:Cold call",
    "search"
   ],
@@ -34,8 +34,9 @@
    "search",
    "vector"
   ],
-  "CALL-019": [
+  "CALL-018": [
    "call_type:Cold call",
+   "facts",
    "search"
   ],
   "CALL-020": [
@@ -43,9 +44,8 @@
    "search",
    "vector"
   ],
-  "CALL-018": [
+  "CALL-016": [
    "call_type:Cold call",
-   "facts",
    "search"
   ]
  },
@@ -642,7 +642,7 @@
   "cache_write_tokens": 0,
   "output_tokens": 10684,
   "uncached_calls": 0,
-  "latency_s": 0.05
+  "latency_s": 0.07
  },
  "answer": {
   "question": "Which cold calls produced a follow-up, and what did the successful ones have in common?",

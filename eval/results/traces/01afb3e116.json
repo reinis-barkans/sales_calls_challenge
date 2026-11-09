@@ -1,0 +1,60 @@
+{
+ "question": "What did Globex Industries say about onboarding?",
+ "resolution": {
+  "question_type": "lookup",
+  "companies": [
+   {
+    "mention": "Globex Industries",
+    "resolved_to": null,
+    "confidence": "low"
+   }
+  ],
+  "call_types": [],
+  "search_terms": [
+   "onboarding",
+   "implementation",
+   "setup",
+   "rollout",
+   "kickoff",
+   "training",
+   "time to value"
+  ],
+  "read_instruction": "Extract every statement made about onboarding, implementation, setup, rollout, training or time-to-value, including timelines, responsibilities, support offered and any problems raised, noting which company or speaker each statement relates to.",
+  "assumptions": [
+   "'Globex Industries' does not appear in the catalogue, so company resolved to null; no matching call is expected unless the name appears in a transcript under a different catalogue name.",
+   "No call type implied, so all calls are searched."
+  ]
+ },
+ "candidates": {},
+ "search_terms": [],
+ "findings": [],
+ "rejected_findings": [],
+ "usage": {
+  "llm_calls": 1,
+  "input_tokens": 2383,
+  "cache_read_tokens": 2359,
+  "cache_write_tokens": 0,
+  "output_tokens": 244,
+  "uncached_calls": 1,
+  "latency_s": 1.87
+ },
+ "answer": {
+  "question": "What did Globex Industries say about onboarding?",
+  "answer": "No calls in the dataset match Globex Industries; nothing to answer from.",
+  "claims": [],
+  "conflicts": [],
+  "not_covered": [
+   "What did Globex Industries say about onboarding?"
+  ],
+  "assumptions": [
+   "'Globex Industries' does not appear in the catalogue, so company resolved to null; no matching call is expected unless the name appears in a transcript under a different catalogue name.",
+   "No call type implied, so all calls are searched."
+  ],
+  "confidence": "none",
+  "calls_considered": [],
+  "calls_cited": [],
+  "removed_claims": [],
+  "covered": false,
+  "trace_id": null
+ }
+}

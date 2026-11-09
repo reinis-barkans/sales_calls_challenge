@@ -1,0 +1,361 @@
+{
+ "question": "What timeline did Juniper Cloud Tools agree for their evaluation?",
+ "resolution": {
+  "question_type": "lookup",
+  "companies": [
+   {
+    "mention": "Juniper Cloud Tools",
+    "resolved_to": "Juniper Cloud Tools",
+    "confidence": "high"
+   }
+  ],
+  "call_types": [],
+  "search_terms": [
+   "timeline",
+   "evaluation",
+   "timeframe",
+   "deadline",
+   "decision date",
+   "go-live",
+   "rollout",
+   "trial",
+   "pilot",
+   "next steps",
+   "weeks",
+   "months"
+  ],
+  "read_instruction": "Extract any timeline, dates, deadlines, or durations that Juniper Cloud Tools agreed to for their evaluation, including decision dates, trial or pilot length, next-step meeting dates, and go-live targets, noting who proposed each and whether it was confirmed.",
+  "assumptions": [
+   "The question refers to the Prospect call CALL-010 with Juniper Cloud Tools, the only catalogue entry for that company."
+  ]
+ },
+ "candidates": {
+  "CALL-010": [
+   "company"
+  ]
+ },
+ "search_terms": [],
+ "findings": [
+  {
+   "finding_id": "F1",
+   "turn_id": "CALL-010#T216",
+   "call_id": "CALL-010",
+   "company": "Juniper Cloud Tools",
+   "speaker": "Marcus Chen",
+   "side": "customer",
+   "role": "VP Business Operations",
+   "ts": "22:41",
+   "quote": "We want a four-week evaluation starting immediately, with a go/no-go decision in September.",
+   "context": "Juniper Cloud Tools wants a four-week evaluation starting immediately, with a go/no-go decision in September. \u2014 Marcus proposed the timeline; Ava confirmed Monday start. Leo and Nina accepted it as the plan.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F2",
+   "turn_id": "CALL-010#T218",
+   "call_id": "CALL-010",
+   "company": "Juniper Cloud Tools",
+   "speaker": "Ava Sinclair",
+   "side": "customer",
+   "role": "Staff Software Engineer",
+   "ts": "22:51",
+   "quote": "Meaning Monday. I've blocked time.",
+   "context": "The evaluation starts Monday, with Ava having blocked time for it. \u2014 Clarifying 'starting immediately'; Leo said not to spend two weeks arranging it.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F3",
+   "turn_id": "CALL-010#T221",
+   "call_id": "CALL-010",
+   "company": "Juniper Cloud Tools",
+   "speaker": "Nina Patel",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "23:18",
+   "quote": "You'll have all four by Friday.",
+   "context": "OrbitFlow will deliver the requested technical items (three exported definitions, subflow billing answer, Postgres connector documentation) by Friday, with the definitions arriving sooner. \u2014 Nina committed to Friday; later she said the three definitions would arrive that afternoon, not Friday.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F4",
+   "turn_id": "CALL-010#T289",
+   "call_id": "CALL-010",
+   "company": "Juniper Cloud Tools",
+   "speaker": "Nina Patel",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "30:49",
+   "quote": "the three definitions will be in your inbox this afternoon, not Friday.",
+   "context": "The three exported definitions will be in the customer's inbox the afternoon of the call rather than by Friday. \u2014 Correction of the Friday commitment by Nina.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F5",
+   "turn_id": "CALL-010#T257",
+   "call_id": "CALL-010",
+   "company": "Juniper Cloud Tools",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "27:07",
+   "quote": "You'll have it in week two.",
+   "context": "OrbitFlow committed to a written pricing model in week two of the evaluation, at the customer's request. \u2014 Marcus asked for pricing in writing before the evaluation ends; Leo committed to week two.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F6",
+   "turn_id": "CALL-010#T224",
+   "call_id": "CALL-010",
+   "company": "Juniper Cloud Tools",
+   "speaker": "Marcus Chen",
+   "side": "customer",
+   "role": "VP Business Operations",
+   "ts": "23:38",
+   "quote": "I'll do the contracts.",
+   "context": "Juniper's side owes the Linear backlog analysis, the Salesforce API allocation, and EU residency contract checks by Friday-equivalent next steps; Marcus and Ava split these tasks. \u2014 Leo listed the customer-side deliverables; no explicit date given for the customer items.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F7",
+   "turn_id": "CALL-010#T253",
+   "call_id": "CALL-010",
+   "company": "Juniper Cloud Tools",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "26:42",
+   "quote": "Four criteria. I'll write them up and send them back so we're agreed rather than remembering differently.",
+   "context": "Leo proposed a go/no-go-style success definition at four weeks; the customer agreed to four criteria to be written up and sent back. \u2014 Leo said he would write up the criteria so both sides are aligned; Ava proposed the fourth.",
+   "stated_or_inferred": "stated"
+  }
+ ],
+ "rejected_findings": [],
+ "draft": {
+  "answer": "Juniper Cloud Tools agreed to a four-week evaluation starting Monday, with a go/no-go decision in September [C1]. Success criteria and pricing milestones were set within that window [C2][C3], and OrbitFlow's technical deliveries were due sooner [C4].",
+  "claims": [
+   {
+    "text": "Marcus Chen (Juniper, VP Business Operations) proposed a four-week evaluation starting immediately with a go/no-go decision in September; Leo Grant and Nina Patel of OrbitFlow accepted it as the plan.",
+    "finding_ids": [
+     "F1"
+    ]
+   },
+   {
+    "text": "'Starting immediately' means Monday, per Ava Sinclair (Juniper), who has blocked time for it.",
+    "finding_ids": [
+     "F2"
+    ]
+   },
+   {
+    "text": "Leo Grant committed to a written pricing model in week two of the evaluation, at Marcus's request.",
+    "finding_ids": [
+     "F5"
+    ]
+   },
+   {
+    "text": "Leo proposed a go/no-go-style success definition at four weeks; four criteria were agreed, which Leo will write up and send back.",
+    "finding_ids": [
+     "F7"
+    ]
+   },
+   {
+    "text": "Nina Patel committed to deliver the technical items (three exported definitions, subflow billing answer, Postgres connector documentation) by Friday, then corrected that the three definitions would arrive the afternoon of the call.",
+    "finding_ids": [
+     "F3",
+     "F4"
+    ]
+   },
+   {
+    "text": "Juniper owes the Linear backlog analysis, Salesforce API allocation and EU residency contract checks as Friday-equivalent next steps, split between Marcus and Ava, but no explicit date was given for these customer items.",
+    "finding_ids": [
+     "F6"
+    ]
+   }
+  ],
+  "conflicts": [
+   {
+    "topic": "Delivery date for the three exported definitions",
+    "description": "Nina first committed to all items by Friday, then corrected that the three definitions would arrive the afternoon of the call, not Friday.",
+    "finding_ids": [
+     "F3",
+     "F4"
+    ]
+   }
+  ],
+  "not_covered": [
+   "No explicit date for the Juniper-side deliverables.",
+   "The exact September date for the go/no-go decision was not stated."
+  ],
+  "assumptions": [
+   "The question refers to CALL-010 with Juniper Cloud Tools, the only catalogue entry for that company."
+  ]
+ },
+ "usage": {
+  "llm_calls": 4,
+  "input_tokens": 21401,
+  "cache_read_tokens": 16599,
+  "cache_write_tokens": 0,
+  "output_tokens": 2634,
+  "uncached_calls": 4,
+  "latency_s": 26.71
+ },
+ "answer": {
+  "question": "What timeline did Juniper Cloud Tools agree for their evaluation?",
+  "answer": "Juniper Cloud Tools agreed to a four-week evaluation starting Monday, with a go/no-go decision in September [1]. Success criteria and pricing milestones were set within that window [2][3], and OrbitFlow's technical deliveries were due sooner [4].",
+  "claims": [
+   {
+    "text": "Marcus Chen (Juniper, VP Business Operations) proposed a four-week evaluation starting immediately with a go/no-go decision in September; Leo Grant and Nina Patel of OrbitFlow accepted it as the plan.",
+    "evidence": [
+     {
+      "finding_id": "F1",
+      "turn_id": "CALL-010#T216",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Marcus Chen",
+      "side": "customer",
+      "role": "VP Business Operations",
+      "ts": "22:41",
+      "quote": "We want a four-week evaluation starting immediately, with a go/no-go decision in September.",
+      "context": "Juniper Cloud Tools wants a four-week evaluation starting immediately, with a go/no-go decision in September. \u2014 Marcus proposed the timeline; Ava confirmed Monday start. Leo and Nina accepted it as the plan.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "'Starting immediately' means Monday, per Ava Sinclair (Juniper), who has blocked time for it.",
+    "evidence": [
+     {
+      "finding_id": "F2",
+      "turn_id": "CALL-010#T218",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Ava Sinclair",
+      "side": "customer",
+      "role": "Staff Software Engineer",
+      "ts": "22:51",
+      "quote": "Meaning Monday. I've blocked time.",
+      "context": "The evaluation starts Monday, with Ava having blocked time for it. \u2014 Clarifying 'starting immediately'; Leo said not to spend two weeks arranging it.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Leo Grant committed to a written pricing model in week two of the evaluation, at Marcus's request.",
+    "evidence": [
+     {
+      "finding_id": "F5",
+      "turn_id": "CALL-010#T257",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "27:07",
+      "quote": "You'll have it in week two.",
+      "context": "OrbitFlow committed to a written pricing model in week two of the evaluation, at the customer's request. \u2014 Marcus asked for pricing in writing before the evaluation ends; Leo committed to week two.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Leo proposed a go/no-go-style success definition at four weeks; four criteria were agreed, which Leo will write up and send back.",
+    "evidence": [
+     {
+      "finding_id": "F7",
+      "turn_id": "CALL-010#T253",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "26:42",
+      "quote": "Four criteria. I'll write them up and send them back so we're agreed rather than remembering differently.",
+      "context": "Leo proposed a go/no-go-style success definition at four weeks; the customer agreed to four criteria to be written up and sent back. \u2014 Leo said he would write up the criteria so both sides are aligned; Ava proposed the fourth.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Nina Patel committed to deliver the technical items (three exported definitions, subflow billing answer, Postgres connector documentation) by Friday, then corrected that the three definitions would arrive the afternoon of the call.",
+    "evidence": [
+     {
+      "finding_id": "F3",
+      "turn_id": "CALL-010#T221",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Nina Patel",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "23:18",
+      "quote": "You'll have all four by Friday.",
+      "context": "OrbitFlow will deliver the requested technical items (three exported definitions, subflow billing answer, Postgres connector documentation) by Friday, with the definitions arriving sooner. \u2014 Nina committed to Friday; later she said the three definitions would arrive that afternoon, not Friday.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F4",
+      "turn_id": "CALL-010#T289",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Nina Patel",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "30:49",
+      "quote": "the three definitions will be in your inbox this afternoon, not Friday.",
+      "context": "The three exported definitions will be in the customer's inbox the afternoon of the call rather than by Friday. \u2014 Correction of the Friday commitment by Nina.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Juniper owes the Linear backlog analysis, Salesforce API allocation and EU residency contract checks as Friday-equivalent next steps, split between Marcus and Ava, but no explicit date was given for these customer items.",
+    "evidence": [
+     {
+      "finding_id": "F6",
+      "turn_id": "CALL-010#T224",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Marcus Chen",
+      "side": "customer",
+      "role": "VP Business Operations",
+      "ts": "23:38",
+      "quote": "I'll do the contracts.",
+      "context": "Juniper's side owes the Linear backlog analysis, the Salesforce API allocation, and EU residency contract checks by Friday-equivalent next steps; Marcus and Ava split these tasks. \u2014 Leo listed the customer-side deliverables; no explicit date given for the customer items.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   }
+  ],
+  "conflicts": [
+   {
+    "topic": "Delivery date for the three exported definitions",
+    "description": "Nina first committed to all items by Friday, then corrected that the three definitions would arrive the afternoon of the call, not Friday.",
+    "finding_ids": [
+     "F3",
+     "F4"
+    ]
+   }
+  ],
+  "not_covered": [
+   "No explicit date for the Juniper-side deliverables.",
+   "The exact September date for the go/no-go decision was not stated."
+  ],
+  "assumptions": [
+   "The question refers to the Prospect call CALL-010 with Juniper Cloud Tools, the only catalogue entry for that company.",
+   "The question refers to CALL-010 with Juniper Cloud Tools, the only catalogue entry for that company."
+  ],
+  "confidence": "medium",
+  "calls_considered": [
+   "CALL-010"
+  ],
+  "calls_cited": [
+   "CALL-010"
+  ],
+  "removed_claims": [],
+  "covered": true,
+  "trace_id": null
+ }
+}

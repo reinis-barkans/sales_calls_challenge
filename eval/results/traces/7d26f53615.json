@@ -1,0 +1,766 @@
+{
+ "question": "Which calls did Alastair McCrae take part in, and how did each go?",
+ "resolution": {
+  "question_type": "lookup",
+  "companies": [],
+  "call_types": [],
+  "search_terms": [
+   "Alastair McCrae",
+   "McCrae",
+   "Alastair"
+  ],
+  "read_instruction": "Check whether Alastair McCrae is named as a participant (OrbitFlow staff or prospect/customer side) in this call. If he is, extract his role, what he said or did, and how the call went: the outcome, next steps, any objections, commitments, or issues raised. If he does not appear, state that clearly and extract nothing else.",
+  "assumptions": [
+   "No company is named in the question, so companies is empty.",
+   "Alastair McCrae is treated as a person name to find in transcripts, not a catalogue company.",
+   "The catalogue does not list call participants, so participation must be determined from each transcript.",
+   "The question asks about all calls, so call_types is left empty."
+  ]
+ },
+ "candidates": {
+  "CALL-006": [
+   "search",
+   "vector"
+  ],
+  "CALL-019": [
+   "search",
+   "vector"
+  ],
+  "CALL-015": [
+   "search"
+  ]
+ },
+ "search_terms": [
+  "alastair",
+  "alastair mccrae",
+  "mccrae"
+ ],
+ "findings": [
+  {
+   "finding_id": "F1",
+   "turn_id": "CALL-006#T001",
+   "call_id": "CALL-006",
+   "company": "Fable Media",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "00:00",
+   "quote": "Hi hi hi. Imogen? Ben? Can you hear me?",
+   "context": "Alastair McCrae is named as a participant in CALL-006 (Fable Media discovery call, 2026-07-09) as the Account Executive for OrbitFlow (vendor side). \u2014 Participant header; he leads the call and speaks throughout as the vendor.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F2",
+   "turn_id": "CALL-006#T072",
+   "call_id": "CALL-006",
+   "company": "Fable Media",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "07:48",
+   "quote": "Course. I'll send the DPA over.",
+   "context": "Alastair committed to sending the Data Processing Agreement in writing confirming OrbitFlow does not train models on customer data. \u2014 Ben Foster asked for written proof of no-training; Alastair agreed to send the DPA.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F3",
+   "turn_id": "CALL-006#T068",
+   "call_id": "CALL-006",
+   "company": "Fable Media",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "07:35",
+   "quote": "Yeah, all plans.",
+   "context": "Alastair said SSO is included on all plans, which Ben questioned; Alastair then said he was only fairly sure and would confirm. \u2014 Ben noted competitors gate SSO to enterprise; Alastair hedged, creating an open item.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F4",
+   "turn_id": "CALL-006#T142",
+   "call_id": "CALL-006",
+   "company": "Fable Media",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "14:27",
+   "quote": "I'll check with my manager and come back.",
+   "context": "Alastair said monthly billing was 'usually fine' but had to check with his manager; he committed to come back on it. \u2014 Imogen asked for a ten-user or monthly option; Alastair could not confirm and Imogen asked for a firm answer.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F5",
+   "turn_id": "CALL-006#T140",
+   "call_id": "CALL-006",
+   "company": "Fable Media",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "14:13",
+   "quote": "Yep, all of it. I'll get it over.",
+   "context": "Alastair committed to producing a recorded demo (Loom) tailored to Fable's use case by end of the week, plus a customer reference and the written model-training assurance. \u2014 Imogen said she cannot run a sandbox and needs a shareable recorded demo for the founder and ops manager.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F6",
+   "turn_id": "CALL-006#T074",
+   "call_id": "CALL-006",
+   "company": "Fable Media",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "07:57",
+   "quote": "So our Growth package is eighteen hundred a month, up to thirty users, on an annual agreement.",
+   "context": "Alastair quoted the Growth package at \u00a31,800/month for up to 30 users on an annual agreement; the customer found it above budget and said the 20,000 approval limit made it hard. \u2014 Pricing objection; Ben computed roughly \u00a321.5k/year; Imogen said she can sign up to \u00a320k and founder approves above that.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F7",
+   "turn_id": "CALL-006#T105",
+   "call_id": "CALL-006",
+   "company": "Fable Media",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "10:57",
+   "quote": "I'd have to check.",
+   "context": "Alastair could not give a verified reference; he said the customer 'renewed, I think' and admitted he had moved off that account and would have to check. \u2014 Customer pressed on whether the story example actually fixed the onboarding problem; Alastair's anecdote was unverified.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F8",
+   "turn_id": "CALL-006#T054",
+   "call_id": "CALL-006",
+   "company": "Fable Media",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "06:00",
+   "quote": "Possibly. I'd want to check with an SE, honestly. But it's definitely doable.",
+   "context": "Alastair was asked about the date-slip alert and answered that it may need two workflows and an SE check, but claimed it was 'definitely doable'; he deflected the no-code question as architecture rather than code. \u2014 Ben probed whether alerts fire without record changes; Alastair was unsure.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F9",
+   "turn_id": "CALL-006#T150",
+   "call_id": "CALL-006",
+   "company": "Fable Media",
+   "speaker": "Imogen Price",
+   "side": "customer",
+   "role": "COO",
+   "ts": "15:12",
+   "quote": "Well. Let's see.",
+   "context": "Overall the call ended without a firm commitment: Imogen said she is interested but may choose Zapier plus process discipline, and the customer's reaction was noncommittal. \u2014 Outcome read from the closing turns; the buyer was open but cost- and complexity-constrained, with several open items for Alastair.",
+   "stated_or_inferred": "inferred"
+  },
+  {
+   "finding_id": "F10",
+   "turn_id": "CALL-015#T009",
+   "call_id": "CALL-015",
+   "company": "Oakhill Property",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "00:40",
+   "quote": "Yeah. Yeah, of course.",
+   "context": "Alastair McCrae is a named participant in CALL-015, listed as Account Executive at OrbitFlow (vendor side). \u2014 Participant list in call header; he is an active speaker in the call.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F11",
+   "turn_id": "CALL-015#T036",
+   "call_id": "CALL-015",
+   "company": "Oakhill Property",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "03:25",
+   "quote": "Is there \u2014 I mean, is there a version where we look at the pricing? Because I could go and \u2014",
+   "context": "Alastair offered to revisit pricing to save the account; the customer refused, saying a lower price now would imply overcharging earlier. \u2014 Save attempt by Alastair during a churn post-mortem; customer explicitly declined.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F12",
+   "turn_id": "CALL-015#T039",
+   "call_id": "CALL-015",
+   "company": "Oakhill Property",
+   "speaker": "Hazel Wren",
+   "side": "customer",
+   "role": "Operations Director",
+   "ts": "03:44",
+   "quote": "If you can do it for eight thousand now, that tells me you could have done it for eight thousand two years ago, and then I'd be quite cross.",
+   "context": "Customer rejected Alastair's pricing offer, saying if OrbitFlow could do eight thousand now it could have done so two years ago. \u2014 Customer objection to a late discount offer from Alastair.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F13",
+   "turn_id": "CALL-015#T098",
+   "call_id": "CALL-015",
+   "company": "Oakhill Property",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "09:31",
+   "quote": "I probably should have pushed harder on whether you had the capacity for the roadmap we talked about.",
+   "context": "Alastair acknowledged the roadmap discussed at sale was not matched to the customer's capacity and that he should have pushed harder on it. \u2014 Self-criticism by Alastair about the original sale.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F14",
+   "turn_id": "CALL-015#T067",
+   "call_id": "CALL-015",
+   "company": "Oakhill Property",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "06:45",
+   "quote": "I did say that.",
+   "context": "Alastair confirmed he told the customer at sale that the entry point was Growth and no smaller plan existed. \u2014 Customer said Alastair told her at the time; Alastair confirmed.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F15",
+   "turn_id": "CALL-015#T051",
+   "call_id": "CALL-015",
+   "company": "Oakhill Property",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "05:03",
+   "quote": "I remember that conversation and you were quite keen on the compliance one.",
+   "context": "Alastair recalled the sales discussion of the roadmap and said the customer was keen on the compliance workflow; the customer confirmed she was enthusiastic but the compliance item never reached her priority list. \u2014 Account of the original sales conversation, with customer agreeing she was also enthusiastic.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F16",
+   "turn_id": "CALL-015#T136",
+   "call_id": "CALL-015",
+   "company": "Oakhill Property",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "13:14",
+   "quote": "None at all. Good luck with the compliance one.",
+   "context": "Call outcome: the churn was final (notice served, leaving 11 November) and the call ended cordially with Alastair wishing the customer well; no save achieved. \u2014 Overall outcome of the call; Alastair's closing remark.",
+   "stated_or_inferred": "inferred"
+  },
+  {
+   "finding_id": "F17",
+   "turn_id": "CALL-019#T004",
+   "call_id": "CALL-019",
+   "company": "Trafford Dental Group",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "00:04",
+   "quote": "it's Alastair calling from OrbitFlow",
+   "context": "Alastair McCrae is a named participant in CALL-019 as the OrbitFlow Account Executive (vendor side), on a cold call to Trafford Dental Group. \u2014 Participant list in call header; he is the vendor speaker throughout.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F18",
+   "turn_id": "CALL-019#T015",
+   "call_id": "CALL-019",
+   "company": "Trafford Dental Group",
+   "speaker": "Yvonne Deeks",
+   "side": "customer",
+   "role": "Practice Operations Manager",
+   "ts": "01:18",
+   "quote": "You don't actually know anything about us, do you.",
+   "context": "Alastair pitched OrbitFlow generically and made claims about the prospect without knowing its business; the prospect pushed back that he had not asked questions or known anything about them. \u2014 Prospect objected to the generic pitch and lack of discovery.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F19",
+   "turn_id": "CALL-019#T022",
+   "call_id": "CALL-019",
+   "company": "Trafford Dental Group",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "01:56",
+   "quote": "I'd have to check.",
+   "context": "Alastair was unsure whether OrbitFlow integrates with NHS e-Referral, saying he would have to check whether the system has an API. \u2014 Prospect raised NHS e-Referral; Alastair claimed integration with anything with an API but could not confirm.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F20",
+   "turn_id": "CALL-019#T026",
+   "call_id": "CALL-019",
+   "company": "Trafford Dental Group",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "02:12",
+   "quote": "our entry package starts at eighteen hundred a month.",
+   "context": "Alastair quoted an entry package starting at \u00a31,800 a month for up to thirty users; the prospect said that was far beyond its budget and it would not pay that. \u2014 Price objection was the decisive issue for the prospect.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F21",
+   "turn_id": "CALL-019#T065",
+   "call_id": "CALL-019",
+   "company": "Trafford Dental Group",
+   "speaker": "Yvonne Deeks",
+   "side": "customer",
+   "role": "Practice Operations Manager",
+   "ts": "05:53",
+   "quote": "You're not it.",
+   "context": "The call ended with no sale: the prospect said OrbitFlow was not the fit and Alastair accepted it. Prospect agreed only to receive information, saying they would not read it. \u2014 Outcome of the call; the prospect's stated reason was price and lack of a relevant problem fit.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F22",
+   "turn_id": "CALL-019#T041",
+   "call_id": "CALL-019",
+   "company": "Trafford Dental Group",
+   "speaker": "Yvonne Deeks",
+   "side": "customer",
+   "role": "Practice Operations Manager",
+   "ts": "03:38",
+   "quote": "It's not a process problem, it's that nobody wants to be a dental nurse for what we can afford to pay.",
+   "context": "The call went poorly for Alastair; the outcome was a clear no and the prospect's tone was candid rather than hostile, and the prospect's real issue (nurse recruitment, not process) was not addressed by his pitch. \u2014 Inferred from the sequence: generic pitch, failed discovery, price objection, rejection.",
+   "stated_or_inferred": "inferred"
+  }
+ ],
+ "rejected_findings": [],
+ "draft": {
+  "answer": "Alastair McCrae, an OrbitFlow Account Executive, took part in three calls: Fable Media (discovery), Oakhill Property (churn post-mortem) and Trafford Dental Group (cold call) [C1]. None produced a win. Fable ended noncommittal with open items [C2][C3], Oakhill's churn was final [C4], and Trafford was a clear no [C5].",
+  "claims": [
+   {
+    "text": "Alastair McCrae participated as the OrbitFlow Account Executive (vendor side) in three calls: CALL-006 Fable Media (discovery, 2026-07-09), CALL-015 Oakhill Property (churn post-mortem) and CALL-019 Trafford Dental Group (cold call).",
+    "finding_ids": [
+     "F1",
+     "F10",
+     "F17"
+    ]
+   },
+   {
+    "text": "Fable Media (CALL-006): the call appears to have ended without a firm commitment. Imogen Price (COO) said she was interested but may choose Zapier plus process discipline, and her reaction was noncommittal. This outcome is inferred. Alastair quoted Growth at \u00a31,800/month for up to 30 users on an annual agreement; the customer found it above budget, as Imogen can sign only up to \u00a320k and the founder approves above that.",
+    "finding_ids": [
+     "F9",
+     "F6"
+    ]
+   },
+   {
+    "text": "Fable Media: Alastair left several open items and showed uncertainty. He committed to send the DPA confirming no training on customer data, and to deliver a tailored recorded demo (Loom) by end of week, plus a customer reference and the written model-training assurance. He had to check on SSO on all plans after saying 'all plans' and being questioned, on monthly billing with his manager, and on the date-slip alert with an SE (while calling it 'definitely doable'). He also could not verify the reference customer ('renewed, I think').",
+    "finding_ids": [
+     "F2",
+     "F5",
+     "F3",
+     "F4",
+     "F8",
+     "F7"
+    ]
+   },
+   {
+    "text": "Oakhill Property (CALL-015): the churn was final (notice served, leaving 11 November) and no save was achieved, though the call ended cordially with Alastair wishing the customer well (outcome inferred). Alastair offered to revisit pricing, but Hazel Wren (Operations Director) refused, saying an eight thousand price now would mean it could have been offered two years ago and she would be 'quite cross'.",
+    "finding_ids": [
+     "F16",
+     "F11",
+     "F12"
+    ]
+   },
+   {
+    "text": "Oakhill: Alastair acknowledged he should have pushed harder on whether the customer had capacity for the roadmap discussed at sale. He recalled the customer being keen on the compliance workflow, and she confirmed she was enthusiastic but it never reached her priority list. He also confirmed he told her Growth was the entry point and no smaller plan existed.",
+    "finding_ids": [
+     "F13",
+     "F15",
+     "F14"
+    ]
+   },
+   {
+    "text": "Trafford Dental Group (CALL-019, cold call): the call went poorly and ended with no sale. Yvonne Deeks (Practice Operations Manager) said OrbitFlow was 'not it', agreed only to receive information and said she would not read it. Her tone appears candid rather than hostile, and her real issue (nurse recruitment, not process) was not addressed (inferred).",
+    "finding_ids": [
+     "F21",
+     "F22"
+    ]
+   },
+   {
+    "text": "Trafford: Alastair gave a generic pitch and Yvonne said he did not know anything about them. He was unsure whether OrbitFlow integrates with NHS e-Referral and would have to check whether it has an API. He quoted an entry package from \u00a31,800/month for up to thirty users, which she said was far beyond budget.",
+    "finding_ids": [
+     "F18",
+     "F19",
+     "F20"
+    ]
+   }
+  ],
+  "conflicts": [],
+  "not_covered": [
+   "Only three calls were read; whether Alastair McCrae took part in any other calls is not covered by the evidence."
+  ],
+  "assumptions": [
+   "Alastair McCrae is treated as a person to find in transcripts, not a catalogue company.",
+   "All calls are in scope, regardless of call type."
+  ]
+ },
+ "usage": {
+  "llm_calls": 6,
+  "input_tokens": 32046,
+  "cache_read_tokens": 21583,
+  "cache_write_tokens": 0,
+  "output_tokens": 7181,
+  "uncached_calls": 6,
+  "latency_s": 30.52
+ },
+ "answer": {
+  "question": "Which calls did Alastair McCrae take part in, and how did each go?",
+  "answer": "Alastair McCrae, an OrbitFlow Account Executive, took part in three calls: Fable Media (discovery), Oakhill Property (churn post-mortem) and Trafford Dental Group (cold call) [1]. None produced a win. Fable ended noncommittal with open items [2][3], Oakhill's churn was final [4], and Trafford was a clear no [5].",
+  "claims": [
+   {
+    "text": "Alastair McCrae participated as the OrbitFlow Account Executive (vendor side) in three calls: CALL-006 Fable Media (discovery, 2026-07-09), CALL-015 Oakhill Property (churn post-mortem) and CALL-019 Trafford Dental Group (cold call).",
+    "evidence": [
+     {
+      "finding_id": "F1",
+      "turn_id": "CALL-006#T001",
+      "call_id": "CALL-006",
+      "company": "Fable Media",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "00:00",
+      "quote": "Hi hi hi. Imogen? Ben? Can you hear me?",
+      "context": "Alastair McCrae is named as a participant in CALL-006 (Fable Media discovery call, 2026-07-09) as the Account Executive for OrbitFlow (vendor side). \u2014 Participant header; he leads the call and speaks throughout as the vendor.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F10",
+      "turn_id": "CALL-015#T009",
+      "call_id": "CALL-015",
+      "company": "Oakhill Property",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "00:40",
+      "quote": "Yeah. Yeah, of course.",
+      "context": "Alastair McCrae is a named participant in CALL-015, listed as Account Executive at OrbitFlow (vendor side). \u2014 Participant list in call header; he is an active speaker in the call.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F17",
+      "turn_id": "CALL-019#T004",
+      "call_id": "CALL-019",
+      "company": "Trafford Dental Group",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "00:04",
+      "quote": "it's Alastair calling from OrbitFlow",
+      "context": "Alastair McCrae is a named participant in CALL-019 as the OrbitFlow Account Executive (vendor side), on a cold call to Trafford Dental Group. \u2014 Participant list in call header; he is the vendor speaker throughout.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Fable Media (CALL-006): the call appears to have ended without a firm commitment. Imogen Price (COO) said she was interested but may choose Zapier plus process discipline, and her reaction was noncommittal. This outcome is inferred. Alastair quoted Growth at \u00a31,800/month for up to 30 users on an annual agreement; the customer found it above budget, as Imogen can sign only up to \u00a320k and the founder approves above that.",
+    "evidence": [
+     {
+      "finding_id": "F9",
+      "turn_id": "CALL-006#T150",
+      "call_id": "CALL-006",
+      "company": "Fable Media",
+      "speaker": "Imogen Price",
+      "side": "customer",
+      "role": "COO",
+      "ts": "15:12",
+      "quote": "Well. Let's see.",
+      "context": "Overall the call ended without a firm commitment: Imogen said she is interested but may choose Zapier plus process discipline, and the customer's reaction was noncommittal. \u2014 Outcome read from the closing turns; the buyer was open but cost- and complexity-constrained, with several open items for Alastair.",
+      "stated_or_inferred": "inferred"
+     },
+     {
+      "finding_id": "F6",
+      "turn_id": "CALL-006#T074",
+      "call_id": "CALL-006",
+      "company": "Fable Media",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "07:57",
+      "quote": "So our Growth package is eighteen hundred a month, up to thirty users, on an annual agreement.",
+      "context": "Alastair quoted the Growth package at \u00a31,800/month for up to 30 users on an annual agreement; the customer found it above budget and said the 20,000 approval limit made it hard. \u2014 Pricing objection; Ben computed roughly \u00a321.5k/year; Imogen said she can sign up to \u00a320k and founder approves above that.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Fable Media: Alastair left several open items and showed uncertainty. He committed to send the DPA confirming no training on customer data, and to deliver a tailored recorded demo (Loom) by end of week, plus a customer reference and the written model-training assurance. He had to check on SSO on all plans after saying 'all plans' and being questioned, on monthly billing with his manager, and on the date-slip alert with an SE (while calling it 'definitely doable'). He also could not verify the reference customer ('renewed, I think').",
+    "evidence": [
+     {
+      "finding_id": "F2",
+      "turn_id": "CALL-006#T072",
+      "call_id": "CALL-006",
+      "company": "Fable Media",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "07:48",
+      "quote": "Course. I'll send the DPA over.",
+      "context": "Alastair committed to sending the Data Processing Agreement in writing confirming OrbitFlow does not train models on customer data. \u2014 Ben Foster asked for written proof of no-training; Alastair agreed to send the DPA.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F5",
+      "turn_id": "CALL-006#T140",
+      "call_id": "CALL-006",
+      "company": "Fable Media",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "14:13",
+      "quote": "Yep, all of it. I'll get it over.",
+      "context": "Alastair committed to producing a recorded demo (Loom) tailored to Fable's use case by end of the week, plus a customer reference and the written model-training assurance. \u2014 Imogen said she cannot run a sandbox and needs a shareable recorded demo for the founder and ops manager.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F3",
+      "turn_id": "CALL-006#T068",
+      "call_id": "CALL-006",
+      "company": "Fable Media",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "07:35",
+      "quote": "Yeah, all plans.",
+      "context": "Alastair said SSO is included on all plans, which Ben questioned; Alastair then said he was only fairly sure and would confirm. \u2014 Ben noted competitors gate SSO to enterprise; Alastair hedged, creating an open item.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F4",
+      "turn_id": "CALL-006#T142",
+      "call_id": "CALL-006",
+      "company": "Fable Media",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "14:27",
+      "quote": "I'll check with my manager and come back.",
+      "context": "Alastair said monthly billing was 'usually fine' but had to check with his manager; he committed to come back on it. \u2014 Imogen asked for a ten-user or monthly option; Alastair could not confirm and Imogen asked for a firm answer.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F8",
+      "turn_id": "CALL-006#T054",
+      "call_id": "CALL-006",
+      "company": "Fable Media",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "06:00",
+      "quote": "Possibly. I'd want to check with an SE, honestly. But it's definitely doable.",
+      "context": "Alastair was asked about the date-slip alert and answered that it may need two workflows and an SE check, but claimed it was 'definitely doable'; he deflected the no-code question as architecture rather than code. \u2014 Ben probed whether alerts fire without record changes; Alastair was unsure.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F7",
+      "turn_id": "CALL-006#T105",
+      "call_id": "CALL-006",
+      "company": "Fable Media",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "10:57",
+      "quote": "I'd have to check.",
+      "context": "Alastair could not give a verified reference; he said the customer 'renewed, I think' and admitted he had moved off that account and would have to check. \u2014 Customer pressed on whether the story example actually fixed the onboarding problem; Alastair's anecdote was unverified.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Oakhill Property (CALL-015): the churn was final (notice served, leaving 11 November) and no save was achieved, though the call ended cordially with Alastair wishing the customer well (outcome inferred). Alastair offered to revisit pricing, but Hazel Wren (Operations Director) refused, saying an eight thousand price now would mean it could have been offered two years ago and she would be 'quite cross'.",
+    "evidence": [
+     {
+      "finding_id": "F16",
+      "turn_id": "CALL-015#T136",
+      "call_id": "CALL-015",
+      "company": "Oakhill Property",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "13:14",
+      "quote": "None at all. Good luck with the compliance one.",
+      "context": "Call outcome: the churn was final (notice served, leaving 11 November) and the call ended cordially with Alastair wishing the customer well; no save achieved. \u2014 Overall outcome of the call; Alastair's closing remark.",
+      "stated_or_inferred": "inferred"
+     },
+     {
+      "finding_id": "F11",
+      "turn_id": "CALL-015#T036",
+      "call_id": "CALL-015",
+      "company": "Oakhill Property",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "03:25",
+      "quote": "Is there \u2014 I mean, is there a version where we look at the pricing? Because I could go and \u2014",
+      "context": "Alastair offered to revisit pricing to save the account; the customer refused, saying a lower price now would imply overcharging earlier. \u2014 Save attempt by Alastair during a churn post-mortem; customer explicitly declined.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F12",
+      "turn_id": "CALL-015#T039",
+      "call_id": "CALL-015",
+      "company": "Oakhill Property",
+      "speaker": "Hazel Wren",
+      "side": "customer",
+      "role": "Operations Director",
+      "ts": "03:44",
+      "quote": "If you can do it for eight thousand now, that tells me you could have done it for eight thousand two years ago, and then I'd be quite cross.",
+      "context": "Customer rejected Alastair's pricing offer, saying if OrbitFlow could do eight thousand now it could have done so two years ago. \u2014 Customer objection to a late discount offer from Alastair.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Oakhill: Alastair acknowledged he should have pushed harder on whether the customer had capacity for the roadmap discussed at sale. He recalled the customer being keen on the compliance workflow, and she confirmed she was enthusiastic but it never reached her priority list. He also confirmed he told her Growth was the entry point and no smaller plan existed.",
+    "evidence": [
+     {
+      "finding_id": "F13",
+      "turn_id": "CALL-015#T098",
+      "call_id": "CALL-015",
+      "company": "Oakhill Property",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "09:31",
+      "quote": "I probably should have pushed harder on whether you had the capacity for the roadmap we talked about.",
+      "context": "Alastair acknowledged the roadmap discussed at sale was not matched to the customer's capacity and that he should have pushed harder on it. \u2014 Self-criticism by Alastair about the original sale.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F15",
+      "turn_id": "CALL-015#T051",
+      "call_id": "CALL-015",
+      "company": "Oakhill Property",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "05:03",
+      "quote": "I remember that conversation and you were quite keen on the compliance one.",
+      "context": "Alastair recalled the sales discussion of the roadmap and said the customer was keen on the compliance workflow; the customer confirmed she was enthusiastic but the compliance item never reached her priority list. \u2014 Account of the original sales conversation, with customer agreeing she was also enthusiastic.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F14",
+      "turn_id": "CALL-015#T067",
+      "call_id": "CALL-015",
+      "company": "Oakhill Property",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "06:45",
+      "quote": "I did say that.",
+      "context": "Alastair confirmed he told the customer at sale that the entry point was Growth and no smaller plan existed. \u2014 Customer said Alastair told her at the time; Alastair confirmed.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Trafford Dental Group (CALL-019, cold call): the call went poorly and ended with no sale. Yvonne Deeks (Practice Operations Manager) said OrbitFlow was 'not it', agreed only to receive information and said she would not read it. Her tone appears candid rather than hostile, and her real issue (nurse recruitment, not process) was not addressed (inferred).",
+    "evidence": [
+     {
+      "finding_id": "F21",
+      "turn_id": "CALL-019#T065",
+      "call_id": "CALL-019",
+      "company": "Trafford Dental Group",
+      "speaker": "Yvonne Deeks",
+      "side": "customer",
+      "role": "Practice Operations Manager",
+      "ts": "05:53",
+      "quote": "You're not it.",
+      "context": "The call ended with no sale: the prospect said OrbitFlow was not the fit and Alastair accepted it. Prospect agreed only to receive information, saying they would not read it. \u2014 Outcome of the call; the prospect's stated reason was price and lack of a relevant problem fit.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F22",
+      "turn_id": "CALL-019#T041",
+      "call_id": "CALL-019",
+      "company": "Trafford Dental Group",
+      "speaker": "Yvonne Deeks",
+      "side": "customer",
+      "role": "Practice Operations Manager",
+      "ts": "03:38",
+      "quote": "It's not a process problem, it's that nobody wants to be a dental nurse for what we can afford to pay.",
+      "context": "The call went poorly for Alastair; the outcome was a clear no and the prospect's tone was candid rather than hostile, and the prospect's real issue (nurse recruitment, not process) was not addressed by his pitch. \u2014 Inferred from the sequence: generic pitch, failed discovery, price objection, rejection.",
+      "stated_or_inferred": "inferred"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Trafford: Alastair gave a generic pitch and Yvonne said he did not know anything about them. He was unsure whether OrbitFlow integrates with NHS e-Referral and would have to check whether it has an API. He quoted an entry package from \u00a31,800/month for up to thirty users, which she said was far beyond budget.",
+    "evidence": [
+     {
+      "finding_id": "F18",
+      "turn_id": "CALL-019#T015",
+      "call_id": "CALL-019",
+      "company": "Trafford Dental Group",
+      "speaker": "Yvonne Deeks",
+      "side": "customer",
+      "role": "Practice Operations Manager",
+      "ts": "01:18",
+      "quote": "You don't actually know anything about us, do you.",
+      "context": "Alastair pitched OrbitFlow generically and made claims about the prospect without knowing its business; the prospect pushed back that he had not asked questions or known anything about them. \u2014 Prospect objected to the generic pitch and lack of discovery.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F19",
+      "turn_id": "CALL-019#T022",
+      "call_id": "CALL-019",
+      "company": "Trafford Dental Group",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "01:56",
+      "quote": "I'd have to check.",
+      "context": "Alastair was unsure whether OrbitFlow integrates with NHS e-Referral, saying he would have to check whether the system has an API. \u2014 Prospect raised NHS e-Referral; Alastair claimed integration with anything with an API but could not confirm.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F20",
+      "turn_id": "CALL-019#T026",
+      "call_id": "CALL-019",
+      "company": "Trafford Dental Group",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "02:12",
+      "quote": "our entry package starts at eighteen hundred a month.",
+      "context": "Alastair quoted an entry package starting at \u00a31,800 a month for up to thirty users; the prospect said that was far beyond its budget and it would not pay that. \u2014 Price objection was the decisive issue for the prospect.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   }
+  ],
+  "conflicts": [],
+  "not_covered": [
+   "Only three calls were read; whether Alastair McCrae took part in any other calls is not covered by the evidence."
+  ],
+  "assumptions": [
+   "No company is named in the question, so companies is empty.",
+   "Alastair McCrae is treated as a person name to find in transcripts, not a catalogue company.",
+   "The catalogue does not list call participants, so participation must be determined from each transcript.",
+   "The question asks about all calls, so call_types is left empty.",
+   "Alastair McCrae is treated as a person to find in transcripts, not a catalogue company.",
+   "All calls are in scope, regardless of call type."
+  ],
+  "confidence": "medium",
+  "calls_considered": [
+   "CALL-006",
+   "CALL-015",
+   "CALL-019"
+  ],
+  "calls_cited": [
+   "CALL-006",
+   "CALL-015",
+   "CALL-019"
+  ],
+  "removed_claims": [],
+  "covered": true,
+  "trace_id": null
+ }
+}

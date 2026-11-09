@@ -30,17 +30,7 @@
   ]
  },
  "candidates": {
-  "CALL-010": [
-   "call_type:Prospect",
-   "facts",
-   "search"
-  ],
-  "CALL-007": [
-   "call_type:Prospect",
-   "facts",
-   "search"
-  ],
-  "CALL-004": [
+  "CALL-008": [
    "call_type:Prospect",
    "facts",
    "search"
@@ -55,26 +45,37 @@
    "facts",
    "search"
   ],
-  "CALL-009": [
+  "CALL-002": [
+   "call_type:Prospect",
+   "facts",
+   "search"
+  ],
+  "CALL-007": [
+   "call_type:Prospect",
+   "facts",
+   "search"
+  ],
+  "CALL-010": [
    "call_type:Prospect",
    "facts",
    "search"
   ],
   "CALL-003": [
    "call_type:Prospect",
-   "facts"
-  ],
-  "CALL-008": [
-   "call_type:Prospect",
    "facts",
    "search"
   ],
-  "CALL-002": [
+  "CALL-009": [
    "call_type:Prospect",
    "facts",
    "search"
   ],
   "CALL-005": [
+   "call_type:Prospect",
+   "facts",
+   "search"
+  ],
+  "CALL-004": [
    "call_type:Prospect",
    "facts",
    "search"
@@ -1619,6 +1620,7 @@
     "T115",
     "T117"
    ],
+   "speaker": "Hannah Cole",
    "reason": "quote not found in cited turns"
   }
  ],
@@ -1799,8 +1801,8 @@
   "cache_read_tokens": 0,
   "cache_write_tokens": 124930,
   "output_tokens": 26068,
-  "uncached_calls": 13,
-  "latency_s": 64.19
+  "uncached_calls": 0,
+  "latency_s": 0.43
  },
  "answer": {
   "question": "What product capabilities appear to be most important to prospects?",

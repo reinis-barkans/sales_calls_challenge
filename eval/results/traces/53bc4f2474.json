@@ -24,35 +24,7 @@
   ]
  },
  "candidates": {
-  "CALL-004": [
-   "call_type:Prospect",
-   "facts",
-   "search"
-  ],
-  "CALL-009": [
-   "call_type:Prospect",
-   "facts",
-   "search",
-   "vector"
-  ],
-  "CALL-010": [
-   "call_type:Prospect",
-   "facts",
-   "search"
-  ],
-  "CALL-007": [
-   "call_type:Prospect",
-   "facts",
-   "search",
-   "vector"
-  ],
   "CALL-008": [
-   "call_type:Prospect",
-   "facts",
-   "search",
-   "vector"
-  ],
-  "CALL-003": [
    "call_type:Prospect",
    "facts",
    "search",
@@ -70,13 +42,41 @@
    "search",
    "vector"
   ],
+  "CALL-002": [
+   "call_type:Prospect",
+   "facts",
+   "search"
+  ],
+  "CALL-007": [
+   "call_type:Prospect",
+   "facts",
+   "search",
+   "vector"
+  ],
+  "CALL-010": [
+   "call_type:Prospect",
+   "facts",
+   "search"
+  ],
+  "CALL-003": [
+   "call_type:Prospect",
+   "facts",
+   "search",
+   "vector"
+  ],
+  "CALL-009": [
+   "call_type:Prospect",
+   "facts",
+   "search",
+   "vector"
+  ],
   "CALL-005": [
    "call_type:Prospect",
    "facts",
    "search",
    "vector"
   ],
-  "CALL-002": [
+  "CALL-004": [
    "call_type:Prospect",
    "facts",
    "search"
@@ -927,7 +927,7 @@
   "cache_write_tokens": 0,
   "output_tokens": 15664,
   "uncached_calls": 0,
-  "latency_s": 0.15
+  "latency_s": 0.18
  },
  "answer": {
   "question": "What did prospects say about data residency?",
