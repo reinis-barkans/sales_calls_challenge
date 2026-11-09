@@ -73,16 +73,19 @@ QUERY   1 resolve (Haiku): companies, call types, search terms, what each reader
 - **dev** (`questions.yaml`, 21 Qs): the instruction examples plus traps (Lumen's outage, Alastair vs Leo on SSO, Verity's stated vs real reason for leaving, Trafford's 14 → 11 practices, "Acme Corp", should-decline questions). I tuned on this set.
 - **held-out** (`holdout.yaml`, 10 Qs): written after the system was frozen and **never tuned on**. This is the honest number.
 
-| Metric | Why |
-|---|---|
-| Selection recall (expected calls were read) | Measures retrieval separately from answer quality |
-| Cited recall / list precision / false matches | List questions: all of them, only them, no keyword traps |
-| Citation validity (before removal) | How often each system misquotes (baselines go through the same checker) |
-| Abstention accuracy, conflict recall | Requirement 3: decline when the data has no answer, and surface contradictions |
-| Fact score (Sonnet judge per gold fact) | Answer quality; grounding is measured in code, not by the judge |
-| Tokens / latency | Cost and scaling trade-off |
+Each gold question records the calls that hold the answer and the key facts a good answer must contain. Where relevant, it also records a trap call that must not be cited, whether the right response is to decline, and whether the calls contradict each other.
 
-The false-match metric counts any citation of a trap call, so an answer that cites Lumen in order to exclude it, as the pipeline does on Q03 ("Lumen's only Salesforce mention… concerned an outage, not an integration"), is still counted as a false match.
+| Metric | How it's computed | Why it matters |
+|---|---|---|
+| **Fact score** | A Sonnet judge grades each key fact in the answer: present = 1, partial = ½, absent or contradicted = 0. Averaged per question, then across questions | Answer quality. The judge sees only the answer and the gold facts; grounding is checked in code |
+| **Selection recall** | Share of the expected calls that reached the answering model | Retrieval on its own: an answer can't be right if the call was never read |
+| **Cited recall** | Share of the expected calls the final answer cites | Whether the answer used what it was given |
+| **List precision** | Share of cited calls that are expected (list questions only) | Catches answers that include the wrong calls |
+| **False matches** | Answers that cite a known trap call (e.g. Lumen's Salesforce *outage*) | Keyword traps. Any citation counts, so an answer that cites Lumen in order to exclude it, as the pipeline does on Q03, is still counted |
+| **Citation validity** | Share of quotes that match the transcript verbatim, before the verifier removes anything | How often a system misquotes. Every system goes through the same checker |
+| **Abstention accuracy** | Share of questions where the system declined exactly when it should | Requirement 3: no made-up answer when the data has none, and no needless refusals |
+| **Conflict recall** | Share of conflict questions where the answer flags the contradiction | Requirement 3: surface disagreement between calls |
+| **Tokens / latency** | Input tokens per question; latency only from questions with no cache hits | Cost and scaling |
 
 Compared against `naive_rag` (top 8 BM25 chunks), `full_context` (all 20 transcripts in one cached prompt) and `facts_only`, an ablation: the same pipeline, but it answers from the facts stored at ingest instead of reading the picked calls.
 
