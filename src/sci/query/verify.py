@@ -6,6 +6,10 @@
    claim? Catches 'real quote, wrong meaning'. Unsupported claims are removed.
 3. Rules: support per claim and overall confidence come from evidence
    properties, not from the model's self-assessment.
+4. Code: the summary is grounded too. Every summary sentence must carry [C#]
+   markers of claims that survived steps 1-2; sentences with no marker, or with a
+   marker of a removed claim, are deleted (not just re-labelled), so removed or
+   uncited content never reaches the reader.
 """
 from __future__ import annotations
 
@@ -75,6 +79,31 @@ def support_level(ev: list[VerifiedEvidence], verdict: str) -> str:
     return "strong"
 
 
+NOT_ANSWERED = "The findings don't answer this question reliably; see NOT COVERED."
+
+_MARKER = re.compile(r"\[C(\d+)\]")
+# A marker placed after the full stop ("...requirement. [C1]") belongs to the sentence before it.
+_TRAILING_MARKERS = re.compile(r"([.!?])((?:\s*\[C\d+\])+)")
+_SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
+
+
+def ground_summary(text: str, renumber_map: dict[int, int]) -> tuple[str, list[str]]:
+    """Keep only summary sentences whose [C#] markers all point at surviving claims.
+
+    Returns (summary with markers renumbered to [1], [2]..., dropped sentences).
+    A sentence with no marker is unverified prose; a sentence citing a removed
+    claim still contains that claim's content. Both are dropped."""
+    text = _TRAILING_MARKERS.sub(lambda m: f"{m.group(2)}{m.group(1)}", text.strip())
+    kept, dropped = [], []
+    for sent in (s for s in _SENTENCE_END.split(text) if s.strip()):
+        nums = [int(x) for x in _MARKER.findall(sent)]
+        if nums and all(n in renumber_map for n in nums):
+            kept.append(_MARKER.sub(lambda m: f"[{renumber_map[int(m.group(1))]}]", sent))
+        else:
+            dropped.append(sent)
+    return " ".join(kept), dropped
+
+
 def verify(draft: DraftAnswer, findings: list[VerifiedEvidence], run_entailment: bool = True):
     fmap = {f.finding_id: f for f in findings}
     kept, removed = check_citations(draft, fmap)
@@ -84,21 +113,30 @@ def verify(draft: DraftAnswer, findings: list[VerifiedEvidence], run_entailment:
     renumber_map: dict[int, int] = {}
     for n, c, ev in kept:
         v = verdicts.get(n)
+        if run_entailment and v is None:
+            # Fail closed: a claim the checker skipped has not been checked.
+            removed.append({"claim": c.text, "cited": c.finding_ids, "reason": "entailment: no verdict returned"})
+            continue
         verdict = v.verdict if v else "supported"
         if verdict == "unsupported":
             removed.append({"claim": c.text, "cited": c.finding_ids, "reason": f"entailment: {v.reason}"})
             continue
         claims.append(VerifiedClaim(text=c.text, evidence=ev, support=support_level(ev, verdict)))
         renumber_map[n] = len(claims)
+    # Claim removal rate only; dropped summary sentences are logged below but don't count here.
+    removal_rate = len(removed) / len(draft.claims) if draft.claims else 0.0
 
-    # Re-number [C#] markers in the summary; flag markers of removed claims.
-    def renumber(m: re.Match) -> str:
-        new = renumber_map.get(int(m.group(1)))
-        return f"[{new}]" if new else "[claim removed: unsupported]"
-    summary = re.sub(r"\[C(\d+)\]", renumber, draft.answer)
+    summary, dropped = ground_summary(draft.answer, renumber_map)
+    for s in dropped:
+        removed.append({"claim": s, "cited": _MARKER.findall(s),
+                        "reason": "summary sentence without a surviving claim citation"})
+    if claims and not summary:
+        # Every sentence was dropped: fall back to the verified claims themselves.
+        summary = " ".join(f"{c.text.rstrip('.')} [{i}]." for i, c in enumerate(claims, 1))
+    if not claims:
+        summary = NOT_ANSWERED
 
     valid_conflicts = [c for c in draft.conflicts if sum(f in fmap for f in c.finding_ids) >= 2]
-    removal_rate = len(removed) / len(draft.claims) if draft.claims else 0.0
     confidence = confidence_level(claims, valid_conflicts, removal_rate)
     return summary, claims, valid_conflicts, removed, confidence
 

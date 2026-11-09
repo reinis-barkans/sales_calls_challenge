@@ -49,7 +49,7 @@ def ask(question: str) -> Answer:
         draft = combine(question, findings, picked, assumptions)
         summary, claims, conflicts, removed, confidence = verify(draft, findings, True)
         covered = bool(claims)
-        ans = Answer(question=question, answer=summary if covered else draft.answer, claims=claims,
+        ans = Answer(question=question, answer=summary, claims=claims,
                      conflicts=conflicts, not_covered=draft.not_covered,
                      assumptions=list(dict.fromkeys(assumptions + draft.assumptions)), confidence=confidence,
                      calls_considered=picked, calls_cited=sorted({e.call_id for c in claims for e in c.evidence}),
