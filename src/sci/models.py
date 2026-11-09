@@ -20,7 +20,7 @@ class Call(BaseModel):
     company: str
     industry: str
     company_size: str
-    call_type: str          # Prospect | Renewal | Churn post-mortem | Cold call
+    call_type: str          # manifest value: Prospect | Existing customer (see `category` for the sub-type)
     stage: str
     date: str
     duration_minutes: int
@@ -149,7 +149,7 @@ class Conflict(BaseModel):
 
 
 class DraftAnswer(BaseModel):
-    answer: str = Field(description="2-6 sentence summary. Reference claims as [C1], [C2]...; no facts that are not in a claim")
+    answer: str = Field(description="2-6 sentence summary. Every sentence ends with the [C#] markers of the claims it rests on; no facts that are not in a claim")
     claims: list[Claim]
     conflicts: list[Conflict]
     not_covered: list[str] = Field(description="Parts of the question the evidence does not answer")

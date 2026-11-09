@@ -73,7 +73,7 @@ def ask(question: str, json_out: bool = typer.Option(False, "--json"),
 
 
 @app.command(name="eval")
-def eval_cmd(systems: str = typer.Option("pipeline,naive_rag,full_context"),
+def eval_cmd(systems: str = typer.Option("pipeline,naive_rag,full_context,facts_only"),
              only: str = typer.Option("", help="comma-separated question IDs")):
     """Run the evaluation suite and write eval/results/results.md."""
     import sys

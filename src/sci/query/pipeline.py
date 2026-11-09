@@ -63,9 +63,7 @@ def ask(question: str, run_entailment: bool = True, write_trace: bool = True) ->
         trace["draft"] = draft.model_dump()
         summary, claims, conflicts, removed, confidence = verify(draft, findings, run_entailment)
         cited = sorted({e.call_id for c in claims for e in c.evidence})
-        covered = bool(claims)
-        if not covered:
-            summary = draft.answer if not draft.claims else "No claim survived verification; the transcripts don't reliably answer this."
+        covered = bool(claims)   # with no surviving claims, verify() returns a fixed not-answered message
         ans = Answer(question=question, answer=summary, claims=claims, conflicts=conflicts,
                      not_covered=draft.not_covered, assumptions=list(dict.fromkeys(assumptions + draft.assumptions)),
                      confidence=confidence, calls_considered=picked, calls_cited=cited,

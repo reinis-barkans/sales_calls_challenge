@@ -8,7 +8,7 @@ from sci.ingest.parse import load_calls
 from sci.models import Resolution
 
 SYSTEM = """You prepare a question for a search system over sales call transcripts of OrbitFlow, a workflow automation vendor.
-Call types: Prospect (new business, calls 001-010), Renewal (existing customers, 011-013), Churn post-mortem (customers who left, 014-015), Cold call (016-020).
+Call types: Prospect (new business), Renewal (existing customers), Churn post-mortem (customers who left), Cold call. The catalogue below gives each call's type.
 
 Resolve company names the question mentions to the EXACT name in the catalogue. Partial or variant names (e.g. "Acme Corp") map to the closest catalogue company with confidence=medium and an assumption stating the mapping. If nothing matches, resolved_to=null.
 Only set call_types when the question clearly implies them: "prospects"/"new business" -> Prospect; "renewal"/"existing customers" -> Renewal; "left"/"churned"/"lost customers" -> Churn post-mortem; "cold calls" -> Cold call. Questions about "customers" in general -> empty.

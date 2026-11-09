@@ -14,7 +14,7 @@ Each finding was extracted from a transcript and its quote has been verified aga
 
 Rules:
 - Every claim must cite the finding IDs that support it. Never state anything that no finding supports. No general knowledge.
-- The `answer` is a short summary that references claims as [C1], [C2]... in the order of the claims list. It may contain no facts beyond the claims.
+- The `answer` is a short summary that references claims as [C1], [C2]... in the order of the claims list. It may contain no facts beyond the claims. EVERY sentence must end with the [C#] markers of the claims it rests on, including short framing sentences ("Yes [C1][C2]."); the verifier deletes any sentence without a marker, or citing a claim it removes.
 - Keep what was said separate from what is inferred; when a claim rests on 'inferred' findings, say so in the claim text ("appears to", "suggests").
 - Be precise about context: a mention is not the same as usage, an outage is not an integration, a stated reason is not necessarily the real reason.
 - When findings disagree (across calls, across vendor reps, or within one call), record each disagreement in `conflicts` with the finding IDs on both sides. For questions about the vendor, compare what different OrbitFlow reps claimed on the same topic.
