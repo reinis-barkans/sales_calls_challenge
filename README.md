@@ -19,7 +19,8 @@ Requires [uv](https://docs.astral.sh/uv/) (installs Python 3.12) and an Anthropi
 uv sync
 cp .env.example .env                      # set ANTHROPIC_API_KEY
 uv run sci ask "Why did customers who left decide to leave?"   # add --json or --show-removed
-uv run pytest -q                          # offline tests: parser, quote verifier, call picking
+uv run pytest -q                          # no API key needed: parser, quote verifier, answer verifier, call picking
+                                          # (call-picking tests download the bge-small model on first run)
 ```
 
 `artifacts/` (turns, extracted facts, embeddings) is committed, so you don't need to run ingest. The LLM response cache is gitignored, so a fresh clone makes live calls (cents per question). The first query downloads the bge-small embedding model (~130 MB). To rebuild the facts: `uv run sci ingest`.
@@ -44,7 +45,8 @@ QUERY   1 resolve (Haiku): companies, call types, search terms, what each reader
         3 read each picked call IN FULL, in parallel (Haiku) ─► findings; quote + speaker checked in code
         4 nothing verified? ─► "not covered" response from code (no answering model)
         5 combine (Sonnet): sees only verified findings; every claim cites finding IDs
-        6 verify: drop uncited claims, entailment check per claim, confidence by rules ─► answer + trace
+        6 verify: drop uncited claims, entailment check per claim (fails closed), drop summary
+          sentences without a surviving citation, confidence by rules ─► answer + trace
 ```
 
 ## Key decisions
@@ -54,7 +56,7 @@ QUERY   1 resolve (Haiku): companies, call types, search terms, what each reader
 | **Read picked calls in full, one per prompt** | Chunks lose context and passing mentions (naive RAG); one prompt with every transcript costs ~170K tokens per question and doesn't scale. Both run as baselines. The `facts_only` ablation shows full reads mainly pay off on "why" and nuance questions (see Results). |
 | **Calls are picked in code** | Whether the right calls get read limits everything else, so it's deterministic, unit-tested and records why each call was picked. |
 | **Quotes and speakers verified in code** | Must match the cited turn (±1 turn, one speaker, the reader's stated speaker). Invented or misattributed quotes are rejected. |
-| **Claims cite finding IDs; "not covered" decided by code** | The answering model can't add evidence, and has nothing to make up from. |
+| **Claims cite finding IDs; "not covered" decided by code** | The answering model can't add evidence, and has nothing to make up from. The summary is grounded too: a summary sentence without a citation, or citing a removed claim, is deleted, so the headline can't say more than the verified claims. |
 | **Entailment check + rule-based confidence** | A real quote can still be misread (Lumen's Salesforce *outage* ≠ integration). Confidence comes from stated vs inferred evidence, conflicts and removals, not from the model's own rating. |
 | **Facts are an index, not evidence** | Extraction is lossy, so facts help pick calls (incl. tone via `friction` tags); answers cite full reads. |
 | **Haiku for reading, Sonnet for combining, effort low; prompt caching** | Most calls are reads, and the verifier limits their errors. Cached transcripts cut repeat reads to cached-token prices. |
@@ -93,6 +95,9 @@ Compared against `naive_rag` (top 8 BM25 chunks), `full_context` (all 20 transcr
 | Conflict recall, dev / held-out | 100 / 100% | 50 / 100% | 100 / 100% | 100 / 100% |
 | Citation validity (before removal) | 99% | 99% | 100% | 100%² |
 | Avg input tokens / question, dev | 95K | 4K | 168K | 52K |
+| Latency / question, held-out (live run) | 23 s | 6 s | 10 s | 14 s |
+
+Latency is from the held-out run, which made live calls. The dev re-runs mostly hit the LLM disk cache, so their timings aren't meaningful; `run_eval.py` now averages latency only over questions with no cache hits.
 
 ¹ For "Did any prospect mention Microsoft Copilot?" it gave a correct, evidence-backed *no* (listing the Microsoft products that were mentioned) instead of declining; the metric counts that as a failure. ² By construction: stored facts were verified at ingest.
 

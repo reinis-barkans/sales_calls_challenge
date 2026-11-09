@@ -10,7 +10,8 @@ Metrics (deterministic unless noted):
   abstention        declined iff expect_covered is false
   conflict_flagged  answer surfaces a conflict when expect_conflict
   fact_score        LLM judge: present=1, partial=0.5 averaged over key facts
-  tokens / latency  per question
+  tokens / latency  per question; latency is averaged only over questions with no
+                    LLM disk-cache hits, so re-runs can't pass off cached answers as live timings
 """
 from __future__ import annotations
 
@@ -53,10 +54,11 @@ def _citation_stats(ans, name: str) -> tuple[int, int]:
     if name != "pipeline":
         s = ans.__dict__.get("_citation_stats", {"total": 0, "valid": 0})
         return s["total"], s["valid"]
-    # Pipeline: findings produced by the readers vs those that verified.
+    # Pipeline: findings produced by the readers vs those that verified. Every rejection
+    # counts, including wrong-speaker / ambiguous-attribution ones (a misattributed quote is invalid).
     tr = ans.__dict__.get("_trace", {})
     valid = len(tr.get("findings", []))
-    rejected = sum(1 for r in tr.get("rejected_findings", []) if r.get("reason", "").startswith("quote"))
+    rejected = len(tr.get("rejected_findings", []))
     return valid + rejected, valid
 
 
@@ -75,7 +77,8 @@ def score(q: dict, ans, name: str, usage: dict, latency: float) -> dict:
         "conflict_flagged": (len(ans.conflicts) > 0) if q.get("expect_conflict") else None,
         "confidence": ans.confidence, "covered": ans.covered,
         "input_tokens": usage["input_tokens"], "output_tokens": usage["output_tokens"],
-        "llm_calls": usage["llm_calls"], "latency_s": round(latency, 1),
+        "llm_calls": usage["llm_calls"], "cache_hits": usage["llm_calls"] - usage["uncached_calls"],
+        "latency_s": round(latency, 1),
         "removed_claims": len(ans.removed_claims),
     }
     grades = judge(q["question"], q.get("key_facts") or [], ans) if q.get("expect_covered", True) else []
@@ -128,7 +131,9 @@ def summarise(rows: list[dict]) -> dict:
         "conflict_recall": _mean([1.0 if r["conflict_flagged"] else 0.0 for r in ok if r["conflict_flagged"] is not None]),
         "fact_score": _mean([r["fact_score"] for r in ok]),
         "avg_input_tokens": _mean([r["input_tokens"] for r in ok]),
-        "avg_latency_s": _mean([r["latency_s"] for r in ok]),
+        # Only fully live questions: a single disk-cache hit makes a question's time meaningless.
+        "avg_latency_s": _mean([r["latency_s"] for r in ok if r.get("cache_hits") == 0 and r["llm_calls"]]),
+        "latency_n": sum(1 for r in ok if r.get("cache_hits") == 0 and r["llm_calls"]),
     }
 
 
@@ -140,7 +145,8 @@ def write_report(all_rows: dict[str, list[dict]], gold: str = "dev"):
                ("Cited-call recall", "cited_recall", True), ("List precision", "list_precision", True),
                ("False matches (must_not_cite)", "false_matches", False), ("Citation validity", "citation_validity", True),
                ("Abstention accuracy", "abstention_acc", True), ("Conflict recall", "conflict_recall", True),
-               ("Avg input tokens / question", "avg_input_tokens", False), ("Avg latency (s, uncached)", "avg_latency_s", False),
+               ("Avg input tokens / question", "avg_input_tokens", False), ("Avg latency (s, live questions only)", "avg_latency_s", False),
+               ("Questions timed live (no cache hits)", "latency_n", False),
                ("Errors", "errors", False)]
     src = SETS[gold]
     out = [f"# Evaluation results ({gold} set)", "", f"Gold set: {len(next(iter(all_rows.values())))} questions (eval/{src}).", "",
