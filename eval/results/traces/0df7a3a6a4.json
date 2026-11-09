@@ -7,9 +7,9 @@
   "search_terms": [
    "Gong"
   ],
-  "read_instruction": "Extract every mention of Gong (the sales call recording and conversation intelligence tool), including who mentioned it, in what context (e.g. as a competitor, existing tool, integration, or comparison), and any related statements. If Gong is not mentioned, state that explicitly.",
+  "read_instruction": "Extract any mention of Gong (the sales call recording or conversation intelligence tool), including who mentioned it, in what context, and whether it was used, evaluated, or compared with OrbitFlow. If Gong is not mentioned, say so.",
   "assumptions": [
-   "Gong refers to the sales conversation intelligence product, not a generic word or a different company with a similar name."
+   "Gong refers to the conversation intelligence product, not a different entity with the same name."
   ]
  },
  "candidates": {},
@@ -20,12 +20,12 @@
  "rejected_findings": [],
  "usage": {
   "llm_calls": 1,
-  "input_tokens": 2379,
-  "cache_read_tokens": 2359,
+  "input_tokens": 2371,
+  "cache_read_tokens": 2351,
   "cache_write_tokens": 0,
-  "output_tokens": 174,
+  "output_tokens": 158,
   "uncached_calls": 0,
-  "latency_s": 0.03
+  "latency_s": 0.04
  },
  "answer": {
   "question": "Did anyone mention Gong?",
@@ -37,7 +37,7 @@
    "Closest related material: CALL-004 (DeltaWorks Manufacturing) turns T163-T170, CALL-004 (DeltaWorks Manufacturing) turns T133-T140, CALL-004 (DeltaWorks Manufacturing) turns T157-T164"
   ],
   "assumptions": [
-   "Gong refers to the sales conversation intelligence product, not a generic word or a different company with a similar name."
+   "Gong refers to the conversation intelligence product, not a different entity with the same name."
   ],
   "confidence": "none",
   "calls_considered": [],

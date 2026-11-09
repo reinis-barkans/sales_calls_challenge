@@ -1,0 +1,23 @@
+uv run python eval/run_eval.py --set holdout
+Running pipeline on 10 questions...
+Running naive_rag on 10 questions...
+Running full_context on 10 questions...
+Running facts_only on 10 questions...
+# Evaluation results (holdout set)
+
+Gold set: 10 questions (eval/holdout.yaml).
+
+| Metric | pipeline | naive_rag | full_context | facts_only |
+|---|---|---|---|---|
+| Fact score (judge) | 89% | 78% | 86% | 89% |
+| Selection recall | 100% | 90% | 100% | 100% |
+| Cited-call recall | 100% | 90% | 100% | 100% |
+| List precision | 67% | 100% | 100% | 86% |
+| False matches (must_not_cite) | 0 | 0 | 0 | 0 |
+| Citation validity | 99% | 98% | 100% | 100% |
+| Abstention accuracy | 100% | 100% | 100% | 90% |
+| Conflict recall | 100% | 100% | 100% | 100% |
+| Avg input tokens / question | 43,964 | 4,021 | 167,841 | 27,659 |
+| Avg latency (s, live questions only) | 22 | – | – | – |
+| Questions timed live (no cache hits) | 10 | 0 | 0 | 0 |
+| Errors | 0 | 0 | 0 | 0 |

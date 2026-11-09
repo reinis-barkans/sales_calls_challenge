@@ -19,10 +19,9 @@
    "dental practices",
    "number of practices"
   ],
-  "read_instruction": "Extract every statement about how many dental practices, clinics, offices or locations Trafford Dental Group operates, including exact counts, approximate counts, and any growth or planned expansion.",
+  "read_instruction": "Extract every statement about how many dental practices, clinics, surgeries or locations Trafford Dental Group operates, including any hedges or approximate figures.",
   "assumptions": [
-   "The question refers to the cold call with Trafford Dental Group (CALL-019), the only matching company in the catalogue.",
-   "'Practices' is interpreted as dental practices/clinic locations."
+   "The question concerns the Trafford Dental Group cold call (CALL-019); 'practices' is treated as a synonym for clinics or locations."
   ]
  },
  "candidates": {
@@ -34,19 +33,6 @@
  "findings": [
   {
    "finding_id": "F1",
-   "turn_id": "CALL-019#T008",
-   "call_id": "CALL-019",
-   "company": "Trafford Dental Group",
-   "speaker": "Alastair McCrae",
-   "side": "vendor",
-   "role": "Account Executive",
-   "ts": "00:34",
-   "quote": "you've grown quite a bit, haven't you, you're what, fourteen practices now?",
-   "context": "Vendor stated Trafford Dental has fourteen practices, based on a website look-up rather than customer knowledge. \u2014 Alastair's initial guess, which the customer corrects.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F2",
    "turn_id": "CALL-019#T009",
    "call_id": "CALL-019",
    "company": "Trafford Dental Group",
@@ -55,24 +41,24 @@
    "role": "Practice Operations Manager",
    "ts": "00:44",
    "quote": "Eleven.",
-   "context": "Customer states Trafford Dental Group operates eleven practices, correcting the vendor's figure of fourteen. \u2014 Direct correction of the vendor's earlier claim.",
+   "context": "Trafford Dental Group has eleven practices. \u2014 Customer correction of the vendor's figure of fourteen; stated directly by the customer who works there.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F2",
+   "turn_id": "CALL-019#T008",
+   "call_id": "CALL-019",
+   "company": "Trafford Dental Group",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "00:34",
+   "quote": "I had a look at Trafford Dental and you've grown quite a bit, haven't you, you're what, fourteen practices now?",
+   "context": "Vendor initially claimed Trafford Dental has fourteen practices, based on outside research rather than the customer. \u2014 Vendor's wrong figure, later corrected by the customer; vendor said it came from looking at the company.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F3",
-   "turn_id": "CALL-019#T041",
-   "call_id": "CALL-019",
-   "company": "Trafford Dental Group",
-   "speaker": "Yvonne Deeks",
-   "side": "customer",
-   "role": "Practice Operations Manager",
-   "ts": "03:38",
-   "quote": "Nine. Across eleven practices.",
-   "context": "Customer confirms eleven practices again, and reiterates that the vendor's fourteen figure was wrong. \u2014 Repeated during the call when the vendor tried to build on the wrong count.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F4",
    "turn_id": "CALL-019#T033",
    "call_id": "CALL-019",
    "company": "Trafford Dental Group",
@@ -81,7 +67,20 @@
    "role": "Practice Operations Manager",
    "ts": "02:49",
    "quote": "You didn't know how many practices we have.",
-   "context": "Customer points out that the vendor did not know how many practices the group has. \u2014 Customer criticises the vendor for not knowing basic facts before pitching.",
+   "context": "Customer reiterates the group has eleven practices and criticises the vendor for not knowing how many practices they have. \u2014 Customer contradicts the vendor's fourteen figure in the course of complaining about the vendor's lack of research.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F4",
+   "turn_id": "CALL-019#T034",
+   "call_id": "CALL-019",
+   "company": "Trafford Dental Group",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "02:55",
+   "quote": "That's \u2014 yeah, fair.",
+   "context": "Vendor acknowledged the practice count was wrong. \u2014 Vendor concedes the point after the customer's challenge.",
    "stated_or_inferred": "stated"
   },
   {
@@ -94,65 +93,71 @@
    "role": "Practice Operations Manager",
    "ts": "04:55",
    "quote": "Not the number of practices off a website.",
-   "context": "Customer says the vendor's research was only a number taken from a website, and that the vendor needed something true about the group, not a practice count from a website. \u2014 Customer's feedback on what the vendor should have said.",
+   "context": "Customer says the vendor's practice count came from a website, not real knowledge of the group. \u2014 Customer's criticism that the figure was taken from public sources.",
    "stated_or_inferred": "stated"
   }
  ],
  "rejected_findings": [],
  "draft": {
-  "answer": "Trafford Dental Group has eleven practices, according to customer Yvonne Deeks, who stated it twice [C1]. The vendor's figure of fourteen was a website-based guess that she corrected [C2].",
+  "answer": "Trafford Dental Group has eleven practices, according to Yvonne Deeks, its Practice Operations Manager [C1]. OrbitFlow's Alastair McCrae had wrongly said fourteen, based on his own outside research, and he later conceded the figure was wrong [C2][C3].",
   "claims": [
    {
-    "text": "Yvonne Deeks (Practice Operations Manager, Trafford Dental Group) stated the group operates eleven practices, and confirmed 'eleven practices' again later in the call.",
+    "text": "Yvonne Deeks (Practice Operations Manager, Trafford Dental Group) stated the group has eleven practices, and repeated this later in the call when she criticised the vendor for not knowing the number.",
     "finding_ids": [
-     "F2",
+     "F1",
      "F3"
     ]
    },
    {
-    "text": "Alastair McCrae (OrbitFlow Account Executive) had guessed fourteen practices, based on a website look-up rather than customer knowledge; Yvonne corrected him, saying he did not know how many practices the group has and that the research was only a number off a website.",
+    "text": "Alastair McCrae (OrbitFlow Account Executive) initially said Trafford Dental had fourteen practices, saying he got this from looking at the company. Deeks said the figure came from a website rather than real knowledge of the group.",
     "finding_ids": [
-     "F1",
-     "F4",
+     "F2",
      "F5"
+    ]
+   },
+   {
+    "text": "After Deeks challenged him, McCrae acknowledged the practice count was wrong (\"That's \u2014 yeah, fair.\").",
+    "finding_ids": [
+     "F4"
     ]
    }
   ],
   "conflicts": [
    {
     "topic": "Number of practices",
-    "description": "Vendor Alastair McCrae guessed fourteen practices; customer Yvonne Deeks corrected this to eleven, and repeated the correction later in the call.",
+    "description": "McCrae said fourteen; Deeks corrected it to eleven. McCrae later conceded the count was wrong, which settles it in favour of eleven.",
     "finding_ids": [
-     "F1",
      "F2",
-     "F3"
+     "F1",
+     "F3",
+     "F4"
     ]
    }
   ],
   "not_covered": [],
   "assumptions": [
-   "The question refers to the cold call with Trafford Dental Group (CALL-019).",
-   "'Practices' means dental practices/clinic locations."
+   "The question concerns the Trafford Dental Group cold call (CALL-019).",
+   "'Practices' is treated as a synonym for clinics or locations."
   ]
  },
  "usage": {
   "llm_calls": 4,
-  "input_tokens": 10272,
-  "cache_read_tokens": 6535,
+  "input_tokens": 10471,
+  "cache_read_tokens": 6527,
   "cache_write_tokens": 0,
-  "output_tokens": 1891,
-  "uncached_calls": 0,
-  "latency_s": 0.01
+  "output_tokens": 1613,
+  "uncached_calls": 1,
+  "latency_s": 1.87
  },
  "answer": {
   "question": "How many practices does Trafford Dental Group have?",
-  "answer": "Trafford Dental Group has eleven practices, according to customer Yvonne Deeks, who stated it twice [1]. The vendor's figure of fourteen was a website-based guess that she corrected [2].",
+  "answer": "Trafford Dental Group has eleven practices, according to Yvonne Deeks, its Practice Operations Manager [1]. OrbitFlow's Alastair McCrae had wrongly said fourteen, based on his own outside research, and he later conceded the figure was wrong [2][3].",
   "claims": [
    {
-    "text": "Yvonne Deeks (Practice Operations Manager, Trafford Dental Group) stated the group operates eleven practices, and confirmed 'eleven practices' again later in the call.",
+    "text": "Yvonne Deeks (Practice Operations Manager, Trafford Dental Group) stated the group has eleven practices, and repeated this later in the call when she criticised the vendor for not knowing the number.",
     "evidence": [
      {
-      "finding_id": "F2",
+      "finding_id": "F1",
       "turn_id": "CALL-019#T009",
       "call_id": "CALL-019",
       "company": "Trafford Dental Group",
@@ -161,43 +166,11 @@
       "role": "Practice Operations Manager",
       "ts": "00:44",
       "quote": "Eleven.",
-      "context": "Customer states Trafford Dental Group operates eleven practices, correcting the vendor's figure of fourteen. \u2014 Direct correction of the vendor's earlier claim.",
+      "context": "Trafford Dental Group has eleven practices. \u2014 Customer correction of the vendor's figure of fourteen; stated directly by the customer who works there.",
       "stated_or_inferred": "stated"
      },
      {
       "finding_id": "F3",
-      "turn_id": "CALL-019#T041",
-      "call_id": "CALL-019",
-      "company": "Trafford Dental Group",
-      "speaker": "Yvonne Deeks",
-      "side": "customer",
-      "role": "Practice Operations Manager",
-      "ts": "03:38",
-      "quote": "Nine. Across eleven practices.",
-      "context": "Customer confirms eleven practices again, and reiterates that the vendor's fourteen figure was wrong. \u2014 Repeated during the call when the vendor tried to build on the wrong count.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "Alastair McCrae (OrbitFlow Account Executive) had guessed fourteen practices, based on a website look-up rather than customer knowledge; Yvonne corrected him, saying he did not know how many practices the group has and that the research was only a number off a website.",
-    "evidence": [
-     {
-      "finding_id": "F1",
-      "turn_id": "CALL-019#T008",
-      "call_id": "CALL-019",
-      "company": "Trafford Dental Group",
-      "speaker": "Alastair McCrae",
-      "side": "vendor",
-      "role": "Account Executive",
-      "ts": "00:34",
-      "quote": "you've grown quite a bit, haven't you, you're what, fourteen practices now?",
-      "context": "Vendor stated Trafford Dental has fourteen practices, based on a website look-up rather than customer knowledge. \u2014 Alastair's initial guess, which the customer corrects.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F4",
       "turn_id": "CALL-019#T033",
       "call_id": "CALL-019",
       "company": "Trafford Dental Group",
@@ -206,7 +179,26 @@
       "role": "Practice Operations Manager",
       "ts": "02:49",
       "quote": "You didn't know how many practices we have.",
-      "context": "Customer points out that the vendor did not know how many practices the group has. \u2014 Customer criticises the vendor for not knowing basic facts before pitching.",
+      "context": "Customer reiterates the group has eleven practices and criticises the vendor for not knowing how many practices they have. \u2014 Customer contradicts the vendor's fourteen figure in the course of complaining about the vendor's lack of research.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Alastair McCrae (OrbitFlow Account Executive) initially said Trafford Dental had fourteen practices, saying he got this from looking at the company. Deeks said the figure came from a website rather than real knowledge of the group.",
+    "evidence": [
+     {
+      "finding_id": "F2",
+      "turn_id": "CALL-019#T008",
+      "call_id": "CALL-019",
+      "company": "Trafford Dental Group",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "00:34",
+      "quote": "I had a look at Trafford Dental and you've grown quite a bit, haven't you, you're what, fourteen practices now?",
+      "context": "Vendor initially claimed Trafford Dental has fourteen practices, based on outside research rather than the customer. \u2014 Vendor's wrong figure, later corrected by the customer; vendor said it came from looking at the company.",
       "stated_or_inferred": "stated"
      },
      {
@@ -219,7 +211,26 @@
       "role": "Practice Operations Manager",
       "ts": "04:55",
       "quote": "Not the number of practices off a website.",
-      "context": "Customer says the vendor's research was only a number taken from a website, and that the vendor needed something true about the group, not a practice count from a website. \u2014 Customer's feedback on what the vendor should have said.",
+      "context": "Customer says the vendor's practice count came from a website, not real knowledge of the group. \u2014 Customer's criticism that the figure was taken from public sources.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "After Deeks challenged him, McCrae acknowledged the practice count was wrong (\"That's \u2014 yeah, fair.\").",
+    "evidence": [
+     {
+      "finding_id": "F4",
+      "turn_id": "CALL-019#T034",
+      "call_id": "CALL-019",
+      "company": "Trafford Dental Group",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "02:55",
+      "quote": "That's \u2014 yeah, fair.",
+      "context": "Vendor acknowledged the practice count was wrong. \u2014 Vendor concedes the point after the customer's challenge.",
       "stated_or_inferred": "stated"
      }
     ],
@@ -229,20 +240,20 @@
   "conflicts": [
    {
     "topic": "Number of practices",
-    "description": "Vendor Alastair McCrae guessed fourteen practices; customer Yvonne Deeks corrected this to eleven, and repeated the correction later in the call.",
+    "description": "McCrae said fourteen; Deeks corrected it to eleven. McCrae later conceded the count was wrong, which settles it in favour of eleven.",
     "finding_ids": [
-     "F1",
      "F2",
-     "F3"
+     "F1",
+     "F3",
+     "F4"
     ]
    }
   ],
   "not_covered": [],
   "assumptions": [
-   "The question refers to the cold call with Trafford Dental Group (CALL-019), the only matching company in the catalogue.",
-   "'Practices' is interpreted as dental practices/clinic locations.",
-   "The question refers to the cold call with Trafford Dental Group (CALL-019).",
-   "'Practices' means dental practices/clinic locations."
+   "The question concerns the Trafford Dental Group cold call (CALL-019); 'practices' is treated as a synonym for clinics or locations.",
+   "The question concerns the Trafford Dental Group cold call (CALL-019).",
+   "'Practices' is treated as a synonym for clinics or locations."
   ],
   "confidence": "medium",
   "calls_considered": [

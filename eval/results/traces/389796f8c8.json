@@ -9,83 +9,72 @@
   "search_terms": [
    "Microsoft Copilot",
    "Copilot",
-   "Microsoft",
-   "Copilot AI",
-   "AI assistant"
+   "Microsoft AI assistant",
+   "Microsoft 365 Copilot"
   ],
-  "read_instruction": "Extract every mention of Microsoft Copilot (or Copilot, or Microsoft's AI assistant) by the prospect or OrbitFlow staff, including the context in which it was raised, what was said about it, and whether it was described as a competitor, integration, or existing tool in use.",
+  "read_instruction": "Extract any mention of Microsoft Copilot (or Copilot, Microsoft 365 Copilot, or similar Microsoft AI assistant), including who raised it, what was said about it, and whether it was compared to OrbitFlow or considered a competitor, integration, or alternative. If the call does not mention it, report that it does not.",
   "assumptions": [
-   "'Prospect' is interpreted as new-business calls (call types Prospect, calls 001-010), not all customers.",
-   "Mentions of 'Copilot' without 'Microsoft' are included as likely references to Microsoft Copilot."
+   "Question asks about calls of type Prospect (new business) since 'prospect' is explicitly named.",
+   "Copilot variants (Microsoft 365 Copilot, generic Copilot references) are included as synonyms."
   ]
  },
  "candidates": {
+  "CALL-003": [
+   "call_type:Prospect",
+   "vector"
+  ],
   "CALL-004": [
-   "call_type:Prospect",
-   "facts",
-   "search"
-  ],
-  "CALL-005": [
-   "call_type:Prospect",
-   "search",
-   "vector"
-  ],
-  "CALL-010": [
-   "call_type:Prospect"
-  ],
-  "CALL-008": [
-   "call_type:Prospect",
-   "facts",
-   "search"
-  ],
-  "CALL-006": [
-   "call_type:Prospect",
-   "search",
-   "vector"
-  ],
-  "CALL-009": [
    "call_type:Prospect",
    "search"
   ],
   "CALL-007": [
    "call_type:Prospect",
-   "facts",
    "search",
+   "vector"
+  ],
+  "CALL-005": [
+   "call_type:Prospect",
    "vector"
   ],
   "CALL-002": [
    "call_type:Prospect",
-   "facts",
    "search"
   ],
-  "CALL-003": [
+  "CALL-009": [
+   "call_type:Prospect"
+  ],
+  "CALL-008": [
    "call_type:Prospect",
-   "search",
+   "search"
+  ],
+  "CALL-010": [
+   "call_type:Prospect"
+  ],
+  "CALL-006": [
+   "call_type:Prospect",
    "vector"
   ],
   "CALL-001": [
    "call_type:Prospect",
-   "facts",
    "search"
   ]
  },
  "search_terms": [
-  "ai assistant",
   "copilot",
-  "copilot ai",
-  "microsoft",
+  "microsoft 365 copilot",
+  "microsoft ai assistant",
   "microsoft copilot"
  ],
  "findings": [],
  "rejected_findings": [],
  "usage": {
   "llm_calls": 11,
-  "input_tokens": 126897,
-  "cache_read_tokens": 124930,
+  "input_tokens": 127099,
+  "cache_read_tokens": 124922,
   "cache_write_tokens": 0,
-  "output_tokens": 1466,
-  "uncached_calls": 11,
-  "latency_s": 8.81
+  "output_tokens": 646,
+  "uncached_calls": 0,
+  "latency_s": 0.06
  },
  "answer": {
   "question": "Did any prospect mention Microsoft Copilot?",
@@ -94,11 +83,11 @@
   "conflicts": [],
   "not_covered": [
    "Did any prospect mention Microsoft Copilot?",
-   "Closest related material: CALL-007 (Greenline Energy Services) turns T163-T170, CALL-007 (Greenline Energy Services) turns T169-T176, CALL-008 (Harbor Legal) turns T133-T140"
+   "Closest related material: CALL-008 (Harbor Legal) turns T133-T140, CALL-007 (Greenline Energy Services) turns T163-T170, CALL-007 (Greenline Energy Services) turns T097-T104"
   ],
   "assumptions": [
-   "'Prospect' is interpreted as new-business calls (call types Prospect, calls 001-010), not all customers.",
-   "Mentions of 'Copilot' without 'Microsoft' are included as likely references to Microsoft Copilot."
+   "Question asks about calls of type Prospect (new business) since 'prospect' is explicitly named.",
+   "Copilot variants (Microsoft 365 Copilot, generic Copilot references) are included as synonyms."
   ],
   "confidence": "none",
   "calls_considered": [

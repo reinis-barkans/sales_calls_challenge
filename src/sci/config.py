@@ -32,7 +32,7 @@ PROMPT_VERSIONS = {
     "resolve": "v3",
     "read": "v3",
     "combine": "v4",
-    "entail": "v1",
+    "entail": "v2",
     "judge": "v1",
     "naive_rag": "v1",
     "full_context": "v1",

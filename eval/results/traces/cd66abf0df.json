@@ -17,8 +17,8 @@
    "agreed",
    "agreement",
    "commitment",
-   "terms",
    "contract",
+   "terms",
    "pricing",
    "price",
    "discount",
@@ -27,13 +27,12 @@
    "licences",
    "licenses",
    "term",
-   "signed",
-   "next steps"
+   "next steps",
+   "signed"
   ],
-  "read_instruction": "Extract every concrete outcome agreed or committed to during the renewal or expansion discussion: renewed contract term and length, pricing or discounts, added seats/licences/modules, features or connectors promised by OrbitFlow staff, deadlines, owners, and next steps, including any items still pending or unresolved.",
+  "read_instruction": "Extract everything that was agreed, decided or committed to in this renewal call: contract terms, length, pricing or discounts, seat or licence counts, expansion scope, features, deadlines, action items and who owns them, including any items left unresolved.",
   "assumptions": [
-   "Halberd Security is the only renewal call in the catalogue matching this name (CALL-013), so the question refers to that call.",
-   "'Renewal' in the question is treated as the Renewal call type."
+   "Question refers to the Halberd Security call in the Renewal call type (CALL-013)."
   ]
  },
  "candidates": {
@@ -53,7 +52,7 @@
    "role": "Customer Success Manager",
    "ts": "00:24",
    "quote": "You're renewing in November, usage is healthy, six builders all active, error rate under one percent, and the only change is a seven percent standard uplift.",
-   "context": "Renewal in November at a seven percent standard uplift, with no other pricing changes stated. \u2014 Ruth's opening summary of the renewal; Grace accepted it.",
+   "context": "Renewal is in November with a seven percent standard uplift as the only change. \u2014 Ruth's one-sentence renewal summary; Grace accepted it.",
    "stated_or_inferred": "stated"
   },
   {
@@ -65,8 +64,8 @@
    "side": "customer",
    "role": "Chief Information Security Officer",
    "ts": "00:40",
-   "quote": "It's fine, Tobias. Seven percent on a number that size is not worth an hour of my life.",
-   "context": "Customer accepted the renewal terms. \u2014 Grace said it was fine and did not want further discussion of the uplift.",
+   "quote": "Seven percent on a number that size is not worth an hour of my life.",
+   "context": "Grace Okonkwo accepted the seven percent uplift. \u2014 Customer acceptance of the renewal price change.",
    "stated_or_inferred": "stated"
   },
   {
@@ -79,7 +78,7 @@
    "role": "Customer Success Manager",
    "ts": "14:56",
    "quote": "Renewal is agreed subject to papers \u2014 seven percent, no other changes, AI consumption estimate included.",
-   "context": "Renewal agreed subject to papers: seven percent, no other changes, AI consumption estimate included. \u2014 Ruth's closing summary of agreed outcomes; Grace confirmed it was accurate at T148.",
+   "context": "Renewal agreed subject to papers: seven percent, no other changes, and an AI consumption estimate included. \u2014 Ruth's closing summary of agreed items; Grace confirmed it as accurate.",
    "stated_or_inferred": "stated"
   },
   {
@@ -91,64 +90,25 @@
    "side": "vendor",
    "role": "Customer Success Manager",
    "ts": "10:01",
-   "quote": "I'll put a number on it so nobody's surprised, but I don't think it changes your renewal.",
-   "context": "AI consumption charge will be quantified and included in the renewal papers; OrbitFlow expects it not to change the renewal. \u2014 Usage is estimated at about 400 incidents a month; the figure is not given on this call.",
+   "quote": "For four hundred incidents a month it's not material. I'll put a number on it so nobody's surprised, but I don't think it changes your renewal.",
+   "context": "AI consumption charge is not expected to be material at about 400 incidents a month; a number will be put in the renewal papers. \u2014 Ruth's estimate; Grace asked for the number to be included anyway.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F5",
-   "turn_id": "CALL-013#T154",
+   "turn_id": "CALL-013#T147",
    "call_id": "CALL-013",
    "company": "Halberd Security",
    "speaker": "Ruth Adeyemi",
    "side": "vendor",
    "role": "Customer Success Manager",
-   "ts": "15:56",
-   "quote": "And the renewal papers from me by Wednesday.",
-   "context": "Renewal papers to be sent by OrbitFlow by Wednesday. \u2014 Next step with owner Ruth.",
+   "ts": "14:56",
+   "quote": "AI goes on in a contained workspace with two builders, after the fifty-incident test, subject to five written answers from Nina.",
+   "context": "AI goes on in a contained workspace with two builders, after a fifty-incident historical test, subject to written answers from Nina. \u2014 Agreed plan for AI features, which had been disabled at workspace level since purchase.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F6",
-   "turn_id": "CALL-013#T043",
-   "call_id": "CALL-013",
-   "company": "Halberd Security",
-   "speaker": "Nina Patel",
-   "side": "vendor",
-   "role": "Solutions Engineer",
-   "ts": "04:24",
-   "quote": "And if the answer is no, the workaround is a separate workspace where AI is enabled and only two people can build.",
-   "context": "AI features to be enabled only in a contained workspace with two builders, after a fifty-incident test, subject to written answers. \u2014 Conditional agreement. The separate-workspace workaround was offered by Nina if per-step AI permissions are not possible.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F7",
-   "turn_id": "CALL-013#T152",
-   "call_id": "CALL-013",
-   "company": "Halberd Security",
-   "speaker": "Nina Patel",
-   "side": "vendor",
-   "role": "Solutions Engineer",
-   "ts": "15:42",
-   "quote": "If one of them takes longer I'll send four and tell you which one's outstanding rather than holding all five.",
-   "context": "Five written answers owed by OrbitFlow: AI-step permission granularity, run-record retention bucket, current allowed model list, subprocessor documentation, and publish-approval gate. Later narrowed to four, with the fifth possibly delayed. \u2014 Count changed during the call: four listed at T091, five at T122, then Nina offered to send four and flag the outstanding one at T152.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F8",
-   "turn_id": "CALL-013#T174",
-   "call_id": "CALL-013",
-   "company": "Halberd Security",
-   "speaker": "Nina Patel",
-   "side": "vendor",
-   "role": "Solutions Engineer",
-   "ts": "17:30",
-   "quote": "Four, possibly. But by Friday.",
-   "context": "Written answers due by end of week; Nina later said four by Friday, possibly. \u2014 Timing is soft: Nina hedged on the fifth.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F9",
    "turn_id": "CALL-013#T094",
    "call_id": "CALL-013",
    "company": "Halberd Security",
@@ -157,63 +117,24 @@
    "role": "VP Service Delivery",
    "ts": "09:47",
    "quote": "I'll set that up. Two weeks.",
-   "context": "Fifty-historical-incident test of AI drafts to be run before anything goes live; Tobias owns it, estimated two weeks. \u2014 Nina proposed the test; Tobias committed to set it up.",
+   "context": "Tobias Lund committed to setting up the fifty-incident test in about two weeks. \u2014 Customer action item.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F10",
-   "turn_id": "CALL-013#T066",
+   "finding_id": "F7",
+   "turn_id": "CALL-013#T174",
    "call_id": "CALL-013",
    "company": "Halberd Security",
    "speaker": "Nina Patel",
    "side": "vendor",
    "role": "Solutions Engineer",
-   "ts": "06:47",
-   "quote": "Then I'd check which bucket run records fall into for you, because that's the sort of thing that's assumed rather than verified.",
-   "context": "Retention period for AI run records is unverified; OrbitFlow to check which retention bucket applies. \u2014 Customer retention is 90 days, and 180 days for client-facing content. Nina flagged that this is assumed rather than verified.",
+   "ts": "17:30",
+   "quote": "Four, possibly. But by Friday.",
+   "context": "Nina Patel owes written answers on AI-step permission granularity, run-record retention bucket, allowed model list, and subprocessor documentation; five answers were requested including publish permissions, with possibly four delivered by Friday. \u2014 Vendor action items; the count was reduced from five to four with the outstanding one identified later.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F11",
-   "turn_id": "CALL-013#T074",
-   "call_id": "CALL-013",
-   "company": "Halberd Security",
-   "speaker": "Nina Patel",
-   "side": "vendor",
-   "role": "Solutions Engineer",
-   "ts": "07:39",
-   "quote": "I'll send the current list with the subprocessor documentation rather than reciting it and getting one wrong.",
-   "context": "Subprocessor documentation and current allowed model/provider list to be sent; the list is not recited on the call. \u2014 Part of the written-answers set.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F12",
-   "turn_id": "CALL-013#T078",
-   "call_id": "CALL-013",
-   "company": "Halberd Security",
-   "speaker": "Ruth Adeyemi",
-   "side": "vendor",
-   "role": "Customer Success Manager",
-   "ts": "08:01",
-   "quote": "It's thirty days for your contract.",
-   "context": "Subprocessor change notice period is 30 days under the contract. \u2014 Ruth said she checked before the call.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F13",
-   "turn_id": "CALL-013#T070",
-   "call_id": "CALL-013",
-   "company": "Halberd Security",
-   "speaker": "Nina Patel",
-   "side": "vendor",
-   "role": "Solutions Engineer",
-   "ts": "07:05",
-   "quote": "We do not use customer workflow content to train a shared OrbitFlow model. That's in your contract, not just in the documentation.",
-   "context": "OrbitFlow will not use customer workflow content to train a shared model, stated as a contract term. \u2014 Nina made the statement in response to Grace; it was not presented as a new agreed term.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F14",
+   "finding_id": "F8",
    "turn_id": "CALL-013#T147",
    "call_id": "CALL-013",
    "company": "Halberd Security",
@@ -222,37 +143,24 @@
    "role": "Customer Success Manager",
    "ts": "14:56",
    "quote": "And you'll introduce a publish permission separate from a build permission, once we've confirmed the mechanism.",
-   "context": "Separate publish permission from build permission to be introduced, once the mechanism is confirmed. Two-person publish gate is still unconfirmed. \u2014 Governance item agreed; Nina said the mechanism is still to be checked.",
+   "context": "Build permission to be separated from publish permission, with a two-person publish approach, once the mechanism is confirmed. \u2014 Governance item; Nina said the formal two-person gate is part of the pending permissions answer.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F15",
-   "turn_id": "CALL-013#T041",
+   "finding_id": "F9",
+   "turn_id": "CALL-013#T154",
    "call_id": "CALL-013",
    "company": "Halberd Security",
-   "speaker": "Nina Patel",
+   "speaker": "Ruth Adeyemi",
    "side": "vendor",
-   "role": "Solutions Engineer",
-   "ts": "03:53",
-   "quote": "Whether \"can author an AI step\" is a distinct permission from \"can author a workflow\" \u2014 I need to confirm.",
-   "context": "AI-step permission granularity is unconfirmed; Nina will confirm whether authoring an AI step is a distinct permission from authoring a workflow. \u2014 Nina explicitly declined to answer from memory.",
+   "role": "Customer Success Manager",
+   "ts": "15:56",
+   "quote": "And the renewal papers from me by Wednesday.",
+   "context": "Renewal papers to be sent by Ruth by Wednesday. \u2014 Vendor deadline.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F16",
-   "turn_id": "CALL-013#T137",
-   "call_id": "CALL-013",
-   "company": "Halberd Security",
-   "speaker": "Nina Patel",
-   "side": "vendor",
-   "role": "Solutions Engineer",
-   "ts": "14:04",
-   "quote": "I'll include it in what I send. Rough shape, not an estimate.",
-   "context": "Teams-based approval pattern to be scoped in writing; this is exploratory, not committed. \u2014 Mobile approvals are not a product; Nina proposed Teams notifications instead.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F17",
+   "finding_id": "F10",
    "turn_id": "CALL-013#T150",
    "call_id": "CALL-013",
    "company": "Halberd Security",
@@ -261,97 +169,112 @@
    "role": "Customer Success Manager",
    "ts": "15:33",
    "quote": "And the Teams approval scoping, which is exploratory rather than committed.",
-   "context": "Teams approval scoping is exploratory rather than committed. \u2014 Ruth's qualification of the Teams item at close.",
+   "context": "Scoping of a Teams-based approval pattern is exploratory, not committed. \u2014 Raised by Tobias as an off-agenda item; Nina will include a rough shape, not an estimate.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F11",
+   "turn_id": "CALL-013#T078",
+   "call_id": "CALL-013",
+   "company": "Halberd Security",
+   "speaker": "Ruth Adeyemi",
+   "side": "vendor",
+   "role": "Customer Success Manager",
+   "ts": "08:01",
+   "quote": "It's thirty days for your contract.",
+   "context": "Contract provides thirty days notice of subprocessor changes. \u2014 Ruth checked the contract before the call.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F12",
+   "turn_id": "CALL-013#T070",
+   "call_id": "CALL-013",
+   "company": "Halberd Security",
+   "speaker": "Nina Patel",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "07:05",
+   "quote": "We do not use customer workflow content to train a shared OrbitFlow model. That's in your contract, not just in the documentation.",
+   "context": "OrbitFlow does not use customer workflow content to train a shared OrbitFlow model, stated as a contract term. \u2014 Grace asked for this to be said on the call; Ruth pointed to clause fourteen.",
    "stated_or_inferred": "stated"
   }
  ],
  "rejected_findings": [],
  "draft": {
-  "answer": "Halberd Security agreed to renew in November at a seven percent standard uplift with no other changes, subject to papers [C1]. The AI consumption estimate goes into the papers, which Ruth Adeyemi is to send by Wednesday [C2]. AI features are conditional on a fifty-incident test and written answers from OrbitFlow [C3][C4]. Some governance and Teams items are not firm commitments [C5].",
+  "answer": "Renewal was agreed subject to papers: a seven percent uplift, no other changes, and an AI consumption estimate included, which Grace Okonkwo accepted [C1][C2]. AI is to go live in a contained two-builder workspace after a fifty-incident test, subject to written answers from Nina Patel [C3][C4]. Ruth Adeyemi is to send the renewal papers by Wednesday [C5].",
   "claims": [
    {
-    "text": "Renewal is in November at a seven percent standard uplift with no other pricing changes. Ruth Adeyemi summarised it as agreed subject to papers, with no other changes and the AI consumption estimate included, and Grace Okonkwo (CISO) confirmed this was accurate. Grace accepted the uplift, saying it was not worth an hour of her life.",
+    "text": "Ruth Adeyemi's closing summary, confirmed by Grace as accurate: renewal (in November) is agreed subject to papers, with a seven percent uplift, no other changes, and an AI consumption estimate included.",
     "finding_ids": [
      "F1",
-     "F2",
      "F3"
     ]
    },
    {
-    "text": "The AI consumption charge will be quantified and included in the renewal papers. Usage is estimated at about 400 incidents a month, and the figure was not given on the call. Ruth said she does not expect it to change the renewal. Ruth is to send the renewal papers by Wednesday.",
+    "text": "Grace Okonkwo (CISO) accepted the seven percent uplift, saying it was not worth an hour of her life. Ruth estimated the AI consumption charge as not material at about 400 incidents a month, and will put a number in the papers anyway.",
     "finding_ids": [
-     "F4",
-     "F5"
+     "F2",
+     "F4"
     ]
    },
    {
-    "text": "AI features are to be enabled only in a contained workspace with two builders, after a fifty-incident test, and subject to written answers. Nina Patel offered the separate workspace as a workaround if per-step AI permissions are not possible. Tobias Lund (VP Service Delivery) will set up the fifty-historical-incident test of AI drafts before anything goes live, estimated at two weeks.",
+    "text": "AI features, disabled at workspace level since purchase, will go on in a contained workspace with two builders after a fifty-incident historical test, subject to five written answers from Nina Patel. Tobias Lund committed to set up the test in about two weeks.",
     "finding_ids": [
-     "F6",
+     "F5",
+     "F6"
+    ]
+   },
+   {
+    "text": "Nina Patel owes written answers on AI-step permission granularity, run-record retention bucket, allowed model list, and subprocessor documentation. Five were requested including publish permissions; possibly four are due by Friday.",
+    "finding_ids": [
+     "F7"
+    ]
+   },
+   {
+    "text": "Ruth is to send the renewal papers by Wednesday.",
+    "finding_ids": [
      "F9"
     ]
    },
    {
-    "text": "OrbitFlow owes five written answers: AI-step permission granularity, run-record retention bucket, current allowed model list, subprocessor documentation, and the publish-approval gate. Nina offered to send four and flag the outstanding one if one takes longer. She said four, possibly, by Friday. Permission granularity is unconfirmed, and retention is assumed rather than verified. The model list will be sent with the subprocessor documentation.",
+    "text": "Build permission is to be separated from publish permission, with a two-person publish approach, once the mechanism is confirmed. Scoping of a Teams-based approval pattern is exploratory, not committed.",
     "finding_ids": [
-     "F7",
      "F8",
-     "F10",
+     "F10"
+    ]
+   },
+   {
+    "text": "Ruth confirmed the contract gives thirty days notice of subprocessor changes. Nina stated OrbitFlow does not use customer workflow content to train a shared model, which is a contract term (clause fourteen per Ruth).",
+    "finding_ids": [
      "F11",
-     "F15"
-    ]
-   },
-   {
-    "text": "A separate publish permission from build permission is to be introduced once the mechanism is confirmed, and the two-person publish gate is still unconfirmed. The Teams-based approval scoping is exploratory, not committed. Nina will include a rough shape, not an estimate.",
-    "finding_ids": [
-     "F14",
-     "F16",
-     "F17"
-    ]
-   },
-   {
-    "text": "Ruth stated the subprocessor change notice period is 30 days under the contract. Nina stated that OrbitFlow does not train a shared model on customer workflow content and that this is in the contract. Neither was presented as a new agreed term.",
-    "finding_ids": [
-     "F12",
-     "F13"
+     "F12"
     ]
    }
   ],
-  "conflicts": [
-   {
-    "topic": "Number of written answers owed",
-    "description": "The count changed during the call: four were listed at T091, five at T122, and at T152 Nina offered to send four and flag the outstanding one. At T174 she said 'Four, possibly', so the delivery of the fifth is uncertain.",
-    "finding_ids": [
-     "F7",
-     "F8"
-    ]
-   }
-  ],
+  "conflicts": [],
   "not_covered": [
-   "The actual AI consumption charge figure was not stated on the call.",
-   "The renewal term length and the contract value were not stated.",
-   "The date of the Wednesday on which the papers are due was not given."
+   "Which of the five written answers is outstanding beyond Friday is not specified in the findings (the fifth relates to publish permissions).",
+   "Actual date of the November renewal and the dollar value are not given."
   ],
   "assumptions": [
-   "Halberd Security is the only renewal call matching this name (CALL-013).",
-   "'Renewal' refers to the Renewal call type."
+   "Question refers to the Halberd Security call (CALL-013)."
   ]
  },
  "usage": {
   "llm_calls": 4,
-  "input_tokens": 19107,
-  "cache_read_tokens": 11265,
+  "input_tokens": 17587,
+  "cache_read_tokens": 11257,
   "cache_write_tokens": 0,
-  "output_tokens": 6632,
-  "uncached_calls": 4,
-  "latency_s": 33.79
+  "output_tokens": 4922,
+  "uncached_calls": 1,
+  "latency_s": 3.22
  },
  "answer": {
   "question": "What was agreed at Halberd Security's renewal?",
-  "answer": "Halberd Security agreed to renew in November at a seven percent standard uplift with no other changes, subject to papers [1]. The AI consumption estimate goes into the papers, which Ruth Adeyemi is to send by Wednesday [2]. AI features are conditional on a fifty-incident test and written answers from OrbitFlow [3][4]. Some governance and Teams items are not firm commitments [5].",
+  "answer": "Renewal was agreed subject to papers: a seven percent uplift, no other changes, and an AI consumption estimate included, which Grace Okonkwo accepted [1][2]. AI is to go live in a contained two-builder workspace after a fifty-incident test, subject to written answers from Nina Patel [3][4]. Ruth Adeyemi is to send the renewal papers by Wednesday [5].",
   "claims": [
    {
-    "text": "Renewal is in November at a seven percent standard uplift with no other pricing changes. Ruth Adeyemi summarised it as agreed subject to papers, with no other changes and the AI consumption estimate included, and Grace Okonkwo (CISO) confirmed this was accurate. Grace accepted the uplift, saying it was not worth an hour of her life.",
+    "text": "Ruth Adeyemi's closing summary, confirmed by Grace as accurate: renewal (in November) is agreed subject to papers, with a seven percent uplift, no other changes, and an AI consumption estimate included.",
     "evidence": [
      {
       "finding_id": "F1",
@@ -363,20 +286,7 @@
       "role": "Customer Success Manager",
       "ts": "00:24",
       "quote": "You're renewing in November, usage is healthy, six builders all active, error rate under one percent, and the only change is a seven percent standard uplift.",
-      "context": "Renewal in November at a seven percent standard uplift, with no other pricing changes stated. \u2014 Ruth's opening summary of the renewal; Grace accepted it.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F2",
-      "turn_id": "CALL-013#T009",
-      "call_id": "CALL-013",
-      "company": "Halberd Security",
-      "speaker": "Grace Okonkwo",
-      "side": "customer",
-      "role": "Chief Information Security Officer",
-      "ts": "00:40",
-      "quote": "It's fine, Tobias. Seven percent on a number that size is not worth an hour of my life.",
-      "context": "Customer accepted the renewal terms. \u2014 Grace said it was fine and did not want further discussion of the uplift.",
+      "context": "Renewal is in November with a seven percent standard uplift as the only change. \u2014 Ruth's one-sentence renewal summary; Grace accepted it.",
       "stated_or_inferred": "stated"
      },
      {
@@ -389,15 +299,28 @@
       "role": "Customer Success Manager",
       "ts": "14:56",
       "quote": "Renewal is agreed subject to papers \u2014 seven percent, no other changes, AI consumption estimate included.",
-      "context": "Renewal agreed subject to papers: seven percent, no other changes, AI consumption estimate included. \u2014 Ruth's closing summary of agreed outcomes; Grace confirmed it was accurate at T148.",
+      "context": "Renewal agreed subject to papers: seven percent, no other changes, and an AI consumption estimate included. \u2014 Ruth's closing summary of agreed items; Grace confirmed it as accurate.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "The AI consumption charge will be quantified and included in the renewal papers. Usage is estimated at about 400 incidents a month, and the figure was not given on the call. Ruth said she does not expect it to change the renewal. Ruth is to send the renewal papers by Wednesday.",
+    "text": "Grace Okonkwo (CISO) accepted the seven percent uplift, saying it was not worth an hour of her life. Ruth estimated the AI consumption charge as not material at about 400 incidents a month, and will put a number in the papers anyway.",
     "evidence": [
+     {
+      "finding_id": "F2",
+      "turn_id": "CALL-013#T009",
+      "call_id": "CALL-013",
+      "company": "Halberd Security",
+      "speaker": "Grace Okonkwo",
+      "side": "customer",
+      "role": "Chief Information Security Officer",
+      "ts": "00:40",
+      "quote": "Seven percent on a number that size is not worth an hour of my life.",
+      "context": "Grace Okonkwo accepted the seven percent uplift. \u2014 Customer acceptance of the renewal price change.",
+      "stated_or_inferred": "stated"
+     },
      {
       "finding_id": "F4",
       "turn_id": "CALL-013#T097",
@@ -407,44 +330,31 @@
       "side": "vendor",
       "role": "Customer Success Manager",
       "ts": "10:01",
-      "quote": "I'll put a number on it so nobody's surprised, but I don't think it changes your renewal.",
-      "context": "AI consumption charge will be quantified and included in the renewal papers; OrbitFlow expects it not to change the renewal. \u2014 Usage is estimated at about 400 incidents a month; the figure is not given on this call.",
+      "quote": "For four hundred incidents a month it's not material. I'll put a number on it so nobody's surprised, but I don't think it changes your renewal.",
+      "context": "AI consumption charge is not expected to be material at about 400 incidents a month; a number will be put in the renewal papers. \u2014 Ruth's estimate; Grace asked for the number to be included anyway.",
       "stated_or_inferred": "stated"
-     },
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "AI features, disabled at workspace level since purchase, will go on in a contained workspace with two builders after a fifty-incident historical test, subject to five written answers from Nina Patel. Tobias Lund committed to set up the test in about two weeks.",
+    "evidence": [
      {
       "finding_id": "F5",
-      "turn_id": "CALL-013#T154",
+      "turn_id": "CALL-013#T147",
       "call_id": "CALL-013",
       "company": "Halberd Security",
       "speaker": "Ruth Adeyemi",
       "side": "vendor",
       "role": "Customer Success Manager",
-      "ts": "15:56",
-      "quote": "And the renewal papers from me by Wednesday.",
-      "context": "Renewal papers to be sent by OrbitFlow by Wednesday. \u2014 Next step with owner Ruth.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "AI features are to be enabled only in a contained workspace with two builders, after a fifty-incident test, and subject to written answers. Nina Patel offered the separate workspace as a workaround if per-step AI permissions are not possible. Tobias Lund (VP Service Delivery) will set up the fifty-historical-incident test of AI drafts before anything goes live, estimated at two weeks.",
-    "evidence": [
-     {
-      "finding_id": "F6",
-      "turn_id": "CALL-013#T043",
-      "call_id": "CALL-013",
-      "company": "Halberd Security",
-      "speaker": "Nina Patel",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "04:24",
-      "quote": "And if the answer is no, the workaround is a separate workspace where AI is enabled and only two people can build.",
-      "context": "AI features to be enabled only in a contained workspace with two builders, after a fifty-incident test, subject to written answers. \u2014 Conditional agreement. The separate-workspace workaround was offered by Nina if per-step AI permissions are not possible.",
+      "ts": "14:56",
+      "quote": "AI goes on in a contained workspace with two builders, after the fifty-incident test, subject to five written answers from Nina.",
+      "context": "AI goes on in a contained workspace with two builders, after a fifty-incident historical test, subject to written answers from Nina. \u2014 Agreed plan for AI features, which had been disabled at workspace level since purchase.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F9",
+      "finding_id": "F6",
       "turn_id": "CALL-013#T094",
       "call_id": "CALL-013",
       "company": "Halberd Security",
@@ -453,30 +363,17 @@
       "role": "VP Service Delivery",
       "ts": "09:47",
       "quote": "I'll set that up. Two weeks.",
-      "context": "Fifty-historical-incident test of AI drafts to be run before anything goes live; Tobias owns it, estimated two weeks. \u2014 Nina proposed the test; Tobias committed to set it up.",
+      "context": "Tobias Lund committed to setting up the fifty-incident test in about two weeks. \u2014 Customer action item.",
       "stated_or_inferred": "stated"
      }
     ],
-    "support": "moderate"
+    "support": "strong"
    },
    {
-    "text": "OrbitFlow owes five written answers: AI-step permission granularity, run-record retention bucket, current allowed model list, subprocessor documentation, and the publish-approval gate. Nina offered to send four and flag the outstanding one if one takes longer. She said four, possibly, by Friday. Permission granularity is unconfirmed, and retention is assumed rather than verified. The model list will be sent with the subprocessor documentation.",
+    "text": "Nina Patel owes written answers on AI-step permission granularity, run-record retention bucket, allowed model list, and subprocessor documentation. Five were requested including publish permissions; possibly four are due by Friday.",
     "evidence": [
      {
       "finding_id": "F7",
-      "turn_id": "CALL-013#T152",
-      "call_id": "CALL-013",
-      "company": "Halberd Security",
-      "speaker": "Nina Patel",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "15:42",
-      "quote": "If one of them takes longer I'll send four and tell you which one's outstanding rather than holding all five.",
-      "context": "Five written answers owed by OrbitFlow: AI-step permission granularity, run-record retention bucket, current allowed model list, subprocessor documentation, and publish-approval gate. Later narrowed to four, with the fifth possibly delayed. \u2014 Count changed during the call: four listed at T091, five at T122, then Nina offered to send four and flag the outstanding one at T152.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F8",
       "turn_id": "CALL-013#T174",
       "call_id": "CALL-013",
       "company": "Halberd Security",
@@ -485,56 +382,36 @@
       "role": "Solutions Engineer",
       "ts": "17:30",
       "quote": "Four, possibly. But by Friday.",
-      "context": "Written answers due by end of week; Nina later said four by Friday, possibly. \u2014 Timing is soft: Nina hedged on the fifth.",
+      "context": "Nina Patel owes written answers on AI-step permission granularity, run-record retention bucket, allowed model list, and subprocessor documentation; five answers were requested including publish permissions, with possibly four delivered by Friday. \u2014 Vendor action items; the count was reduced from five to four with the outstanding one identified later.",
       "stated_or_inferred": "stated"
-     },
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Ruth is to send the renewal papers by Wednesday.",
+    "evidence": [
      {
-      "finding_id": "F10",
-      "turn_id": "CALL-013#T066",
+      "finding_id": "F9",
+      "turn_id": "CALL-013#T154",
       "call_id": "CALL-013",
       "company": "Halberd Security",
-      "speaker": "Nina Patel",
+      "speaker": "Ruth Adeyemi",
       "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "06:47",
-      "quote": "Then I'd check which bucket run records fall into for you, because that's the sort of thing that's assumed rather than verified.",
-      "context": "Retention period for AI run records is unverified; OrbitFlow to check which retention bucket applies. \u2014 Customer retention is 90 days, and 180 days for client-facing content. Nina flagged that this is assumed rather than verified.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F11",
-      "turn_id": "CALL-013#T074",
-      "call_id": "CALL-013",
-      "company": "Halberd Security",
-      "speaker": "Nina Patel",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "07:39",
-      "quote": "I'll send the current list with the subprocessor documentation rather than reciting it and getting one wrong.",
-      "context": "Subprocessor documentation and current allowed model/provider list to be sent; the list is not recited on the call. \u2014 Part of the written-answers set.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F15",
-      "turn_id": "CALL-013#T041",
-      "call_id": "CALL-013",
-      "company": "Halberd Security",
-      "speaker": "Nina Patel",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "03:53",
-      "quote": "Whether \"can author an AI step\" is a distinct permission from \"can author a workflow\" \u2014 I need to confirm.",
-      "context": "AI-step permission granularity is unconfirmed; Nina will confirm whether authoring an AI step is a distinct permission from authoring a workflow. \u2014 Nina explicitly declined to answer from memory.",
+      "role": "Customer Success Manager",
+      "ts": "15:56",
+      "quote": "And the renewal papers from me by Wednesday.",
+      "context": "Renewal papers to be sent by Ruth by Wednesday. \u2014 Vendor deadline.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "A separate publish permission from build permission is to be introduced once the mechanism is confirmed, and the two-person publish gate is still unconfirmed. The Teams-based approval scoping is exploratory, not committed. Nina will include a rough shape, not an estimate.",
+    "text": "Build permission is to be separated from publish permission, with a two-person publish approach, once the mechanism is confirmed. Scoping of a Teams-based approval pattern is exploratory, not committed.",
     "evidence": [
      {
-      "finding_id": "F14",
+      "finding_id": "F8",
       "turn_id": "CALL-013#T147",
       "call_id": "CALL-013",
       "company": "Halberd Security",
@@ -543,24 +420,11 @@
       "role": "Customer Success Manager",
       "ts": "14:56",
       "quote": "And you'll introduce a publish permission separate from a build permission, once we've confirmed the mechanism.",
-      "context": "Separate publish permission from build permission to be introduced, once the mechanism is confirmed. Two-person publish gate is still unconfirmed. \u2014 Governance item agreed; Nina said the mechanism is still to be checked.",
+      "context": "Build permission to be separated from publish permission, with a two-person publish approach, once the mechanism is confirmed. \u2014 Governance item; Nina said the formal two-person gate is part of the pending permissions answer.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F16",
-      "turn_id": "CALL-013#T137",
-      "call_id": "CALL-013",
-      "company": "Halberd Security",
-      "speaker": "Nina Patel",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "14:04",
-      "quote": "I'll include it in what I send. Rough shape, not an estimate.",
-      "context": "Teams-based approval pattern to be scoped in writing; this is exploratory, not committed. \u2014 Mobile approvals are not a product; Nina proposed Teams notifications instead.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F17",
+      "finding_id": "F10",
       "turn_id": "CALL-013#T150",
       "call_id": "CALL-013",
       "company": "Halberd Security",
@@ -569,17 +433,17 @@
       "role": "Customer Success Manager",
       "ts": "15:33",
       "quote": "And the Teams approval scoping, which is exploratory rather than committed.",
-      "context": "Teams approval scoping is exploratory rather than committed. \u2014 Ruth's qualification of the Teams item at close.",
+      "context": "Scoping of a Teams-based approval pattern is exploratory, not committed. \u2014 Raised by Tobias as an off-agenda item; Nina will include a rough shape, not an estimate.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "Ruth stated the subprocessor change notice period is 30 days under the contract. Nina stated that OrbitFlow does not train a shared model on customer workflow content and that this is in the contract. Neither was presented as a new agreed term.",
+    "text": "Ruth confirmed the contract gives thirty days notice of subprocessor changes. Nina stated OrbitFlow does not use customer workflow content to train a shared model, which is a contract term (clause fourteen per Ruth).",
     "evidence": [
      {
-      "finding_id": "F12",
+      "finding_id": "F11",
       "turn_id": "CALL-013#T078",
       "call_id": "CALL-013",
       "company": "Halberd Security",
@@ -588,11 +452,11 @@
       "role": "Customer Success Manager",
       "ts": "08:01",
       "quote": "It's thirty days for your contract.",
-      "context": "Subprocessor change notice period is 30 days under the contract. \u2014 Ruth said she checked before the call.",
+      "context": "Contract provides thirty days notice of subprocessor changes. \u2014 Ruth checked the contract before the call.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F13",
+      "finding_id": "F12",
       "turn_id": "CALL-013#T070",
       "call_id": "CALL-013",
       "company": "Halberd Security",
@@ -601,35 +465,23 @@
       "role": "Solutions Engineer",
       "ts": "07:05",
       "quote": "We do not use customer workflow content to train a shared OrbitFlow model. That's in your contract, not just in the documentation.",
-      "context": "OrbitFlow will not use customer workflow content to train a shared model, stated as a contract term. \u2014 Nina made the statement in response to Grace; it was not presented as a new agreed term.",
+      "context": "OrbitFlow does not use customer workflow content to train a shared OrbitFlow model, stated as a contract term. \u2014 Grace asked for this to be said on the call; Ruth pointed to clause fourteen.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    }
   ],
-  "conflicts": [
-   {
-    "topic": "Number of written answers owed",
-    "description": "The count changed during the call: four were listed at T091, five at T122, and at T152 Nina offered to send four and flag the outstanding one. At T174 she said 'Four, possibly', so the delivery of the fifth is uncertain.",
-    "finding_ids": [
-     "F7",
-     "F8"
-    ]
-   }
-  ],
+  "conflicts": [],
   "not_covered": [
-   "The actual AI consumption charge figure was not stated on the call.",
-   "The renewal term length and the contract value were not stated.",
-   "The date of the Wednesday on which the papers are due was not given."
+   "Which of the five written answers is outstanding beyond Friday is not specified in the findings (the fifth relates to publish permissions).",
+   "Actual date of the November renewal and the dollar value are not given."
   ],
   "assumptions": [
-   "Halberd Security is the only renewal call in the catalogue matching this name (CALL-013), so the question refers to that call.",
-   "'Renewal' in the question is treated as the Renewal call type.",
-   "Halberd Security is the only renewal call matching this name (CALL-013).",
-   "'Renewal' refers to the Renewal call type."
+   "Question refers to the Halberd Security call in the Renewal call type (CALL-013).",
+   "Question refers to the Halberd Security call (CALL-013)."
   ],
-  "confidence": "medium",
+  "confidence": "high",
   "calls_considered": [
    "CALL-013"
   ],

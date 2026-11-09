@@ -51,3 +51,16 @@ Added Q19-Q21 (the instruction examples not covered before) to dev, a 10-questio
 | H05 | facts_only | Abstention ✗: answered "no prospect mentioned Copilot" with evidence of which Microsoft products *were* mentioned | **Metric** | A correct, evidence-backed negative; the abstention metric can't tell it apart from a hallucinated answer. Better behaviour than a bare decline, arguably. |
 
 **Overfitting, measured:** pipeline 97% dev vs 83% held-out. **Ablation:** facts_only scored 92% dev and 88% held-out at ~55% of the pipeline's tokens, so per-question full reading adds little except on "why" and nuance questions.
+
+## PR #1 review and runs 6-7
+
+PR #1 grounded the summary (each sentence must cite a surviving claim), made entailment fail closed, and fixed the latency and citation-validity metrics. Reviewing it and re-running found two more bugs:
+
+| # | Symptom | Stage | Fix |
+|---|---|---|---|
+| B9 | "integrations, e.g. Salesforce [C1]." became "Salesforce [1]." | Verifier (summary grounding) | The sentence splitter treated e.g. / vs. / approx. as sentence ends, deleted the unmarked first half and kept a fragment. Abbreviations are now excluded from splitting. Tests `test_abbreviations_do_not_split_sentences`, `test_real_sentence_ends_still_split`. |
+| B10 | After fail-closed, `facts_only` Q04 lost 8 of 9 claims (100% -> 33%); 13 claims lost on dev overall | Verifier (entailment) | Haiku split claims into sub-claims ("K1-1, K1-2...") and stopped partway, so later claims got **no verdict**; before PR #1 these passed as "supported" **unchecked**. Parsing also let a later sub-verdict overwrite an earlier "unsupported". Now: one verdict per claim is requested with the IDs listed; the worst sub-verdict wins; missing verdicts are re-asked once, then fail closed. On the vendor-inconsistency trace all 11 claims now get verdicts, and one is correctly **unsupported**. Tests `test_split_subverdicts_worst_wins`, `test_missing_verdicts_are_retried`. |
+
+**Run 7 (current code):** pipeline 92% dev / 89% held-out; facts_only 92% / 89%; no claims lost to missing verdicts. The earlier 97% / 83% gap was partly unchecked claims and partly noise.
+
+**Noise, measured:** same code, combine re-run (no `temperature` on current models): Q01 1.0 -> 0.5 (Salesforce dropped from the summary). The judge graded Q02's "Acme Corp" assumption, shown to it in both runs, present then absent. Run-to-run differences of 5-10 points are expected; calibrating the judge and averaging several runs would be the fix.

@@ -1,20 +1,19 @@
 {
  "question": "Which customers mentioned integrations with Salesforce?",
  "resolution": {
-  "question_type": "list",
+  "question_type": "theme",
   "companies": [],
   "call_types": [],
   "search_terms": [
    "Salesforce",
    "SFDC",
    "CRM integration",
-   "Salesforce connector",
    "sales cloud"
   ],
-  "read_instruction": "Extract every mention of Salesforce or a CRM integration with Salesforce: whether it was requested, discussed, demonstrated, promised, or confirmed as available or unavailable, including the customer's stated need, any OrbitFlow staff claims about the connector (availability, plan or tier it belongs to, limitations), and any timeline or roadmap statements.",
+  "read_instruction": "Extract every statement about integrations with Salesforce (or Salesforce-related CRM connectors), including what was requested, promised, built, available, or limited, and the speaker's role (customer or OrbitFlow staff). Note the company's call type and whether the mention came from an existing customer or a prospect.",
   "assumptions": [
-   "'Customers' is interpreted broadly to include all call types, since the question does not restrict to a specific call type.",
-   "Mentions of Salesforce are treated as covering synonyms such as SFDC and CRM integration only where Salesforce is named or clearly implied."
+   "'Customers' is read broadly to include any company on the call that mentioned Salesforce integration, since the question does not restrict call type.",
+   "Synonyms for Salesforce include SFDC and general CRM integration terms, since transcripts may abbreviate the name."
   ]
  },
  "candidates": {
@@ -46,19 +45,16 @@
    "facts",
    "search"
   ],
-  "CALL-020": [
-   "search"
-  ],
   "CALL-014": [
    "search"
   ],
-  "CALL-018": [
-   "search"
-  ],
-  "CALL-007": [
+  "CALL-003": [
    "search"
   ],
   "CALL-008": [
+   "search"
+  ],
+  "CALL-015": [
    "search"
   ]
  },
@@ -66,38 +62,11 @@
   "crm integration",
   "sales cloud",
   "salesforce",
-  "salesforce connector",
   "sfdc"
  ],
  "findings": [
   {
    "finding_id": "F1",
-   "turn_id": "CALL-001#T059",
-   "call_id": "CALL-001",
-   "company": "Acme Logistics",
-   "speaker": "Maya Chen",
-   "side": "vendor",
-   "role": "Account Executive",
-   "ts": "08:26",
-   "quote": "opportunity closes in Salesforce, create the onboarding plan, assign tasks based on product mix",
-   "context": "OrbitFlow proposed a phase-one workflow that starts when an opportunity closes in Salesforce, creates the onboarding plan, and assigns tasks. \u2014 Vendor proposal of a use case for a single phase-one workflow, not a confirmed connector capability.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F2",
-   "turn_id": "CALL-001#T060",
-   "call_id": "CALL-001",
-   "company": "Acme Logistics",
-   "speaker": "Rachel Morgan",
-   "side": "customer",
-   "role": "VP Revenue Operations",
-   "ts": "08:47",
-   "quote": "That's the right shape.",
-   "context": "The customer accepted the proposed Salesforce-triggered onboarding workflow as the right shape for phase one, with a caveat about the hard cases. \u2014 Customer agreement with the vendor's proposed use case; she then said the happy path is not the hard part.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F3",
    "turn_id": "CALL-001#T047",
    "call_id": "CALL-001",
    "company": "Acme Logistics",
@@ -106,7 +75,33 @@
    "role": "VP Revenue Operations",
    "ts": "06:42",
    "quote": "That's the core, yeah.",
-   "context": "Salesforce is part of the customer's core stack and is the system of record for customer and commercial data. \u2014 Customer confirmed the vendor's stack list. Rachel said customer and commercial data is clear but did not name Salesforce in that turn.",
+   "context": "Rachel Morgan (prospect, Acme Logistics) agreed that Salesforce is part of the core stack, which she listed as the systems involved in their process. \u2014 Prospect discovery/first demo call (CALL-001). Weak, indirect mention: she confirmed Maya's playback of the stack, which included Salesforce, rather than naming Salesforce herself.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F2",
+   "turn_id": "CALL-001#T059",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "08:26",
+   "quote": "opportunity closes in Salesforce, create the onboarding plan, assign tasks based on product mix",
+   "context": "OrbitFlow's proposed phase-one pilot workflow is triggered by an opportunity closing in Salesforce, then creates an onboarding plan and assigns tasks. \u2014 Prospect discovery/first demo call (CALL-001). Vendor proposal for a single representative workflow, not a built or confirmed integration.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F3",
+   "turn_id": "CALL-001#T060",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Rachel Morgan",
+   "side": "customer",
+   "role": "VP Revenue Operations",
+   "ts": "08:47",
+   "quote": "That's the right shape.",
+   "context": "Rachel Morgan (prospect) accepted the Salesforce-triggered onboarding workflow as the right shape for phase one, with the caveat that the happy path is not the hard part. \u2014 Prospect discovery/first demo call (CALL-001). Acceptance of the vendor proposal, with a caveat about edge cases and failure handling.",
    "stated_or_inferred": "stated"
   },
   {
@@ -119,11 +114,24 @@
    "role": "Account Executive",
    "ts": "13:34",
    "quote": "you'd said Salesforce is mandatory",
-   "context": "Salesforce is the mandatory integration, and the customer's deal-breaker is the reliability of the system-of-record connector, which the vendor understood to mean Salesforce. \u2014 Vendor restated the customer's position. The customer's reply names the system of record and connector reliability but does not say Salesforce by name.",
+   "context": "Maya Chen restated that Acme's customer-side team said Salesforce is mandatory for the integrations. \u2014 Prospect discovery/first demo call (CALL-001). This is the vendor summarising the customer's earlier position, not the customer's own words.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F5",
+   "turn_id": "CALL-001#T088",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Rachel Morgan",
+   "side": "customer",
+   "role": "VP Revenue Operations",
+   "ts": "13:48",
+   "quote": "The system of record. If that connector's unreliable, none of the rest matters.",
+   "context": "Rachel Morgan (prospect) said the Salesforce system-of-record connector is the deal-breaker: if it is unreliable, nothing else matters. \u2014 Prospect discovery/first demo call (CALL-001). Answering the question about the Salesforce integration; she does not name Salesforce explicitly in this turn.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F6",
    "turn_id": "CALL-001#T089",
    "call_id": "CALL-001",
    "company": "Acme Logistics",
@@ -132,11 +140,11 @@
    "role": "Solutions Engineer",
    "ts": "14:02",
    "quote": "For your stack it's a mix of native connectors and API-based options.",
-   "context": "The vendor said its connectors for the customer's stack are a mix of native and API-based options, and that each required operation should be validated in a pilot rather than assumed from the integrations page. Salesforce is not named in this turn. \u2014 Vendor answer on integration availability for the customer's stack (which includes Salesforce). Not a Salesforce-specific availability or limitation claim.",
+   "context": "OrbitFlow said its connectivity to Acme's stack, which includes Salesforce, is a mix of native connectors and API-based options, and that a pilot should validate each required operation rather than rely on the integrations page. \u2014 Prospect discovery/first demo call (CALL-001). Vendor claim that does not name Salesforce explicitly; it is an implication from the stack discussion. No Salesforce connector is confirmed as built or available.",
    "stated_or_inferred": "inferred"
   },
   {
-   "finding_id": "F6",
+   "finding_id": "F7",
    "turn_id": "CALL-004#T067",
    "call_id": "CALL-004",
    "company": "DeltaWorks Manufacturing",
@@ -144,12 +152,12 @@
    "side": "customer",
    "role": "Director of Enterprise Applications",
    "ts": "09:46",
-   "quote": "Salesforce. ServiceNow.",
-   "context": "DeltaWorks lists Salesforce as one of the systems in its current stack, alongside SAP S/4HANA, ServiceNow, Microsoft Teams and on-premise SQL Server systems. No Salesforce integration is described as existing or required in this list. \u2014 Customer's stack inventory, not a stated integration requirement. Named only as a system in use.",
+   "quote": "SAP S/4HANA. Salesforce. ServiceNow. Microsoft Teams.",
+   "context": "DeltaWorks lists Salesforce as part of its current systems stack, alongside SAP S/4HANA, ServiceNow, Microsoft Teams and on-premise SQL Server systems. \u2014 CALL-004, DeltaWorks Manufacturing, prospect, enterprise discovery call. Customer describes its current stack. No Salesforce connector, API or integration method is discussed for this system.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F7",
+   "finding_id": "F8",
    "turn_id": "CALL-004#T090",
    "call_id": "CALL-004",
    "company": "DeltaWorks Manufacturing",
@@ -158,11 +166,11 @@
    "role": "Account Executive",
    "ts": "13:34",
    "quote": "A large service contract closes in Salesforce.",
-   "context": "OrbitFlow proposes a phase-one candidate in which a large service contract closes in Salesforce, and the workflow then validates customer and product data against SAP, creates implementation tasks in ServiceNow, and escalates mismatches before order processing. \u2014 Vendor's proposed use case, not a confirmed Salesforce connector. No availability, tier or connector claim is made for Salesforce in this call.",
+   "context": "OrbitFlow proposed a phase-one workflow in which a large service contract closes in Salesforce, then customer and product data is validated against SAP, ServiceNow tasks are created, and mismatches are escalated before order processing. \u2014 OrbitFlow staff (AE Maya Chen) describing a candidate use case. This is a proposed design, not a confirmed or built integration. The customer said the description was close but said the valuable part was the early mismatch escalation.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F8",
+   "finding_id": "F9",
    "turn_id": "CALL-004#T091",
    "call_id": "CALL-004",
    "company": "DeltaWorks Manufacturing",
@@ -171,11 +179,11 @@
    "role": "Director of Enterprise Applications",
    "ts": "13:57",
    "quote": "That is close. The last part is the valuable part.",
-   "context": "The customer accepts the Salesforce-starting candidate as close to right, but says the valuable part is the early mismatch escalation at contract close rather than the Salesforce step itself. \u2014 Customer's response to the vendor's Salesforce-based candidate. The Salesforce step is not named in the reply; acceptance is implied.",
-   "stated_or_inferred": "inferred"
+   "context": "The customer said the Salesforce-based phase-one candidate was close to right, with the early mismatch escalation at contract close being the most valuable part. The customer did not say how Salesforce would be connected. \u2014 Customer response to the OrbitFlow proposal in T090. Customer correction at T093 concerns where mismatches are currently caught, not Salesforce connectivity.",
+   "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F9",
+   "finding_id": "F10",
    "turn_id": "CALL-005#T108",
    "call_id": "CALL-005",
    "company": "Ember Financial",
@@ -184,11 +192,11 @@
    "role": "VP Operations Technology",
    "ts": "15:24",
    "quote": "Salesforce, Snowflake, Slack, Okta, Jira, and an internal event bus. Required: all of those, plus webhooks and a generic REST connector.",
-   "context": "Noah Williams (customer) lists Salesforce as a required integration for the phase-one stack. \u2014 Customer stated requirement during the stack discussion; all listed systems, including Salesforce, are required.",
+   "context": "Customer lists Salesforce as a required integration for the phase-one stack, alongside Snowflake, Slack, Okta, Jira, and an internal event bus. \u2014 Prospect call (CALL-005, Ember Financial, Evaluation, 2026-07-02). Noah Williams is VP Operations Technology and the executive sponsor. This is a stated requirement, not a confirmed capability; OrbitFlow later says connectors are to be validated in a pilot rather than by logo.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F10",
+   "finding_id": "F11",
    "turn_id": "CALL-005#T070",
    "call_id": "CALL-005",
    "company": "Ember Financial",
@@ -197,20 +205,7 @@
    "role": "Solutions Engineer",
    "ts": "10:15",
    "quote": "Enrich them from Salesforce and Snowflake.",
-   "context": "Nina Patel (OrbitFlow) plays back the phase-one candidate, which enriches partner onboarding events from Salesforce. \u2014 Vendor restatement of the customer's use case, not a customer statement and not a confirmation of connector availability.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F11",
-   "turn_id": "CALL-005#T113",
-   "call_id": "CALL-005",
-   "company": "Ember Financial",
-   "speaker": "Nina Patel",
-   "side": "vendor",
-   "role": "Solutions Engineer",
-   "ts": "15:53",
-   "quote": "The others are a mix of native connectors and API options, and I'd validate each required operation in a pilot rather than pointing at logos.",
-   "context": "Nina Patel (OrbitFlow) says the non-event-bus systems, which include Salesforce, are a mix of native connectors and API options and should be validated per operation in a pilot rather than assumed from logos. \u2014 General statement about the required systems other than the internal event bus. Salesforce is not named specifically, so no Salesforce-specific availability or tier is confirmed.",
+   "context": "OrbitFlow staff (Nina Patel, Solutions Engineer) plays back the phase-one candidate use case as enriching partner onboarding events from Salesforce and Snowflake. \u2014 Prospect call (CALL-005). This is OrbitFlow's restatement of the customer's use case, not a confirmed product claim about a Salesforce connector. The customer confirms the playback ('That's it.') at T071.",
    "stated_or_inferred": "stated"
   },
   {
@@ -222,8 +217,8 @@
    "side": "customer",
    "role": "Director of Business Intelligence",
    "ts": "01:23",
-   "quote": "combine Zendesk ticket patterns, Salesforce account status, and Snowflake product usage",
-   "context": "Darren Wu restated the proposed workflow as combining Salesforce account status with Zendesk and Snowflake data to flag at-risk accounts. \u2014 Customer restating the vendor's proposed design; Salesforce is one of three named inputs, not a confirmed integration.",
+   "quote": "the proposal, as I understand it, is to combine Zendesk ticket patterns, Salesforce account status, and Snowflake product usage to flag accounts needing proactive intervention",
+   "context": "Darren Wu proposed combining Zendesk ticket patterns, Salesforce account status, and Snowflake product usage to flag accounts needing proactive intervention. This is the requested Salesforce integration in a prospect evaluation call (Inkwell Learning, not an existing customer). \u2014 Customer (prospect) restating the proposed cross-system use case; requested integration, not yet built",
    "stated_or_inferred": "stated"
   },
   {
@@ -236,7 +231,7 @@
    "role": "Director of Business Intelligence",
    "ts": "01:44",
    "quote": "If Salesforce fields are stale, an elegant workflow will still make bad decisions.",
-   "context": "Darren Wu says stale Salesforce fields would make the workflow produce bad decisions. \u2014 Data-quality concern about Salesforce as an input to the proposed workflow.",
+   "context": "Darren Wu is concerned that stale Salesforce fields would make a Salesforce-dependent workflow produce bad decisions. \u2014 Data-quality concern about Salesforce as an input to the proposed integration",
    "stated_or_inferred": "stated"
   },
   {
@@ -249,24 +244,11 @@
    "role": "Director of Business Intelligence",
    "ts": "03:47",
    "quote": "Salesforce is reliable for the commercial facts \u2014 contract dates, ARR, owner. It is unreliable for anything a human has to remember to type.",
-   "context": "Darren Wu says Salesforce is reliable for commercial facts (contract dates, ARR, owner) but unreliable for human-entered fields. \u2014 Customer's assessment of Salesforce data quality; he names the fields he trusts and distrusts.",
+   "context": "Darren Wu says Salesforce is reliable for commercial facts (contract dates, ARR, owner) but unreliable for fields humans must type. \u2014 Customer's assessment of Salesforce data trustworthiness, relevant to which Salesforce fields could feed the integration",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F15",
-   "turn_id": "CALL-009#T071",
-   "call_id": "CALL-009",
-   "company": "Inkwell Learning",
-   "speaker": "Darren Wu",
-   "side": "customer",
-   "role": "Director of Business Intelligence",
-   "ts": "08:07",
-   "quote": "nothing joins Zendesk to Snowflake to Salesforce in a way that produces an action.",
-   "context": "Darren Wu says no current tool joins Zendesk, Snowflake and Salesforce to produce an action. \u2014 Describes the customer's current state: Gainsight is underused and Looker only alerts; this is the gap, not a claim about OrbitFlow's connector.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F16",
    "turn_id": "CALL-009#T083",
    "call_id": "CALL-009",
    "company": "Inkwell Learning",
@@ -275,11 +257,37 @@
    "role": "Solutions Engineer",
    "ts": "09:37",
    "quote": "queries the warehouse, joins against the CRM, and evaluates a set of conditions.",
-   "context": "Jon Bell says the workflow joins warehouse data against the CRM. He does not name Salesforce or describe a native Salesforce connector. \u2014 Vendor demo narration of a sample workflow; CRM is unnamed, and no plan, tier, or availability is stated.",
+   "context": "OrbitFlow's Jon Bell describes the example workflow as joining warehouse data against the CRM, which would include Salesforce, though Salesforce is not named explicitly. \u2014 Vendor demo description of the pattern; the CRM is not named as Salesforce, so the link to Salesforce is an inference",
+   "stated_or_inferred": "inferred"
+  },
+  {
+   "finding_id": "F16",
+   "turn_id": "CALL-009#T035",
+   "call_id": "CALL-009",
+   "company": "Inkwell Learning",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "04:08",
+   "quote": "Human-maintained fields are context you show to the person, not inputs the logic depends on.",
+   "context": "Maya Chen proposed that Salesforce human-maintained fields be shown as context to the user rather than used as inputs the logic depends on. \u2014 Vendor design recommendation for how Salesforce data is used in the proposed flag logic; not explicitly named as Salesforce",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F17",
+   "turn_id": "CALL-009#T071",
+   "call_id": "CALL-009",
+   "company": "Inkwell Learning",
+   "speaker": "Darren Wu",
+   "side": "customer",
+   "role": "Director of Business Intelligence",
+   "ts": "08:07",
+   "quote": "nothing joins Zendesk to Snowflake to Salesforce in a way that produces an action.",
+   "context": "Darren Wu says nothing currently joins Zendesk, Snowflake, and Salesforce in a way that produces an action, and that Salesforce fields are overwritten with no history. \u2014 Customer describing current state; the Salesforce gap is a limitation of existing tooling and of data history",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F18",
    "turn_id": "CALL-009#T209",
    "call_id": "CALL-009",
    "company": "Inkwell Learning",
@@ -288,37 +296,11 @@
    "role": "Director of Business Intelligence",
    "ts": "25:30",
    "quote": "Salesforce, no. Salesforce fields get overwritten, there's no history on most of them.",
-   "context": "Darren Wu says Salesforce history is not available for most fields, so point-in-time backtesting can't be done on Salesforce data. \u2014 Data limitation for the pilot backtest; Snowflake and Zendesk history is available.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F18",
-   "turn_id": "CALL-009#T210",
-   "call_id": "CALL-009",
-   "company": "Inkwell Learning",
-   "speaker": "Jon Bell",
-   "side": "vendor",
-   "role": "Solutions Engineer",
-   "ts": "25:47",
-   "quote": "Which is convenient, in a way, because you've already said the Salesforce human-maintained fields shouldn't carry the flag.",
-   "context": "Jon Bell says Salesforce human-maintained fields should not carry the at-risk flag, which agrees with the data limitation. \u2014 Vendor design position linked to the customer's data-quality concern; the customer calls it coincidence.",
+   "context": "Jon Bell notes that the Salesforce human-maintained fields should not carry the flag, which Darren Wu agrees with because Salesforce has no point-in-time history for backtesting. \u2014 Vendor and customer agree Salesforce human fields are excluded from the flag; the data limitation (no history) aligns with the design decision",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F19",
-   "turn_id": "CALL-010#T140",
-   "call_id": "CALL-010",
-   "company": "Juniper Cloud Tools",
-   "speaker": "Nina Patel",
-   "side": "vendor",
-   "role": "Solutions Engineer",
-   "ts": "15:13",
-   "quote": "Just confirm what I've got. Salesforce, Segment, PostgreSQL, Slack, Linear, internal services, AWS.",
-   "context": "OrbitFlow's vendor staff listed Salesforce as part of Juniper's stack to be confirmed. \u2014 Stack confirmation by Nina Patel; Marcus Chen confirmed it in a later turn.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F20",
    "turn_id": "CALL-010#T153",
    "call_id": "CALL-010",
    "company": "Juniper Cloud Tools",
@@ -327,7 +309,20 @@
    "role": "Staff Software Engineer",
    "ts": "16:41",
    "quote": "Salesforce API limits are the constraint. We've hit them before.",
-   "context": "Juniper has hit Salesforce API limits before, and Salesforce API limits are a constraint for the design. \u2014 Customer technical constraint raised during rate limit discussion.",
+   "context": "Salesforce API limits are a constraint for the customer's integration design, and they have hit those limits before. \u2014 Customer (prospect Staff Software Engineer) raising Salesforce API limits as a known constraint, in response to OrbitFlow's rate-limit answer.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F20",
+   "turn_id": "CALL-010#T155",
+   "call_id": "CALL-010",
+   "company": "Juniper Cloud Tools",
+   "speaker": "Ava Sinclair",
+   "side": "customer",
+   "role": "Staff Software Engineer",
+   "ts": "16:53",
+   "quote": "I'd have to check. It's not generous.",
+   "context": "The customer's Salesforce daily API allocation is not generous, and she needs to check the exact number. \u2014 Customer declining to give the exact figure on the spot; OrbitFlow asked for it.",
    "stated_or_inferred": "stated"
   },
   {
@@ -339,8 +334,8 @@
    "side": "vendor",
    "role": "Solutions Engineer",
    "ts": "16:57",
-   "quote": "If it doesn't, the answer might be batching or caching rather than more API calls.",
-   "context": "Juniper's Salesforce daily API allocation is not known yet and is described as not generous; OrbitFlow will check whether the design fits within it and suggested batching or caching if it does not. \u2014 Rate limit follow-up. Nina asked for the number; Ava said she would need to check.",
+   "quote": "Get me the number and I'll tell you honestly whether the design fits inside it. If it doesn't, the answer might be batching or caching rather than more API calls.",
+   "context": "OrbitFlow asked the customer for their Salesforce daily API allocation and said it will assess whether the design fits within it; if not, batching or caching would be the fix. \u2014 OrbitFlow Solutions Engineer; conditional technical commitment pending the customer's number.",
    "stated_or_inferred": "stated"
   },
   {
@@ -353,24 +348,11 @@
    "role": "Staff Software Engineer",
    "ts": "17:10",
    "quote": "Or not using Salesforce as a live lookup.",
-   "context": "Ava proposes avoiding Salesforce as a live lookup to stay within API limits. \u2014 Customer's own design idea for handling the Salesforce API constraint.",
+   "context": "The customer proposed avoiding Salesforce as a live lookup to stay within API limits, and OrbitFlow agreed to design around that. \u2014 Design mitigation proposed by customer for the Salesforce API constraint; OrbitFlow accepted it.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F23",
-   "turn_id": "CALL-010#T172",
-   "call_id": "CALL-010",
-   "company": "Juniper Cloud Tools",
-   "speaker": "Ava Sinclair",
-   "side": "customer",
-   "role": "Staff Software Engineer",
-   "ts": "18:45",
-   "quote": "If I give you a Salesforce connection, can I scope it to specific objects?",
-   "context": "Juniper wants to scope a Salesforce connection to specific objects (least-privilege requirement). \u2014 Security list item for least-privilege credentials.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F24",
    "turn_id": "CALL-010#T173",
    "call_id": "CALL-010",
    "company": "Juniper Cloud Tools",
@@ -379,11 +361,11 @@
    "role": "Solutions Engineer",
    "ts": "18:53",
    "quote": "That's scoped on the Salesforce side by the permissions of the user or integration account you connect with. We use what you give us. We don't have a separate layer that further restricts it.",
-   "context": "Salesforce access scoping is controlled upstream by the permissions of the Salesforce user or integration account connected; OrbitFlow adds no separate restriction layer. \u2014 Vendor claim about Salesforce connector permissions and limitation of OrbitFlow's own controls.",
+   "context": "Salesforce permissions are controlled upstream by the user or integration account used to connect; OrbitFlow adds no separate permission layer on top. \u2014 OrbitFlow explaining least-privilege scoping for a Salesforce connection; the customer had asked whether objects could be scoped.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F25",
+   "finding_id": "F24",
    "turn_id": "CALL-010#T266",
    "call_id": "CALL-010",
    "company": "Juniper Cloud Tools",
@@ -392,11 +374,11 @@
    "role": "Staff Software Engineer",
    "ts": "28:05",
    "quote": "If a workflow retries a step that writes to Salesforce, do I get two records?",
-   "context": "Ava asked whether retried writes to Salesforce would create duplicate records. \u2014 Idempotency concern for Salesforce writes.",
+   "context": "The customer asked whether a retried workflow step writing to Salesforce could create duplicate records. \u2014 Customer technical concern about idempotency of Salesforce writes; it was a test of whether OrbitFlow would overclaim.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F26",
+   "finding_id": "F25",
    "turn_id": "CALL-010#T267",
    "call_id": "CALL-010",
    "company": "Juniper Cloud Tools",
@@ -405,7 +387,20 @@
    "role": "Solutions Engineer",
    "ts": "28:13",
    "quote": "If the downstream system isn't idempotent and the write succeeded but the response was lost, then yes, potentially.",
-   "context": "OrbitFlow says duplicate Salesforce records are possible if the write succeeded but the response was lost, because OrbitFlow cannot make a non-idempotent API idempotent; retries are visible in the run record. \u2014 Vendor answer on idempotency for downstream writes, including Salesforce.",
+   "context": "OrbitFlow said a retry could create duplicate Salesforce records if the downstream API is not idempotent and the write succeeded but the response was lost; OrbitFlow cannot make a non-idempotent API idempotent, though retries are visible in the run record. \u2014 OrbitFlow answer to the Salesforce duplicate-record question; no overclaim.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F26",
+   "turn_id": "CALL-010#T140",
+   "call_id": "CALL-010",
+   "company": "Juniper Cloud Tools",
+   "speaker": "Nina Patel",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "15:13",
+   "quote": "Just confirm what I've got. Salesforce, Segment, PostgreSQL, Slack, Linear, internal services, AWS.",
+   "context": "OrbitFlow's Solutions Engineer listed Salesforce as part of the customer's stack to confirm. \u2014 Stack confirmation during technical evaluation; Salesforce is one of several named systems.",
    "stated_or_inferred": "stated"
   },
   {
@@ -417,8 +412,8 @@
    "side": "vendor",
    "role": "Account Executive",
    "ts": "23:23",
-   "quote": "the Linear analysis on what fraction of the backlog is business rule changes, the Salesforce API allocation, and whether those two EU contracts have residency commitments.",
-   "context": "Juniper's Salesforce API allocation is an action item for the customer to provide during the evaluation. \u2014 Follow-up task list for the four-week evaluation.",
+   "quote": "the Salesforce API allocation",
+   "context": "OrbitFlow asked the customer for their Salesforce API allocation as an action item for the evaluation, and the customer agreed to provide it. \u2014 Follow-up action list at call close; the customer agreed to provide it.",
    "stated_or_inferred": "stated"
   },
   {
@@ -431,7 +426,7 @@
    "role": "Account Executive",
    "ts": "13:40",
    "quote": "combine product and CRM signals",
-   "context": "The intended use case includes combining product and CRM signals, which is a CRM integration need though Salesforce is not named in this turn. \u2014 OrbitFlow account executive's summary of the use case; CRM likely refers to Salesforce given the stack list.",
+   "context": "The intended use case includes combining product and CRM signals to drive operational tasks, which implies a CRM integration (Salesforce is not named in this turn). \u2014 OrbitFlow's summary of the use case; CRM is generic here, and Salesforce is named elsewhere in the call.",
    "stated_or_inferred": "stated"
   },
   {
@@ -443,17 +438,17 @@
    "side": "vendor",
    "role": "Account Executive",
    "ts": "02:19",
-   "quote": "one in March because it was a retry storm caused by a Salesforce outage on their side",
-   "context": "OrbitFlow's account executive said one March over-run was a retry storm caused by a Salesforce outage on the customer's side. This is a Salesforce outage, not a Salesforce integration or connector statement, and no customer mentioned a Salesforce integration in this call. \u2014 Passing mention of Salesforce as the cause of an outage; not an integration, connector, or CRM use case. Devan Shah's later reference to the retry storm (T032) does not name Salesforce.",
+   "quote": "it was a retry storm caused by a Salesforce outage on their side",
+   "context": "OrbitFlow's Maya Chen attributed the March retry storm (about 20,000 runs) to a Salesforce outage on Salesforce's side. This is an outage, not a described Salesforce integration. No customer named Salesforce in this call, and Devan Shah only referred to the March retry storm. \u2014 Vendor speaker (OrbitFlow AE) on a renewal/QBR call with existing customer Lumen Retail Group. Mention is of a Salesforce outage affecting run volume, not a stated integration, build, or limitation. Customers Fiona Bright and Devan Shah did not mention Salesforce.",
    "stated_or_inferred": "stated"
   }
  ],
  "rejected_findings": [],
  "draft": {
-  "answer": "Five prospects discussed Salesforce integrations: Acme Logistics, DeltaWorks, Ember Financial, Inkwell Learning and Juniper Cloud Tools [C1][C2][C3][C4][C5]. Only Ember and Juniper's statements came from the customers themselves as requirements or constraints [C3][C5]. Lumen Retail Group (renewal) only had a Salesforce outage mentioned, not an integration [C6].",
+  "answer": "Four prospects discussed Salesforce integration themselves: Acme Logistics, Ember Financial, Inkwell Learning and Juniper Cloud Tools [C1][C2][C3][C4]. DeltaWorks Manufacturing listed Salesforce in its stack and responded to a Salesforce-triggered workflow proposal [C5]. Lumen Retail Group's only Salesforce mention came from OrbitFlow and concerned an outage, not an integration [C6].",
   "claims": [
    {
-    "text": "Acme Logistics: Salesforce is part of the core stack and described as mandatory. Maya Chen (vendor) said 'you'd said Salesforce is mandatory'; the customer did not name Salesforce in the reply. Rachel Morgan (VP RevOps) agreed that a Salesforce-triggered onboarding workflow (opportunity closes, create plan, assign tasks) was 'the right shape' for phase one. Jon Bell said connectors for the stack are a mix of native and API-based, to be validated in a pilot; this is not a Salesforce-specific claim.",
+    "text": "Acme Logistics (prospect): Rachel Morgan (VP Revenue Operations) accepted OrbitFlow's proposed phase-one workflow triggered by an opportunity closing in Salesforce as 'the right shape', and called the system-of-record connector the deal-breaker. Maya Chen said the Acme team had said Salesforce is mandatory. The Salesforce link in Rachel's own turns is partly indirect (she confirmed the stack as 'the core' and did not name Salesforce in the connector remark). The workflow is a proposal, not a built integration.",
     "finding_ids": [
      "F1",
      "F2",
@@ -463,50 +458,53 @@
     ]
    },
    {
-    "text": "DeltaWorks Manufacturing: Martin Vogel listed Salesforce only as a system in the stack (with SAP S/4HANA, ServiceNow, Teams, SQL Server), not as a stated integration requirement. Maya Chen proposed a phase-one workflow starting when a service contract closes in Salesforce; Vogel's reply ('close, the last part is the valuable part') suggests he accepted it but valued the mismatch escalation more than the Salesforce step.",
+    "text": "Acme Logistics: Jon Bell's answer that connectivity is a mix of native connectors and API options appears to refer to a stack including Salesforce, but Salesforce was not named and no Salesforce connector was confirmed (inferred).",
     "finding_ids": [
-     "F6",
-     "F7",
-     "F8"
+     "F6"
     ]
    },
    {
-    "text": "Ember Financial: Noah Williams (VP Operations Technology) listed Salesforce among required phase-one integrations (with Snowflake, Slack, Okta, Jira, an internal event bus, plus webhooks and a generic REST connector). Nina Patel (vendor) played back a use case enriching partner onboarding events from Salesforce and said non-event-bus systems are a mix of native connectors and API options to validate per operation in a pilot; no Salesforce-specific availability was confirmed.",
+    "text": "Ember Financial (prospect): Noah Williams (VP Operations Technology) listed Salesforce as a required integration for phase one, alongside Snowflake, Slack, Okta, Jira and an internal event bus. Nina Patel played back the use case as enriching partner onboarding events from Salesforce and Snowflake, and the customer confirmed it. This is a requirement, not a confirmed capability.",
     "finding_ids": [
-     "F9",
      "F10",
      "F11"
     ]
    },
    {
-    "text": "Inkwell Learning: Darren Wu described a workflow combining Salesforce account status with Zendesk and Snowflake data to flag at-risk accounts, and said no current tool joins them. He said Salesforce is reliable for commercial facts (contract dates, ARR, owner) but unreliable for human-entered fields, and stale fields would cause bad decisions. He also said Salesforce has no history on most fields, so point-in-time backtesting is not possible. Jon Bell said human-maintained Salesforce fields should not carry the flag; his demo narration referred to joining 'the CRM' without naming Salesforce or a native connector.",
+    "text": "Inkwell Learning (prospect): Darren Wu (Director of BI) proposed combining Zendesk ticket patterns, Salesforce account status and Snowflake usage to flag accounts. He worried stale Salesforce fields would cause bad decisions, called Salesforce reliable for contract dates, ARR and owner but unreliable for human-typed fields, and said nothing currently joins Zendesk, Snowflake and Salesforce into an action. Salesforce human-maintained fields were excluded from the flag because Salesforce has no history. Maya Chen recommended showing those fields as context rather than logic inputs. This is requested, not built.",
     "finding_ids": [
      "F12",
      "F13",
      "F14",
-     "F15",
-     "F16",
      "F17",
-     "F18"
+     "F18",
+     "F16"
     ]
    },
    {
-    "text": "Juniper Cloud Tools: Salesforce is in the stack Nina Patel confirmed, and the use case combines product and CRM signals (CRM likely Salesforce, which is inferred). Ava Sinclair (Staff Software Engineer) said Salesforce API limits are a constraint they have hit before and suggested not using Salesforce as a live lookup. The daily allocation is unknown and is an action item for Juniper during the evaluation; Nina suggested batching or caching if the design doesn't fit. Ava asked about scoping a connection to specific objects; Nina said scoping is set by the Salesforce user/integration account permissions and OrbitFlow adds no extra restriction layer. Ava asked whether retried writes create duplicates; Nina said duplicates are possible if a write succeeded but the response was lost, since OrbitFlow cannot make a non-idempotent API idempotent.",
+    "text": "Juniper Cloud Tools (prospect): Ava Sinclair (Staff Software Engineer) said Salesforce API limits are the constraint and they have hit them before. Her daily allocation is 'not generous' and she must check the number. She proposed not using Salesforce as a live lookup, which OrbitFlow agreed to design around. Nina Patel said she would assess whether the design fits and that batching or caching might be the fix. The customer agreed to provide the allocation as an action item. Ava also asked whether a retried step writing to Salesforce could create duplicates. Nina said yes if the downstream API is not idempotent and the response was lost. Salesforce permissions are scoped on the Salesforce side by the connecting account. Nina's stack confirmation listed Salesforce.",
     "finding_ids": [
      "F19",
-     "F28",
      "F20",
      "F21",
      "F22",
      "F27",
-     "F23",
      "F24",
      "F25",
+     "F23",
      "F26"
     ]
    },
    {
-    "text": "Lumen Retail Group (renewal): Maya Chen only mentioned that one March over-run was a retry storm caused by a Salesforce outage on the customer's side. This is an outage, not an integration, and no customer discussed a Salesforce integration.",
+    "text": "DeltaWorks Manufacturing (prospect): Martin Vogel (Director of Enterprise Applications) listed Salesforce in its stack with SAP S/4HANA, ServiceNow, Microsoft Teams and on-premise SQL Server. Maya Chen proposed a workflow starting when a large service contract closes in Salesforce. Martin said it was close and that early mismatch escalation was the valuable part. No Salesforce connection method was discussed.",
+    "finding_ids": [
+     "F7",
+     "F8",
+     "F9"
+    ]
+   },
+   {
+    "text": "Lumen Retail Group (renewal): Maya Chen attributed the March retry storm (about 20,000 runs) to a Salesforce outage on Salesforce's side. This is an outage, not a described integration, and Lumen's Fiona Bright and Devan Shah did not mention Salesforce.",
     "finding_ids": [
      "F29"
     ]
@@ -514,57 +512,32 @@
   ],
   "conflicts": [],
   "not_covered": [
-   "Whether OrbitFlow has a confirmed native Salesforce connector, or its plan or tier availability; the findings only give general native/API statements."
+   "Whether any prospect actually has a working Salesforce integration with OrbitFlow; the findings show requirements, proposals and design discussions only.",
+   "Juniper Cloud Tools' actual Salesforce daily API allocation, which was not stated."
   ],
   "assumptions": [
-   "Customers is interpreted broadly to include all call types.",
-   "Salesforce mentions are treated as covering synonyms such as SFDC and CRM integration only where Salesforce is named or clearly implied."
+   "Customers is read broadly to include prospects and any company on the call that mentioned Salesforce integration.",
+   "Synonyms for Salesforce, such as SFDC and general CRM integration terms, were treated as Salesforce mentions."
   ]
  },
  "usage": {
-  "llm_calls": 14,
-  "input_tokens": 142245,
-  "cache_read_tokens": 126778,
-  "cache_write_tokens": 0,
-  "output_tokens": 14590,
-  "uncached_calls": 0,
-  "latency_s": 2.18
+  "llm_calls": 13,
+  "input_tokens": 136508,
+  "cache_read_tokens": 13963,
+  "cache_write_tokens": 106476,
+  "output_tokens": 14250,
+  "uncached_calls": 1,
+  "latency_s": 5.42
  },
  "answer": {
   "question": "Which customers mentioned integrations with Salesforce?",
-  "answer": "Five prospects discussed Salesforce integrations: Acme Logistics, DeltaWorks, Ember Financial, Inkwell Learning and Juniper Cloud Tools [1][2][3][4][5]. Only Ember and Juniper's statements came from the customers themselves as requirements or constraints [3][5]. Lumen Retail Group (renewal) only had a Salesforce outage mentioned, not an integration [6].",
+  "answer": "Four prospects discussed Salesforce integration themselves: Acme Logistics, Ember Financial, Inkwell Learning and Juniper Cloud Tools [1][2][3][4]. DeltaWorks Manufacturing listed Salesforce in its stack and responded to a Salesforce-triggered workflow proposal [5]. Lumen Retail Group's only Salesforce mention came from OrbitFlow and concerned an outage, not an integration [6].",
   "claims": [
    {
-    "text": "Acme Logistics: Salesforce is part of the core stack and described as mandatory. Maya Chen (vendor) said 'you'd said Salesforce is mandatory'; the customer did not name Salesforce in the reply. Rachel Morgan (VP RevOps) agreed that a Salesforce-triggered onboarding workflow (opportunity closes, create plan, assign tasks) was 'the right shape' for phase one. Jon Bell said connectors for the stack are a mix of native and API-based, to be validated in a pilot; this is not a Salesforce-specific claim.",
+    "text": "Acme Logistics (prospect): Rachel Morgan (VP Revenue Operations) accepted OrbitFlow's proposed phase-one workflow triggered by an opportunity closing in Salesforce as 'the right shape', and called the system-of-record connector the deal-breaker. Maya Chen said the Acme team had said Salesforce is mandatory. The Salesforce link in Rachel's own turns is partly indirect (she confirmed the stack as 'the core' and did not name Salesforce in the connector remark). The workflow is a proposal, not a built integration.",
     "evidence": [
      {
       "finding_id": "F1",
-      "turn_id": "CALL-001#T059",
-      "call_id": "CALL-001",
-      "company": "Acme Logistics",
-      "speaker": "Maya Chen",
-      "side": "vendor",
-      "role": "Account Executive",
-      "ts": "08:26",
-      "quote": "opportunity closes in Salesforce, create the onboarding plan, assign tasks based on product mix",
-      "context": "OrbitFlow proposed a phase-one workflow that starts when an opportunity closes in Salesforce, creates the onboarding plan, and assigns tasks. \u2014 Vendor proposal of a use case for a single phase-one workflow, not a confirmed connector capability.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F2",
-      "turn_id": "CALL-001#T060",
-      "call_id": "CALL-001",
-      "company": "Acme Logistics",
-      "speaker": "Rachel Morgan",
-      "side": "customer",
-      "role": "VP Revenue Operations",
-      "ts": "08:47",
-      "quote": "That's the right shape.",
-      "context": "The customer accepted the proposed Salesforce-triggered onboarding workflow as the right shape for phase one, with a caveat about the hard cases. \u2014 Customer agreement with the vendor's proposed use case; she then said the happy path is not the hard part.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F3",
       "turn_id": "CALL-001#T047",
       "call_id": "CALL-001",
       "company": "Acme Logistics",
@@ -573,7 +546,33 @@
       "role": "VP Revenue Operations",
       "ts": "06:42",
       "quote": "That's the core, yeah.",
-      "context": "Salesforce is part of the customer's core stack and is the system of record for customer and commercial data. \u2014 Customer confirmed the vendor's stack list. Rachel said customer and commercial data is clear but did not name Salesforce in that turn.",
+      "context": "Rachel Morgan (prospect, Acme Logistics) agreed that Salesforce is part of the core stack, which she listed as the systems involved in their process. \u2014 Prospect discovery/first demo call (CALL-001). Weak, indirect mention: she confirmed Maya's playback of the stack, which included Salesforce, rather than naming Salesforce herself.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F2",
+      "turn_id": "CALL-001#T059",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "08:26",
+      "quote": "opportunity closes in Salesforce, create the onboarding plan, assign tasks based on product mix",
+      "context": "OrbitFlow's proposed phase-one pilot workflow is triggered by an opportunity closing in Salesforce, then creates an onboarding plan and assigns tasks. \u2014 Prospect discovery/first demo call (CALL-001). Vendor proposal for a single representative workflow, not a built or confirmed integration.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F3",
+      "turn_id": "CALL-001#T060",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Rachel Morgan",
+      "side": "customer",
+      "role": "VP Revenue Operations",
+      "ts": "08:47",
+      "quote": "That's the right shape.",
+      "context": "Rachel Morgan (prospect) accepted the Salesforce-triggered onboarding workflow as the right shape for phase one, with the caveat that the happy path is not the hard part. \u2014 Prospect discovery/first demo call (CALL-001). Acceptance of the vendor proposal, with a caveat about edge cases and failure handling.",
       "stated_or_inferred": "stated"
      },
      {
@@ -586,11 +585,30 @@
       "role": "Account Executive",
       "ts": "13:34",
       "quote": "you'd said Salesforce is mandatory",
-      "context": "Salesforce is the mandatory integration, and the customer's deal-breaker is the reliability of the system-of-record connector, which the vendor understood to mean Salesforce. \u2014 Vendor restated the customer's position. The customer's reply names the system of record and connector reliability but does not say Salesforce by name.",
+      "context": "Maya Chen restated that Acme's customer-side team said Salesforce is mandatory for the integrations. \u2014 Prospect discovery/first demo call (CALL-001). This is the vendor summarising the customer's earlier position, not the customer's own words.",
       "stated_or_inferred": "stated"
      },
      {
       "finding_id": "F5",
+      "turn_id": "CALL-001#T088",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Rachel Morgan",
+      "side": "customer",
+      "role": "VP Revenue Operations",
+      "ts": "13:48",
+      "quote": "The system of record. If that connector's unreliable, none of the rest matters.",
+      "context": "Rachel Morgan (prospect) said the Salesforce system-of-record connector is the deal-breaker: if it is unreliable, nothing else matters. \u2014 Prospect discovery/first demo call (CALL-001). Answering the question about the Salesforce integration; she does not name Salesforce explicitly in this turn.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Acme Logistics: Jon Bell's answer that connectivity is a mix of native connectors and API options appears to refer to a stack including Salesforce, but Salesforce was not named and no Salesforce connector was confirmed (inferred).",
+    "evidence": [
+     {
+      "finding_id": "F6",
       "turn_id": "CALL-001#T089",
       "call_id": "CALL-001",
       "company": "Acme Logistics",
@@ -599,62 +617,17 @@
       "role": "Solutions Engineer",
       "ts": "14:02",
       "quote": "For your stack it's a mix of native connectors and API-based options.",
-      "context": "The vendor said its connectors for the customer's stack are a mix of native and API-based options, and that each required operation should be validated in a pilot rather than assumed from the integrations page. Salesforce is not named in this turn. \u2014 Vendor answer on integration availability for the customer's stack (which includes Salesforce). Not a Salesforce-specific availability or limitation claim.",
+      "context": "OrbitFlow said its connectivity to Acme's stack, which includes Salesforce, is a mix of native connectors and API-based options, and that a pilot should validate each required operation rather than rely on the integrations page. \u2014 Prospect discovery/first demo call (CALL-001). Vendor claim that does not name Salesforce explicitly; it is an implication from the stack discussion. No Salesforce connector is confirmed as built or available.",
       "stated_or_inferred": "inferred"
      }
     ],
-    "support": "moderate"
+    "support": "weak"
    },
    {
-    "text": "DeltaWorks Manufacturing: Martin Vogel listed Salesforce only as a system in the stack (with SAP S/4HANA, ServiceNow, Teams, SQL Server), not as a stated integration requirement. Maya Chen proposed a phase-one workflow starting when a service contract closes in Salesforce; Vogel's reply ('close, the last part is the valuable part') suggests he accepted it but valued the mismatch escalation more than the Salesforce step.",
+    "text": "Ember Financial (prospect): Noah Williams (VP Operations Technology) listed Salesforce as a required integration for phase one, alongside Snowflake, Slack, Okta, Jira and an internal event bus. Nina Patel played back the use case as enriching partner onboarding events from Salesforce and Snowflake, and the customer confirmed it. This is a requirement, not a confirmed capability.",
     "evidence": [
      {
-      "finding_id": "F6",
-      "turn_id": "CALL-004#T067",
-      "call_id": "CALL-004",
-      "company": "DeltaWorks Manufacturing",
-      "speaker": "Martin Vogel",
-      "side": "customer",
-      "role": "Director of Enterprise Applications",
-      "ts": "09:46",
-      "quote": "Salesforce. ServiceNow.",
-      "context": "DeltaWorks lists Salesforce as one of the systems in its current stack, alongside SAP S/4HANA, ServiceNow, Microsoft Teams and on-premise SQL Server systems. No Salesforce integration is described as existing or required in this list. \u2014 Customer's stack inventory, not a stated integration requirement. Named only as a system in use.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F7",
-      "turn_id": "CALL-004#T090",
-      "call_id": "CALL-004",
-      "company": "DeltaWorks Manufacturing",
-      "speaker": "Maya Chen",
-      "side": "vendor",
-      "role": "Account Executive",
-      "ts": "13:34",
-      "quote": "A large service contract closes in Salesforce.",
-      "context": "OrbitFlow proposes a phase-one candidate in which a large service contract closes in Salesforce, and the workflow then validates customer and product data against SAP, creates implementation tasks in ServiceNow, and escalates mismatches before order processing. \u2014 Vendor's proposed use case, not a confirmed Salesforce connector. No availability, tier or connector claim is made for Salesforce in this call.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F8",
-      "turn_id": "CALL-004#T091",
-      "call_id": "CALL-004",
-      "company": "DeltaWorks Manufacturing",
-      "speaker": "Martin Vogel",
-      "side": "customer",
-      "role": "Director of Enterprise Applications",
-      "ts": "13:57",
-      "quote": "That is close. The last part is the valuable part.",
-      "context": "The customer accepts the Salesforce-starting candidate as close to right, but says the valuable part is the early mismatch escalation at contract close rather than the Salesforce step itself. \u2014 Customer's response to the vendor's Salesforce-based candidate. The Salesforce step is not named in the reply; acceptance is implied.",
-      "stated_or_inferred": "inferred"
-     }
-    ],
-    "support": "moderate"
-   },
-   {
-    "text": "Ember Financial: Noah Williams (VP Operations Technology) listed Salesforce among required phase-one integrations (with Snowflake, Slack, Okta, Jira, an internal event bus, plus webhooks and a generic REST connector). Nina Patel (vendor) played back a use case enriching partner onboarding events from Salesforce and said non-event-bus systems are a mix of native connectors and API options to validate per operation in a pilot; no Salesforce-specific availability was confirmed.",
-    "evidence": [
-     {
-      "finding_id": "F9",
+      "finding_id": "F10",
       "turn_id": "CALL-005#T108",
       "call_id": "CALL-005",
       "company": "Ember Financial",
@@ -663,11 +636,11 @@
       "role": "VP Operations Technology",
       "ts": "15:24",
       "quote": "Salesforce, Snowflake, Slack, Okta, Jira, and an internal event bus. Required: all of those, plus webhooks and a generic REST connector.",
-      "context": "Noah Williams (customer) lists Salesforce as a required integration for the phase-one stack. \u2014 Customer stated requirement during the stack discussion; all listed systems, including Salesforce, are required.",
+      "context": "Customer lists Salesforce as a required integration for the phase-one stack, alongside Snowflake, Slack, Okta, Jira, and an internal event bus. \u2014 Prospect call (CALL-005, Ember Financial, Evaluation, 2026-07-02). Noah Williams is VP Operations Technology and the executive sponsor. This is a stated requirement, not a confirmed capability; OrbitFlow later says connectors are to be validated in a pilot rather than by logo.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F10",
+      "finding_id": "F11",
       "turn_id": "CALL-005#T070",
       "call_id": "CALL-005",
       "company": "Ember Financial",
@@ -676,27 +649,14 @@
       "role": "Solutions Engineer",
       "ts": "10:15",
       "quote": "Enrich them from Salesforce and Snowflake.",
-      "context": "Nina Patel (OrbitFlow) plays back the phase-one candidate, which enriches partner onboarding events from Salesforce. \u2014 Vendor restatement of the customer's use case, not a customer statement and not a confirmation of connector availability.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F11",
-      "turn_id": "CALL-005#T113",
-      "call_id": "CALL-005",
-      "company": "Ember Financial",
-      "speaker": "Nina Patel",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "15:53",
-      "quote": "The others are a mix of native connectors and API options, and I'd validate each required operation in a pilot rather than pointing at logos.",
-      "context": "Nina Patel (OrbitFlow) says the non-event-bus systems, which include Salesforce, are a mix of native connectors and API options and should be validated per operation in a pilot rather than assumed from logos. \u2014 General statement about the required systems other than the internal event bus. Salesforce is not named specifically, so no Salesforce-specific availability or tier is confirmed.",
+      "context": "OrbitFlow staff (Nina Patel, Solutions Engineer) plays back the phase-one candidate use case as enriching partner onboarding events from Salesforce and Snowflake. \u2014 Prospect call (CALL-005). This is OrbitFlow's restatement of the customer's use case, not a confirmed product claim about a Salesforce connector. The customer confirms the playback ('That's it.') at T071.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "Inkwell Learning: Darren Wu described a workflow combining Salesforce account status with Zendesk and Snowflake data to flag at-risk accounts, and said no current tool joins them. He said Salesforce is reliable for commercial facts (contract dates, ARR, owner) but unreliable for human-entered fields, and stale fields would cause bad decisions. He also said Salesforce has no history on most fields, so point-in-time backtesting is not possible. Jon Bell said human-maintained Salesforce fields should not carry the flag; his demo narration referred to joining 'the CRM' without naming Salesforce or a native connector.",
+    "text": "Inkwell Learning (prospect): Darren Wu (Director of BI) proposed combining Zendesk ticket patterns, Salesforce account status and Snowflake usage to flag accounts. He worried stale Salesforce fields would cause bad decisions, called Salesforce reliable for contract dates, ARR and owner but unreliable for human-typed fields, and said nothing currently joins Zendesk, Snowflake and Salesforce into an action. Salesforce human-maintained fields were excluded from the flag because Salesforce has no history. Maya Chen recommended showing those fields as context rather than logic inputs. This is requested, not built.",
     "evidence": [
      {
       "finding_id": "F12",
@@ -707,8 +667,8 @@
       "side": "customer",
       "role": "Director of Business Intelligence",
       "ts": "01:23",
-      "quote": "combine Zendesk ticket patterns, Salesforce account status, and Snowflake product usage",
-      "context": "Darren Wu restated the proposed workflow as combining Salesforce account status with Zendesk and Snowflake data to flag at-risk accounts. \u2014 Customer restating the vendor's proposed design; Salesforce is one of three named inputs, not a confirmed integration.",
+      "quote": "the proposal, as I understand it, is to combine Zendesk ticket patterns, Salesforce account status, and Snowflake product usage to flag accounts needing proactive intervention",
+      "context": "Darren Wu proposed combining Zendesk ticket patterns, Salesforce account status, and Snowflake product usage to flag accounts needing proactive intervention. This is the requested Salesforce integration in a prospect evaluation call (Inkwell Learning, not an existing customer). \u2014 Customer (prospect) restating the proposed cross-system use case; requested integration, not yet built",
       "stated_or_inferred": "stated"
      },
      {
@@ -721,7 +681,7 @@
       "role": "Director of Business Intelligence",
       "ts": "01:44",
       "quote": "If Salesforce fields are stale, an elegant workflow will still make bad decisions.",
-      "context": "Darren Wu says stale Salesforce fields would make the workflow produce bad decisions. \u2014 Data-quality concern about Salesforce as an input to the proposed workflow.",
+      "context": "Darren Wu is concerned that stale Salesforce fields would make a Salesforce-dependent workflow produce bad decisions. \u2014 Data-quality concern about Salesforce as an input to the proposed integration",
       "stated_or_inferred": "stated"
      },
      {
@@ -734,11 +694,11 @@
       "role": "Director of Business Intelligence",
       "ts": "03:47",
       "quote": "Salesforce is reliable for the commercial facts \u2014 contract dates, ARR, owner. It is unreliable for anything a human has to remember to type.",
-      "context": "Darren Wu says Salesforce is reliable for commercial facts (contract dates, ARR, owner) but unreliable for human-entered fields. \u2014 Customer's assessment of Salesforce data quality; he names the fields he trusts and distrusts.",
+      "context": "Darren Wu says Salesforce is reliable for commercial facts (contract dates, ARR, owner) but unreliable for fields humans must type. \u2014 Customer's assessment of Salesforce data trustworthiness, relevant to which Salesforce fields could feed the integration",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F15",
+      "finding_id": "F17",
       "turn_id": "CALL-009#T071",
       "call_id": "CALL-009",
       "company": "Inkwell Learning",
@@ -747,24 +707,11 @@
       "role": "Director of Business Intelligence",
       "ts": "08:07",
       "quote": "nothing joins Zendesk to Snowflake to Salesforce in a way that produces an action.",
-      "context": "Darren Wu says no current tool joins Zendesk, Snowflake and Salesforce to produce an action. \u2014 Describes the customer's current state: Gainsight is underused and Looker only alerts; this is the gap, not a claim about OrbitFlow's connector.",
+      "context": "Darren Wu says nothing currently joins Zendesk, Snowflake, and Salesforce in a way that produces an action, and that Salesforce fields are overwritten with no history. \u2014 Customer describing current state; the Salesforce gap is a limitation of existing tooling and of data history",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F16",
-      "turn_id": "CALL-009#T083",
-      "call_id": "CALL-009",
-      "company": "Inkwell Learning",
-      "speaker": "Jon Bell",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "09:37",
-      "quote": "queries the warehouse, joins against the CRM, and evaluates a set of conditions.",
-      "context": "Jon Bell says the workflow joins warehouse data against the CRM. He does not name Salesforce or describe a native Salesforce connector. \u2014 Vendor demo narration of a sample workflow; CRM is unnamed, and no plan, tier, or availability is stated.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F17",
+      "finding_id": "F18",
       "turn_id": "CALL-009#T209",
       "call_id": "CALL-009",
       "company": "Inkwell Learning",
@@ -773,56 +720,30 @@
       "role": "Director of Business Intelligence",
       "ts": "25:30",
       "quote": "Salesforce, no. Salesforce fields get overwritten, there's no history on most of them.",
-      "context": "Darren Wu says Salesforce history is not available for most fields, so point-in-time backtesting can't be done on Salesforce data. \u2014 Data limitation for the pilot backtest; Snowflake and Zendesk history is available.",
+      "context": "Jon Bell notes that the Salesforce human-maintained fields should not carry the flag, which Darren Wu agrees with because Salesforce has no point-in-time history for backtesting. \u2014 Vendor and customer agree Salesforce human fields are excluded from the flag; the data limitation (no history) aligns with the design decision",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F18",
-      "turn_id": "CALL-009#T210",
+      "finding_id": "F16",
+      "turn_id": "CALL-009#T035",
       "call_id": "CALL-009",
       "company": "Inkwell Learning",
-      "speaker": "Jon Bell",
+      "speaker": "Maya Chen",
       "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "25:47",
-      "quote": "Which is convenient, in a way, because you've already said the Salesforce human-maintained fields shouldn't carry the flag.",
-      "context": "Jon Bell says Salesforce human-maintained fields should not carry the at-risk flag, which agrees with the data limitation. \u2014 Vendor design position linked to the customer's data-quality concern; the customer calls it coincidence.",
+      "role": "Account Executive",
+      "ts": "04:08",
+      "quote": "Human-maintained fields are context you show to the person, not inputs the logic depends on.",
+      "context": "Maya Chen proposed that Salesforce human-maintained fields be shown as context to the user rather than used as inputs the logic depends on. \u2014 Vendor design recommendation for how Salesforce data is used in the proposed flag logic; not explicitly named as Salesforce",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "Juniper Cloud Tools: Salesforce is in the stack Nina Patel confirmed, and the use case combines product and CRM signals (CRM likely Salesforce, which is inferred). Ava Sinclair (Staff Software Engineer) said Salesforce API limits are a constraint they have hit before and suggested not using Salesforce as a live lookup. The daily allocation is unknown and is an action item for Juniper during the evaluation; Nina suggested batching or caching if the design doesn't fit. Ava asked about scoping a connection to specific objects; Nina said scoping is set by the Salesforce user/integration account permissions and OrbitFlow adds no extra restriction layer. Ava asked whether retried writes create duplicates; Nina said duplicates are possible if a write succeeded but the response was lost, since OrbitFlow cannot make a non-idempotent API idempotent.",
+    "text": "Juniper Cloud Tools (prospect): Ava Sinclair (Staff Software Engineer) said Salesforce API limits are the constraint and they have hit them before. Her daily allocation is 'not generous' and she must check the number. She proposed not using Salesforce as a live lookup, which OrbitFlow agreed to design around. Nina Patel said she would assess whether the design fits and that batching or caching might be the fix. The customer agreed to provide the allocation as an action item. Ava also asked whether a retried step writing to Salesforce could create duplicates. Nina said yes if the downstream API is not idempotent and the response was lost. Salesforce permissions are scoped on the Salesforce side by the connecting account. Nina's stack confirmation listed Salesforce.",
     "evidence": [
      {
       "finding_id": "F19",
-      "turn_id": "CALL-010#T140",
-      "call_id": "CALL-010",
-      "company": "Juniper Cloud Tools",
-      "speaker": "Nina Patel",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "15:13",
-      "quote": "Just confirm what I've got. Salesforce, Segment, PostgreSQL, Slack, Linear, internal services, AWS.",
-      "context": "OrbitFlow's vendor staff listed Salesforce as part of Juniper's stack to be confirmed. \u2014 Stack confirmation by Nina Patel; Marcus Chen confirmed it in a later turn.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F28",
-      "turn_id": "CALL-010#T127",
-      "call_id": "CALL-010",
-      "company": "Juniper Cloud Tools",
-      "speaker": "Leo Grant",
-      "side": "vendor",
-      "role": "Account Executive",
-      "ts": "13:40",
-      "quote": "combine product and CRM signals",
-      "context": "The intended use case includes combining product and CRM signals, which is a CRM integration need though Salesforce is not named in this turn. \u2014 OrbitFlow account executive's summary of the use case; CRM likely refers to Salesforce given the stack list.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F20",
       "turn_id": "CALL-010#T153",
       "call_id": "CALL-010",
       "company": "Juniper Cloud Tools",
@@ -831,7 +752,20 @@
       "role": "Staff Software Engineer",
       "ts": "16:41",
       "quote": "Salesforce API limits are the constraint. We've hit them before.",
-      "context": "Juniper has hit Salesforce API limits before, and Salesforce API limits are a constraint for the design. \u2014 Customer technical constraint raised during rate limit discussion.",
+      "context": "Salesforce API limits are a constraint for the customer's integration design, and they have hit those limits before. \u2014 Customer (prospect Staff Software Engineer) raising Salesforce API limits as a known constraint, in response to OrbitFlow's rate-limit answer.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F20",
+      "turn_id": "CALL-010#T155",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Ava Sinclair",
+      "side": "customer",
+      "role": "Staff Software Engineer",
+      "ts": "16:53",
+      "quote": "I'd have to check. It's not generous.",
+      "context": "The customer's Salesforce daily API allocation is not generous, and she needs to check the exact number. \u2014 Customer declining to give the exact figure on the spot; OrbitFlow asked for it.",
       "stated_or_inferred": "stated"
      },
      {
@@ -843,8 +777,8 @@
       "side": "vendor",
       "role": "Solutions Engineer",
       "ts": "16:57",
-      "quote": "If it doesn't, the answer might be batching or caching rather than more API calls.",
-      "context": "Juniper's Salesforce daily API allocation is not known yet and is described as not generous; OrbitFlow will check whether the design fits within it and suggested batching or caching if it does not. \u2014 Rate limit follow-up. Nina asked for the number; Ava said she would need to check.",
+      "quote": "Get me the number and I'll tell you honestly whether the design fits inside it. If it doesn't, the answer might be batching or caching rather than more API calls.",
+      "context": "OrbitFlow asked the customer for their Salesforce daily API allocation and said it will assess whether the design fits within it; if not, batching or caching would be the fix. \u2014 OrbitFlow Solutions Engineer; conditional technical commitment pending the customer's number.",
       "stated_or_inferred": "stated"
      },
      {
@@ -857,7 +791,7 @@
       "role": "Staff Software Engineer",
       "ts": "17:10",
       "quote": "Or not using Salesforce as a live lookup.",
-      "context": "Ava proposes avoiding Salesforce as a live lookup to stay within API limits. \u2014 Customer's own design idea for handling the Salesforce API constraint.",
+      "context": "The customer proposed avoiding Salesforce as a live lookup to stay within API limits, and OrbitFlow agreed to design around that. \u2014 Design mitigation proposed by customer for the Salesforce API constraint; OrbitFlow accepted it.",
       "stated_or_inferred": "stated"
      },
      {
@@ -869,38 +803,12 @@
       "side": "vendor",
       "role": "Account Executive",
       "ts": "23:23",
-      "quote": "the Linear analysis on what fraction of the backlog is business rule changes, the Salesforce API allocation, and whether those two EU contracts have residency commitments.",
-      "context": "Juniper's Salesforce API allocation is an action item for the customer to provide during the evaluation. \u2014 Follow-up task list for the four-week evaluation.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F23",
-      "turn_id": "CALL-010#T172",
-      "call_id": "CALL-010",
-      "company": "Juniper Cloud Tools",
-      "speaker": "Ava Sinclair",
-      "side": "customer",
-      "role": "Staff Software Engineer",
-      "ts": "18:45",
-      "quote": "If I give you a Salesforce connection, can I scope it to specific objects?",
-      "context": "Juniper wants to scope a Salesforce connection to specific objects (least-privilege requirement). \u2014 Security list item for least-privilege credentials.",
+      "quote": "the Salesforce API allocation",
+      "context": "OrbitFlow asked the customer for their Salesforce API allocation as an action item for the evaluation, and the customer agreed to provide it. \u2014 Follow-up action list at call close; the customer agreed to provide it.",
       "stated_or_inferred": "stated"
      },
      {
       "finding_id": "F24",
-      "turn_id": "CALL-010#T173",
-      "call_id": "CALL-010",
-      "company": "Juniper Cloud Tools",
-      "speaker": "Nina Patel",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "18:53",
-      "quote": "That's scoped on the Salesforce side by the permissions of the user or integration account you connect with. We use what you give us. We don't have a separate layer that further restricts it.",
-      "context": "Salesforce access scoping is controlled upstream by the permissions of the Salesforce user or integration account connected; OrbitFlow adds no separate restriction layer. \u2014 Vendor claim about Salesforce connector permissions and limitation of OrbitFlow's own controls.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F25",
       "turn_id": "CALL-010#T266",
       "call_id": "CALL-010",
       "company": "Juniper Cloud Tools",
@@ -909,11 +817,11 @@
       "role": "Staff Software Engineer",
       "ts": "28:05",
       "quote": "If a workflow retries a step that writes to Salesforce, do I get two records?",
-      "context": "Ava asked whether retried writes to Salesforce would create duplicate records. \u2014 Idempotency concern for Salesforce writes.",
+      "context": "The customer asked whether a retried workflow step writing to Salesforce could create duplicate records. \u2014 Customer technical concern about idempotency of Salesforce writes; it was a test of whether OrbitFlow would overclaim.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F26",
+      "finding_id": "F25",
       "turn_id": "CALL-010#T267",
       "call_id": "CALL-010",
       "company": "Juniper Cloud Tools",
@@ -922,14 +830,85 @@
       "role": "Solutions Engineer",
       "ts": "28:13",
       "quote": "If the downstream system isn't idempotent and the write succeeded but the response was lost, then yes, potentially.",
-      "context": "OrbitFlow says duplicate Salesforce records are possible if the write succeeded but the response was lost, because OrbitFlow cannot make a non-idempotent API idempotent; retries are visible in the run record. \u2014 Vendor answer on idempotency for downstream writes, including Salesforce.",
+      "context": "OrbitFlow said a retry could create duplicate Salesforce records if the downstream API is not idempotent and the write succeeded but the response was lost; OrbitFlow cannot make a non-idempotent API idempotent, though retries are visible in the run record. \u2014 OrbitFlow answer to the Salesforce duplicate-record question; no overclaim.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F23",
+      "turn_id": "CALL-010#T173",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Nina Patel",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "18:53",
+      "quote": "That's scoped on the Salesforce side by the permissions of the user or integration account you connect with. We use what you give us. We don't have a separate layer that further restricts it.",
+      "context": "Salesforce permissions are controlled upstream by the user or integration account used to connect; OrbitFlow adds no separate permission layer on top. \u2014 OrbitFlow explaining least-privilege scoping for a Salesforce connection; the customer had asked whether objects could be scoped.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F26",
+      "turn_id": "CALL-010#T140",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Nina Patel",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "15:13",
+      "quote": "Just confirm what I've got. Salesforce, Segment, PostgreSQL, Slack, Linear, internal services, AWS.",
+      "context": "OrbitFlow's Solutions Engineer listed Salesforce as part of the customer's stack to confirm. \u2014 Stack confirmation during technical evaluation; Salesforce is one of several named systems.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "Lumen Retail Group (renewal): Maya Chen only mentioned that one March over-run was a retry storm caused by a Salesforce outage on the customer's side. This is an outage, not an integration, and no customer discussed a Salesforce integration.",
+    "text": "DeltaWorks Manufacturing (prospect): Martin Vogel (Director of Enterprise Applications) listed Salesforce in its stack with SAP S/4HANA, ServiceNow, Microsoft Teams and on-premise SQL Server. Maya Chen proposed a workflow starting when a large service contract closes in Salesforce. Martin said it was close and that early mismatch escalation was the valuable part. No Salesforce connection method was discussed.",
+    "evidence": [
+     {
+      "finding_id": "F7",
+      "turn_id": "CALL-004#T067",
+      "call_id": "CALL-004",
+      "company": "DeltaWorks Manufacturing",
+      "speaker": "Martin Vogel",
+      "side": "customer",
+      "role": "Director of Enterprise Applications",
+      "ts": "09:46",
+      "quote": "SAP S/4HANA. Salesforce. ServiceNow. Microsoft Teams.",
+      "context": "DeltaWorks lists Salesforce as part of its current systems stack, alongside SAP S/4HANA, ServiceNow, Microsoft Teams and on-premise SQL Server systems. \u2014 CALL-004, DeltaWorks Manufacturing, prospect, enterprise discovery call. Customer describes its current stack. No Salesforce connector, API or integration method is discussed for this system.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F8",
+      "turn_id": "CALL-004#T090",
+      "call_id": "CALL-004",
+      "company": "DeltaWorks Manufacturing",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "13:34",
+      "quote": "A large service contract closes in Salesforce.",
+      "context": "OrbitFlow proposed a phase-one workflow in which a large service contract closes in Salesforce, then customer and product data is validated against SAP, ServiceNow tasks are created, and mismatches are escalated before order processing. \u2014 OrbitFlow staff (AE Maya Chen) describing a candidate use case. This is a proposed design, not a confirmed or built integration. The customer said the description was close but said the valuable part was the early mismatch escalation.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F9",
+      "turn_id": "CALL-004#T091",
+      "call_id": "CALL-004",
+      "company": "DeltaWorks Manufacturing",
+      "speaker": "Martin Vogel",
+      "side": "customer",
+      "role": "Director of Enterprise Applications",
+      "ts": "13:57",
+      "quote": "That is close. The last part is the valuable part.",
+      "context": "The customer said the Salesforce-based phase-one candidate was close to right, with the early mismatch escalation at contract close being the most valuable part. The customer did not say how Salesforce would be connected. \u2014 Customer response to the OrbitFlow proposal in T090. Customer correction at T093 concerns where mismatches are currently caught, not Salesforce connectivity.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Lumen Retail Group (renewal): Maya Chen attributed the March retry storm (about 20,000 runs) to a Salesforce outage on Salesforce's side. This is an outage, not a described integration, and Lumen's Fiona Bright and Devan Shah did not mention Salesforce.",
     "evidence": [
      {
       "finding_id": "F29",
@@ -940,8 +919,8 @@
       "side": "vendor",
       "role": "Account Executive",
       "ts": "02:19",
-      "quote": "one in March because it was a retry storm caused by a Salesforce outage on their side",
-      "context": "OrbitFlow's account executive said one March over-run was a retry storm caused by a Salesforce outage on the customer's side. This is a Salesforce outage, not a Salesforce integration or connector statement, and no customer mentioned a Salesforce integration in this call. \u2014 Passing mention of Salesforce as the cause of an outage; not an integration, connector, or CRM use case. Devan Shah's later reference to the retry storm (T032) does not name Salesforce.",
+      "quote": "it was a retry storm caused by a Salesforce outage on their side",
+      "context": "OrbitFlow's Maya Chen attributed the March retry storm (about 20,000 runs) to a Salesforce outage on Salesforce's side. This is an outage, not a described Salesforce integration. No customer named Salesforce in this call, and Devan Shah only referred to the March retry storm. \u2014 Vendor speaker (OrbitFlow AE) on a renewal/QBR call with existing customer Lumen Retail Group. Mention is of a Salesforce outage affecting run volume, not a stated integration, build, or limitation. Customers Fiona Bright and Devan Shah did not mention Salesforce.",
       "stated_or_inferred": "stated"
      }
     ],
@@ -950,27 +929,27 @@
   ],
   "conflicts": [],
   "not_covered": [
-   "Whether OrbitFlow has a confirmed native Salesforce connector, or its plan or tier availability; the findings only give general native/API statements."
+   "Whether any prospect actually has a working Salesforce integration with OrbitFlow; the findings show requirements, proposals and design discussions only.",
+   "Juniper Cloud Tools' actual Salesforce daily API allocation, which was not stated."
   ],
   "assumptions": [
-   "'Customers' is interpreted broadly to include all call types, since the question does not restrict to a specific call type.",
-   "Mentions of Salesforce are treated as covering synonyms such as SFDC and CRM integration only where Salesforce is named or clearly implied.",
-   "Customers is interpreted broadly to include all call types.",
-   "Salesforce mentions are treated as covering synonyms such as SFDC and CRM integration only where Salesforce is named or clearly implied."
+   "'Customers' is read broadly to include any company on the call that mentioned Salesforce integration, since the question does not restrict call type.",
+   "Synonyms for Salesforce include SFDC and general CRM integration terms, since transcripts may abbreviate the name.",
+   "Customers is read broadly to include prospects and any company on the call that mentioned Salesforce integration.",
+   "Synonyms for Salesforce, such as SFDC and general CRM integration terms, were treated as Salesforce mentions."
   ],
   "confidence": "high",
   "calls_considered": [
    "CALL-001",
+   "CALL-003",
    "CALL-004",
    "CALL-005",
-   "CALL-007",
    "CALL-008",
    "CALL-009",
    "CALL-010",
    "CALL-011",
    "CALL-014",
-   "CALL-018",
-   "CALL-020"
+   "CALL-015"
   ],
   "calls_cited": [
    "CALL-001",

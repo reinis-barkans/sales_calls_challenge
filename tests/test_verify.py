@@ -72,3 +72,36 @@ def test_conflict_needs_two_valid_findings():
     d.conflicts = [Conflict(topic="SSO", description="x", finding_ids=["F1", "F99"])]
     _, _, conflicts, _, _ = V.verify(d, [_ev("F1")], run_entailment=False)
     assert conflicts == []
+
+
+def test_abbreviations_do_not_split_sentences():
+    # Found in review: "e.g." / "vs." / "approx." were treated as sentence ends, so the
+    # unmarked first half was deleted and a fragment survived.
+    m = {1: 1, 2: 2}
+    s, dropped = V.ground_summary("Several prospects need integrations, e.g. Salesforce and SAP [C1].", m)
+    assert s == "Several prospects need integrations, e.g. Salesforce and SAP [1]." and not dropped
+    s, dropped = V.ground_summary("Mostly price (approx. £1,800/month vs. a £1,000 budget) [C1][C2]. I.e. too high [C2].", m)
+    assert s == "Mostly price (approx. £1,800/month vs. a £1,000 budget) [1][2]. I.e. too high [2]." and not dropped
+
+
+def test_real_sentence_ends_still_split():
+    s, dropped = V.ground_summary("Acme uses Salesforce [C1]. Unsupported framing. Ember needs Okta, etc. [C2]", {1: 1, 2: 2})
+    assert s == "Acme uses Salesforce [1]. Ember needs Okta, etc [2]." and dropped == ["Unsupported framing."]
+
+
+def test_split_subverdicts_worst_wins(monkeypatch):
+    # Found live: Haiku returned 'K1-1', 'K1-2', ... and the last sub-verdict overwrote the rest.
+    out = V.Verdicts(verdicts=[V.Verdict(claim_id="K1-1", verdict="unsupported", reason="no"),
+                               V.Verdict(claim_id="K1-2", verdict="supported", reason="ok")])
+    assert V._parse_verdicts(out, {1})[1].verdict == "unsupported"
+
+
+def test_missing_verdicts_are_retried(monkeypatch):
+    calls = []
+    def fake(todo, attempt):
+        calls.append([n for n, _, _ in todo])
+        return V.Verdicts(verdicts=[V.Verdict(claim_id=f"K{n}", verdict="supported", reason="ok")
+                                    for n, _, _ in todo if attempt or n == 1])
+    monkeypatch.setattr(V, "_entail_call", fake)
+    kept = [(1, Claim(text="a", finding_ids=["F1"]), []), (2, Claim(text="b", finding_ids=["F1"]), [])]
+    assert set(V.entailment(kept)) == {1, 2} and calls == [[1, 2], [2]]

@@ -11,60 +11,24 @@
    "data location",
    "data sovereignty",
    "region",
+   "regional hosting",
    "EU hosting",
-   "data storage location",
    "GDPR",
-   "on-premise",
-   "self-hosted"
+   "data storage location"
   ],
-  "read_instruction": "Extract every statement the prospect makes about data residency, including where data must be stored or processed, regional or country hosting requirements, data sovereignty or GDPR concerns, and on-premise or self-hosted needs. Also extract OrbitFlow staff responses about data location, hosting regions, or residency options, including any hedges or corrections.",
+  "read_instruction": "Extract every statement the prospect makes or asks about data residency, including where data is stored or hosted, regional or EU hosting requirements, data sovereignty or GDPR concerns, and any requirements, objections, or concerns they raise. Also extract every answer or claim OrbitFlow staff give about data residency, including hedges, options offered, and any commitments or corrections. If the topic is not discussed, say so.",
   "assumptions": [
-   "'Prospects' interpreted as the Prospect call type (calls 001-010)",
-   "Data residency treated as including related terms such as data location, sovereignty, and hosting region"
+   "'Prospects' interpreted as the Prospect call type (new business).",
+   "Data residency synonyms include data location, sovereignty, regional hosting, and GDPR-related storage concerns."
   ]
  },
  "candidates": {
+  "CALL-004": [
+   "call_type:Prospect",
+   "facts",
+   "search"
+  ],
   "CALL-008": [
-   "call_type:Prospect",
-   "facts",
-   "search",
-   "vector"
-  ],
-  "CALL-006": [
-   "call_type:Prospect",
-   "facts",
-   "search",
-   "vector"
-  ],
-  "CALL-001": [
-   "call_type:Prospect",
-   "facts",
-   "search",
-   "vector"
-  ],
-  "CALL-002": [
-   "call_type:Prospect",
-   "facts",
-   "search"
-  ],
-  "CALL-007": [
-   "call_type:Prospect",
-   "facts",
-   "search",
-   "vector"
-  ],
-  "CALL-010": [
-   "call_type:Prospect",
-   "facts",
-   "search"
-  ],
-  "CALL-003": [
-   "call_type:Prospect",
-   "facts",
-   "search",
-   "vector"
-  ],
-  "CALL-009": [
    "call_type:Prospect",
    "facts",
    "search",
@@ -76,10 +40,45 @@
    "search",
    "vector"
   ],
-  "CALL-004": [
+  "CALL-001": [
+   "call_type:Prospect",
+   "facts",
+   "search",
+   "vector"
+  ],
+  "CALL-003": [
+   "call_type:Prospect",
+   "facts",
+   "search",
+   "vector"
+  ],
+  "CALL-002": [
    "call_type:Prospect",
    "facts",
    "search"
+  ],
+  "CALL-010": [
+   "call_type:Prospect",
+   "facts",
+   "search"
+  ],
+  "CALL-007": [
+   "call_type:Prospect",
+   "facts",
+   "search",
+   "vector"
+  ],
+  "CALL-009": [
+   "call_type:Prospect",
+   "facts",
+   "search",
+   "vector"
+  ],
+  "CALL-006": [
+   "call_type:Prospect",
+   "facts",
+   "search",
+   "vector"
   ]
  },
  "search_terms": [
@@ -91,10 +90,9 @@
   "eu hosting",
   "gdpr",
   "hosted",
-  "on-premise",
   "region",
+  "regional hosting",
   "residency",
-  "self-hosted",
   "uk data"
  ],
  "findings": [
@@ -108,7 +106,7 @@
    "role": "Director of Customer Success",
    "ts": "19:40",
    "quote": "We don't have a special data-residency requirement for this project.",
-   "context": "Acme Logistics does not have a special data-residency requirement for this project. \u2014 Stated during the security discussion, right after SSO and audit logs were listed as the main requirements. Tom was asked about security gates and framed residency as not a constraint.",
+   "context": "Prospect (Tom Alvarez, Acme Logistics) stated Acme has no special data-residency requirement for this project. \u2014 Customer's own statement; the only direct residency statement by a prospect in this call. Says it applies to this project, not necessarily company-wide.",
    "stated_or_inferred": "stated"
   },
   {
@@ -121,33 +119,33 @@
    "role": "Solutions Engineer",
    "ts": "20:05",
    "quote": "EU residency available on Enterprise if you ever need it.",
-   "context": "OrbitFlow says EU data residency is available, but only on the Enterprise package. \u2014 OrbitFlow staff answering the security question, after describing baseline SOC 2 Type II, SAML SSO/SCIM and encryption. Offered as an option 'if you ever need it', not as a stated Acme requirement.",
+   "context": "OrbitFlow (Jon Bell) said EU data residency is available on the Enterprise tier if the customer ever needs it. \u2014 Vendor offer in response to Tom's security questions. Framed as an optional Enterprise feature, not a default. No details on regions, storage, or processing location beyond EU.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F3",
-   "turn_id": "CALL-002#T006",
-   "call_id": "CALL-002",
-   "company": "BrightPath Health",
-   "speaker": "Elliot Greene",
+   "turn_id": "CALL-001#T122",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
+   "speaker": "Tom Alvarez",
    "side": "customer",
-   "role": "Security Architect",
-   "ts": "00:41",
-   "quote": "confirm how US data is handled.",
-   "context": "Prospect's security architect listed confirming how US data is handled as an open item on his list for the call. \u2014 Part of a six-item security checklist; the US-data item is a residency/handling question, not a stated hosting requirement.",
-   "stated_or_inferred": "stated"
+   "role": "Director of Customer Success",
+   "ts": "19:55",
+   "quote": "We're not healthcare.",
+   "context": "Tom said Acme is not in healthcare, which is why its security/compliance list is short. This implies no sector-driven residency rules, but the call does not state that directly. \u2014 Related to residency only by implication; the prospect did not mention residency in this turn.",
+   "stated_or_inferred": "inferred"
   },
   {
    "finding_id": "F4",
-   "turn_id": "CALL-002#T014",
-   "call_id": "CALL-002",
-   "company": "BrightPath Health",
+   "turn_id": "CALL-001#T131",
+   "call_id": "CALL-001",
+   "company": "Acme Logistics",
    "speaker": "Jon Bell",
    "side": "vendor",
    "role": "Solutions Engineer",
-   "ts": "01:59",
-   "quote": "EU data residency available on Enterprise.",
-   "context": "OrbitFlow staff said EU data residency is available, but only on the Enterprise package. \u2014 Vendor's baseline capability claim, given in a list of security certifications and features.",
+   "ts": "21:34",
+   "quote": "what happens to data sent to an LLM provider is a question you'll get from your security team, and the honest answer is it depends on configuration and provider",
+   "context": "OrbitFlow (Jon Bell) hedged on where data goes when sent to an LLM provider: the answer depends on configuration and provider; they use enterprise API arrangements where available and document subprocessors. He offered to disable AI or scope the pilot to deterministic steps if policy is strict. \u2014 Not a residency commitment; about third-party LLM data handling. Location of processing is left open and was not stated as a commitment.",
    "stated_or_inferred": "stated"
   },
   {
@@ -160,11 +158,24 @@
    "role": "Security Architect",
    "ts": "02:22",
    "quote": "EU. We're a US operation with a UK subsidiary. What's the default region?",
-   "context": "Prospect said BrightPath is a US operation with a UK subsidiary and asked what the default data region is, implying EU/UK residency concern. \u2014 Follow-up to the vendor's EU residency claim; the prospect's question reflects their US/UK footprint.",
+   "context": "Prospect (Elliot Greene) raised EU/UK data residency: BrightPath is a US operation with a UK subsidiary, and he asked what the default data region is. \u2014 Prospect's direct residency question during the security section, raised in response to the vendor's EU residency claim.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F6",
+   "turn_id": "CALL-002#T014",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Jon Bell",
+   "side": "vendor",
+   "role": "Solutions Engineer",
+   "ts": "01:59",
+   "quote": "EU data residency available on Enterprise.",
+   "context": "OrbitFlow (Jon Bell) said EU data residency is available on the Enterprise tier. \u2014 Vendor's baseline security capability list, given in answer to the security requirements on the call; a product claim, not a contractual commitment.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F7",
    "turn_id": "CALL-002#T016",
    "call_id": "CALL-002",
    "company": "BrightPath Health",
@@ -173,11 +184,11 @@
    "role": "Solutions Engineer",
    "ts": "02:30",
    "quote": "Default depends on where the workspace is provisioned. I'd rather confirm the specifics in writing than guess at your architecture on a call.",
-   "context": "OrbitFlow staff hedged on the default data region, saying it depends on where the workspace is provisioned and that they would confirm in writing rather than guess. \u2014 Vendor correction/hedge after the prospect asked for the default region; no default was confirmed on the call.",
+   "context": "OrbitFlow (Jon Bell) would not state the default data region; he said it depends on where the workspace is provisioned and committed to confirming the specifics in writing rather than on the call. \u2014 Hedge on the residency question. Vendor declined to guess at the prospect's architecture; written answer is an open item.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F7",
+   "finding_id": "F8",
    "turn_id": "CALL-002#T017",
    "call_id": "CALL-002",
    "company": "BrightPath Health",
@@ -186,11 +197,24 @@
    "role": "Security Architect",
    "ts": "02:41",
    "quote": "Good. That's the right answer.",
-   "context": "Prospect approved of the vendor declining to guess the default region and wanting a written answer. \u2014 Prospect's reaction to the vendor's hedge on residency; they value written confirmation over verbal claims.",
+   "context": "Prospect approved of the vendor declining to give a residency default verbally, favouring a written answer. \u2014 Reaction to the vendor's hedge; signals the prospect will require a written residency position, not a verbal one.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F8",
+   "finding_id": "F9",
+   "turn_id": "CALL-002#T006",
+   "call_id": "CALL-002",
+   "company": "BrightPath Health",
+   "speaker": "Elliot Greene",
+   "side": "customer",
+   "role": "Security Architect",
+   "ts": "00:41",
+   "quote": "confirm how US data is handled",
+   "context": "Prospect's security list included confirming how US data is handled, separate from EU residency. \u2014 Listed as one of five security items in the opening agenda; the call does not return to US-specific handling in detail.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F10",
    "turn_id": "CALL-003#T053",
    "call_id": "CALL-003",
    "company": "Cedar & Finch",
@@ -199,11 +223,11 @@
    "role": "Director of E-commerce Operations",
    "ts": "05:53",
    "quote": "And because we sell into the UK and EU I want to understand where customer data actually gets processed.",
-   "context": "Prospect (Sophie Reed) states Cedar & Finch sells into the UK and EU, and wants to understand where customer data gets processed. \u2014 Raised during security questions; prospect's stated requirement behind the residency question.",
+   "context": "Prospect (Sophie Reed) states Cedar & Finch sells into the UK and EU, and wants to understand where customer data is processed. \u2014 Customer's own data residency concern; raised during security questions.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F9",
+   "finding_id": "F11",
    "turn_id": "CALL-003#T051",
    "call_id": "CALL-003",
    "company": "Cedar & Finch",
@@ -211,12 +235,12 @@
    "side": "customer",
    "role": "Director of E-commerce Operations",
    "ts": "05:43",
-   "quote": "UK and EU, yes.",
-   "context": "Prospect confirms the business operates in UK and EU. \u2014 Vendor asked directly; prospect confirmed.",
+   "quote": "UK and EU, yes. Which is a security question, so let me do that bit now while I remember.",
+   "context": "Prospect confirms the business operates in UK and EU. \u2014 Answer to vendor question about geography; sets up residency concern.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F10",
+   "finding_id": "F12",
    "turn_id": "CALL-003#T054",
    "call_id": "CALL-003",
    "company": "Cedar & Finch",
@@ -225,11 +249,11 @@
    "role": "Account Executive",
    "ts": "06:14",
    "quote": "EU data residency is available on Enterprise. On Growth, I'd need to confirm the default processing region for you in writing rather than guess.",
-   "context": "OrbitFlow staff says EU data residency is available only on the Enterprise plan; for Growth, the default processing region must be confirmed in writing rather than guessed. \u2014 Partial answer; vendor hedged on Growth tier.",
+   "context": "OrbitFlow staff states EU data residency is available only on the Enterprise plan; for Growth plan he would need to confirm the default processing region in writing rather than guess. \u2014 Partial answer; Growth default region unconfirmed.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F11",
+   "finding_id": "F13",
    "turn_id": "CALL-003#T055",
    "call_id": "CALL-003",
    "company": "Cedar & Finch",
@@ -238,11 +262,24 @@
    "role": "Director of E-commerce Operations",
    "ts": "06:28",
    "quote": "Enterprise. That's the expensive one.",
-   "context": "Prospect reacts to EU residency being Enterprise-only by noting it is the expensive tier. \u2014 Implication that residency requirement pushes toward a costlier plan.",
+   "context": "Prospect reacts that EU residency requires Enterprise, which is the expensive tier. \u2014 Price implication of residency requirement.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F12",
+   "finding_id": "F14",
+   "turn_id": "CALL-003#T056",
+   "call_id": "CALL-003",
+   "company": "Cedar & Finch",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "06:31",
+   "quote": "That's the expensive one, yes.",
+   "context": "OrbitFlow staff confirms Enterprise is the expensive one, acknowledging the residency tier cost. \u2014 Vendor acknowledgement of tier cost.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F15",
    "turn_id": "CALL-003#T140",
    "call_id": "CALL-003",
    "company": "Cedar & Finch",
@@ -251,24 +288,11 @@
    "role": "Account Executive",
    "ts": "16:12",
    "quote": "I'll also get you written answers on the Shopify trigger coverage and the default processing region. Those are the two I dodged.",
-   "context": "Vendor committed to providing a written answer on the default processing region, which it had dodged on the call. \u2014 Open follow-up; vendor explicitly said it had not answered this on the call.",
+   "context": "OrbitFlow staff commits to giving written answer on default processing region, deferring it as one of two dodged questions. \u2014 Open follow-up commitment on data location.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F13",
-   "turn_id": "CALL-003#T054",
-   "call_id": "CALL-003",
-   "company": "Cedar & Finch",
-   "speaker": "Leo Grant",
-   "side": "vendor",
-   "role": "Account Executive",
-   "ts": "06:14",
-   "quote": "EU data residency is available on Enterprise.",
-   "context": "Prospect's data-residency concern is a requirement for the purchase decision, with the Enterprise cost implication noted; the residency answer for Growth remains unresolved. \u2014 Inferred from the sequence: residency raised as a security requirement, Enterprise-only answer, and follow-up owed.",
-   "stated_or_inferred": "inferred"
-  },
-  {
-   "finding_id": "F14",
+   "finding_id": "F16",
    "turn_id": "CALL-004#T014",
    "call_id": "CALL-004",
    "company": "DeltaWorks Manufacturing",
@@ -276,12 +300,12 @@
    "side": "customer",
    "role": "IT Governance Lead",
    "ts": "01:29",
-   "quote": "and German or EU data residency.",
-   "context": "Prospect (Anika Bose) lists German or EU data residency as a headline governance requirement. \u2014 Initial governance requirements list; she later clarifies she said 'German or EU'.",
+   "quote": "German or EU data residency",
+   "context": "Prospect's IT governance lead listed German or EU data residency as a headline governance requirement. \u2014 Customer requirement raised during governance discussion; stated as a list item, not yet a hard decision.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F15",
+   "finding_id": "F17",
    "turn_id": "CALL-004#T018",
    "call_id": "CALL-004",
    "company": "DeltaWorks Manufacturing",
@@ -290,11 +314,24 @@
    "role": "Solutions Engineer",
    "ts": "02:09",
    "quote": "EU data residency is available on Enterprise.",
-   "context": "OrbitFlow staff states EU data residency is available on Enterprise. \u2014 Vendor answer to governance list; the vendor response is specific to EU, not Germany.",
+   "context": "OrbitFlow states EU data residency is available on the Enterprise package. \u2014 Vendor answer to the governance checklist; scoped to EU, not Germany.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F16",
+   "finding_id": "F18",
+   "turn_id": "CALL-004#T019",
+   "call_id": "CALL-004",
+   "company": "DeltaWorks Manufacturing",
+   "speaker": "Anika Bose",
+   "side": "customer",
+   "role": "IT Governance Lead",
+   "ts": "02:35",
+   "quote": "I said German or EU. Which is it?",
+   "context": "Prospect pressed the vendor to clarify whether it meant German or EU residency. \u2014 Customer asked for a precise answer after the vendor's EU claim.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F19",
    "turn_id": "CALL-004#T020",
    "call_id": "CALL-004",
    "company": "DeltaWorks Manufacturing",
@@ -302,12 +339,12 @@
    "side": "vendor",
    "role": "Solutions Engineer",
    "ts": "02:39",
-   "quote": "I am not going to tell you we have a German region because we don't.",
-   "context": "OrbitFlow staff explicitly denies having a German data region, offering only EU. \u2014 Vendor correction/hedge when prospect asked which of the two was meant.",
+   "quote": "EU. I am not going to tell you we have a German region because we don't.",
+   "context": "OrbitFlow clarified it offers EU residency only and does not have a German region. \u2014 Vendor correction/clarification that narrows the earlier claim; explicitly declines to claim German hosting.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F17",
+   "finding_id": "F20",
    "turn_id": "CALL-004#T021",
    "call_id": "CALL-004",
    "company": "DeltaWorks Manufacturing",
@@ -316,11 +353,11 @@
    "role": "IT Governance Lead",
    "ts": "02:45",
    "quote": "EU may be sufficient. It depends on which entity the data belongs to, and that is a question for our legal team, not for you.",
-   "context": "Prospect says EU residency may be sufficient but depends on which legal entity the data belongs to, a question for their legal team. \u2014 Conditional acceptance; the determination is deferred to prospect's legal team.",
+   "context": "Prospect says EU residency may be sufficient but depends on which legal entity owns the data, which needs legal review. \u2014 Customer's conditional acceptance; final sufficiency depends on their legal team, not the vendor.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F18",
+   "finding_id": "F21",
    "turn_id": "CALL-004#T081",
    "call_id": "CALL-004",
    "company": "DeltaWorks Manufacturing",
@@ -328,47 +365,8 @@
    "side": "customer",
    "role": "Director of Enterprise Applications",
    "ts": "12:14",
-   "quote": "In practice, two German plants are still prohibited from exposing production databases directly to SaaS vendors.",
-   "context": "Prospect says two German plants are prohibited from exposing production databases directly to SaaS vendors, so cloud-first is policy, not reality everywhere. \u2014 Correction to earlier 'cloud-first' description; a deployment/hosting constraint rather than explicit residency rule.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F19",
-   "turn_id": "CALL-004#T024",
-   "call_id": "CALL-004",
-   "company": "DeltaWorks Manufacturing",
-   "speaker": "Martin Vogel",
-   "side": "customer",
-   "role": "Director of Enterprise Applications",
-   "ts": "03:23",
-   "quote": "Some of them by policy, some of them by physical network design. If your platform must call them over the internet, that is not possible for those systems.",
-   "context": "Prospect says some systems will not be exposed to the public internet, by policy or network design, so platform calls over the internet are not possible for those systems. \u2014 On-premise/self-hosted connectivity need rather than residency per se.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F20",
-   "turn_id": "CALL-004#T086",
-   "call_id": "CALL-004",
-   "company": "DeltaWorks Manufacturing",
-   "speaker": "Jon Bell",
-   "side": "vendor",
-   "role": "Solutions Engineer",
-   "ts": "13:02",
-   "quote": "Then I'd suggest we deliberately scope them out of phase one and treat them as a phase two architecture question.",
-   "context": "Vendor proposes deliberately scoping the two German plants out of phase one, treating them as a phase-two architecture question; prospect later says they are possibly not in scope and says the restriction must be documented as deferred, not solved. \u2014 Prospect later reconsidered the plant scope and said the policy itself was unverified.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F21",
-   "turn_id": "CALL-004#T257",
-   "call_id": "CALL-004",
-   "company": "DeltaWorks Manufacturing",
-   "speaker": "Martin Vogel",
-   "side": "customer",
-   "role": "Director of Enterprise Applications",
-   "ts": "38:11",
-   "quote": "I believe that is correct, but I have not read the actual policy in eighteen months.",
-   "context": "Prospect says the German plant database restriction may be approximate: they believe it is correct but have not read the actual policy in eighteen months. \u2014 Self-correction/hedge on the earlier claim about German plants and SaaS database exposure.",
+   "quote": "two German plants are still prohibited from exposing production databases directly to SaaS vendors",
+   "context": "Prospect states two German plants are prohibited from exposing production databases directly to SaaS vendors, so cloud-first is policy rather than reality. \u2014 Related hosting/exposure constraint rather than a pure residency requirement; the customer later says this was from memory and not verified against current policy (T257).",
    "stated_or_inferred": "stated"
   },
   {
@@ -381,7 +379,7 @@
    "role": "Senior Risk Engineer",
    "ts": "06:27",
    "quote": "EU residency for European records",
-   "context": "Prospect requires EU residency for European records as part of its auditability/security checklist. \u2014 Hannah listing required items for the auditability gate; residency is one item among several, stated as a requirement for European records.",
+   "context": "Ember's Hannah Cole requires EU residency for European records as part of the auditability gate. \u2014 Listed among the audit and security requirements Hannah needs satisfied; the call does not state Ember's location or which records are European.",
    "stated_or_inferred": "stated"
   },
   {
@@ -394,11 +392,24 @@
    "role": "Solutions Engineer",
    "ts": "06:49",
    "quote": "EU data residency available on Enterprise.",
-   "context": "OrbitFlow staff states EU data residency is available, but only on the Enterprise package. \u2014 Vendor answer to Hannah's list; availability is tier-gated, not a general capability.",
+   "context": "OrbitFlow's Nina Patel states EU data residency is available on the Enterprise plan. \u2014 Answer to Hannah's security checklist; given as a plan-tier feature, not a general capability. No details on hosting location or granularity were given.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F24",
+   "turn_id": "CALL-005#T200",
+   "call_id": "CALL-005",
+   "company": "Ember Financial",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "27:44",
+   "quote": "Security pack \u2014 SOC 2, subprocessor list, DPA, architecture diagram, retention documentation, encryption details.",
+   "context": "Data residency is not among the items Leo Grant committed to send, so the EU residency answer has no written follow-up in the call. \u2014 Leo's list of owed items names the security pack contents but does not include residency. This is an inference from the omission.",
+   "stated_or_inferred": "inferred"
+  },
+  {
+   "finding_id": "F25",
    "turn_id": "CALL-006#T065",
    "call_id": "CALL-006",
    "company": "Fable Media",
@@ -406,12 +417,12 @@
    "side": "customer",
    "role": "Head of Client Services",
    "ts": "07:00",
-   "quote": "Some of our clients are quite sensitive about that.",
-   "context": "Prospect (Ben Foster, Head of Client Services) asked for normal GDPR terms and written reassurance that client documents are not used to train models, because some clients are sensitive about this. No data location or hosting region was discussed. \u2014 Data-protection and GDPR concern, not a residency or hosting-location requirement. Raised in the security segment of the call.",
+   "quote": "normal GDPR terms, and \u2014 this one matters \u2014 written reassurance that our client documents aren't used to train models. Some of our clients are quite sensitive about that.",
+   "context": "Prospect requires GDPR-compliant terms and written assurance that client documents are not used to train models, because some clients are sensitive about this. \u2014 Security requirements raised by Head of Client Services; GDPR and no-model-training concern, not hosting location. Hosting or storage location was not discussed.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F25",
+   "finding_id": "F26",
    "turn_id": "CALL-006#T066",
    "call_id": "CALL-006",
    "company": "Fable Media",
@@ -420,11 +431,11 @@
    "role": "Account Executive",
    "ts": "07:23",
    "quote": "And we're fully GDPR compliant, so that's all covered.",
-   "context": "OrbitFlow staff (Alastair McCrae) said the company is fully GDPR compliant and that this covers the prospect's data-protection concern. \u2014 Generic compliance claim. No hosting region, storage location, or residency option was stated.",
+   "context": "OrbitFlow states it is fully GDPR compliant and that this covers the prospect's concern. \u2014 Vendor answer to the GDPR part of the security question, given without specifics about data location or hosting.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F26",
+   "finding_id": "F27",
    "turn_id": "CALL-006#T070",
    "call_id": "CALL-006",
    "company": "Fable Media",
@@ -433,11 +444,11 @@
    "role": "Account Executive",
    "ts": "07:40",
    "quote": "We don't train on customer data. That's in the terms.",
-   "context": "OrbitFlow staff said customer data is not used to train models and that this is in the terms. This is a data-use claim, not a statement about where data is stored. \u2014 Responding to the prospect's training concern. The prospect then asked for written confirmation.",
+   "context": "OrbitFlow states it does not train on customer data and that this is in its terms. \u2014 Vendor answer to the model-training concern; the prospect asked for it in writing.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F27",
+   "finding_id": "F28",
    "turn_id": "CALL-006#T071",
    "call_id": "CALL-006",
    "company": "Fable Media",
@@ -446,11 +457,37 @@
    "role": "Head of Client Services",
    "ts": "07:45",
    "quote": "Can we see that in writing?",
-   "context": "Prospect asked to see the no-training commitment in writing, and OrbitFlow staff agreed to send a DPA. \u2014 Follow-up request for written proof. Written confirmation was promised, not yet delivered on this call.",
+   "context": "Prospect asks for written confirmation that its data is not used for model training. \u2014 Follow-up to the vendor's verbal claim; the prospect wants documentary proof.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F28",
+   "finding_id": "F29",
+   "turn_id": "CALL-006#T072",
+   "call_id": "CALL-006",
+   "company": "Fable Media",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "07:48",
+   "quote": "Course. I'll send the DPA over.",
+   "context": "OrbitFlow commits to send a DPA covering the training-data assurance. \u2014 Vendor commitment in response to the written request. The DPA content was not described and no hosting or residency commitment was made.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F30",
+   "turn_id": "CALL-006#T139",
+   "call_id": "CALL-006",
+   "company": "Fable Media",
+   "speaker": "Ben Foster",
+   "side": "customer",
+   "role": "Head of Client Services",
+   "ts": "14:08",
+   "quote": "And the written thing about model training.",
+   "context": "Prospect reiterates the need for the written model-training assurance as a follow-up item. \u2014 Closing action list; the prospect is still waiting on this from the vendor.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F31",
    "turn_id": "CALL-007#T131",
    "call_id": "CALL-007",
    "company": "Greenline Energy Services",
@@ -459,11 +496,11 @@
    "role": "Head of Digital Operations",
    "ts": "16:12",
    "quote": "preferably UK data residency",
-   "context": "Prospect states a preference for UK data residency for OrbitFlow. \u2014 Customer Carlos Mendes lists security requirements; residency is 'preferably UK', not a hard requirement.",
+   "context": "Carlos Mendes stated that he would prefer UK data residency for OrbitFlow. \u2014 Security requirements list; customer-side requirement for residency, but stated as a preference.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F29",
+   "finding_id": "F32",
    "turn_id": "CALL-007#T134",
    "call_id": "CALL-007",
    "company": "Greenline Energy Services",
@@ -472,11 +509,11 @@
    "role": "Field Systems Product Manager",
    "ts": "16:51",
    "quote": "It was you, and it is preferably rather than mandatory. We're not regulated in that way. It's more that our procurement people prefer it.",
-   "context": "Prospect clarifies that UK data residency is preferred rather than mandatory, because they are not regulated that way; the preference comes from procurement. \u2014 Lucy Hart corrects the implied strength of Carlos's requirement; Carlos asked whether 'preferably' was his or hers.",
+   "context": "Lucy Hart clarified that UK data residency is preferred, not mandatory, because Greenline is not regulated in that way; the preference is driven by procurement. \u2014 Correction/clarification of Carlos's statement about residency being a requirement.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F30",
+   "finding_id": "F33",
    "turn_id": "CALL-007#T132",
    "call_id": "CALL-007",
    "company": "Greenline Energy Services",
@@ -484,38 +521,38 @@
    "side": "vendor",
    "role": "Solutions Engineer",
    "ts": "16:22",
-   "quote": "EU data residency is available on Enterprise. UK specifically I'd need to confirm rather than assume, and I'm not going to say yes to make the call go smoothly.",
-   "context": "OrbitFlow states EU data residency is available on the Enterprise plan, but UK-specific residency is unconfirmed. \u2014 Jon Bell hedges explicitly rather than saying yes to UK residency.",
+   "quote": "EU data residency is available on Enterprise.",
+   "context": "Jon Bell stated that EU data residency is available on OrbitFlow's Enterprise tier. \u2014 Vendor answer to the residency question; limited to EU and Enterprise.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F31",
-   "turn_id": "CALL-007#T135",
+   "finding_id": "F34",
+   "turn_id": "CALL-007#T132",
    "call_id": "CALL-007",
    "company": "Greenline Energy Services",
    "speaker": "Jon Bell",
    "side": "vendor",
    "role": "Solutions Engineer",
-   "ts": "17:02",
-   "quote": "Then I'll get you a definitive written answer rather than a maybe.",
-   "context": "OrbitFlow commits to providing a definitive written answer on UK data residency rather than a verbal maybe. \u2014 Follow-up action from Jon Bell; Maya Chen also commits to sending the UK residency answer in writing.",
+   "ts": "16:22",
+   "quote": "UK specifically I'd need to confirm rather than assume, and I'm not going to say yes to make the call go smoothly.",
+   "context": "Jon Bell declined to confirm UK-specific data residency and refused to assume it, committing instead to a definitive written answer. \u2014 Hedge on UK residency; vendor explicitly did not say yes to smooth the call.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F32",
-   "turn_id": "CALL-007#T128",
+   "finding_id": "F35",
+   "turn_id": "CALL-007#T195",
    "call_id": "CALL-007",
    "company": "Greenline Energy Services",
-   "speaker": "Carlos Mendes",
-   "side": "customer",
-   "role": "Head of Digital Operations",
-   "ts": "15:59",
-   "quote": "Nothing does. We're fully Azure.",
-   "context": "Greenline's stack is fully Azure with no on-premise components, so no self-hosting need was stated. \u2014 Relevant to on-premise/hosting location; customer confirms the architecture is cloud-only.",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "24:55",
+   "quote": "And from us in writing \u2014 the UK residency answer, and a note on the regional workspace and permissions design.",
+   "context": "Maya Chen committed to sending a written UK residency answer after the call. \u2014 Follow-up commitment from vendor on residency.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F33",
+   "finding_id": "F36",
    "turn_id": "CALL-008#T083",
    "call_id": "CALL-008",
    "company": "Harbor Legal",
@@ -523,12 +560,25 @@
    "side": "customer",
    "role": "Information Security Manager",
    "ts": "10:31",
-   "quote": "UK residency. Strict retention.",
-   "context": "Prospect Samir Khan states a UK residency requirement as a top-list item for the security review. \u2014 Listed among his requirements for the first phase; the question is whether UK hosting is available, not only EU.",
+   "quote": "UK residency.",
+   "context": "Customer requires UK data residency as one of its must-have items for the evaluation. \u2014 Samir lists his checklist for the vendor; UK residency is one of the requirements.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F34",
+   "finding_id": "F37",
+   "turn_id": "CALL-008#T085",
+   "call_id": "CALL-008",
+   "company": "Harbor Legal",
+   "speaker": "Samir Khan",
+   "side": "customer",
+   "role": "Information Security Manager",
+   "ts": "11:24",
+   "quote": "UK residency?",
+   "context": "Customer asks directly whether OrbitFlow offers UK residency. \u2014 Follow-up question right after the vendor's answer on Enterprise SSO, SCIM and encryption.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F38",
    "turn_id": "CALL-008#T086",
    "call_id": "CALL-008",
    "company": "Harbor Legal",
@@ -537,11 +587,11 @@
    "role": "Solutions Engineer",
    "ts": "11:26",
    "quote": "EU data residency is available on Enterprise. UK specifically I need to confirm in writing. I'm not going to say yes on a call.",
-   "context": "OrbitFlow's Nina Patel says EU data residency is available on Enterprise, but she cannot confirm UK residency and will not say yes on the call. \u2014 Vendor hedge on UK-specific hosting; EU and UK treated as distinct.",
+   "context": "OrbitFlow states EU data residency is available on Enterprise, but UK residency is unconfirmed and will be confirmed in writing, not on the call. \u2014 Vendor hedge; no UK commitment made.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F35",
+   "finding_id": "F39",
    "turn_id": "CALL-008#T087",
    "call_id": "CALL-008",
    "company": "Harbor Legal",
@@ -550,11 +600,11 @@
    "role": "Information Security Manager",
    "ts": "11:37",
    "quote": "EU is not UK.",
-   "context": "Samir Khan states that EU hosting does not satisfy a UK requirement, and that the distinction matters for some clients. \u2014 Prospect pushback on the vendor's EU answer.",
+   "context": "Customer insists EU hosting is not the same as UK residency and the vendor agrees. \u2014 Customer pushes back on EU-for-UK substitution; vendor concedes the distinction.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F36",
+   "finding_id": "F40",
    "turn_id": "CALL-008#T089",
    "call_id": "CALL-008",
    "company": "Harbor Legal",
@@ -563,11 +613,11 @@
    "role": "Information Security Manager",
    "ts": "11:43",
    "quote": "For some of our clients that distinction matters a great deal.",
-   "context": "Prospect says the UK-versus-EU distinction matters a great deal for some clients and especially for public sector work. \u2014 Eleanor Brooks adds public-sector relevance.",
+   "context": "The EU-versus-UK distinction matters to some clients, particularly public sector work. \u2014 Customer explains why the residency gap is material for client and public-sector business.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F37",
+   "finding_id": "F41",
    "turn_id": "CALL-008#T090",
    "call_id": "CALL-008",
    "company": "Harbor Legal",
@@ -576,11 +626,11 @@
    "role": "Chief Transformation Officer",
    "ts": "11:48",
    "quote": "It matters for the public sector work particularly.",
-   "context": "Eleanor Brooks says the UK residency distinction matters particularly for public sector work. \u2014 Supports Samir's point that UK residency may be a gate.",
+   "context": "Eleanor says the UK residency issue matters particularly for public sector work. \u2014 Supports Samir's point on client requirements.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F38",
+   "finding_id": "F42",
    "turn_id": "CALL-008#T091",
    "call_id": "CALL-008",
    "company": "Harbor Legal",
@@ -589,11 +639,11 @@
    "role": "Solutions Engineer",
    "ts": "11:52",
    "quote": "Then it's a genuine open question and it may be a gate. I'll get you a definitive answer within the week.",
-   "context": "Vendor (Nina Patel) treats UK residency as a genuine open question that may be a gate, promising a definitive written answer within the week. \u2014 Follow-up commitment; the answer is not yet known.",
+   "context": "OrbitFlow treats UK residency as an open question that may be a deal gate, with a definitive answer promised within a week. \u2014 Vendor commitment on timing; answer not yet given in the call.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F39",
+   "finding_id": "F43",
    "turn_id": "CALL-008#T092",
    "call_id": "CALL-008",
    "company": "Harbor Legal",
@@ -602,11 +652,24 @@
    "role": "Information Security Manager",
    "ts": "12:01",
    "quote": "If the answer is no, tell me it's no. Don't tell me it's on the roadmap.",
-   "context": "Prospect asks that a no on UK residency be stated as a no rather than deferred to the roadmap. \u2014 Samir wants a definitive answer; Leo Grant commits to honest roadmap labelling.",
+   "context": "Customer wants a plain no if UK residency is unavailable, not a roadmap promise. \u2014 Customer sets a condition on how the answer is given.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F40",
+   "finding_id": "F44",
+   "turn_id": "CALL-008#T093",
+   "call_id": "CALL-008",
+   "company": "Harbor Legal",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "12:07",
+   "quote": "I won't dress a roadmap item as a capability.",
+   "context": "OrbitFlow says it will not present a roadmap item as a current capability. \u2014 Vendor response to the customer's request on roadmap framing.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F45",
    "turn_id": "CALL-008#T133",
    "call_id": "CALL-008",
    "company": "Harbor Legal",
@@ -615,11 +678,24 @@
    "role": "Solutions Engineer",
    "ts": "16:49",
    "quote": "Four items. UK residency, retention floor, AI-step permission granularity, and the audit payload schema.",
-   "context": "UK residency is listed as one of the written open items the vendor must answer. \u2014 Vendor recap of outstanding items; UK residency remains unconfirmed.",
+   "context": "OrbitFlow lists UK residency as one of four open written items to be answered. \u2014 Vendor recap of outstanding questions.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F41",
+   "finding_id": "F46",
+   "turn_id": "CALL-008#T273",
+   "call_id": "CALL-008",
+   "company": "Harbor Legal",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "33:27",
+   "quote": "Plus written answers on UK residency, the retention floor, AI-step permission granularity, the audit payload schema, and termination data handling.",
+   "context": "OrbitFlow commits to sending written answers on UK residency as part of next steps. \u2014 Vendor's next-steps summary; written answer is a deliverable, not yet a confirmed capability.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F47",
    "turn_id": "CALL-009#T131",
    "call_id": "CALL-009",
    "company": "Inkwell Learning",
@@ -628,11 +704,11 @@
    "role": "Director of Business Intelligence",
    "ts": "15:47",
    "quote": "FERPA. We handle data about students in US school districts. Student-level records are subject to specific protections and our position is that they should never leave our warehouse.",
-   "context": "Prospect's counsel-driven position is that student-level records must never leave Inkwell's warehouse, due to FERPA protections for US school district student data. \u2014 Data residency/location concern for student-level data, tied to FERPA and US school districts; no specific hosting region or country was named.",
+   "context": "Prospect states student-level records are subject to FERPA protections and should never leave Inkwell's own warehouse. \u2014 Customer's stated data-location requirement tied to FERPA for US school district student data. Concerns the customer's warehouse, not OrbitFlow's hosting. No OrbitFlow hosting region or residency was discussed.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F42",
+   "finding_id": "F48",
    "turn_id": "CALL-009#T133",
    "call_id": "CALL-009",
    "company": "Inkwell Learning",
@@ -640,38 +716,25 @@
    "side": "customer",
    "role": "Director of Business Intelligence",
    "ts": "16:09",
-   "quote": "Correct. Usage counts, engagement rates, ticket volumes at the account level. Never a student record, never a student identifier.",
-   "context": "Prospect confirmed the workflow should operate only on account-level aggregates, with no student records or student identifiers. \u2014 Scope boundary that keeps student-level data within the warehouse.",
+   "quote": "Usage counts, engagement rates, ticket volumes at the account level. Never a student record, never a student identifier.",
+   "context": "Prospect defines the boundary as account-level aggregates only, with no student records or student identifiers in the workflow. \u2014 Customer's stated scope for the data the workflow may use. Follows the FERPA residency requirement.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F43",
-   "turn_id": "CALL-009#T139",
+   "finding_id": "F49",
+   "turn_id": "CALL-009#T129",
    "call_id": "CALL-009",
    "company": "Inkwell Learning",
    "speaker": "Darren Wu",
    "side": "customer",
    "role": "Director of Business Intelligence",
-   "ts": "17:01",
-   "quote": "Our counsel would much rather hear \"the data never leaves\" than \"the vendor has controls.\"",
-   "context": "Prospect said that data never leaving the warehouse is a stronger assurance to their counsel than vendor controls. \u2014 Customer's view on how the residency concern should be answered for legal review.",
+   "ts": "15:32",
+   "quote": "SSO, audit logs, retention controls, and a clear boundary around student-level data. That last one is the important one.",
+   "context": "Prospect says a clear boundary around student-level data is the most important item on their security list. \u2014 Customer's stated priority in the security requirements, raised before the FERPA explanation.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F44",
-   "turn_id": "CALL-009#T134",
-   "call_id": "CALL-009",
-   "company": "Inkwell Learning",
-   "speaker": "Jon Bell",
-   "side": "vendor",
-   "role": "Solutions Engineer",
-   "ts": "16:20",
-   "quote": "it's the sort of constraint that's much easier to enforce if you define it in the Snowflake view rather than in our workflow.",
-   "context": "OrbitFlow staff said the account-level-only constraint should be enforced in the Snowflake view rather than in the OrbitFlow workflow. \u2014 Vendor's design suggestion for keeping student data from reaching the workflow; a product/design recommendation, not a hosting-region statement.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F45",
+   "finding_id": "F50",
    "turn_id": "CALL-009#T136",
    "call_id": "CALL-009",
    "company": "Inkwell Learning",
@@ -680,63 +743,37 @@
    "role": "Solutions Engineer",
    "ts": "16:38",
    "quote": "If the view we consume contains no student-level columns, no workflow can leak them regardless of who builds it.",
-   "context": "OrbitFlow staff said that if the consumed Snowflake view has no student-level columns, no workflow can leak student data. \u2014 Vendor claim about enforcement; depends on the customer's own view design, and the prospect agreed it makes the constraint 'impossible rather than forbidden'.",
+   "context": "OrbitFlow staff say the student-data constraint is easier to enforce by defining it in the Snowflake view the workflow consumes, so no workflow can leak student-level columns. \u2014 Vendor design answer to the FERPA boundary. It is a claim about the architecture the vendor proposes, not a hosting or residency commitment.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F46",
-   "turn_id": "CALL-009#T145",
+   "finding_id": "F51",
+   "turn_id": "CALL-009#T139",
    "call_id": "CALL-009",
    "company": "Inkwell Learning",
    "speaker": "Darren Wu",
    "side": "customer",
    "role": "Director of Business Intelligence",
-   "ts": "18:02",
-   "quote": "Some districts have their own questionnaire.",
-   "context": "Prospect said they still expect a full vendor security review, and some districts may require their own questionnaires, though not for a pilot. \u2014 Related to data handling; OrbitFlow staff said they would still complete the review. No residency or hosting location was discussed.",
+   "ts": "17:01",
+   "quote": "Our counsel would much rather hear \"the data never leaves\" than \"the vendor has controls.\"",
+   "context": "Prospect says the data-never-leaves design is what counsel wants to hear, more than vendor controls. \u2014 Customer's view on how the FERPA answer should be framed to their legal team.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F47",
-   "turn_id": "CALL-010#T166",
+   "finding_id": "F52",
+   "turn_id": "CALL-010#T164",
    "call_id": "CALL-010",
    "company": "Juniper Cloud Tools",
    "speaker": "Ava Sinclair",
    "side": "customer",
    "role": "Staff Software Engineer",
-   "ts": "18:19",
-   "quote": "We have EU customers and a data residency commitment in some contracts. So EU residency is probably the requirement.",
-   "context": "Prospect states EU residency is probably the data residency requirement, because they have EU customers and a residency commitment in some contracts. \u2014 Customer (Ava) answering vendor's request to be specific about 'regional controls'; she frames it as 'probably' the requirement, so it is tentative.",
+   "ts": "18:04",
+   "quote": "Regional controls \u2014 what does that mean concretely?",
+   "context": "Regional controls question: Ava asks what 'regional controls' means concretely, and OrbitFlow (Nina) answers that EU data residency is available on Enterprise and asks for more granularity if needed. \u2014 Vendor answer to a prospect's security-list question; vendor offers EU residency only as an Enterprise feature and leaves granular needs open.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F48",
-   "turn_id": "CALL-010#T167",
-   "call_id": "CALL-010",
-   "company": "Juniper Cloud Tools",
-   "speaker": "Marcus Chen",
-   "side": "customer",
-   "role": "VP Business Operations",
-   "ts": "18:29",
-   "quote": "It's in two contracts. Both enterprise accounts.",
-   "context": "Prospect's business VP says the EU data residency commitment appears in two contracts, both enterprise accounts. \u2014 Marcus adds detail; Ava notes they only know of two, suggesting there may be more unknown commitments.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F49",
-   "turn_id": "CALL-010#T168",
-   "call_id": "CALL-010",
-   "company": "Juniper Cloud Tools",
-   "speaker": "Ava Sinclair",
-   "side": "customer",
-   "role": "Staff Software Engineer",
-   "ts": "18:33",
-   "quote": "Two that we know about.",
-   "context": "Prospect suspects there may be more residency commitments than the two known ones. \u2014 Ava's sardonic follow-up implies incomplete knowledge of contractual residency obligations.",
-   "stated_or_inferred": "inferred"
-  },
-  {
-   "finding_id": "F50",
+   "finding_id": "F53",
    "turn_id": "CALL-010#T165",
    "call_id": "CALL-010",
    "company": "Juniper Cloud Tools",
@@ -745,11 +782,37 @@
    "role": "Solutions Engineer",
    "ts": "18:09",
    "quote": "EU data residency is available on Enterprise. If you mean something more granular than that, tell me what and I'll answer specifically.",
-   "context": "OrbitFlow staff state EU data residency is available on the Enterprise tier and invite the prospect to specify any more granular regional need. \u2014 Vendor answer to the regional controls question; a hedge that more granular needs would be answered specifically.",
+   "context": "OrbitFlow states EU data residency is available on the Enterprise tier. \u2014 Vendor claim in response to the regional controls question; tier-gated, not available on lower packages per the claim.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F51",
+   "finding_id": "F54",
+   "turn_id": "CALL-010#T166",
+   "call_id": "CALL-010",
+   "company": "Juniper Cloud Tools",
+   "speaker": "Ava Sinclair",
+   "side": "customer",
+   "role": "Staff Software Engineer",
+   "ts": "18:19",
+   "quote": "We have EU customers and a data residency commitment in some contracts. So EU residency is probably the requirement.",
+   "context": "Ava states the prospect's requirement is EU data residency, based on EU customers and data residency commitments in some contracts. \u2014 Prospect defines the requirement after the vendor's answer; she frames it as 'probably' the requirement.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F55",
+   "turn_id": "CALL-010#T167",
+   "call_id": "CALL-010",
+   "company": "Juniper Cloud Tools",
+   "speaker": "Marcus Chen",
+   "side": "customer",
+   "role": "VP Business Operations",
+   "ts": "18:29",
+   "quote": "It's in two contracts. Both enterprise accounts.",
+   "context": "Marcus Chen says the data residency commitment appears in two contracts, both enterprise accounts; Ava notes these are only the two they know about. \u2014 Prospect discloses scope of residency commitments; possible under-count acknowledged by Ava as jokingly uncertain.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F56",
    "turn_id": "CALL-010#T170",
    "call_id": "CALL-010",
    "company": "Juniper Cloud Tools",
@@ -758,108 +821,35 @@
    "role": "Account Executive",
    "ts": "18:38",
    "quote": "That's worth checking before an evaluation rather than after.",
-   "context": "Vendor advises checking residency commitments before the evaluation rather than after, and the prospect agrees to check. \u2014 Leo flags it as a pre-evaluation action item; Marcus takes it on.",
+   "context": "Leo Grant advises checking residency commitments before the evaluation rather than after; Marcus agrees to check, and it is assigned to Marcus as an action item. \u2014 Vendor urges early verification; prospect takes ownership of checking contracts.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F57",
+   "turn_id": "CALL-010#T224",
+   "call_id": "CALL-010",
+   "company": "Juniper Cloud Tools",
+   "speaker": "Marcus Chen",
+   "side": "customer",
+   "role": "VP Business Operations",
+   "ts": "23:38",
+   "quote": "I'll do the contracts.",
+   "context": "Ava was responsible for the residency-related Salesforce and contract checks; Marcus said he would do the contracts check. \u2014 Action item from the wrap-up: Marcus confirms he will check the two EU contracts for residency commitments.",
    "stated_or_inferred": "stated"
   }
  ],
- "rejected_findings": [
-  {
-   "call_id": "CALL-010",
-   "claim": "OrbitFlow staff say regional controls are part of the security list, with encryption at rest and in transit and SOC 2 Type II as baseline.",
-   "quote": "Regional controls",
-   "turn_ids": [
-    "T163"
-   ],
-   "speaker": "Nina Patel",
-   "reason": "speaker mismatch or ambiguous attribution (reader said Nina Patel)"
-  }
- ],
+ "rejected_findings": [],
  "draft": {
-  "answer": "Residency came up on all 10 prospect calls, but it was a hard concern for only some. Acme said it has no requirement [C1]. Cedar & Finch, DeltaWorks, Ember and Juniper tied it to EU/UK or German needs [C2][C3][C4][C5]. Harbor Legal and Greenline focused on UK residency, which OrbitFlow could not confirm [C6][C7]. BrightPath asked about the default region [C8], Inkwell raised a FERPA data-location concern [C9], and Fable Media discussed GDPR only [C10]. OrbitFlow's consistent answer was that EU residency is Enterprise-only [C11].",
+  "answer": "Eight of ten prospects raised a residency or data-location concern, and the most common ask was EU or UK residency [C1][C2][C3][C4][C5][C6]. Acme Logistics said it has no residency requirement for this project [C7]. Greenline Energy Services prefers UK residency but does not require it [C5], and Inkwell Learning's FERPA concern is about keeping student records in its own warehouse [C8]. OrbitFlow reps consistently offered EU residency on Enterprise only, and repeatedly declined to confirm UK residency or default regions on the call, promising written answers [C9][C10].",
   "claims": [
    {
-    "text": "Acme Logistics (Tom Alvarez) said they have no special data-residency requirement for this project. Jon Bell noted EU residency is available on Enterprise 'if you ever need it'.",
+    "text": "Harbor Legal (Samir Khan) lists UK residency as a must-have and insists EU is not UK. He says the distinction matters a great deal to some clients, and Eleanor Brooks says it matters especially for public sector work. He wants a plain no rather than a roadmap promise. Nina Patel said it may be a deal gate and promised a definitive answer within the week; UK residency is also on the written-items list.",
     "finding_ids": [
-     "F1",
-     "F2"
-    ]
-   },
-   {
-    "text": "Cedar & Finch (Sophie Reed) sells into the UK and EU and wants to know where customer data is processed. Leo Grant said EU residency is on Enterprise only and that for Growth he would confirm the default processing region in writing. Sophie reacted that Enterprise is 'the expensive one'. Leo later admitted he had dodged the question and promised a written answer. The residency concern appears to be a purchase requirement, with the Growth answer unresolved (inferred).",
-    "finding_ids": [
-     "F8",
-     "F9",
-     "F10",
-     "F11",
-     "F12",
-     "F13"
-    ]
-   },
-   {
-    "text": "DeltaWorks (Anika Bose) listed German or EU data residency as a headline governance requirement. Jon Bell said EU residency is available on Enterprise and that OrbitFlow has no German region. Anika said EU may be sufficient but depends on which legal entity owns the data, which is a question for her legal team.",
-    "finding_ids": [
-     "F14",
-     "F15",
-     "F16",
-     "F17"
-    ]
-   },
-   {
-    "text": "DeltaWorks (Martin Vogel) said two German plants are prohibited from exposing production databases directly to SaaS vendors. This is a hosting/connectivity constraint, not an explicit residency rule. Jon Bell proposed scoping those plants out of phase one. Martin later said he had not read the policy in 18 months.",
-    "finding_ids": [
-     "F18",
-     "F19",
-     "F20",
-     "F21"
-    ]
-   },
-   {
-    "text": "Ember Financial (Hannah Cole) requires EU residency for European records as part of its auditability checklist. Nina Patel said it is available on Enterprise only. Juniper Cloud Tools (Ava Sinclair) said EU residency is probably the requirement, because some contracts carry a residency commitment. Marcus Chen said it is in two enterprise contracts, and Ava suggested there may be more (inferred). Nina Patel said EU residency is on Enterprise, and Leo Grant advised checking the commitments before the evaluation, which Marcus took on.",
-    "finding_ids": [
-     "F22",
-     "F23",
-     "F47",
-     "F48",
-     "F49",
-     "F50",
-     "F51"
-    ]
-   },
-   {
-    "text": "Harbor Legal (Samir Khan) listed UK residency as a top security-review requirement and said 'EU is not UK'. He said the distinction matters a great deal for some clients, and Eleanor Brooks added it matters especially for public sector work. Nina Patel could not confirm UK residency, called it a genuine open question that may be a gate, and promised a definitive written answer within the week. Samir asked that a 'no' be stated as a no, not deferred to the roadmap. UK residency remained one of four open written items.",
-    "finding_ids": [
-     "F33",
-     "F34",
-     "F35",
      "F36",
      "F37",
      "F38",
      "F39",
-     "F40"
-    ]
-   },
-   {
-    "text": "Greenline Energy Services (Carlos Mendes) stated a preference for UK data residency. Lucy Hart clarified it is preferred, not mandatory, because they are not regulated that way and procurement prefers it. Jon Bell said EU residency is on Enterprise but UK is unconfirmed, and promised a definitive written answer. Greenline is fully Azure with no on-premise components.",
-    "finding_ids": [
-     "F28",
-     "F29",
-     "F30",
-     "F31",
-     "F32"
-    ]
-   },
-   {
-    "text": "BrightPath Health's security architect, Elliot Greene, listed confirming how US data is handled as a checklist item. He said BrightPath is a US operation with a UK subsidiary and asked for the default region. Jon Bell said the default depends on where the workspace is provisioned and offered to confirm in writing, and Elliot approved of that answer. No default region was confirmed on the call.",
-    "finding_ids": [
-     "F3",
-     "F5",
-     "F6",
-     "F7"
-    ]
-   },
-   {
-    "text": "Inkwell Learning (Darren Wu) said FERPA-covered student-level records must never leave their warehouse and that counsel prefers 'the data never leaves' to 'vendor controls'. The workflow would use only account-level aggregates. Jon Bell suggested enforcing this in the Snowflake view. No hosting region was named, and districts may have their own security questionnaires.",
-    "finding_ids": [
+     "F40",
      "F41",
      "F42",
      "F43",
@@ -869,72 +859,696 @@
     ]
    },
    {
-    "text": "Fable Media (Ben Foster) raised GDPR terms and no-training assurances, not data location. Alastair McCrae said OrbitFlow is fully GDPR compliant and does not train on customer data. No hosting region was discussed, and a DPA was promised.",
+    "text": "DeltaWorks Manufacturing (Anika Bose) listed German or EU data residency as a governance requirement. Jon Bell said OrbitFlow offers EU only and has no German region. Anika said EU may be sufficient but depends on which legal entity owns the data, a question for their legal team. Martin Vogel separately said two German plants are prohibited from exposing production databases directly to SaaS vendors, a hosting constraint he later said was from memory.",
     "finding_ids": [
-     "F24",
-     "F25",
-     "F26",
-     "F27"
+     "F16",
+     "F17",
+     "F18",
+     "F19",
+     "F20",
+     "F21"
     ]
    },
    {
-    "text": "Across calls, OrbitFlow reps (Jon Bell, Nina Patel, Leo Grant) said EU data residency is available only on the Enterprise package.",
+    "text": "Juniper Cloud Tools (Ava Sinclair) said EU residency is probably the requirement because of EU customers and residency commitments in some contracts. Marcus Chen said the commitment appears in two enterprise-account contracts. Leo Grant advised checking before the evaluation, and Marcus took the action to check the contracts.",
+    "finding_ids": [
+     "F52",
+     "F53",
+     "F54",
+     "F55",
+     "F56",
+     "F57"
+    ]
+   },
+   {
+    "text": "Cedar & Finch (Sophie Reed) sells into the UK and EU and wants to know where customer data is processed. When told EU residency is Enterprise-only, she reacted that it is the expensive tier, and Leo Grant agreed. Leo said he would confirm the Growth plan's default processing region in writing, and later listed it as a question he dodged and owes in writing.",
+    "finding_ids": [
+     "F10",
+     "F11",
+     "F12",
+     "F13",
+     "F14",
+     "F15"
+    ]
+   },
+   {
+    "text": "Greenline Energy Services: Carlos Mendes said he would preferably want UK residency, and Lucy Hart clarified it is preferred, not mandatory, because Greenline is not regulated that way and procurement prefers it. Jon Bell would not confirm UK residency and Maya Chen committed to a written UK answer.",
+    "finding_ids": [
+     "F31",
+     "F32",
+     "F33",
+     "F34",
+     "F35"
+    ]
+   },
+   {
+    "text": "BrightPath Health (Elliot Greene), a US operation with a UK subsidiary, asked for the default EU region. Jon Bell said it depends on where the workspace is provisioned and offered to confirm in writing; Elliot approved of that answer. Elliot's security list also included confirming how US data is handled.",
+    "finding_ids": [
+     "F5",
+     "F6",
+     "F7",
+     "F8",
+     "F9"
+    ]
+   },
+   {
+    "text": "Acme Logistics (Tom Alvarez) said it has no special data-residency requirement for this project. Jon Bell offered EU residency on Enterprise anyway. Tom's remark that Acme is not healthcare only implies no sector-driven rules. Jon hedged on where data sent to an LLM provider goes, saying it depends on configuration and provider.",
+    "finding_ids": [
+     "F1",
+     "F2",
+     "F3",
+     "F4"
+    ]
+   },
+   {
+    "text": "Inkwell Learning (Darren Wu) said FERPA-covered student-level records should never leave Inkwell's warehouse and the workflow should use only account-level aggregates. Jon Bell proposed enforcing this in the Snowflake view the workflow consumes. This is a customer-warehouse boundary, not an OrbitFlow hosting region.",
+    "finding_ids": [
+     "F47",
+     "F48",
+     "F49",
+     "F50",
+     "F51"
+    ]
+   },
+   {
+    "text": "Ember Financial's Hannah Cole requires EU residency for European records, and Nina Patel said it is available on Enterprise. Leo Grant's list of written follow-ups does not appear to include residency.",
+    "finding_ids": [
+     "F22",
+     "F23",
+     "F24"
+    ]
+   },
+   {
+    "text": "Fable Media (Ben Foster) raised GDPR terms and written assurance of no model training, not hosting location. Alastair McCrae said OrbitFlow is fully GDPR compliant and does not train on customer data, and promised a DPA. Ben still listed the written assurance as outstanding.",
+    "finding_ids": [
+     "F25",
+     "F26",
+     "F27",
+     "F28",
+     "F29",
+     "F30"
+    ]
+   },
+   {
+    "text": "Across calls, OrbitFlow reps (Jon Bell, Nina Patel, Leo Grant) repeatedly said EU residency is available on Enterprise, while declining to confirm UK residency or default regions on the call and committing to written answers.",
     "finding_ids": [
      "F2",
-     "F4",
-     "F10",
-     "F15",
+     "F6",
+     "F12",
+     "F17",
      "F23",
-     "F30",
+     "F33",
      "F34",
-     "F50"
+     "F38",
+     "F53"
     ]
    }
   ],
   "conflicts": [
    {
-    "topic": "Strength of the UK residency requirement",
-    "description": "Greenline's Carlos Mendes stated a UK preference, but Lucy Hart said it is preferred and not mandatory, whereas Harbor Legal's Samir Khan treated UK residency as a possible gate.",
+    "topic": "Whether UK residency is required at Greenline",
+    "description": "Carlos Mendes stated a UK residency preference as a requirement, but Lucy Hart corrected that it is preferred and not mandatory.",
     "finding_ids": [
-     "F28",
-     "F29",
-     "F33",
-     "F38"
+     "F31",
+     "F32"
     ]
    },
    {
-    "topic": "Reliability of DeltaWorks German plant restriction",
-    "description": "Martin Vogel stated the German plants are prohibited from exposing databases to SaaS vendors, but later said he had not read the policy in 18 months.",
+    "topic": "Whether residency was committed in writing at Ember",
+    "description": "Nina Patel stated EU residency is available on Enterprise, but Leo Grant's follow-up list omits residency, so no written follow-up appears to exist (an inference from the omission).",
     "finding_ids": [
-     "F18",
-     "F21"
+     "F23",
+     "F24"
     ]
    }
   ],
   "not_covered": [
-   "The written answers OrbitFlow promised (default region, UK residency) are not in these findings, so their outcomes are unknown.",
-   "Whether any prospect ultimately bought Enterprise or dropped out over residency."
+   "Whether any written residency answers (UK, default region) were actually delivered after the calls.",
+   "Which regions or processing locations OrbitFlow actually supports beyond EU on Enterprise."
   ],
   "assumptions": [
-   "Prospects means calls 001-010.",
-   "Data residency includes data location, sovereignty and hosting region."
+   "Prospects means the Prospect call type (new business).",
+   "Residency synonyms include data location, sovereignty, regional hosting and GDPR-related storage concerns."
   ]
  },
  "usage": {
   "llm_calls": 13,
-  "input_tokens": 146871,
-  "cache_read_tokens": 124930,
+  "input_tokens": 148661,
+  "cache_read_tokens": 124922,
   "cache_write_tokens": 0,
-  "output_tokens": 15664,
-  "uncached_calls": 0,
-  "latency_s": 0.18
+  "output_tokens": 17263,
+  "uncached_calls": 1,
+  "latency_s": 6.32
  },
  "answer": {
   "question": "What did prospects say about data residency?",
-  "answer": "Residency came up on all 10 prospect calls, but it was a hard concern for only some. Acme said it has no requirement [1]. Cedar & Finch, DeltaWorks, Ember and Juniper tied it to EU/UK or German needs [2][3][4][5]. Harbor Legal and Greenline focused on UK residency, which OrbitFlow could not confirm [6][7]. BrightPath asked about the default region [8], Inkwell raised a FERPA data-location concern [9], and Fable Media discussed GDPR only [10]. OrbitFlow's consistent answer was that EU residency is Enterprise-only [11].",
+  "answer": "Eight of ten prospects raised a residency or data-location concern, and the most common ask was EU or UK residency [1][2][3][4][5][6]. Acme Logistics said it has no residency requirement for this project [7]. OrbitFlow reps consistently offered EU residency on Enterprise only, and repeatedly declined to confirm UK residency or default regions on the call, promising written answers [8][9].",
   "claims": [
    {
-    "text": "Acme Logistics (Tom Alvarez) said they have no special data-residency requirement for this project. Jon Bell noted EU residency is available on Enterprise 'if you ever need it'.",
+    "text": "Harbor Legal (Samir Khan) lists UK residency as a must-have and insists EU is not UK. He says the distinction matters a great deal to some clients, and Eleanor Brooks says it matters especially for public sector work. He wants a plain no rather than a roadmap promise. Nina Patel said it may be a deal gate and promised a definitive answer within the week; UK residency is also on the written-items list.",
+    "evidence": [
+     {
+      "finding_id": "F36",
+      "turn_id": "CALL-008#T083",
+      "call_id": "CALL-008",
+      "company": "Harbor Legal",
+      "speaker": "Samir Khan",
+      "side": "customer",
+      "role": "Information Security Manager",
+      "ts": "10:31",
+      "quote": "UK residency.",
+      "context": "Customer requires UK data residency as one of its must-have items for the evaluation. \u2014 Samir lists his checklist for the vendor; UK residency is one of the requirements.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F37",
+      "turn_id": "CALL-008#T085",
+      "call_id": "CALL-008",
+      "company": "Harbor Legal",
+      "speaker": "Samir Khan",
+      "side": "customer",
+      "role": "Information Security Manager",
+      "ts": "11:24",
+      "quote": "UK residency?",
+      "context": "Customer asks directly whether OrbitFlow offers UK residency. \u2014 Follow-up question right after the vendor's answer on Enterprise SSO, SCIM and encryption.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F38",
+      "turn_id": "CALL-008#T086",
+      "call_id": "CALL-008",
+      "company": "Harbor Legal",
+      "speaker": "Nina Patel",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "11:26",
+      "quote": "EU data residency is available on Enterprise. UK specifically I need to confirm in writing. I'm not going to say yes on a call.",
+      "context": "OrbitFlow states EU data residency is available on Enterprise, but UK residency is unconfirmed and will be confirmed in writing, not on the call. \u2014 Vendor hedge; no UK commitment made.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F39",
+      "turn_id": "CALL-008#T087",
+      "call_id": "CALL-008",
+      "company": "Harbor Legal",
+      "speaker": "Samir Khan",
+      "side": "customer",
+      "role": "Information Security Manager",
+      "ts": "11:37",
+      "quote": "EU is not UK.",
+      "context": "Customer insists EU hosting is not the same as UK residency and the vendor agrees. \u2014 Customer pushes back on EU-for-UK substitution; vendor concedes the distinction.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F40",
+      "turn_id": "CALL-008#T089",
+      "call_id": "CALL-008",
+      "company": "Harbor Legal",
+      "speaker": "Samir Khan",
+      "side": "customer",
+      "role": "Information Security Manager",
+      "ts": "11:43",
+      "quote": "For some of our clients that distinction matters a great deal.",
+      "context": "The EU-versus-UK distinction matters to some clients, particularly public sector work. \u2014 Customer explains why the residency gap is material for client and public-sector business.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F41",
+      "turn_id": "CALL-008#T090",
+      "call_id": "CALL-008",
+      "company": "Harbor Legal",
+      "speaker": "Eleanor Brooks",
+      "side": "customer",
+      "role": "Chief Transformation Officer",
+      "ts": "11:48",
+      "quote": "It matters for the public sector work particularly.",
+      "context": "Eleanor says the UK residency issue matters particularly for public sector work. \u2014 Supports Samir's point on client requirements.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F42",
+      "turn_id": "CALL-008#T091",
+      "call_id": "CALL-008",
+      "company": "Harbor Legal",
+      "speaker": "Nina Patel",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "11:52",
+      "quote": "Then it's a genuine open question and it may be a gate. I'll get you a definitive answer within the week.",
+      "context": "OrbitFlow treats UK residency as an open question that may be a deal gate, with a definitive answer promised within a week. \u2014 Vendor commitment on timing; answer not yet given in the call.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F43",
+      "turn_id": "CALL-008#T092",
+      "call_id": "CALL-008",
+      "company": "Harbor Legal",
+      "speaker": "Samir Khan",
+      "side": "customer",
+      "role": "Information Security Manager",
+      "ts": "12:01",
+      "quote": "If the answer is no, tell me it's no. Don't tell me it's on the roadmap.",
+      "context": "Customer wants a plain no if UK residency is unavailable, not a roadmap promise. \u2014 Customer sets a condition on how the answer is given.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F44",
+      "turn_id": "CALL-008#T093",
+      "call_id": "CALL-008",
+      "company": "Harbor Legal",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "12:07",
+      "quote": "I won't dress a roadmap item as a capability.",
+      "context": "OrbitFlow says it will not present a roadmap item as a current capability. \u2014 Vendor response to the customer's request on roadmap framing.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F45",
+      "turn_id": "CALL-008#T133",
+      "call_id": "CALL-008",
+      "company": "Harbor Legal",
+      "speaker": "Nina Patel",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "16:49",
+      "quote": "Four items. UK residency, retention floor, AI-step permission granularity, and the audit payload schema.",
+      "context": "OrbitFlow lists UK residency as one of four open written items to be answered. \u2014 Vendor recap of outstanding questions.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F46",
+      "turn_id": "CALL-008#T273",
+      "call_id": "CALL-008",
+      "company": "Harbor Legal",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "33:27",
+      "quote": "Plus written answers on UK residency, the retention floor, AI-step permission granularity, the audit payload schema, and termination data handling.",
+      "context": "OrbitFlow commits to sending written answers on UK residency as part of next steps. \u2014 Vendor's next-steps summary; written answer is a deliverable, not yet a confirmed capability.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "DeltaWorks Manufacturing (Anika Bose) listed German or EU data residency as a governance requirement. Jon Bell said OrbitFlow offers EU only and has no German region. Anika said EU may be sufficient but depends on which legal entity owns the data, a question for their legal team. Martin Vogel separately said two German plants are prohibited from exposing production databases directly to SaaS vendors, a hosting constraint he later said was from memory.",
+    "evidence": [
+     {
+      "finding_id": "F16",
+      "turn_id": "CALL-004#T014",
+      "call_id": "CALL-004",
+      "company": "DeltaWorks Manufacturing",
+      "speaker": "Anika Bose",
+      "side": "customer",
+      "role": "IT Governance Lead",
+      "ts": "01:29",
+      "quote": "German or EU data residency",
+      "context": "Prospect's IT governance lead listed German or EU data residency as a headline governance requirement. \u2014 Customer requirement raised during governance discussion; stated as a list item, not yet a hard decision.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F17",
+      "turn_id": "CALL-004#T018",
+      "call_id": "CALL-004",
+      "company": "DeltaWorks Manufacturing",
+      "speaker": "Jon Bell",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "02:09",
+      "quote": "EU data residency is available on Enterprise.",
+      "context": "OrbitFlow states EU data residency is available on the Enterprise package. \u2014 Vendor answer to the governance checklist; scoped to EU, not Germany.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F18",
+      "turn_id": "CALL-004#T019",
+      "call_id": "CALL-004",
+      "company": "DeltaWorks Manufacturing",
+      "speaker": "Anika Bose",
+      "side": "customer",
+      "role": "IT Governance Lead",
+      "ts": "02:35",
+      "quote": "I said German or EU. Which is it?",
+      "context": "Prospect pressed the vendor to clarify whether it meant German or EU residency. \u2014 Customer asked for a precise answer after the vendor's EU claim.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F19",
+      "turn_id": "CALL-004#T020",
+      "call_id": "CALL-004",
+      "company": "DeltaWorks Manufacturing",
+      "speaker": "Jon Bell",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "02:39",
+      "quote": "EU. I am not going to tell you we have a German region because we don't.",
+      "context": "OrbitFlow clarified it offers EU residency only and does not have a German region. \u2014 Vendor correction/clarification that narrows the earlier claim; explicitly declines to claim German hosting.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F20",
+      "turn_id": "CALL-004#T021",
+      "call_id": "CALL-004",
+      "company": "DeltaWorks Manufacturing",
+      "speaker": "Anika Bose",
+      "side": "customer",
+      "role": "IT Governance Lead",
+      "ts": "02:45",
+      "quote": "EU may be sufficient. It depends on which entity the data belongs to, and that is a question for our legal team, not for you.",
+      "context": "Prospect says EU residency may be sufficient but depends on which legal entity owns the data, which needs legal review. \u2014 Customer's conditional acceptance; final sufficiency depends on their legal team, not the vendor.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F21",
+      "turn_id": "CALL-004#T081",
+      "call_id": "CALL-004",
+      "company": "DeltaWorks Manufacturing",
+      "speaker": "Martin Vogel",
+      "side": "customer",
+      "role": "Director of Enterprise Applications",
+      "ts": "12:14",
+      "quote": "two German plants are still prohibited from exposing production databases directly to SaaS vendors",
+      "context": "Prospect states two German plants are prohibited from exposing production databases directly to SaaS vendors, so cloud-first is policy rather than reality. \u2014 Related hosting/exposure constraint rather than a pure residency requirement; the customer later says this was from memory and not verified against current policy (T257).",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Juniper Cloud Tools (Ava Sinclair) said EU residency is probably the requirement because of EU customers and residency commitments in some contracts. Marcus Chen said the commitment appears in two enterprise-account contracts. Leo Grant advised checking before the evaluation, and Marcus took the action to check the contracts.",
+    "evidence": [
+     {
+      "finding_id": "F52",
+      "turn_id": "CALL-010#T164",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Ava Sinclair",
+      "side": "customer",
+      "role": "Staff Software Engineer",
+      "ts": "18:04",
+      "quote": "Regional controls \u2014 what does that mean concretely?",
+      "context": "Regional controls question: Ava asks what 'regional controls' means concretely, and OrbitFlow (Nina) answers that EU data residency is available on Enterprise and asks for more granularity if needed. \u2014 Vendor answer to a prospect's security-list question; vendor offers EU residency only as an Enterprise feature and leaves granular needs open.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F53",
+      "turn_id": "CALL-010#T165",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Nina Patel",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "18:09",
+      "quote": "EU data residency is available on Enterprise. If you mean something more granular than that, tell me what and I'll answer specifically.",
+      "context": "OrbitFlow states EU data residency is available on the Enterprise tier. \u2014 Vendor claim in response to the regional controls question; tier-gated, not available on lower packages per the claim.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F54",
+      "turn_id": "CALL-010#T166",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Ava Sinclair",
+      "side": "customer",
+      "role": "Staff Software Engineer",
+      "ts": "18:19",
+      "quote": "We have EU customers and a data residency commitment in some contracts. So EU residency is probably the requirement.",
+      "context": "Ava states the prospect's requirement is EU data residency, based on EU customers and data residency commitments in some contracts. \u2014 Prospect defines the requirement after the vendor's answer; she frames it as 'probably' the requirement.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F55",
+      "turn_id": "CALL-010#T167",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Marcus Chen",
+      "side": "customer",
+      "role": "VP Business Operations",
+      "ts": "18:29",
+      "quote": "It's in two contracts. Both enterprise accounts.",
+      "context": "Marcus Chen says the data residency commitment appears in two contracts, both enterprise accounts; Ava notes these are only the two they know about. \u2014 Prospect discloses scope of residency commitments; possible under-count acknowledged by Ava as jokingly uncertain.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F56",
+      "turn_id": "CALL-010#T170",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "18:38",
+      "quote": "That's worth checking before an evaluation rather than after.",
+      "context": "Leo Grant advises checking residency commitments before the evaluation rather than after; Marcus agrees to check, and it is assigned to Marcus as an action item. \u2014 Vendor urges early verification; prospect takes ownership of checking contracts.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F57",
+      "turn_id": "CALL-010#T224",
+      "call_id": "CALL-010",
+      "company": "Juniper Cloud Tools",
+      "speaker": "Marcus Chen",
+      "side": "customer",
+      "role": "VP Business Operations",
+      "ts": "23:38",
+      "quote": "I'll do the contracts.",
+      "context": "Ava was responsible for the residency-related Salesforce and contract checks; Marcus said he would do the contracts check. \u2014 Action item from the wrap-up: Marcus confirms he will check the two EU contracts for residency commitments.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Cedar & Finch (Sophie Reed) sells into the UK and EU and wants to know where customer data is processed. When told EU residency is Enterprise-only, she reacted that it is the expensive tier, and Leo Grant agreed. Leo said he would confirm the Growth plan's default processing region in writing, and later listed it as a question he dodged and owes in writing.",
+    "evidence": [
+     {
+      "finding_id": "F10",
+      "turn_id": "CALL-003#T053",
+      "call_id": "CALL-003",
+      "company": "Cedar & Finch",
+      "speaker": "Sophie Reed",
+      "side": "customer",
+      "role": "Director of E-commerce Operations",
+      "ts": "05:53",
+      "quote": "And because we sell into the UK and EU I want to understand where customer data actually gets processed.",
+      "context": "Prospect (Sophie Reed) states Cedar & Finch sells into the UK and EU, and wants to understand where customer data is processed. \u2014 Customer's own data residency concern; raised during security questions.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F11",
+      "turn_id": "CALL-003#T051",
+      "call_id": "CALL-003",
+      "company": "Cedar & Finch",
+      "speaker": "Sophie Reed",
+      "side": "customer",
+      "role": "Director of E-commerce Operations",
+      "ts": "05:43",
+      "quote": "UK and EU, yes. Which is a security question, so let me do that bit now while I remember.",
+      "context": "Prospect confirms the business operates in UK and EU. \u2014 Answer to vendor question about geography; sets up residency concern.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F12",
+      "turn_id": "CALL-003#T054",
+      "call_id": "CALL-003",
+      "company": "Cedar & Finch",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "06:14",
+      "quote": "EU data residency is available on Enterprise. On Growth, I'd need to confirm the default processing region for you in writing rather than guess.",
+      "context": "OrbitFlow staff states EU data residency is available only on the Enterprise plan; for Growth plan he would need to confirm the default processing region in writing rather than guess. \u2014 Partial answer; Growth default region unconfirmed.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F13",
+      "turn_id": "CALL-003#T055",
+      "call_id": "CALL-003",
+      "company": "Cedar & Finch",
+      "speaker": "Sophie Reed",
+      "side": "customer",
+      "role": "Director of E-commerce Operations",
+      "ts": "06:28",
+      "quote": "Enterprise. That's the expensive one.",
+      "context": "Prospect reacts that EU residency requires Enterprise, which is the expensive tier. \u2014 Price implication of residency requirement.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F14",
+      "turn_id": "CALL-003#T056",
+      "call_id": "CALL-003",
+      "company": "Cedar & Finch",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "06:31",
+      "quote": "That's the expensive one, yes.",
+      "context": "OrbitFlow staff confirms Enterprise is the expensive one, acknowledging the residency tier cost. \u2014 Vendor acknowledgement of tier cost.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F15",
+      "turn_id": "CALL-003#T140",
+      "call_id": "CALL-003",
+      "company": "Cedar & Finch",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "16:12",
+      "quote": "I'll also get you written answers on the Shopify trigger coverage and the default processing region. Those are the two I dodged.",
+      "context": "OrbitFlow staff commits to giving written answer on default processing region, deferring it as one of two dodged questions. \u2014 Open follow-up commitment on data location.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Greenline Energy Services: Carlos Mendes said he would preferably want UK residency, and Lucy Hart clarified it is preferred, not mandatory, because Greenline is not regulated that way and procurement prefers it. Jon Bell would not confirm UK residency and Maya Chen committed to a written UK answer.",
+    "evidence": [
+     {
+      "finding_id": "F31",
+      "turn_id": "CALL-007#T131",
+      "call_id": "CALL-007",
+      "company": "Greenline Energy Services",
+      "speaker": "Carlos Mendes",
+      "side": "customer",
+      "role": "Head of Digital Operations",
+      "ts": "16:12",
+      "quote": "preferably UK data residency",
+      "context": "Carlos Mendes stated that he would prefer UK data residency for OrbitFlow. \u2014 Security requirements list; customer-side requirement for residency, but stated as a preference.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F32",
+      "turn_id": "CALL-007#T134",
+      "call_id": "CALL-007",
+      "company": "Greenline Energy Services",
+      "speaker": "Lucy Hart",
+      "side": "customer",
+      "role": "Field Systems Product Manager",
+      "ts": "16:51",
+      "quote": "It was you, and it is preferably rather than mandatory. We're not regulated in that way. It's more that our procurement people prefer it.",
+      "context": "Lucy Hart clarified that UK data residency is preferred, not mandatory, because Greenline is not regulated in that way; the preference is driven by procurement. \u2014 Correction/clarification of Carlos's statement about residency being a requirement.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F33",
+      "turn_id": "CALL-007#T132",
+      "call_id": "CALL-007",
+      "company": "Greenline Energy Services",
+      "speaker": "Jon Bell",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "16:22",
+      "quote": "EU data residency is available on Enterprise.",
+      "context": "Jon Bell stated that EU data residency is available on OrbitFlow's Enterprise tier. \u2014 Vendor answer to the residency question; limited to EU and Enterprise.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F34",
+      "turn_id": "CALL-007#T132",
+      "call_id": "CALL-007",
+      "company": "Greenline Energy Services",
+      "speaker": "Jon Bell",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "16:22",
+      "quote": "UK specifically I'd need to confirm rather than assume, and I'm not going to say yes to make the call go smoothly.",
+      "context": "Jon Bell declined to confirm UK-specific data residency and refused to assume it, committing instead to a definitive written answer. \u2014 Hedge on UK residency; vendor explicitly did not say yes to smooth the call.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F35",
+      "turn_id": "CALL-007#T195",
+      "call_id": "CALL-007",
+      "company": "Greenline Energy Services",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "24:55",
+      "quote": "And from us in writing \u2014 the UK residency answer, and a note on the regional workspace and permissions design.",
+      "context": "Maya Chen committed to sending a written UK residency answer after the call. \u2014 Follow-up commitment from vendor on residency.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "BrightPath Health (Elliot Greene), a US operation with a UK subsidiary, asked for the default EU region. Jon Bell said it depends on where the workspace is provisioned and offered to confirm in writing; Elliot approved of that answer. Elliot's security list also included confirming how US data is handled.",
+    "evidence": [
+     {
+      "finding_id": "F5",
+      "turn_id": "CALL-002#T015",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Elliot Greene",
+      "side": "customer",
+      "role": "Security Architect",
+      "ts": "02:22",
+      "quote": "EU. We're a US operation with a UK subsidiary. What's the default region?",
+      "context": "Prospect (Elliot Greene) raised EU/UK data residency: BrightPath is a US operation with a UK subsidiary, and he asked what the default data region is. \u2014 Prospect's direct residency question during the security section, raised in response to the vendor's EU residency claim.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F6",
+      "turn_id": "CALL-002#T014",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Jon Bell",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "01:59",
+      "quote": "EU data residency available on Enterprise.",
+      "context": "OrbitFlow (Jon Bell) said EU data residency is available on the Enterprise tier. \u2014 Vendor's baseline security capability list, given in answer to the security requirements on the call; a product claim, not a contractual commitment.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F7",
+      "turn_id": "CALL-002#T016",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Jon Bell",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "02:30",
+      "quote": "Default depends on where the workspace is provisioned. I'd rather confirm the specifics in writing than guess at your architecture on a call.",
+      "context": "OrbitFlow (Jon Bell) would not state the default data region; he said it depends on where the workspace is provisioned and committed to confirming the specifics in writing rather than on the call. \u2014 Hedge on the residency question. Vendor declined to guess at the prospect's architecture; written answer is an open item.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F8",
+      "turn_id": "CALL-002#T017",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Elliot Greene",
+      "side": "customer",
+      "role": "Security Architect",
+      "ts": "02:41",
+      "quote": "Good. That's the right answer.",
+      "context": "Prospect approved of the vendor declining to give a residency default verbally, favouring a written answer. \u2014 Reaction to the vendor's hedge; signals the prospect will require a written residency position, not a verbal one.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F9",
+      "turn_id": "CALL-002#T006",
+      "call_id": "CALL-002",
+      "company": "BrightPath Health",
+      "speaker": "Elliot Greene",
+      "side": "customer",
+      "role": "Security Architect",
+      "ts": "00:41",
+      "quote": "confirm how US data is handled",
+      "context": "Prospect's security list included confirming how US data is handled, separate from EU residency. \u2014 Listed as one of five security items in the opening agenda; the call does not return to US-specific handling in detail.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Acme Logistics (Tom Alvarez) said it has no special data-residency requirement for this project. Jon Bell offered EU residency on Enterprise anyway. Tom's remark that Acme is not healthcare only implies no sector-driven rules. Jon hedged on where data sent to an LLM provider goes, saying it depends on configuration and provider.",
     "evidence": [
      {
       "finding_id": "F1",
@@ -946,7 +1560,7 @@
       "role": "Director of Customer Success",
       "ts": "19:40",
       "quote": "We don't have a special data-residency requirement for this project.",
-      "context": "Acme Logistics does not have a special data-residency requirement for this project. \u2014 Stated during the security discussion, right after SSO and audit logs were listed as the main requirements. Tom was asked about security gates and framed residency as not a constraint.",
+      "context": "Prospect (Tom Alvarez, Acme Logistics) stated Acme has no special data-residency requirement for this project. \u2014 Customer's own statement; the only direct residency statement by a prospect in this call. Says it applies to this project, not necessarily company-wide.",
       "stated_or_inferred": "stated"
      },
      {
@@ -959,214 +1573,40 @@
       "role": "Solutions Engineer",
       "ts": "20:05",
       "quote": "EU residency available on Enterprise if you ever need it.",
-      "context": "OrbitFlow says EU data residency is available, but only on the Enterprise package. \u2014 OrbitFlow staff answering the security question, after describing baseline SOC 2 Type II, SAML SSO/SCIM and encryption. Offered as an option 'if you ever need it', not as a stated Acme requirement.",
+      "context": "OrbitFlow (Jon Bell) said EU data residency is available on the Enterprise tier if the customer ever needs it. \u2014 Vendor offer in response to Tom's security questions. Framed as an optional Enterprise feature, not a default. No details on regions, storage, or processing location beyond EU.",
       "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "Cedar & Finch (Sophie Reed) sells into the UK and EU and wants to know where customer data is processed. Leo Grant said EU residency is on Enterprise only and that for Growth he would confirm the default processing region in writing. Sophie reacted that Enterprise is 'the expensive one'. Leo later admitted he had dodged the question and promised a written answer. The residency concern appears to be a purchase requirement, with the Growth answer unresolved (inferred).",
-    "evidence": [
+     },
      {
-      "finding_id": "F8",
-      "turn_id": "CALL-003#T053",
-      "call_id": "CALL-003",
-      "company": "Cedar & Finch",
-      "speaker": "Sophie Reed",
+      "finding_id": "F3",
+      "turn_id": "CALL-001#T122",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Tom Alvarez",
       "side": "customer",
-      "role": "Director of E-commerce Operations",
-      "ts": "05:53",
-      "quote": "And because we sell into the UK and EU I want to understand where customer data actually gets processed.",
-      "context": "Prospect (Sophie Reed) states Cedar & Finch sells into the UK and EU, and wants to understand where customer data gets processed. \u2014 Raised during security questions; prospect's stated requirement behind the residency question.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F9",
-      "turn_id": "CALL-003#T051",
-      "call_id": "CALL-003",
-      "company": "Cedar & Finch",
-      "speaker": "Sophie Reed",
-      "side": "customer",
-      "role": "Director of E-commerce Operations",
-      "ts": "05:43",
-      "quote": "UK and EU, yes.",
-      "context": "Prospect confirms the business operates in UK and EU. \u2014 Vendor asked directly; prospect confirmed.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F10",
-      "turn_id": "CALL-003#T054",
-      "call_id": "CALL-003",
-      "company": "Cedar & Finch",
-      "speaker": "Leo Grant",
-      "side": "vendor",
-      "role": "Account Executive",
-      "ts": "06:14",
-      "quote": "EU data residency is available on Enterprise. On Growth, I'd need to confirm the default processing region for you in writing rather than guess.",
-      "context": "OrbitFlow staff says EU data residency is available only on the Enterprise plan; for Growth, the default processing region must be confirmed in writing rather than guessed. \u2014 Partial answer; vendor hedged on Growth tier.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F11",
-      "turn_id": "CALL-003#T055",
-      "call_id": "CALL-003",
-      "company": "Cedar & Finch",
-      "speaker": "Sophie Reed",
-      "side": "customer",
-      "role": "Director of E-commerce Operations",
-      "ts": "06:28",
-      "quote": "Enterprise. That's the expensive one.",
-      "context": "Prospect reacts to EU residency being Enterprise-only by noting it is the expensive tier. \u2014 Implication that residency requirement pushes toward a costlier plan.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F12",
-      "turn_id": "CALL-003#T140",
-      "call_id": "CALL-003",
-      "company": "Cedar & Finch",
-      "speaker": "Leo Grant",
-      "side": "vendor",
-      "role": "Account Executive",
-      "ts": "16:12",
-      "quote": "I'll also get you written answers on the Shopify trigger coverage and the default processing region. Those are the two I dodged.",
-      "context": "Vendor committed to providing a written answer on the default processing region, which it had dodged on the call. \u2014 Open follow-up; vendor explicitly said it had not answered this on the call.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F13",
-      "turn_id": "CALL-003#T054",
-      "call_id": "CALL-003",
-      "company": "Cedar & Finch",
-      "speaker": "Leo Grant",
-      "side": "vendor",
-      "role": "Account Executive",
-      "ts": "06:14",
-      "quote": "EU data residency is available on Enterprise.",
-      "context": "Prospect's data-residency concern is a requirement for the purchase decision, with the Enterprise cost implication noted; the residency answer for Growth remains unresolved. \u2014 Inferred from the sequence: residency raised as a security requirement, Enterprise-only answer, and follow-up owed.",
+      "role": "Director of Customer Success",
+      "ts": "19:55",
+      "quote": "We're not healthcare.",
+      "context": "Tom said Acme is not in healthcare, which is why its security/compliance list is short. This implies no sector-driven residency rules, but the call does not state that directly. \u2014 Related to residency only by implication; the prospect did not mention residency in this turn.",
       "stated_or_inferred": "inferred"
+     },
+     {
+      "finding_id": "F4",
+      "turn_id": "CALL-001#T131",
+      "call_id": "CALL-001",
+      "company": "Acme Logistics",
+      "speaker": "Jon Bell",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "21:34",
+      "quote": "what happens to data sent to an LLM provider is a question you'll get from your security team, and the honest answer is it depends on configuration and provider",
+      "context": "OrbitFlow (Jon Bell) hedged on where data goes when sent to an LLM provider: the answer depends on configuration and provider; they use enterprise API arrangements where available and document subprocessors. He offered to disable AI or scope the pilot to deterministic steps if policy is strict. \u2014 Not a residency commitment; about third-party LLM data handling. Location of processing is left open and was not stated as a commitment.",
+      "stated_or_inferred": "stated"
      }
     ],
     "support": "moderate"
    },
    {
-    "text": "DeltaWorks (Anika Bose) listed German or EU data residency as a headline governance requirement. Jon Bell said EU residency is available on Enterprise and that OrbitFlow has no German region. Anika said EU may be sufficient but depends on which legal entity owns the data, which is a question for her legal team.",
-    "evidence": [
-     {
-      "finding_id": "F14",
-      "turn_id": "CALL-004#T014",
-      "call_id": "CALL-004",
-      "company": "DeltaWorks Manufacturing",
-      "speaker": "Anika Bose",
-      "side": "customer",
-      "role": "IT Governance Lead",
-      "ts": "01:29",
-      "quote": "and German or EU data residency.",
-      "context": "Prospect (Anika Bose) lists German or EU data residency as a headline governance requirement. \u2014 Initial governance requirements list; she later clarifies she said 'German or EU'.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F15",
-      "turn_id": "CALL-004#T018",
-      "call_id": "CALL-004",
-      "company": "DeltaWorks Manufacturing",
-      "speaker": "Jon Bell",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "02:09",
-      "quote": "EU data residency is available on Enterprise.",
-      "context": "OrbitFlow staff states EU data residency is available on Enterprise. \u2014 Vendor answer to governance list; the vendor response is specific to EU, not Germany.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F16",
-      "turn_id": "CALL-004#T020",
-      "call_id": "CALL-004",
-      "company": "DeltaWorks Manufacturing",
-      "speaker": "Jon Bell",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "02:39",
-      "quote": "I am not going to tell you we have a German region because we don't.",
-      "context": "OrbitFlow staff explicitly denies having a German data region, offering only EU. \u2014 Vendor correction/hedge when prospect asked which of the two was meant.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F17",
-      "turn_id": "CALL-004#T021",
-      "call_id": "CALL-004",
-      "company": "DeltaWorks Manufacturing",
-      "speaker": "Anika Bose",
-      "side": "customer",
-      "role": "IT Governance Lead",
-      "ts": "02:45",
-      "quote": "EU may be sufficient. It depends on which entity the data belongs to, and that is a question for our legal team, not for you.",
-      "context": "Prospect says EU residency may be sufficient but depends on which legal entity the data belongs to, a question for their legal team. \u2014 Conditional acceptance; the determination is deferred to prospect's legal team.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "DeltaWorks (Martin Vogel) said two German plants are prohibited from exposing production databases directly to SaaS vendors. This is a hosting/connectivity constraint, not an explicit residency rule. Jon Bell proposed scoping those plants out of phase one. Martin later said he had not read the policy in 18 months.",
-    "evidence": [
-     {
-      "finding_id": "F18",
-      "turn_id": "CALL-004#T081",
-      "call_id": "CALL-004",
-      "company": "DeltaWorks Manufacturing",
-      "speaker": "Martin Vogel",
-      "side": "customer",
-      "role": "Director of Enterprise Applications",
-      "ts": "12:14",
-      "quote": "In practice, two German plants are still prohibited from exposing production databases directly to SaaS vendors.",
-      "context": "Prospect says two German plants are prohibited from exposing production databases directly to SaaS vendors, so cloud-first is policy, not reality everywhere. \u2014 Correction to earlier 'cloud-first' description; a deployment/hosting constraint rather than explicit residency rule.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F19",
-      "turn_id": "CALL-004#T024",
-      "call_id": "CALL-004",
-      "company": "DeltaWorks Manufacturing",
-      "speaker": "Martin Vogel",
-      "side": "customer",
-      "role": "Director of Enterprise Applications",
-      "ts": "03:23",
-      "quote": "Some of them by policy, some of them by physical network design. If your platform must call them over the internet, that is not possible for those systems.",
-      "context": "Prospect says some systems will not be exposed to the public internet, by policy or network design, so platform calls over the internet are not possible for those systems. \u2014 On-premise/self-hosted connectivity need rather than residency per se.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F20",
-      "turn_id": "CALL-004#T086",
-      "call_id": "CALL-004",
-      "company": "DeltaWorks Manufacturing",
-      "speaker": "Jon Bell",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "13:02",
-      "quote": "Then I'd suggest we deliberately scope them out of phase one and treat them as a phase two architecture question.",
-      "context": "Vendor proposes deliberately scoping the two German plants out of phase one, treating them as a phase-two architecture question; prospect later says they are possibly not in scope and says the restriction must be documented as deferred, not solved. \u2014 Prospect later reconsidered the plant scope and said the policy itself was unverified.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F21",
-      "turn_id": "CALL-004#T257",
-      "call_id": "CALL-004",
-      "company": "DeltaWorks Manufacturing",
-      "speaker": "Martin Vogel",
-      "side": "customer",
-      "role": "Director of Enterprise Applications",
-      "ts": "38:11",
-      "quote": "I believe that is correct, but I have not read the actual policy in eighteen months.",
-      "context": "Prospect says the German plant database restriction may be approximate: they believe it is correct but have not read the actual policy in eighteen months. \u2014 Self-correction/hedge on the earlier claim about German plants and SaaS database exposure.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "Ember Financial (Hannah Cole) requires EU residency for European records as part of its auditability checklist. Nina Patel said it is available on Enterprise only. Juniper Cloud Tools (Ava Sinclair) said EU residency is probably the requirement, because some contracts carry a residency commitment. Marcus Chen said it is in two enterprise contracts, and Ava suggested there may be more (inferred). Nina Patel said EU residency is on Enterprise, and Leo Grant advised checking the commitments before the evaluation, which Marcus took on.",
+    "text": "Ember Financial's Hannah Cole requires EU residency for European records, and Nina Patel said it is available on Enterprise. Leo Grant's list of written follow-ups does not appear to include residency.",
     "evidence": [
      {
       "finding_id": "F22",
@@ -1178,7 +1618,7 @@
       "role": "Senior Risk Engineer",
       "ts": "06:27",
       "quote": "EU residency for European records",
-      "context": "Prospect requires EU residency for European records as part of its auditability/security checklist. \u2014 Hannah listing required items for the auditability gate; residency is one item among several, stated as a requirement for European records.",
+      "context": "Ember's Hannah Cole requires EU residency for European records as part of the auditability gate. \u2014 Listed among the audit and security requirements Hannah needs satisfied; the call does not state Ember's location or which records are European.",
       "stated_or_inferred": "stated"
      },
      {
@@ -1191,405 +1631,30 @@
       "role": "Solutions Engineer",
       "ts": "06:49",
       "quote": "EU data residency available on Enterprise.",
-      "context": "OrbitFlow staff states EU data residency is available, but only on the Enterprise package. \u2014 Vendor answer to Hannah's list; availability is tier-gated, not a general capability.",
+      "context": "OrbitFlow's Nina Patel states EU data residency is available on the Enterprise plan. \u2014 Answer to Hannah's security checklist; given as a plan-tier feature, not a general capability. No details on hosting location or granularity were given.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F47",
-      "turn_id": "CALL-010#T166",
-      "call_id": "CALL-010",
-      "company": "Juniper Cloud Tools",
-      "speaker": "Ava Sinclair",
-      "side": "customer",
-      "role": "Staff Software Engineer",
-      "ts": "18:19",
-      "quote": "We have EU customers and a data residency commitment in some contracts. So EU residency is probably the requirement.",
-      "context": "Prospect states EU residency is probably the data residency requirement, because they have EU customers and a residency commitment in some contracts. \u2014 Customer (Ava) answering vendor's request to be specific about 'regional controls'; she frames it as 'probably' the requirement, so it is tentative.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F48",
-      "turn_id": "CALL-010#T167",
-      "call_id": "CALL-010",
-      "company": "Juniper Cloud Tools",
-      "speaker": "Marcus Chen",
-      "side": "customer",
-      "role": "VP Business Operations",
-      "ts": "18:29",
-      "quote": "It's in two contracts. Both enterprise accounts.",
-      "context": "Prospect's business VP says the EU data residency commitment appears in two contracts, both enterprise accounts. \u2014 Marcus adds detail; Ava notes they only know of two, suggesting there may be more unknown commitments.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F49",
-      "turn_id": "CALL-010#T168",
-      "call_id": "CALL-010",
-      "company": "Juniper Cloud Tools",
-      "speaker": "Ava Sinclair",
-      "side": "customer",
-      "role": "Staff Software Engineer",
-      "ts": "18:33",
-      "quote": "Two that we know about.",
-      "context": "Prospect suspects there may be more residency commitments than the two known ones. \u2014 Ava's sardonic follow-up implies incomplete knowledge of contractual residency obligations.",
-      "stated_or_inferred": "inferred"
-     },
-     {
-      "finding_id": "F50",
-      "turn_id": "CALL-010#T165",
-      "call_id": "CALL-010",
-      "company": "Juniper Cloud Tools",
-      "speaker": "Nina Patel",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "18:09",
-      "quote": "EU data residency is available on Enterprise. If you mean something more granular than that, tell me what and I'll answer specifically.",
-      "context": "OrbitFlow staff state EU data residency is available on the Enterprise tier and invite the prospect to specify any more granular regional need. \u2014 Vendor answer to the regional controls question; a hedge that more granular needs would be answered specifically.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F51",
-      "turn_id": "CALL-010#T170",
-      "call_id": "CALL-010",
-      "company": "Juniper Cloud Tools",
+      "finding_id": "F24",
+      "turn_id": "CALL-005#T200",
+      "call_id": "CALL-005",
+      "company": "Ember Financial",
       "speaker": "Leo Grant",
       "side": "vendor",
       "role": "Account Executive",
-      "ts": "18:38",
-      "quote": "That's worth checking before an evaluation rather than after.",
-      "context": "Vendor advises checking residency commitments before the evaluation rather than after, and the prospect agrees to check. \u2014 Leo flags it as a pre-evaluation action item; Marcus takes it on.",
-      "stated_or_inferred": "stated"
+      "ts": "27:44",
+      "quote": "Security pack \u2014 SOC 2, subprocessor list, DPA, architecture diagram, retention documentation, encryption details.",
+      "context": "Data residency is not among the items Leo Grant committed to send, so the EU residency answer has no written follow-up in the call. \u2014 Leo's list of owed items names the security pack contents but does not include residency. This is an inference from the omission.",
+      "stated_or_inferred": "inferred"
      }
     ],
     "support": "moderate"
    },
    {
-    "text": "Harbor Legal (Samir Khan) listed UK residency as a top security-review requirement and said 'EU is not UK'. He said the distinction matters a great deal for some clients, and Eleanor Brooks added it matters especially for public sector work. Nina Patel could not confirm UK residency, called it a genuine open question that may be a gate, and promised a definitive written answer within the week. Samir asked that a 'no' be stated as a no, not deferred to the roadmap. UK residency remained one of four open written items.",
+    "text": "Fable Media (Ben Foster) raised GDPR terms and written assurance of no model training, not hosting location. Alastair McCrae said OrbitFlow is fully GDPR compliant and does not train on customer data, and promised a DPA. Ben still listed the written assurance as outstanding.",
     "evidence": [
      {
-      "finding_id": "F33",
-      "turn_id": "CALL-008#T083",
-      "call_id": "CALL-008",
-      "company": "Harbor Legal",
-      "speaker": "Samir Khan",
-      "side": "customer",
-      "role": "Information Security Manager",
-      "ts": "10:31",
-      "quote": "UK residency. Strict retention.",
-      "context": "Prospect Samir Khan states a UK residency requirement as a top-list item for the security review. \u2014 Listed among his requirements for the first phase; the question is whether UK hosting is available, not only EU.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F34",
-      "turn_id": "CALL-008#T086",
-      "call_id": "CALL-008",
-      "company": "Harbor Legal",
-      "speaker": "Nina Patel",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "11:26",
-      "quote": "EU data residency is available on Enterprise. UK specifically I need to confirm in writing. I'm not going to say yes on a call.",
-      "context": "OrbitFlow's Nina Patel says EU data residency is available on Enterprise, but she cannot confirm UK residency and will not say yes on the call. \u2014 Vendor hedge on UK-specific hosting; EU and UK treated as distinct.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F35",
-      "turn_id": "CALL-008#T087",
-      "call_id": "CALL-008",
-      "company": "Harbor Legal",
-      "speaker": "Samir Khan",
-      "side": "customer",
-      "role": "Information Security Manager",
-      "ts": "11:37",
-      "quote": "EU is not UK.",
-      "context": "Samir Khan states that EU hosting does not satisfy a UK requirement, and that the distinction matters for some clients. \u2014 Prospect pushback on the vendor's EU answer.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F36",
-      "turn_id": "CALL-008#T089",
-      "call_id": "CALL-008",
-      "company": "Harbor Legal",
-      "speaker": "Samir Khan",
-      "side": "customer",
-      "role": "Information Security Manager",
-      "ts": "11:43",
-      "quote": "For some of our clients that distinction matters a great deal.",
-      "context": "Prospect says the UK-versus-EU distinction matters a great deal for some clients and especially for public sector work. \u2014 Eleanor Brooks adds public-sector relevance.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F37",
-      "turn_id": "CALL-008#T090",
-      "call_id": "CALL-008",
-      "company": "Harbor Legal",
-      "speaker": "Eleanor Brooks",
-      "side": "customer",
-      "role": "Chief Transformation Officer",
-      "ts": "11:48",
-      "quote": "It matters for the public sector work particularly.",
-      "context": "Eleanor Brooks says the UK residency distinction matters particularly for public sector work. \u2014 Supports Samir's point that UK residency may be a gate.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F38",
-      "turn_id": "CALL-008#T091",
-      "call_id": "CALL-008",
-      "company": "Harbor Legal",
-      "speaker": "Nina Patel",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "11:52",
-      "quote": "Then it's a genuine open question and it may be a gate. I'll get you a definitive answer within the week.",
-      "context": "Vendor (Nina Patel) treats UK residency as a genuine open question that may be a gate, promising a definitive written answer within the week. \u2014 Follow-up commitment; the answer is not yet known.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F39",
-      "turn_id": "CALL-008#T092",
-      "call_id": "CALL-008",
-      "company": "Harbor Legal",
-      "speaker": "Samir Khan",
-      "side": "customer",
-      "role": "Information Security Manager",
-      "ts": "12:01",
-      "quote": "If the answer is no, tell me it's no. Don't tell me it's on the roadmap.",
-      "context": "Prospect asks that a no on UK residency be stated as a no rather than deferred to the roadmap. \u2014 Samir wants a definitive answer; Leo Grant commits to honest roadmap labelling.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F40",
-      "turn_id": "CALL-008#T133",
-      "call_id": "CALL-008",
-      "company": "Harbor Legal",
-      "speaker": "Nina Patel",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "16:49",
-      "quote": "Four items. UK residency, retention floor, AI-step permission granularity, and the audit payload schema.",
-      "context": "UK residency is listed as one of the written open items the vendor must answer. \u2014 Vendor recap of outstanding items; UK residency remains unconfirmed.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "Greenline Energy Services (Carlos Mendes) stated a preference for UK data residency. Lucy Hart clarified it is preferred, not mandatory, because they are not regulated that way and procurement prefers it. Jon Bell said EU residency is on Enterprise but UK is unconfirmed, and promised a definitive written answer. Greenline is fully Azure with no on-premise components.",
-    "evidence": [
-     {
-      "finding_id": "F28",
-      "turn_id": "CALL-007#T131",
-      "call_id": "CALL-007",
-      "company": "Greenline Energy Services",
-      "speaker": "Carlos Mendes",
-      "side": "customer",
-      "role": "Head of Digital Operations",
-      "ts": "16:12",
-      "quote": "preferably UK data residency",
-      "context": "Prospect states a preference for UK data residency for OrbitFlow. \u2014 Customer Carlos Mendes lists security requirements; residency is 'preferably UK', not a hard requirement.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F29",
-      "turn_id": "CALL-007#T134",
-      "call_id": "CALL-007",
-      "company": "Greenline Energy Services",
-      "speaker": "Lucy Hart",
-      "side": "customer",
-      "role": "Field Systems Product Manager",
-      "ts": "16:51",
-      "quote": "It was you, and it is preferably rather than mandatory. We're not regulated in that way. It's more that our procurement people prefer it.",
-      "context": "Prospect clarifies that UK data residency is preferred rather than mandatory, because they are not regulated that way; the preference comes from procurement. \u2014 Lucy Hart corrects the implied strength of Carlos's requirement; Carlos asked whether 'preferably' was his or hers.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F30",
-      "turn_id": "CALL-007#T132",
-      "call_id": "CALL-007",
-      "company": "Greenline Energy Services",
-      "speaker": "Jon Bell",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "16:22",
-      "quote": "EU data residency is available on Enterprise. UK specifically I'd need to confirm rather than assume, and I'm not going to say yes to make the call go smoothly.",
-      "context": "OrbitFlow states EU data residency is available on the Enterprise plan, but UK-specific residency is unconfirmed. \u2014 Jon Bell hedges explicitly rather than saying yes to UK residency.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F31",
-      "turn_id": "CALL-007#T135",
-      "call_id": "CALL-007",
-      "company": "Greenline Energy Services",
-      "speaker": "Jon Bell",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "17:02",
-      "quote": "Then I'll get you a definitive written answer rather than a maybe.",
-      "context": "OrbitFlow commits to providing a definitive written answer on UK data residency rather than a verbal maybe. \u2014 Follow-up action from Jon Bell; Maya Chen also commits to sending the UK residency answer in writing.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F32",
-      "turn_id": "CALL-007#T128",
-      "call_id": "CALL-007",
-      "company": "Greenline Energy Services",
-      "speaker": "Carlos Mendes",
-      "side": "customer",
-      "role": "Head of Digital Operations",
-      "ts": "15:59",
-      "quote": "Nothing does. We're fully Azure.",
-      "context": "Greenline's stack is fully Azure with no on-premise components, so no self-hosting need was stated. \u2014 Relevant to on-premise/hosting location; customer confirms the architecture is cloud-only.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "BrightPath Health's security architect, Elliot Greene, listed confirming how US data is handled as a checklist item. He said BrightPath is a US operation with a UK subsidiary and asked for the default region. Jon Bell said the default depends on where the workspace is provisioned and offered to confirm in writing, and Elliot approved of that answer. No default region was confirmed on the call.",
-    "evidence": [
-     {
-      "finding_id": "F3",
-      "turn_id": "CALL-002#T006",
-      "call_id": "CALL-002",
-      "company": "BrightPath Health",
-      "speaker": "Elliot Greene",
-      "side": "customer",
-      "role": "Security Architect",
-      "ts": "00:41",
-      "quote": "confirm how US data is handled.",
-      "context": "Prospect's security architect listed confirming how US data is handled as an open item on his list for the call. \u2014 Part of a six-item security checklist; the US-data item is a residency/handling question, not a stated hosting requirement.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F5",
-      "turn_id": "CALL-002#T015",
-      "call_id": "CALL-002",
-      "company": "BrightPath Health",
-      "speaker": "Elliot Greene",
-      "side": "customer",
-      "role": "Security Architect",
-      "ts": "02:22",
-      "quote": "EU. We're a US operation with a UK subsidiary. What's the default region?",
-      "context": "Prospect said BrightPath is a US operation with a UK subsidiary and asked what the default data region is, implying EU/UK residency concern. \u2014 Follow-up to the vendor's EU residency claim; the prospect's question reflects their US/UK footprint.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F6",
-      "turn_id": "CALL-002#T016",
-      "call_id": "CALL-002",
-      "company": "BrightPath Health",
-      "speaker": "Jon Bell",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "02:30",
-      "quote": "Default depends on where the workspace is provisioned. I'd rather confirm the specifics in writing than guess at your architecture on a call.",
-      "context": "OrbitFlow staff hedged on the default data region, saying it depends on where the workspace is provisioned and that they would confirm in writing rather than guess. \u2014 Vendor correction/hedge after the prospect asked for the default region; no default was confirmed on the call.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F7",
-      "turn_id": "CALL-002#T017",
-      "call_id": "CALL-002",
-      "company": "BrightPath Health",
-      "speaker": "Elliot Greene",
-      "side": "customer",
-      "role": "Security Architect",
-      "ts": "02:41",
-      "quote": "Good. That's the right answer.",
-      "context": "Prospect approved of the vendor declining to guess the default region and wanting a written answer. \u2014 Prospect's reaction to the vendor's hedge on residency; they value written confirmation over verbal claims.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "Inkwell Learning (Darren Wu) said FERPA-covered student-level records must never leave their warehouse and that counsel prefers 'the data never leaves' to 'vendor controls'. The workflow would use only account-level aggregates. Jon Bell suggested enforcing this in the Snowflake view. No hosting region was named, and districts may have their own security questionnaires.",
-    "evidence": [
-     {
-      "finding_id": "F41",
-      "turn_id": "CALL-009#T131",
-      "call_id": "CALL-009",
-      "company": "Inkwell Learning",
-      "speaker": "Darren Wu",
-      "side": "customer",
-      "role": "Director of Business Intelligence",
-      "ts": "15:47",
-      "quote": "FERPA. We handle data about students in US school districts. Student-level records are subject to specific protections and our position is that they should never leave our warehouse.",
-      "context": "Prospect's counsel-driven position is that student-level records must never leave Inkwell's warehouse, due to FERPA protections for US school district student data. \u2014 Data residency/location concern for student-level data, tied to FERPA and US school districts; no specific hosting region or country was named.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F42",
-      "turn_id": "CALL-009#T133",
-      "call_id": "CALL-009",
-      "company": "Inkwell Learning",
-      "speaker": "Darren Wu",
-      "side": "customer",
-      "role": "Director of Business Intelligence",
-      "ts": "16:09",
-      "quote": "Correct. Usage counts, engagement rates, ticket volumes at the account level. Never a student record, never a student identifier.",
-      "context": "Prospect confirmed the workflow should operate only on account-level aggregates, with no student records or student identifiers. \u2014 Scope boundary that keeps student-level data within the warehouse.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F43",
-      "turn_id": "CALL-009#T139",
-      "call_id": "CALL-009",
-      "company": "Inkwell Learning",
-      "speaker": "Darren Wu",
-      "side": "customer",
-      "role": "Director of Business Intelligence",
-      "ts": "17:01",
-      "quote": "Our counsel would much rather hear \"the data never leaves\" than \"the vendor has controls.\"",
-      "context": "Prospect said that data never leaving the warehouse is a stronger assurance to their counsel than vendor controls. \u2014 Customer's view on how the residency concern should be answered for legal review.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F44",
-      "turn_id": "CALL-009#T134",
-      "call_id": "CALL-009",
-      "company": "Inkwell Learning",
-      "speaker": "Jon Bell",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "16:20",
-      "quote": "it's the sort of constraint that's much easier to enforce if you define it in the Snowflake view rather than in our workflow.",
-      "context": "OrbitFlow staff said the account-level-only constraint should be enforced in the Snowflake view rather than in the OrbitFlow workflow. \u2014 Vendor's design suggestion for keeping student data from reaching the workflow; a product/design recommendation, not a hosting-region statement.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F45",
-      "turn_id": "CALL-009#T136",
-      "call_id": "CALL-009",
-      "company": "Inkwell Learning",
-      "speaker": "Jon Bell",
-      "side": "vendor",
-      "role": "Solutions Engineer",
-      "ts": "16:38",
-      "quote": "If the view we consume contains no student-level columns, no workflow can leak them regardless of who builds it.",
-      "context": "OrbitFlow staff said that if the consumed Snowflake view has no student-level columns, no workflow can leak student data. \u2014 Vendor claim about enforcement; depends on the customer's own view design, and the prospect agreed it makes the constraint 'impossible rather than forbidden'.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F46",
-      "turn_id": "CALL-009#T145",
-      "call_id": "CALL-009",
-      "company": "Inkwell Learning",
-      "speaker": "Darren Wu",
-      "side": "customer",
-      "role": "Director of Business Intelligence",
-      "ts": "18:02",
-      "quote": "Some districts have their own questionnaire.",
-      "context": "Prospect said they still expect a full vendor security review, and some districts may require their own questionnaires, though not for a pilot. \u2014 Related to data handling; OrbitFlow staff said they would still complete the review. No residency or hosting location was discussed.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "Fable Media (Ben Foster) raised GDPR terms and no-training assurances, not data location. Alastair McCrae said OrbitFlow is fully GDPR compliant and does not train on customer data. No hosting region was discussed, and a DPA was promised.",
-    "evidence": [
-     {
-      "finding_id": "F24",
+      "finding_id": "F25",
       "turn_id": "CALL-006#T065",
       "call_id": "CALL-006",
       "company": "Fable Media",
@@ -1597,12 +1662,12 @@
       "side": "customer",
       "role": "Head of Client Services",
       "ts": "07:00",
-      "quote": "Some of our clients are quite sensitive about that.",
-      "context": "Prospect (Ben Foster, Head of Client Services) asked for normal GDPR terms and written reassurance that client documents are not used to train models, because some clients are sensitive about this. No data location or hosting region was discussed. \u2014 Data-protection and GDPR concern, not a residency or hosting-location requirement. Raised in the security segment of the call.",
+      "quote": "normal GDPR terms, and \u2014 this one matters \u2014 written reassurance that our client documents aren't used to train models. Some of our clients are quite sensitive about that.",
+      "context": "Prospect requires GDPR-compliant terms and written assurance that client documents are not used to train models, because some clients are sensitive about this. \u2014 Security requirements raised by Head of Client Services; GDPR and no-model-training concern, not hosting location. Hosting or storage location was not discussed.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F25",
+      "finding_id": "F26",
       "turn_id": "CALL-006#T066",
       "call_id": "CALL-006",
       "company": "Fable Media",
@@ -1611,11 +1676,11 @@
       "role": "Account Executive",
       "ts": "07:23",
       "quote": "And we're fully GDPR compliant, so that's all covered.",
-      "context": "OrbitFlow staff (Alastair McCrae) said the company is fully GDPR compliant and that this covers the prospect's data-protection concern. \u2014 Generic compliance claim. No hosting region, storage location, or residency option was stated.",
+      "context": "OrbitFlow states it is fully GDPR compliant and that this covers the prospect's concern. \u2014 Vendor answer to the GDPR part of the security question, given without specifics about data location or hosting.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F26",
+      "finding_id": "F27",
       "turn_id": "CALL-006#T070",
       "call_id": "CALL-006",
       "company": "Fable Media",
@@ -1624,11 +1689,11 @@
       "role": "Account Executive",
       "ts": "07:40",
       "quote": "We don't train on customer data. That's in the terms.",
-      "context": "OrbitFlow staff said customer data is not used to train models and that this is in the terms. This is a data-use claim, not a statement about where data is stored. \u2014 Responding to the prospect's training concern. The prospect then asked for written confirmation.",
+      "context": "OrbitFlow states it does not train on customer data and that this is in its terms. \u2014 Vendor answer to the model-training concern; the prospect asked for it in writing.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F27",
+      "finding_id": "F28",
       "turn_id": "CALL-006#T071",
       "call_id": "CALL-006",
       "company": "Fable Media",
@@ -1637,14 +1702,40 @@
       "role": "Head of Client Services",
       "ts": "07:45",
       "quote": "Can we see that in writing?",
-      "context": "Prospect asked to see the no-training commitment in writing, and OrbitFlow staff agreed to send a DPA. \u2014 Follow-up request for written proof. Written confirmation was promised, not yet delivered on this call.",
+      "context": "Prospect asks for written confirmation that its data is not used for model training. \u2014 Follow-up to the vendor's verbal claim; the prospect wants documentary proof.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F29",
+      "turn_id": "CALL-006#T072",
+      "call_id": "CALL-006",
+      "company": "Fable Media",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "07:48",
+      "quote": "Course. I'll send the DPA over.",
+      "context": "OrbitFlow commits to send a DPA covering the training-data assurance. \u2014 Vendor commitment in response to the written request. The DPA content was not described and no hosting or residency commitment was made.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F30",
+      "turn_id": "CALL-006#T139",
+      "call_id": "CALL-006",
+      "company": "Fable Media",
+      "speaker": "Ben Foster",
+      "side": "customer",
+      "role": "Head of Client Services",
+      "ts": "14:08",
+      "quote": "And the written thing about model training.",
+      "context": "Prospect reiterates the need for the written model-training assurance as a follow-up item. \u2014 Closing action list; the prospect is still waiting on this from the vendor.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "Across calls, OrbitFlow reps (Jon Bell, Nina Patel, Leo Grant) said EU data residency is available only on the Enterprise package.",
+    "text": "Across calls, OrbitFlow reps (Jon Bell, Nina Patel, Leo Grant) repeatedly said EU residency is available on Enterprise, while declining to confirm UK residency or default regions on the call and committing to written answers.",
     "evidence": [
      {
       "finding_id": "F2",
@@ -1656,11 +1747,11 @@
       "role": "Solutions Engineer",
       "ts": "20:05",
       "quote": "EU residency available on Enterprise if you ever need it.",
-      "context": "OrbitFlow says EU data residency is available, but only on the Enterprise package. \u2014 OrbitFlow staff answering the security question, after describing baseline SOC 2 Type II, SAML SSO/SCIM and encryption. Offered as an option 'if you ever need it', not as a stated Acme requirement.",
+      "context": "OrbitFlow (Jon Bell) said EU data residency is available on the Enterprise tier if the customer ever needs it. \u2014 Vendor offer in response to Tom's security questions. Framed as an optional Enterprise feature, not a default. No details on regions, storage, or processing location beyond EU.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F4",
+      "finding_id": "F6",
       "turn_id": "CALL-002#T014",
       "call_id": "CALL-002",
       "company": "BrightPath Health",
@@ -1669,11 +1760,11 @@
       "role": "Solutions Engineer",
       "ts": "01:59",
       "quote": "EU data residency available on Enterprise.",
-      "context": "OrbitFlow staff said EU data residency is available, but only on the Enterprise package. \u2014 Vendor's baseline capability claim, given in a list of security certifications and features.",
+      "context": "OrbitFlow (Jon Bell) said EU data residency is available on the Enterprise tier. \u2014 Vendor's baseline security capability list, given in answer to the security requirements on the call; a product claim, not a contractual commitment.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F10",
+      "finding_id": "F12",
       "turn_id": "CALL-003#T054",
       "call_id": "CALL-003",
       "company": "Cedar & Finch",
@@ -1682,11 +1773,11 @@
       "role": "Account Executive",
       "ts": "06:14",
       "quote": "EU data residency is available on Enterprise. On Growth, I'd need to confirm the default processing region for you in writing rather than guess.",
-      "context": "OrbitFlow staff says EU data residency is available only on the Enterprise plan; for Growth, the default processing region must be confirmed in writing rather than guessed. \u2014 Partial answer; vendor hedged on Growth tier.",
+      "context": "OrbitFlow staff states EU data residency is available only on the Enterprise plan; for Growth plan he would need to confirm the default processing region in writing rather than guess. \u2014 Partial answer; Growth default region unconfirmed.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F15",
+      "finding_id": "F17",
       "turn_id": "CALL-004#T018",
       "call_id": "CALL-004",
       "company": "DeltaWorks Manufacturing",
@@ -1695,7 +1786,7 @@
       "role": "Solutions Engineer",
       "ts": "02:09",
       "quote": "EU data residency is available on Enterprise.",
-      "context": "OrbitFlow staff states EU data residency is available on Enterprise. \u2014 Vendor answer to governance list; the vendor response is specific to EU, not Germany.",
+      "context": "OrbitFlow states EU data residency is available on the Enterprise package. \u2014 Vendor answer to the governance checklist; scoped to EU, not Germany.",
       "stated_or_inferred": "stated"
      },
      {
@@ -1708,11 +1799,11 @@
       "role": "Solutions Engineer",
       "ts": "06:49",
       "quote": "EU data residency available on Enterprise.",
-      "context": "OrbitFlow staff states EU data residency is available, but only on the Enterprise package. \u2014 Vendor answer to Hannah's list; availability is tier-gated, not a general capability.",
+      "context": "OrbitFlow's Nina Patel states EU data residency is available on the Enterprise plan. \u2014 Answer to Hannah's security checklist; given as a plan-tier feature, not a general capability. No details on hosting location or granularity were given.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F30",
+      "finding_id": "F33",
       "turn_id": "CALL-007#T132",
       "call_id": "CALL-007",
       "company": "Greenline Energy Services",
@@ -1720,12 +1811,25 @@
       "side": "vendor",
       "role": "Solutions Engineer",
       "ts": "16:22",
-      "quote": "EU data residency is available on Enterprise. UK specifically I'd need to confirm rather than assume, and I'm not going to say yes to make the call go smoothly.",
-      "context": "OrbitFlow states EU data residency is available on the Enterprise plan, but UK-specific residency is unconfirmed. \u2014 Jon Bell hedges explicitly rather than saying yes to UK residency.",
+      "quote": "EU data residency is available on Enterprise.",
+      "context": "Jon Bell stated that EU data residency is available on OrbitFlow's Enterprise tier. \u2014 Vendor answer to the residency question; limited to EU and Enterprise.",
       "stated_or_inferred": "stated"
      },
      {
       "finding_id": "F34",
+      "turn_id": "CALL-007#T132",
+      "call_id": "CALL-007",
+      "company": "Greenline Energy Services",
+      "speaker": "Jon Bell",
+      "side": "vendor",
+      "role": "Solutions Engineer",
+      "ts": "16:22",
+      "quote": "UK specifically I'd need to confirm rather than assume, and I'm not going to say yes to make the call go smoothly.",
+      "context": "Jon Bell declined to confirm UK-specific data residency and refused to assume it, committing instead to a definitive written answer. \u2014 Hedge on UK residency; vendor explicitly did not say yes to smooth the call.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F38",
       "turn_id": "CALL-008#T086",
       "call_id": "CALL-008",
       "company": "Harbor Legal",
@@ -1734,11 +1838,11 @@
       "role": "Solutions Engineer",
       "ts": "11:26",
       "quote": "EU data residency is available on Enterprise. UK specifically I need to confirm in writing. I'm not going to say yes on a call.",
-      "context": "OrbitFlow's Nina Patel says EU data residency is available on Enterprise, but she cannot confirm UK residency and will not say yes on the call. \u2014 Vendor hedge on UK-specific hosting; EU and UK treated as distinct.",
+      "context": "OrbitFlow states EU data residency is available on Enterprise, but UK residency is unconfirmed and will be confirmed in writing, not on the call. \u2014 Vendor hedge; no UK commitment made.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F50",
+      "finding_id": "F53",
       "turn_id": "CALL-010#T165",
       "call_id": "CALL-010",
       "company": "Juniper Cloud Tools",
@@ -1747,7 +1851,7 @@
       "role": "Solutions Engineer",
       "ts": "18:09",
       "quote": "EU data residency is available on Enterprise. If you mean something more granular than that, tell me what and I'll answer specifically.",
-      "context": "OrbitFlow staff state EU data residency is available on the Enterprise tier and invite the prospect to specify any more granular regional need. \u2014 Vendor answer to the regional controls question; a hedge that more granular needs would be answered specifically.",
+      "context": "OrbitFlow states EU data residency is available on the Enterprise tier. \u2014 Vendor claim in response to the regional controls question; tier-gated, not available on lower packages per the claim.",
       "stated_or_inferred": "stated"
      }
     ],
@@ -1756,33 +1860,31 @@
   ],
   "conflicts": [
    {
-    "topic": "Strength of the UK residency requirement",
-    "description": "Greenline's Carlos Mendes stated a UK preference, but Lucy Hart said it is preferred and not mandatory, whereas Harbor Legal's Samir Khan treated UK residency as a possible gate.",
+    "topic": "Whether UK residency is required at Greenline",
+    "description": "Carlos Mendes stated a UK residency preference as a requirement, but Lucy Hart corrected that it is preferred and not mandatory.",
     "finding_ids": [
-     "F28",
-     "F29",
-     "F33",
-     "F38"
+     "F31",
+     "F32"
     ]
    },
    {
-    "topic": "Reliability of DeltaWorks German plant restriction",
-    "description": "Martin Vogel stated the German plants are prohibited from exposing databases to SaaS vendors, but later said he had not read the policy in 18 months.",
+    "topic": "Whether residency was committed in writing at Ember",
+    "description": "Nina Patel stated EU residency is available on Enterprise, but Leo Grant's follow-up list omits residency, so no written follow-up appears to exist (an inference from the omission).",
     "finding_ids": [
-     "F18",
-     "F21"
+     "F23",
+     "F24"
     ]
    }
   ],
   "not_covered": [
-   "The written answers OrbitFlow promised (default region, UK residency) are not in these findings, so their outcomes are unknown.",
-   "Whether any prospect ultimately bought Enterprise or dropped out over residency."
+   "Whether any written residency answers (UK, default region) were actually delivered after the calls.",
+   "Which regions or processing locations OrbitFlow actually supports beyond EU on Enterprise."
   ],
   "assumptions": [
-   "'Prospects' interpreted as the Prospect call type (calls 001-010)",
-   "Data residency treated as including related terms such as data location, sovereignty, and hosting region",
-   "Prospects means calls 001-010.",
-   "Data residency includes data location, sovereignty and hosting region."
+   "'Prospects' interpreted as the Prospect call type (new business).",
+   "Data residency synonyms include data location, sovereignty, regional hosting, and GDPR-related storage concerns.",
+   "Prospects means the Prospect call type (new business).",
+   "Residency synonyms include data location, sovereignty, regional hosting and GDPR-related storage concerns."
   ],
   "confidence": "medium",
   "calls_considered": [
@@ -1806,10 +1908,29 @@
    "CALL-006",
    "CALL-007",
    "CALL-008",
-   "CALL-009",
    "CALL-010"
   ],
-  "removed_claims": [],
+  "removed_claims": [
+   {
+    "claim": "Inkwell Learning (Darren Wu) said FERPA-covered student-level records should never leave Inkwell's warehouse and the workflow should use only account-level aggregates. Jon Bell proposed enforcing this in the Snowflake view the workflow consumes. This is a customer-warehouse boundary, not an OrbitFlow hosting region.",
+    "cited": [
+     "F47",
+     "F48",
+     "F49",
+     "F50",
+     "F51"
+    ],
+    "reason": "entailment: The quotes concern a customer-warehouse boundary for FERPA student data, explicitly not an OrbitFlow hosting region or residency commitment. The claim treats this as a hosting/residency matter, which misreads the context."
+   },
+   {
+    "claim": "Greenline Energy Services prefers UK residency but does not require it [C5], and Inkwell Learning's FERPA concern is about keeping student records in its own warehouse [C8].",
+    "cited": [
+     "5",
+     "8"
+    ],
+    "reason": "summary sentence without a surviving claim citation"
+   }
+  ],
   "covered": true,
   "trace_id": null
  }

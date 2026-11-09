@@ -8,20 +8,21 @@
   ],
   "search_terms": [
    "support",
-   "customer support",
    "customer success",
-   "CSM",
+   "CS",
    "account manager",
    "onboarding",
    "implementation",
-   "help desk",
+   "ticket",
    "response time",
-   "ticket"
+   "check-in",
+   "help desk"
   ],
-  "read_instruction": "Extract every statement the customer makes about OrbitFlow's support and customer success after onboarding, including complaints, praise, response times, named contacts, escalations, check-ins, and why they left if it relates to support or customer success.",
+  "read_instruction": "Extract every statement the customer makes about OrbitFlow's support and customer success after onboarding, including comments on responsiveness, account management, check-ins, training, escalations, ticket resolution, and any complaints or praise, along with the context of when these issues arose and whether they contributed to the decision to leave.",
   "assumptions": [
-   "'Churned customers' maps to the Churn post-mortem call type (CALL-014 and CALL-015).",
-   "'Support and customer success after onboarding' is interpreted broadly to include account management and post-implementation help."
+   "'Churned customers' maps to the Churn post-mortem call type.",
+   "'After onboarding' is interpreted as post-implementation ongoing support and customer success, not the onboarding process itself.",
+   "Question asks for customer statements, so the reader should extract the customer's perspective on support and CS."
   ]
  },
  "candidates": {
@@ -39,9 +40,9 @@
  },
  "search_terms": [
   "account manager",
-  "csm",
+  "check-in",
+  "cs",
   "customer success",
-  "customer support",
   "help desk",
   "implementation",
   "onboarding",
@@ -52,58 +53,19 @@
  "findings": [
   {
    "finding_id": "F1",
-   "turn_id": "CALL-014#T105",
-   "call_id": "CALL-014",
-   "company": "Verity Payments",
-   "speaker": "Sarah Lindqvist",
-   "side": "customer",
-   "role": "Engineering Manager",
-   "ts": "11:00",
-   "quote": "The support was inconsistent. Some tickets came back in an hour with someone who clearly understood the product. Others came back in a day with a link to documentation I'd already read and cited in the ticket.",
-   "context": "Support quality was inconsistent: some tickets got fast, knowledgeable answers while others got a day's wait and a documentation link the customer had already read. \u2014 Sarah says this was not the reason they left, but it contributed to a feeling of being a small account.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F2",
-   "turn_id": "CALL-014#T107",
-   "call_id": "CALL-014",
-   "company": "Verity Payments",
-   "speaker": "Sarah Lindqvist",
-   "side": "customer",
-   "role": "Engineering Manager",
-   "ts": "11:23",
-   "quote": "I assumed as much. It's not why we left. But it contributed to a general feeling that we were a small account.",
-   "context": "Support problems were not the reason for leaving, but they contributed to a general feeling that Verity was treated as a small account. \u2014 Explicitly downplayed as a cause of churn.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F3",
-   "turn_id": "CALL-014#T109",
-   "call_id": "CALL-014",
-   "company": "Verity Payments",
-   "speaker": "Sarah Lindqvist",
-   "side": "customer",
-   "role": "Engineering Manager",
-   "ts": "11:36",
-   "quote": "Probably accurately, yes.",
-   "context": "Sarah agrees Verity was probably treated as a small account. \u2014 Responding to Ruth's suggestion that a roughly \u00a380k account sits below median in OrbitFlow's book.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F4",
-   "turn_id": "CALL-014#T111",
+   "turn_id": "CALL-014#T042",
    "call_id": "CALL-014",
    "company": "Verity Payments",
    "speaker": "Kwame Boateng",
    "side": "customer",
    "role": "Head of Operations",
-   "ts": "11:50",
-   "quote": "I'd worked that out.",
-   "context": "Kwame had already understood that Verity was treated as a small account by OrbitFlow. \u2014 Responding to Ruth's point about being a below-median account.",
+   "ts": "04:13",
+   "quote": "We had a two-day onboarding at the start. Eight people attended. Six of them never touched it again.",
+   "context": "Verity's only post-onboarding enablement was a two-day onboarding at the start, attended by eight people, six of whom never touched the product again. Nothing followed until OrbitFlow's CS offered sessions in January, which Verity declined. \u2014 Post-onboarding gap in CS follow-through; the January offer came about a year after the initial onboarding and after the customer had already half-concluded the product would not work.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F5",
+   "finding_id": "F2",
    "turn_id": "CALL-014#T044",
    "call_id": "CALL-014",
    "company": "Verity Payments",
@@ -112,24 +74,11 @@
    "role": "Head of Operations",
    "ts": "04:24",
    "quote": "Nothing, until you arrived in January and offered some sessions.",
-   "context": "After the initial onboarding, Verity received no enablement or check-in until OrbitFlow reached out in January, and the customer declined those sessions. \u2014 Customer's account of post-onboarding customer success; the January sessions were declined because Kwame had already half-concluded the product would not work.",
+   "context": "Verity's head of operations said the January sessions OrbitFlow offered were not what would have helped; he said they had nothing hands-on from OrbitFlow until the January offer. \u2014 Customer's account of what was missing; he declined the January offer because the team's time was not worth spending by then.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F6",
-   "turn_id": "CALL-014#T046",
-   "call_id": "CALL-014",
-   "company": "Verity Payments",
-   "speaker": "Kwame Boateng",
-   "side": "customer",
-   "role": "Head of Operations",
-   "ts": "04:31",
-   "quote": "Which I declined, because by January I'd already half-concluded it wasn't going to work and I didn't want to spend my team's time on it.",
-   "context": "Kwame says he declined OrbitFlow's January sessions because he had already concluded the product would not work for his team. \u2014 Declining sessions was tied to prior disengagement, not only to a lack of offered help.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F7",
+   "finding_id": "F3",
    "turn_id": "CALL-014#T050",
    "call_id": "CALL-014",
    "company": "Verity Payments",
@@ -137,12 +86,12 @@
    "side": "customer",
    "role": "Head of Operations",
    "ts": "04:56",
-   "quote": "Honestly, I think if someone had sat with two of my people for a week in the first quarter and got them to ship something real, we'd still be a customer.",
-   "context": "Kwame says hands-on help (sitting with his team and building a real workflow) would likely have kept Verity as a customer, and says OrbitFlow never offered it. \u2014 Counterfactual on what customer success should have done; in response to Maya, he says no one ever offered the paid hands-on engagement.",
+   "quote": "if someone had sat with two of my people for a week in the first quarter and got them to ship something real, we'd still be a customer.",
+   "context": "The customer said that hands-on help in the first quarter, sitting with two of their people and shipping a real workflow, would have kept them as a customer. \u2014 Customer's view of the CS intervention that would have changed the outcome; contrasts with the generic training and sessions they were offered.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F8",
+   "finding_id": "F4",
    "turn_id": "CALL-014#T054",
    "call_id": "CALL-014",
    "company": "Verity Payments",
@@ -151,24 +100,50 @@
    "role": "Head of Operations",
    "ts": "05:19",
    "quote": "Do you? Nobody ever offered it to me.",
-   "context": "Kwame says no one ever offered the hands-on build help to Verity. \u2014 Said after Maya said OrbitFlow offers it as a paid professional services engagement.",
+   "context": "OrbitFlow's hands-on build engagement (sitting with the team to build workflows) is a paid professional services add-on, and the customer said nobody had ever offered it to them. \u2014 Vendor confirmed the service is paid; customer said it was never offered during their tenure, and the vendor said the paid-add-on model may be the problem.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F9",
-   "turn_id": "CALL-014#T123",
+   "finding_id": "F5",
+   "turn_id": "CALL-014#T105",
    "call_id": "CALL-014",
    "company": "Verity Payments",
    "speaker": "Sarah Lindqvist",
    "side": "customer",
    "role": "Engineering Manager",
-   "ts": "12:59",
-   "quote": "I mentioned it on a call. Not as an emergency. As a thing I was dealing with.",
-   "context": "Sarah raised a connector problem with her OrbitFlow contact in April; it was treated as a non-urgent item and the answer was a template check. \u2014 Customer's account of a customer-success escalation that was not handled as urgent.",
+   "ts": "11:00",
+   "quote": "The support was inconsistent. Some tickets came back in an hour with someone who clearly understood the product. Others came back in a day with a link to documentation I'd already read and cited in the ticket.",
+   "context": "Support response quality was inconsistent: some tickets were answered within an hour by knowledgeable staff, while others took a day and returned only documentation the customer had already read. \u2014 Customer described this as a grievance that was not the reason they left, but it fed a sense of being a small account. Vendor attributed it to a triage problem.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F10",
+   "finding_id": "F6",
+   "turn_id": "CALL-014#T107",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Sarah Lindqvist",
+   "side": "customer",
+   "role": "Engineering Manager",
+   "ts": "11:23",
+   "quote": "But it contributed to a general feeling that we were a small account.",
+   "context": "The support inconsistency was not a stated reason for leaving but contributed to a general feeling that Verity was treated as a small account. \u2014 Explicitly contributory rather than causal; the customer separates it from the reason they left.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F7",
+   "turn_id": "CALL-014#T110",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Ruth Adeyemi",
+   "side": "vendor",
+   "role": "Customer Success Manager",
+   "ts": "11:40",
+   "quote": "You were an eighty-thousand-pound account in a book of accounts where that's below median.",
+   "context": "Verity's engineering manager said the company was probably treated as a small account, and the vendor said it was an eighty-thousand-pound account below the median of its book. \u2014 Vendor's own framing of account tiering as the reason for lower-touch service; the customer accepted it.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F8",
    "turn_id": "CALL-014#T127",
    "call_id": "CALL-014",
    "company": "Verity Payments",
@@ -176,51 +151,51 @@
    "side": "customer",
    "role": "Engineering Manager",
    "ts": "13:18",
-   "quote": "You did. That was an accurate and completely useless answer.",
-   "context": "Sarah says the OrbitFlow response (no template exists, sent by email) answered her question but was useless because it did not solve the problem. \u2014 Criticism of the response to a customer-success follow-up in April; she says she does not blame the individual.",
+   "quote": "That was an accurate and completely useless answer.",
+   "context": "When Verity asked in April for a fix to the connector problem, OrbitFlow's CSM checked for a template, found none, and only emailed that answer. The customer said that answer was accurate but useless, and that the right response would have been hands-on engineering help. \u2014 Escalation failure in April 2025-era renewal-risk period, before the Workato PoC; the vendor agreed the answer was useless.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F9",
+   "turn_id": "CALL-014#T133",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Ruth Adeyemi",
+   "side": "vendor",
+   "role": "Customer Success Manager",
+   "ts": "13:46",
+   "quote": "I'd have had to argue for it. I might have lost.",
+   "context": "The CSM said that giving Verity a solutions-architect engagement at renewal risk would have needed internal argument and might have been refused. \u2014 Vendor admission that the escalation resources were not reliably available for at-risk accounts; the vendor said it would raise this internally.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F10",
+   "turn_id": "CALL-014#T114",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Kwame Boateng",
+   "side": "customer",
+   "role": "Head of Operations",
+   "ts": "12:02",
+   "quote": "Probably not.",
+   "context": "The customer said nothing OrbitFlow could have done in the last six months would have changed the outcome, because the Workato evaluation had already started by March. \u2014 Customer view on whether late CS intervention could have saved the account; their earlier statements suggest the earlier hands-on help mattered more.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F11",
-   "turn_id": "CALL-014#T129",
-   "call_id": "CALL-014",
-   "company": "Verity Payments",
-   "speaker": "Sarah Lindqvist",
+   "turn_id": "CALL-015#T082",
+   "call_id": "CALL-015",
+   "company": "Oakhill Property",
+   "speaker": "Hazel Wren",
    "side": "customer",
-   "role": "Engineering Manager",
-   "ts": "13:26",
-   "quote": "I'm not attacking you. You answered the question I asked. It's just that the right response wasn't answering the question.",
-   "context": "Sarah says the right response would have been to help build a working connector, not just answer the question asked. \u2014 Sarah explicitly says she is not attacking Ruth; the complaint is about what the response should have been.",
+   "role": "Operations Director",
+   "ts": "08:19",
+   "quote": "Fine. Genuinely fine. I think I've raised two tickets in two years and both were answered.",
+   "context": "Customer says the last year of service was fine and she raised about two support tickets in two years, both answered. \u2014 Post-onboarding support experience; praise, low contact volume. Not cited as a reason for leaving.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F12",
-   "turn_id": "CALL-015#T082",
-   "call_id": "CALL-015",
-   "company": "Oakhill Property",
-   "speaker": "Hazel Wren",
-   "side": "customer",
-   "role": "Operations Director",
-   "ts": "08:19",
-   "quote": "I think I've raised two tickets in two years and both were answered.",
-   "context": "Customer says support tickets were answered; she raised two tickets in two years and both were answered. \u2014 Post-onboarding support experience; positive, though low volume.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F13",
-   "turn_id": "CALL-015#T082",
-   "call_id": "CALL-015",
-   "company": "Oakhill Property",
-   "speaker": "Hazel Wren",
-   "side": "customer",
-   "role": "Operations Director",
-   "ts": "08:19",
-   "quote": "Fine. Genuinely fine.",
-   "context": "Customer says the last year of service was fine, with no complaints about the service itself. \u2014 Post-onboarding service experience; she describes it as fine rather than praising it.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F14",
    "turn_id": "CALL-015#T084",
    "call_id": "CALL-015",
    "company": "Oakhill Property",
@@ -229,11 +204,11 @@
    "role": "Operations Director",
    "ts": "08:30",
    "quote": "You did, in \u2014 March? An email about a new feature.",
-   "context": "Vendor contact after go-live was limited to a product announcement email in March, which the customer did not regard as contact. \u2014 Customer success check-in gap; customer and vendor agree it was not real contact.",
+   "context": "Customer says OrbitFlow contacted her only once in the period, via a March product announcement email, which she does not count as contact. \u2014 Account management / check-ins after onboarding; customer views this as no real CSM contact.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F15",
+   "finding_id": "F13",
    "turn_id": "CALL-015#T058",
    "call_id": "CALL-015",
    "company": "Oakhill Property",
@@ -242,7 +217,33 @@
    "role": "Operations Director",
    "ts": "05:46",
    "quote": "Someone should have noticed after six months that we had four users on a thirty-user plan and said something. Not sold me something. Said something.",
-   "context": "Customer says OrbitFlow should have proactively flagged that four users were on a thirty-user plan, and that nobody acted on it. \u2014 Customer success failure to act on usage data; customer suggests a 'said something' check-in would have mattered.",
+   "context": "Customer says no one at OrbitFlow noticed after six months that Oakhill had four users on a thirty-user plan and said something; she wanted someone to raise it, not sell to her. \u2014 Account monitoring / proactive CS after onboarding; customer frames it as a missed opportunity that contributed to the eventual churn.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F14",
+   "turn_id": "CALL-015#T094",
+   "call_id": "CALL-015",
+   "company": "Oakhill Property",
+   "speaker": "Hazel Wren",
+   "side": "customer",
+   "role": "Operations Director",
+   "ts": "09:15",
+   "quote": "But it does rather answer the question of why nobody noticed the four users.",
+   "context": "Customer says the lack of attention from OrbitFlow is a plausible explanation for why nobody noticed the low usage. \u2014 Customer links the absence of an assigned CSM to the missed usage signal.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F15",
+   "turn_id": "CALL-015#T089",
+   "call_id": "CALL-015",
+   "company": "Oakhill Property",
+   "speaker": "Ruth Adeyemi",
+   "side": "vendor",
+   "role": "Customer Success Manager",
+   "ts": "08:45",
+   "quote": "Your account was in a segment that doesn't get an assigned CSM. I'm on this call because it's a churn, not because I've been managing you.",
+   "context": "OrbitFlow staff say Oakhill's account segment does not get an assigned CSM, and the CSM is on the call because it is a churn. \u2014 Vendor admission about post-onboarding account management coverage for this customer tier.",
    "stated_or_inferred": "stated"
   },
   {
@@ -255,37 +256,11 @@
    "role": "Customer Success Manager",
    "ts": "06:04",
    "quote": "We look at it. Whether anyone acts on it for an account your size is a different question, and the answer is usually no.",
-   "context": "Vendor CSM acknowledges the company looks at usage data but usually does not act on it for accounts of this size. \u2014 Admission by OrbitFlow CSM that account-size segmentation determines whether usage signals get action.",
+   "context": "OrbitFlow staff say they look at usage data but acting on it for an account of Oakhill's size is usually not done. \u2014 Vendor admission about usage-based proactive outreach after onboarding.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F17",
-   "turn_id": "CALL-015#T089",
-   "call_id": "CALL-015",
-   "company": "Oakhill Property",
-   "speaker": "Ruth Adeyemi",
-   "side": "vendor",
-   "role": "Customer Success Manager",
-   "ts": "08:45",
-   "quote": "Your account was in a segment that doesn't get an assigned CSM. I'm on this call because it's a churn, not because I've been managing you.",
-   "context": "Vendor CSM states the account was in a segment with no assigned CSM, and she was involved only because of the churn. \u2014 Explains lack of customer success coverage; the CSM says she was not managing the account.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F18",
-   "turn_id": "CALL-015#T090",
-   "call_id": "CALL-015",
-   "company": "Oakhill Property",
-   "speaker": "Hazel Wren",
-   "side": "customer",
-   "role": "Operations Director",
-   "ts": "08:59",
-   "quote": "You've been very good today but you clearly hadn't heard of us before Tuesday.",
-   "context": "Customer says the vendor's CSM was good on the call but had not known the account before the churn notice. \u2014 Customer's view of vendor relationship after notice; the date correction was minor.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F19",
    "turn_id": "CALL-015#T098",
    "call_id": "CALL-015",
    "company": "Oakhill Property",
@@ -294,11 +269,11 @@
    "role": "Account Executive",
    "ts": "09:31",
    "quote": "I probably should have pushed harder on whether you had the capacity for the roadmap we talked about.",
-   "context": "Account executive acknowledges he should have pushed harder on the customer's capacity to deliver the roadmap during the sale, which is a sales-to-success handover gap. \u2014 Vendor admission that the post-sale roadmap assumption was not tested; this is a sales issue but relates to post-onboarding outcomes.",
+   "context": "Vendor account executive says he should have pushed harder on the customer's capacity to run the roadmap, which contributed to the underuse after onboarding. \u2014 Sales-side acknowledgement tied to post-sale adoption; not a support complaint but related to post-onboarding success.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F20",
+   "finding_id": "F18",
    "turn_id": "CALL-015#T020",
    "call_id": "CALL-015",
    "company": "Oakhill Property",
@@ -307,24 +282,11 @@
    "role": "Operations Director",
    "ts": "01:42",
    "quote": "I've got no complaint about the product at all.",
-   "context": "Customer says the vendor's product was good and she has no complaint about it; the churn was about buying more than needed, not support. \u2014 Customer explicitly says the cause was over-purchase, not support failure, so support is not the stated primary reason for leaving.",
+   "context": "Customer says the real reason she left was the subscription being underused and the problem fading from view, not any support failure; she has no product complaint. \u2014 Stated reason for churn is cost versus value; support was not a driver of the decision.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F21",
-   "turn_id": "CALL-015#T065",
-   "call_id": "CALL-015",
-   "company": "Oakhill Property",
-   "speaker": "Ruth Adeyemi",
-   "side": "vendor",
-   "role": "Customer Success Manager",
-   "ts": "06:39",
-   "quote": "There isn't one.",
-   "context": "Customer says the vendor offered no smaller plan, which she says would have kept her as a customer; the vendor confirmed there is no smaller plan. \u2014 Product tier gap rather than support, but the customer ties it to retention; vendor says the Growth plan is the entry point.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F22",
+   "finding_id": "F19",
    "turn_id": "CALL-015#T107",
    "call_id": "CALL-015",
    "company": "Oakhill Property",
@@ -333,192 +295,115 @@
    "role": "Customer Success Manager",
    "ts": "10:39",
    "quote": "It's not a thing we offer, but it's eleven workflows and it'll take an hour.",
-   "context": "Vendor CSM offered extended read-only access and export help as exit support, including producing screenshots of workflows, which OrbitFlow does not normally offer. \u2014 Offboarding support; the CSM describes these as exceptions.",
+   "context": "OrbitFlow staff offered an exit assistance: a custom screenshot export of eleven workflows and a read-only extension to the end of November at no charge, which the customer describes as generous. \u2014 Post-churn offboarding support, not ongoing service; vendor described the screenshot export as not a normal offering.",
    "stated_or_inferred": "stated"
   }
  ],
  "rejected_findings": [],
  "draft": {
-  "answer": "Verity Payments described uneven support and almost no customer success after onboarding, and said it was treated as a small account [C1][C2][C3]. Oakhill Property found support fine but got no proactive contact and had no assigned CSM [C4][C5][C6]. Neither customer named support as the main reason for leaving [C7].",
+  "answer": "Verity Payments said post-onboarding enablement was thin and that hands-on help in the first quarter would have kept them, and they described inconsistent support that made them feel like a small account [C1][C2][C3]. Oakhill Property called support fine but said OrbitFlow never noticed low usage and had no real CSM contact [C4][C5]. Neither customer's support experience was the stated reason for leaving [C6].",
   "claims": [
    {
-    "text": "Verity Payments (Sarah Lindqvist) said support was inconsistent: some tickets were answered within an hour by someone who understood the product, others took a day and returned a documentation link she had already cited in the ticket. She said this was not why they left.",
+    "text": "Verity's Kwame Boateng said their only enablement was a two-day onboarding (eight attendees, six never touched the product again), and that nothing followed until OrbitFlow's CS offered sessions in January, which Verity declined.",
     "finding_ids": [
      "F1",
      "F2"
     ]
    },
    {
-    "text": "Verity felt like a small account: Sarah said support issues contributed to that feeling and agreed it was 'probably accurately' so after Ruth said the roughly \u00a380k account sat below median. Kwame Boateng said he had already worked that out.",
+    "text": "Boateng said that if someone had sat with two of Verity's people for a week in the first quarter and got them to ship something real, they would still be a customer. He said the paid hands-on engagement was never offered to him. He also said that nothing in the last six months would probably have changed the outcome, since the Workato evaluation had started by March.",
     "finding_ids": [
-     "F2",
      "F3",
-     "F4"
+     "F4",
+     "F10"
     ]
    },
    {
-    "text": "Verity (Kwame Boateng) said that after onboarding they got no enablement or check-in until OrbitFlow offered sessions in January. He declined them because he had already half-concluded the product would not work. He said hands-on help (someone sitting with two of his people for a week in Q1 to ship something real) would likely have kept them, and that nobody ever offered the paid professional services engagement Maya described.",
+    "text": "Verity's Sarah Lindqvist said support was inconsistent: some tickets were answered within an hour by knowledgeable staff, others took a day and returned documentation she had already cited. It was not a reason for leaving but contributed to feeling like a small account; CSM Ruth Adeyemi framed Verity as an \u00a380k account below the median of the book.",
     "finding_ids": [
      "F5",
      "F6",
-     "F7",
-     "F8"
+     "F7"
     ]
    },
    {
-    "text": "Sarah Lindqvist raised a connector problem in April as a non-urgent item. The response (no template exists, sent by email) answered her question but she called it 'accurate and completely useless'. She said the right response would have been to help build a working connector, and that she was not attacking Ruth.",
+    "text": "When Verity asked in April for a connector fix, the CSM only emailed that no template existed. Lindqvist called this accurate but useless and said hands-on engineering help was needed. Adeyemi admitted a solutions-architect engagement would have needed internal argument and she might have lost.",
     "finding_ids": [
-     "F9",
-     "F10",
-     "F11"
+     "F8",
+     "F9"
     ]
    },
    {
-    "text": "Oakhill Property (Hazel Wren) said support was fine: two tickets in two years, both answered, and the last year of service was 'genuinely fine'. She had no complaint about the product.",
+    "text": "Oakhill Property's Hazel Wren said support was fine, with about two tickets in two years, both answered. She said OrbitFlow's only contact was a March feature-announcement email, which she did not count as real contact.",
     "finding_ids": [
-     "F12",
+     "F11",
+     "F12"
+    ]
+   },
+   {
+    "text": "Wren said someone should have noticed after six months that Oakhill had four users on a thirty-user plan and said something, not sold to her. Adeyemi confirmed Oakhill's segment gets no assigned CSM and that usage data is looked at but usually not acted on for an account that size. Wren said this explains why nobody noticed. AE Alastair McCrae said he should have pushed harder on capacity for the roadmap.",
+    "finding_ids": [
      "F13",
-     "F20"
-    ]
-   },
-   {
-    "text": "Oakhill had effectively no customer success contact: the only vendor contact after go-live was a March feature-announcement email, which Hazel did not regard as contact. Hazel said someone should have noticed after six months that they had four users on a thirty-user plan and 'said something'. Ruth Adeyemi (CSM) said OrbitFlow looks at usage data but for an account that size usually does not act on it, and that the account was in a segment with no assigned CSM; she was on the call only because of the churn. Hazel said Ruth had clearly not heard of them before the churn notice.",
-    "finding_ids": [
      "F14",
      "F15",
      "F16",
-     "F17",
-     "F18"
+     "F17"
     ]
    },
    {
-    "text": "Oakhill's stated reason for leaving was buying more than needed, not support. Hazel said no smaller plan existed, and Ruth confirmed there is none. Alastair McCrae (AE) admitted he should have pushed harder during the sale on whether Oakhill had capacity for the roadmap discussed.",
+    "text": "Wren said her reason for leaving was underuse and the problem fading from view, not a support failure, and that she has no product complaint. Lindqvist likewise separated support issues from the reason Verity left.",
     "finding_ids": [
-     "F20",
-     "F21",
+     "F18",
+     "F6"
+    ]
+   },
+   {
+    "text": "OrbitFlow offered Oakhill exit help: a screenshot export of eleven workflows and a read-only extension to the end of November at no charge.",
+    "finding_ids": [
      "F19"
     ]
-   },
-   {
-    "text": "For exit support, Ruth offered Oakhill extended read-only access and export help, including screenshots of 11 workflows, which she described as something OrbitFlow does not normally offer.",
-    "finding_ids": [
-     "F22"
-    ]
    }
   ],
-  "conflicts": [
-   {
-    "topic": "Availability of hands-on build help at Verity",
-    "description": "Maya said OrbitFlow offers hands-on build help as a paid professional services engagement, but Kwame said nobody ever offered it to him.",
-    "finding_ids": [
-     "F7",
-     "F8"
-    ]
-   }
-  ],
+  "conflicts": [],
   "not_covered": [
-   "Whether the two churned accounts are representative of other churned customers, since only two post-mortem calls were read."
+   "Only two churn post-mortem calls (Verity Payments, Oakhill Property) are covered, so this may not represent other churned customers."
   ],
   "assumptions": [
-   "Churned customers means the Churn post-mortem calls CALL-014 (Verity Payments) and CALL-015 (Oakhill Property).",
-   "Support and customer success after onboarding is read broadly to include account management and post-implementation help."
+   "Churned customers means Churn post-mortem calls.",
+   "After onboarding means ongoing support and CS, not the onboarding process."
   ]
  },
  "usage": {
   "llm_calls": 5,
-  "input_tokens": 29946,
-  "cache_read_tokens": 19714,
+  "input_tokens": 29803,
+  "cache_read_tokens": 19706,
   "cache_write_tokens": 0,
-  "output_tokens": 7308,
-  "uncached_calls": 5,
-  "latency_s": 29.26
+  "output_tokens": 7141,
+  "uncached_calls": 1,
+  "latency_s": 5.29
  },
  "answer": {
   "question": "What did churned customers say about support and customer success after onboarding?",
-  "answer": "Verity Payments described uneven support and almost no customer success after onboarding, and said it was treated as a small account [1][2][3]. Oakhill Property found support fine but got no proactive contact and had no assigned CSM [4][5][6]. Neither customer named support as the main reason for leaving [7].",
+  "answer": "Verity Payments said post-onboarding enablement was thin and that hands-on help in the first quarter would have kept them, and they described inconsistent support that made them feel like a small account [1][2][3]. Oakhill Property called support fine but said OrbitFlow never noticed low usage and had no real CSM contact [4][5]. Neither customer's support experience was the stated reason for leaving [6].",
   "claims": [
    {
-    "text": "Verity Payments (Sarah Lindqvist) said support was inconsistent: some tickets were answered within an hour by someone who understood the product, others took a day and returned a documentation link she had already cited in the ticket. She said this was not why they left.",
+    "text": "Verity's Kwame Boateng said their only enablement was a two-day onboarding (eight attendees, six never touched the product again), and that nothing followed until OrbitFlow's CS offered sessions in January, which Verity declined.",
     "evidence": [
      {
       "finding_id": "F1",
-      "turn_id": "CALL-014#T105",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Sarah Lindqvist",
-      "side": "customer",
-      "role": "Engineering Manager",
-      "ts": "11:00",
-      "quote": "The support was inconsistent. Some tickets came back in an hour with someone who clearly understood the product. Others came back in a day with a link to documentation I'd already read and cited in the ticket.",
-      "context": "Support quality was inconsistent: some tickets got fast, knowledgeable answers while others got a day's wait and a documentation link the customer had already read. \u2014 Sarah says this was not the reason they left, but it contributed to a feeling of being a small account.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F2",
-      "turn_id": "CALL-014#T107",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Sarah Lindqvist",
-      "side": "customer",
-      "role": "Engineering Manager",
-      "ts": "11:23",
-      "quote": "I assumed as much. It's not why we left. But it contributed to a general feeling that we were a small account.",
-      "context": "Support problems were not the reason for leaving, but they contributed to a general feeling that Verity was treated as a small account. \u2014 Explicitly downplayed as a cause of churn.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "Verity felt like a small account: Sarah said support issues contributed to that feeling and agreed it was 'probably accurately' so after Ruth said the roughly \u00a380k account sat below median. Kwame Boateng said he had already worked that out.",
-    "evidence": [
-     {
-      "finding_id": "F2",
-      "turn_id": "CALL-014#T107",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Sarah Lindqvist",
-      "side": "customer",
-      "role": "Engineering Manager",
-      "ts": "11:23",
-      "quote": "I assumed as much. It's not why we left. But it contributed to a general feeling that we were a small account.",
-      "context": "Support problems were not the reason for leaving, but they contributed to a general feeling that Verity was treated as a small account. \u2014 Explicitly downplayed as a cause of churn.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F3",
-      "turn_id": "CALL-014#T109",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Sarah Lindqvist",
-      "side": "customer",
-      "role": "Engineering Manager",
-      "ts": "11:36",
-      "quote": "Probably accurately, yes.",
-      "context": "Sarah agrees Verity was probably treated as a small account. \u2014 Responding to Ruth's suggestion that a roughly \u00a380k account sits below median in OrbitFlow's book.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F4",
-      "turn_id": "CALL-014#T111",
+      "turn_id": "CALL-014#T042",
       "call_id": "CALL-014",
       "company": "Verity Payments",
       "speaker": "Kwame Boateng",
       "side": "customer",
       "role": "Head of Operations",
-      "ts": "11:50",
-      "quote": "I'd worked that out.",
-      "context": "Kwame had already understood that Verity was treated as a small account by OrbitFlow. \u2014 Responding to Ruth's point about being a below-median account.",
+      "ts": "04:13",
+      "quote": "We had a two-day onboarding at the start. Eight people attended. Six of them never touched it again.",
+      "context": "Verity's only post-onboarding enablement was a two-day onboarding at the start, attended by eight people, six of whom never touched the product again. Nothing followed until OrbitFlow's CS offered sessions in January, which Verity declined. \u2014 Post-onboarding gap in CS follow-through; the January offer came about a year after the initial onboarding and after the customer had already half-concluded the product would not work.",
       "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "Verity (Kwame Boateng) said that after onboarding they got no enablement or check-in until OrbitFlow offered sessions in January. He declined them because he had already half-concluded the product would not work. He said hands-on help (someone sitting with two of his people for a week in Q1 to ship something real) would likely have kept them, and that nobody ever offered the paid professional services engagement Maya described.",
-    "evidence": [
+     },
      {
-      "finding_id": "F5",
+      "finding_id": "F2",
       "turn_id": "CALL-014#T044",
       "call_id": "CALL-014",
       "company": "Verity Payments",
@@ -527,24 +412,17 @@
       "role": "Head of Operations",
       "ts": "04:24",
       "quote": "Nothing, until you arrived in January and offered some sessions.",
-      "context": "After the initial onboarding, Verity received no enablement or check-in until OrbitFlow reached out in January, and the customer declined those sessions. \u2014 Customer's account of post-onboarding customer success; the January sessions were declined because Kwame had already half-concluded the product would not work.",
+      "context": "Verity's head of operations said the January sessions OrbitFlow offered were not what would have helped; he said they had nothing hands-on from OrbitFlow until the January offer. \u2014 Customer's account of what was missing; he declined the January offer because the team's time was not worth spending by then.",
       "stated_or_inferred": "stated"
-     },
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Boateng said that if someone had sat with two of Verity's people for a week in the first quarter and got them to ship something real, they would still be a customer. He said the paid hands-on engagement was never offered to him. He also said that nothing in the last six months would probably have changed the outcome, since the Workato evaluation had started by March.",
+    "evidence": [
      {
-      "finding_id": "F6",
-      "turn_id": "CALL-014#T046",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Kwame Boateng",
-      "side": "customer",
-      "role": "Head of Operations",
-      "ts": "04:31",
-      "quote": "Which I declined, because by January I'd already half-concluded it wasn't going to work and I didn't want to spend my team's time on it.",
-      "context": "Kwame says he declined OrbitFlow's January sessions because he had already concluded the product would not work for his team. \u2014 Declining sessions was tied to prior disengagement, not only to a lack of offered help.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F7",
+      "finding_id": "F3",
       "turn_id": "CALL-014#T050",
       "call_id": "CALL-014",
       "company": "Verity Payments",
@@ -552,12 +430,12 @@
       "side": "customer",
       "role": "Head of Operations",
       "ts": "04:56",
-      "quote": "Honestly, I think if someone had sat with two of my people for a week in the first quarter and got them to ship something real, we'd still be a customer.",
-      "context": "Kwame says hands-on help (sitting with his team and building a real workflow) would likely have kept Verity as a customer, and says OrbitFlow never offered it. \u2014 Counterfactual on what customer success should have done; in response to Maya, he says no one ever offered the paid hands-on engagement.",
+      "quote": "if someone had sat with two of my people for a week in the first quarter and got them to ship something real, we'd still be a customer.",
+      "context": "The customer said that hands-on help in the first quarter, sitting with two of their people and shipping a real workflow, would have kept them as a customer. \u2014 Customer's view of the CS intervention that would have changed the outcome; contrasts with the generic training and sessions they were offered.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F8",
+      "finding_id": "F4",
       "turn_id": "CALL-014#T054",
       "call_id": "CALL-014",
       "company": "Verity Payments",
@@ -566,30 +444,75 @@
       "role": "Head of Operations",
       "ts": "05:19",
       "quote": "Do you? Nobody ever offered it to me.",
-      "context": "Kwame says no one ever offered the hands-on build help to Verity. \u2014 Said after Maya said OrbitFlow offers it as a paid professional services engagement.",
+      "context": "OrbitFlow's hands-on build engagement (sitting with the team to build workflows) is a paid professional services add-on, and the customer said nobody had ever offered it to them. \u2014 Vendor confirmed the service is paid; customer said it was never offered during their tenure, and the vendor said the paid-add-on model may be the problem.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F10",
+      "turn_id": "CALL-014#T114",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Kwame Boateng",
+      "side": "customer",
+      "role": "Head of Operations",
+      "ts": "12:02",
+      "quote": "Probably not.",
+      "context": "The customer said nothing OrbitFlow could have done in the last six months would have changed the outcome, because the Workato evaluation had already started by March. \u2014 Customer view on whether late CS intervention could have saved the account; their earlier statements suggest the earlier hands-on help mattered more.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Verity's Sarah Lindqvist said support was inconsistent: some tickets were answered within an hour by knowledgeable staff, others took a day and returned documentation she had already cited. It was not a reason for leaving but contributed to feeling like a small account; CSM Ruth Adeyemi framed Verity as an \u00a380k account below the median of the book.",
+    "evidence": [
+     {
+      "finding_id": "F5",
+      "turn_id": "CALL-014#T105",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Sarah Lindqvist",
+      "side": "customer",
+      "role": "Engineering Manager",
+      "ts": "11:00",
+      "quote": "The support was inconsistent. Some tickets came back in an hour with someone who clearly understood the product. Others came back in a day with a link to documentation I'd already read and cited in the ticket.",
+      "context": "Support response quality was inconsistent: some tickets were answered within an hour by knowledgeable staff, while others took a day and returned only documentation the customer had already read. \u2014 Customer described this as a grievance that was not the reason they left, but it fed a sense of being a small account. Vendor attributed it to a triage problem.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F6",
+      "turn_id": "CALL-014#T107",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Sarah Lindqvist",
+      "side": "customer",
+      "role": "Engineering Manager",
+      "ts": "11:23",
+      "quote": "But it contributed to a general feeling that we were a small account.",
+      "context": "The support inconsistency was not a stated reason for leaving but contributed to a general feeling that Verity was treated as a small account. \u2014 Explicitly contributory rather than causal; the customer separates it from the reason they left.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F7",
+      "turn_id": "CALL-014#T110",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Ruth Adeyemi",
+      "side": "vendor",
+      "role": "Customer Success Manager",
+      "ts": "11:40",
+      "quote": "You were an eighty-thousand-pound account in a book of accounts where that's below median.",
+      "context": "Verity's engineering manager said the company was probably treated as a small account, and the vendor said it was an eighty-thousand-pound account below the median of its book. \u2014 Vendor's own framing of account tiering as the reason for lower-touch service; the customer accepted it.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "Sarah Lindqvist raised a connector problem in April as a non-urgent item. The response (no template exists, sent by email) answered her question but she called it 'accurate and completely useless'. She said the right response would have been to help build a working connector, and that she was not attacking Ruth.",
+    "text": "When Verity asked in April for a connector fix, the CSM only emailed that no template existed. Lindqvist called this accurate but useless and said hands-on engineering help was needed. Adeyemi admitted a solutions-architect engagement would have needed internal argument and she might have lost.",
     "evidence": [
      {
-      "finding_id": "F9",
-      "turn_id": "CALL-014#T123",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Sarah Lindqvist",
-      "side": "customer",
-      "role": "Engineering Manager",
-      "ts": "12:59",
-      "quote": "I mentioned it on a call. Not as an emergency. As a thing I was dealing with.",
-      "context": "Sarah raised a connector problem with her OrbitFlow contact in April; it was treated as a non-urgent item and the answer was a template check. \u2014 Customer's account of a customer-success escalation that was not handled as urgent.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F10",
+      "finding_id": "F8",
       "turn_id": "CALL-014#T127",
       "call_id": "CALL-014",
       "company": "Verity Payments",
@@ -597,76 +520,44 @@
       "side": "customer",
       "role": "Engineering Manager",
       "ts": "13:18",
-      "quote": "You did. That was an accurate and completely useless answer.",
-      "context": "Sarah says the OrbitFlow response (no template exists, sent by email) answered her question but was useless because it did not solve the problem. \u2014 Criticism of the response to a customer-success follow-up in April; she says she does not blame the individual.",
+      "quote": "That was an accurate and completely useless answer.",
+      "context": "When Verity asked in April for a fix to the connector problem, OrbitFlow's CSM checked for a template, found none, and only emailed that answer. The customer said that answer was accurate but useless, and that the right response would have been hands-on engineering help. \u2014 Escalation failure in April 2025-era renewal-risk period, before the Workato PoC; the vendor agreed the answer was useless.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F11",
-      "turn_id": "CALL-014#T129",
+      "finding_id": "F9",
+      "turn_id": "CALL-014#T133",
       "call_id": "CALL-014",
       "company": "Verity Payments",
-      "speaker": "Sarah Lindqvist",
-      "side": "customer",
-      "role": "Engineering Manager",
-      "ts": "13:26",
-      "quote": "I'm not attacking you. You answered the question I asked. It's just that the right response wasn't answering the question.",
-      "context": "Sarah says the right response would have been to help build a working connector, not just answer the question asked. \u2014 Sarah explicitly says she is not attacking Ruth; the complaint is about what the response should have been.",
+      "speaker": "Ruth Adeyemi",
+      "side": "vendor",
+      "role": "Customer Success Manager",
+      "ts": "13:46",
+      "quote": "I'd have had to argue for it. I might have lost.",
+      "context": "The CSM said that giving Verity a solutions-architect engagement at renewal risk would have needed internal argument and might have been refused. \u2014 Vendor admission that the escalation resources were not reliably available for at-risk accounts; the vendor said it would raise this internally.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "Oakhill Property (Hazel Wren) said support was fine: two tickets in two years, both answered, and the last year of service was 'genuinely fine'. She had no complaint about the product.",
+    "text": "Oakhill Property's Hazel Wren said support was fine, with about two tickets in two years, both answered. She said OrbitFlow's only contact was a March feature-announcement email, which she did not count as real contact.",
     "evidence": [
+     {
+      "finding_id": "F11",
+      "turn_id": "CALL-015#T082",
+      "call_id": "CALL-015",
+      "company": "Oakhill Property",
+      "speaker": "Hazel Wren",
+      "side": "customer",
+      "role": "Operations Director",
+      "ts": "08:19",
+      "quote": "Fine. Genuinely fine. I think I've raised two tickets in two years and both were answered.",
+      "context": "Customer says the last year of service was fine and she raised about two support tickets in two years, both answered. \u2014 Post-onboarding support experience; praise, low contact volume. Not cited as a reason for leaving.",
+      "stated_or_inferred": "stated"
+     },
      {
       "finding_id": "F12",
-      "turn_id": "CALL-015#T082",
-      "call_id": "CALL-015",
-      "company": "Oakhill Property",
-      "speaker": "Hazel Wren",
-      "side": "customer",
-      "role": "Operations Director",
-      "ts": "08:19",
-      "quote": "I think I've raised two tickets in two years and both were answered.",
-      "context": "Customer says support tickets were answered; she raised two tickets in two years and both were answered. \u2014 Post-onboarding support experience; positive, though low volume.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F13",
-      "turn_id": "CALL-015#T082",
-      "call_id": "CALL-015",
-      "company": "Oakhill Property",
-      "speaker": "Hazel Wren",
-      "side": "customer",
-      "role": "Operations Director",
-      "ts": "08:19",
-      "quote": "Fine. Genuinely fine.",
-      "context": "Customer says the last year of service was fine, with no complaints about the service itself. \u2014 Post-onboarding service experience; she describes it as fine rather than praising it.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F20",
-      "turn_id": "CALL-015#T020",
-      "call_id": "CALL-015",
-      "company": "Oakhill Property",
-      "speaker": "Hazel Wren",
-      "side": "customer",
-      "role": "Operations Director",
-      "ts": "01:42",
-      "quote": "I've got no complaint about the product at all.",
-      "context": "Customer says the vendor's product was good and she has no complaint about it; the churn was about buying more than needed, not support. \u2014 Customer explicitly says the cause was over-purchase, not support failure, so support is not the stated primary reason for leaving.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "Oakhill had effectively no customer success contact: the only vendor contact after go-live was a March feature-announcement email, which Hazel did not regard as contact. Hazel said someone should have noticed after six months that they had four users on a thirty-user plan and 'said something'. Ruth Adeyemi (CSM) said OrbitFlow looks at usage data but for an account that size usually does not act on it, and that the account was in a segment with no assigned CSM; she was on the call only because of the churn. Hazel said Ruth had clearly not heard of them before the churn notice.",
-    "evidence": [
-     {
-      "finding_id": "F14",
       "turn_id": "CALL-015#T084",
       "call_id": "CALL-015",
       "company": "Oakhill Property",
@@ -675,11 +566,17 @@
       "role": "Operations Director",
       "ts": "08:30",
       "quote": "You did, in \u2014 March? An email about a new feature.",
-      "context": "Vendor contact after go-live was limited to a product announcement email in March, which the customer did not regard as contact. \u2014 Customer success check-in gap; customer and vendor agree it was not real contact.",
+      "context": "Customer says OrbitFlow contacted her only once in the period, via a March product announcement email, which she does not count as contact. \u2014 Account management / check-ins after onboarding; customer views this as no real CSM contact.",
       "stated_or_inferred": "stated"
-     },
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Wren said someone should have noticed after six months that Oakhill had four users on a thirty-user plan and said something, not sold to her. Adeyemi confirmed Oakhill's segment gets no assigned CSM and that usage data is looked at but usually not acted on for an account that size. Wren said this explains why nobody noticed. AE Alastair McCrae said he should have pushed harder on capacity for the roadmap.",
+    "evidence": [
      {
-      "finding_id": "F15",
+      "finding_id": "F13",
       "turn_id": "CALL-015#T058",
       "call_id": "CALL-015",
       "company": "Oakhill Property",
@@ -688,7 +585,33 @@
       "role": "Operations Director",
       "ts": "05:46",
       "quote": "Someone should have noticed after six months that we had four users on a thirty-user plan and said something. Not sold me something. Said something.",
-      "context": "Customer says OrbitFlow should have proactively flagged that four users were on a thirty-user plan, and that nobody acted on it. \u2014 Customer success failure to act on usage data; customer suggests a 'said something' check-in would have mattered.",
+      "context": "Customer says no one at OrbitFlow noticed after six months that Oakhill had four users on a thirty-user plan and said something; she wanted someone to raise it, not sell to her. \u2014 Account monitoring / proactive CS after onboarding; customer frames it as a missed opportunity that contributed to the eventual churn.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F14",
+      "turn_id": "CALL-015#T094",
+      "call_id": "CALL-015",
+      "company": "Oakhill Property",
+      "speaker": "Hazel Wren",
+      "side": "customer",
+      "role": "Operations Director",
+      "ts": "09:15",
+      "quote": "But it does rather answer the question of why nobody noticed the four users.",
+      "context": "Customer says the lack of attention from OrbitFlow is a plausible explanation for why nobody noticed the low usage. \u2014 Customer links the absence of an assigned CSM to the missed usage signal.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F15",
+      "turn_id": "CALL-015#T089",
+      "call_id": "CALL-015",
+      "company": "Oakhill Property",
+      "speaker": "Ruth Adeyemi",
+      "side": "vendor",
+      "role": "Customer Success Manager",
+      "ts": "08:45",
+      "quote": "Your account was in a segment that doesn't get an assigned CSM. I'm on this call because it's a churn, not because I've been managing you.",
+      "context": "OrbitFlow staff say Oakhill's account segment does not get an assigned CSM, and the CSM is on the call because it is a churn. \u2014 Vendor admission about post-onboarding account management coverage for this customer tier.",
       "stated_or_inferred": "stated"
      },
      {
@@ -701,69 +624,11 @@
       "role": "Customer Success Manager",
       "ts": "06:04",
       "quote": "We look at it. Whether anyone acts on it for an account your size is a different question, and the answer is usually no.",
-      "context": "Vendor CSM acknowledges the company looks at usage data but usually does not act on it for accounts of this size. \u2014 Admission by OrbitFlow CSM that account-size segmentation determines whether usage signals get action.",
+      "context": "OrbitFlow staff say they look at usage data but acting on it for an account of Oakhill's size is usually not done. \u2014 Vendor admission about usage-based proactive outreach after onboarding.",
       "stated_or_inferred": "stated"
      },
      {
       "finding_id": "F17",
-      "turn_id": "CALL-015#T089",
-      "call_id": "CALL-015",
-      "company": "Oakhill Property",
-      "speaker": "Ruth Adeyemi",
-      "side": "vendor",
-      "role": "Customer Success Manager",
-      "ts": "08:45",
-      "quote": "Your account was in a segment that doesn't get an assigned CSM. I'm on this call because it's a churn, not because I've been managing you.",
-      "context": "Vendor CSM states the account was in a segment with no assigned CSM, and she was involved only because of the churn. \u2014 Explains lack of customer success coverage; the CSM says she was not managing the account.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F18",
-      "turn_id": "CALL-015#T090",
-      "call_id": "CALL-015",
-      "company": "Oakhill Property",
-      "speaker": "Hazel Wren",
-      "side": "customer",
-      "role": "Operations Director",
-      "ts": "08:59",
-      "quote": "You've been very good today but you clearly hadn't heard of us before Tuesday.",
-      "context": "Customer says the vendor's CSM was good on the call but had not known the account before the churn notice. \u2014 Customer's view of vendor relationship after notice; the date correction was minor.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "moderate"
-   },
-   {
-    "text": "Oakhill's stated reason for leaving was buying more than needed, not support. Hazel said no smaller plan existed, and Ruth confirmed there is none. Alastair McCrae (AE) admitted he should have pushed harder during the sale on whether Oakhill had capacity for the roadmap discussed.",
-    "evidence": [
-     {
-      "finding_id": "F20",
-      "turn_id": "CALL-015#T020",
-      "call_id": "CALL-015",
-      "company": "Oakhill Property",
-      "speaker": "Hazel Wren",
-      "side": "customer",
-      "role": "Operations Director",
-      "ts": "01:42",
-      "quote": "I've got no complaint about the product at all.",
-      "context": "Customer says the vendor's product was good and she has no complaint about it; the churn was about buying more than needed, not support. \u2014 Customer explicitly says the cause was over-purchase, not support failure, so support is not the stated primary reason for leaving.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F21",
-      "turn_id": "CALL-015#T065",
-      "call_id": "CALL-015",
-      "company": "Oakhill Property",
-      "speaker": "Ruth Adeyemi",
-      "side": "vendor",
-      "role": "Customer Success Manager",
-      "ts": "06:39",
-      "quote": "There isn't one.",
-      "context": "Customer says the vendor offered no smaller plan, which she says would have kept her as a customer; the vendor confirmed there is no smaller plan. \u2014 Product tier gap rather than support, but the customer ties it to retention; vendor says the Growth plan is the entry point.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F19",
       "turn_id": "CALL-015#T098",
       "call_id": "CALL-015",
       "company": "Oakhill Property",
@@ -772,17 +637,49 @@
       "role": "Account Executive",
       "ts": "09:31",
       "quote": "I probably should have pushed harder on whether you had the capacity for the roadmap we talked about.",
-      "context": "Account executive acknowledges he should have pushed harder on the customer's capacity to deliver the roadmap during the sale, which is a sales-to-success handover gap. \u2014 Vendor admission that the post-sale roadmap assumption was not tested; this is a sales issue but relates to post-onboarding outcomes.",
+      "context": "Vendor account executive says he should have pushed harder on the customer's capacity to run the roadmap, which contributed to the underuse after onboarding. \u2014 Sales-side acknowledgement tied to post-sale adoption; not a support complaint but related to post-onboarding success.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Wren said her reason for leaving was underuse and the problem fading from view, not a support failure, and that she has no product complaint. Lindqvist likewise separated support issues from the reason Verity left.",
+    "evidence": [
+     {
+      "finding_id": "F18",
+      "turn_id": "CALL-015#T020",
+      "call_id": "CALL-015",
+      "company": "Oakhill Property",
+      "speaker": "Hazel Wren",
+      "side": "customer",
+      "role": "Operations Director",
+      "ts": "01:42",
+      "quote": "I've got no complaint about the product at all.",
+      "context": "Customer says the real reason she left was the subscription being underused and the problem fading from view, not any support failure; she has no product complaint. \u2014 Stated reason for churn is cost versus value; support was not a driver of the decision.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F6",
+      "turn_id": "CALL-014#T107",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Sarah Lindqvist",
+      "side": "customer",
+      "role": "Engineering Manager",
+      "ts": "11:23",
+      "quote": "But it contributed to a general feeling that we were a small account.",
+      "context": "The support inconsistency was not a stated reason for leaving but contributed to a general feeling that Verity was treated as a small account. \u2014 Explicitly contributory rather than causal; the customer separates it from the reason they left.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "For exit support, Ruth offered Oakhill extended read-only access and export help, including screenshots of 11 workflows, which she described as something OrbitFlow does not normally offer.",
+    "text": "OrbitFlow offered Oakhill exit help: a screenshot export of eleven workflows and a read-only extension to the end of November at no charge.",
     "evidence": [
      {
-      "finding_id": "F22",
+      "finding_id": "F19",
       "turn_id": "CALL-015#T107",
       "call_id": "CALL-015",
       "company": "Oakhill Property",
@@ -791,33 +688,25 @@
       "role": "Customer Success Manager",
       "ts": "10:39",
       "quote": "It's not a thing we offer, but it's eleven workflows and it'll take an hour.",
-      "context": "Vendor CSM offered extended read-only access and export help as exit support, including producing screenshots of workflows, which OrbitFlow does not normally offer. \u2014 Offboarding support; the CSM describes these as exceptions.",
+      "context": "OrbitFlow staff offered an exit assistance: a custom screenshot export of eleven workflows and a read-only extension to the end of November at no charge, which the customer describes as generous. \u2014 Post-churn offboarding support, not ongoing service; vendor described the screenshot export as not a normal offering.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    }
   ],
-  "conflicts": [
-   {
-    "topic": "Availability of hands-on build help at Verity",
-    "description": "Maya said OrbitFlow offers hands-on build help as a paid professional services engagement, but Kwame said nobody ever offered it to him.",
-    "finding_ids": [
-     "F7",
-     "F8"
-    ]
-   }
-  ],
+  "conflicts": [],
   "not_covered": [
-   "Whether the two churned accounts are representative of other churned customers, since only two post-mortem calls were read."
+   "Only two churn post-mortem calls (Verity Payments, Oakhill Property) are covered, so this may not represent other churned customers."
   ],
   "assumptions": [
-   "'Churned customers' maps to the Churn post-mortem call type (CALL-014 and CALL-015).",
-   "'Support and customer success after onboarding' is interpreted broadly to include account management and post-implementation help.",
-   "Churned customers means the Churn post-mortem calls CALL-014 (Verity Payments) and CALL-015 (Oakhill Property).",
-   "Support and customer success after onboarding is read broadly to include account management and post-implementation help."
+   "'Churned customers' maps to the Churn post-mortem call type.",
+   "'After onboarding' is interpreted as post-implementation ongoing support and customer success, not the onboarding process itself.",
+   "Question asks for customer statements, so the reader should extract the customer's perspective on support and CS.",
+   "Churned customers means Churn post-mortem calls.",
+   "After onboarding means ongoing support and CS, not the onboarding process."
   ],
-  "confidence": "medium",
+  "confidence": "high",
   "calls_considered": [
    "CALL-014",
    "CALL-015"

@@ -84,31 +84,27 @@ QUERY   1 resolve (Haiku): companies, call types, search terms, what each reader
 
 Compared against `naive_rag` (top 8 BM25 chunks), `full_context` (all 20 transcripts in one cached prompt) and `facts_only`, an ablation: the same pipeline, but it answers from the facts stored at ingest instead of reading the picked calls.
 
-### Results (run 5; full tables in `eval/results/results*.md`, failure analysis in `failures.md`)
-
-> **Note:** these numbers were produced before the summary-grounding and entailment fixes (PR #1) and haven't been re-run yet. Expect slightly shorter summaries and possibly a few points lower on the dev fact score.
+### Results (run 7, current code; full tables in `eval/results/results*.md`, failure analysis in `failures.md`)
 
 | | pipeline | naive RAG | full context | facts only |
 |---|---|---|---|---|
-| Fact score, dev (21, tuned on) | **97%** | 60% | 92% | 92% |
-| **Fact score, held-out (10, never tuned on)** | 83% | 78% | 86% | **88%** |
+| Fact score, dev (21, tuned on) | **92%** | 60% | **92%** | **92%** |
+| **Fact score, held-out (10, never tuned on)** | **89%** | 78% | 86% | **89%** |
 | Selection recall, dev / held-out | 100 / 100% | 66 / 90% | 100 / 100% | 100 / 100% |
 | Abstention, dev / held-out | 100 / 100% | 76 / 100% | 100 / 100% | 100 / 90%¹ |
 | Conflict recall, dev / held-out | 100 / 100% | 50 / 100% | 100 / 100% | 100 / 100% |
 | Citation validity (before removal) | 99% | 99% | 100% | 100%² |
-| Avg input tokens / question, dev | 95K | 4K | 168K | 52K |
-| Latency / question, held-out (live run) | 23 s | 6 s | 10 s | 14 s |
+| Avg input tokens / question, dev | 94K | 4K | 168K | 52K |
+| Latency / question, held-out (live)³ | 22 s | 6 s | 10 s | 14 s |
 
-Latency is from the held-out run, which made live calls. The dev re-runs mostly hit the LLM disk cache, so their timings aren't meaningful; `run_eval.py` now averages latency only over questions with no cache hits.
-
-¹ For "Did any prospect mention Microsoft Copilot?" it gave a correct, evidence-backed *no* (listing the Microsoft products that were mentioned) instead of declining; the metric counts that as a failure. ² By construction: stored facts were verified at ingest.
+¹ For "Did any prospect mention Microsoft Copilot?" it gave a correct, evidence-backed *no* instead of declining; the metric counts that as a failure. ² By construction: stored facts were verified at ingest. ³ From runs that made live calls (pipeline run 6, others run 5); re-runs hit the disk cache, and `run_eval.py` only times questions with no cache hits.
 
 **What this shows**
-- **Naive RAG fails on anything spanning calls** (dev 60%, conflicts 50%). The held-out set is lookup-heavy, which flatters it.
-- **The pipeline's dev score was overfit:** 97% on the set I tuned on, 83% on the held-out set. Retrieval and grounding held up there (100% selection recall, abstention and conflicts). The lost points are all *partial* grades: the summary left out a detail the evidence contained (e.g. Halberd's "contained workspace"). It's a combine-step problem, not a retrieval or grounding one.
-- **Full context is strong at 20 calls** but costs about 168K tokens on every question and doesn't scale.
-- **Reading picked calls in full barely beats answering from stored facts.** `facts_only` matches the pipeline on lists, lookups and conflicts, uses about 55% of the tokens, and scores higher on the held-out set. Reading clearly helped only on "why did they *really* leave" (Q06: 100% vs 50%), where the nuance sits in the surrounding conversation. That supports the production design below: answer from facts by default, and read in full only for why or nuance questions, or when facts are thin.
-- **Noise:** one question is about 5 points on dev and 10 on held-out. Differences under ~10 points aren't meaningful.
+- **Naive RAG fails on anything spanning calls** (dev 60%, conflicts 50%). The lookup-heavy held-out set flatters it.
+- **Full context is strong at 20 calls** but costs ~168K tokens on every question and doesn't scale.
+- **The pipeline holds up on unseen questions** (dev 92%, held-out 89%), with 100% selection recall, abstention and conflict recall on both. An earlier 97% on dev was inflated: it included claims the entailment check had silently skipped (failures.md B10) and favourable run noise. The remaining misses are *partial* grades, where the summary leaves out a detail its own evidence contains: a combine-step weakness.
+- **Reading picked calls in full mostly matches answering from stored facts** (`facts_only`: same scores at ~55% of the tokens). Reading wins where nuance sits in the surrounding conversation: the real vs stated reason for churn (Q06 100% vs 50%, Q09 100% vs 83%) and the cross-call vendor inconsistency (Q07 100% vs 67%). That supports the production design below: answer from facts by default, and read in full for why, nuance or comparison questions.
+- **Noise is large.** Current models don't accept `temperature`, so re-running combine on unchanged code moved single questions by up to 50 points (Q01). The uncalibrated judge also graded the same "Acme Corp" assumption present in one run and absent in the next (Q02). Treat differences under ~10 points as noise.
 
 ## Known limitations
 

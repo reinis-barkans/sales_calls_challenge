@@ -14,18 +14,15 @@
    "Kestrel",
    "website",
    "web site",
-   "site",
    "homepage",
-   "web portal",
-   "OrbitFlow website",
-   "impression",
-   "feedback",
-   "opinion"
+   "landing page",
+   "site",
+   "web portal"
   ],
-  "read_instruction": "Extract everything the Kestrel Robotics prospect says about OrbitFlow's website, including opinions, criticisms, praise, usability comments, and any specific pages or features they mention.",
+  "read_instruction": "Extract what the Kestrel Robotics representatives say about OrbitFlow's website, including its design, usability, navigation, content, performance, and any opinions, praise, or complaints about it.",
   "assumptions": [
-   "'Kestrel' maps to Kestrel Robotics (CALL-020), the only Kestrel company in the catalogue.",
-   "'Website' is interpreted as OrbitFlow's website or web presence, including homepage and web portal references."
+   "'Kestrel' refers to Kestrel Robotics, the only catalogue company starting with Kestrel.",
+   "'Website' includes homepage, landing pages and web portal references."
   ]
  },
  "candidates": {
@@ -45,85 +42,79 @@
    "role": "COO",
    "ts": "00:34",
    "quote": "Your website. It's very enterprise. Governance, compliance, workspace separation. We're a hundred and fifty people building robots. I looked at it and thought, that's not for us.",
-   "context": "Rafael Santos said OrbitFlow's website is very enterprise, focused on governance, compliance and workspace separation, and that this made him conclude OrbitFlow was not for Kestrel, a 150-person robot-building company. \u2014 Reason he crossed OrbitFlow off his evaluation list about a month before the call; stated directly as his reaction to the website.",
+   "context": "Rafael Santos said OrbitFlow's website looked very enterprise, with governance, compliance and workspace separation, which made him think it was not for Kestrel's size of company. \u2014 Stated reason he crossed OrbitFlow off the evaluation list; the complaint concerns the website's positioning/content, not usability or performance.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F2",
-   "turn_id": "CALL-020#T005",
+   "turn_id": "CALL-020#T010",
    "call_id": "CALL-020",
    "company": "Kestrel Robotics",
-   "speaker": "Rafael Santos",
-   "side": "customer",
-   "role": "COO",
-   "ts": "00:15",
-   "quote": "Your name came up on a list and got crossed off.",
-   "context": "Rafael Santos reported that his company had crossed OrbitFlow off a shortlist based on the website, roughly a month before the call. \u2014 Background to the cold call; the website impression was the reason OrbitFlow was dropped before this call.",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "00:49",
+   "quote": "That's a fair read of our website.",
+   "context": "Leo Grant (OrbitFlow) agreed that the website read as enterprise and explained it is aimed at companies with a governance function, which Kestrel lacks. \u2014 Vendor concedes the website's positioning is off-target for Kestrel, while claiming the product itself may still fit.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F3",
-   "turn_id": "CALL-020#T011",
+   "turn_id": "CALL-020#T012",
    "call_id": "CALL-020",
    "company": "Kestrel Robotics",
-   "speaker": "Rafael Santos",
-   "side": "customer",
-   "role": "COO",
-   "ts": "00:53",
-   "quote": "You're agreeing?",
-   "context": "Rafael pushed back when OrbitFlow's Leo agreed the website read as enterprise, showing the customer's surprise at the vendor conceding the point. \u2014 Customer reaction to vendor agreeing with his website criticism.",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "00:55",
+   "quote": "Our marketing is aimed at companies with a governance function. You don't have one, so it isn't aimed at you.",
+   "context": "OrbitFlow's own rep said the marketing is aimed at companies with a governance function, so the website is not aimed at Kestrel. \u2014 Vendor acknowledges the website targets a different buyer; separates marketing fit from product fit.",
    "stated_or_inferred": "stated"
   }
  ],
  "rejected_findings": [],
  "draft": {
-  "answer": "Kestrel Robotics' COO Rafael Santos had a negative view: he found the website too enterprise-oriented and concluded OrbitFlow was not for Kestrel [C1]. That impression got OrbitFlow crossed off the shortlist about a month before the cold call [C2]. He was surprised when OrbitFlow's Leo agreed with the criticism [C3].",
+  "answer": "Kestrel Robotics' COO Rafael Santos thought OrbitFlow's website looked very enterprise and concluded the product was not for a 150-person company [C1]. OrbitFlow's Account Executive Leo Grant agreed it was a fair read and said the marketing targets companies with a governance function, which Kestrel lacks [C2].",
   "claims": [
    {
-    "text": "Rafael Santos (COO, Kestrel Robotics) said OrbitFlow's website is 'very enterprise', focused on governance, compliance and workspace separation, and that as a 150-person robot-building company he concluded it was 'not for us'.",
+    "text": "Rafael Santos (COO, Kestrel Robotics) said OrbitFlow's website looked very enterprise, citing governance, compliance and workspace separation, and thought 'that's not for us' as a 150-person robot-building company. This was his stated reason for crossing OrbitFlow off the list; the complaint is about positioning/content, not usability or performance.",
     "finding_ids": [
      "F1"
     ]
    },
    {
-    "text": "Rafael said OrbitFlow's name came up on a list and was crossed off roughly a month before the call; the website impression was the reason OrbitFlow was dropped.",
+    "text": "Leo Grant (OrbitFlow Account Executive) agreed it was 'a fair read' of the website and said OrbitFlow's marketing is aimed at companies with a governance function, which Kestrel doesn't have, so it isn't aimed at them.",
     "finding_ids": [
      "F2",
-     "F1"
-    ]
-   },
-   {
-    "text": "When OrbitFlow's Leo agreed the website read as enterprise, Rafael responded with surprise: 'You're agreeing?'",
-    "finding_ids": [
      "F3"
     ]
    }
   ],
   "conflicts": [],
   "not_covered": [
-   "What Leo said after agreeing, and whether Rafael's view changed or any next step resulted from the call.",
-   "Any Kestrel views on specific website content beyond governance, compliance and workspace separation."
+   "Any opinion on the website's usability, performance or design, or on web portal features specifically",
+   "Views from other Kestrel Robotics staff"
   ],
   "assumptions": [
-   "'Kestrel' is Kestrel Robotics (CALL-020).",
-   "'Website' means OrbitFlow's website or web presence."
+   "'Kestrel' refers to Kestrel Robotics.",
+   "'Website' includes homepage, landing pages and web portal references."
   ]
  },
  "usage": {
   "llm_calls": 4,
-  "input_tokens": 10894,
-  "cache_read_tokens": 7137,
+  "input_tokens": 10924,
+  "cache_read_tokens": 7129,
   "cache_write_tokens": 0,
   "output_tokens": 1571,
-  "uncached_calls": 4,
-  "latency_s": 12.7
+  "uncached_calls": 1,
+  "latency_s": 1.73
  },
  "answer": {
   "question": "What did Kestrel think of OrbitFlow's website?",
-  "answer": "Kestrel Robotics' COO Rafael Santos had a negative view: he found the website too enterprise-oriented and concluded OrbitFlow was not for Kestrel [1]. That impression got OrbitFlow crossed off the shortlist about a month before the cold call [2]. He was surprised when OrbitFlow's Leo agreed with the criticism [3].",
+  "answer": "Kestrel Robotics' COO Rafael Santos thought OrbitFlow's website looked very enterprise and concluded the product was not for a 150-person company [1]. OrbitFlow's Account Executive Leo Grant agreed it was a fair read and said the marketing targets companies with a governance function, which Kestrel lacks [2].",
   "claims": [
    {
-    "text": "Rafael Santos (COO, Kestrel Robotics) said OrbitFlow's website is 'very enterprise', focused on governance, compliance and workspace separation, and that as a 150-person robot-building company he concluded it was 'not for us'.",
+    "text": "Rafael Santos (COO, Kestrel Robotics) said OrbitFlow's website looked very enterprise, citing governance, compliance and workspace separation, and thought 'that's not for us' as a 150-person robot-building company. This was his stated reason for crossing OrbitFlow off the list; the complaint is about positioning/content, not usability or performance.",
     "evidence": [
      {
       "finding_id": "F1",
@@ -135,58 +126,39 @@
       "role": "COO",
       "ts": "00:34",
       "quote": "Your website. It's very enterprise. Governance, compliance, workspace separation. We're a hundred and fifty people building robots. I looked at it and thought, that's not for us.",
-      "context": "Rafael Santos said OrbitFlow's website is very enterprise, focused on governance, compliance and workspace separation, and that this made him conclude OrbitFlow was not for Kestrel, a 150-person robot-building company. \u2014 Reason he crossed OrbitFlow off his evaluation list about a month before the call; stated directly as his reaction to the website.",
+      "context": "Rafael Santos said OrbitFlow's website looked very enterprise, with governance, compliance and workspace separation, which made him think it was not for Kestrel's size of company. \u2014 Stated reason he crossed OrbitFlow off the evaluation list; the complaint concerns the website's positioning/content, not usability or performance.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "Rafael said OrbitFlow's name came up on a list and was crossed off roughly a month before the call; the website impression was the reason OrbitFlow was dropped.",
+    "text": "Leo Grant (OrbitFlow Account Executive) agreed it was 'a fair read' of the website and said OrbitFlow's marketing is aimed at companies with a governance function, which Kestrel doesn't have, so it isn't aimed at them.",
     "evidence": [
      {
       "finding_id": "F2",
-      "turn_id": "CALL-020#T005",
+      "turn_id": "CALL-020#T010",
       "call_id": "CALL-020",
       "company": "Kestrel Robotics",
-      "speaker": "Rafael Santos",
-      "side": "customer",
-      "role": "COO",
-      "ts": "00:15",
-      "quote": "Your name came up on a list and got crossed off.",
-      "context": "Rafael Santos reported that his company had crossed OrbitFlow off a shortlist based on the website, roughly a month before the call. \u2014 Background to the cold call; the website impression was the reason OrbitFlow was dropped before this call.",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "00:49",
+      "quote": "That's a fair read of our website.",
+      "context": "Leo Grant (OrbitFlow) agreed that the website read as enterprise and explained it is aimed at companies with a governance function, which Kestrel lacks. \u2014 Vendor concedes the website's positioning is off-target for Kestrel, while claiming the product itself may still fit.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F1",
-      "turn_id": "CALL-020#T009",
-      "call_id": "CALL-020",
-      "company": "Kestrel Robotics",
-      "speaker": "Rafael Santos",
-      "side": "customer",
-      "role": "COO",
-      "ts": "00:34",
-      "quote": "Your website. It's very enterprise. Governance, compliance, workspace separation. We're a hundred and fifty people building robots. I looked at it and thought, that's not for us.",
-      "context": "Rafael Santos said OrbitFlow's website is very enterprise, focused on governance, compliance and workspace separation, and that this made him conclude OrbitFlow was not for Kestrel, a 150-person robot-building company. \u2014 Reason he crossed OrbitFlow off his evaluation list about a month before the call; stated directly as his reaction to the website.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "When OrbitFlow's Leo agreed the website read as enterprise, Rafael responded with surprise: 'You're agreeing?'",
-    "evidence": [
-     {
       "finding_id": "F3",
-      "turn_id": "CALL-020#T011",
+      "turn_id": "CALL-020#T012",
       "call_id": "CALL-020",
       "company": "Kestrel Robotics",
-      "speaker": "Rafael Santos",
-      "side": "customer",
-      "role": "COO",
-      "ts": "00:53",
-      "quote": "You're agreeing?",
-      "context": "Rafael pushed back when OrbitFlow's Leo agreed the website read as enterprise, showing the customer's surprise at the vendor conceding the point. \u2014 Customer reaction to vendor agreeing with his website criticism.",
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "00:55",
+      "quote": "Our marketing is aimed at companies with a governance function. You don't have one, so it isn't aimed at you.",
+      "context": "OrbitFlow's own rep said the marketing is aimed at companies with a governance function, so the website is not aimed at Kestrel. \u2014 Vendor acknowledges the website targets a different buyer; separates marketing fit from product fit.",
       "stated_or_inferred": "stated"
      }
     ],
@@ -195,14 +167,13 @@
   ],
   "conflicts": [],
   "not_covered": [
-   "What Leo said after agreeing, and whether Rafael's view changed or any next step resulted from the call.",
-   "Any Kestrel views on specific website content beyond governance, compliance and workspace separation."
+   "Any opinion on the website's usability, performance or design, or on web portal features specifically",
+   "Views from other Kestrel Robotics staff"
   ],
   "assumptions": [
-   "'Kestrel' maps to Kestrel Robotics (CALL-020), the only Kestrel company in the catalogue.",
-   "'Website' is interpreted as OrbitFlow's website or web presence, including homepage and web portal references.",
-   "'Kestrel' is Kestrel Robotics (CALL-020).",
-   "'Website' means OrbitFlow's website or web presence."
+   "'Kestrel' refers to Kestrel Robotics, the only catalogue company starting with Kestrel.",
+   "'Website' includes homepage, landing pages and web portal references.",
+   "'Kestrel' refers to Kestrel Robotics."
   ],
   "confidence": "high",
   "calls_considered": [

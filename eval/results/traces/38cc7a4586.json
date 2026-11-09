@@ -1,7 +1,7 @@
 {
  "question": "Why did customers who left decide to leave?",
  "resolution": {
-  "question_type": "list",
+  "question_type": "theme",
   "companies": [],
   "call_types": [
    "Churn post-mortem"
@@ -9,108 +9,88 @@
   "search_terms": [
    "churn",
    "cancel",
-   "cancellation",
+   "cancelled",
    "left",
-   "leaving",
+   "leave",
    "reason",
+   "switch",
    "switched",
-   "switching",
    "competitor",
    "non-renewal",
    "lost",
-   "dissatisfied",
-   "frustration",
-   "price",
-   "pricing",
-   "cost",
-   "budget",
-   "missing feature",
-   "support",
-   "onboarding",
-   "adoption",
-   "replacement"
+   "departure"
   ],
-  "read_instruction": "Extract every stated reason the customer gives for leaving or planning to leave OrbitFlow, including the decision maker's explanation, any competitor they moved to or considered, specific product gaps, pricing or budget issues, support or onboarding problems, and any hedges or contributing factors. Also note any OrbitFlow staff response to these reasons.",
+  "read_instruction": "Extract every stated reason the customer gave for leaving or considering leaving OrbitFlow, including product gaps, pricing or budget, support issues, switching to a competitor, internal changes, and any OrbitFlow staff explanations or concessions about those reasons.",
   "assumptions": [
-   "Scope limited to the Churn post-mortem calls (CALL-014 and CALL-015) because the question refers to customers who left.",
-   "'Customers who left' interpreted as churned customers; no company names were given so no entity resolution was needed."
+   "'Customers who left' maps to the Churn post-mortem call type.",
+   "Question asks about the reasons for churn across all churn post-mortem calls, not a single named company."
   ]
  },
  "candidates": {
-  "CALL-015": [
+  "CALL-014": [
    "call_type:Churn post-mortem",
    "facts",
    "search"
   ],
-  "CALL-014": [
+  "CALL-015": [
    "call_type:Churn post-mortem",
    "facts",
    "search"
   ]
  },
  "search_terms": [
-  "adoption",
-  "aggressive",
   "alternative",
-  "argument",
-  "budget",
   "cancel",
-  "cancellation",
+  "cancelled",
   "churn",
   "competitor",
-  "condescending",
-  "cost",
-  "curt",
-  "discount",
-  "dismissive",
-  "disrespectful",
-  "dissatisfied",
+  "departure",
   "evaluating",
-  "expensive",
-  "friction",
-  "frustrated",
-  "frustration",
   "gainsight",
-  "heated",
-  "hostile",
-  "hostility",
-  "impolite",
-  "leaving",
+  "leave",
   "left",
-  "licence",
-  "license",
   "lost",
   "make.com",
-  "missing feature",
   "mulesoft",
   "non-renewal",
-  "onboarding",
-  "per seat",
   "power automate",
-  "price",
-  "pricing",
   "reason",
-  "replacement",
   "retool",
-  "rude",
-  "rudeness",
-  "sarcasm",
-  "sarcastic",
-  "seats",
-  "snippy",
-  "support",
+  "switch",
   "switched",
-  "switching",
-  "tense",
-  "tension",
   "tray",
-  "unfriendly",
   "workato",
   "zapier"
  ],
  "findings": [
   {
    "finding_id": "F1",
+   "turn_id": "CALL-014#T011",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Kwame Boateng",
+   "side": "customer",
+   "role": "Head of Operations",
+   "ts": "01:04",
+   "quote": "Properly? June.",
+   "context": "Customer decided to leave in June; the decision was inevitable from about February. \u2014 Timeline of when the decision was made; customer says it took until June to admit it.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F2",
+   "turn_id": "CALL-014#T023",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Sarah Lindqvist",
+   "side": "customer",
+   "role": "Engineering Manager",
+   "ts": "01:54",
+   "quote": "Our settlement provider is a mid-sized European processor. You don't have a connector for them. Nobody does, to be fair \u2014 Workato doesn't either.",
+   "context": "The settlement reconciliation workflow could not be built on OrbitFlow because the settlement provider has no connector and the effort exceeded value. \u2014 Sarah frames the February failure as effort exceeding value; she also says Workato lacks a connector too, so the connector gap was not the differentiator.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F3",
    "turn_id": "CALL-014#T030",
    "call_id": "CALL-014",
    "company": "Verity Payments",
@@ -119,24 +99,24 @@
    "role": "Head of Operations",
    "ts": "02:41",
    "quote": "The connector gap was real. But it wasn't why we left. It was the thing we pointed at.",
-   "context": "Customer Kwame Boateng says the real reason Verity left was that nobody in operations built workflows; the connector gap was what they pointed at, not the true cause. \u2014 Stated reason differs from underlying reason; customer explicitly corrects Sarah's connector explanation",
+   "context": "The real reason for leaving was that business users never built workflows; the platform was used as an engineering tool, not worth the premium paid for a business-user platform. \u2014 Kwame explicitly says the connector gap was not why they left; the reason was the unmet business-user autonomy pitch. Stated reason (connector gap) differs from the real reason per the customer.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F2",
-   "turn_id": "CALL-014#T036",
+   "finding_id": "F4",
+   "turn_id": "CALL-014#T034",
    "call_id": "CALL-014",
    "company": "Verity Payments",
    "speaker": "Kwame Boateng",
    "side": "customer",
    "role": "Head of Operations",
-   "ts": "03:21",
-   "quote": "So we paid a premium for a business-user platform and used it as an engineering tool.",
-   "context": "Verity bought OrbitFlow for business-user autonomy but every production workflow was built by engineering, so they paid a premium for a business-user platform and used it as an engineering tool. \u2014 Core reason for leaving; mismatch between pitch and use",
+   "ts": "02:59",
+   "quote": "Two years in, every single production workflow was built by Sarah's team.",
+   "context": "Every production workflow was built by engineering, and the business-user model did not materialise. \u2014 Customer's account of why the value was not realised.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F3",
+   "finding_id": "F5",
    "turn_id": "CALL-014#T064",
    "call_id": "CALL-014",
    "company": "Verity Payments",
@@ -145,11 +125,11 @@
    "role": "Engineering Manager",
    "ts": "06:19",
    "quote": "Because we were maintaining custom integrations to a platform whose main selling point was that we wouldn't have to maintain custom integrations.",
-   "context": "Engineering manager says the licence cost was being justified by business-user autonomy that wasn't materialising, and they were maintaining custom integrations despite the platform promising they would not have to. \u2014 Engineering-side reason for leaving",
+   "context": "Licence cost was being justified by business-user autonomy that wasn't materialising, and they were maintaining custom integrations despite the platform promising they wouldn't need to. \u2014 Engineering manager's reasons for supporting departure.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F4",
+   "finding_id": "F6",
    "turn_id": "CALL-014#T066",
    "call_id": "CALL-014",
    "company": "Verity Payments",
@@ -158,50 +138,102 @@
    "role": "Engineering Manager",
    "ts": "06:41",
    "quote": "two of my engineers wanted to build it in-house and I spent eighteen months arguing against them, and eventually I ran out of arguments.",
-   "context": "Engineering team was split: Sarah's engineers wanted to build in-house, and she eventually ran out of arguments against that; Workato was chosen with positive engineering-facing reasons. \u2014 Contributing factor and tipping reason for choosing Workato",
+   "context": "Engineers wanted to build in-house, and the maintenance argument eventually lost; the customer chose Workato, which is an engineering-oriented tool. \u2014 Internal engineering pressure contributed to the departure.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F5",
-   "turn_id": "CALL-014#T072",
+   "finding_id": "F7",
+   "turn_id": "CALL-014#T070",
    "call_id": "CALL-014",
    "company": "Verity Payments",
    "speaker": "Kwame Boateng",
    "side": "customer",
    "role": "Head of Operations",
-   "ts": "07:22",
-   "quote": "it's not primarily price.",
-   "context": "Workato was chosen over OrbitFlow partly for a stronger core banking connector and stronger engineering-facing story (recipes as code, CI); customer says pricing was only partly a factor and not primary. \u2014 Competitor moved to: Workato; price a secondary factor",
+   "ts": "07:16",
+   "quote": "Less. Not dramatically less.",
+   "context": "Price was not the primary reason for leaving; Workato was only slightly cheaper. \u2014 Customer rejects price as the primary driver, though it was partly a factor at the margin.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F6",
-   "turn_id": "CALL-014#T023",
+   "finding_id": "F8",
+   "turn_id": "CALL-014#T074",
    "call_id": "CALL-014",
    "company": "Verity Payments",
    "speaker": "Sarah Lindqvist",
    "side": "customer",
    "role": "Engineering Manager",
-   "ts": "01:54",
-   "quote": "Our settlement provider is a mid-sized European processor. You don't have a connector for them.",
-   "context": "Settlement reconciliation workflow could not be built economically because the settlement provider had no OrbitFlow connector and custom integration effort exceeded value. \u2014 Specific product gap raised as the February trigger; customer notes Workato also lacks the connector",
+   "ts": "07:37",
+   "quote": "Their connector for our core banking platform is genuinely better than yours. That one's just true.",
+   "context": "Workato was chosen over OrbitFlow because of a stronger core banking connector and a stronger engineering-facing story. \u2014 Competitor advantages cited by customer; OrbitFlow staff acknowledged the connector point.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F7",
-   "turn_id": "CALL-014#T042",
+   "finding_id": "F9",
+   "turn_id": "CALL-014#T058",
    "call_id": "CALL-014",
    "company": "Verity Payments",
    "speaker": "Kwame Boateng",
    "side": "customer",
    "role": "Head of Operations",
-   "ts": "04:13",
-   "quote": "Six of them never touched it again.",
-   "context": "Verity received limited enablement: a two-day onboarding for eight people, six never used it again, and no help until OrbitFlow offered paid sessions in January, which were declined. \u2014 Onboarding/adoption problem; OrbitFlow staff acknowledge hands-on service is paid add-on",
+   "ts": "05:41",
+   "quote": "Then you've designed a product that fails by default for people like me.",
+   "context": "Enablement was insufficient: a two-day onboarding with eight attendees, six never returned, and OrbitFlow's paid hands-on services were never offered until January, after the customer had decided. \u2014 OrbitFlow staff acknowledged the paid professional services engagement exists and that the product may fail by default without it.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F8",
+   "finding_id": "F10",
+   "turn_id": "CALL-014#T092",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Ruth Adeyemi",
+   "side": "vendor",
+   "role": "Customer Success Manager",
+   "ts": "09:44",
+   "quote": "Then we don't say it, do we.",
+   "context": "The product does not remove the need for a dedicated operations automation role; it changes what the role must be good at. OrbitFlow staff said this is in operating model guidance, but the customer had never seen it. \u2014 Root gap identified: no dedicated role owned automation at Verity.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F11",
+   "turn_id": "CALL-014#T107",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Sarah Lindqvist",
+   "side": "customer",
+   "role": "Engineering Manager",
+   "ts": "11:23",
+   "quote": "It's not why we left. But it contributed to a general feeling that we were a small account.",
+   "context": "Support was inconsistent and the account felt small; Ruth acknowledged the account was below median and treated as small, though support was not the reason for leaving. \u2014 Customer explicitly says support was not why they left but contributed to feeling like a small account.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F12",
+   "turn_id": "CALL-014#T121",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Sarah Lindqvist",
+   "side": "customer",
+   "role": "Engineering Manager",
+   "ts": "12:49",
+   "quote": "That's when it was over, if you want the specific moment.",
+   "context": "Customer felt the April connector problem during the Workato evaluation was resolved by a free SE build, while OrbitFlow's response was only a no-template answer; this moment ended the OrbitFlow relationship. \u2014 Competitor concession shifted momentum; OrbitFlow staff unlikely to have argued for similar support given account size.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F13",
+   "turn_id": "CALL-014#T114",
+   "call_id": "CALL-014",
+   "company": "Verity Payments",
+   "speaker": "Kwame Boateng",
+   "side": "customer",
+   "role": "Head of Operations",
+   "ts": "12:02",
+   "quote": "By March we'd started the Workato evaluation and once that starts it has its own momentum.",
+   "context": "Once the Workato evaluation started by March it had its own momentum, so little could have been done in the last six months. \u2014 Customer's view that the decision was locked in by evaluation dynamics.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F14",
    "turn_id": "CALL-014#T050",
    "call_id": "CALL-014",
    "company": "Verity Payments",
@@ -210,76 +242,11 @@
    "role": "Head of Operations",
    "ts": "04:56",
    "quote": "if someone had sat with two of my people for a week in the first quarter and got them to ship something real, we'd still be a customer.",
-   "context": "Customer says hands-on build sessions would have kept them, but OrbitFlow's sitting-with-team service is a paid professional services engagement that was never offered to them. \u2014 Onboarding gap; Maya acknowledges the paid add-on may be the problem",
+   "context": "Customer would have stayed if someone had sat with two operations people for a week in Q1 to ship a real workflow; Kwame also says he declined January sessions because he had already half-concluded it would not work. \u2014 Stated counterfactual and a self-admitted reason for declining the sessions.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F9",
-   "turn_id": "CALL-014#T085",
-   "call_id": "CALL-014",
-   "company": "Verity Payments",
-   "speaker": "Kwame Boateng",
-   "side": "customer",
-   "role": "Head of Operations",
-   "ts": "09:06",
-   "quote": "We never had that and I never asked for it, because I thought the product removed the need for it.",
-   "context": "Verity never had a dedicated operations role to build and maintain automations; customer says the product was assumed to remove this need. \u2014 Root cause per customer; OrbitFlow staff say the product's operating model guidance states this but customer never saw it",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F10",
-   "turn_id": "CALL-014#T127",
-   "call_id": "CALL-014",
-   "company": "Verity Payments",
-   "speaker": "Sarah Lindqvist",
-   "side": "customer",
-   "role": "Engineering Manager",
-   "ts": "13:18",
-   "quote": "That was an accurate and completely useless answer.",
-   "context": "Support quality was inconsistent, and Verity felt treated as a small account; a April connector request got only a template-not-found answer, while Workato's SE built a custom connector in three days unbilled during evaluation. \u2014 Contributing factor to leaving; not the primary reason per Sarah",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F11",
-   "turn_id": "CALL-014#T097",
-   "call_id": "CALL-014",
-   "company": "Verity Payments",
-   "speaker": "Kwame Boateng",
-   "side": "customer",
-   "role": "Head of Operations",
-   "ts": "10:03",
-   "quote": "You sold to my enthusiasm rather than to my capability.",
-   "context": "Customer says the sales process sold to their enthusiasm rather than their capability; nobody asked who would build workflows. \u2014 Sales-process criticism acknowledged by Maya",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F12",
-   "turn_id": "CALL-014#T135",
-   "call_id": "CALL-014",
-   "company": "Verity Payments",
-   "speaker": "Kwame Boateng",
-   "side": "customer",
-   "role": "Head of Operations",
-   "ts": "13:59",
-   "quote": "I think we were the wrong customer for the product, or the product was sold to us for the wrong reason.",
-   "context": "Customer says Verity was probably the wrong customer for the product, or was sold the product for the wrong reason. \u2014 Hedged overall view",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F13",
-   "turn_id": "CALL-014#T013",
-   "call_id": "CALL-014",
-   "company": "Verity Payments",
-   "speaker": "Kwame Boateng",
-   "side": "customer",
-   "role": "Head of Operations",
-   "ts": "01:09",
-   "quote": "Though I'd say the decision became inevitable in about February and it took us until June to admit it.",
-   "context": "Verity had decided internally by about February and formally in June; Workato evaluation started by March and gained momentum. \u2014 Timing of decision",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F14",
+   "finding_id": "F15",
    "turn_id": "CALL-015#T010",
    "call_id": "CALL-015",
    "company": "Oakhill Property",
@@ -287,12 +254,12 @@
    "side": "customer",
    "role": "Operations Director",
    "ts": "00:43",
-   "quote": "Right. We bought something we didn't need. That's the whole answer.",
-   "context": "Customer says the core reason for leaving is that they bought a product they did not need; the purchase was oversized for a small team's automation needs. \u2014 Decision maker's primary explanation; customer states no product complaint.",
+   "quote": "We bought something we didn't need. That's the whole answer.",
+   "context": "Customer left because they bought a plan larger than they needed; the purchase was not matched to actual usage. \u2014 Primary stated reason for churn; customer says product is fine, the problem is over-purchase (Growth plan, 30 users, 4 active).",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F15",
+   "finding_id": "F16",
    "turn_id": "CALL-015#T014",
    "call_id": "CALL-015",
    "company": "Oakhill Property",
@@ -301,11 +268,11 @@
    "role": "Operations Director",
    "ts": "01:12",
    "quote": "We were on Growth, at eighteen hundred a month, for thirty users, when we had four people who ever logged in.",
-   "context": "Customer was on Growth at \u00a31,800/month for 30 users while only four people ever logged in. \u2014 Over-licensing relative to actual usage was the driver of the cost problem.",
+   "context": "Cost driver: Growth plan at \u00a31,800/month for 30 users while only four people ever logged in. \u2014 Pricing/budget reason; customer contrasts plan size with actual usage.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F16",
+   "finding_id": "F17",
    "turn_id": "CALL-015#T024",
    "call_id": "CALL-015",
    "company": "Oakhill Property",
@@ -314,11 +281,11 @@
    "role": "Operations Director",
    "ts": "02:02",
    "quote": "About two thousand a year. Maybe two and a half with the tier we need.",
-   "context": "Customer is moving to Zapier at roughly \u00a32,000\u20132,500 a year, about a tenth of the OrbitFlow cost. \u2014 Named competitor/replacement; cost is the main driver.",
+   "context": "Customer is moving to Zapier at roughly a tenth of the cost, about \u00a32,000\u2013\u00a32,500 a year. \u2014 Switching to a competitor, driven by price; customer had used Zapier before.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F17",
+   "finding_id": "F18",
    "turn_id": "CALL-015#T020",
    "call_id": "CALL-015",
    "company": "Oakhill Property",
@@ -327,11 +294,11 @@
    "role": "Operations Director",
    "ts": "01:42",
    "quote": "They worked perfectly. That's the frustrating part. I've got no complaint about the product at all.",
-   "context": "Customer says the workflows worked perfectly and she has no product complaint. \u2014 Explicitly rules out product quality as the reason for leaving.",
+   "context": "Customer says the product works well and has no complaint about it; the departure is not about product quality. \u2014 Explicitly separates product satisfaction from the reason for leaving.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F18",
+   "finding_id": "F19",
    "turn_id": "CALL-015#T028",
    "call_id": "CALL-015",
    "company": "Oakhill Property",
@@ -340,11 +307,11 @@
    "role": "Operations Director",
    "ts": "02:14",
    "quote": "We'll lose the approval steps and we'll lose the run history, which I'll genuinely miss.",
-   "context": "Customer acknowledges Zapier will lack approval steps and run history, and that Zapier cannot do contractor sign-off approval forms, which is a capability gap. \u2014 Hedge: capability loss accepted as worth less than the cost difference.",
+   "context": "Features lost by switching to Zapier: approval forms and run history, which the customer will miss. \u2014 Customer acknowledges trade-off; approval forms are needed for contractor sign-off and Zapier cannot do them well.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F19",
+   "finding_id": "F20",
    "turn_id": "CALL-015#T054",
    "call_id": "CALL-015",
    "company": "Oakhill Property",
@@ -353,63 +320,11 @@
    "role": "Operations Director",
    "ts": "05:27",
    "quote": "We paid for eleven workflows' worth of value and a plan for forty.",
-   "context": "Customer says the original sale promised a scaling roadmap (compliance, service charges, contractor management) that never happened because the team lacked capacity; the purchase was priced against a future that did not occur. \u2014 Contributing factor: over-purchase based on sales-process roadmap; both sides were enthusiastic.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F20",
-   "turn_id": "CALL-015#T064",
-   "call_id": "CALL-015",
-   "company": "Oakhill Property",
-   "speaker": "Hazel Wren",
-   "side": "customer",
-   "role": "Operations Director",
-   "ts": "06:19",
-   "quote": "If you'd had something at five or six hundred a month I'd still be a customer",
-   "context": "Customer says OrbitFlow should have flagged the unused seats after six months and that no smaller plan existed, which would have kept her as a customer. \u2014 Contributing factor: lack of proactive account monitoring and no entry tier below Growth.",
+   "context": "Promised scaling roadmap (compliance, service charges, contractor management) never happened because the company lacked capacity; the purchase was priced against a future that did not occur. \u2014 Internal capacity change/adoption gap; both sides were enthusiastic during sales.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F21",
-   "turn_id": "CALL-015#T089",
-   "call_id": "CALL-015",
-   "company": "Oakhill Property",
-   "speaker": "Ruth Adeyemi",
-   "side": "vendor",
-   "role": "Customer Success Manager",
-   "ts": "08:45",
-   "quote": "Your account was in a segment that doesn't get an assigned CSM.",
-   "context": "OrbitFlow staff confirm there is no smaller plan than Growth and that the account was in a segment without an assigned CSM, so under-usage was not caught. \u2014 Vendor response explaining the lack of intervention.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F22",
-   "turn_id": "CALL-015#T074",
-   "call_id": "CALL-015",
-   "company": "Oakhill Property",
-   "speaker": "Hazel Wren",
-   "side": "customer",
-   "role": "Operations Director",
-   "ts": "07:30",
-   "quote": "Nobody remembers how bad it was.",
-   "context": "Customer says the value faded over time: the pain the product solved stopped feeling urgent, and at renewal the invoice was questioned. \u2014 Contributing factor: value became invisible at renewal rather than a product failure.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F23",
-   "turn_id": "CALL-015#T082",
-   "call_id": "CALL-015",
-   "company": "Oakhill Property",
-   "speaker": "Hazel Wren",
-   "side": "customer",
-   "role": "Operations Director",
-   "ts": "08:19",
-   "quote": "Fine. Genuinely fine.",
-   "context": "Customer says OrbitFlow's last-year service was fine and support tickets were answered; OrbitFlow contact was only a product announcement email. \u2014 Support not a reason for leaving; vendor outreach was thin.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F24",
    "turn_id": "CALL-015#T098",
    "call_id": "CALL-015",
    "company": "Oakhill Property",
@@ -418,11 +333,24 @@
    "role": "Account Executive",
    "ts": "09:31",
    "quote": "I probably should have pushed harder on whether you had the capacity for the roadmap we talked about.",
-   "context": "Alastair McCrae acknowledges he should have pressed on whether the customer had capacity for the roadmap sold. \u2014 Vendor admission about the sales process.",
+   "context": "OrbitFlow staff acknowledged the account was over-sized and nobody checked capacity for the roadmap; no one acted on low usage. \u2014 Vendor concession about missed usage monitoring and roadmap fit.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F25",
+   "finding_id": "F22",
+   "turn_id": "CALL-015#T064",
+   "call_id": "CALL-015",
+   "company": "Oakhill Property",
+   "speaker": "Hazel Wren",
+   "side": "customer",
+   "role": "Operations Director",
+   "ts": "06:19",
+   "quote": "If you'd had something at five or six hundred a month I'd still be a customer",
+   "context": "Customer wanted a smaller entry plan (around \u00a3500\u2013600/month); none exists, so they could not downsize and left. \u2014 Product/packaging gap; customer says a smaller plan would have retained them.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F23",
    "turn_id": "CALL-015#T127",
    "call_id": "CALL-015",
    "company": "Oakhill Property",
@@ -430,286 +358,170 @@
    "side": "customer",
    "role": "Operations Director",
    "ts": "12:22",
-   "quote": "With the approval forms, yes. Without them, no, because that's the bit Zapier can't do and it's the only thing I'll actually miss.",
-   "context": "Customer would only consider a smaller plan if it included approval forms; without them she would not buy. \u2014 Hypothetical retention condition.",
+   "quote": "With the approval forms, yes. Without them, no",
+   "context": "Customer would not buy a smaller plan without approval forms, so the approval forms are the key retained feature. \u2014 Conditional interest in a downsell; approval forms are the deciding feature.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F24",
+   "turn_id": "CALL-015#T089",
+   "call_id": "CALL-015",
+   "company": "Oakhill Property",
+   "speaker": "Ruth Adeyemi",
+   "side": "vendor",
+   "role": "Customer Success Manager",
+   "ts": "08:45",
+   "quote": "Your account was in a segment that doesn't get an assigned CSM.",
+   "context": "Vendor's account was in a segment with no assigned CSM, so low usage was not noticed and no one reached out beyond a product announcement. \u2014 Vendor explanation for lack of early intervention; customer links it to missed warning signs.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F25",
+   "turn_id": "CALL-015#T074",
+   "call_id": "CALL-015",
+   "company": "Oakhill Property",
+   "speaker": "Hazel Wren",
+   "side": "customer",
+   "role": "Operations Director",
+   "ts": "07:30",
+   "quote": "The problem being solved becomes invisible. Exactly that. Nobody remembers how bad it was.",
+   "context": "Value faded over time: after a year the pain the product solved stopped feeling urgent while the invoice kept arriving, prompting a renewal review. \u2014 Gradual value erosion at renewal; customer says nothing broke.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F26",
+   "turn_id": "CALL-015#T028",
+   "call_id": "CALL-015",
+   "company": "Oakhill Property",
+   "speaker": "Hazel Wren",
+   "side": "customer",
+   "role": "Operations Director",
+   "ts": "02:14",
+   "quote": "nineteen thousand pounds is a member of staff for four months",
+   "context": "Customer's decision was driven by a budget case: \u00a319,000 a year equated to a staff member for four months, which the MD accepted. \u2014 Budget justification for leaving.",
    "stated_or_inferred": "stated"
   }
  ],
- "rejected_findings": [],
+ "rejected_findings": [
+  {
+   "call_id": "CALL-014",
+   "claim": "OrbitFlow staff say a paid services engagement exists; the customer had not been offered it until the January visit.",
+   "quote": "It's a paid professional services engagement.",
+   "turn_ids": [
+    "T053",
+    "T055",
+    "T057"
+   ],
+   "speaker": "Ruth Adeyemi",
+   "reason": "speaker mismatch or ambiguous attribution (reader said Ruth Adeyemi)"
+  }
+ ],
  "draft": {
-  "answer": "Both churned customers say the product was mismatched to how they would actually use it, though the details differ. Verity Payments says the real cause was that no one in operations built workflows, so it paid for a business-user platform and used it as an engineering tool [C1][C2][C3]. Oakhill Property says it bought more than it needed and was over-licensed, and it is moving to a far cheaper Zapier setup [C5][C6][C7]. Contributing factors included enablement and support gaps, sales-process issues, and a competitor's engineering-facing strengths [C4][C8][C9][C10].",
+  "answer": "The two churned customers left for different reasons. Oakhill Property left mainly because it had bought an oversized plan and found a far cheaper option in Zapier [C1][C2][C3]. Verity Payments says the real reason was that business users never built workflows, even though the connector gap was what they pointed at [C4][C5][C6]. Both calls also show OrbitFlow missing early warning signs [C7][C8].",
   "claims": [
    {
-    "text": "Verity Payments' Kwame Boateng (Head of Operations) said the connector gap was real but was not why they left; it was \"the thing we pointed at.\" He said the real cause was that nobody in operations built workflows and that Verity never had a dedicated operations role, because he thought the product removed that need.",
+    "text": "Oakhill Property (Hazel Wren) said they left because they bought a plan larger than needed: Growth at \u00a31,800/month for 30 users, with only four people ever logging in. She said the product worked perfectly and she has no complaint about it.",
     "finding_ids": [
-     "F1",
-     "F9"
-    ]
-   },
-   {
-    "text": "Verity bought OrbitFlow for business-user autonomy, but engineering built every production workflow, so Kwame said they paid a premium for a business-user platform and used it as an engineering tool. Engineering manager Sarah Lindqvist said the licence cost was being justified by autonomy that wasn't materialising, and they were maintaining custom integrations to a platform whose selling point was that they wouldn't have to.",
-    "finding_ids": [
-     "F2",
-     "F3"
-    ]
-   },
-   {
-    "text": "Verity chose Workato partly for a stronger core banking connector and an engineering-facing story (recipes as code, CI). Kwame said price was not the primary reason. Some of Sarah's engineers also wanted to build in-house, and she ran out of arguments against it after eighteen months. The decision became inevitable around February and was formalised in June.",
-    "finding_ids": [
-     "F5",
-     "F4",
-     "F13"
-    ]
-   },
-   {
-    "text": "Verity also cited enablement and support problems. Onboarding was two days for eight people, six of whom never used the product again, and paid sessions offered in January were declined. Kwame said that if someone had sat with two of his people for a week in the first quarter, they'd still be a customer, and that the service was never offered to them. Sarah said support was inconsistent: an April connector request got an accurate but useless answer, while Workato's SE built a custom connector in three days unbilled. She did not call this the primary reason.",
-    "finding_ids": [
-     "F7",
-     "F8",
-     "F10"
-    ]
-   },
-   {
-    "text": "Oakhill Property's Hazel Wren (Operations Director) said the whole answer was that they bought something they didn't need. They were on Growth at \u00a31,800/month for 30 users, and only four people ever logged in.",
-    "finding_ids": [
-     "F14",
-     "F15"
-    ]
-   },
-   {
-    "text": "Hazel said the workflows worked perfectly and she has no product complaint. She also said the last year's service was fine.",
-    "finding_ids": [
-     "F17",
-     "F23"
-    ]
-   },
-   {
-    "text": "Oakhill is moving to Zapier at about \u00a32,000\u20132,500 a year, roughly a tenth of the OrbitFlow cost. Hazel accepts losing approval steps and run history, which she will miss, and Zapier can't do contractor sign-off approval forms.",
-    "finding_ids": [
+     "F15",
      "F16",
      "F18"
     ]
    },
    {
-    "text": "Hazel said the original sale promised a scaling roadmap (compliance, service charges, contractor management) that never happened because the team lacked capacity. She said they paid for eleven workflows' worth of value and a plan for forty. Account Executive Alastair McCrae acknowledged he should have pushed harder on whether they had capacity for the roadmap.",
+    "text": "Oakhill is moving to Zapier for about \u00a32,000\u2013\u00a32,500 a year, roughly a tenth of the cost. The budget case was that \u00a319,000 a year equals a staff member for four months. They will lose approval forms and run history.",
     "finding_ids": [
-     "F19",
-     "F24"
+     "F17",
+     "F26",
+     "F19"
     ]
    },
    {
-    "text": "Oakhill's value also faded over time: the pain the product solved stopped feeling urgent, and the invoice was questioned at renewal. Hazel said OrbitFlow should have flagged the unused seats and that a plan at \u00a3500\u2013600/month would have kept her. OrbitFlow's Ruth Adeyemi confirmed there is no plan smaller than Growth and that the account was in a segment with no assigned CSM. Hazel would consider a smaller plan only if it included approval forms.",
+    "text": "Oakhill's scaling roadmap (compliance, service charges, contractor management) never happened for lack of capacity. Value also faded over time as the problem being solved stopped feeling urgent while the invoice kept arriving. No smaller plan existed (Hazel would have stayed at about \u00a3500\u2013600/month, but only with approval forms).",
     "finding_ids": [
-     "F22",
      "F20",
-     "F21",
-     "F25"
+     "F25",
+     "F22",
+     "F23"
     ]
    },
    {
-    "text": "Kwame said Verity's sales process sold to their enthusiasm rather than their capability, and that nobody asked who would build workflows. He said Verity was probably the wrong customer, or was sold the product for the wrong reason.",
+    "text": "Verity Payments' Kwame Boateng said the connector gap was real but not why they left; it was 'the thing we pointed at'. The real reason was that business users never built workflows: every production workflow was built by engineering, so the premium was not justified.",
+    "finding_ids": [
+     "F3",
+     "F4",
+     "F5"
+    ]
+   },
+   {
+    "text": "Verity's contributing factors: engineers wanted to build in-house and Sarah Lindqvist ran out of arguments; Workato had a better core banking connector and a stronger engineering-facing story; the onboarding was thin (two days, six of eight attendees never returned) and paid services were offered only in January after the decision. Kwame said Verity would have stayed if someone had sat with two operations people for a week in Q1 to ship a real workflow.",
+    "finding_ids": [
+     "F6",
+     "F8",
+     "F9",
+     "F14"
+    ]
+   },
+   {
+    "text": "Verity's decision timeline: the decision was effectively made around February but admitted in June. The Workato evaluation was under way by March and had its own momentum. Sarah said the specific moment it was over was when a free SE build by Workato fixed the April connector problem while OrbitFlow offered only a no-template answer. Price was not the primary reason (Workato was only slightly cheaper), and support was not the reason but made them feel like a small account.",
+    "finding_ids": [
+     "F1",
+     "F13",
+     "F12",
+     "F7",
+     "F11"
+    ]
+   },
+   {
+    "text": "Oakhill's account was in a segment with no assigned CSM, so low usage went unnoticed. Alastair McCrae acknowledged he should have pushed harder on whether Oakhill had the capacity for the roadmap.",
+    "finding_ids": [
+     "F24",
+     "F21"
+    ]
+   },
+   {
+    "text": "Ruth Adeyemi acknowledged that Verity's account was below median and treated as small. The need for a dedicated operations automation role is in the operating model guidance, but the customer had never seen it.",
     "finding_ids": [
      "F11",
-     "F12"
-    ]
-   },
-   {
-    "text": "Verity's trigger in February was that the settlement reconciliation workflow couldn't be built economically. The settlement provider had no OrbitFlow connector, and custom integration effort exceeded the value.",
-    "finding_ids": [
-     "F6"
+     "F10"
     ]
    }
   ],
   "conflicts": [
    {
-    "topic": "Verity: stated vs. underlying reason",
-    "description": "Sarah raised the missing settlement-provider connector as the February trigger, while Kwame said the connector gap was only what they pointed at and not the real reason, which was that nobody in operations built workflows.",
+    "topic": "Verity: stated vs real reason for leaving",
+    "description": "Verity pointed to the connector gap (the settlement provider connector, and Workato's better core banking connector), but Kwame said it was not why they left; the real reason was the unmet business-user autonomy promise. Sarah also noted Workato lacks the settlement connector too.",
     "finding_ids": [
-     "F6",
-     "F1"
+     "F2",
+     "F8",
+     "F3"
     ]
    }
   ],
   "not_covered": [
-   "Only two churn post-mortem calls (Verity Payments and Oakhill Property) were read, so this does not show how typical these reasons are across all churned customers."
+   "Only two churn post-mortem calls were read; no wider pattern across other churned customers is available."
   ],
   "assumptions": [
-   "Scope limited to the churn post-mortem calls CALL-014 and CALL-015.",
-   "'Customers who left' interpreted as churned customers."
+   "'Customers who left' means the Churn post-mortem calls (Oakhill Property and Verity Payments)."
   ]
  },
  "usage": {
   "llm_calls": 5,
-  "input_tokens": 31339,
-  "cache_read_tokens": 19714,
+  "input_tokens": 31180,
+  "cache_read_tokens": 19706,
   "cache_write_tokens": 0,
-  "output_tokens": 8484,
-  "uncached_calls": 0,
-  "latency_s": 0.13
+  "output_tokens": 6806,
+  "uncached_calls": 1,
+  "latency_s": 5.15
  },
  "answer": {
   "question": "Why did customers who left decide to leave?",
-  "answer": "Both churned customers say the product was mismatched to how they would actually use it, though the details differ. Verity Payments says the real cause was that no one in operations built workflows, so it paid for a business-user platform and used it as an engineering tool [1][2][3]. Oakhill Property says it bought more than it needed and was over-licensed, and it is moving to a far cheaper Zapier setup [5][6][7]. Contributing factors included enablement and support gaps, sales-process issues, and a competitor's engineering-facing strengths [4][8][9][10].",
+  "answer": "Oakhill Property left mainly because it had bought an oversized plan and found a far cheaper option in Zapier [1][2][3]. Verity Payments says the real reason was that business users never built workflows, even though the connector gap was what they pointed at [4][5][6].",
   "claims": [
    {
-    "text": "Verity Payments' Kwame Boateng (Head of Operations) said the connector gap was real but was not why they left; it was \"the thing we pointed at.\" He said the real cause was that nobody in operations built workflows and that Verity never had a dedicated operations role, because he thought the product removed that need.",
+    "text": "Oakhill Property (Hazel Wren) said they left because they bought a plan larger than needed: Growth at \u00a31,800/month for 30 users, with only four people ever logging in. She said the product worked perfectly and she has no complaint about it.",
     "evidence": [
      {
-      "finding_id": "F1",
-      "turn_id": "CALL-014#T030",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Kwame Boateng",
-      "side": "customer",
-      "role": "Head of Operations",
-      "ts": "02:41",
-      "quote": "The connector gap was real. But it wasn't why we left. It was the thing we pointed at.",
-      "context": "Customer Kwame Boateng says the real reason Verity left was that nobody in operations built workflows; the connector gap was what they pointed at, not the true cause. \u2014 Stated reason differs from underlying reason; customer explicitly corrects Sarah's connector explanation",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F9",
-      "turn_id": "CALL-014#T085",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Kwame Boateng",
-      "side": "customer",
-      "role": "Head of Operations",
-      "ts": "09:06",
-      "quote": "We never had that and I never asked for it, because I thought the product removed the need for it.",
-      "context": "Verity never had a dedicated operations role to build and maintain automations; customer says the product was assumed to remove this need. \u2014 Root cause per customer; OrbitFlow staff say the product's operating model guidance states this but customer never saw it",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "Verity bought OrbitFlow for business-user autonomy, but engineering built every production workflow, so Kwame said they paid a premium for a business-user platform and used it as an engineering tool. Engineering manager Sarah Lindqvist said the licence cost was being justified by autonomy that wasn't materialising, and they were maintaining custom integrations to a platform whose selling point was that they wouldn't have to.",
-    "evidence": [
-     {
-      "finding_id": "F2",
-      "turn_id": "CALL-014#T036",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Kwame Boateng",
-      "side": "customer",
-      "role": "Head of Operations",
-      "ts": "03:21",
-      "quote": "So we paid a premium for a business-user platform and used it as an engineering tool.",
-      "context": "Verity bought OrbitFlow for business-user autonomy but every production workflow was built by engineering, so they paid a premium for a business-user platform and used it as an engineering tool. \u2014 Core reason for leaving; mismatch between pitch and use",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F3",
-      "turn_id": "CALL-014#T064",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Sarah Lindqvist",
-      "side": "customer",
-      "role": "Engineering Manager",
-      "ts": "06:19",
-      "quote": "Because we were maintaining custom integrations to a platform whose main selling point was that we wouldn't have to maintain custom integrations.",
-      "context": "Engineering manager says the licence cost was being justified by business-user autonomy that wasn't materialising, and they were maintaining custom integrations despite the platform promising they would not have to. \u2014 Engineering-side reason for leaving",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "Verity chose Workato partly for a stronger core banking connector and an engineering-facing story (recipes as code, CI). Kwame said price was not the primary reason. Some of Sarah's engineers also wanted to build in-house, and she ran out of arguments against it after eighteen months. The decision became inevitable around February and was formalised in June.",
-    "evidence": [
-     {
-      "finding_id": "F5",
-      "turn_id": "CALL-014#T072",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Kwame Boateng",
-      "side": "customer",
-      "role": "Head of Operations",
-      "ts": "07:22",
-      "quote": "it's not primarily price.",
-      "context": "Workato was chosen over OrbitFlow partly for a stronger core banking connector and stronger engineering-facing story (recipes as code, CI); customer says pricing was only partly a factor and not primary. \u2014 Competitor moved to: Workato; price a secondary factor",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F4",
-      "turn_id": "CALL-014#T066",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Sarah Lindqvist",
-      "side": "customer",
-      "role": "Engineering Manager",
-      "ts": "06:41",
-      "quote": "two of my engineers wanted to build it in-house and I spent eighteen months arguing against them, and eventually I ran out of arguments.",
-      "context": "Engineering team was split: Sarah's engineers wanted to build in-house, and she eventually ran out of arguments against that; Workato was chosen with positive engineering-facing reasons. \u2014 Contributing factor and tipping reason for choosing Workato",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F13",
-      "turn_id": "CALL-014#T013",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Kwame Boateng",
-      "side": "customer",
-      "role": "Head of Operations",
-      "ts": "01:09",
-      "quote": "Though I'd say the decision became inevitable in about February and it took us until June to admit it.",
-      "context": "Verity had decided internally by about February and formally in June; Workato evaluation started by March and gained momentum. \u2014 Timing of decision",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "moderate"
-   },
-   {
-    "text": "Verity also cited enablement and support problems. Onboarding was two days for eight people, six of whom never used the product again, and paid sessions offered in January were declined. Kwame said that if someone had sat with two of his people for a week in the first quarter, they'd still be a customer, and that the service was never offered to them. Sarah said support was inconsistent: an April connector request got an accurate but useless answer, while Workato's SE built a custom connector in three days unbilled. She did not call this the primary reason.",
-    "evidence": [
-     {
-      "finding_id": "F7",
-      "turn_id": "CALL-014#T042",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Kwame Boateng",
-      "side": "customer",
-      "role": "Head of Operations",
-      "ts": "04:13",
-      "quote": "Six of them never touched it again.",
-      "context": "Verity received limited enablement: a two-day onboarding for eight people, six never used it again, and no help until OrbitFlow offered paid sessions in January, which were declined. \u2014 Onboarding/adoption problem; OrbitFlow staff acknowledge hands-on service is paid add-on",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F8",
-      "turn_id": "CALL-014#T050",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Kwame Boateng",
-      "side": "customer",
-      "role": "Head of Operations",
-      "ts": "04:56",
-      "quote": "if someone had sat with two of my people for a week in the first quarter and got them to ship something real, we'd still be a customer.",
-      "context": "Customer says hands-on build sessions would have kept them, but OrbitFlow's sitting-with-team service is a paid professional services engagement that was never offered to them. \u2014 Onboarding gap; Maya acknowledges the paid add-on may be the problem",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F10",
-      "turn_id": "CALL-014#T127",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Sarah Lindqvist",
-      "side": "customer",
-      "role": "Engineering Manager",
-      "ts": "13:18",
-      "quote": "That was an accurate and completely useless answer.",
-      "context": "Support quality was inconsistent, and Verity felt treated as a small account; a April connector request got only a template-not-found answer, while Workato's SE built a custom connector in three days unbilled during evaluation. \u2014 Contributing factor to leaving; not the primary reason per Sarah",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "moderate"
-   },
-   {
-    "text": "Oakhill Property's Hazel Wren (Operations Director) said the whole answer was that they bought something they didn't need. They were on Growth at \u00a31,800/month for 30 users, and only four people ever logged in.",
-    "evidence": [
-     {
-      "finding_id": "F14",
+      "finding_id": "F15",
       "turn_id": "CALL-015#T010",
       "call_id": "CALL-015",
       "company": "Oakhill Property",
@@ -717,12 +529,12 @@
       "side": "customer",
       "role": "Operations Director",
       "ts": "00:43",
-      "quote": "Right. We bought something we didn't need. That's the whole answer.",
-      "context": "Customer says the core reason for leaving is that they bought a product they did not need; the purchase was oversized for a small team's automation needs. \u2014 Decision maker's primary explanation; customer states no product complaint.",
+      "quote": "We bought something we didn't need. That's the whole answer.",
+      "context": "Customer left because they bought a plan larger than they needed; the purchase was not matched to actual usage. \u2014 Primary stated reason for churn; customer says product is fine, the problem is over-purchase (Growth plan, 30 users, 4 active).",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F15",
+      "finding_id": "F16",
       "turn_id": "CALL-015#T014",
       "call_id": "CALL-015",
       "company": "Oakhill Property",
@@ -731,17 +543,11 @@
       "role": "Operations Director",
       "ts": "01:12",
       "quote": "We were on Growth, at eighteen hundred a month, for thirty users, when we had four people who ever logged in.",
-      "context": "Customer was on Growth at \u00a31,800/month for 30 users while only four people ever logged in. \u2014 Over-licensing relative to actual usage was the driver of the cost problem.",
+      "context": "Cost driver: Growth plan at \u00a31,800/month for 30 users while only four people ever logged in. \u2014 Pricing/budget reason; customer contrasts plan size with actual usage.",
       "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "Hazel said the workflows worked perfectly and she has no product complaint. She also said the last year's service was fine.",
-    "evidence": [
+     },
      {
-      "finding_id": "F17",
+      "finding_id": "F18",
       "turn_id": "CALL-015#T020",
       "call_id": "CALL-015",
       "company": "Oakhill Property",
@@ -750,30 +556,17 @@
       "role": "Operations Director",
       "ts": "01:42",
       "quote": "They worked perfectly. That's the frustrating part. I've got no complaint about the product at all.",
-      "context": "Customer says the workflows worked perfectly and she has no product complaint. \u2014 Explicitly rules out product quality as the reason for leaving.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F23",
-      "turn_id": "CALL-015#T082",
-      "call_id": "CALL-015",
-      "company": "Oakhill Property",
-      "speaker": "Hazel Wren",
-      "side": "customer",
-      "role": "Operations Director",
-      "ts": "08:19",
-      "quote": "Fine. Genuinely fine.",
-      "context": "Customer says OrbitFlow's last-year service was fine and support tickets were answered; OrbitFlow contact was only a product announcement email. \u2014 Support not a reason for leaving; vendor outreach was thin.",
+      "context": "Customer says the product works well and has no complaint about it; the departure is not about product quality. \u2014 Explicitly separates product satisfaction from the reason for leaving.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "Oakhill is moving to Zapier at about \u00a32,000\u20132,500 a year, roughly a tenth of the OrbitFlow cost. Hazel accepts losing approval steps and run history, which she will miss, and Zapier can't do contractor sign-off approval forms.",
+    "text": "Oakhill is moving to Zapier for about \u00a32,000\u2013\u00a32,500 a year, roughly a tenth of the cost. The budget case was that \u00a319,000 a year equals a staff member for four months. They will lose approval forms and run history.",
     "evidence": [
      {
-      "finding_id": "F16",
+      "finding_id": "F17",
       "turn_id": "CALL-015#T024",
       "call_id": "CALL-015",
       "company": "Oakhill Property",
@@ -782,11 +575,24 @@
       "role": "Operations Director",
       "ts": "02:02",
       "quote": "About two thousand a year. Maybe two and a half with the tier we need.",
-      "context": "Customer is moving to Zapier at roughly \u00a32,000\u20132,500 a year, about a tenth of the OrbitFlow cost. \u2014 Named competitor/replacement; cost is the main driver.",
+      "context": "Customer is moving to Zapier at roughly a tenth of the cost, about \u00a32,000\u2013\u00a32,500 a year. \u2014 Switching to a competitor, driven by price; customer had used Zapier before.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F18",
+      "finding_id": "F26",
+      "turn_id": "CALL-015#T028",
+      "call_id": "CALL-015",
+      "company": "Oakhill Property",
+      "speaker": "Hazel Wren",
+      "side": "customer",
+      "role": "Operations Director",
+      "ts": "02:14",
+      "quote": "nineteen thousand pounds is a member of staff for four months",
+      "context": "Customer's decision was driven by a budget case: \u00a319,000 a year equated to a staff member for four months, which the MD accepted. \u2014 Budget justification for leaving.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F19",
       "turn_id": "CALL-015#T028",
       "call_id": "CALL-015",
       "company": "Oakhill Property",
@@ -795,17 +601,17 @@
       "role": "Operations Director",
       "ts": "02:14",
       "quote": "We'll lose the approval steps and we'll lose the run history, which I'll genuinely miss.",
-      "context": "Customer acknowledges Zapier will lack approval steps and run history, and that Zapier cannot do contractor sign-off approval forms, which is a capability gap. \u2014 Hedge: capability loss accepted as worth less than the cost difference.",
+      "context": "Features lost by switching to Zapier: approval forms and run history, which the customer will miss. \u2014 Customer acknowledges trade-off; approval forms are needed for contractor sign-off and Zapier cannot do them well.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "moderate"
    },
    {
-    "text": "Hazel said the original sale promised a scaling roadmap (compliance, service charges, contractor management) that never happened because the team lacked capacity. She said they paid for eleven workflows' worth of value and a plan for forty. Account Executive Alastair McCrae acknowledged he should have pushed harder on whether they had capacity for the roadmap.",
+    "text": "Oakhill's scaling roadmap (compliance, service charges, contractor management) never happened for lack of capacity. Value also faded over time as the problem being solved stopped feeling urgent while the invoice kept arriving. No smaller plan existed (Hazel would have stayed at about \u00a3500\u2013600/month, but only with approval forms).",
     "evidence": [
      {
-      "finding_id": "F19",
+      "finding_id": "F20",
       "turn_id": "CALL-015#T054",
       "call_id": "CALL-015",
       "company": "Oakhill Property",
@@ -814,30 +620,11 @@
       "role": "Operations Director",
       "ts": "05:27",
       "quote": "We paid for eleven workflows' worth of value and a plan for forty.",
-      "context": "Customer says the original sale promised a scaling roadmap (compliance, service charges, contractor management) that never happened because the team lacked capacity; the purchase was priced against a future that did not occur. \u2014 Contributing factor: over-purchase based on sales-process roadmap; both sides were enthusiastic.",
+      "context": "Promised scaling roadmap (compliance, service charges, contractor management) never happened because the company lacked capacity; the purchase was priced against a future that did not occur. \u2014 Internal capacity change/adoption gap; both sides were enthusiastic during sales.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F24",
-      "turn_id": "CALL-015#T098",
-      "call_id": "CALL-015",
-      "company": "Oakhill Property",
-      "speaker": "Alastair McCrae",
-      "side": "vendor",
-      "role": "Account Executive",
-      "ts": "09:31",
-      "quote": "I probably should have pushed harder on whether you had the capacity for the roadmap we talked about.",
-      "context": "Alastair McCrae acknowledges he should have pressed on whether the customer had capacity for the roadmap sold. \u2014 Vendor admission about the sales process.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "moderate"
-   },
-   {
-    "text": "Oakhill's value also faded over time: the pain the product solved stopped feeling urgent, and the invoice was questioned at renewal. Hazel said OrbitFlow should have flagged the unused seats and that a plan at \u00a3500\u2013600/month would have kept her. OrbitFlow's Ruth Adeyemi confirmed there is no plan smaller than Growth and that the account was in a segment with no assigned CSM. Hazel would consider a smaller plan only if it included approval forms.",
-    "evidence": [
-     {
-      "finding_id": "F22",
+      "finding_id": "F25",
       "turn_id": "CALL-015#T074",
       "call_id": "CALL-015",
       "company": "Oakhill Property",
@@ -845,12 +632,12 @@
       "side": "customer",
       "role": "Operations Director",
       "ts": "07:30",
-      "quote": "Nobody remembers how bad it was.",
-      "context": "Customer says the value faded over time: the pain the product solved stopped feeling urgent, and at renewal the invoice was questioned. \u2014 Contributing factor: value became invisible at renewal rather than a product failure.",
+      "quote": "The problem being solved becomes invisible. Exactly that. Nobody remembers how bad it was.",
+      "context": "Value faded over time: after a year the pain the product solved stopped feeling urgent while the invoice kept arriving, prompting a renewal review. \u2014 Gradual value erosion at renewal; customer says nothing broke.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F20",
+      "finding_id": "F22",
       "turn_id": "CALL-015#T064",
       "call_id": "CALL-015",
       "company": "Oakhill Property",
@@ -859,11 +646,204 @@
       "role": "Operations Director",
       "ts": "06:19",
       "quote": "If you'd had something at five or six hundred a month I'd still be a customer",
-      "context": "Customer says OrbitFlow should have flagged the unused seats after six months and that no smaller plan existed, which would have kept her as a customer. \u2014 Contributing factor: lack of proactive account monitoring and no entry tier below Growth.",
+      "context": "Customer wanted a smaller entry plan (around \u00a3500\u2013600/month); none exists, so they could not downsize and left. \u2014 Product/packaging gap; customer says a smaller plan would have retained them.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F21",
+      "finding_id": "F23",
+      "turn_id": "CALL-015#T127",
+      "call_id": "CALL-015",
+      "company": "Oakhill Property",
+      "speaker": "Hazel Wren",
+      "side": "customer",
+      "role": "Operations Director",
+      "ts": "12:22",
+      "quote": "With the approval forms, yes. Without them, no",
+      "context": "Customer would not buy a smaller plan without approval forms, so the approval forms are the key retained feature. \u2014 Conditional interest in a downsell; approval forms are the deciding feature.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Verity Payments' Kwame Boateng said the connector gap was real but not why they left; it was 'the thing we pointed at'. The real reason was that business users never built workflows: every production workflow was built by engineering, so the premium was not justified.",
+    "evidence": [
+     {
+      "finding_id": "F3",
+      "turn_id": "CALL-014#T030",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Kwame Boateng",
+      "side": "customer",
+      "role": "Head of Operations",
+      "ts": "02:41",
+      "quote": "The connector gap was real. But it wasn't why we left. It was the thing we pointed at.",
+      "context": "The real reason for leaving was that business users never built workflows; the platform was used as an engineering tool, not worth the premium paid for a business-user platform. \u2014 Kwame explicitly says the connector gap was not why they left; the reason was the unmet business-user autonomy pitch. Stated reason (connector gap) differs from the real reason per the customer.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F4",
+      "turn_id": "CALL-014#T034",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Kwame Boateng",
+      "side": "customer",
+      "role": "Head of Operations",
+      "ts": "02:59",
+      "quote": "Two years in, every single production workflow was built by Sarah's team.",
+      "context": "Every production workflow was built by engineering, and the business-user model did not materialise. \u2014 Customer's account of why the value was not realised.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F5",
+      "turn_id": "CALL-014#T064",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Sarah Lindqvist",
+      "side": "customer",
+      "role": "Engineering Manager",
+      "ts": "06:19",
+      "quote": "Because we were maintaining custom integrations to a platform whose main selling point was that we wouldn't have to maintain custom integrations.",
+      "context": "Licence cost was being justified by business-user autonomy that wasn't materialising, and they were maintaining custom integrations despite the platform promising they wouldn't need to. \u2014 Engineering manager's reasons for supporting departure.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Verity's contributing factors: engineers wanted to build in-house and Sarah Lindqvist ran out of arguments; Workato had a better core banking connector and a stronger engineering-facing story; the onboarding was thin (two days, six of eight attendees never returned) and paid services were offered only in January after the decision. Kwame said Verity would have stayed if someone had sat with two operations people for a week in Q1 to ship a real workflow.",
+    "evidence": [
+     {
+      "finding_id": "F6",
+      "turn_id": "CALL-014#T066",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Sarah Lindqvist",
+      "side": "customer",
+      "role": "Engineering Manager",
+      "ts": "06:41",
+      "quote": "two of my engineers wanted to build it in-house and I spent eighteen months arguing against them, and eventually I ran out of arguments.",
+      "context": "Engineers wanted to build in-house, and the maintenance argument eventually lost; the customer chose Workato, which is an engineering-oriented tool. \u2014 Internal engineering pressure contributed to the departure.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F8",
+      "turn_id": "CALL-014#T074",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Sarah Lindqvist",
+      "side": "customer",
+      "role": "Engineering Manager",
+      "ts": "07:37",
+      "quote": "Their connector for our core banking platform is genuinely better than yours. That one's just true.",
+      "context": "Workato was chosen over OrbitFlow because of a stronger core banking connector and a stronger engineering-facing story. \u2014 Competitor advantages cited by customer; OrbitFlow staff acknowledged the connector point.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F9",
+      "turn_id": "CALL-014#T058",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Kwame Boateng",
+      "side": "customer",
+      "role": "Head of Operations",
+      "ts": "05:41",
+      "quote": "Then you've designed a product that fails by default for people like me.",
+      "context": "Enablement was insufficient: a two-day onboarding with eight attendees, six never returned, and OrbitFlow's paid hands-on services were never offered until January, after the customer had decided. \u2014 OrbitFlow staff acknowledged the paid professional services engagement exists and that the product may fail by default without it.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F14",
+      "turn_id": "CALL-014#T050",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Kwame Boateng",
+      "side": "customer",
+      "role": "Head of Operations",
+      "ts": "04:56",
+      "quote": "if someone had sat with two of my people for a week in the first quarter and got them to ship something real, we'd still be a customer.",
+      "context": "Customer would have stayed if someone had sat with two operations people for a week in Q1 to ship a real workflow; Kwame also says he declined January sessions because he had already half-concluded it would not work. \u2014 Stated counterfactual and a self-admitted reason for declining the sessions.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Verity's decision timeline: the decision was effectively made around February but admitted in June. The Workato evaluation was under way by March and had its own momentum. Sarah said the specific moment it was over was when a free SE build by Workato fixed the April connector problem while OrbitFlow offered only a no-template answer. Price was not the primary reason (Workato was only slightly cheaper), and support was not the reason but made them feel like a small account.",
+    "evidence": [
+     {
+      "finding_id": "F1",
+      "turn_id": "CALL-014#T011",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Kwame Boateng",
+      "side": "customer",
+      "role": "Head of Operations",
+      "ts": "01:04",
+      "quote": "Properly? June.",
+      "context": "Customer decided to leave in June; the decision was inevitable from about February. \u2014 Timeline of when the decision was made; customer says it took until June to admit it.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F13",
+      "turn_id": "CALL-014#T114",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Kwame Boateng",
+      "side": "customer",
+      "role": "Head of Operations",
+      "ts": "12:02",
+      "quote": "By March we'd started the Workato evaluation and once that starts it has its own momentum.",
+      "context": "Once the Workato evaluation started by March it had its own momentum, so little could have been done in the last six months. \u2014 Customer's view that the decision was locked in by evaluation dynamics.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F12",
+      "turn_id": "CALL-014#T121",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Sarah Lindqvist",
+      "side": "customer",
+      "role": "Engineering Manager",
+      "ts": "12:49",
+      "quote": "That's when it was over, if you want the specific moment.",
+      "context": "Customer felt the April connector problem during the Workato evaluation was resolved by a free SE build, while OrbitFlow's response was only a no-template answer; this moment ended the OrbitFlow relationship. \u2014 Competitor concession shifted momentum; OrbitFlow staff unlikely to have argued for similar support given account size.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F7",
+      "turn_id": "CALL-014#T070",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Kwame Boateng",
+      "side": "customer",
+      "role": "Head of Operations",
+      "ts": "07:16",
+      "quote": "Less. Not dramatically less.",
+      "context": "Price was not the primary reason for leaving; Workato was only slightly cheaper. \u2014 Customer rejects price as the primary driver, though it was partly a factor at the margin.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F11",
+      "turn_id": "CALL-014#T107",
+      "call_id": "CALL-014",
+      "company": "Verity Payments",
+      "speaker": "Sarah Lindqvist",
+      "side": "customer",
+      "role": "Engineering Manager",
+      "ts": "11:23",
+      "quote": "It's not why we left. But it contributed to a general feeling that we were a small account.",
+      "context": "Support was inconsistent and the account felt small; Ruth acknowledged the account was below median and treated as small, though support was not the reason for leaving. \u2014 Customer explicitly says support was not why they left but contributed to feeling like a small account.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Oakhill's account was in a segment with no assigned CSM, so low usage went unnoticed. Alastair McCrae acknowledged he should have pushed harder on whether Oakhill had the capacity for the roadmap.",
+    "evidence": [
+     {
+      "finding_id": "F24",
       "turn_id": "CALL-015#T089",
       "call_id": "CALL-015",
       "company": "Oakhill Property",
@@ -872,71 +852,20 @@
       "role": "Customer Success Manager",
       "ts": "08:45",
       "quote": "Your account was in a segment that doesn't get an assigned CSM.",
-      "context": "OrbitFlow staff confirm there is no smaller plan than Growth and that the account was in a segment without an assigned CSM, so under-usage was not caught. \u2014 Vendor response explaining the lack of intervention.",
+      "context": "Vendor's account was in a segment with no assigned CSM, so low usage was not noticed and no one reached out beyond a product announcement. \u2014 Vendor explanation for lack of early intervention; customer links it to missed warning signs.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F25",
-      "turn_id": "CALL-015#T127",
+      "finding_id": "F21",
+      "turn_id": "CALL-015#T098",
       "call_id": "CALL-015",
       "company": "Oakhill Property",
-      "speaker": "Hazel Wren",
-      "side": "customer",
-      "role": "Operations Director",
-      "ts": "12:22",
-      "quote": "With the approval forms, yes. Without them, no, because that's the bit Zapier can't do and it's the only thing I'll actually miss.",
-      "context": "Customer would only consider a smaller plan if it included approval forms; without them she would not buy. \u2014 Hypothetical retention condition.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "moderate"
-   },
-   {
-    "text": "Kwame said Verity's sales process sold to their enthusiasm rather than their capability, and that nobody asked who would build workflows. He said Verity was probably the wrong customer, or was sold the product for the wrong reason.",
-    "evidence": [
-     {
-      "finding_id": "F11",
-      "turn_id": "CALL-014#T097",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Kwame Boateng",
-      "side": "customer",
-      "role": "Head of Operations",
-      "ts": "10:03",
-      "quote": "You sold to my enthusiasm rather than to my capability.",
-      "context": "Customer says the sales process sold to their enthusiasm rather than their capability; nobody asked who would build workflows. \u2014 Sales-process criticism acknowledged by Maya",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F12",
-      "turn_id": "CALL-014#T135",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Kwame Boateng",
-      "side": "customer",
-      "role": "Head of Operations",
-      "ts": "13:59",
-      "quote": "I think we were the wrong customer for the product, or the product was sold to us for the wrong reason.",
-      "context": "Customer says Verity was probably the wrong customer for the product, or was sold the product for the wrong reason. \u2014 Hedged overall view",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "Verity's trigger in February was that the settlement reconciliation workflow couldn't be built economically. The settlement provider had no OrbitFlow connector, and custom integration effort exceeded the value.",
-    "evidence": [
-     {
-      "finding_id": "F6",
-      "turn_id": "CALL-014#T023",
-      "call_id": "CALL-014",
-      "company": "Verity Payments",
-      "speaker": "Sarah Lindqvist",
-      "side": "customer",
-      "role": "Engineering Manager",
-      "ts": "01:54",
-      "quote": "Our settlement provider is a mid-sized European processor. You don't have a connector for them.",
-      "context": "Settlement reconciliation workflow could not be built economically because the settlement provider had no OrbitFlow connector and custom integration effort exceeded value. \u2014 Specific product gap raised as the February trigger; customer notes Workato also lacks the connector",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "09:31",
+      "quote": "I probably should have pushed harder on whether you had the capacity for the roadmap we talked about.",
+      "context": "OrbitFlow staff acknowledged the account was over-sized and nobody checked capacity for the roadmap; no one acted on low usage. \u2014 Vendor concession about missed usage monitoring and roadmap fit.",
       "stated_or_inferred": "stated"
      }
     ],
@@ -945,22 +874,22 @@
   ],
   "conflicts": [
    {
-    "topic": "Verity: stated vs. underlying reason",
-    "description": "Sarah raised the missing settlement-provider connector as the February trigger, while Kwame said the connector gap was only what they pointed at and not the real reason, which was that nobody in operations built workflows.",
+    "topic": "Verity: stated vs real reason for leaving",
+    "description": "Verity pointed to the connector gap (the settlement provider connector, and Workato's better core banking connector), but Kwame said it was not why they left; the real reason was the unmet business-user autonomy promise. Sarah also noted Workato lacks the settlement connector too.",
     "finding_ids": [
-     "F6",
-     "F1"
+     "F2",
+     "F8",
+     "F3"
     ]
    }
   ],
   "not_covered": [
-   "Only two churn post-mortem calls (Verity Payments and Oakhill Property) were read, so this does not show how typical these reasons are across all churned customers."
+   "Only two churn post-mortem calls were read; no wider pattern across other churned customers is available."
   ],
   "assumptions": [
-   "Scope limited to the Churn post-mortem calls (CALL-014 and CALL-015) because the question refers to customers who left.",
-   "'Customers who left' interpreted as churned customers; no company names were given so no entity resolution was needed.",
-   "Scope limited to the churn post-mortem calls CALL-014 and CALL-015.",
-   "'Customers who left' interpreted as churned customers."
+   "'Customers who left' maps to the Churn post-mortem call type.",
+   "Question asks about the reasons for churn across all churn post-mortem calls, not a single named company.",
+   "'Customers who left' means the Churn post-mortem calls (Oakhill Property and Verity Payments)."
   ],
   "confidence": "medium",
   "calls_considered": [
@@ -971,7 +900,29 @@
    "CALL-014",
    "CALL-015"
   ],
-  "removed_claims": [],
+  "removed_claims": [
+   {
+    "claim": "Ruth Adeyemi acknowledged that Verity's account was below median and treated as small. The need for a dedicated operations automation role is in the operating model guidance, but the customer had never seen it.",
+    "cited": [
+     "F11",
+     "F10"
+    ],
+    "reason": "entailment: Sarah's quote supports only that the account felt small. Ruth's quote 'Then we don't say it, do we' does not acknowledge the below-median status or reference operating model guidance, and nothing in the quotes shows the customer had never seen the guidance or that a dedicated role was needed."
+   },
+   {
+    "claim": "The two churned customers left for different reasons.",
+    "cited": [],
+    "reason": "summary sentence without a surviving claim citation"
+   },
+   {
+    "claim": "Both calls also show OrbitFlow missing early warning signs [C7][C8].",
+    "cited": [
+     "7",
+     "8"
+    ],
+    "reason": "summary sentence without a surviving claim citation"
+   }
+  ],
   "covered": true,
   "trace_id": null
  }

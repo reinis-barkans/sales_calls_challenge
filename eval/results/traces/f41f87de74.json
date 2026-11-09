@@ -9,21 +9,22 @@
   "search_terms": [
    "renewal",
    "at risk",
-   "risk",
    "churn",
-   "concerns",
-   "objections",
+   "risk",
+   "concern",
    "cancel",
+   "downgrade",
    "competitor",
    "budget",
-   "usage",
    "adoption",
-   "satisfaction"
+   "usage",
+   "dissatisfied",
+   "frustration"
   ],
-  "read_instruction": "Extract every statement in this call that bears on the customer's likelihood to renew or stay: expressed dissatisfaction, complaints, unresolved issues, usage or adoption levels, budget or pricing pressure, competitor mentions, stakeholder changes, explicit threats to cancel or not renew, and any positive signals of commitment or expansion. Include the speaker and a short quote for each, and note whether OrbitFlow staff addressed the issue.",
+  "read_instruction": "Extract every statement from this call that signals the customer's likelihood to renew or churn: expressed dissatisfaction, complaints, unresolved issues, usage or adoption levels, budget or pricing pressure, competitor mentions or evaluations, stakeholder changes, contract or renewal terms discussed, and any explicit statements about continuing, reducing, or cancelling. Include the speaker and quote the relevant wording, and note whether OrbitFlow staff responded or resolved each concern.",
   "assumptions": [
-   "'Renewal' is interpreted as the Renewal call type (CALL-011, CALL-012, CALL-013), so the comparison across renewal calls can be made from the extracted risk signals.",
-   "'Most at risk' is a judgement that must be made by comparing the extracted signals across the renewal calls, since a single call cannot show relative risk."
+   "'Renewal' interpreted as the Renewal call type (CALL-011, CALL-012, CALL-013), since the question asks which renewal looks at risk.",
+   "Risk judgement must be made by comparing findings across the renewal calls, so each call is read for underlying risk signals rather than a verdict."
   ]
  },
  "candidates": {
@@ -47,23 +48,37 @@
  },
  "search_terms": [
   "adoption",
+  "aggressive",
   "alternative",
+  "argument",
   "at risk",
   "budget",
   "cancel",
   "churn",
   "competitor",
-  "concerns",
+  "concern",
+  "condescending",
   "cost",
+  "curt",
   "discount",
+  "dismissive",
+  "disrespectful",
+  "dissatisfied",
+  "downgrade",
   "evaluating",
   "expensive",
+  "friction",
+  "frustrated",
+  "frustration",
   "gainsight",
+  "heated",
+  "hostile",
+  "hostility",
+  "impolite",
   "licence",
   "license",
   "make.com",
   "mulesoft",
-  "objections",
   "per seat",
   "power automate",
   "price",
@@ -71,9 +86,16 @@
   "renewal",
   "retool",
   "risk",
-  "satisfaction",
+  "rude",
+  "rudeness",
+  "sarcasm",
+  "sarcastic",
   "seats",
+  "snippy",
+  "tense",
+  "tension",
   "tray",
+  "unfriendly",
   "usage",
   "workato",
   "zapier"
@@ -89,50 +111,24 @@
    "role": "Platform Manager",
    "ts": "12:17",
    "quote": "Resolution times on anything involving the SAP connector have been terrible. We had a ticket open for nineteen days in July.",
-   "context": "Customer reports SAP connector resolution times have been terrible; a ticket sat for eleven days after a nineteen-day open period in July. \u2014 Unresolved support issue (resolution time, not response time); vendor acknowledged and offered a named escalation contact but no resolution SLA.",
+   "context": "Customer reports SAP connector ticket resolution has been terrible; a ticket sat for eleven days and fell between teams. Vendor acknowledged, offered a named escalation contact but no resolution SLA. \u2014 Unresolved support issue (resolution times, not response times); vendor partially responded with named engineer, declined SLA",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F2",
-   "turn_id": "CALL-011#T120",
+   "turn_id": "CALL-011#T125",
    "call_id": "CALL-011",
    "company": "Lumen Retail Group",
-   "speaker": "Ruth Adeyemi",
+   "speaker": "Maya Chen",
    "side": "vendor",
-   "role": "Customer Success Manager",
-   "ts": "12:41",
-   "quote": "It sat for eleven days and there's no good explanation.",
-   "context": "Vendor admitted the SAP ticket fell between teams and offered a named engineer escalation contact, but declined to promise a resolution SLA. \u2014 OrbitFlow staff addressed the issue; no resolution commitment given.",
+   "role": "Account Executive",
+   "ts": "13:26",
+   "quote": "Resolution-time commitments are a different thing and we don't do them.",
+   "context": "Customer asked whether the SAP escalation issue could be addressed in the contract; vendor said resolution-time commitments are not offered. \u2014 Vendor declined contractual resolution commitment; customer noted it",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F3",
-   "turn_id": "CALL-011#T123",
-   "call_id": "CALL-011",
-   "company": "Lumen Retail Group",
-   "speaker": "Devan Shah",
-   "side": "customer",
-   "role": "Platform Manager",
-   "ts": "13:16",
-   "quote": "The named contact is more useful than a promise, honestly.",
-   "context": "Customer's platform manager says the named contact is more useful than a promise, but the issue remains a grievance. \u2014 Mild acceptance of vendor response; underlying dissatisfaction persists.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F4",
-   "turn_id": "CALL-011#T021",
-   "call_id": "CALL-011",
-   "company": "Lumen Retail Group",
-   "speaker": "Ruth Adeyemi",
-   "side": "vendor",
-   "role": "Customer Success Manager",
-   "ts": "02:03",
-   "quote": "You've exceeded your contracted run volume in four of the last six months. June was twenty-two percent over.",
-   "context": "Customer is running over contracted run volume and the run tier is inadequate; June was 22% over and four of six months exceeded. \u2014 Usage pressure; vendor agreed the tier is wrong and proposed moving to 400k runs.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F5",
    "turn_id": "CALL-011#T032",
    "call_id": "CALL-011",
    "company": "Lumen Retail Group",
@@ -140,21 +136,47 @@
    "side": "customer",
    "role": "Platform Manager",
    "ts": "03:08",
-   "quote": "From our side we did nothing wrong and it cost us twenty thousand runs.",
-   "context": "March retry-storm overage (about 20,000 runs) was a point of frustration; customer felt it was not their fault and questioned what OrbitFlow changed. \u2014 Vendor partly attributed to configuration; vendor admitted it should have addressed this in April; retry-config session booked.",
+   "quote": "Because from our side we did nothing wrong and it cost us twenty thousand runs.",
+   "context": "Run volume exceeded contracted tier in four of six months, and the March retry storm cost the customer about 20,000 runs; customer questioned whether it would recur. Vendor said retry configuration is partly the customer's responsibility and scheduled a session. \u2014 Overage/cost friction; vendor took partial responsibility and committed to a configuration session",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F4",
+   "turn_id": "CALL-011#T046",
+   "call_id": "CALL-011",
+   "company": "Lumen Retail Group",
+   "speaker": "Fiona Bright",
+   "side": "customer",
+   "role": "Head of Retail Operations",
+   "ts": "04:57",
+   "quote": "That's \u2014 okay. That's a more sensible conversation than I was braced for.",
+   "context": "Customer says nine licensed builders with four dormant is a problem; vendor proposed reducing to seven seats, which the customer accepted as more reasonable than expected. \u2014 Seat reduction is a downgrade signal; framed by vendor as a genuine reduction, not an upsell",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F5",
+   "turn_id": "CALL-011#T095",
+   "call_id": "CALL-011",
+   "company": "Lumen Retail Group",
+   "speaker": "Fiona Bright",
+   "side": "customer",
+   "role": "Head of Retail Operations",
+   "ts": "10:04",
+   "quote": "Nine percent for forty percent more capacity and a new use case.",
+   "context": "Customer expected a 15% uplift and was relieved by the 7% list uplift; total projected to rise about 9% with seat reduction and a 400k tier. \u2014 Pricing pressure; customer relieved relative to expectation, but finance review required",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F6",
-   "turn_id": "CALL-011#T040",
+   "turn_id": "CALL-011#T181",
    "call_id": "CALL-011",
    "company": "Lumen Retail Group",
-   "speaker": "Ruth Adeyemi",
-   "side": "vendor",
-   "role": "Customer Success Manager",
-   "ts": "04:12",
-   "quote": "You've got nine builders licensed and four of them haven't published anything in six months.",
-   "context": "Nine licensed builders with four dormant; customer's seat count is being reduced to seven, which is a renewal scrutiny risk and a reduction in spend. \u2014 Adoption weakness; vendor addressed it by proposing seven active seats; customer questioned the reduction.",
+   "speaker": "Fiona Bright",
+   "side": "customer",
+   "role": "Head of Retail Operations",
+   "ts": "19:24",
+   "quote": "It won't slip.",
+   "context": "Renewal decision will go through a finance director; customer will return the week of the fifteenth and expects it not to slip past the eighteenth October expiry. \u2014 Stakeholder approval process and timeline; short six-week window",
    "stated_or_inferred": "stated"
   },
   {
@@ -167,50 +189,11 @@
    "role": "Head of Retail Operations",
    "ts": "19:39",
    "quote": "The depot exception routing. Without question. Everything else we could go back to doing the old way and survive.",
-   "context": "Customer expressed strong positive value on the depot exceptions workflow, which is the core reason to stay. \u2014 Strong commitment signal; the depot exceptions routing would be painful to lose.",
+   "context": "Customer is strongly positive about core value (depot exception routing and run history), which suggests low churn intent despite friction points. \u2014 Counterweight to risk: value is high and embedded in operations",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F8",
-   "turn_id": "CALL-011#T048",
-   "call_id": "CALL-011",
-   "company": "Lumen Retail Group",
-   "speaker": "Fiona Bright",
-   "side": "customer",
-   "role": "Head of Retail Operations",
-   "ts": "05:06",
-   "quote": "Braced for \"here's a fifteen percent uplift, sign here.\"",
-   "context": "Customer finance review and price sensitivity: customer expected a 15% uplift and was relieved by 7%; needs finance director sign-off with clear line items, decision expected week of the fifteenth. \u2014 Budget pressure; vendor committed to itemised proposal by Friday; renewal expires 18 October.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F9",
-   "turn_id": "CALL-011#T188",
-   "call_id": "CALL-011",
-   "company": "Lumen Retail Group",
-   "speaker": "Devan Shah",
-   "side": "customer",
-   "role": "Platform Manager",
-   "ts": "20:04",
-   "quote": "Because when something breaks I can answer the question in four minutes instead of half a day.",
-   "context": "Customer positive about run history and quality of life from the platform; supports continued use. \u2014 Value signal from platform manager.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F10",
-   "turn_id": "CALL-011#T071",
-   "call_id": "CALL-011",
-   "company": "Lumen Retail Group",
-   "speaker": "Fiona Bright",
-   "side": "customer",
-   "role": "Head of Retail Operations",
-   "ts": "07:31",
-   "quote": "Yes. Let's do that.",
-   "context": "Customer intends to expand into supplier onboarding and agreed to a visibility phase; expansion signals commitment. \u2014 Positive expansion signal; contingent on instrumentation decision before Christmas.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F11",
    "turn_id": "CALL-012#T005",
    "call_id": "CALL-012",
    "company": "Pinewood Insurance",
@@ -218,12 +201,12 @@
    "side": "vendor",
    "role": "Customer Success Manager",
    "ts": "00:17",
-   "quote": "Usage has dropped about forty percent since March.",
-   "context": "Usage has dropped about forty percent since March, per OrbitFlow's Ruth Adeyemi, and she raised the renewal and dissatisfaction concern directly. \u2014 Vendor framing of renewal risk; opens the call. Vendor-stated usage figure.",
+   "quote": "Your renewal's on the twenty-ninth of November. Usage has dropped about forty percent since March.",
+   "context": "Usage has dropped about forty percent since March and the renewal is on 29 November; Ruth raised the at-risk concern directly. \u2014 Vendor CSM opening framing of the renewal risk",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F12",
+   "finding_id": "F9",
    "turn_id": "CALL-012#T009",
    "call_id": "CALL-012",
    "company": "Pinewood Insurance",
@@ -231,25 +214,25 @@
    "side": "customer",
    "role": "Director of Operations",
    "ts": "00:50",
-   "quote": "I inherited this. Ravi bought it, Ravi implemented it, Ravi left in February, and I picked it up in March with about forty minutes of handover.",
-   "context": "Customer says the account was inherited with minimal handover after the original champion left, and the customer's own team owns the gap. \u2014 Stakeholder change driving adoption problems; vendor acknowledged failure to re-onboard.",
+   "quote": "Ravi bought it, Ravi implemented it, Ravi left in February, and I picked it up in March with about forty minutes of handover.",
+   "context": "Customer inherited the product after the champion left with only forty minutes of handover; the vendor acknowledged its own onboarding failure. \u2014 Adoption root cause; vendor accepted fault",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F13",
-   "turn_id": "CALL-012#T022",
+   "finding_id": "F10",
+   "turn_id": "CALL-012#T033",
    "call_id": "CALL-012",
    "company": "Pinewood Insurance",
    "speaker": "Ruth Adeyemi",
    "side": "vendor",
    "role": "Customer Success Manager",
-   "ts": "01:58",
-   "quote": "Six of them haven't run successfully in the last ninety days.",
-   "context": "Six of fourteen production workflows have not run successfully in 90 days, and one 'TEMP' workflow has been failing since January with alerts going to a dead shared mailbox nobody read. \u2014 Unresolved technical issues; vendor says it does not proactively monitor at this tier.",
+   "ts": "03:10",
+   "quote": "I'd rather tell you that plainly than imply we're watching when we aren't.",
+   "context": "Six of fourteen production workflows have not run successfully in 90 days, including a temp workflow failing every four hours since January with alerts going to an unread mailbox; vendor does not proactively monitor at this tier. \u2014 Estate health and unresolved failures; vendor admitted gap",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F14",
+   "finding_id": "F11",
    "turn_id": "CALL-012#T041",
    "call_id": "CALL-012",
    "company": "Pinewood Insurance",
@@ -258,11 +241,11 @@
    "role": "Director of Operations",
    "ts": "03:56",
    "quote": "I don't know. That's the honest answer. The claims director changed in April and the new one has a different view about where triage should happen.",
-   "context": "Customer is unsure the original reason for buying (claims triage) still holds; the new claims director wants triage in Guidewire, a potential loss of half the use case. \u2014 Competitor/alternative platform pressure and stakeholder change.",
+   "context": "Customer is uncertain whether the claims triage reason for buying still holds, as the claims director wants triage moved into Guidewire; the cross-system build is not native. \u2014 Core use case at risk; competitor-platform alternative (Guidewire) favoured internally",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F15",
+   "finding_id": "F12",
    "turn_id": "CALL-012#T053",
    "call_id": "CALL-012",
    "company": "Pinewood Insurance",
@@ -270,38 +253,51 @@
    "side": "customer",
    "role": "Director of Operations",
    "ts": "05:18",
-   "quote": "Nobody's building anything. We've got four builder licences. One person uses it.",
-   "context": "Only one builder has ever built workflows; four builder licences are paid for but unused, and the sole builder has been on leave since June. Two-person training attempt in July did not take. \u2014 Low adoption and bus-factor risk; vendor agreed enablement is its responsibility.",
+   "quote": "One person uses it. She's brilliant, she's called Ellie, and she's been on maternity leave since June.",
+   "context": "Only one builder ever worked; the other builders attempted training but it did not take, and the sole builder is on leave until November, so nobody is operating the product. \u2014 Adoption and bus-factor risk",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F13",
+   "turn_id": "CALL-012#T071",
+   "call_id": "CALL-012",
+   "company": "Pinewood Insurance",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "06:55",
+   "quote": "Looking at what you're actually using, I'm not sure you should be.",
+   "context": "Vendor's Enterprise tier is poorly matched to usage; the Growth tier would drop SSO, which the customer's security standard requires, so no cheaper tier fits. \u2014 Pricing/tier pressure; vendor flagged overspend",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F14",
+   "turn_id": "CALL-012#T175",
+   "call_id": "CALL-012",
+   "company": "Pinewood Insurance",
+   "speaker": "Graham Attwood",
+   "side": "customer",
+   "role": "Director of Operations",
+   "ts": "18:42",
+   "quote": "I'm not going to pretend I'm enthusiastic. If you'd asked me two weeks ago I'd have said we're not renewing.",
+   "context": "Customer is considering not renewing; vendor offered a no-renewal exit and a six-month option with enablement included, and the customer said they would otherwise have not renewed two weeks earlier. \u2014 Explicit churn signal and retention offer; customer softened after vendor candour",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F15",
+   "turn_id": "CALL-012#T141",
+   "call_id": "CALL-012",
+   "company": "Pinewood Insurance",
+   "speaker": "Nadia Rahman",
+   "side": "customer",
+   "role": "IT Service Owner",
+   "ts": "15:09",
+   "quote": "Low ticket volume can mean two things.",
+   "context": "Support tickets are closed by customer without help and responses are within SLA but unhelpful, so low ticket volume may mask dissatisfaction; vendor agreed to be more careful with that metric. \u2014 Unresolved support complaint; customer says they stopped raising tickets",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F16",
-   "turn_id": "CALL-012#T082",
-   "call_id": "CALL-012",
-   "company": "Pinewood Insurance",
-   "speaker": "Nadia Rahman",
-   "side": "customer",
-   "role": "IT Service Owner",
-   "ts": "08:16",
-   "quote": "Our security standard requires SSO for anything holding claims data.",
-   "context": "Customer is paying for Enterprise tier but using very little of it; the vendor says Enterprise is likely not worth it and Growth tier would lose SSO, which security requires. \u2014 Budget/pricing pressure; Growth downgrade not viable due to SSO requirement.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F17",
-   "turn_id": "CALL-012#T139",
-   "call_id": "CALL-012",
-   "company": "Pinewood Insurance",
-   "speaker": "Nadia Rahman",
-   "side": "customer",
-   "role": "IT Service Owner",
-   "ts": "14:52",
-   "quote": "it's the kind of thing that means I don't raise tickets any more, and then you look at the data and conclude we're happy.",
-   "context": "Customer says support tickets were answered within SLA but responses were unhelpful, so they raise fewer tickets; low ticket volume may hide dissatisfaction. \u2014 Unresolved support complaint; vendor acknowledged it.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F18",
    "turn_id": "CALL-012#T115",
    "call_id": "CALL-012",
    "company": "Pinewood Insurance",
@@ -310,11 +306,11 @@
    "role": "Account Executive",
    "ts": "12:38",
    "quote": "Your current contract auto-renews with sixty days' notice, which means your notice deadline is the thirtieth of September.",
-   "context": "Current contract auto-renews with 60 days' notice, so the notice deadline is 30 September; customer was unaware and must serve notice to keep options open. \u2014 Renewal mechanics creating a time-bound risk; vendor disclosed it.",
+   "context": "Customer's current contract auto-renews unless notice is served by 30 September, a deadline the customer did not know; vendor advised serving notice. \u2014 Renewal terms and timing risk; vendor surfaced it proactively",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F19",
+   "finding_id": "F17",
    "turn_id": "CALL-012#T180",
    "call_id": "CALL-012",
    "company": "Pinewood Insurance",
@@ -323,24 +319,11 @@
    "role": "IT Service Owner",
    "ts": "19:22",
    "quote": "I don't think the product is the problem. I think we implemented it badly, one person owned it",
-   "context": "Customer's stated concern is that the problem is implementation and ownership, not the product; this is a positive signal of possible commitment. \u2014 Customer-side view that contrasts with the risk picture.",
+   "context": "Customer's own view is that the product is not the problem and the failure is an internal implementation issue, which is a mitigating factor for retention. \u2014 Counterweight to churn risk; attributes problem to Pinewood",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F20",
-   "turn_id": "CALL-012#T175",
-   "call_id": "CALL-012",
-   "company": "Pinewood Insurance",
-   "speaker": "Graham Attwood",
-   "side": "customer",
-   "role": "Director of Operations",
-   "ts": "18:42",
-   "quote": "I'm not going to pretend I'm enthusiastic.",
-   "context": "Graham's stated renewal sentiment is not enthusiastic; he says he is not pretending to be enthusiastic and that the outcome is open. \u2014 Overall commitment signal, mixed: no explicit cancel threat but low enthusiasm.",
-   "stated_or_inferred": "inferred"
-  },
-  {
-   "finding_id": "F21",
+   "finding_id": "F18",
    "turn_id": "CALL-013#T006",
    "call_id": "CALL-013",
    "company": "Halberd Security",
@@ -349,33 +332,72 @@
    "role": "Customer Success Manager",
    "ts": "00:24",
    "quote": "You're renewing in November, usage is healthy, six builders all active, error rate under one percent, and the only change is a seven percent standard uplift.",
-   "context": "Renewal is in November and usage is healthy: six builders all active with error rate under one percent; the only change is a seven percent standard uplift. \u2014 Vendor (Ruth) framing of the renewal; positive adoption signal, stated by OrbitFlow staff rather than the customer.",
+   "context": "Customer confirmed the renewal is straightforward and fine; usage healthy with six builders active and only a seven percent standard uplift. \u2014 Renewal in November; vendor stated usage metrics and Grace accepted the seven percent uplift as not worth more time. Low churn signal.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F19",
+   "turn_id": "CALL-013#T009",
+   "call_id": "CALL-013",
+   "company": "Halberd Security",
+   "speaker": "Grace Okonkwo",
+   "side": "customer",
+   "role": "Chief Information Security Officer",
+   "ts": "00:40",
+   "quote": "Seven percent on a number that size is not worth an hour of my life.",
+   "context": "Customer said the seven percent uplift is acceptable and the renewal is fine. \u2014 Customer acceptance of price change; no pricing objection raised.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F20",
+   "turn_id": "CALL-013#T147",
+   "call_id": "CALL-013",
+   "company": "Halberd Security",
+   "speaker": "Ruth Adeyemi",
+   "side": "vendor",
+   "role": "Customer Success Manager",
+   "ts": "14:56",
+   "quote": "Renewal is agreed subject to papers \u2014 seven percent, no other changes, AI consumption estimate included.",
+   "context": "Renewal agreed subject to papers at seven percent with no other changes; AI consumption estimate to be included. \u2014 Vendor summary at close; customer confirmed it as accurate. Supports a likely renewal, conditional on written papers.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F21",
+   "turn_id": "CALL-013#T097",
+   "call_id": "CALL-013",
+   "company": "Halberd Security",
+   "speaker": "Ruth Adeyemi",
+   "side": "vendor",
+   "role": "Customer Success Manager",
+   "ts": "10:01",
+   "quote": "For four hundred incidents a month it's not material. I'll put a number on it so nobody's surprised, but I don't think it changes your renewal.",
+   "context": "Customer raised a concern that the consumption element of AI usage may add cost; vendor said it is not material at current volume and does not change renewal. \u2014 Possible cost friction on AI consumption; vendor reassured and promised a number in the renewal papers.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F22",
-   "turn_id": "CALL-013#T055",
+   "turn_id": "CALL-013#T098",
    "call_id": "CALL-013",
    "company": "Halberd Security",
-   "speaker": "Tobias Lund",
+   "speaker": "Grace Okonkwo",
    "side": "customer",
-   "role": "VP Service Delivery",
-   "ts": "05:50",
-   "quote": "Fifteen minutes times about four hundred incidents a month.",
-   "context": "Customer names a concrete AI use case with significant volume (about 400 incidents a month, roughly fifteen minutes saved each), which supports adoption and expansion. \u2014 Customer-quantified value; vendor (Nina) advised testing on fifty historical incidents before relying on the estimate.",
+   "role": "Chief Information Security Officer",
+   "ts": "10:12",
+   "quote": "Put the number in anyway.",
+   "context": "Customer asked for the AI consumption number explicitly to avoid surprises; wants cost visibility. \u2014 Customer wants the number included despite vendor saying immaterial.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F23",
-   "turn_id": "CALL-013#T164",
+   "turn_id": "CALL-013#T090",
    "call_id": "CALL-013",
    "company": "Halberd Security",
-   "speaker": "Tobias Lund",
+   "speaker": "Grace Okonkwo",
    "side": "customer",
-   "role": "VP Service Delivery",
-   "ts": "16:34",
-   "quote": "We used to take eleven days to bring a new managed detection client live and now it's four.",
-   "context": "Customer says the onboarding workflow has been the best outcome, cutting managed detection client go-live from eleven days to four and making it consistent. \u2014 Positive value realization; customer-reported success.",
+   "role": "Chief Information Security Officer",
+   "ts": "09:23",
+   "quote": "Right. I'm supportive, subject to the four written answers.",
+   "context": "Customer is conditionally supportive of expansion (AI use), subject to written answers and a fifty-incident test; open items may delay expansion but not renewal. \u2014 Expansion risk: AI rollout gated on five written answers and a two-week test. Not a churn signal per se.",
    "stated_or_inferred": "stated"
   },
   {
@@ -388,132 +410,72 @@
    "role": "Chief Information Security Officer",
    "ts": "17:11",
    "quote": "It's not a criticism of the product. It's a criticism of us, and slightly of you for not mentioning it eighteen months ago.",
-   "context": "Customer is frustrated that they had no change control on production and did not know version history existed after eighteen months; this is framed as a criticism of their own team and slightly of OrbitFlow for not raising it. \u2014 Dissatisfaction, but directed mostly at Halberd's own process; the vendor acknowledged it.",
+   "context": "Vendor's governance remark about no change control was received with discomfort; customer frustration directed at the company's own gap rather than the product. \u2014 Customer said worst thing is lack of change control; framed as criticism of themselves and slightly of vendor for not raising it earlier. Mild friction, not product dissatisfaction.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F25",
-   "turn_id": "CALL-013#T129",
+   "turn_id": "CALL-013#T164",
    "call_id": "CALL-013",
    "company": "Halberd Security",
    "speaker": "Tobias Lund",
    "side": "customer",
    "role": "VP Service Delivery",
-   "ts": "13:05",
-   "quote": "We've had two people ask about a mobile experience.",
-   "context": "Customer raised a mobile experience gap for analysts approving from phones; the vendor said the product is not a mobile product and proposed a Teams/Slack approval workaround, which was scoped as exploratory. \u2014 Unresolved feature gap; OrbitFlow staff addressed it honestly but did not commit to a solution.",
+   "ts": "16:34",
+   "quote": "We used to take eleven days to bring a new managed detection client live and now it's four.",
+   "context": "Customer praised the client onboarding workflow as the best outcome, reducing time-to-live from eleven days to four. \u2014 Strong value signal supporting retention.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F26",
-   "turn_id": "CALL-013#T090",
+   "turn_id": "CALL-013#T172",
    "call_id": "CALL-013",
    "company": "Halberd Security",
    "speaker": "Grace Okonkwo",
    "side": "customer",
    "role": "Chief Information Security Officer",
-   "ts": "09:23",
-   "quote": "Right. I'm supportive, subject to the four written answers.",
-   "context": "Customer's CISO has conditions on AI use and wants written answers before going live; the AI enablement is contingent on those answers and a fifty-incident test, so expansion is conditional rather than certain. \u2014 Conditional commitment; outstanding vendor follow-ups on permissions, retention, model list, and subprocessor documentation.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F27",
-   "turn_id": "CALL-013#T147",
-   "call_id": "CALL-013",
-   "company": "Halberd Security",
-   "speaker": "Ruth Adeyemi",
-   "side": "vendor",
-   "role": "Customer Success Manager",
-   "ts": "14:56",
-   "quote": "Renewal is agreed subject to papers \u2014 seven percent, no other changes, AI consumption estimate included.",
-   "context": "Renewal is agreed subject to papers, with OrbitFlow to send renewal papers by Wednesday and the customer to review clause fourteen on training. \u2014 Commitment signal; the renewal is described as agreed by vendor summary, and customer confirmed the summary as accurate.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F28",
-   "turn_id": "CALL-013#T009",
-   "call_id": "CALL-013",
-   "company": "Halberd Security",
-   "speaker": "Grace Okonkwo",
-   "side": "customer",
-   "role": "Chief Information Security Officer",
-   "ts": "00:40",
-   "quote": "Seven percent on a number that size is not worth an hour of my life.",
-   "context": "Overall renewal risk appears low: the customer is calm about price, adoption is healthy, expansion is being discussed, and no cancellation threat or competitor mention appears in this call. \u2014 Inferred from the whole call; no explicit churn threat or competitor reference was found.",
+   "ts": "17:24",
+   "quote": "Good. Thank you both.",
+   "context": "Overall the call shows low churn risk: no competitor evaluation, no cancellation or downgrade statements, and cordial tone. \u2014 Inferred from absence of churn signals and positive closing tone.",
    "stated_or_inferred": "inferred"
   }
  ],
- "rejected_findings": [
-  {
-   "call_id": "CALL-012",
-   "claim": "Vendor offered a six-month renewal with re-implementation and enablement included, or non-renewal. Customer had said two weeks earlier they would have not renewed.",
-   "quote": "If I'm not enthusiastic. If you'd asked me two weeks ago I'd have said we're not renewing.",
-   "turn_ids": [
-    "T091",
-    "T151",
-    "T175"
-   ],
-   "speaker": "Graham Attwood (customer)",
-   "reason": "quote not found in cited turns"
-  },
-  {
-   "call_id": "CALL-013",
-   "claim": "Customer accepts the seven percent uplift without concern, calling it not worth an hour of effort.",
-   "quote": "That's fine. ... Seven percent on a number that size is not worth an hour of my life.",
-   "turn_ids": [
-    "T007",
-    "T009"
-   ],
-   "speaker": "Grace Okonkwo",
-   "reason": "quote not found in cited turns"
-  },
-  {
-   "call_id": "CALL-013",
-   "claim": "Customer describes renewal as the fastest conversation and expresses intent to turn on AI features in a controlled way, which signals expansion interest.",
-   "quote": "Now I want to turn it on, in one place, under conditions I define. ... That's acceptable. Possibly better, actually.",
-   "turn_ids": [
-    "T018",
-    "T044"
-   ],
-   "speaker": "Grace Okonkwo",
-   "reason": "quote not found in cited turns"
-  }
- ],
+ "rejected_findings": [],
  "draft": {
-  "answer": "Pinewood Insurance (CALL-012) looks most at risk of the three renewals. Usage is down, adoption is thin, the original use case is in doubt, and the customer is lukewarm, with an approaching notice deadline [C1][C2][C3][C4]. Lumen Retail Group has real grievances but strong commitment signals [C5], and Halberd Security appears low risk [C6].",
+  "answer": "Pinewood Insurance (CALL-012) looks most at risk: usage is down about 40% since March, the customer said it would not have renewed two weeks earlier, and the notice deadline is 30 September [C1][C2][C3]. Lumen Retail Group has friction but is likely to renew, and Halberd Security looks low risk [C4][C5].",
   "claims": [
    {
-    "text": "Pinewood Insurance: OrbitFlow's Ruth Adeyemi said usage has dropped about 40% since March, and six of fourteen production workflows have not run successfully in 90 days. One 'TEMP' workflow has been failing since January, with alerts going to a dead shared mailbox nobody read. The vendor said it does not proactively monitor at this tier.",
+    "text": "Pinewood Insurance: Ruth Adeyemi (vendor CSM) said usage has dropped about forty percent since March, with renewal on 29 November. Graham Attwood (Director of Operations) said that two weeks earlier he would have said they were not renewing, and that he is not enthusiastic. The vendor offered a no-renewal exit and a six-month option with enablement included, and he softened after the vendor's candour.",
     "finding_ids": [
-     "F11",
-     "F13"
+     "F8",
+     "F14"
     ]
    },
    {
-    "text": "Pinewood's adoption and ownership have collapsed. Graham Attwood inherited the account in March with about forty minutes of handover after champion Ravi left in February. Only one builder has ever built workflows, four builder licences are unused, and the sole builder has been on leave since June. A July two-person training attempt did not take.",
+    "text": "Pinewood adoption and estate problems: the champion (Ravi) left in February with about forty minutes of handover, and the vendor acknowledged its own onboarding failure. Only one builder (Ellie) ever worked, and she is on maternity leave until November, so nobody is operating the product. Six of fourteen production workflows have not run successfully in 90 days, and the vendor does not proactively monitor at this tier.",
     "finding_ids": [
+     "F9",
      "F12",
+     "F10"
+    ]
+   },
+   {
+    "text": "Pinewood commercial and strategic risks: Graham is uncertain the claims triage use case still holds, because the new claims director wants triage in Guidewire. The Enterprise tier is poorly matched to usage, and the Growth tier would drop SSO, which the customer's security standard requires, so no cheaper tier fits. The contract auto-renews unless notice is served by 30 September, a deadline the customer did not know, and Leo Grant advised serving notice. Nadia Rahman said low ticket volume can mask dissatisfaction because tickets are closed without help.",
+    "finding_ids": [
+     "F11",
+     "F13",
+     "F16",
      "F15"
     ]
    },
    {
-    "text": "Pinewood's original use case is in doubt. Attwood is unsure claims triage still holds, since the new claims director (changed in April) wants triage in Guidewire, a potential loss of half the use case. Attwood said he is not going to pretend to be enthusiastic. This sentiment finding is inferred, with the outcome described as open.",
+    "text": "Mitigating factor at Pinewood: Nadia Rahman said the product is not the problem and the failure was an internal implementation issue with one person owning it.",
     "finding_ids": [
-     "F14",
-     "F20"
-    ]
-   },
-   {
-    "text": "Pinewood faces pricing and timing pressure. The customer pays for Enterprise but uses little of it, and the vendor said Enterprise is likely not worth it. A downgrade to Growth would lose SSO, which security requires (Nadia Rahman). The contract auto-renews with 60 days' notice, so the deadline is 30 September, which the customer was unaware of (Leo Grant). Rahman also said tickets met SLA but were unhelpful, so she raises fewer tickets and low volume may hide dissatisfaction.",
-    "finding_ids": [
-     "F16",
-     "F18",
      "F17"
     ]
    },
    {
-    "text": "Lumen Retail Group has real grievances. SAP connector resolution has been terrible, with a ticket open 19 days in July and sitting 11 days; Ruth Adeyemi gave a named engineer contact but no resolution SLA (Devan Shah said the contact is more useful than a promise). The customer exceeded contracted runs in four of six months (June 22% over) and was frustrated by a March retry-storm overage of about 20,000 runs. Four of nine builders are dormant and seats are being cut to seven. Even so, Fiona Bright said depot exception routing is the core reason to stay, Shah values the run history, and the customer agreed to a supplier-onboarding visibility phase. It was relieved by a 7% uplift (it expected 15%) but needs finance director sign-off, with a decision expected the week of the fifteenth and expiry on 18 October.",
+    "text": "Lumen Retail Group has friction but appears likely to renew. Devan Shah complained of poor SAP connector resolution times (a ticket open for days), and Maya Chen (vendor) said resolution-time commitments are not offered. Run volume exceeded the tier in four of six months, and a March retry storm cost about 20,000 runs. Fiona Bright was relieved by the 7% uplift (about 9% total with a seat reduction to seven) and called depot exception routing the key value. Finance director approval is needed, and she said the decision will not slip past the 18 October expiry.",
     "finding_ids": [
      "F1",
      "F2",
@@ -521,69 +483,60 @@
      "F4",
      "F5",
      "F6",
-     "F7",
-     "F9",
-     "F10",
-     "F8"
+     "F7"
     ]
    },
    {
-    "text": "Halberd Security appears low risk. Ruth Adeyemi described usage as healthy (six active builders, error rate under 1%) with only a 7% uplift. Renewal was agreed subject to papers, with clause fourteen on training to be reviewed. Tobias Lund cited onboarding go-live cut from 11 days to 4. Residual items are conditional AI expansion pending CISO Grace Okonkwo's four written answers, an unresolved mobile gap, and a change-control complaint aimed mostly at the customer's own team. The low-risk overall view is inferred.",
+    "text": "Halberd Security looks low risk: Grace Okonkwo accepted the 7% uplift, and renewal was agreed subject to papers with no other changes and an AI consumption estimate included. Open items (AI expansion conditions, her request for the AI consumption number) may delay expansion but not renewal. The call-level low-risk read is inferred.",
     "finding_ids": [
-     "F21",
-     "F27",
+     "F18",
+     "F19",
+     "F20",
+     "F22",
      "F23",
-     "F26",
-     "F25",
-     "F24",
-     "F28"
-    ]
-   },
-   {
-    "text": "Pinewood's stakeholders offer a counterpoint: Nadia Rahman said the product is not the problem and that the issue is bad implementation and single-person ownership, which may mean the account is recoverable.",
-    "finding_ids": [
-     "F19"
+     "F26"
     ]
    }
   ],
   "conflicts": [
    {
-    "topic": "Pinewood: product vs. implementation as the cause",
-    "description": "Rahman says the product is not the problem and the issue is implementation and ownership, while Attwood questions whether the original claims-triage use case still holds and is not enthusiastic.",
+    "topic": "Pinewood cause of risk",
+    "description": "Nadia Rahman blames internal implementation rather than the product, whereas the vendor acknowledged its own onboarding failure and lack of monitoring, and Graham Attwood cited a competing platform preference (Guidewire) and had been leaning toward not renewing.",
     "finding_ids": [
-     "F19",
-     "F14",
-     "F20"
+     "F17",
+     "F9",
+     "F10",
+     "F11",
+     "F14"
     ]
    }
   ],
   "not_covered": [
-   "No finding gives a quantified churn probability or an explicit cancellation threat for any of the three accounts.",
-   "Contract values or revenue at stake for each renewal are not stated."
+   "Whether Pinewood served notice by 30 September or its final renewal decision",
+   "Whether the Lumen finance director approved the renewal"
   ],
   "assumptions": [
-   "Renewal means the three Renewal-type calls (CALL-011, CALL-012, CALL-013).",
-   "Relative risk is judged by comparing signals across those calls."
+   "Renewal means the three Renewal-type calls: CALL-011, CALL-012 and CALL-013."
   ]
  },
  "usage": {
   "llm_calls": 6,
-  "input_tokens": 45357,
-  "cache_read_tokens": 32144,
+  "input_tokens": 44479,
+  "cache_read_tokens": 32136,
   "cache_write_tokens": 0,
-  "output_tokens": 9191,
-  "uncached_calls": 6,
-  "latency_s": 32.2
+  "output_tokens": 6800,
+  "uncached_calls": 1,
+  "latency_s": 4.19
  },
  "answer": {
   "question": "Which renewal looks most at risk, and why?",
-  "answer": "Pinewood Insurance (CALL-012) looks most at risk of the three renewals. Usage is down, adoption is thin, the original use case is in doubt, and the customer is lukewarm, with an approaching notice deadline [1][2][3][4]. Lumen Retail Group has real grievances but strong commitment signals [5], and Halberd Security appears low risk [6].",
+  "answer": "Pinewood Insurance (CALL-012) looks most at risk: usage is down about 40% since March, the customer said it would not have renewed two weeks earlier, and the notice deadline is 30 September [1][2][3]. Lumen Retail Group has friction but is likely to renew, and Halberd Security looks low risk [4][5].",
   "claims": [
    {
-    "text": "Pinewood Insurance: OrbitFlow's Ruth Adeyemi said usage has dropped about 40% since March, and six of fourteen production workflows have not run successfully in 90 days. One 'TEMP' workflow has been failing since January, with alerts going to a dead shared mailbox nobody read. The vendor said it does not proactively monitor at this tier.",
+    "text": "Pinewood Insurance: Ruth Adeyemi (vendor CSM) said usage has dropped about forty percent since March, with renewal on 29 November. Graham Attwood (Director of Operations) said that two weeks earlier he would have said they were not renewing, and that he is not enthusiastic. The vendor offered a no-renewal exit and a six-month option with enablement included, and he softened after the vendor's candour.",
     "evidence": [
      {
-      "finding_id": "F11",
+      "finding_id": "F8",
       "turn_id": "CALL-012#T005",
       "call_id": "CALL-012",
       "company": "Pinewood Insurance",
@@ -591,31 +544,31 @@
       "side": "vendor",
       "role": "Customer Success Manager",
       "ts": "00:17",
-      "quote": "Usage has dropped about forty percent since March.",
-      "context": "Usage has dropped about forty percent since March, per OrbitFlow's Ruth Adeyemi, and she raised the renewal and dissatisfaction concern directly. \u2014 Vendor framing of renewal risk; opens the call. Vendor-stated usage figure.",
+      "quote": "Your renewal's on the twenty-ninth of November. Usage has dropped about forty percent since March.",
+      "context": "Usage has dropped about forty percent since March and the renewal is on 29 November; Ruth raised the at-risk concern directly. \u2014 Vendor CSM opening framing of the renewal risk",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F13",
-      "turn_id": "CALL-012#T022",
+      "finding_id": "F14",
+      "turn_id": "CALL-012#T175",
       "call_id": "CALL-012",
       "company": "Pinewood Insurance",
-      "speaker": "Ruth Adeyemi",
-      "side": "vendor",
-      "role": "Customer Success Manager",
-      "ts": "01:58",
-      "quote": "Six of them haven't run successfully in the last ninety days.",
-      "context": "Six of fourteen production workflows have not run successfully in 90 days, and one 'TEMP' workflow has been failing since January with alerts going to a dead shared mailbox nobody read. \u2014 Unresolved technical issues; vendor says it does not proactively monitor at this tier.",
+      "speaker": "Graham Attwood",
+      "side": "customer",
+      "role": "Director of Operations",
+      "ts": "18:42",
+      "quote": "I'm not going to pretend I'm enthusiastic. If you'd asked me two weeks ago I'd have said we're not renewing.",
+      "context": "Customer is considering not renewing; vendor offered a no-renewal exit and a six-month option with enablement included, and the customer said they would otherwise have not renewed two weeks earlier. \u2014 Explicit churn signal and retention offer; customer softened after vendor candour",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "Pinewood's adoption and ownership have collapsed. Graham Attwood inherited the account in March with about forty minutes of handover after champion Ravi left in February. Only one builder has ever built workflows, four builder licences are unused, and the sole builder has been on leave since June. A July two-person training attempt did not take.",
+    "text": "Pinewood adoption and estate problems: the champion (Ravi) left in February with about forty minutes of handover, and the vendor acknowledged its own onboarding failure. Only one builder (Ellie) ever worked, and she is on maternity leave until November, so nobody is operating the product. Six of fourteen production workflows have not run successfully in 90 days, and the vendor does not proactively monitor at this tier.",
     "evidence": [
      {
-      "finding_id": "F12",
+      "finding_id": "F9",
       "turn_id": "CALL-012#T009",
       "call_id": "CALL-012",
       "company": "Pinewood Insurance",
@@ -623,12 +576,12 @@
       "side": "customer",
       "role": "Director of Operations",
       "ts": "00:50",
-      "quote": "I inherited this. Ravi bought it, Ravi implemented it, Ravi left in February, and I picked it up in March with about forty minutes of handover.",
-      "context": "Customer says the account was inherited with minimal handover after the original champion left, and the customer's own team owns the gap. \u2014 Stakeholder change driving adoption problems; vendor acknowledged failure to re-onboard.",
+      "quote": "Ravi bought it, Ravi implemented it, Ravi left in February, and I picked it up in March with about forty minutes of handover.",
+      "context": "Customer inherited the product after the champion left with only forty minutes of handover; the vendor acknowledged its own onboarding failure. \u2014 Adoption root cause; vendor accepted fault",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F15",
+      "finding_id": "F12",
       "turn_id": "CALL-012#T053",
       "call_id": "CALL-012",
       "company": "Pinewood Insurance",
@@ -636,18 +589,31 @@
       "side": "customer",
       "role": "Director of Operations",
       "ts": "05:18",
-      "quote": "Nobody's building anything. We've got four builder licences. One person uses it.",
-      "context": "Only one builder has ever built workflows; four builder licences are paid for but unused, and the sole builder has been on leave since June. Two-person training attempt in July did not take. \u2014 Low adoption and bus-factor risk; vendor agreed enablement is its responsibility.",
+      "quote": "One person uses it. She's brilliant, she's called Ellie, and she's been on maternity leave since June.",
+      "context": "Only one builder ever worked; the other builders attempted training but it did not take, and the sole builder is on leave until November, so nobody is operating the product. \u2014 Adoption and bus-factor risk",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F10",
+      "turn_id": "CALL-012#T033",
+      "call_id": "CALL-012",
+      "company": "Pinewood Insurance",
+      "speaker": "Ruth Adeyemi",
+      "side": "vendor",
+      "role": "Customer Success Manager",
+      "ts": "03:10",
+      "quote": "I'd rather tell you that plainly than imply we're watching when we aren't.",
+      "context": "Six of fourteen production workflows have not run successfully in 90 days, including a temp workflow failing every four hours since January with alerts going to an unread mailbox; vendor does not proactively monitor at this tier. \u2014 Estate health and unresolved failures; vendor admitted gap",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "moderate"
    },
    {
-    "text": "Pinewood's original use case is in doubt. Attwood is unsure claims triage still holds, since the new claims director (changed in April) wants triage in Guidewire, a potential loss of half the use case. Attwood said he is not going to pretend to be enthusiastic. This sentiment finding is inferred, with the outcome described as open.",
+    "text": "Pinewood commercial and strategic risks: Graham is uncertain the claims triage use case still holds, because the new claims director wants triage in Guidewire. The Enterprise tier is poorly matched to usage, and the Growth tier would drop SSO, which the customer's security standard requires, so no cheaper tier fits. The contract auto-renews unless notice is served by 30 September, a deadline the customer did not know, and Leo Grant advised serving notice. Nadia Rahman said low ticket volume can mask dissatisfaction because tickets are closed without help.",
     "evidence": [
      {
-      "finding_id": "F14",
+      "finding_id": "F11",
       "turn_id": "CALL-012#T041",
       "call_id": "CALL-012",
       "company": "Pinewood Insurance",
@@ -656,43 +622,24 @@
       "role": "Director of Operations",
       "ts": "03:56",
       "quote": "I don't know. That's the honest answer. The claims director changed in April and the new one has a different view about where triage should happen.",
-      "context": "Customer is unsure the original reason for buying (claims triage) still holds; the new claims director wants triage in Guidewire, a potential loss of half the use case. \u2014 Competitor/alternative platform pressure and stakeholder change.",
+      "context": "Customer is uncertain whether the claims triage reason for buying still holds, as the claims director wants triage moved into Guidewire; the cross-system build is not native. \u2014 Core use case at risk; competitor-platform alternative (Guidewire) favoured internally",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F20",
-      "turn_id": "CALL-012#T175",
+      "finding_id": "F13",
+      "turn_id": "CALL-012#T071",
       "call_id": "CALL-012",
       "company": "Pinewood Insurance",
-      "speaker": "Graham Attwood",
-      "side": "customer",
-      "role": "Director of Operations",
-      "ts": "18:42",
-      "quote": "I'm not going to pretend I'm enthusiastic.",
-      "context": "Graham's stated renewal sentiment is not enthusiastic; he says he is not pretending to be enthusiastic and that the outcome is open. \u2014 Overall commitment signal, mixed: no explicit cancel threat but low enthusiasm.",
-      "stated_or_inferred": "inferred"
-     }
-    ],
-    "support": "moderate"
-   },
-   {
-    "text": "Pinewood faces pricing and timing pressure. The customer pays for Enterprise but uses little of it, and the vendor said Enterprise is likely not worth it. A downgrade to Growth would lose SSO, which security requires (Nadia Rahman). The contract auto-renews with 60 days' notice, so the deadline is 30 September, which the customer was unaware of (Leo Grant). Rahman also said tickets met SLA but were unhelpful, so she raises fewer tickets and low volume may hide dissatisfaction.",
-    "evidence": [
+      "speaker": "Leo Grant",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "06:55",
+      "quote": "Looking at what you're actually using, I'm not sure you should be.",
+      "context": "Vendor's Enterprise tier is poorly matched to usage; the Growth tier would drop SSO, which the customer's security standard requires, so no cheaper tier fits. \u2014 Pricing/tier pressure; vendor flagged overspend",
+      "stated_or_inferred": "stated"
+     },
      {
       "finding_id": "F16",
-      "turn_id": "CALL-012#T082",
-      "call_id": "CALL-012",
-      "company": "Pinewood Insurance",
-      "speaker": "Nadia Rahman",
-      "side": "customer",
-      "role": "IT Service Owner",
-      "ts": "08:16",
-      "quote": "Our security standard requires SSO for anything holding claims data.",
-      "context": "Customer is paying for Enterprise tier but using very little of it; the vendor says Enterprise is likely not worth it and Growth tier would lose SSO, which security requires. \u2014 Budget/pricing pressure; Growth downgrade not viable due to SSO requirement.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F18",
       "turn_id": "CALL-012#T115",
       "call_id": "CALL-012",
       "company": "Pinewood Insurance",
@@ -701,27 +648,46 @@
       "role": "Account Executive",
       "ts": "12:38",
       "quote": "Your current contract auto-renews with sixty days' notice, which means your notice deadline is the thirtieth of September.",
-      "context": "Current contract auto-renews with 60 days' notice, so the notice deadline is 30 September; customer was unaware and must serve notice to keep options open. \u2014 Renewal mechanics creating a time-bound risk; vendor disclosed it.",
+      "context": "Customer's current contract auto-renews unless notice is served by 30 September, a deadline the customer did not know; vendor advised serving notice. \u2014 Renewal terms and timing risk; vendor surfaced it proactively",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F17",
-      "turn_id": "CALL-012#T139",
+      "finding_id": "F15",
+      "turn_id": "CALL-012#T141",
       "call_id": "CALL-012",
       "company": "Pinewood Insurance",
       "speaker": "Nadia Rahman",
       "side": "customer",
       "role": "IT Service Owner",
-      "ts": "14:52",
-      "quote": "it's the kind of thing that means I don't raise tickets any more, and then you look at the data and conclude we're happy.",
-      "context": "Customer says support tickets were answered within SLA but responses were unhelpful, so they raise fewer tickets; low ticket volume may hide dissatisfaction. \u2014 Unresolved support complaint; vendor acknowledged it.",
+      "ts": "15:09",
+      "quote": "Low ticket volume can mean two things.",
+      "context": "Support tickets are closed by customer without help and responses are within SLA but unhelpful, so low ticket volume may mask dissatisfaction; vendor agreed to be more careful with that metric. \u2014 Unresolved support complaint; customer says they stopped raising tickets",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Mitigating factor at Pinewood: Nadia Rahman said the product is not the problem and the failure was an internal implementation issue with one person owning it.",
+    "evidence": [
+     {
+      "finding_id": "F17",
+      "turn_id": "CALL-012#T180",
+      "call_id": "CALL-012",
+      "company": "Pinewood Insurance",
+      "speaker": "Nadia Rahman",
+      "side": "customer",
+      "role": "IT Service Owner",
+      "ts": "19:22",
+      "quote": "I don't think the product is the problem. I think we implemented it badly, one person owned it",
+      "context": "Customer's own view is that the product is not the problem and the failure is an internal implementation issue, which is a mitigating factor for retention. \u2014 Counterweight to churn risk; attributes problem to Pinewood",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "Lumen Retail Group has real grievances. SAP connector resolution has been terrible, with a ticket open 19 days in July and sitting 11 days; Ruth Adeyemi gave a named engineer contact but no resolution SLA (Devan Shah said the contact is more useful than a promise). The customer exceeded contracted runs in four of six months (June 22% over) and was frustrated by a March retry-storm overage of about 20,000 runs. Four of nine builders are dormant and seats are being cut to seven. Even so, Fiona Bright said depot exception routing is the core reason to stay, Shah values the run history, and the customer agreed to a supplier-onboarding visibility phase. It was relieved by a 7% uplift (it expected 15%) but needs finance director sign-off, with a decision expected the week of the fifteenth and expiry on 18 October.",
+    "text": "Lumen Retail Group has friction but appears likely to renew. Devan Shah complained of poor SAP connector resolution times (a ticket open for days), and Maya Chen (vendor) said resolution-time commitments are not offered. Run volume exceeded the tier in four of six months, and a March retry storm cost about 20,000 runs. Fiona Bright was relieved by the 7% uplift (about 9% total with a seat reduction to seven) and called depot exception routing the key value. Finance director approval is needed, and she said the decision will not slip past the 18 October expiry.",
     "evidence": [
      {
       "finding_id": "F1",
@@ -733,50 +699,24 @@
       "role": "Platform Manager",
       "ts": "12:17",
       "quote": "Resolution times on anything involving the SAP connector have been terrible. We had a ticket open for nineteen days in July.",
-      "context": "Customer reports SAP connector resolution times have been terrible; a ticket sat for eleven days after a nineteen-day open period in July. \u2014 Unresolved support issue (resolution time, not response time); vendor acknowledged and offered a named escalation contact but no resolution SLA.",
+      "context": "Customer reports SAP connector ticket resolution has been terrible; a ticket sat for eleven days and fell between teams. Vendor acknowledged, offered a named escalation contact but no resolution SLA. \u2014 Unresolved support issue (resolution times, not response times); vendor partially responded with named engineer, declined SLA",
       "stated_or_inferred": "stated"
      },
      {
       "finding_id": "F2",
-      "turn_id": "CALL-011#T120",
+      "turn_id": "CALL-011#T125",
       "call_id": "CALL-011",
       "company": "Lumen Retail Group",
-      "speaker": "Ruth Adeyemi",
+      "speaker": "Maya Chen",
       "side": "vendor",
-      "role": "Customer Success Manager",
-      "ts": "12:41",
-      "quote": "It sat for eleven days and there's no good explanation.",
-      "context": "Vendor admitted the SAP ticket fell between teams and offered a named engineer escalation contact, but declined to promise a resolution SLA. \u2014 OrbitFlow staff addressed the issue; no resolution commitment given.",
+      "role": "Account Executive",
+      "ts": "13:26",
+      "quote": "Resolution-time commitments are a different thing and we don't do them.",
+      "context": "Customer asked whether the SAP escalation issue could be addressed in the contract; vendor said resolution-time commitments are not offered. \u2014 Vendor declined contractual resolution commitment; customer noted it",
       "stated_or_inferred": "stated"
      },
      {
       "finding_id": "F3",
-      "turn_id": "CALL-011#T123",
-      "call_id": "CALL-011",
-      "company": "Lumen Retail Group",
-      "speaker": "Devan Shah",
-      "side": "customer",
-      "role": "Platform Manager",
-      "ts": "13:16",
-      "quote": "The named contact is more useful than a promise, honestly.",
-      "context": "Customer's platform manager says the named contact is more useful than a promise, but the issue remains a grievance. \u2014 Mild acceptance of vendor response; underlying dissatisfaction persists.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F4",
-      "turn_id": "CALL-011#T021",
-      "call_id": "CALL-011",
-      "company": "Lumen Retail Group",
-      "speaker": "Ruth Adeyemi",
-      "side": "vendor",
-      "role": "Customer Success Manager",
-      "ts": "02:03",
-      "quote": "You've exceeded your contracted run volume in four of the last six months. June was twenty-two percent over.",
-      "context": "Customer is running over contracted run volume and the run tier is inadequate; June was 22% over and four of six months exceeded. \u2014 Usage pressure; vendor agreed the tier is wrong and proposed moving to 400k runs.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F5",
       "turn_id": "CALL-011#T032",
       "call_id": "CALL-011",
       "company": "Lumen Retail Group",
@@ -784,21 +724,47 @@
       "side": "customer",
       "role": "Platform Manager",
       "ts": "03:08",
-      "quote": "From our side we did nothing wrong and it cost us twenty thousand runs.",
-      "context": "March retry-storm overage (about 20,000 runs) was a point of frustration; customer felt it was not their fault and questioned what OrbitFlow changed. \u2014 Vendor partly attributed to configuration; vendor admitted it should have addressed this in April; retry-config session booked.",
+      "quote": "Because from our side we did nothing wrong and it cost us twenty thousand runs.",
+      "context": "Run volume exceeded contracted tier in four of six months, and the March retry storm cost the customer about 20,000 runs; customer questioned whether it would recur. Vendor said retry configuration is partly the customer's responsibility and scheduled a session. \u2014 Overage/cost friction; vendor took partial responsibility and committed to a configuration session",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F4",
+      "turn_id": "CALL-011#T046",
+      "call_id": "CALL-011",
+      "company": "Lumen Retail Group",
+      "speaker": "Fiona Bright",
+      "side": "customer",
+      "role": "Head of Retail Operations",
+      "ts": "04:57",
+      "quote": "That's \u2014 okay. That's a more sensible conversation than I was braced for.",
+      "context": "Customer says nine licensed builders with four dormant is a problem; vendor proposed reducing to seven seats, which the customer accepted as more reasonable than expected. \u2014 Seat reduction is a downgrade signal; framed by vendor as a genuine reduction, not an upsell",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F5",
+      "turn_id": "CALL-011#T095",
+      "call_id": "CALL-011",
+      "company": "Lumen Retail Group",
+      "speaker": "Fiona Bright",
+      "side": "customer",
+      "role": "Head of Retail Operations",
+      "ts": "10:04",
+      "quote": "Nine percent for forty percent more capacity and a new use case.",
+      "context": "Customer expected a 15% uplift and was relieved by the 7% list uplift; total projected to rise about 9% with seat reduction and a 400k tier. \u2014 Pricing pressure; customer relieved relative to expectation, but finance review required",
       "stated_or_inferred": "stated"
      },
      {
       "finding_id": "F6",
-      "turn_id": "CALL-011#T040",
+      "turn_id": "CALL-011#T181",
       "call_id": "CALL-011",
       "company": "Lumen Retail Group",
-      "speaker": "Ruth Adeyemi",
-      "side": "vendor",
-      "role": "Customer Success Manager",
-      "ts": "04:12",
-      "quote": "You've got nine builders licensed and four of them haven't published anything in six months.",
-      "context": "Nine licensed builders with four dormant; customer's seat count is being reduced to seven, which is a renewal scrutiny risk and a reduction in spend. \u2014 Adoption weakness; vendor addressed it by proposing seven active seats; customer questioned the reduction.",
+      "speaker": "Fiona Bright",
+      "side": "customer",
+      "role": "Head of Retail Operations",
+      "ts": "19:24",
+      "quote": "It won't slip.",
+      "context": "Renewal decision will go through a finance director; customer will return the week of the fifteenth and expects it not to slip past the eighteenth October expiry. \u2014 Stakeholder approval process and timeline; short six-week window",
       "stated_or_inferred": "stated"
      },
      {
@@ -811,56 +777,17 @@
       "role": "Head of Retail Operations",
       "ts": "19:39",
       "quote": "The depot exception routing. Without question. Everything else we could go back to doing the old way and survive.",
-      "context": "Customer expressed strong positive value on the depot exceptions workflow, which is the core reason to stay. \u2014 Strong commitment signal; the depot exceptions routing would be painful to lose.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F9",
-      "turn_id": "CALL-011#T188",
-      "call_id": "CALL-011",
-      "company": "Lumen Retail Group",
-      "speaker": "Devan Shah",
-      "side": "customer",
-      "role": "Platform Manager",
-      "ts": "20:04",
-      "quote": "Because when something breaks I can answer the question in four minutes instead of half a day.",
-      "context": "Customer positive about run history and quality of life from the platform; supports continued use. \u2014 Value signal from platform manager.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F10",
-      "turn_id": "CALL-011#T071",
-      "call_id": "CALL-011",
-      "company": "Lumen Retail Group",
-      "speaker": "Fiona Bright",
-      "side": "customer",
-      "role": "Head of Retail Operations",
-      "ts": "07:31",
-      "quote": "Yes. Let's do that.",
-      "context": "Customer intends to expand into supplier onboarding and agreed to a visibility phase; expansion signals commitment. \u2014 Positive expansion signal; contingent on instrumentation decision before Christmas.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F8",
-      "turn_id": "CALL-011#T048",
-      "call_id": "CALL-011",
-      "company": "Lumen Retail Group",
-      "speaker": "Fiona Bright",
-      "side": "customer",
-      "role": "Head of Retail Operations",
-      "ts": "05:06",
-      "quote": "Braced for \"here's a fifteen percent uplift, sign here.\"",
-      "context": "Customer finance review and price sensitivity: customer expected a 15% uplift and was relieved by 7%; needs finance director sign-off with clear line items, decision expected week of the fifteenth. \u2014 Budget pressure; vendor committed to itemised proposal by Friday; renewal expires 18 October.",
+      "context": "Customer is strongly positive about core value (depot exception routing and run history), which suggests low churn intent despite friction points. \u2014 Counterweight to risk: value is high and embedded in operations",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "moderate"
    },
    {
-    "text": "Halberd Security appears low risk. Ruth Adeyemi described usage as healthy (six active builders, error rate under 1%) with only a 7% uplift. Renewal was agreed subject to papers, with clause fourteen on training to be reviewed. Tobias Lund cited onboarding go-live cut from 11 days to 4. Residual items are conditional AI expansion pending CISO Grace Okonkwo's four written answers, an unresolved mobile gap, and a change-control complaint aimed mostly at the customer's own team. The low-risk overall view is inferred.",
+    "text": "Halberd Security looks low risk: Grace Okonkwo accepted the 7% uplift, and renewal was agreed subject to papers with no other changes and an AI consumption estimate included. Open items (AI expansion conditions, her request for the AI consumption number) may delay expansion but not renewal. The call-level low-risk read is inferred.",
     "evidence": [
      {
-      "finding_id": "F21",
+      "finding_id": "F18",
       "turn_id": "CALL-013#T006",
       "call_id": "CALL-013",
       "company": "Halberd Security",
@@ -869,76 +796,11 @@
       "role": "Customer Success Manager",
       "ts": "00:24",
       "quote": "You're renewing in November, usage is healthy, six builders all active, error rate under one percent, and the only change is a seven percent standard uplift.",
-      "context": "Renewal is in November and usage is healthy: six builders all active with error rate under one percent; the only change is a seven percent standard uplift. \u2014 Vendor (Ruth) framing of the renewal; positive adoption signal, stated by OrbitFlow staff rather than the customer.",
+      "context": "Customer confirmed the renewal is straightforward and fine; usage healthy with six builders active and only a seven percent standard uplift. \u2014 Renewal in November; vendor stated usage metrics and Grace accepted the seven percent uplift as not worth more time. Low churn signal.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F27",
-      "turn_id": "CALL-013#T147",
-      "call_id": "CALL-013",
-      "company": "Halberd Security",
-      "speaker": "Ruth Adeyemi",
-      "side": "vendor",
-      "role": "Customer Success Manager",
-      "ts": "14:56",
-      "quote": "Renewal is agreed subject to papers \u2014 seven percent, no other changes, AI consumption estimate included.",
-      "context": "Renewal is agreed subject to papers, with OrbitFlow to send renewal papers by Wednesday and the customer to review clause fourteen on training. \u2014 Commitment signal; the renewal is described as agreed by vendor summary, and customer confirmed the summary as accurate.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F23",
-      "turn_id": "CALL-013#T164",
-      "call_id": "CALL-013",
-      "company": "Halberd Security",
-      "speaker": "Tobias Lund",
-      "side": "customer",
-      "role": "VP Service Delivery",
-      "ts": "16:34",
-      "quote": "We used to take eleven days to bring a new managed detection client live and now it's four.",
-      "context": "Customer says the onboarding workflow has been the best outcome, cutting managed detection client go-live from eleven days to four and making it consistent. \u2014 Positive value realization; customer-reported success.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F26",
-      "turn_id": "CALL-013#T090",
-      "call_id": "CALL-013",
-      "company": "Halberd Security",
-      "speaker": "Grace Okonkwo",
-      "side": "customer",
-      "role": "Chief Information Security Officer",
-      "ts": "09:23",
-      "quote": "Right. I'm supportive, subject to the four written answers.",
-      "context": "Customer's CISO has conditions on AI use and wants written answers before going live; the AI enablement is contingent on those answers and a fifty-incident test, so expansion is conditional rather than certain. \u2014 Conditional commitment; outstanding vendor follow-ups on permissions, retention, model list, and subprocessor documentation.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F25",
-      "turn_id": "CALL-013#T129",
-      "call_id": "CALL-013",
-      "company": "Halberd Security",
-      "speaker": "Tobias Lund",
-      "side": "customer",
-      "role": "VP Service Delivery",
-      "ts": "13:05",
-      "quote": "We've had two people ask about a mobile experience.",
-      "context": "Customer raised a mobile experience gap for analysts approving from phones; the vendor said the product is not a mobile product and proposed a Teams/Slack approval workaround, which was scoped as exploratory. \u2014 Unresolved feature gap; OrbitFlow staff addressed it honestly but did not commit to a solution.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F24",
-      "turn_id": "CALL-013#T170",
-      "call_id": "CALL-013",
-      "company": "Halberd Security",
-      "speaker": "Grace Okonkwo",
-      "side": "customer",
-      "role": "Chief Information Security Officer",
-      "ts": "17:11",
-      "quote": "It's not a criticism of the product. It's a criticism of us, and slightly of you for not mentioning it eighteen months ago.",
-      "context": "Customer is frustrated that they had no change control on production and did not know version history existed after eighteen months; this is framed as a criticism of their own team and slightly of OrbitFlow for not raising it. \u2014 Dissatisfaction, but directed mostly at Halberd's own process; the vendor acknowledged it.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F28",
+      "finding_id": "F19",
       "turn_id": "CALL-013#T009",
       "call_id": "CALL-013",
       "company": "Halberd Security",
@@ -947,52 +809,86 @@
       "role": "Chief Information Security Officer",
       "ts": "00:40",
       "quote": "Seven percent on a number that size is not worth an hour of my life.",
-      "context": "Overall renewal risk appears low: the customer is calm about price, adoption is healthy, expansion is being discussed, and no cancellation threat or competitor mention appears in this call. \u2014 Inferred from the whole call; no explicit churn threat or competitor reference was found.",
+      "context": "Customer said the seven percent uplift is acceptable and the renewal is fine. \u2014 Customer acceptance of price change; no pricing objection raised.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F20",
+      "turn_id": "CALL-013#T147",
+      "call_id": "CALL-013",
+      "company": "Halberd Security",
+      "speaker": "Ruth Adeyemi",
+      "side": "vendor",
+      "role": "Customer Success Manager",
+      "ts": "14:56",
+      "quote": "Renewal is agreed subject to papers \u2014 seven percent, no other changes, AI consumption estimate included.",
+      "context": "Renewal agreed subject to papers at seven percent with no other changes; AI consumption estimate to be included. \u2014 Vendor summary at close; customer confirmed it as accurate. Supports a likely renewal, conditional on written papers.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F22",
+      "turn_id": "CALL-013#T098",
+      "call_id": "CALL-013",
+      "company": "Halberd Security",
+      "speaker": "Grace Okonkwo",
+      "side": "customer",
+      "role": "Chief Information Security Officer",
+      "ts": "10:12",
+      "quote": "Put the number in anyway.",
+      "context": "Customer asked for the AI consumption number explicitly to avoid surprises; wants cost visibility. \u2014 Customer wants the number included despite vendor saying immaterial.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F23",
+      "turn_id": "CALL-013#T090",
+      "call_id": "CALL-013",
+      "company": "Halberd Security",
+      "speaker": "Grace Okonkwo",
+      "side": "customer",
+      "role": "Chief Information Security Officer",
+      "ts": "09:23",
+      "quote": "Right. I'm supportive, subject to the four written answers.",
+      "context": "Customer is conditionally supportive of expansion (AI use), subject to written answers and a fifty-incident test; open items may delay expansion but not renewal. \u2014 Expansion risk: AI rollout gated on five written answers and a two-week test. Not a churn signal per se.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F26",
+      "turn_id": "CALL-013#T172",
+      "call_id": "CALL-013",
+      "company": "Halberd Security",
+      "speaker": "Grace Okonkwo",
+      "side": "customer",
+      "role": "Chief Information Security Officer",
+      "ts": "17:24",
+      "quote": "Good. Thank you both.",
+      "context": "Overall the call shows low churn risk: no competitor evaluation, no cancellation or downgrade statements, and cordial tone. \u2014 Inferred from absence of churn signals and positive closing tone.",
       "stated_or_inferred": "inferred"
      }
     ],
     "support": "moderate"
-   },
-   {
-    "text": "Pinewood's stakeholders offer a counterpoint: Nadia Rahman said the product is not the problem and that the issue is bad implementation and single-person ownership, which may mean the account is recoverable.",
-    "evidence": [
-     {
-      "finding_id": "F19",
-      "turn_id": "CALL-012#T180",
-      "call_id": "CALL-012",
-      "company": "Pinewood Insurance",
-      "speaker": "Nadia Rahman",
-      "side": "customer",
-      "role": "IT Service Owner",
-      "ts": "19:22",
-      "quote": "I don't think the product is the problem. I think we implemented it badly, one person owned it",
-      "context": "Customer's stated concern is that the problem is implementation and ownership, not the product; this is a positive signal of possible commitment. \u2014 Customer-side view that contrasts with the risk picture.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
    }
   ],
   "conflicts": [
    {
-    "topic": "Pinewood: product vs. implementation as the cause",
-    "description": "Rahman says the product is not the problem and the issue is implementation and ownership, while Attwood questions whether the original claims-triage use case still holds and is not enthusiastic.",
+    "topic": "Pinewood cause of risk",
+    "description": "Nadia Rahman blames internal implementation rather than the product, whereas the vendor acknowledged its own onboarding failure and lack of monitoring, and Graham Attwood cited a competing platform preference (Guidewire) and had been leaning toward not renewing.",
     "finding_ids": [
-     "F19",
-     "F14",
-     "F20"
+     "F17",
+     "F9",
+     "F10",
+     "F11",
+     "F14"
     ]
    }
   ],
   "not_covered": [
-   "No finding gives a quantified churn probability or an explicit cancellation threat for any of the three accounts.",
-   "Contract values or revenue at stake for each renewal are not stated."
+   "Whether Pinewood served notice by 30 September or its final renewal decision",
+   "Whether the Lumen finance director approved the renewal"
   ],
   "assumptions": [
-   "'Renewal' is interpreted as the Renewal call type (CALL-011, CALL-012, CALL-013), so the comparison across renewal calls can be made from the extracted risk signals.",
-   "'Most at risk' is a judgement that must be made by comparing the extracted signals across the renewal calls, since a single call cannot show relative risk.",
-   "Renewal means the three Renewal-type calls (CALL-011, CALL-012, CALL-013).",
-   "Relative risk is judged by comparing signals across those calls."
+   "'Renewal' interpreted as the Renewal call type (CALL-011, CALL-012, CALL-013), since the question asks which renewal looks at risk.",
+   "Risk judgement must be made by comparing findings across the renewal calls, so each call is read for underlying risk signals rather than a verdict.",
+   "Renewal means the three Renewal-type calls: CALL-011, CALL-012 and CALL-013."
   ],
   "confidence": "medium",
   "calls_considered": [

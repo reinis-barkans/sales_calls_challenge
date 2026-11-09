@@ -6,7 +6,7 @@
    {
     "mention": "Northwind Traders",
     "resolved_to": null,
-    "confidence": "low"
+    "confidence": "high"
    }
   ],
   "call_types": [],
@@ -15,14 +15,12 @@
    "price",
    "cost",
    "budget",
-   "discount",
-   "fee",
-   "subscription"
+   "discount"
   ],
-  "read_instruction": "Extract every statement about pricing, cost, budget, discounts or fees made by the customer or OrbitFlow staff in this call, including the speaker and the context.",
+  "read_instruction": "Extract everything OrbitFlow staff or the prospect/customer say about pricing, price, cost, budget, or discounts, including any figures, quotes, and hedges. If the call does not involve Northwind Traders, report that no pricing discussion for them is present.",
   "assumptions": [
-   "Northwind Traders does not appear in the catalogue, so no company match was made and the search will rely on the pricing terms alone.",
-   "No call type was set because the question does not imply one."
+   "Northwind Traders does not appear in the catalogue, so no company filter is applied and the search is run across all calls for pricing content.",
+   "If Northwind Traders is not a real call subject, the answer should state that no matching call was found."
   ]
  },
  "candidates": {},
@@ -31,10 +29,10 @@
  "rejected_findings": [],
  "usage": {
   "llm_calls": 1,
-  "input_tokens": 2383,
-  "cache_read_tokens": 2359,
+  "input_tokens": 2375,
+  "cache_read_tokens": 2351,
   "cache_write_tokens": 0,
-  "output_tokens": 209,
+  "output_tokens": 413,
   "uncached_calls": 0,
   "latency_s": 0.0
  },
@@ -47,8 +45,8 @@
    "What did Northwind Traders say about pricing?"
   ],
   "assumptions": [
-   "Northwind Traders does not appear in the catalogue, so no company match was made and the search will rely on the pricing terms alone.",
-   "No call type was set because the question does not imply one."
+   "Northwind Traders does not appear in the catalogue, so no company filter is applied and the search is run across all calls for pricing content.",
+   "If Northwind Traders is not a real call subject, the answer should state that no matching call was found."
   ],
   "confidence": "none",
   "calls_considered": [],

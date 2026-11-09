@@ -10,21 +10,34 @@
    "follow-up",
    "follow up",
    "next steps",
-   "meeting booked",
-   "demo scheduled",
+   "meeting scheduled",
+   "demo booked",
    "call back",
-   "next call",
-   "agreed to meet",
-   "send proposal",
-   "trial"
+   "send over",
+   "proposal",
+   "trial",
+   "pilot"
   ],
-  "read_instruction": "Extract every explicit next step agreed or proposed at the end of the call (follow-up meeting, demo, trial, email, proposal, call back), whether it was accepted, declined, or left open, and the stated reason or interest level of the prospect. Also extract what OrbitFlow staff said or did that led to the outcome, including the pitch used, the problem discussed, the role of the contact, and any objections raised and how they were handled.",
+  "read_instruction": "Extract whether the call ended with a concrete follow-up (scheduled meeting, demo, trial, proposal sent, email or call back agreed, or none), and quote the relevant next-step statements. Also extract what the prospect said about their current situation, pain points, interest level, decision-making role, timing, and any objections or reasons for declining, plus what OrbitFlow staff offered or proposed in the call.",
   "assumptions": [
-   "Cold call question interpreted as covering calls CALL-016 to CALL-020 only.",
-   "'Successful' is not defined; treated as calls where a follow-up was agreed, so the reader should capture the outcome and the reasons so success can be compared afterwards."
+   "'Successful' is interpreted as cold calls that produced a concrete follow-up; the reader will report the follow-up status so the comparison can be made across calls.",
+   "Scope limited to Cold call type calls (CALL-016 to CALL-020)."
   ]
  },
  "candidates": {
+  "CALL-020": [
+   "call_type:Cold call",
+   "search",
+   "vector"
+  ],
+  "CALL-018": [
+   "call_type:Cold call",
+   "search"
+  ],
+  "CALL-016": [
+   "call_type:Cold call",
+   "search"
+  ],
   "CALL-019": [
    "call_type:Cold call",
    "search"
@@ -33,32 +46,18 @@
    "call_type:Cold call",
    "search",
    "vector"
-  ],
-  "CALL-018": [
-   "call_type:Cold call",
-   "facts",
-   "search"
-  ],
-  "CALL-020": [
-   "call_type:Cold call",
-   "search",
-   "vector"
-  ],
-  "CALL-016": [
-   "call_type:Cold call",
-   "search"
   ]
  },
  "search_terms": [
-  "agreed to meet",
   "call back",
-  "demo scheduled",
+  "demo booked",
   "follow up",
   "follow-up",
-  "meeting booked",
-  "next call",
+  "meeting scheduled",
   "next steps",
-  "send proposal",
+  "pilot",
+  "proposal",
+  "send over",
   "trial"
  ],
  "findings": [
@@ -71,8 +70,8 @@
    "side": "vendor",
    "role": "Account Executive",
    "ts": "01:54",
-   "quote": "I'll send one email in February with something specific about Power Automate and where it does and doesn't hold up in manufacturing. If it's useful, reply.",
-   "context": "Vendor proposed a single follow-up email in February instead of further calls, and the prospect accepted it. \u2014 Explicit next step agreed at end of call; it is an email, not a meeting, demo, or trial, and the prospect agreed only to one email.",
+   "quote": "I won't call you again this year. I'll send one email in February with something specific about Power Automate",
+   "context": "The call ended with an agreed one-email follow-up in February 2026 from OrbitFlow, with no call-back; the prospect accepted it conditionally. \u2014 Concrete next step is only an email, not a meeting, demo, or trial. Vendor promised no further calls this year; prospect agreed to one email.",
    "stated_or_inferred": "stated"
   },
   {
@@ -85,7 +84,7 @@
    "role": "Operations Director",
    "ts": "02:12",
    "quote": "February's fine. One email.",
-   "context": "Prospect accepted the February email but with a clear limit: one email only. \u2014 Acceptance is conditional and low-commitment; prospect said it was fine, not that he wanted a meeting.",
+   "context": "Prospect agreed to receive the single February email. \u2014 Acceptance of the follow-up, but it is a minimal commitment; he did not agree to a meeting.",
    "stated_or_inferred": "stated"
   },
   {
@@ -97,51 +96,12 @@
    "side": "customer",
    "role": "Operations Director",
    "ts": "00:51",
-   "quote": "It's a \"we finished an ERP migration in March and I've told everyone in this building that nobody is buying any new software this year.\"",
-   "context": "Prospect declined engagement this year because of a recent ERP migration and a company-wide freeze on new software purchases. \u2014 Stated reason for low interest; timing objection rather than a product objection.",
+   "quote": "we finished an ERP migration in March and I've told everyone in this building that nobody is buying any new software this year.",
+   "context": "Prospect is not in buying mode: a recent ERP migration (March) and a company-wide statement that no new software will be bought this year. \u2014 Primary objection and reason for declining; timing is next year at earliest.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F4",
-   "turn_id": "CALL-016#T017",
-   "call_id": "CALL-016",
-   "company": "Quarry Ridge Foods",
-   "speaker": "Dermot Kelly",
-   "side": "customer",
-   "role": "Operations Director",
-   "ts": "01:32",
-   "quote": "we've got Power Automate through our Microsoft deal, so it'd have to be pretty compelling.",
-   "context": "Prospect said the company already has Power Automate via its Microsoft deal, so any alternative would need to be compelling. \u2014 Objection about existing tooling; vendor acknowledged it as common among Microsoft shops and did not argue the point.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F5",
-   "turn_id": "CALL-016#T006",
-   "call_id": "CALL-016",
-   "company": "Quarry Ridge Foods",
-   "speaker": "Maya Chen",
-   "side": "vendor",
-   "role": "Account Executive",
-   "ts": "00:17",
-   "quote": "The specific thing we usually fix is that nobody can see where something's stuck until it's late.",
-   "context": "Vendor's pitch centred on operations teams in manufacturing where handoffs happen over email and spreadsheets and stuck work is only visible late. \u2014 Opening pitch; prospect said it 'lands' but still declined to look at anything.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F6",
-   "turn_id": "CALL-016#T017",
-   "call_id": "CALL-016",
-   "company": "Quarry Ridge Foods",
-   "speaker": "Dermot Kelly",
-   "side": "customer",
-   "role": "Operations Director",
-   "ts": "01:32",
-   "quote": "It'd be me and it'd be our IT director jointly.",
-   "context": "Prospect is not the sole owner of the workflow layer; he would share ownership with the IT director, which is the contact role relevant to any future decision. \u2014 Vendor asked who would own the workflow layer after the ERP project; the answer defines the buying group.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F7",
    "turn_id": "CALL-016#T013",
    "call_id": "CALL-016",
    "company": "Quarry Ridge Foods",
@@ -150,7 +110,46 @@
    "role": "Operations Director",
    "ts": "01:05",
    "quote": "You're the fourth this month.",
-   "context": "Prospect's interest level is low; the call ended with no meeting, demo, or call-back scheduled, and the outcome is inferred as unlikely to convert soon. \u2014 Inferred from tone and repeated refusals; vendor agreed not to call again this year.",
+   "context": "Prospect has already been approached by several vendors this month (fourth), and is tired of cold outreach. \u2014 Suggests high vendor-solicitation volume; relevant to interest level.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F5",
+   "turn_id": "CALL-016#T017",
+   "call_id": "CALL-016",
+   "company": "Quarry Ridge Foods",
+   "speaker": "Dermot Kelly",
+   "side": "customer",
+   "role": "Operations Director",
+   "ts": "01:32",
+   "quote": "it'd be me and it'd be our IT director jointly. And I'll tell you now, we've got Power Automate through our Microsoft deal, so it'd have to be pretty compelling.",
+   "context": "Prospect would co-own any workflow layer with the IT director, and already has Power Automate via the Microsoft deal, so a new tool must be 'pretty compelling'. \u2014 Decision-making role and main competitive objection; a stated reason to decline.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F6",
+   "turn_id": "CALL-016#T006",
+   "call_id": "CALL-016",
+   "company": "Quarry Ridge Foods",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "00:17",
+   "quote": "The specific thing we usually fix is that nobody can see where something's stuck until it's late.",
+   "context": "OrbitFlow pitched fixing handoffs across systems managed over email and spreadsheets, where stuck work is only visible when late. \u2014 Vendor's value claim in the opening pitch; prospect said it 'lands' but did not confirm a pain point.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F7",
+   "turn_id": "CALL-016#T009",
+   "call_id": "CALL-016",
+   "company": "Quarry Ridge Foods",
+   "speaker": "Dermot Kelly",
+   "side": "customer",
+   "role": "Operations Director",
+   "ts": "00:42",
+   "quote": "It lands. But we're not looking at anything.",
+   "context": "Prospect said the pitch resonated but that they are not evaluating anything now; interest level is low for this year. \u2014 Mixed signal: tone is polite, but the stated position is no active project.",
    "stated_or_inferred": "inferred"
   },
   {
@@ -163,7 +162,7 @@
    "role": "Director of Customer Operations",
    "ts": "05:28",
    "quote": "Send me the page and copy Chloe. If the page is good she'll put it in the diary.",
-   "context": "Martine Duval agreed to a follow-up: she asked for a one-page document to be sent, with Chloe copied, and said that if the page is good Chloe would put a meeting in the diary. The meeting itself was not confirmed. \u2014 Outcome of the cold call; the follow-up is conditional on the page being good and was left open rather than a meeting being booked.",
+   "context": "The call ended with a concrete follow-up: Martine asked for a one-page document (not a deck) to be sent and asked Chloe to be copied so it can be put in the diary; Leo requested a 30-minute non-demo meeting in the week of the sixth, and Martine's reply routed that through the page. \u2014 Concrete next step agreed, but the meeting itself was conditional on the page being good; no date was confirmed.",
    "stated_or_inferred": "stated"
   },
   {
@@ -175,51 +174,12 @@
    "side": "vendor",
    "role": "Account Executive",
    "ts": "05:15",
-   "quote": "One page. And can I ask for thirty minutes in the week of the sixth? Not a demo. I'd want to understand the disruption process before I show you anything.",
-   "context": "Leo Grant proposed a one-page follow-up and a 30-minute meeting in the week of the sixth, explicitly not a demo, to understand the disruption process first. \u2014 Next step proposed by the vendor; the meeting was not confirmed on the call.",
+   "quote": "can I ask for thirty minutes in the week of the sixth? Not a demo. I'd want to understand the disruption process before I show you anything.",
+   "context": "Leo proposed a 30-minute meeting in the week of the sixth, explicitly not a demo, to first understand the disruption process. \u2014 Vendor offer; prospect did not explicitly accept the meeting date.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F10",
-   "turn_id": "CALL-017#T043",
-   "call_id": "CALL-017",
-   "company": "Silverline Travel",
-   "speaker": "Martine Duval",
-   "side": "customer",
-   "role": "Director of Customer Operations",
-   "ts": "05:04",
-   "quote": "Not a deck. Something short that describes what you'd actually look at.",
-   "context": "Martine asked for something short describing what OrbitFlow would actually look at, not a deck. \u2014 Prospect's stated preference for the follow-up format.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F11",
-   "turn_id": "CALL-017#T013",
-   "call_id": "CALL-017",
-   "company": "Silverline Travel",
-   "speaker": "Chloe Barnes",
-   "side": "customer",
-   "role": "Executive Assistant",
-   "ts": "01:05",
-   "quote": "Honestly? Probably. Thursday or Friday.",
-   "context": "The call got through because the contact (Chloe, executive assistant) was persuaded to put Leo through; Chloe had earlier said a call back on Thursday or Friday was better, then offered to check whether Martine was free after her previous call. \u2014 Initial call was a gatekeeper screen; the vendor's candour about not being expected and the 'what makes her engage' question led to the transfer.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F12",
-   "turn_id": "CALL-017#T019",
-   "call_id": "CALL-017",
-   "company": "Silverline Travel",
-   "speaker": "Chloe Barnes",
-   "side": "customer",
-   "role": "Executive Assistant",
-   "ts": "01:31",
-   "quote": "She responds to specifics. If you say \"workflow automation\" she'll be polite for a minute and then get off. If you say something about our actual business she'll listen.",
-   "context": "Chloe advised that Martine responds to specifics about the business rather than generic 'workflow automation' talk. \u2014 Gatekeeper's advice on what engages the decision-maker; the vendor then opened with a travel-specific disruption scenario.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F13",
    "turn_id": "CALL-017#T039",
    "call_id": "CALL-017",
    "company": "Silverline Travel",
@@ -228,11 +188,24 @@
    "role": "Director of Customer Operations",
    "ts": "04:42",
    "quote": "It's handled badly. It's handled by a very good team working very hard, which is not the same as handled.",
-   "context": "Leo's pitch used a travel disruption scenario (flight cancellation involving rebooking, supplier notification, customer communication, refund/credit across four systems), which Martine confirmed as accurate. She said the process is handled, but 'badly', relying on a very good team working very hard. \u2014 Problem discussed that engaged the prospect; the vendor deferred the deeper discussion because of time pressure.",
+   "context": "Martine said the disruption process (flight cancellation, rebooking, supplier notification, customer comms, refund/credit across four systems) is handled, but badly; it depends on a very good team working very hard. \u2014 Prospect describes a current pain point; she accepted Leo's description as accurate.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F14",
+   "finding_id": "F11",
+   "turn_id": "CALL-017#T037",
+   "call_id": "CALL-017",
+   "company": "Silverline Travel",
+   "speaker": "Martine Duval",
+   "side": "customer",
+   "role": "Director of Customer Operations",
+   "ts": "04:34",
+   "quote": "That is \u2014 yes. That's accurate.",
+   "context": "Martine confirmed that the disruption-event process described by OrbitFlow matches her operation. \u2014 Agreement with vendor's description of the problem.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F12",
    "turn_id": "CALL-017#T033",
    "call_id": "CALL-017",
    "company": "Silverline Travel",
@@ -241,11 +214,63 @@
    "role": "Director of Customer Operations",
    "ts": "03:50",
    "quote": "She said three.",
-   "context": "Martine's interest appeared moderate and time-limited: she gave only about five minutes and kept referring to the clock, but she engaged with the disruption problem and invited follow-up material. \u2014 Inferred from tone; the call was short and constrained by her schedule and a supplier conference.",
-   "stated_or_inferred": "inferred"
+   "context": "Martine has a limited time window: she said the call should be three minutes, not five, and the call was cut short with a request to be sent material rather than a demo. \u2014 Timing constraint; she was busy with a supplier conference that week and had just come off another call.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F13",
+   "turn_id": "CALL-017#T011",
+   "call_id": "CALL-017",
+   "company": "Silverline Travel",
+   "speaker": "Chloe Barnes",
+   "side": "customer",
+   "role": "Executive Assistant",
+   "ts": "00:50",
+   "quote": "She's the right person. She's also very busy this week \u2014 we've got a supplier conference.",
+   "context": "Chloe said Martine is busy this week because of a supplier conference and suggested calling back Thursday or Friday; Martine then took the call immediately after being asked. \u2014 Gatekeeper's initial timing objection, later overridden when Martine agreed to take the call.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F14",
+   "turn_id": "CALL-017#T019",
+   "call_id": "CALL-017",
+   "company": "Silverline Travel",
+   "speaker": "Chloe Barnes",
+   "side": "customer",
+   "role": "Executive Assistant",
+   "ts": "01:31",
+   "quote": "If you say \"workflow automation\" she'll be polite for a minute and then get off. If you say something about our actual business she'll listen.",
+   "context": "Chloe advised that Martine responds to specifics about the business rather than generic workflow automation pitches. \u2014 Gatekeeper advice on what engages the decision-maker; the vendor's opener was generic.",
+   "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F15",
+   "turn_id": "CALL-017#T011",
+   "call_id": "CALL-017",
+   "company": "Silverline Travel",
+   "speaker": "Chloe Barnes",
+   "side": "customer",
+   "role": "Executive Assistant",
+   "ts": "00:50",
+   "quote": "She's the right person.",
+   "context": "Martine is the right person for operational process problems and is a Director of Customer Operations with decision-relevant authority over the process. \u2014 Gatekeeper confirmed the routing; Martine's role was confirmed by the participant list.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F16",
+   "turn_id": "CALL-017#T043",
+   "call_id": "CALL-017",
+   "company": "Silverline Travel",
+   "speaker": "Martine Duval",
+   "side": "customer",
+   "role": "Director of Customer Operations",
+   "ts": "05:04",
+   "quote": "Alright \u2014 send me something. Not a deck. Something short that describes what you'd actually look at.",
+   "context": "Martine indicated she was interested enough to take the call and asked for a short written page, but did not commit to a meeting. \u2014 Moderate, conditional interest; the outcome depends on the page's quality.",
+   "stated_or_inferred": "inferred"
+  },
+  {
+   "finding_id": "F17",
    "turn_id": "CALL-018#T068",
    "call_id": "CALL-018",
    "company": "Beacon Housing Trust",
@@ -253,12 +278,12 @@
    "side": "vendor",
    "role": "Account Executive",
    "ts": "07:47",
-   "quote": "Half an hour, in the next couple of weeks, with you and whoever owns the housing management system technically.",
-   "context": "A follow-up meeting was agreed: a half-hour call in the next couple of weeks (week of the sixth) with Ade and the owner of the housing management system, with no demo. \u2014 Explicit next step agreed at end of call; Maya proposed a discovery-style call, Ade accepted and said he would get Priya.",
+   "quote": "Half an hour, in the next couple of weeks, with you and whoever owns the housing management system technically. I'd want to understand the systems and I'd want to ask about procurement properly. No demo.",
+   "context": "The call ended with a concrete follow-up: a meeting in the week of the sixth, with the prospect agreeing to send technical requirements and frameworks and to bring in Priya Menon. \u2014 Concrete next step agreed at the end of the call; the vendor's meeting is explicitly not a demo, and the prospect sets the timing.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F16",
+   "finding_id": "F18",
    "turn_id": "CALL-018#T087",
    "call_id": "CALL-018",
    "company": "Beacon Housing Trust",
@@ -267,89 +292,11 @@
    "role": "Head of Business Change",
    "ts": "09:55",
    "quote": "Alright. Send me the technical requirements, I'll send you the frameworks, and I'll get Priya. Week of the sixth?",
-   "context": "Ade accepted the follow-up and set a date, while Maya committed to checking framework coverage and sending technical requirements. \u2014 Prospect acceptance of next step; vendor homework before meeting.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F17",
-   "turn_id": "CALL-018#T089",
-   "call_id": "CALL-018",
-   "company": "Beacon Housing Trust",
-   "speaker": "Ade Balogun",
-   "side": "customer",
-   "role": "Head of Business Change",
-   "ts": "10:12",
-   "quote": "It was a much better cold call than I expected too.",
-   "context": "Ade's interest was high: he said the call was going better than expected and that the discovery approach was sensible. \u2014 Prospect sentiment toward the vendor's approach, which included declining to pitch a demo.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F18",
-   "turn_id": "CALL-018#T005",
-   "call_id": "CALL-018",
-   "company": "Beacon Housing Trust",
-   "speaker": "Ade Balogun",
-   "side": "customer",
-   "role": "Head of Business Change",
-   "ts": "00:36",
-   "quote": "That's most of my job, actually.",
-   "context": "The pitch framed the problem as cross-team processes with no owner, where work sits and is found out late. Ade matched it to his voids (empty property turnaround) process, which he said was most of his job. \u2014 Problem discussed led to engagement; the contact was head of business change who owned the problem.",
+   "context": "Prospect agreed to the next steps: vendor sends technical requirements, prospect sends frameworks list, and they meet the week of the sixth. \u2014 Mutual agreement to a follow-up meeting closing the call.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F19",
-   "turn_id": "CALL-018#T060",
-   "call_id": "CALL-018",
-   "company": "Beacon Housing Trust",
-   "speaker": "Maya Chen",
-   "side": "vendor",
-   "role": "Account Executive",
-   "ts": "06:28",
-   "quote": "The first phase of something like this shouldn't be automating the voids process. It should be instrumenting it.",
-   "context": "Vendor declined to pitch a demo and proposed instrumenting the voids process first (timestamps only, eight weeks) rather than automating, which the prospect found appealing. \u2014 Vendor objection handling that reduced scope; prospect said it would be considerably cheaper.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F20",
-   "turn_id": "CALL-018#T046",
-   "call_id": "CALL-018",
-   "company": "Beacon Housing Trust",
-   "speaker": "Maya Chen",
-   "side": "vendor",
-   "role": "Account Executive",
-   "ts": "04:46",
-   "quote": "I'd want to know which frameworks you use and whether we're on any of them",
-   "context": "Vendor raised procurement and integration risks up front. Ade said most vendors discover procurement late, and he noted the lack of connectors for his sector. \u2014 Objections raised by vendor and acknowledged by prospect; prospect did not object to continuing.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F21",
-   "turn_id": "CALL-018#T078",
-   "call_id": "CALL-018",
-   "company": "Beacon Housing Trust",
-   "speaker": "Maya Chen",
-   "side": "vendor",
-   "role": "Account Executive",
-   "ts": "09:02",
-   "quote": "I'll be honest \u2014 I don't have a housing association reference.",
-   "context": "Vendor admitted no housing association references; Ade said this was a procurement problem, not his, but asked that it be raised with Priya. \u2014 Negative fact disclosed by vendor; prospect deferred it.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F22",
-   "turn_id": "CALL-018#T073",
-   "call_id": "CALL-018",
-   "company": "Beacon Housing Trust",
-   "speaker": "Ade Balogun",
-   "side": "customer",
-   "role": "Head of Business Change",
-   "ts": "08:25",
-   "quote": "If I ask her. She's sceptical of vendors, which I'd say is a feature.",
-   "context": "Prospect's technical contact Priya Menon (applications manager) was identified as the second attendee; Ade said she was sceptical of vendors and would likely attend. \u2014 Role of the contact; the follow-up depends on Ade getting her to attend.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F23",
    "turn_id": "CALL-018#T084",
    "call_id": "CALL-018",
    "company": "Beacon Housing Trust",
@@ -357,12 +304,129 @@
    "side": "vendor",
    "role": "Account Executive",
    "ts": "09:38",
-   "quote": "if we're not on any of them I'll tell you and we can decide whether it's worth continuing.",
-   "context": "Vendor said that if the framework check fails, they would tell Ade and decide whether to continue. \u2014 Conditional next step; Ade received it without objection.",
+   "quote": "Then I'll check before we meet, and if we're not on any of them I'll tell you and we can decide whether it's worth continuing.",
+   "context": "Vendor committed to check whether OrbitFlow is on the prospect's procurement frameworks before the meeting. \u2014 Vendor action item tied to the follow-up.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F20",
+   "turn_id": "CALL-018#T019",
+   "call_id": "CALL-018",
+   "company": "Beacon Housing Trust",
+   "speaker": "Ade Balogun",
+   "side": "customer",
+   "role": "Head of Business Change",
+   "ts": "02:07",
+   "quote": "We cannot tell whether it's one property or a pattern. I've been asking for that for two years.",
+   "context": "Prospect is head of business change with a pain point: average void (empty property) turnaround of 26 days against a sector benchmark of about 18, and no way to tell whether delays are one-off or a pattern. \u2014 Prospect's current situation; the dashboard showed only the average.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F21",
+   "turn_id": "CALL-018#T031",
+   "call_id": "CALL-018",
+   "company": "Beacon Housing Trust",
+   "speaker": "Ade Balogun",
+   "side": "customer",
+   "role": "Head of Business Change",
+   "ts": "03:15",
+   "quote": "The housing management system and the repairs system have an integration that works about eighty percent of the time. Compliance is entirely manual.",
+   "context": "Current systems are fragmented: housing management system, separate repairs and compliance systems, email and spreadsheets; the HMS-repairs integration works about 80% of the time and compliance is entirely manual. \u2014 Technical context that affects fit and integration effort.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F22",
+   "turn_id": "CALL-018#T038",
+   "call_id": "CALL-018",
+   "company": "Beacon Housing Trust",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "03:51",
+   "quote": "There's a reasonable chance we don't have a native connector for it, and we'd be working through an API or building something.",
+   "context": "Vendor flagged that OrbitFlow likely has no native connector for the prospect's housing management system and may need API work at added cost; prospect had assumed as much. \u2014 Vendor objection-surfacing; a potential cost and effort barrier.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F23",
+   "turn_id": "CALL-018#T045",
+   "call_id": "CALL-018",
+   "company": "Beacon Housing Trust",
+   "speaker": "Ade Balogun",
+   "side": "customer",
+   "role": "Head of Business Change",
+   "ts": "04:34",
+   "quote": "Practically, anything meaningful goes through a framework or a tender, and a tender is nine months of my life.",
+   "context": "Procurement is a major barrier: the prospect buys through frameworks or tenders, and a tender takes about nine months. OrbitFlow has no housing association reference. \u2014 Objection on purchasing route and references; prospect deferred it to procurement.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F24",
+   "turn_id": "CALL-018#T062",
+   "call_id": "CALL-018",
+   "company": "Beacon Housing Trust",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "06:58",
+   "quote": "Run it for eight weeks and look at where the time actually goes. Then automate the two stages that turn out to matter, rather than the eight stages people complain about.",
+   "context": "Vendor proposed a non-sale first phase: instrument the voids process with timestamps for about eight weeks, then automate only the stages that matter, and prospect saw it as cheaper. \u2014 OrbitFlow offer that narrowed the deal size; prospect engaged with it positively.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F25",
+   "turn_id": "CALL-018#T071",
+   "call_id": "CALL-018",
+   "company": "Beacon Housing Trust",
+   "speaker": "Ade Balogun",
+   "side": "customer",
+   "role": "Head of Business Change",
+   "ts": "08:15",
+   "quote": "Our technical person is Priya Menon \u2014 she's our applications manager.",
+   "context": "Prospect's applications manager Priya Menon is the technical decision-influencer and is skeptical of vendors; prospect will ask her to join. \u2014 Decision-making role; Ade is the champion and Priya will test the vendor.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F26",
+   "turn_id": "CALL-018#T070",
+   "call_id": "CALL-018",
+   "company": "Beacon Housing Trust",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "08:05",
+   "quote": "If we get to a demo and it turns out we can't be procured or can't reach your housing system, I've wasted an hour of your life and mine.",
+   "context": "Vendor said that a demo would be premature until procurement and system reach were confirmed. \u2014 OrbitFlow offer that the first meeting is discovery, not a demo.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F27",
+   "turn_id": "CALL-018#T089",
+   "call_id": "CALL-018",
+   "company": "Beacon Housing Trust",
+   "speaker": "Ade Balogun",
+   "side": "customer",
+   "role": "Head of Business Change",
+   "ts": "10:12",
+   "quote": "It was a much better cold call than I expected too. Bye.",
+   "context": "Prospect's view of the call was positive and interest was high, though the vendor repeatedly offered to end the conversation. \u2014 Interest level; the prospect's enthusiasm was inferred from tone and repeated engagement.",
+   "stated_or_inferred": "inferred"
+  },
+  {
+   "finding_id": "F28",
+   "turn_id": "CALL-019#T050",
+   "call_id": "CALL-019",
+   "company": "Trafford Dental Group",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "04:18",
+   "quote": "is it worth me sending you some information, just so you've got it?",
+   "context": "The call ended with no meeting, demo, trial or call-back scheduled; the only next step was an information email the prospect said she would not read. \u2014 Vendor offered to send information; prospect explicitly said she would not read it and declined further follow-up attempts. No concrete follow-up agreed.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F29",
    "turn_id": "CALL-019#T051",
    "call_id": "CALL-019",
    "company": "Trafford Dental Group",
@@ -370,77 +434,25 @@
    "side": "customer",
    "role": "Practice Operations Manager",
    "ts": "04:27",
-   "quote": "You can send it. I'll be honest with you, I won't read it.",
-   "context": "Prospect agreed to receive information from OrbitFlow but said she would not read it, so the only proposed next step was an email with no expected engagement. \u2014 Vendor proposed sending information at end of call; prospect accepted with an explicit caveat. Outcome left open with low interest.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F25",
-   "turn_id": "CALL-019#T053",
-   "call_id": "CALL-019",
-   "company": "Trafford Dental Group",
-   "speaker": "Yvonne Deeks",
-   "side": "customer",
-   "role": "Practice Operations Manager",
-   "ts": "04:35",
-   "quote": "I'd rather tell you that than have you follow up four times.",
-   "context": "Prospect declined repeated follow-up contact and preferred a direct no over being chased. \u2014 Explains why she accepted the send-info offer only nominally; reason for refusing further follow-up.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F26",
-   "turn_id": "CALL-019#T063",
-   "call_id": "CALL-019",
-   "company": "Trafford Dental Group",
-   "speaker": "Yvonne Deeks",
-   "side": "customer",
-   "role": "Practice Operations Manager",
-   "ts": "05:43",
-   "quote": "For something like this? Two, three hundred a month, and I'd have to justify it.",
-   "context": "Prospect's stated objection was price: she could justify only about two to three hundred a month against an OrbitFlow entry package starting at eighteen hundred a month. \u2014 Vendor quoted \u00a31,800/month entry package for up to thirty users (T026); prospect raised budget objection repeatedly.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F27",
-   "turn_id": "CALL-019#T065",
-   "call_id": "CALL-019",
-   "company": "Trafford Dental Group",
-   "speaker": "Yvonne Deeks",
-   "side": "customer",
-   "role": "Practice Operations Manager",
-   "ts": "05:53",
-   "quote": "You're not it.",
-   "context": "Prospect's final outcome was a clear rejection: OrbitFlow is not a fit for her group. \u2014 Vendor concluded the call as a no-fit; no meeting, demo, or trial was booked.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F28",
-   "turn_id": "CALL-019#T015",
-   "call_id": "CALL-019",
-   "company": "Trafford Dental Group",
-   "speaker": "Yvonne Deeks",
-   "side": "customer",
-   "role": "Practice Operations Manager",
-   "ts": "01:18",
-   "quote": "You don't actually know anything about us, do you.",
-   "context": "Prospect said the vendor did not know anything about her group and had only read basic public information, which was the main reason for her disengagement. \u2014 Prospect cited the generic pitch and misstated referral flow (outbound not inbound) as evidence the vendor had not researched the group.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F29",
-   "turn_id": "CALL-019#T012",
-   "call_id": "CALL-019",
-   "company": "Trafford Dental Group",
-   "speaker": "Alastair McCrae",
-   "side": "vendor",
-   "role": "Account Executive",
-   "ts": "01:00",
-   "quote": "So what we'd typically do is come in, look at your onboarding processes, your compliance, your referrals, and just automate the whole lot.",
-   "context": "OrbitFlow's opening pitch was generic, applying a template of onboarding, compliance and referral automation without knowing the prospect's operations. \u2014 Vendor pitch made before any discovery questions; prospect later corrected the referral assumption.",
+   "quote": "I'll be honest with you, I won't read it.",
+   "context": "Prospect said she would not read the information and did not want repeated follow-ups. \u2014 Declining the offered send-over; preference to avoid being chased.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F30",
+   "turn_id": "CALL-019#T037",
+   "call_id": "CALL-019",
+   "company": "Trafford Dental Group",
+   "speaker": "Yvonne Deeks",
+   "side": "customer",
+   "role": "Practice Operations Manager",
+   "ts": "03:16",
+   "quote": "Recruitment. Dental nurse recruitment. That's my biggest challenge and it has been for two years.",
+   "context": "Prospect's biggest challenge is dental nurse recruitment, not a process problem, and the vendor's onboarding automation pitch did not address it. \u2014 Prospect rejected the vendor's framing; recruitment is a pay/market issue.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F31",
    "turn_id": "CALL-019#T041",
    "call_id": "CALL-019",
    "company": "Trafford Dental Group",
@@ -449,24 +461,76 @@
    "role": "Practice Operations Manager",
    "ts": "03:38",
    "quote": "It's not a process problem, it's that nobody wants to be a dental nurse for what we can afford to pay.",
-   "context": "Prospect's biggest challenge is dental nurse recruitment, which she said is not a process problem that OrbitFlow could fix. \u2014 Vendor tied the recruitment pain to onboarding automation; prospect rejected that link, citing pay as the real cause.",
+   "context": "Prospect said the problem is not process-related; nobody wants to be a dental nurse at the pay offered. \u2014 Explicit reason she saw no fit for OrbitFlow.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F31",
-   "turn_id": "CALL-019#T047",
+   "finding_id": "F32",
+   "turn_id": "CALL-019#T061",
    "call_id": "CALL-019",
    "company": "Trafford Dental Group",
    "speaker": "Yvonne Deeks",
    "side": "customer",
    "role": "Practice Operations Manager",
-   "ts": "04:10",
-   "quote": "He fixes printers.",
-   "context": "When asked about another contact for a follow-up, the prospect offered only a part-time person who fixes printers, so no alternate decision-maker was identified. \u2014 Vendor asked whether an IT person should be spoken to; prospect's answer dismissed the lead.",
+   "ts": "05:29",
+   "quote": "Eighteen hundred a month is not a number that exists in my world.",
+   "context": "Main objection is price: the vendor's entry package at 1800 pounds a month is far above what the group can afford; she would expect 200-300 a month and would need to justify it. \u2014 Prospect said price is the real problem even if the pitch had been better.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F32",
+   "finding_id": "F33",
+   "turn_id": "CALL-019#T035",
+   "call_id": "CALL-019",
+   "company": "Trafford Dental Group",
+   "speaker": "Yvonne Deeks",
+   "side": "customer",
+   "role": "Practice Operations Manager",
+   "ts": "02:59",
+   "quote": "you haven't asked me a single question about what we actually do.",
+   "context": "Prospect said the group is an 11-practice general dental group and the vendor's facts were wrong (14 practices, referrals direction, no knowledge of NHS e-Referral), and that the vendor did not ask about their operations. \u2014 Vendor pitch was generic; prospect corrected factual errors and criticized lack of discovery.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F34",
+   "turn_id": "CALL-019#T045",
+   "call_id": "CALL-019",
+   "company": "Trafford Dental Group",
+   "speaker": "Yvonne Deeks",
+   "side": "customer",
+   "role": "Practice Operations Manager",
+   "ts": "04:03",
+   "quote": "There's a chap who comes in on Tuesdays.",
+   "context": "Prospect is not the decision maker for technology; the only other person mentioned is a part-time contractor who fixes printers, so no IT owner was identified. \u2014 Vendor asked for another contact; none was useful.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F35",
+   "turn_id": "CALL-019#T064",
+   "call_id": "CALL-019",
+   "company": "Trafford Dental Group",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "05:50",
+   "quote": "Then we're not it.",
+   "context": "Prospect concluded OrbitFlow is not a fit and the vendor agreed to end the call. \u2014 Clear no; vendor accepted it.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F36",
+   "turn_id": "CALL-019#T022",
+   "call_id": "CALL-019",
+   "company": "Trafford Dental Group",
+   "speaker": "Alastair McCrae",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "01:56",
+   "quote": "I'd have to check.",
+   "context": "Vendor's stated offer was to come in, review onboarding, compliance and referrals and automate them; the vendor also claimed integration with anything that has an API, but could not confirm the NHS e-Referral API. \u2014 Vendor product claim left unverified ('I'd have to check').",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F37",
    "turn_id": "CALL-020#T061",
    "call_id": "CALL-020",
    "company": "Kestrel Robotics",
@@ -475,11 +539,11 @@
    "role": "COO",
    "ts": "06:11",
    "quote": "Send me something short \u2014 not a deck \u2014 on how you'd approach the seven-stage thing, and specifically on the operations-can-change-it question.",
-   "context": "Prospect agreed to receive a short written note from OrbitFlow on the seven-stage approach and the operations-can-change-it question, and said he would do a thirty-minute call if the note was good; the follow-up is conditional and left open. \u2014 Explicit next step at end of cold call; accepted conditionally, not a booked meeting. Note was requested by the prospect, not pitched by vendor.",
+   "context": "The call ended with a concrete follow-up: Leo agreed to send a short written note on the seven-stage approach and the operations-can-change-it question, and Rafael said he would do a thirty-minute call if the note was good; no meeting time was fixed. \u2014 Follow-up is conditional on the note being good; Rafael explicitly declined to restart the evaluation. Next step is an email, with a possible 30-minute call before mid-October.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F33",
+   "finding_id": "F38",
    "turn_id": "CALL-020#T065",
    "call_id": "CALL-020",
    "company": "Kestrel Robotics",
@@ -488,24 +552,37 @@
    "role": "Account Executive",
    "ts": "06:42",
    "quote": "Would it be worth a thirty-minute call before mid-October? Not a pitch.",
-   "context": "Vendor proposed a thirty-minute call before mid-October, framed as non-pitch, to walk through structuring the seven stages; prospect asked whether it was worth it given they would probably pick Tray, then said 'Send the note. If it's good I'll do the thirty minutes.' \u2014 Vendor's follow-up proposal; prospect deferred acceptance pending the note. Vendor noted the prospect would likely choose a competitor.",
+   "context": "Leo proposed a thirty-minute call before mid-October, framed as non-pitch, to walk through how he would structure the seven stages. \u2014 Offered by vendor; prospect did not commit to a date at the time and conditioned it on the note.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F34",
-   "turn_id": "CALL-020#T009",
+   "finding_id": "F39",
+   "turn_id": "CALL-020#T052",
+   "call_id": "CALL-020",
+   "company": "Kestrel Robotics",
+   "speaker": "Leo Grant",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "05:17",
+   "quote": "Have someone in operations, not your developer, build one real workflow.",
+   "context": "Leo offered to run a test in which operations staff, not the developer, builds one real workflow, and suggested running it against Tray. \u2014 Vendor proposal to evaluate ops-owned change ability; vendor said it costs the prospect nothing.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F40",
+   "turn_id": "CALL-020#T005",
    "call_id": "CALL-020",
    "company": "Kestrel Robotics",
    "speaker": "Rafael Santos",
    "side": "customer",
    "role": "COO",
-   "ts": "00:34",
-   "quote": "Your website. It's very enterprise. Governance, compliance, workspace separation. We're a hundred and fifty people building robots.",
-   "context": "Prospect had crossed OrbitFlow off his list about a month before because the website looked too enterprise (governance, compliance, workspace separation) for a 150-person robotics firm; vendor agreed the marketing targets companies with a governance function. \u2014 Initial objection to the vendor; the vendor conceded the website fit rather than arguing, which the prospect remarked on.",
+   "ts": "00:15",
+   "quote": "Your name came up on a list and got crossed off.",
+   "context": "Prospect is a COO evaluating Tray.io with a decision date around mid-October and says he will not move it; OrbitFlow had earlier been crossed off his list because its website seemed enterprise-focused. \u2014 Interest is cautious; initial rejection was based on marketing perception, not product fit.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F35",
+   "finding_id": "F41",
    "turn_id": "CALL-020#T031",
    "call_id": "CALL-020",
    "company": "Kestrel Robotics",
@@ -514,37 +591,24 @@
    "role": "COO",
    "ts": "03:02",
    "quote": "Tray don't have a connector and we're looking at building against its API, which our one back-end developer estimates at three weeks.",
-   "context": "Prospect's reason for engaging at all was an ERP integration gap in the ongoing Tray.io evaluation (no connector, API build estimated at three weeks, prospect thinks six); vendor said it likely lacks a native connector either and offered no advantage on that point. \u2014 Vendor conceded the point rather than pitching; prospect is three weeks into a Tray.io evaluation with a decision around 14 October.",
+   "context": "Prospect's pain point: ERP integration lacks a Tray connector; his one back-end developer estimated three weeks, which he believes will be six. Process changes by operations may wait weeks. \u2014 Stated objection/pain relevant to fit; prospect declined to name the ERP.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F36",
-   "turn_id": "CALL-020#T054",
+   "finding_id": "F42",
+   "turn_id": "CALL-020#T038",
    "call_id": "CALL-020",
    "company": "Kestrel Robotics",
    "speaker": "Leo Grant",
    "side": "vendor",
    "role": "Account Executive",
-   "ts": "05:33",
-   "quote": "Run it against Tray \u2014 I mean that, run it against Tray, you're three weeks in and it costs you nothing.",
-   "context": "Vendor declined to pitch against the incumbent evaluation, advising a third vendor three weeks in was wasteful, and instead proposed a one-week test for operations staff to change workflows without the developer; prospect said they would not restart the evaluation. \u2014 Vendor steered away from a demo and toward a test that favours Tray; prospect's interest is real but limited.",
+   "ts": "03:39",
+   "quote": "If it's a mid-market manufacturing ERP, we probably don't have a native connector",
+   "context": "OrbitFlow staff said they probably lack a native connector for the prospect's ERP, so the advantage on that point is none; they claimed only a subtler argument about maintenance and reuse. \u2014 Vendor candour; this is a concession, not a claim of superiority.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F37",
-   "turn_id": "CALL-020#T064",
-   "call_id": "CALL-020",
-   "company": "Kestrel Robotics",
-   "speaker": "Rafael Santos",
-   "side": "customer",
-   "role": "COO",
-   "ts": "06:36",
-   "quote": "Mid-October. Fourteenth, I think, or thereabouts.",
-   "context": "Prospect stated decision timing: mid-October, around the 14th, and would not move the decision date. \u2014 Constrains any follow-up window; the vendor's proposed call must happen before this.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F38",
+   "finding_id": "F43",
    "turn_id": "CALL-020#T074",
    "call_id": "CALL-020",
    "company": "Kestrel Robotics",
@@ -553,106 +617,124 @@
    "role": "COO",
    "ts": "07:37",
    "quote": "a month is a month of revenue on a two hundred thousand pound order.",
-   "context": "Prospect values the outcome at roughly a month of revenue per two-hundred-thousand-pound order with eleven orders in flight, which he framed as board-level material; vendor used this to frame the value of instrumenting the stages. \u2014 Vendor's value argument for follow-up; prospect's interest in the topic is stated, not a purchase commitment.",
+   "context": "Prospect quantified cost of delay: about a month of revenue on a \u00a3200k order, with eleven orders in flight. \u2014 Business impact relevant to urgency and board case.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F44",
+   "turn_id": "CALL-020#T023",
+   "call_id": "CALL-020",
+   "company": "Kestrel Robotics",
+   "speaker": "Rafael Santos",
+   "side": "customer",
+   "role": "COO",
+   "ts": "02:14",
+   "quote": "Well. Genuinely well. Their team's been good.",
+   "context": "Prospect said the Tray evaluation is going well and they are three weeks in, which Leo cited as reason he would be a third option in a two-horse race. \u2014 Vendor argued against joining late; prospect framed interest as low in a cold call.",
    "stated_or_inferred": "stated"
   }
  ],
  "rejected_findings": [],
  "draft": {
-  "answer": "Four of the five cold calls ended with some follow-up agreed, but only Beacon Housing Trust produced a firm, dated meeting [C1]. Silverline Travel and Kestrel Robotics agreed to a short written note with a meeting conditional on its quality [C2][C3]. Quarry Ridge Foods agreed only to one email [C4], and Trafford Dental Group effectively rejected OrbitFlow [C5]. The calls that went furthest shared a problem-specific pitch and a no-demo, discovery-style ask [C6].",
+  "answer": "Four of the five cold calls ended with some follow-up: Beacon Housing Trust (a meeting), Silverline Travel and Kestrel Robotics (a short note that could lead to a call or meeting), and Quarry Ridge Foods (one email only) [C1][C2][C3][C4]. Trafford Dental Group produced no follow-up [C5]. The stronger outcomes were at Beacon, Silverline and Kestrel, where the prospect confirmed a real pain point, the vendor offered a low-commitment, non-demo next step, and the follow-up was tied to a short document or meeting [C2][C3][C4][C6].",
   "claims": [
    {
-    "text": "Beacon Housing Trust (CALL-018) was the strongest result: Ade Balogun accepted a half-hour no-demo call in the week of the sixth with the owner of the housing management system (Priya Menon, applications manager, who is sceptical of vendors and whom Ade would ask to attend). Maya Chen was to check framework coverage and send technical requirements, and Ade would send the frameworks. If the vendor is on none of the frameworks, Maya said she would tell him and they would decide whether to continue.",
+    "text": "Beacon Housing Trust (CALL-018, Maya Chen) was the strongest result: Ade Balogun agreed to a meeting in the week of the sixth. OrbitFlow will send technical requirements, Beacon will send its frameworks list, and Ade will bring in Priya Menon. Maya will also check beforehand whether OrbitFlow is on Beacon's procurement frameworks. The meeting was explicitly not a demo.",
     "finding_ids": [
-     "F15",
-     "F16",
-     "F22",
-     "F23"
+     "F17",
+     "F18",
+     "F19",
+     "F25"
     ]
    },
    {
-    "text": "Silverline Travel (CALL-017): Martine Duval asked Leo Grant for a short one-page document, not a deck, with Chloe Barnes copied. If the page is good, Chloe would put a meeting in the diary. Leo had proposed 30 minutes in the week of the sixth, but no meeting was confirmed.",
+    "text": "Silverline Travel (CALL-017, Leo Grant): Martine Duval asked for a short one-page document, not a deck, with Chloe copied. She said that if the page is good Chloe will put a meeting in the diary. Leo had asked for a non-demo 30-minute meeting in the week of the sixth, but no date was confirmed and the meeting is conditional on the page. The follow-up was conditional, and Martine's interest appears moderate.",
     "finding_ids": [
      "F8",
      "F9",
-     "F10"
+     "F16"
     ]
    },
    {
-    "text": "Kestrel Robotics (CALL-020): COO Rafael Santos asked for a short note, not a deck, on the seven-stage approach and the operations-can-change-it question, and said he would do a thirty-minute call if the note was good. The follow-up is conditional and unbooked. His decision is around 14 October, and he is evaluating Tray.io and would not restart the evaluation.",
+    "text": "Kestrel Robotics (CALL-020, Leo Grant): COO Rafael Santos asked for a short, non-deck note on the seven-stage approach and the operations-can-change-it question. He said he would do a 30-minute call if the note is good, and no time was fixed. Leo had proposed a call before mid-October. Rafael declined to restart his Tray.io evaluation.",
     "finding_ids": [
-     "F32",
-     "F33",
-     "F35",
-     "F36",
-     "F37"
+     "F37",
+     "F38",
+     "F40"
     ]
    },
    {
-    "text": "Quarry Ridge Foods (CALL-016): Dermot Kelly accepted only one email from Maya Chen in February, with no meeting. He cited an ERP migration, a freeze on software purchases, and existing Power Automate. His interest appears low, and the vendor agreed not to call again this year.",
+    "text": "Quarry Ridge Foods (CALL-016, Maya Chen) produced only a minimal follow-up: Dermot Kelly accepted one email in February 2026 about Power Automate, with no meeting and no further calls this year. He said no new software would be bought this year after an ERP migration, and that Power Automate is already available through the Microsoft deal.",
     "finding_ids": [
      "F1",
      "F2",
      "F3",
-     "F4",
-     "F7"
+     "F5"
     ]
    },
    {
-    "text": "Trafford Dental Group (CALL-019): Yvonne Deeks said OrbitFlow could send information but she would not read it, and she rejected further follow-up. Her reasons were price (\u00a31,800/month against her roughly \u00a3200-300 budget) and a generic pitch from Alastair McCrae. She ended with 'You're not it', with no meeting booked.",
+    "text": "Trafford Dental Group (CALL-019, Alastair McCrae) produced no concrete follow-up. Yvonne Deeks said she would not read any information sent, and concluded OrbitFlow is not a fit. She said her problem is recruitment rather than process, that the price of 1800 pounds a month is far too high, and that the vendor had not asked about her operations and had got facts wrong.",
     "finding_ids": [
-     "F24",
-     "F25",
-     "F26",
-     "F27",
      "F28",
-     "F29"
+     "F29",
+     "F31",
+     "F32",
+     "F33",
+     "F35"
     ]
    },
    {
-    "text": "Common factors in the stronger outcomes: the pitch was tied to the prospect's own problem. Ade matched the pitch to his voids process, and Martine confirmed the flight-disruption scenario was handled badly. Vendors also avoided a demo and proposed low-commitment discovery or a note. In Beacon's case the vendor was candid about gaps, and in Kestrel's it conceded the Tray.io integration point. Trafford's generic pitch, by contrast, led to disengagement.",
+    "text": "What the successful calls had in common: the prospect confirmed a concrete pain point (Beacon's 26-day void turnaround with no pattern visibility; Silverline's disruption process, 'handled badly'; Kestrel's ERP connector gap and cost of delay). The vendor also asked for a low-commitment next step, explicitly not a demo or pitch, and the vendor conceded weaknesses candidly. For Silverline and Kestrel the follow-up was conditional on a short written piece.",
     "finding_ids": [
-     "F18",
-     "F13",
-     "F19",
-     "F12",
      "F20",
-     "F21",
-     "F35",
-     "F36",
-     "F29",
-     "F28"
+     "F10",
+     "F11",
+     "F41",
+     "F43",
+     "F26",
+     "F22",
+     "F42",
+     "F37",
+     "F8"
+    ]
+   },
+   {
+    "text": "Contrast with the failed calls: at Quarry Ridge the prospect said the pitch 'lands' but they were not looking at anything, which suggests low interest. At Trafford the pitch was generic and missed the prospect's actual problem. At Silverline, the assistant Chloe noted that Martine responds to specifics about the business rather than generic 'workflow automation'.",
+    "finding_ids": [
+     "F7",
+     "F33",
+     "F30",
+     "F14"
     ]
    }
   ],
   "conflicts": [],
   "not_covered": [
-   "Whether any of the follow-ups actually took place after the calls.",
-   "Any cold calls outside CALL-016 to CALL-020."
+   "Whether any of the follow-ups (meetings, notes, email) actually happened after the calls.",
+   "Cold calls outside CALL-016 to CALL-020."
   ],
   "assumptions": [
-   "Only CALL-016 to CALL-020 were treated as cold calls.",
-   "'Successful' means a follow-up was agreed; the commonalities are inferred by comparing the findings across calls."
+   "'Successful' means the call produced a concrete follow-up; scope is cold calls CALL-016 to CALL-020."
   ]
  },
  "usage": {
   "llm_calls": 8,
-  "input_tokens": 38406,
-  "cache_read_tokens": 22107,
+  "input_tokens": 39359,
+  "cache_read_tokens": 22099,
   "cache_write_tokens": 0,
-  "output_tokens": 10684,
-  "uncached_calls": 0,
-  "latency_s": 0.07
+  "output_tokens": 9918,
+  "uncached_calls": 1,
+  "latency_s": 4.96
  },
  "answer": {
   "question": "Which cold calls produced a follow-up, and what did the successful ones have in common?",
-  "answer": "Four of the five cold calls ended with some follow-up agreed, but only Beacon Housing Trust produced a firm, dated meeting [1]. Silverline Travel and Kestrel Robotics agreed to a short written note with a meeting conditional on its quality [2][3]. Quarry Ridge Foods agreed only to one email [4], and Trafford Dental Group effectively rejected OrbitFlow [5]. The calls that went furthest shared a problem-specific pitch and a no-demo, discovery-style ask [6].",
+  "answer": "Four of the five cold calls ended with some follow-up: Beacon Housing Trust (a meeting), Silverline Travel and Kestrel Robotics (a short note that could lead to a call or meeting), and Quarry Ridge Foods (one email only) [1][2][3][4]. Trafford Dental Group produced no follow-up [5]. The stronger outcomes were at Beacon, Silverline and Kestrel, where the prospect confirmed a real pain point, the vendor offered a low-commitment, non-demo next step, and the follow-up was tied to a short document or meeting [2][3][4][6].",
   "claims": [
    {
-    "text": "Beacon Housing Trust (CALL-018) was the strongest result: Ade Balogun accepted a half-hour no-demo call in the week of the sixth with the owner of the housing management system (Priya Menon, applications manager, who is sceptical of vendors and whom Ade would ask to attend). Maya Chen was to check framework coverage and send technical requirements, and Ade would send the frameworks. If the vendor is on none of the frameworks, Maya said she would tell him and they would decide whether to continue.",
+    "text": "Beacon Housing Trust (CALL-018, Maya Chen) was the strongest result: Ade Balogun agreed to a meeting in the week of the sixth. OrbitFlow will send technical requirements, Beacon will send its frameworks list, and Ade will bring in Priya Menon. Maya will also check beforehand whether OrbitFlow is on Beacon's procurement frameworks. The meeting was explicitly not a demo.",
     "evidence": [
      {
-      "finding_id": "F15",
+      "finding_id": "F17",
       "turn_id": "CALL-018#T068",
       "call_id": "CALL-018",
       "company": "Beacon Housing Trust",
@@ -660,12 +742,12 @@
       "side": "vendor",
       "role": "Account Executive",
       "ts": "07:47",
-      "quote": "Half an hour, in the next couple of weeks, with you and whoever owns the housing management system technically.",
-      "context": "A follow-up meeting was agreed: a half-hour call in the next couple of weeks (week of the sixth) with Ade and the owner of the housing management system, with no demo. \u2014 Explicit next step agreed at end of call; Maya proposed a discovery-style call, Ade accepted and said he would get Priya.",
+      "quote": "Half an hour, in the next couple of weeks, with you and whoever owns the housing management system technically. I'd want to understand the systems and I'd want to ask about procurement properly. No demo.",
+      "context": "The call ended with a concrete follow-up: a meeting in the week of the sixth, with the prospect agreeing to send technical requirements and frameworks and to bring in Priya Menon. \u2014 Concrete next step agreed at the end of the call; the vendor's meeting is explicitly not a demo, and the prospect sets the timing.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F16",
+      "finding_id": "F18",
       "turn_id": "CALL-018#T087",
       "call_id": "CALL-018",
       "company": "Beacon Housing Trust",
@@ -674,24 +756,11 @@
       "role": "Head of Business Change",
       "ts": "09:55",
       "quote": "Alright. Send me the technical requirements, I'll send you the frameworks, and I'll get Priya. Week of the sixth?",
-      "context": "Ade accepted the follow-up and set a date, while Maya committed to checking framework coverage and sending technical requirements. \u2014 Prospect acceptance of next step; vendor homework before meeting.",
+      "context": "Prospect agreed to the next steps: vendor sends technical requirements, prospect sends frameworks list, and they meet the week of the sixth. \u2014 Mutual agreement to a follow-up meeting closing the call.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F22",
-      "turn_id": "CALL-018#T073",
-      "call_id": "CALL-018",
-      "company": "Beacon Housing Trust",
-      "speaker": "Ade Balogun",
-      "side": "customer",
-      "role": "Head of Business Change",
-      "ts": "08:25",
-      "quote": "If I ask her. She's sceptical of vendors, which I'd say is a feature.",
-      "context": "Prospect's technical contact Priya Menon (applications manager) was identified as the second attendee; Ade said she was sceptical of vendors and would likely attend. \u2014 Role of the contact; the follow-up depends on Ade getting her to attend.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F23",
+      "finding_id": "F19",
       "turn_id": "CALL-018#T084",
       "call_id": "CALL-018",
       "company": "Beacon Housing Trust",
@@ -699,15 +768,28 @@
       "side": "vendor",
       "role": "Account Executive",
       "ts": "09:38",
-      "quote": "if we're not on any of them I'll tell you and we can decide whether it's worth continuing.",
-      "context": "Vendor said that if the framework check fails, they would tell Ade and decide whether to continue. \u2014 Conditional next step; Ade received it without objection.",
+      "quote": "Then I'll check before we meet, and if we're not on any of them I'll tell you and we can decide whether it's worth continuing.",
+      "context": "Vendor committed to check whether OrbitFlow is on the prospect's procurement frameworks before the meeting. \u2014 Vendor action item tied to the follow-up.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F25",
+      "turn_id": "CALL-018#T071",
+      "call_id": "CALL-018",
+      "company": "Beacon Housing Trust",
+      "speaker": "Ade Balogun",
+      "side": "customer",
+      "role": "Head of Business Change",
+      "ts": "08:15",
+      "quote": "Our technical person is Priya Menon \u2014 she's our applications manager.",
+      "context": "Prospect's applications manager Priya Menon is the technical decision-influencer and is skeptical of vendors; prospect will ask her to join. \u2014 Decision-making role; Ade is the champion and Priya will test the vendor.",
       "stated_or_inferred": "stated"
      }
     ],
-    "support": "moderate"
+    "support": "strong"
    },
    {
-    "text": "Silverline Travel (CALL-017): Martine Duval asked Leo Grant for a short one-page document, not a deck, with Chloe Barnes copied. If the page is good, Chloe would put a meeting in the diary. Leo had proposed 30 minutes in the week of the sixth, but no meeting was confirmed.",
+    "text": "Silverline Travel (CALL-017, Leo Grant): Martine Duval asked for a short one-page document, not a deck, with Chloe copied. She said that if the page is good Chloe will put a meeting in the diary. Leo had asked for a non-demo 30-minute meeting in the week of the sixth, but no date was confirmed and the meeting is conditional on the page. The follow-up was conditional, and Martine's interest appears moderate.",
     "evidence": [
      {
       "finding_id": "F8",
@@ -719,7 +801,7 @@
       "role": "Director of Customer Operations",
       "ts": "05:28",
       "quote": "Send me the page and copy Chloe. If the page is good she'll put it in the diary.",
-      "context": "Martine Duval agreed to a follow-up: she asked for a one-page document to be sent, with Chloe copied, and said that if the page is good Chloe would put a meeting in the diary. The meeting itself was not confirmed. \u2014 Outcome of the cold call; the follow-up is conditional on the page being good and was left open rather than a meeting being booked.",
+      "context": "The call ended with a concrete follow-up: Martine asked for a one-page document (not a deck) to be sent and asked Chloe to be copied so it can be put in the diary; Leo requested a 30-minute non-demo meeting in the week of the sixth, and Martine's reply routed that through the page. \u2014 Concrete next step agreed, but the meeting itself was conditional on the page being good; no date was confirmed.",
       "stated_or_inferred": "stated"
      },
      {
@@ -731,12 +813,12 @@
       "side": "vendor",
       "role": "Account Executive",
       "ts": "05:15",
-      "quote": "One page. And can I ask for thirty minutes in the week of the sixth? Not a demo. I'd want to understand the disruption process before I show you anything.",
-      "context": "Leo Grant proposed a one-page follow-up and a 30-minute meeting in the week of the sixth, explicitly not a demo, to understand the disruption process first. \u2014 Next step proposed by the vendor; the meeting was not confirmed on the call.",
+      "quote": "can I ask for thirty minutes in the week of the sixth? Not a demo. I'd want to understand the disruption process before I show you anything.",
+      "context": "Leo proposed a 30-minute meeting in the week of the sixth, explicitly not a demo, to first understand the disruption process. \u2014 Vendor offer; prospect did not explicitly accept the meeting date.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F10",
+      "finding_id": "F16",
       "turn_id": "CALL-017#T043",
       "call_id": "CALL-017",
       "company": "Silverline Travel",
@@ -744,18 +826,18 @@
       "side": "customer",
       "role": "Director of Customer Operations",
       "ts": "05:04",
-      "quote": "Not a deck. Something short that describes what you'd actually look at.",
-      "context": "Martine asked for something short describing what OrbitFlow would actually look at, not a deck. \u2014 Prospect's stated preference for the follow-up format.",
-      "stated_or_inferred": "stated"
+      "quote": "Alright \u2014 send me something. Not a deck. Something short that describes what you'd actually look at.",
+      "context": "Martine indicated she was interested enough to take the call and asked for a short written page, but did not commit to a meeting. \u2014 Moderate, conditional interest; the outcome depends on the page's quality.",
+      "stated_or_inferred": "inferred"
      }
     ],
-    "support": "strong"
+    "support": "moderate"
    },
    {
-    "text": "Kestrel Robotics (CALL-020): COO Rafael Santos asked for a short note, not a deck, on the seven-stage approach and the operations-can-change-it question, and said he would do a thirty-minute call if the note was good. The follow-up is conditional and unbooked. His decision is around 14 October, and he is evaluating Tray.io and would not restart the evaluation.",
+    "text": "Kestrel Robotics (CALL-020, Leo Grant): COO Rafael Santos asked for a short, non-deck note on the seven-stage approach and the operations-can-change-it question. He said he would do a 30-minute call if the note is good, and no time was fixed. Leo had proposed a call before mid-October. Rafael declined to restart his Tray.io evaluation.",
     "evidence": [
      {
-      "finding_id": "F32",
+      "finding_id": "F37",
       "turn_id": "CALL-020#T061",
       "call_id": "CALL-020",
       "company": "Kestrel Robotics",
@@ -764,11 +846,11 @@
       "role": "COO",
       "ts": "06:11",
       "quote": "Send me something short \u2014 not a deck \u2014 on how you'd approach the seven-stage thing, and specifically on the operations-can-change-it question.",
-      "context": "Prospect agreed to receive a short written note from OrbitFlow on the seven-stage approach and the operations-can-change-it question, and said he would do a thirty-minute call if the note was good; the follow-up is conditional and left open. \u2014 Explicit next step at end of cold call; accepted conditionally, not a booked meeting. Note was requested by the prospect, not pitched by vendor.",
+      "context": "The call ended with a concrete follow-up: Leo agreed to send a short written note on the seven-stage approach and the operations-can-change-it question, and Rafael said he would do a thirty-minute call if the note was good; no meeting time was fixed. \u2014 Follow-up is conditional on the note being good; Rafael explicitly declined to restart the evaluation. Next step is an email, with a possible 30-minute call before mid-October.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F33",
+      "finding_id": "F38",
       "turn_id": "CALL-020#T065",
       "call_id": "CALL-020",
       "company": "Kestrel Robotics",
@@ -777,53 +859,27 @@
       "role": "Account Executive",
       "ts": "06:42",
       "quote": "Would it be worth a thirty-minute call before mid-October? Not a pitch.",
-      "context": "Vendor proposed a thirty-minute call before mid-October, framed as non-pitch, to walk through structuring the seven stages; prospect asked whether it was worth it given they would probably pick Tray, then said 'Send the note. If it's good I'll do the thirty minutes.' \u2014 Vendor's follow-up proposal; prospect deferred acceptance pending the note. Vendor noted the prospect would likely choose a competitor.",
+      "context": "Leo proposed a thirty-minute call before mid-October, framed as non-pitch, to walk through how he would structure the seven stages. \u2014 Offered by vendor; prospect did not commit to a date at the time and conditioned it on the note.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F35",
-      "turn_id": "CALL-020#T031",
+      "finding_id": "F40",
+      "turn_id": "CALL-020#T005",
       "call_id": "CALL-020",
       "company": "Kestrel Robotics",
       "speaker": "Rafael Santos",
       "side": "customer",
       "role": "COO",
-      "ts": "03:02",
-      "quote": "Tray don't have a connector and we're looking at building against its API, which our one back-end developer estimates at three weeks.",
-      "context": "Prospect's reason for engaging at all was an ERP integration gap in the ongoing Tray.io evaluation (no connector, API build estimated at three weeks, prospect thinks six); vendor said it likely lacks a native connector either and offered no advantage on that point. \u2014 Vendor conceded the point rather than pitching; prospect is three weeks into a Tray.io evaluation with a decision around 14 October.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F36",
-      "turn_id": "CALL-020#T054",
-      "call_id": "CALL-020",
-      "company": "Kestrel Robotics",
-      "speaker": "Leo Grant",
-      "side": "vendor",
-      "role": "Account Executive",
-      "ts": "05:33",
-      "quote": "Run it against Tray \u2014 I mean that, run it against Tray, you're three weeks in and it costs you nothing.",
-      "context": "Vendor declined to pitch against the incumbent evaluation, advising a third vendor three weeks in was wasteful, and instead proposed a one-week test for operations staff to change workflows without the developer; prospect said they would not restart the evaluation. \u2014 Vendor steered away from a demo and toward a test that favours Tray; prospect's interest is real but limited.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F37",
-      "turn_id": "CALL-020#T064",
-      "call_id": "CALL-020",
-      "company": "Kestrel Robotics",
-      "speaker": "Rafael Santos",
-      "side": "customer",
-      "role": "COO",
-      "ts": "06:36",
-      "quote": "Mid-October. Fourteenth, I think, or thereabouts.",
-      "context": "Prospect stated decision timing: mid-October, around the 14th, and would not move the decision date. \u2014 Constrains any follow-up window; the vendor's proposed call must happen before this.",
+      "ts": "00:15",
+      "quote": "Your name came up on a list and got crossed off.",
+      "context": "Prospect is a COO evaluating Tray.io with a decision date around mid-October and says he will not move it; OrbitFlow had earlier been crossed off his list because its website seemed enterprise-focused. \u2014 Interest is cautious; initial rejection was based on marketing perception, not product fit.",
       "stated_or_inferred": "stated"
      }
     ],
-    "support": "strong"
+    "support": "moderate"
    },
    {
-    "text": "Quarry Ridge Foods (CALL-016): Dermot Kelly accepted only one email from Maya Chen in February, with no meeting. He cited an ERP migration, a freeze on software purchases, and existing Power Automate. His interest appears low, and the vendor agreed not to call again this year.",
+    "text": "Quarry Ridge Foods (CALL-016, Maya Chen) produced only a minimal follow-up: Dermot Kelly accepted one email in February 2026 about Power Automate, with no meeting and no further calls this year. He said no new software would be bought this year after an ERP migration, and that Power Automate is already available through the Microsoft deal.",
     "evidence": [
      {
       "finding_id": "F1",
@@ -834,8 +890,8 @@
       "side": "vendor",
       "role": "Account Executive",
       "ts": "01:54",
-      "quote": "I'll send one email in February with something specific about Power Automate and where it does and doesn't hold up in manufacturing. If it's useful, reply.",
-      "context": "Vendor proposed a single follow-up email in February instead of further calls, and the prospect accepted it. \u2014 Explicit next step agreed at end of call; it is an email, not a meeting, demo, or trial, and the prospect agreed only to one email.",
+      "quote": "I won't call you again this year. I'll send one email in February with something specific about Power Automate",
+      "context": "The call ended with an agreed one-email follow-up in February 2026 from OrbitFlow, with no call-back; the prospect accepted it conditionally. \u2014 Concrete next step is only an email, not a meeting, demo, or trial. Vendor promised no further calls this year; prospect agreed to one email.",
       "stated_or_inferred": "stated"
      },
      {
@@ -848,7 +904,7 @@
       "role": "Operations Director",
       "ts": "02:12",
       "quote": "February's fine. One email.",
-      "context": "Prospect accepted the February email but with a clear limit: one email only. \u2014 Acceptance is conditional and low-commitment; prospect said it was fine, not that he wanted a meeting.",
+      "context": "Prospect agreed to receive the single February email. \u2014 Acceptance of the follow-up, but it is a minimal commitment; he did not agree to a meeting.",
       "stated_or_inferred": "stated"
      },
      {
@@ -860,12 +916,12 @@
       "side": "customer",
       "role": "Operations Director",
       "ts": "00:51",
-      "quote": "It's a \"we finished an ERP migration in March and I've told everyone in this building that nobody is buying any new software this year.\"",
-      "context": "Prospect declined engagement this year because of a recent ERP migration and a company-wide freeze on new software purchases. \u2014 Stated reason for low interest; timing objection rather than a product objection.",
+      "quote": "we finished an ERP migration in March and I've told everyone in this building that nobody is buying any new software this year.",
+      "context": "Prospect is not in buying mode: a recent ERP migration (March) and a company-wide statement that no new software will be bought this year. \u2014 Primary objection and reason for declining; timing is next year at earliest.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F4",
+      "finding_id": "F5",
       "turn_id": "CALL-016#T017",
       "call_id": "CALL-016",
       "company": "Quarry Ridge Foods",
@@ -873,31 +929,31 @@
       "side": "customer",
       "role": "Operations Director",
       "ts": "01:32",
-      "quote": "we've got Power Automate through our Microsoft deal, so it'd have to be pretty compelling.",
-      "context": "Prospect said the company already has Power Automate via its Microsoft deal, so any alternative would need to be compelling. \u2014 Objection about existing tooling; vendor acknowledged it as common among Microsoft shops and did not argue the point.",
+      "quote": "it'd be me and it'd be our IT director jointly. And I'll tell you now, we've got Power Automate through our Microsoft deal, so it'd have to be pretty compelling.",
+      "context": "Prospect would co-own any workflow layer with the IT director, and already has Power Automate via the Microsoft deal, so a new tool must be 'pretty compelling'. \u2014 Decision-making role and main competitive objection; a stated reason to decline.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Trafford Dental Group (CALL-019, Alastair McCrae) produced no concrete follow-up. Yvonne Deeks said she would not read any information sent, and concluded OrbitFlow is not a fit. She said her problem is recruitment rather than process, that the price of 1800 pounds a month is far too high, and that the vendor had not asked about her operations and had got facts wrong.",
+    "evidence": [
+     {
+      "finding_id": "F28",
+      "turn_id": "CALL-019#T050",
+      "call_id": "CALL-019",
+      "company": "Trafford Dental Group",
+      "speaker": "Alastair McCrae",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "04:18",
+      "quote": "is it worth me sending you some information, just so you've got it?",
+      "context": "The call ended with no meeting, demo, trial or call-back scheduled; the only next step was an information email the prospect said she would not read. \u2014 Vendor offered to send information; prospect explicitly said she would not read it and declined further follow-up attempts. No concrete follow-up agreed.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F7",
-      "turn_id": "CALL-016#T013",
-      "call_id": "CALL-016",
-      "company": "Quarry Ridge Foods",
-      "speaker": "Dermot Kelly",
-      "side": "customer",
-      "role": "Operations Director",
-      "ts": "01:05",
-      "quote": "You're the fourth this month.",
-      "context": "Prospect's interest level is low; the call ended with no meeting, demo, or call-back scheduled, and the outcome is inferred as unlikely to convert soon. \u2014 Inferred from tone and repeated refusals; vendor agreed not to call again this year.",
-      "stated_or_inferred": "inferred"
-     }
-    ],
-    "support": "moderate"
-   },
-   {
-    "text": "Trafford Dental Group (CALL-019): Yvonne Deeks said OrbitFlow could send information but she would not read it, and she rejected further follow-up. Her reasons were price (\u00a31,800/month against her roughly \u00a3200-300 budget) and a generic pitch from Alastair McCrae. She ended with 'You're not it', with no meeting booked.",
-    "evidence": [
-     {
-      "finding_id": "F24",
+      "finding_id": "F29",
       "turn_id": "CALL-019#T051",
       "call_id": "CALL-019",
       "company": "Trafford Dental Group",
@@ -905,96 +961,83 @@
       "side": "customer",
       "role": "Practice Operations Manager",
       "ts": "04:27",
-      "quote": "You can send it. I'll be honest with you, I won't read it.",
-      "context": "Prospect agreed to receive information from OrbitFlow but said she would not read it, so the only proposed next step was an email with no expected engagement. \u2014 Vendor proposed sending information at end of call; prospect accepted with an explicit caveat. Outcome left open with low interest.",
+      "quote": "I'll be honest with you, I won't read it.",
+      "context": "Prospect said she would not read the information and did not want repeated follow-ups. \u2014 Declining the offered send-over; preference to avoid being chased.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F25",
-      "turn_id": "CALL-019#T053",
+      "finding_id": "F31",
+      "turn_id": "CALL-019#T041",
       "call_id": "CALL-019",
       "company": "Trafford Dental Group",
       "speaker": "Yvonne Deeks",
       "side": "customer",
       "role": "Practice Operations Manager",
-      "ts": "04:35",
-      "quote": "I'd rather tell you that than have you follow up four times.",
-      "context": "Prospect declined repeated follow-up contact and preferred a direct no over being chased. \u2014 Explains why she accepted the send-info offer only nominally; reason for refusing further follow-up.",
+      "ts": "03:38",
+      "quote": "It's not a process problem, it's that nobody wants to be a dental nurse for what we can afford to pay.",
+      "context": "Prospect said the problem is not process-related; nobody wants to be a dental nurse at the pay offered. \u2014 Explicit reason she saw no fit for OrbitFlow.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F26",
-      "turn_id": "CALL-019#T063",
+      "finding_id": "F32",
+      "turn_id": "CALL-019#T061",
       "call_id": "CALL-019",
       "company": "Trafford Dental Group",
       "speaker": "Yvonne Deeks",
       "side": "customer",
       "role": "Practice Operations Manager",
-      "ts": "05:43",
-      "quote": "For something like this? Two, three hundred a month, and I'd have to justify it.",
-      "context": "Prospect's stated objection was price: she could justify only about two to three hundred a month against an OrbitFlow entry package starting at eighteen hundred a month. \u2014 Vendor quoted \u00a31,800/month entry package for up to thirty users (T026); prospect raised budget objection repeatedly.",
+      "ts": "05:29",
+      "quote": "Eighteen hundred a month is not a number that exists in my world.",
+      "context": "Main objection is price: the vendor's entry package at 1800 pounds a month is far above what the group can afford; she would expect 200-300 a month and would need to justify it. \u2014 Prospect said price is the real problem even if the pitch had been better.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F27",
-      "turn_id": "CALL-019#T065",
+      "finding_id": "F33",
+      "turn_id": "CALL-019#T035",
       "call_id": "CALL-019",
       "company": "Trafford Dental Group",
       "speaker": "Yvonne Deeks",
       "side": "customer",
       "role": "Practice Operations Manager",
-      "ts": "05:53",
-      "quote": "You're not it.",
-      "context": "Prospect's final outcome was a clear rejection: OrbitFlow is not a fit for her group. \u2014 Vendor concluded the call as a no-fit; no meeting, demo, or trial was booked.",
+      "ts": "02:59",
+      "quote": "you haven't asked me a single question about what we actually do.",
+      "context": "Prospect said the group is an 11-practice general dental group and the vendor's facts were wrong (14 practices, referrals direction, no knowledge of NHS e-Referral), and that the vendor did not ask about their operations. \u2014 Vendor pitch was generic; prospect corrected factual errors and criticized lack of discovery.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F28",
-      "turn_id": "CALL-019#T015",
-      "call_id": "CALL-019",
-      "company": "Trafford Dental Group",
-      "speaker": "Yvonne Deeks",
-      "side": "customer",
-      "role": "Practice Operations Manager",
-      "ts": "01:18",
-      "quote": "You don't actually know anything about us, do you.",
-      "context": "Prospect said the vendor did not know anything about her group and had only read basic public information, which was the main reason for her disengagement. \u2014 Prospect cited the generic pitch and misstated referral flow (outbound not inbound) as evidence the vendor had not researched the group.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F29",
-      "turn_id": "CALL-019#T012",
+      "finding_id": "F35",
+      "turn_id": "CALL-019#T064",
       "call_id": "CALL-019",
       "company": "Trafford Dental Group",
       "speaker": "Alastair McCrae",
       "side": "vendor",
       "role": "Account Executive",
-      "ts": "01:00",
-      "quote": "So what we'd typically do is come in, look at your onboarding processes, your compliance, your referrals, and just automate the whole lot.",
-      "context": "OrbitFlow's opening pitch was generic, applying a template of onboarding, compliance and referral automation without knowing the prospect's operations. \u2014 Vendor pitch made before any discovery questions; prospect later corrected the referral assumption.",
+      "ts": "05:50",
+      "quote": "Then we're not it.",
+      "context": "Prospect concluded OrbitFlow is not a fit and the vendor agreed to end the call. \u2014 Clear no; vendor accepted it.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "Common factors in the stronger outcomes: the pitch was tied to the prospect's own problem. Ade matched the pitch to his voids process, and Martine confirmed the flight-disruption scenario was handled badly. Vendors also avoided a demo and proposed low-commitment discovery or a note. In Beacon's case the vendor was candid about gaps, and in Kestrel's it conceded the Tray.io integration point. Trafford's generic pitch, by contrast, led to disengagement.",
+    "text": "What the successful calls had in common: the prospect confirmed a concrete pain point (Beacon's 26-day void turnaround with no pattern visibility; Silverline's disruption process, 'handled badly'; Kestrel's ERP connector gap and cost of delay). The vendor also asked for a low-commitment next step, explicitly not a demo or pitch, and the vendor conceded weaknesses candidly. For Silverline and Kestrel the follow-up was conditional on a short written piece.",
     "evidence": [
      {
-      "finding_id": "F18",
-      "turn_id": "CALL-018#T005",
+      "finding_id": "F20",
+      "turn_id": "CALL-018#T019",
       "call_id": "CALL-018",
       "company": "Beacon Housing Trust",
       "speaker": "Ade Balogun",
       "side": "customer",
       "role": "Head of Business Change",
-      "ts": "00:36",
-      "quote": "That's most of my job, actually.",
-      "context": "The pitch framed the problem as cross-team processes with no owner, where work sits and is found out late. Ade matched it to his voids (empty property turnaround) process, which he said was most of his job. \u2014 Problem discussed led to engagement; the contact was head of business change who owned the problem.",
+      "ts": "02:07",
+      "quote": "We cannot tell whether it's one property or a pattern. I've been asking for that for two years.",
+      "context": "Prospect is head of business change with a pain point: average void (empty property) turnaround of 26 days against a sector benchmark of about 18, and no way to tell whether delays are one-off or a pattern. \u2014 Prospect's current situation; the dashboard showed only the average.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F13",
+      "finding_id": "F10",
       "turn_id": "CALL-017#T039",
       "call_id": "CALL-017",
       "company": "Silverline Travel",
@@ -1003,63 +1046,24 @@
       "role": "Director of Customer Operations",
       "ts": "04:42",
       "quote": "It's handled badly. It's handled by a very good team working very hard, which is not the same as handled.",
-      "context": "Leo's pitch used a travel disruption scenario (flight cancellation involving rebooking, supplier notification, customer communication, refund/credit across four systems), which Martine confirmed as accurate. She said the process is handled, but 'badly', relying on a very good team working very hard. \u2014 Problem discussed that engaged the prospect; the vendor deferred the deeper discussion because of time pressure.",
+      "context": "Martine said the disruption process (flight cancellation, rebooking, supplier notification, customer comms, refund/credit across four systems) is handled, but badly; it depends on a very good team working very hard. \u2014 Prospect describes a current pain point; she accepted Leo's description as accurate.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F19",
-      "turn_id": "CALL-018#T060",
-      "call_id": "CALL-018",
-      "company": "Beacon Housing Trust",
-      "speaker": "Maya Chen",
-      "side": "vendor",
-      "role": "Account Executive",
-      "ts": "06:28",
-      "quote": "The first phase of something like this shouldn't be automating the voids process. It should be instrumenting it.",
-      "context": "Vendor declined to pitch a demo and proposed instrumenting the voids process first (timestamps only, eight weeks) rather than automating, which the prospect found appealing. \u2014 Vendor objection handling that reduced scope; prospect said it would be considerably cheaper.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F12",
-      "turn_id": "CALL-017#T019",
+      "finding_id": "F11",
+      "turn_id": "CALL-017#T037",
       "call_id": "CALL-017",
       "company": "Silverline Travel",
-      "speaker": "Chloe Barnes",
+      "speaker": "Martine Duval",
       "side": "customer",
-      "role": "Executive Assistant",
-      "ts": "01:31",
-      "quote": "She responds to specifics. If you say \"workflow automation\" she'll be polite for a minute and then get off. If you say something about our actual business she'll listen.",
-      "context": "Chloe advised that Martine responds to specifics about the business rather than generic 'workflow automation' talk. \u2014 Gatekeeper's advice on what engages the decision-maker; the vendor then opened with a travel-specific disruption scenario.",
+      "role": "Director of Customer Operations",
+      "ts": "04:34",
+      "quote": "That is \u2014 yes. That's accurate.",
+      "context": "Martine confirmed that the disruption-event process described by OrbitFlow matches her operation. \u2014 Agreement with vendor's description of the problem.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F20",
-      "turn_id": "CALL-018#T046",
-      "call_id": "CALL-018",
-      "company": "Beacon Housing Trust",
-      "speaker": "Maya Chen",
-      "side": "vendor",
-      "role": "Account Executive",
-      "ts": "04:46",
-      "quote": "I'd want to know which frameworks you use and whether we're on any of them",
-      "context": "Vendor raised procurement and integration risks up front. Ade said most vendors discover procurement late, and he noted the lack of connectors for his sector. \u2014 Objections raised by vendor and acknowledged by prospect; prospect did not object to continuing.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F21",
-      "turn_id": "CALL-018#T078",
-      "call_id": "CALL-018",
-      "company": "Beacon Housing Trust",
-      "speaker": "Maya Chen",
-      "side": "vendor",
-      "role": "Account Executive",
-      "ts": "09:02",
-      "quote": "I'll be honest \u2014 I don't have a housing association reference.",
-      "context": "Vendor admitted no housing association references; Ade said this was a procurement problem, not his, but asked that it be raised with Priya. \u2014 Negative fact disclosed by vendor; prospect deferred it.",
-      "stated_or_inferred": "stated"
-     },
-     {
-      "finding_id": "F35",
+      "finding_id": "F41",
       "turn_id": "CALL-020#T031",
       "call_id": "CALL-020",
       "company": "Kestrel Robotics",
@@ -1068,64 +1072,160 @@
       "role": "COO",
       "ts": "03:02",
       "quote": "Tray don't have a connector and we're looking at building against its API, which our one back-end developer estimates at three weeks.",
-      "context": "Prospect's reason for engaging at all was an ERP integration gap in the ongoing Tray.io evaluation (no connector, API build estimated at three weeks, prospect thinks six); vendor said it likely lacks a native connector either and offered no advantage on that point. \u2014 Vendor conceded the point rather than pitching; prospect is three weeks into a Tray.io evaluation with a decision around 14 October.",
+      "context": "Prospect's pain point: ERP integration lacks a Tray connector; his one back-end developer estimated three weeks, which he believes will be six. Process changes by operations may wait weeks. \u2014 Stated objection/pain relevant to fit; prospect declined to name the ERP.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F36",
-      "turn_id": "CALL-020#T054",
+      "finding_id": "F43",
+      "turn_id": "CALL-020#T074",
+      "call_id": "CALL-020",
+      "company": "Kestrel Robotics",
+      "speaker": "Rafael Santos",
+      "side": "customer",
+      "role": "COO",
+      "ts": "07:37",
+      "quote": "a month is a month of revenue on a two hundred thousand pound order.",
+      "context": "Prospect quantified cost of delay: about a month of revenue on a \u00a3200k order, with eleven orders in flight. \u2014 Business impact relevant to urgency and board case.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F26",
+      "turn_id": "CALL-018#T070",
+      "call_id": "CALL-018",
+      "company": "Beacon Housing Trust",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "08:05",
+      "quote": "If we get to a demo and it turns out we can't be procured or can't reach your housing system, I've wasted an hour of your life and mine.",
+      "context": "Vendor said that a demo would be premature until procurement and system reach were confirmed. \u2014 OrbitFlow offer that the first meeting is discovery, not a demo.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F22",
+      "turn_id": "CALL-018#T038",
+      "call_id": "CALL-018",
+      "company": "Beacon Housing Trust",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "03:51",
+      "quote": "There's a reasonable chance we don't have a native connector for it, and we'd be working through an API or building something.",
+      "context": "Vendor flagged that OrbitFlow likely has no native connector for the prospect's housing management system and may need API work at added cost; prospect had assumed as much. \u2014 Vendor objection-surfacing; a potential cost and effort barrier.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F42",
+      "turn_id": "CALL-020#T038",
       "call_id": "CALL-020",
       "company": "Kestrel Robotics",
       "speaker": "Leo Grant",
       "side": "vendor",
       "role": "Account Executive",
-      "ts": "05:33",
-      "quote": "Run it against Tray \u2014 I mean that, run it against Tray, you're three weeks in and it costs you nothing.",
-      "context": "Vendor declined to pitch against the incumbent evaluation, advising a third vendor three weeks in was wasteful, and instead proposed a one-week test for operations staff to change workflows without the developer; prospect said they would not restart the evaluation. \u2014 Vendor steered away from a demo and toward a test that favours Tray; prospect's interest is real but limited.",
+      "ts": "03:39",
+      "quote": "If it's a mid-market manufacturing ERP, we probably don't have a native connector",
+      "context": "OrbitFlow staff said they probably lack a native connector for the prospect's ERP, so the advantage on that point is none; they claimed only a subtler argument about maintenance and reuse. \u2014 Vendor candour; this is a concession, not a claim of superiority.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F29",
-      "turn_id": "CALL-019#T012",
-      "call_id": "CALL-019",
-      "company": "Trafford Dental Group",
-      "speaker": "Alastair McCrae",
-      "side": "vendor",
-      "role": "Account Executive",
-      "ts": "01:00",
-      "quote": "So what we'd typically do is come in, look at your onboarding processes, your compliance, your referrals, and just automate the whole lot.",
-      "context": "OrbitFlow's opening pitch was generic, applying a template of onboarding, compliance and referral automation without knowing the prospect's operations. \u2014 Vendor pitch made before any discovery questions; prospect later corrected the referral assumption.",
+      "finding_id": "F37",
+      "turn_id": "CALL-020#T061",
+      "call_id": "CALL-020",
+      "company": "Kestrel Robotics",
+      "speaker": "Rafael Santos",
+      "side": "customer",
+      "role": "COO",
+      "ts": "06:11",
+      "quote": "Send me something short \u2014 not a deck \u2014 on how you'd approach the seven-stage thing, and specifically on the operations-can-change-it question.",
+      "context": "The call ended with a concrete follow-up: Leo agreed to send a short written note on the seven-stage approach and the operations-can-change-it question, and Rafael said he would do a thirty-minute call if the note was good; no meeting time was fixed. \u2014 Follow-up is conditional on the note being good; Rafael explicitly declined to restart the evaluation. Next step is an email, with a possible 30-minute call before mid-October.",
       "stated_or_inferred": "stated"
      },
      {
-      "finding_id": "F28",
-      "turn_id": "CALL-019#T015",
+      "finding_id": "F8",
+      "turn_id": "CALL-017#T045",
+      "call_id": "CALL-017",
+      "company": "Silverline Travel",
+      "speaker": "Martine Duval",
+      "side": "customer",
+      "role": "Director of Customer Operations",
+      "ts": "05:28",
+      "quote": "Send me the page and copy Chloe. If the page is good she'll put it in the diary.",
+      "context": "The call ended with a concrete follow-up: Martine asked for a one-page document (not a deck) to be sent and asked Chloe to be copied so it can be put in the diary; Leo requested a 30-minute non-demo meeting in the week of the sixth, and Martine's reply routed that through the page. \u2014 Concrete next step agreed, but the meeting itself was conditional on the page being good; no date was confirmed.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Contrast with the failed calls: at Quarry Ridge the prospect said the pitch 'lands' but they were not looking at anything, which suggests low interest. At Trafford the pitch was generic and missed the prospect's actual problem. At Silverline, the assistant Chloe noted that Martine responds to specifics about the business rather than generic 'workflow automation'.",
+    "evidence": [
+     {
+      "finding_id": "F7",
+      "turn_id": "CALL-016#T009",
+      "call_id": "CALL-016",
+      "company": "Quarry Ridge Foods",
+      "speaker": "Dermot Kelly",
+      "side": "customer",
+      "role": "Operations Director",
+      "ts": "00:42",
+      "quote": "It lands. But we're not looking at anything.",
+      "context": "Prospect said the pitch resonated but that they are not evaluating anything now; interest level is low for this year. \u2014 Mixed signal: tone is polite, but the stated position is no active project.",
+      "stated_or_inferred": "inferred"
+     },
+     {
+      "finding_id": "F33",
+      "turn_id": "CALL-019#T035",
       "call_id": "CALL-019",
       "company": "Trafford Dental Group",
       "speaker": "Yvonne Deeks",
       "side": "customer",
       "role": "Practice Operations Manager",
-      "ts": "01:18",
-      "quote": "You don't actually know anything about us, do you.",
-      "context": "Prospect said the vendor did not know anything about her group and had only read basic public information, which was the main reason for her disengagement. \u2014 Prospect cited the generic pitch and misstated referral flow (outbound not inbound) as evidence the vendor had not researched the group.",
+      "ts": "02:59",
+      "quote": "you haven't asked me a single question about what we actually do.",
+      "context": "Prospect said the group is an 11-practice general dental group and the vendor's facts were wrong (14 practices, referrals direction, no knowledge of NHS e-Referral), and that the vendor did not ask about their operations. \u2014 Vendor pitch was generic; prospect corrected factual errors and criticized lack of discovery.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F30",
+      "turn_id": "CALL-019#T037",
+      "call_id": "CALL-019",
+      "company": "Trafford Dental Group",
+      "speaker": "Yvonne Deeks",
+      "side": "customer",
+      "role": "Practice Operations Manager",
+      "ts": "03:16",
+      "quote": "Recruitment. Dental nurse recruitment. That's my biggest challenge and it has been for two years.",
+      "context": "Prospect's biggest challenge is dental nurse recruitment, not a process problem, and the vendor's onboarding automation pitch did not address it. \u2014 Prospect rejected the vendor's framing; recruitment is a pay/market issue.",
+      "stated_or_inferred": "stated"
+     },
+     {
+      "finding_id": "F14",
+      "turn_id": "CALL-017#T019",
+      "call_id": "CALL-017",
+      "company": "Silverline Travel",
+      "speaker": "Chloe Barnes",
+      "side": "customer",
+      "role": "Executive Assistant",
+      "ts": "01:31",
+      "quote": "If you say \"workflow automation\" she'll be polite for a minute and then get off. If you say something about our actual business she'll listen.",
+      "context": "Chloe advised that Martine responds to specifics about the business rather than generic workflow automation pitches. \u2014 Gatekeeper advice on what engages the decision-maker; the vendor's opener was generic.",
       "stated_or_inferred": "stated"
      }
     ],
-    "support": "strong"
+    "support": "moderate"
    }
   ],
   "conflicts": [],
   "not_covered": [
-   "Whether any of the follow-ups actually took place after the calls.",
-   "Any cold calls outside CALL-016 to CALL-020."
+   "Whether any of the follow-ups (meetings, notes, email) actually happened after the calls.",
+   "Cold calls outside CALL-016 to CALL-020."
   ],
   "assumptions": [
-   "Cold call question interpreted as covering calls CALL-016 to CALL-020 only.",
-   "'Successful' is not defined; treated as calls where a follow-up was agreed, so the reader should capture the outcome and the reasons so success can be compared afterwards.",
-   "Only CALL-016 to CALL-020 were treated as cold calls.",
-   "'Successful' means a follow-up was agreed; the commonalities are inferred by comparing the findings across calls."
+   "'Successful' is interpreted as cold calls that produced a concrete follow-up; the reader will report the follow-up status so the comparison can be made across calls.",
+   "Scope limited to Cold call type calls (CALL-016 to CALL-020).",
+   "'Successful' means the call produced a concrete follow-up; scope is cold calls CALL-016 to CALL-020."
   ],
-  "confidence": "high",
+  "confidence": "medium",
   "calls_considered": [
    "CALL-016",
    "CALL-017",

@@ -14,20 +14,19 @@
    "account health score",
    "account-health score",
    "health score",
-   "customer health",
-   "health scoring",
+   "customer health score",
+   "health metric",
    "reliable",
    "reliability",
-   "accuracy",
+   "accurate",
    "trust",
    "stakeholders",
-   "disagree",
-   "agree"
+   "stakeholder opinion"
   ],
-  "read_instruction": "Extract every statement made by Inkwell Learning participants about account-health scores or customer health scoring, including who said it, their role if stated, whether they describe the scores as reliable, accurate, trustworthy, unreliable, or misleading, and any reasons, examples, or caveats they give. Also extract any OrbitFlow staff statements about health score accuracy or reliability.",
+  "read_instruction": "Extract every statement made by Inkwell Learning participants about account-health scores or health metrics, including whether they consider the scores reliable, accurate, trustworthy or flawed, the reasons given, any doubts or caveats, and the name or role of the speaker who said it. Also extract any OrbitFlow staff statements about the health scores' accuracy or reliability.",
   "assumptions": [
-   "Inkwell Learning maps exactly to the catalogue entry CALL-009; the question refers to a single prospect call.",
-   "'Account-health scores' is interpreted as customer health or health scoring metrics; the question's agreement judgement must be made across stakeholders within this call."
+   "Question refers to the single call CALL-009 (Inkwell Learning, Prospect), so no call_types filter is applied.",
+   "'Account-health scores' is interpreted as customer health scores or similar health metrics."
   ]
  },
  "candidates": {
@@ -46,25 +45,12 @@
    "side": "customer",
    "role": "Director of Business Intelligence",
    "ts": "02:18",
-   "quote": "Olivia talks about account-health scores as though they're reliable. Leadership uses them, they're on the QBR deck, they're in the board pack. But fewer than half our CSMs update the underlying fields consistently. So I would not treat those scores as ground truth, and if we build a workflow that keys off them we've automated a guess.",
-   "context": "Darren Wu (Director of Business Intelligence) says Inkwell's account-health scores are not reliable: fewer than half of CSMs update the underlying fields consistently, so they should not be treated as ground truth, and a workflow keyed to them would automate a guess. \u2014 Darren's challenge to Olivia's view, raised in the evaluation call. He also notes the scores appear on the QBR deck and in the board pack, so leadership relies on them.",
+   "quote": "So I would not treat those scores as ground truth, and if we build a workflow that keys off them we've automated a guess.",
+   "context": "Darren Wu says account-health scores should not be treated as ground truth because fewer than half of CSMs update the underlying fields consistently; building a workflow on them would automate a guess. \u2014 Darren challenges Olivia's reliance on health scores; reason given is data entry inconsistency, not the scores' formula.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F2",
-   "turn_id": "CALL-009#T019",
-   "call_id": "CALL-009",
-   "company": "Inkwell Learning",
-   "speaker": "Olivia Grant",
-   "side": "customer",
-   "role": "SVP Customer Experience",
-   "ts": "02:44",
-   "quote": "I don't entirely disagree.",
-   "context": "Olivia Grant (SVP Customer Experience) partly disagrees with Darren's critique of the health scores, saying she does not entirely disagree with the point while contesting the framing. \u2014 Response to Darren's challenge; she concedes a partial point after a pause.",
-   "stated_or_inferred": "stated"
-  },
-  {
-   "finding_id": "F3",
    "turn_id": "CALL-009#T021",
    "call_id": "CALL-009",
    "company": "Inkwell Learning",
@@ -73,11 +59,11 @@
    "role": "SVP Customer Experience",
    "ts": "02:52",
    "quote": "I've disagreed with the framing. I think the scores are directionally useful and you think they're noise.",
-   "context": "Olivia Grant says the health scores are directionally useful, while Darren thinks they are noise. She disputes the framing rather than the scores' usefulness. \u2014 Olivia's own characterisation of the disagreement between her and Darren about the scores.",
+   "context": "Olivia Grant partly concedes Darren's point but frames the scores as directionally useful. \u2014 Olivia's response to Darren's challenge; she disagrees with the framing rather than the substance.",
    "stated_or_inferred": "stated"
   },
   {
-   "finding_id": "F4",
+   "finding_id": "F3",
    "turn_id": "CALL-009#T022",
    "call_id": "CALL-009",
    "company": "Inkwell Learning",
@@ -86,11 +72,50 @@
    "role": "Director of Business Intelligence",
    "ts": "03:00",
    "quote": "I think they're noise with a trend in them, which is not the same as useful.",
-   "context": "Darren Wu says the health scores are noise with a trend in them, which he distinguishes from being useful. \u2014 Darren's clarification of his position, in response to Olivia's 'directionally useful'.",
+   "context": "Darren Wu characterises the health scores as noise with a trend in them, which he says is not the same as useful. \u2014 Darren restating his position in response to Olivia, showing continued disagreement.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F4",
+   "turn_id": "CALL-009#T018",
+   "call_id": "CALL-009",
+   "company": "Inkwell Learning",
+   "speaker": "Darren Wu",
+   "side": "customer",
+   "role": "Director of Business Intelligence",
+   "ts": "02:18",
+   "quote": "Leadership uses them, they're on the QBR deck, they're in the board pack.",
+   "context": "Inkwell stakeholders' disagreement on score reliability is reflected in Olivia's initial description, which Darren describes as treating the scores as reliable; the scores are on the QBR deck and in the board pack, used by leadership. \u2014 Darren's description of how leadership uses the scores, which he presents as a reason for scepticism.",
    "stated_or_inferred": "stated"
   },
   {
    "finding_id": "F5",
+   "turn_id": "CALL-009#T032",
+   "call_id": "CALL-009",
+   "company": "Inkwell Learning",
+   "speaker": "Darren Wu",
+   "side": "customer",
+   "role": "Director of Business Intelligence",
+   "ts": "03:47",
+   "quote": "It is unreliable for anything a human has to remember to type.",
+   "context": "Darren and Olivia both say Snowflake usage data is the most trusted source, while the health scores are built on human-maintained fields, which Darren considers unreliable. \u2014 Darren's broader view of data trust; relevant to why he distrusts scores built on manual inputs.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F6",
+   "turn_id": "CALL-009#T035",
+   "call_id": "CALL-009",
+   "company": "Inkwell Learning",
+   "speaker": "Maya Chen",
+   "side": "vendor",
+   "role": "Account Executive",
+   "ts": "04:08",
+   "quote": "Human-maintained fields are context you show to the person, not inputs the logic depends on.",
+   "context": "OrbitFlow staff (Maya Chen) propose weighting signals by how they are produced: human-maintained fields become context shown to a person, not inputs the logic depends on. \u2014 Vendor design response to the reliability concern; a vendor statement about the design, not a claim the health scores are accurate.",
+   "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F7",
    "turn_id": "CALL-009#T219",
    "call_id": "CALL-009",
    "company": "Inkwell Learning",
@@ -99,76 +124,107 @@
    "role": "Director of Business Intelligence",
    "ts": "26:59",
    "quote": "The \"fewer than half\" is an impression, not a measurement.",
-   "context": "Darren Wu says the 'fewer than half' claim about CSMs updating fields is an impression rather than a measurement, so the reliability problem is not yet quantified. \u2014 Raised at close when OrbitFlow listed estimates to be validated; Darren flags his own supporting figure as unmeasured.",
+   "context": "Darren says the 'fewer than half' CSM-update figure is an impression, not a measurement, and it should be measured. \u2014 Darren questions the reliability of his own estimate that underpins the scepticism about scores.",
    "stated_or_inferred": "stated"
+  },
+  {
+   "finding_id": "F8",
+   "turn_id": "CALL-009#T021",
+   "call_id": "CALL-009",
+   "company": "Inkwell Learning",
+   "speaker": "Olivia Grant",
+   "side": "customer",
+   "role": "SVP Customer Experience",
+   "ts": "02:52",
+   "quote": "I think the scores are directionally useful and you think they're noise.",
+   "context": "Inkwell's scepticism about health scores is a shared concern in the call: Darren doubts the scores; Olivia believes them directionally useful; the disagreement is not fully resolved. \u2014 Inferred from the exchange; the two stakeholders hold differing views on reliability.",
+   "stated_or_inferred": "inferred"
   }
  ],
  "rejected_findings": [],
  "draft": {
-  "answer": "No, Inkwell's stakeholders do not fully agree. Darren Wu says the scores are unreliable [C1], while Olivia Grant sees them as directionally useful and mainly contests his framing [C2]. Darren's own supporting figure is an impression, not a measurement [C3].",
+  "answer": "No. Darren Wu (Director of Business Intelligence) distrusts the account-health scores, while Olivia Grant (SVP Customer Experience) sees them as directionally useful [C1][C2]. The disagreement appears unresolved, though Darren concedes his key statistic is only an impression [C3][C4]. Both agree Snowflake usage data is the most trusted source [C5].",
   "claims": [
    {
-    "text": "Darren Wu (Director of Business Intelligence) says the account-health scores are not reliable: fewer than half of CSMs update the underlying fields consistently, so they should not be treated as ground truth, and a workflow keyed to them would 'automate a guess'. He notes leadership relies on them, as they appear on the QBR deck and in the board pack.",
+    "text": "Darren Wu said the scores should not be treated as ground truth because fewer than half of CSMs update the underlying fields consistently, so a workflow built on them would 'automate a guess'. He later called them 'noise with a trend in them, which is not the same as useful'.",
     "finding_ids": [
-     "F1"
-    ]
-   },
-   {
-    "text": "Olivia Grant (SVP Customer Experience) only partly disagrees with Darren: she says 'I don't entirely disagree', contests his framing, and says the scores are directionally useful while he thinks they are noise.",
-    "finding_ids": [
-     "F2",
+     "F1",
      "F3"
     ]
    },
    {
-    "text": "Darren maintains the scores are 'noise with a trend in them, which is not the same as useful', so the two remain apart on usefulness.",
+    "text": "Olivia Grant partly concedes Darren's point but says the scores are directionally useful; she says she disagrees with the framing rather than the substance.",
+    "finding_ids": [
+     "F2"
+    ]
+   },
+   {
+    "text": "Darren noted that leadership uses the scores in the QBR deck and board pack, which he presented as a reason for scepticism.",
     "finding_ids": [
      "F4"
     ]
    },
    {
-    "text": "Darren later said his 'fewer than half' claim about CSMs updating fields is an impression, not a measurement, so the reliability problem is not yet quantified.",
+    "text": "Darren said his 'fewer than half' CSM-update figure is an impression, not a measurement, and should be measured.",
+    "finding_ids": [
+     "F7"
+    ]
+   },
+   {
+    "text": "Darren and Olivia both say Snowflake usage data is the most trusted source, whereas the health scores rest on human-maintained fields that Darren considers unreliable.",
     "finding_ids": [
      "F5"
+    ]
+   },
+   {
+    "text": "It appears (inferred) that the disagreement is not fully resolved in the call.",
+    "finding_ids": [
+     "F8"
+    ]
+   },
+   {
+    "text": "Maya Chen of OrbitFlow proposed treating human-maintained fields as context shown to a person rather than inputs the logic depends on. This is a design response, not a claim that the scores are accurate.",
+    "finding_ids": [
+     "F6"
     ]
    }
   ],
   "conflicts": [
    {
-    "topic": "Whether the health scores are useful/reliable",
-    "description": "Darren Wu says the scores are unreliable noise and should not be treated as ground truth. Olivia Grant says they are directionally useful, though she partly concedes his point.",
+    "topic": "Reliability of account-health scores",
+    "description": "Darren Wu says the scores are noise and not ground truth; Olivia Grant says they are directionally useful.",
     "finding_ids": [
      "F1",
      "F3",
-     "F4",
-     "F2"
+     "F2",
+     "F8"
     ]
    }
   ],
   "not_covered": [
-   "Any measured data on how consistently CSMs update the underlying fields",
-   "Views of other Inkwell stakeholders beyond Darren Wu and Olivia Grant"
+   "Whether the scores have actually been measured for accuracy or CSM update rates",
+   "Any final resolution of the disagreement"
   ],
   "assumptions": [
-   "Inkwell Learning is CALL-009, a single call",
-   "Account-health scores means customer health scoring metrics"
+   "Question refers to the single call CALL-009 (Inkwell Learning).",
+   "'Account-health scores' means customer health scores or similar health metrics."
   ]
  },
  "usage": {
   "llm_calls": 4,
-  "input_tokens": 19972,
-  "cache_read_tokens": 15362,
+  "input_tokens": 20949,
+  "cache_read_tokens": 15354,
   "cache_write_tokens": 0,
-  "output_tokens": 3175,
-  "uncached_calls": 4,
-  "latency_s": 19.88
+  "output_tokens": 3238,
+  "uncached_calls": 1,
+  "latency_s": 3.21
  },
  "answer": {
   "question": "Do Inkwell Learning's stakeholders agree on whether their account-health scores are reliable?",
-  "answer": "No, Inkwell's stakeholders do not fully agree. Darren Wu says the scores are unreliable [1], while Olivia Grant sees them as directionally useful and mainly contests his framing [2]. Darren's own supporting figure is an impression, not a measurement [3].",
+  "answer": "No. Darren Wu (Director of Business Intelligence) distrusts the account-health scores, while Olivia Grant (SVP Customer Experience) sees them as directionally useful [1][2]. The disagreement appears unresolved, though Darren concedes his key statistic is only an impression [3][4]. Both agree Snowflake usage data is the most trusted source [5].",
   "claims": [
    {
-    "text": "Darren Wu (Director of Business Intelligence) says the account-health scores are not reliable: fewer than half of CSMs update the underlying fields consistently, so they should not be treated as ground truth, and a workflow keyed to them would 'automate a guess'. He notes leadership relies on them, as they appear on the QBR deck and in the board pack.",
+    "text": "Darren Wu said the scores should not be treated as ground truth because fewer than half of CSMs update the underlying fields consistently, so a workflow built on them would 'automate a guess'. He later called them 'noise with a trend in them, which is not the same as useful'.",
     "evidence": [
      {
       "finding_id": "F1",
@@ -179,50 +235,12 @@
       "side": "customer",
       "role": "Director of Business Intelligence",
       "ts": "02:18",
-      "quote": "Olivia talks about account-health scores as though they're reliable. Leadership uses them, they're on the QBR deck, they're in the board pack. But fewer than half our CSMs update the underlying fields consistently. So I would not treat those scores as ground truth, and if we build a workflow that keys off them we've automated a guess.",
-      "context": "Darren Wu (Director of Business Intelligence) says Inkwell's account-health scores are not reliable: fewer than half of CSMs update the underlying fields consistently, so they should not be treated as ground truth, and a workflow keyed to them would automate a guess. \u2014 Darren's challenge to Olivia's view, raised in the evaluation call. He also notes the scores appear on the QBR deck and in the board pack, so leadership relies on them.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "strong"
-   },
-   {
-    "text": "Olivia Grant (SVP Customer Experience) only partly disagrees with Darren: she says 'I don't entirely disagree', contests his framing, and says the scores are directionally useful while he thinks they are noise.",
-    "evidence": [
-     {
-      "finding_id": "F2",
-      "turn_id": "CALL-009#T019",
-      "call_id": "CALL-009",
-      "company": "Inkwell Learning",
-      "speaker": "Olivia Grant",
-      "side": "customer",
-      "role": "SVP Customer Experience",
-      "ts": "02:44",
-      "quote": "I don't entirely disagree.",
-      "context": "Olivia Grant (SVP Customer Experience) partly disagrees with Darren's critique of the health scores, saying she does not entirely disagree with the point while contesting the framing. \u2014 Response to Darren's challenge; she concedes a partial point after a pause.",
+      "quote": "So I would not treat those scores as ground truth, and if we build a workflow that keys off them we've automated a guess.",
+      "context": "Darren Wu says account-health scores should not be treated as ground truth because fewer than half of CSMs update the underlying fields consistently; building a workflow on them would automate a guess. \u2014 Darren challenges Olivia's reliance on health scores; reason given is data entry inconsistency, not the scores' formula.",
       "stated_or_inferred": "stated"
      },
      {
       "finding_id": "F3",
-      "turn_id": "CALL-009#T021",
-      "call_id": "CALL-009",
-      "company": "Inkwell Learning",
-      "speaker": "Olivia Grant",
-      "side": "customer",
-      "role": "SVP Customer Experience",
-      "ts": "02:52",
-      "quote": "I've disagreed with the framing. I think the scores are directionally useful and you think they're noise.",
-      "context": "Olivia Grant says the health scores are directionally useful, while Darren thinks they are noise. She disputes the framing rather than the scores' usefulness. \u2014 Olivia's own characterisation of the disagreement between her and Darren about the scores.",
-      "stated_or_inferred": "stated"
-     }
-    ],
-    "support": "moderate"
-   },
-   {
-    "text": "Darren maintains the scores are 'noise with a trend in them, which is not the same as useful', so the two remain apart on usefulness.",
-    "evidence": [
-     {
-      "finding_id": "F4",
       "turn_id": "CALL-009#T022",
       "call_id": "CALL-009",
       "company": "Inkwell Learning",
@@ -231,17 +249,55 @@
       "role": "Director of Business Intelligence",
       "ts": "03:00",
       "quote": "I think they're noise with a trend in them, which is not the same as useful.",
-      "context": "Darren Wu says the health scores are noise with a trend in them, which he distinguishes from being useful. \u2014 Darren's clarification of his position, in response to Olivia's 'directionally useful'.",
+      "context": "Darren Wu characterises the health scores as noise with a trend in them, which he says is not the same as useful. \u2014 Darren restating his position in response to Olivia, showing continued disagreement.",
       "stated_or_inferred": "stated"
      }
     ],
     "support": "strong"
    },
    {
-    "text": "Darren later said his 'fewer than half' claim about CSMs updating fields is an impression, not a measurement, so the reliability problem is not yet quantified.",
+    "text": "Olivia Grant partly concedes Darren's point but says the scores are directionally useful; she says she disagrees with the framing rather than the substance.",
     "evidence": [
      {
-      "finding_id": "F5",
+      "finding_id": "F2",
+      "turn_id": "CALL-009#T021",
+      "call_id": "CALL-009",
+      "company": "Inkwell Learning",
+      "speaker": "Olivia Grant",
+      "side": "customer",
+      "role": "SVP Customer Experience",
+      "ts": "02:52",
+      "quote": "I've disagreed with the framing. I think the scores are directionally useful and you think they're noise.",
+      "context": "Olivia Grant partly concedes Darren's point but frames the scores as directionally useful. \u2014 Olivia's response to Darren's challenge; she disagrees with the framing rather than the substance.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "Darren noted that leadership uses the scores in the QBR deck and board pack, which he presented as a reason for scepticism.",
+    "evidence": [
+     {
+      "finding_id": "F4",
+      "turn_id": "CALL-009#T018",
+      "call_id": "CALL-009",
+      "company": "Inkwell Learning",
+      "speaker": "Darren Wu",
+      "side": "customer",
+      "role": "Director of Business Intelligence",
+      "ts": "02:18",
+      "quote": "Leadership uses them, they're on the QBR deck, they're in the board pack.",
+      "context": "Inkwell stakeholders' disagreement on score reliability is reflected in Olivia's initial description, which Darren describes as treating the scores as reliable; the scores are on the QBR deck and in the board pack, used by leadership. \u2014 Darren's description of how leadership uses the scores, which he presents as a reason for scepticism.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Darren said his 'fewer than half' CSM-update figure is an impression, not a measurement, and should be measured.",
+    "evidence": [
+     {
+      "finding_id": "F7",
       "turn_id": "CALL-009#T219",
       "call_id": "CALL-009",
       "company": "Inkwell Learning",
@@ -250,7 +306,64 @@
       "role": "Director of Business Intelligence",
       "ts": "26:59",
       "quote": "The \"fewer than half\" is an impression, not a measurement.",
-      "context": "Darren Wu says the 'fewer than half' claim about CSMs updating fields is an impression rather than a measurement, so the reliability problem is not yet quantified. \u2014 Raised at close when OrbitFlow listed estimates to be validated; Darren flags his own supporting figure as unmeasured.",
+      "context": "Darren says the 'fewer than half' CSM-update figure is an impression, not a measurement, and it should be measured. \u2014 Darren questions the reliability of his own estimate that underpins the scepticism about scores.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "strong"
+   },
+   {
+    "text": "Darren and Olivia both say Snowflake usage data is the most trusted source, whereas the health scores rest on human-maintained fields that Darren considers unreliable.",
+    "evidence": [
+     {
+      "finding_id": "F5",
+      "turn_id": "CALL-009#T032",
+      "call_id": "CALL-009",
+      "company": "Inkwell Learning",
+      "speaker": "Darren Wu",
+      "side": "customer",
+      "role": "Director of Business Intelligence",
+      "ts": "03:47",
+      "quote": "It is unreliable for anything a human has to remember to type.",
+      "context": "Darren and Olivia both say Snowflake usage data is the most trusted source, while the health scores are built on human-maintained fields, which Darren considers unreliable. \u2014 Darren's broader view of data trust; relevant to why he distrusts scores built on manual inputs.",
+      "stated_or_inferred": "stated"
+     }
+    ],
+    "support": "moderate"
+   },
+   {
+    "text": "It appears (inferred) that the disagreement is not fully resolved in the call.",
+    "evidence": [
+     {
+      "finding_id": "F8",
+      "turn_id": "CALL-009#T021",
+      "call_id": "CALL-009",
+      "company": "Inkwell Learning",
+      "speaker": "Olivia Grant",
+      "side": "customer",
+      "role": "SVP Customer Experience",
+      "ts": "02:52",
+      "quote": "I think the scores are directionally useful and you think they're noise.",
+      "context": "Inkwell's scepticism about health scores is a shared concern in the call: Darren doubts the scores; Olivia believes them directionally useful; the disagreement is not fully resolved. \u2014 Inferred from the exchange; the two stakeholders hold differing views on reliability.",
+      "stated_or_inferred": "inferred"
+     }
+    ],
+    "support": "weak"
+   },
+   {
+    "text": "Maya Chen of OrbitFlow proposed treating human-maintained fields as context shown to a person rather than inputs the logic depends on. This is a design response, not a claim that the scores are accurate.",
+    "evidence": [
+     {
+      "finding_id": "F6",
+      "turn_id": "CALL-009#T035",
+      "call_id": "CALL-009",
+      "company": "Inkwell Learning",
+      "speaker": "Maya Chen",
+      "side": "vendor",
+      "role": "Account Executive",
+      "ts": "04:08",
+      "quote": "Human-maintained fields are context you show to the person, not inputs the logic depends on.",
+      "context": "OrbitFlow staff (Maya Chen) propose weighting signals by how they are produced: human-maintained fields become context shown to a person, not inputs the logic depends on. \u2014 Vendor design response to the reliability concern; a vendor statement about the design, not a claim the health scores are accurate.",
       "stated_or_inferred": "stated"
      }
     ],
@@ -259,25 +372,25 @@
   ],
   "conflicts": [
    {
-    "topic": "Whether the health scores are useful/reliable",
-    "description": "Darren Wu says the scores are unreliable noise and should not be treated as ground truth. Olivia Grant says they are directionally useful, though she partly concedes his point.",
+    "topic": "Reliability of account-health scores",
+    "description": "Darren Wu says the scores are noise and not ground truth; Olivia Grant says they are directionally useful.",
     "finding_ids": [
      "F1",
      "F3",
-     "F4",
-     "F2"
+     "F2",
+     "F8"
     ]
    }
   ],
   "not_covered": [
-   "Any measured data on how consistently CSMs update the underlying fields",
-   "Views of other Inkwell stakeholders beyond Darren Wu and Olivia Grant"
+   "Whether the scores have actually been measured for accuracy or CSM update rates",
+   "Any final resolution of the disagreement"
   ],
   "assumptions": [
-   "Inkwell Learning maps exactly to the catalogue entry CALL-009; the question refers to a single prospect call.",
-   "'Account-health scores' is interpreted as customer health or health scoring metrics; the question's agreement judgement must be made across stakeholders within this call.",
-   "Inkwell Learning is CALL-009, a single call",
-   "Account-health scores means customer health scoring metrics"
+   "Question refers to the single call CALL-009 (Inkwell Learning, Prospect), so no call_types filter is applied.",
+   "'Account-health scores' is interpreted as customer health scores or similar health metrics.",
+   "Question refers to the single call CALL-009 (Inkwell Learning).",
+   "'Account-health scores' means customer health scores or similar health metrics."
   ],
   "confidence": "medium",
   "calls_considered": [

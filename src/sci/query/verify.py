@@ -37,7 +37,8 @@ ENTAIL_SYSTEM = """You check whether evidence supports claims. For each claim yo
 supported = the quotes clearly support the claim as written.
 partial = they support the gist but the claim overstates, generalises or adds detail not in the quotes.
 unsupported = the quotes do not support the claim, or contradict it, or the claim misreads the context (e.g. treats a mention as usage).
-Judge only against the quotes given, not against what you think is true."""
+Judge only against the quotes given, not against what you think is true.
+Return EXACTLY ONE verdict per claim, using its ID exactly as given (K1, K2, ...). Judge each claim as a whole against all of its quotes; do not split a claim into parts. Cover every claim listed."""
 
 
 def check_citations(draft: DraftAnswer, findings: dict[str, VerifiedEvidence]):
@@ -52,21 +53,45 @@ def check_citations(draft: DraftAnswer, findings: dict[str, VerifiedEvidence]):
     return kept, removed
 
 
-def entailment(kept: list[tuple[int, Claim, list[VerifiedEvidence]]]) -> dict[int, Verdict]:
-    """claim_no -> verdict."""
-    if not kept:
-        return {}
+_SEVERITY = {"supported": 0, "partial": 1, "unsupported": 2}
+
+
+def _parse_verdicts(out: "Verdicts", wanted: set[int]) -> dict[int, Verdict]:
+    """claim_no -> verdict. If the model still splits a claim into parts ('K1-2'),
+    the WORST part wins, so a later 'supported' can't hide an 'unsupported'."""
+    res: dict[int, Verdict] = {}
+    for v in out.verdicts:
+        m = re.search(r"\d+", v.claim_id)
+        if not m or int(m.group()) not in wanted:
+            continue
+        n = int(m.group())
+        if n not in res or _SEVERITY[v.verdict] > _SEVERITY[res[n].verdict]:
+            res[n] = v
+    return res
+
+
+def _entail_call(kept, attempt: int):
     blocks = []
     for n, c, ev in kept:
         quotes = "\n".join(f'   - {e.speaker} ({e.side}, {e.company}): "{e.quote}"  [context: {e.context}]' for e in ev)
         blocks.append(f"K{n}: {c.text}\n{quotes}")
-    out = llm.structured(step="entail", model=FAST_MODEL, system=ENTAIL_SYSTEM,
-                         user="\n\n".join(blocks), schema=Verdicts)
-    res = {}
-    for v in out.verdicts:
-        m = re.search(r"\d+", v.claim_id)
-        if m:
-            res[int(m.group())] = v
+    ids = ", ".join(f"K{n}" for n, _, _ in kept)
+    user = "\n\n".join(blocks) + f"\n\nReturn {len(kept)} verdicts, one for each of: {ids}."
+    if attempt:
+        user += f"\n(retry {attempt}: these claims were missing a verdict)"
+    return llm.structured(step="entail", model=FAST_MODEL, system=ENTAIL_SYSTEM, user=user, schema=Verdicts)
+
+
+def entailment(kept: list[tuple[int, Claim, list[VerifiedEvidence]]]) -> dict[int, Verdict]:
+    """claim_no -> verdict. Claims the checker skips are asked about once more;
+    anything still without a verdict is left out, and verify() fails closed on it."""
+    res: dict[int, Verdict] = {}
+    todo = list(kept)
+    for attempt in range(2):
+        if not todo:
+            break
+        res.update(_parse_verdicts(_entail_call(todo, attempt), {n for n, _, _ in todo}))
+        todo = [k for k in todo if k[0] not in res]
     return res
 
 
@@ -84,7 +109,13 @@ NOT_ANSWERED = "The findings don't answer this question reliably; see NOT COVERE
 _MARKER = re.compile(r"\[C(\d+)\]")
 # A marker placed after the full stop ("...requirement. [C1]") belongs to the sentence before it.
 _TRAILING_MARKERS = re.compile(r"([.!?])((?:\s*\[C\d+\])+)")
-_SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
+# Split after . ! ? + whitespace, but not after common abbreviations: splitting
+# "integrations, e.g. Salesforce [C1]." would drop the unmarked first half and
+# leave a fragment. ("etc." is left out on purpose: it usually ends a sentence.)
+_ABBREVS = ("e.g.", "i.e.", "vs.", "approx.", "incl.", "cf.", "Mr.", "Ms.", "Mrs.", "Dr.", "St.", "Inc.", "Ltd.", "Co.", "No.")
+_SENTENCE_END = re.compile(
+    "".join(rf"(?<!\b{re.escape(a)})" for a in _ABBREVS + tuple(a.capitalize() for a in _ABBREVS if a[0].islower()))
+    + r"(?<=[.!?])\s+")
 
 
 def ground_summary(text: str, renumber_map: dict[int, int]) -> tuple[str, list[str]]:
